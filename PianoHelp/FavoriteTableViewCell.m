@@ -10,6 +10,7 @@
 #import "MelodyFavorite.h"
 #import "Melody.h"
 #import "Score.h"
+#import "QinFangViewController.h"
 
 @implementation FavoriteTableViewCell
 
@@ -41,15 +42,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    for (UITableViewCell *cell in self.tableView.visibleCells)
-    {
-        if(cell != self && cell.selected)
-        {
-            cell.selected = NO; // control selected by uitableviewcell UI in storybornd
-            ((FavoriteTableViewCell*)cell).imageSelected.hidden = YES;
-        }
-    }
-    // Configure the view for the selected state
 }
 
 -(void)updateContent:(id)obj
@@ -68,6 +60,14 @@
     }
     else
         self.btnRank.hidden = YES;
+    if([self.indexPath compare:self.tableView.indexPathForSelectedRow] == NSOrderedSame)
+    {
+        self.imageSelected.hidden = NO;
+    }
+    else
+    {
+        //self.imageSelected.hidden = YES;
+    }
 }
 
 - (IBAction)btnPlay_click:(id)sender
@@ -86,6 +86,6 @@
         }
     }
     self.imageSelected.hidden = NO;
-    self.selected = YES;
+    [self setSelected:YES animated:NO];
 }
 @end

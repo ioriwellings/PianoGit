@@ -10,6 +10,8 @@
 #import "BaseTableViewCell.h"
 #import "MelodyButton.h"
 
+@class QinFangViewController;
+
 @interface FavoriteTableViewCell : BaseTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageSelected;
@@ -18,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labScore;
 @property (weak, nonatomic) IBOutlet UIButton *btnRank;
 @property (weak, nonatomic) IBOutlet MelodyButton *btnPlay;
+@property (weak, nonatomic) NSIndexPath *indexPath;
 - (IBAction)btnPlay_click:(id)sender;
 -(void)setSelectedOnSelf;
 @end

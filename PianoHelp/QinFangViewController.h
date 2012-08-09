@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labNumberTask;
 @property (weak, nonatomic) IBOutlet UILabel *labNumberLike;
 @property (nonatomic) int type;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+@property (nonatomic) NSInteger selectedSection;
 
 - (IBAction)btnModel_click:(id)sender;
 - (IBAction)btnScope_click:(id)sender;

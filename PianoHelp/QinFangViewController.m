@@ -244,6 +244,7 @@
         melodyFavo = [self.fetchedResultsController2 objectAtIndexPath:indexPath];
     }
     ((FavoriteTableViewCell*)cell).tableView = tableView;
+    ((FavoriteTableViewCell*)cell).indexPath = indexPath;
     [((FavoriteTableViewCell*)cell) updateContent:melodyFavo];
 
     return cell;
