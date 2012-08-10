@@ -337,8 +337,8 @@
     scrollView.backgroundColor = [UIColor clearColor];
 //    [self.view addSubview:sheetmsic1];
 //    [self.view addSubview:scrollView];
-    [self.view insertSubview:sheetmsic1 atIndex:1];
-    [self.view insertSubview:scrollView atIndex:1];
+    [self.view insertSubview:sheetmsic1 atIndex:0];
+    [self.view insertSubview:scrollView atIndex:0];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     tapGesture.delegate = self;
