@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    [self.btnBeat setSelected:self.beatMute];
+    [self.btnSparring setSelected:self.sparringMute];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,13 +52,24 @@
 
 - (IBAction)btnPeiLian:(UIButton *)sender
 {
-    int value = 0;//add test by zyw
-    [self.shd SparringMute:value];
+    if ([self.btnSparring isSelected]) {
+        [self.shd SparringMute:0];
+        [self.btnSparring setSelected:FALSE];
+    } else {
+        [self.shd SparringMute:1];
+        [self.btnSparring setSelected:TRUE];
+    }
+    
 }
 
 - (IBAction)btnJiePai:(UIButton *)sender
 {
-    int value = 0;//add test by zyw
-    [self.shd beatMute:value];
+    if ([self.btnBeat isSelected]) {
+        [self.shd beatMute:0];
+        [self.btnBeat setSelected:FALSE];
+    } else {
+        [self.shd beatMute:1];
+        [self.btnBeat setSelected:TRUE];
+    }
 }
 @end

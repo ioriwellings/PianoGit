@@ -131,6 +131,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
 -(void)clearJSModel;
 /** add by yizhq end */
 
+-(void)clearStaffs;
+
 +(NSDictionary*)fontAttributes;
 
 

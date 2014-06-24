@@ -78,6 +78,7 @@ enum {
 	PianoRecognition *recognition;
     MidiKeyboard *midiHandler;
     int playModel;
+    BOOL judgeFlag;
 }
 
 -(id)init;
@@ -101,6 +102,8 @@ enum {
 //跳转小节
 -(BOOL)jumpMeasure:(int)number;
 -(void)playByType:(int)type;
+-(void)listen;
+-(void)replayByType;
 
 /** add by yizhq start */
 -(void)playJumpSection:(int)startSectionNumber;

@@ -58,6 +58,6 @@
 
 - (IBAction)btnLeftRight_onclick:(id)sender
 {
-    [self.shd handModel:0];
+//    [self.shd handModel:0];
 }
 @end
