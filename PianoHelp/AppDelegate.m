@@ -31,7 +31,13 @@
         [self initCategoryAndMelody];
         iLoop--;
     }
-    //[self loadDemoMidiToSQL];
+    //判断是不是第一次启动应用
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        [self loadDemoMidiToSQL];
+    }
+    
     return YES;
 }
 
