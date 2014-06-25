@@ -10,4 +10,5 @@
 
 @interface MelodyButton : UIButton
 @property(nonatomic, strong) NSString* fileName;
+@property(nonatomic) int type;
 @end

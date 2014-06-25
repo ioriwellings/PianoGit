@@ -476,7 +476,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnView_click:" destination="yu7-Vz-Vhd" eventType="touchUpInside" id="Ynt-el-Oju"/>
-                                                        <segue destination="71i-e3-K5Z" kind="push" identifier="melodyDetailSegue" id="MOC-Ke-sGC"/>
+                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="melodyPushWuXianPuSegue" id="tXs-lH-FLe"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查看" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-mq-dmh">
@@ -842,7 +842,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LQs-o9-Q8c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mYp-ZP-CdH">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-ve-m34">
@@ -969,7 +969,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-6Z-NAy" userLabel="toolBarView">
-                                <rect key="frame" x="0.0" y="693" width="1024" height="75"/>
+                                <rect key="frame" x="0.0" y="618" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="l7k-fj-C0G">
@@ -1179,7 +1179,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnView_click:" destination="eJR-xh-T8e" eventType="touchUpInside" id="2Q3-c6-ipa"/>
-                                                        <segue destination="71i-e3-K5Z" kind="push" identifier="searchPushMelodyDetailSegue" id="2mR-bz-3dG"/>
+                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="searchPushWuXianPuSegue" id="gcE-Ag-lqG"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查看" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIN-gx-4ye">
@@ -1708,6 +1708,79 @@
             </objects>
             <point key="canvasLocation" x="1613" y="1396"/>
         </scene>
+        <!--Wu Xian Pu View Controller-->
+        <scene sceneID="aqB-5F-dk9">
+            <objects>
+                <viewController id="N9J-kc-bCn" customClass="WuXianPuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="juK-ub-CZP"/>
+                        <viewControllerLayoutGuide type="bottom" id="MGY-cs-VLO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jZF-Rq-Mm1">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="788"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
+                                <rect key="frame" x="0.0" y="0.5" width="1024" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-v5-sLk">
+                                        <rect key="frame" x="0.0" y="0.5" width="1024" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-Hf-zOE" userLabel="btnBack">
+                                        <rect key="frame" x="0.0" y="23.5" width="94" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="fanhui.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnBackClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="wOo-Cn-1sG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wum-yJ-9qc">
+                                        <rect key="frame" x="488.5" y="23.5" width="47" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="kaishi.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="zanting.png"/>
+                                        <connections>
+                                            <action selector="btnPlayClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="cIw-XO-4sz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5v-kB-9Ud">
+                                        <rect key="frame" x="941" y="20" width="40" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="谱库">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPuKuClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="Bhr-Pq-tsv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AtP-Lk-naS"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="btnPlay" destination="Wum-yJ-9qc" id="lhh-Nd-a4t"/>
+                        <outlet property="btnPuKu" destination="o5v-kB-9Ud" id="Cho-wT-Zmf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PvP-Ck-LKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3990" y="1505"/>
+        </scene>
         <!--Shop View Controller-->
         <scene sceneID="kNB-qH-Wwa">
             <objects>
@@ -1889,6 +1962,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2mR-bz-3dG"/>
+        <segue reference="gcE-Ag-lqG"/>
     </inferredMetricsTieBreakers>
 </document>
