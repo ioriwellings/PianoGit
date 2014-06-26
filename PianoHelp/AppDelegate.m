@@ -31,7 +31,7 @@
         [self initCategoryAndMelody];
         iLoop--;
     }
-    //[self loadDemoMidiToSQL];
+    [self loadDemoMidiToSQL];
     return YES;
 }
 
@@ -246,6 +246,7 @@
 //    
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"考级";
+    cate.cover = @"huiyuanqumu.png";
     
     MelodyCategory *cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"中国音协第六级－第八级";
@@ -342,6 +343,7 @@
     //=====
     cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"教程";
+    cate.cover = @"jiaocaiqupu.png";
     
     cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"约翰汤普森现代钢琴教程，第二册";
@@ -481,6 +483,7 @@
     
     cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"流行歌曲";
+    cate.cover = @"shifanqupu.png";
     
     cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"经典系列";

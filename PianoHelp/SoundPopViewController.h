@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) MelodyDetailViewController *parentVC;
 @property (nonatomic, assign) id <SheetMusicsDelegate> shd;
+@property (weak, nonatomic) IBOutlet UIButton *btnPeiLianYin;
+@property (weak, nonatomic) IBOutlet UIButton *btnJiePaiYin;
 
 - (IBAction)btnPeiLian:(UIButton *)sender;
 - (IBAction)btnJiePai:(UIButton *)sender;

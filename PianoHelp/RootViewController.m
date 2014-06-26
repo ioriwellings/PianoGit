@@ -37,7 +37,7 @@
     imageView.frame = CGRectMake(0, 0, 1024, 768);
     [self.view addSubview:imageView];
     
-    self.lastClickButton = self.btnMelody;
+    self.lastClickButton = self.btnQinFang;
     [self.lastClickButton setSelected:YES];
     self.title = @"首页";
     UIImage *image = [UIImage imageNamed:@"daohangtiao.png"];
@@ -114,6 +114,7 @@
 
 - (IBAction)buttonToolbar_click:(id)sender
 {
+    if(sender == self.btnShop) return;
     if(self.lastClickButton)
     {
         [self.lastClickButton setSelected:NO];
@@ -136,7 +137,6 @@
     }
     else if(sender == self.btnShop)
     {
-        
 //        self.melodyContainerView.hidden = YES;
 //        self.qinFangContainerView.hidden = YES;
 //        self.shopContainerView.hidden = NO;

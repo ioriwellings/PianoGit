@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface ShowViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ShowViewController : BaseViewController
 {
     
 }

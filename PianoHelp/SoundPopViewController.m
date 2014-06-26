@@ -7,6 +7,7 @@
 //
 
 #import "SoundPopViewController.h"
+#import "MelodyDetailViewController.h"
 
 @interface SoundPopViewController ()
 
@@ -27,6 +28,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if(1)
+    {
+        [self.btnJiePaiYin setHighlighted:YES];
+        [self.btnPeiLianYin setSelected:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,11 +56,13 @@
 {
     int value = 0;//add test by zyw
     [self.shd SparringMute:value];
+    [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 
 - (IBAction)btnJiePai:(UIButton *)sender
 {
     int value = 0;//add test by zyw
     [self.shd beatMute:value];
+    [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 @end

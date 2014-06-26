@@ -7,6 +7,7 @@
 //
 
 #import "HandPopViewController.h"
+#import "MelodyDetailViewController.h"
 
 @interface HandPopViewController ()
 
@@ -49,15 +50,18 @@
 - (IBAction)btnLeft:(UIButton *)sender
 {
     [self.shd handModel:1];
+    [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 
 - (IBAction)btnRight:(UIButton *)sender
 {
     [self.shd handModel:2];
+    [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 
 - (IBAction)btnLeftRight_onclick:(id)sender
 {
     [self.shd handModel:0];
+    [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 @end

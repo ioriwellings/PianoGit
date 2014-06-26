@@ -1,19 +1,18 @@
 //
-//  IoriCollectionViewController.m
+//  ScroeViewController.m
 //  PianoHelp
 //
-//  Created by Jobs on 14-6-9.
-//  Copyright (c) 2014年 FlintInfo. All rights reserved.
+//  Created by Jobs on 6/25/14.
+//  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
-#import "IoriCollectionViewController.h"
-#import "GridLayout.h"
+#import "ScroeViewController.h"
 
-@interface IoriCollectionViewController ()
+@interface ScroeViewController ()
 
 @end
 
-@implementation IoriCollectionViewController
+@implementation ScroeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,8 +25,6 @@
 
 - (void)viewDidLoad
 {
-    [self.collectionView setCollectionViewLayout:[[GridLayout alloc] init]];
-
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -49,4 +46,24 @@
 }
 */
 
+- (IBAction)btnClose_onclick:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction)btnCorrect_onclick:(id)sender
+{
+}
+
+- (IBAction)btnShare_onclick:(id)sender
+{
+}
+
+- (IBAction)btnSaveRecord_onclick:(id)sender
+{
+}
+
+- (IBAction)btnReview:(id)sender
+{
+}
 @end

@@ -10,6 +10,7 @@
 #import "SectionPopViewController.h"
 #import "HandPopViewController.h"
 #import "SoundPopViewController.h"
+#import "ScroeViewController.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -51,7 +52,6 @@
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     self.sfCountdownView.countdownFrom = 3;
     [self.sfCountdownView updateAppearance];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -67,7 +67,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -349,6 +348,14 @@
 -(void)endSongsResult:(int)good andRight:(int)right andWrong:(int)wrong
 {
     NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
+    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+    vc.iGood = good;
+    vc.iRight = right;
+    vc.iWrong = wrong;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:vc animated:YES completion:NULL];
 }
 
 #pragma mark -
