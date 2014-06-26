@@ -27,6 +27,8 @@
     MidiOptions options;        /** The options selected in the menus */
     
     SheetMusicPlay *sheetmsic1;
+    
+    int option;
 }
 
 @property (nonatomic) NSInteger iPlayMode;
@@ -41,7 +43,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *menuBar;
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
-
+@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 
 - (IBAction)btnBack_click:(id)sender;
 - (IBAction)btnSection_click:(id)sender;
@@ -55,6 +57,7 @@
 
 - (IBAction)xiaoJieSlider_valueChanged:(id)sender;
 - (IBAction)suduSlider_valueChanged:(id)sender;
+
 
 - (IBAction)handleTap:(UITapGestureRecognizer *)sender;
 

@@ -369,9 +369,39 @@
     }
 }
 
+-(void) listen {
+    judgeFlag = FALSE;
+    [self playPause];
+}
+
+-(void) replayByType {
+    
+    [self doStop];
+    [sheet clearStaffs];
+    
+    if (playModel != PlayModel1) {
+        [sheetPlay setCurrentPulseTime:currentPulseTime];
+    }
+    
+    switch(playModel) {
+        case PlayModel1:
+            [self playModel1];
+            break;
+        case PlayModel2:
+            [self playPause];
+            break;
+        case PlayModel3:
+            [self playPause];
+            break;
+        default:
+            [self playPause];
+            break;
+    }
+}
 
 -(void)playByType:(int)type
 {
+    judgeFlag = true;
     playModel = type;
     switch(playModel) {
         case PlayModel1:
@@ -775,22 +805,13 @@
                     [delegate endSongsResult:[result get:3] andRight:[result get:2]
                                     andWrong:[result get:1]];
                 }
-                
-                int ff = ([result get:2] + [result get:3])/([result get:0]*1.0) * 100;
-                NSString *score = [NSString stringWithFormat:@"Score %i", ff];
-
-                NSString *message = [NSString stringWithFormat:@"wrong:%d right:%d good:%d sum:%d",[result get:1],[result get:2], [result get:3], [result get:0]];
-                
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:score message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
-                                          nil];
-                [alertView show];
             }
             
 
             return;
         }
         
-        if (pianoData != nil) {
+        if (pianoData != nil && judgeFlag) {
             [pianoData judgedPianoPlay:currentPulseTime andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
         }
         

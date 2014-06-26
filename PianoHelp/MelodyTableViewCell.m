@@ -18,8 +18,11 @@
     self.melody = (Melody*)obj;
     self.labTitle.text = self.melody.name;
     self.btnView.fileName = self.melody.filePath;
+    
+    
     if(self.melody.favorite)
     {
+        self.btnView.type = [self.melody.favorite.sort intValue];
         if([self.melody.favorite.sort intValue] == 1)
         {
             [self.btnFavorite setSelected:YES];
@@ -38,6 +41,7 @@
     }
     else
     {
+        self.btnView.type = 0;
         [self.btnFavorite setSelected:NO];
         [self.btnTask setSelected:NO];
     }

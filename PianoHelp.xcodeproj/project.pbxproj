@@ -193,6 +193,7 @@
 		89FD865C193966F30021216A /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FD865B193966F30021216A /* FavoriteTableViewCell.m */; };
 		B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1919557631008DBEC7 /* HandPopViewController.m */; };
 		B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1E19557653008DBEC7 /* SoundPopViewController.m */; };
+		BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -437,6 +438,8 @@
 		B163DA1919557631008DBEC7 /* HandPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPopViewController.m; sourceTree = "<group>"; };
 		B163DA1D19557653008DBEC7 /* SoundPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPopViewController.h; sourceTree = "<group>"; };
 		B163DA1E19557653008DBEC7 /* SoundPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundPopViewController.m; sourceTree = "<group>"; };
+		BA73FAF6195B1CAB0090F9BB /* WuXianPuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WuXianPuViewController.h; sourceTree = "<group>"; };
+		BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WuXianPuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -541,6 +544,8 @@
 				8907100B19219EC000BB9E2F /* Images.xcassets */,
 				89070FFD19219EC000BB9E2F /* Supporting Files */,
 				8964EBB0194535B200DBCED9 /* Resources */,
+				BA73FAF6195B1CAB0090F9BB /* WuXianPuViewController.h */,
+				BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */,
 			);
 			path = PianoHelp;
 			sourceTree = "<group>";
@@ -1090,6 +1095,7 @@
 				89257490192E40450049EF14 /* MelodyCategoryCollectioViewCell.m in Sources */,
 				8907100A19219EC000BB9E2F /* PianoHelp.xcdatamodeld in Sources */,
 				8987A55A19258FA500DEE6AE /* ShopViewController.m in Sources */,
+				BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */,
 				89A15D921921BEBF00647F7B /* Score.m in Sources */,
 				8936CF64192440F0001E5DCC /* SearchViewController.m in Sources */,
 				8907102D1921A03900BB9E2F /* RootViewController.m in Sources */,

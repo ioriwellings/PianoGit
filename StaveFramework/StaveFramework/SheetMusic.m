@@ -2253,6 +2253,23 @@ static NSDictionary *fontAttr = NULL;
     return numtracks;
 }
 
+-(void)clearStaffs
+{
+    for (int i =0; i < [staffs count]; i++) {
+        Staff *staff = [staffs get:i];
+        [staff cleanShadeNote];
+        
+        Array* symbols = [staff symbols];
+        for (int j = 0; j < [symbols count]; j++) {
+            if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol *c = (ChordSymbol*)[symbols get:i];
+                [c setJudgedResult:0];
+            }
+        }
+    }
+    
+    [self setNeedsDisplay];
+}
 @end
 
 

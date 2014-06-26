@@ -7,7 +7,7 @@
 //
 
 #import "MelodyViewController.h"
-#import "MelodyDetailViewController.h"
+#import "WuXianPuViewController.h"
 #import "AppDelegate.h"
 
 extern NSString *ScopeAuthor;
@@ -89,14 +89,12 @@ extern NSString *ScopeSongName;
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"melodyDetailSegue"])
+    if([[segue identifier] isEqualToString:@"melodyPushWuXianPuSegue"])
     {
-        MelodyDetailViewController *vc = segue.destinationViewController;
-        vc.fixSearchDisplayDelegate = self;
-        vc.iPlayMode = 1;
-        //add test by zyw
+        WuXianPuViewController *vc = segue.destinationViewController;
         NSString *filename = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) filePathForName:((MelodyButton*)sender).fileName];
         vc.fileName = filename;
+        vc.type = ((MelodyButton*)sender).type;
     }
 }
 

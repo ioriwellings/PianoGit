@@ -45,7 +45,7 @@
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)self.sliderSpeed.value] forState:UIControlStateNormal];
     
-    [self loadSheetMusick];
+    [self loadSheetMusic];
     
     self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
     self.sfCountdownView.delegate = self;
@@ -108,6 +108,14 @@
         SoundPopViewController *vc = [segue destinationViewController];
         vc.parentVC = self;
         vc.shd = self;
+        
+        vc.beatMute = [midifile getTempoMuteState:&options];
+        if ( [midifile getLeftHadnMuteState:&options] &&
+            [midifile getRightHadnMuteState:&options]) {
+            vc.sparringMute = YES;
+        } else {
+            vc.sparringMute = NO;
+        }
         self.popVC = ((UIStoryboardPopoverSegue*)segue).popoverController;
     }
 }
@@ -175,27 +183,37 @@
 
 - (IBAction)btnTryListen_click:(id)sender
 {
-    [self setCurrentButtonState:sender];
-    [self.sfCountdownView start];
+    option = 1;//试听
+    [self.btnPlay setSelected:true];
+    
+    [player listen];
+    
+    scrollView.hidden = YES;
+    sheetmsic1.hidden = NO;
 }
 
 - (IBAction)btnRePlay_click:(id)sender
 {
     [player stop];
+    option = 2;//重播
     [self.sfCountdownView start];
 }
 
 - (IBAction)btnPlay_click:(id)sender
 {
-    [self.sfCountdownView start];
     if([((UIButton*)sender) isSelected])
     {
+        option = 3;//暂停
         [((UIButton*)sender) setSelected:false];
         [player playPause];
+        scrollView.hidden = NO;
+        sheetmsic1.hidden = YES;
     }
     else
     {
+        option = 4;//播放
         [((UIButton*)sender) setSelected:true];
+        [self.sfCountdownView start];
     }
 }
 
@@ -207,8 +225,6 @@
 
 - (IBAction)xiaoJieSlider_valueChanged:(id)sender
 {
-//    UISlider *slider = (UISlider*)sender;
-//    [self.btnXiaoJieTiaoZhuan setTitle:[NSString stringWithFormat:@"% 1.1f", slider.value] forState:UIControlStateNormal];
     UISlider *slider = (UISlider*)sender;
     [self.btnXiaoJieTiaoZhuan setTitle:[NSString stringWithFormat:@"%d", (int)slider.value] forState:UIControlStateNormal];
     
@@ -225,7 +241,7 @@
 
 #pragma mark - private method
 
-- (void) loadSheetMusick
+- (void) loadSheetMusic
 {
     CGRect screensize = [[UIScreen mainScreen] applicationFrame];
     if (screensize.size.width >= 1200) {
@@ -279,6 +295,7 @@
     
 
     player = [[MidiPlayer alloc] init];
+    player.delegate = self;
     player.sheetPlay = sheetmsic1;
     [player changeSpeed:self.sliderSpeed.value];
     [player setMidiFile:midifile withOptions:&options andSheet:sheetmusic];
@@ -286,6 +303,9 @@
     [piano setShade:[UIColor blueColor] andShade2:[UIColor redColor]];
     [piano setMidiFile:midifile withOptions:&options];
     [player setPiano:piano];
+    
+    scrollView.hidden = NO;
+    sheetmsic1.hidden = YES;
 }
 
 -(void)hiddenMenuAndToolBar
@@ -340,13 +360,33 @@
 #pragma mark MidiPlayerDelegate
 -(void)endSongs
 {
-    [self.view bringSubviewToFront:scrollView];
+    scrollView.hidden = NO;
+    sheetmsic1.hidden = YES;
+    
+
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"End" message:@"the End" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
+                              nil];
+    [alertView show];
+    
     NSLog(@"the song is end");
 }
 
 
 -(void)endSongsResult:(int)good andRight:(int)right andWrong:(int)wrong
 {
+    scrollView.hidden = NO;
+    sheetmsic1.hidden = YES;
+    
+    
+    int ff = (right + good)/((right + good + wrong)*1.0) * 100;
+    NSString *score = [NSString stringWithFormat:@"Score %i", ff];
+    
+    NSString *message = [NSString stringWithFormat:@"wrong:%d right:%d good:%d sum:%d",wrong, right, good, (wrong + right + good)];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:score message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
+                              nil];
+    [alertView show];
+    
     NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
     ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
     vc.iGood = good;
@@ -362,18 +402,25 @@
 #pragma mark SFCountdownViewDelegate
 - (void) countdownFinished:(SFCountdownView *)view
 {
-    int type = (int)self.iPlayMode + 1;
-    switch (type) {
-        case 1:
+    switch (option ) {
+        case 1://试听
+            [player listen];
             break;
-        case 2:
-            [self.view bringSubviewToFront:sheetmsic1];
+        case 2://重播
+            [player replayByType];
             break;
-        case 3:
-            [self.view bringSubviewToFront:sheetmsic1];
+        case 3://暂停
+            break;
+        case 4://播放
+            [player playByType:self.iPlayMode];
             break;
     }
-    [player playByType:type];
+    
+    if (self.iPlayMode == 2 || self.iPlayMode == 3) {
+        
+        scrollView.hidden = YES;
+        sheetmsic1.hidden = NO;
+    }
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -396,7 +443,7 @@
     [sheetmusic setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
     
     
-    [self loadSheetMusick];
+    [self loadSheetMusic];
     [player playJumpSection:from];
 }
 
@@ -432,6 +479,10 @@
         default:
             break;
     }
+    
+    [self.popVC dismissPopoverAnimated:YES];
+    
+    [self btnPlay_click:self.btnPlay];
 }
 
 
@@ -445,6 +496,8 @@
         [midifile leftHandMute:&options andState:NO];
         [midifile rightHandMute:&options andState:NO];
     }
+    
+    [self.popVC dismissPopoverAnimated:YES];
 }
 
 //节拍器开启关闭
@@ -455,12 +508,13 @@
     } else {//关闭
         [midifile tempoMute:&options andState:NO];
     }
+    [self.popVC dismissPopoverAnimated:YES];
 }
 
 //清除拆分曲谱
 -(void)clearSplitMeasure{
     [sheetmusic clearJSModel];
-    [self loadSheetMusick];
+    [self loadSheetMusic];
     [player clearJumpSection];
 }
 

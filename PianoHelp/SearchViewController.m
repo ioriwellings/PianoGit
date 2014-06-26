@@ -9,7 +9,7 @@
 #import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "MelodyTableViewCell.h"
-#import "MelodyDetailViewController.h"
+#import "WuXianPuViewController.h"
 
 @interface SearchViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -76,13 +76,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"searchPushMelodyDetailSegue"])
+    if([[segue identifier] isEqualToString:@"searchPushWuXianPuSegue"])
     {
-        MelodyDetailViewController *vc = segue.destinationViewController;
-//        vc.iPlayMode = 1;
-        //add test by zyw
+        WuXianPuViewController *vc = segue.destinationViewController;
         NSString *filename = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) filePathForName:((MelodyButton*)sender).fileName];
         vc.fileName = filename;
+        vc.type = ((MelodyButton*)sender).type;
     }
 }
 
