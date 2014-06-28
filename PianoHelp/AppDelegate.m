@@ -25,6 +25,7 @@
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    self.window.backgroundColor = [UIColor lightGrayColor];
 //    [self.window makeKeyAndVisible];
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
     NSInteger iLoop = 0;
     while (iLoop > 0)
     {
