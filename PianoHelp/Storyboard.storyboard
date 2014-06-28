@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--More Pop View Controller-->
@@ -825,8 +825,8 @@
                     <value key="contentSizeForViewInPopover" type="size" width="200" height="126"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="btnJiePaiYin" destination="aEy-aR-R5b" id="fmT-WT-c0d"/>
-                        <outlet property="btnPeiLianYin" destination="eqC-Rj-5nO" id="rO4-KM-6mp"/>
+                        <outlet property="btnBeat" destination="aEy-aR-R5b" id="rBx-G4-Yck"/>
+                        <outlet property="btnSparring" destination="eqC-Rj-5nO" id="LPI-nW-Y8c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhv-Pf-AOF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -836,7 +836,7 @@
         <!--Melody Detail View Controller-->
         <scene sceneID="Qqa-H3-aYb">
             <objects>
-                <viewController modalPresentationStyle="currentContext" id="71i-e3-K5Z" customClass="MelodyDetailViewController" sceneMemberID="viewController">
+                <viewController id="71i-e3-K5Z" customClass="MelodyDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Li-Yg-eQU"/>
                         <viewControllerLayoutGuide type="bottom" id="LQs-o9-Q8c"/>
@@ -1084,11 +1084,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cYv-Ju-saF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eJ6-4M-k4x">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1L9-py-Zoi">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="cer-Mh-5Ec">
@@ -1878,23 +1878,23 @@
                         <viewControllerLayoutGuide type="bottom" id="MGY-cs-VLO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jZF-Rq-Mm1">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="788"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="713"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
-                                <rect key="frame" x="0.0" y="0.5" width="1024" height="75"/>
+                                <rect key="frame" x="0.0" y="1" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-v5-sLk">
-                                        <rect key="frame" x="0.0" y="0.5" width="1024" height="75"/>
+                                        <rect key="frame" x="0.0" y="1" width="1024" height="75"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-Hf-zOE" userLabel="btnBack">
-                                        <rect key="frame" x="0.0" y="23.5" width="94" height="29"/>
+                                        <rect key="frame" x="0.0" y="24" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="fanhui.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1904,7 +1904,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wum-yJ-9qc">
-                                        <rect key="frame" x="488.5" y="23.5" width="47" height="29"/>
+                                        <rect key="frame" x="489" y="24" width="47" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="kaishi.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
