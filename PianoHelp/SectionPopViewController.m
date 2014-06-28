@@ -104,5 +104,7 @@
 
 - (IBAction)btnRet_click:(id)sender
 {
+    [self.shd clearSplitMeasure];
 }
+
 @end

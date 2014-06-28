@@ -364,9 +364,16 @@
     sheetmsic1.hidden = YES;
     
 
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"End" message:@"the End" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
-                              nil];
-    [alertView show];
+    //add test by zyw start
+    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+    vc.iGood = 1;
+    vc.iRight = 1;
+    vc.iWrong = 1;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:vc animated:YES completion:NULL];
+    //add test by zyw end
     
     NSLog(@"the song is end");
 }

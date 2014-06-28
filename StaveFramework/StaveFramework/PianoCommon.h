@@ -27,6 +27,7 @@
 - (void) handModel:(int)value;
 - (void) SparringMute:(int)value;
 - (void) beatMute:(int)value;
+- (void) clearSplitMeasure;
 @end
 
 
