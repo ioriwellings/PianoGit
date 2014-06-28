@@ -25,6 +25,7 @@
 - (IBAction)btnNumber_click:(id)sender;
 - (IBAction)btnOK_click:(id)sender;
 - (IBAction)btnDel_click:(id)sender;
+- (IBAction)btnRet_click:(id)sender;
 
 
 @end

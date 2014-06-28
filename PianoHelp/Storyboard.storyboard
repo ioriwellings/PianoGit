@@ -184,7 +184,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="GlU-pE-uVv" kind="embed" identifier="EmbedQinFangSegue" id="Aao-k4-xii"/>
+                                    <segue destination="GlU-pE-uVv" kind="embed" id="Aao-k4-xii"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dvg-10-bgb" userLabel="Shop Container View">
@@ -538,7 +538,7 @@
                         <viewControllerLayoutGuide type="bottom" id="psO-zB-nBk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hS8-EL-Rfn">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="298"/>
+                        <rect key="frame" x="0.0" y="0.0" width="298" height="130"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="fenduanshuzipaineirong.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qru-eo-GJD">
@@ -695,8 +695,19 @@
                                     <outlet property="delegate" destination="jBO-gs-iq6" id="vU8-Wt-y23"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqJ-Y5-ckX">
+                                <rect key="frame" x="114" y="1" width="70" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="复原">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRet_click:" destination="jBO-gs-iq6" eventType="touchUpInside" id="xV9-YY-Qfm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="298" height="130"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -718,7 +729,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ABE-3D-NGu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0fd-EX-F6s">
-                        <rect key="frame" x="0.0" y="0.0" width="122" height="335"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="zuoyoushoubiankuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyX-s6-fLT">
@@ -764,6 +775,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="335" height="122"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -781,7 +793,7 @@
                         <viewControllerLayoutGuide type="bottom" id="92O-OT-k2e"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gw0-r8-Bmw">
-                        <rect key="frame" x="0.0" y="0.0" width="124" height="198"/>
+                        <rect key="frame" x="0.0" y="0.0" width="198" height="124"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="peilianyinerjikuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="WQG-fX-6HP">
@@ -818,6 +830,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="200" height="126"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -839,7 +852,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LQs-o9-Q8c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mYp-ZP-CdH">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-ve-m34">
@@ -966,7 +979,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-6Z-NAy" userLabel="toolBarView">
-                                <rect key="frame" x="0.0" y="929" width="1024" height="75"/>
+                                <rect key="frame" x="0.0" y="618" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="l7k-fj-C0G">
@@ -1054,6 +1067,7 @@
                             <constraint firstItem="HCk-aq-Jma" firstAttribute="leading" secondItem="mYp-ZP-CdH" secondAttribute="leading" id="Pfu-rd-9kP"/>
                             <constraint firstAttribute="bottom" secondItem="fpN-6Z-NAy" secondAttribute="bottom" id="bLQ-KZ-CXa"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="jZY-Qt-sGV"/>
                     <connections>
@@ -1456,7 +1470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOT-td-g1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-902" y="1385"/>
+            <point key="canvasLocation" x="-870" y="1545"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="ElL-AW-xRg">
@@ -1635,11 +1649,11 @@
                         <viewControllerLayoutGuide type="bottom" id="88E-ay-lgf"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="DWi-8K-LW3">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfA-ea-6aG" userLabel="toolBarView">
-                                <rect key="frame" x="0.0" y="693" width="1024" height="75"/>
+                                <rect key="frame" x="0.0" y="618" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swA-mN-ic9">
@@ -1854,10 +1868,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="2NN-x9-fwE"/>
                     <connections>
-                        <outlet property="btnAll" destination="Awa-8H-E4c" id="BWr-03-BEj"/>
-                        <outlet property="btnLove" destination="yfG-bz-xbP" id="YMu-pZ-Nsk"/>
                         <outlet property="btnPlayModel" destination="7ho-6K-yJF" id="pwZ-YR-h3q"/>
                         <outlet property="btnTask" destination="wT5-Oq-Fbf" id="Clu-FQ-78t"/>
                         <outlet property="tableView" destination="fCz-sd-cy7" id="5sm-XZ-ulC"/>
@@ -1917,12 +1928,10 @@
                                         <rect key="frame" x="941" y="20" width="40" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="谱库">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="btnPuKuClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="Bhr-Pq-tsv"/>
-                                            <segue destination="CJV-x4-ZHP" kind="push" identifier="pushRootViewSegue" id="9zI-Hh-NRh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2137,7 +2146,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9zI-Hh-NRh"/>
         <segue reference="gcE-Ag-lqG"/>
     </inferredMetricsTieBreakers>
 </document>

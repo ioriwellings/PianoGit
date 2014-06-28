@@ -101,4 +101,8 @@
     if(self.txtCurrentInput.text.length >0)
         self.txtCurrentInput.text = [self.txtCurrentInput.text substringToIndex:self.txtCurrentInput.text.length-1];
 }
+
+- (IBAction)btnRet_click:(id)sender
+{
+}
 @end
