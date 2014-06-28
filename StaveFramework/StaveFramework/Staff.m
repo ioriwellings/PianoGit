@@ -577,16 +577,15 @@
     
     CGContextTranslateCTM (context, shadeXpos, 0);
     
-    [color setFill];
-    UIBezierPath *path = [UIBezierPath bezierPathWithRect:
-                          CGRectMake(0, 0, [shadeCurr width], [self height]) ];
-    [path fill];
     
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [color setFill];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(0, [self height])];
+    [path stroke];
+
     
     CGContextTranslateCTM (context, -shadeXpos, 0);
-    
-    
-    
 }
 
 
