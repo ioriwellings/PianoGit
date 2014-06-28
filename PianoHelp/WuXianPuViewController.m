@@ -7,6 +7,7 @@
 //
 
 #import "WuXianPuViewController.h"
+#import "RootViewController.h"
 
 @interface WuXianPuViewController ()
 
@@ -139,6 +140,20 @@
     
     [player stop];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"pushRootViewSegue"])
+    {
+        [player stop];
+        RootViewController *vc = segue.destinationViewController;
+        vc.type = self.type;
+    }
 }
 
 #pragma mark MidiPlayerDelegate

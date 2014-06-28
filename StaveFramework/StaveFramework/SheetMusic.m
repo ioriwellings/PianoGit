@@ -1588,7 +1588,7 @@ static BOOL isBlank(id x) {
         else {
             CGContextTranslateCTM (context, 0, ypos);
             if (shadePrevPulseTime != -1 && shadeCurrentPulseTime !=-10) {
-                [staff shadeNotes:context withColor:shadeColor];
+                [staff shadeNotes:context withColor: [UIColor redColor]];
             }
             [staff cleanShadeNote];
             [staff drawRect:context InRect:clip withOptions:smOptions];

@@ -10,6 +10,7 @@
 #import "MelodyCategoryViewController.h"
 #import "MelodyCategory.h"
 #import "LoginViewController.h"
+#import "QinFangViewController.h"
 
 @interface RootViewController ()
 {
@@ -23,6 +24,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.type = 0;
     if (self) {
         // Custom initialization
     }
@@ -43,18 +45,23 @@
     UIImage *image = [UIImage imageNamed:@"daohangtiao.png"];
     self.topToolbar.backgroundColor = [UIColor colorWithPatternImage:image];
     
+    
     loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self addChildViewController:loginVC];
-    [self.view addSubview:loginVC.view];
-    //if(!IS_RUNNING_IOS7)
-    {
-        for (UIView *subView in self.topToolbar.subviews)
+    if (self.type == 0) {
+        [self.view addSubview:loginVC.view];
+        //if(!IS_RUNNING_IOS7)
         {
-            if([subView isKindOfClass:[UIImageView class]])
+            for (UIView *subView in self.topToolbar.subviews)
             {
-                [subView removeFromSuperview];
+                if([subView isKindOfClass:[UIImageView class]])
+                {
+                    [subView removeFromSuperview];
+                }
             }
         }
+    } else {
+        [self buttonToolbar_click:self.btnQinFang];
     }
 }
 
@@ -108,6 +115,11 @@
         MorePopViewController *vc = [segue destinationViewController];
         vc.loginDelegate = self;
         popVC = ((UIStoryboardPopoverSegue*)segue).popoverController;
+    }
+    else if ([[segue identifier] isEqualToString:@"EmbedQinFangSegue"])
+    {
+        QinFangViewController *vc = [segue destinationViewController];
+        vc.type = self.type;
     }
 }
 

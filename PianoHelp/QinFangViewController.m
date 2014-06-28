@@ -37,8 +37,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self btnScope_click:self.btnTask];
-    self.btnScope = self.btnTask;
+
+    
+    switch(self.type ) {
+        case 1://love
+            [self btnScope_click:self.btnLove];
+            self.btnScope = self.btnLove;
+            break;
+        case 2://task
+            [self btnScope_click:self.btnTask];
+            self.btnScope = self.btnTask;
+            break;
+        case 3://all
+            [self btnScope_click:self.btnAll];
+            self.btnScope = self.btnAll;
+            break;
+        default:
+            [self btnScope_click:self.btnTask];
+            self.btnScope = self.btnTask;
+            break;
+    }
+    
     [self.btnScope setSelected:YES];
     self.btnModel = self.btnPlayModel;
     [self.btnPlayModel setSelected:YES];

@@ -7,6 +7,8 @@
 //
 #include <sys/time.h>
 #import "PianoDataJudged.h"
+#include <sys/time.h>
+#import "PianoDataJudged.h"
 
 @implementation PianoDataJudged
 
@@ -182,7 +184,7 @@
                 }
                 
                 for (k = 0; k < [notes count]; k++) {
-                    if (abs([[notes get:k] startTime]-start) <= (end-start)/2) {
+                    if (abs([[notes get:k] startTime]-start) <= [timesig quarter]/3) {
                         if (nd.number == [[notes get:k] number]) {
                             if (result == 0) {
                                 result = 2;
@@ -191,7 +193,7 @@
                             [notes remove:[notes get:k]];
                             break;
                         }
-                    } else if (abs([[notes get:k] startTime]-start) <= (end-start)) {
+                    } else if (abs([[notes get:k] startTime]-start) <= 2*[timesig quarter]/3) {
                         if (nd.number == [[notes get:k] number]) {
                             if (result > 1 || result == 0) {
                                 result = 1;
@@ -200,7 +202,7 @@
                             [notes remove:[notes get:k]];
                             break;
                         }
-                    } else if ([[notes get:k] startTime]-start > (end-start)) {
+                    } else if ([[notes get:k] startTime]-start > 2*[timesig quarter]/3) {
                         break;
                     }
                 }

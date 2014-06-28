@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *showContainerView;
 @property (weak, nonatomic) IBOutlet UIView *toolBarView;
 @property (weak, nonatomic) IBOutlet UIToolbar *topToolbar;
+@property (nonatomic) int type;
 
 - (IBAction)buttonToolbar_click:(id)sender;
 @end
