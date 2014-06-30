@@ -2261,8 +2261,8 @@ static NSDictionary *fontAttr = NULL;
         
         Array* symbols = [staff symbols];
         for (int j = 0; j < [symbols count]; j++) {
-            if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
-                ChordSymbol *c = (ChordSymbol*)[symbols get:i];
+            if ([[symbols get:j] isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol *c = (ChordSymbol*)[symbols get:j];
                 [c setJudgedResult:0];
             }
         }
