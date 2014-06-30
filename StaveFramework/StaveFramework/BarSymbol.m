@@ -108,6 +108,7 @@
         yend = straffHeight;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 0.5;//fix line width by yizhq
     [path moveToPoint:CGPointMake(NoteWidth/2, ystart)];
     [path addLineToPoint:CGPointMake(NoteWidth/2, yend)];
     [path stroke];

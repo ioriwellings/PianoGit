@@ -352,6 +352,7 @@
     int y = ytop - 1;
 
     UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 0.5;//fix line width by yizhq
     for (line = 1; line <= 5; line++) {
         [path moveToPoint:CGPointMake(LeftMargin, y)];
         [path addLineToPoint:CGPointMake(width-1, y)];
@@ -382,6 +383,7 @@
         yend = height;
 
     UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 0.5;//fix line width by yizhq
     [path moveToPoint:CGPointMake(LeftMargin, ystart)];
     [path addLineToPoint:CGPointMake(LeftMargin, yend)];
     
