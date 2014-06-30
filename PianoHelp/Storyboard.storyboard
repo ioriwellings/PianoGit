@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--More Pop View Controller-->
@@ -538,7 +538,7 @@
                         <viewControllerLayoutGuide type="bottom" id="psO-zB-nBk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hS8-EL-Rfn">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="298"/>
+                        <rect key="frame" x="0.0" y="0.0" width="298" height="130"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="fenduanshuzipaineirong.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qru-eo-GJD">
@@ -707,6 +707,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="298" height="130"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -728,7 +729,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ABE-3D-NGu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0fd-EX-F6s">
-                        <rect key="frame" x="0.0" y="0.0" width="122" height="335"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="zuoyoushoubiankuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyX-s6-fLT">
@@ -774,6 +775,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="335" height="122"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -791,7 +793,7 @@
                         <viewControllerLayoutGuide type="bottom" id="92O-OT-k2e"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gw0-r8-Bmw">
-                        <rect key="frame" x="0.0" y="0.0" width="124" height="198"/>
+                        <rect key="frame" x="0.0" y="0.0" width="198" height="124"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="peilianyinerjikuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="WQG-fX-6HP">
@@ -828,6 +830,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="200" height="126"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -849,7 +852,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LQs-o9-Q8c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mYp-ZP-CdH">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-ve-m34">
@@ -976,7 +979,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-6Z-NAy" userLabel="toolBarView">
-                                <rect key="frame" x="0.0" y="929" width="1024" height="75"/>
+                                <rect key="frame" x="0.0" y="618" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="l7k-fj-C0G">
@@ -1064,6 +1067,7 @@
                             <constraint firstItem="HCk-aq-Jma" firstAttribute="leading" secondItem="mYp-ZP-CdH" secondAttribute="leading" id="Pfu-rd-9kP"/>
                             <constraint firstAttribute="bottom" secondItem="fpN-6Z-NAy" secondAttribute="bottom" id="bLQ-KZ-CXa"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="jZY-Qt-sGV"/>
                     <connections>
@@ -1090,11 +1094,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cYv-Ju-saF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eJ6-4M-k4x">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1L9-py-Zoi">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="cer-Mh-5Ec">
@@ -1253,7 +1257,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RyY-uV-IkU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="21w-Xk-P4f">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="jiesuanfenshuduihuakuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-Hb-Tyh">
@@ -1884,11 +1888,11 @@
                         <viewControllerLayoutGuide type="bottom" id="MGY-cs-VLO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jZF-Rq-Mm1">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="788"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="713"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
