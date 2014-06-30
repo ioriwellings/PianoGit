@@ -312,17 +312,15 @@
 -(void)drawMeasureNumbers:(CGContextRef)context {
     /* Skip the left side Clef symbol and key signature */
     int xpos = keysigWidth;
-    int ypos = height - NoteHeight*3/2;
+    int ypos = ytop - NoteHeight*3;
 
-    for (int i = 0; i < [symbols count]; i++) {
-        NSObject<MusicSymbol> *s = [symbols get:i];
-        if ([s isKindOfClass:[BarSymbol class]]) {
-            int measure = 1 + [s startTime] / measureLength;
-            CGPoint point = CGPointMake(xpos + NoteWidth, ypos);
-            NSString *num = [NSString stringWithFormat:@"%d", measure];
-            [num drawAtPoint:point withAttributes:[SheetMusic fontAttributes]];
-        }
-        xpos += [s width];
+    
+    NSObject<MusicSymbol> *s = [symbols get:0];
+    if (tracknum == 0) {
+        int measure = 1 + [s startTime] / measureLength;
+        CGPoint point = CGPointMake(xpos + NoteWidth, ypos);
+        NSString *num = [NSString stringWithFormat:@"%d", measure];
+        [num drawAtPoint:point withAttributes:[SheetMusic fontAttributes]];
     }
 }
 
@@ -418,7 +416,7 @@
     [self drawHorizLines:context];
     [self drawEndLines:context];
     
-    if (showMeasures) {
+    if (TRUE) {
         [self drawMeasureNumbers:context];
     }
     if (lyrics != nil) {
