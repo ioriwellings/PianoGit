@@ -29,7 +29,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2150"
             endingLineNumber = "2150"
-            landmarkName = "-leftHandMute:andState:"
+            landmarkName = "+combineToSingleTrack:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -45,7 +45,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2152"
             endingLineNumber = "2152"
-            landmarkName = "-leftHandMute:andState:"
+            landmarkName = "+combineToSingleTrack:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -61,7 +61,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2141"
             endingLineNumber = "2141"
-            landmarkName = "-rightHandMute:andState:"
+            landmarkName = "+combineToSingleTrack:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -77,7 +77,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2143"
             endingLineNumber = "2143"
-            landmarkName = "-rightHandMute:andState:"
+            landmarkName = "+combineToSingleTrack:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
