@@ -2698,7 +2698,7 @@ static NSArray* instrNames = NULL;
     }
     options->useDefaultInstruments = YES;
     options->scrollVert = YES;
-    options->largeNoteSize = NO;
+    options->largeNoteSize = YES;//change section width & make symbol big 
     if ([options->tracks count] == 1) {
         options->twoStaffs = YES;
     }
