@@ -2006,7 +2006,7 @@ static UIImage* chanyin = nil;
     if (leftDirect == StemDown) {
         ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight - 5;
     } else if (leftDirect == StemUp) {
-        ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2+NoteHeight/3;
+        ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2;
     }
     
     
@@ -2017,9 +2017,9 @@ static UIImage* chanyin = nil;
     } else if (jumpedFlag == 2) {
         
         if (leftDirect == StemDown) {
-            ypos -=  (NoteHeight+5);
+            ypos -=  (NoteHeight+LineSpace);
         } else if (leftDirect == StemUp) {
-            ypos += (NoteHeight+5);
+//            ypos += (NoteHeight + LineSpace);
         }
         
         CGContextTranslateCTM (context, 0 , ypos);
