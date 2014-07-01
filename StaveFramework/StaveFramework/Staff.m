@@ -319,8 +319,16 @@
     if (tracknum == 0) {
         int measure = 1 + [s startTime] / measureLength;
         CGPoint point = CGPointMake(xpos + NoteWidth, ypos);
-        NSString *num = [NSString stringWithFormat:@"%d", measure];
-        [num drawAtPoint:point withAttributes:[SheetMusic fontAttributes]];
+        
+        char buffer[100];
+        memset(buffer, 0x00, sizeof(buffer));
+        sprintf(buffer, "%d", measure);
+        CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+        CGContextSetTextDrawingMode(context, kCGTextFill);
+        CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+        CGContextShowTextAtPoint(context, point.x, point.y, buffer, strlen(buffer));
+        
+//        [num drawAtPoint:point withAttributes:[SheetMusic fontAttributes]];
     }
 }
 
@@ -555,7 +563,7 @@
     [self drawHorizLines:context];
     [self drawEndLines:context];
 
-    if (showMeasures) {
+    if (TRUE) {
         [self drawMeasureNumbers:context];
     }
     if (lyrics != nil) {
