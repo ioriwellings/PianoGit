@@ -476,7 +476,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnView_click:" destination="yu7-Vz-Vhd" eventType="touchUpInside" id="Ynt-el-Oju"/>
-                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="melodyPushWuXianPuSegue" id="tXs-lH-FLe"/>
+                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="melodyPushWuXianPuSegue" id="idR-LZ-S10"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查看" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-mq-dmh">
@@ -1037,7 +1037,7 @@
                                         </state>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JuX-Gy-E3s">
-                                        <rect key="frame" x="110" y="23" width="240" height="23"/>
+                                        <rect key="frame" x="110" y="23" width="240" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1046,7 +1046,7 @@
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="20" maxValue="280" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-Ih-QVd">
-                                        <rect key="frame" x="766" y="23" width="240" height="23"/>
+                                        <rect key="frame" x="766" y="23" width="240" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="suduSlider_valueChanged:" destination="71i-e3-K5Z" eventType="valueChanged" id="PSc-3k-hra"/>
@@ -1190,7 +1190,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnView_click:" destination="eJR-xh-T8e" eventType="touchUpInside" id="2Q3-c6-ipa"/>
-                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="searchPushWuXianPuSegue" id="gcE-Ag-lqG"/>
+                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="searchPushWuXianPuSegue" id="rzz-nC-FZ7"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查看" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIN-gx-4ye">
@@ -1246,7 +1246,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4134" y="288"/>
+            <point key="canvasLocation" x="4202" y="288"/>
         </scene>
         <!--Scroe View Controller-->
         <scene sceneID="39O-LJ-q2q">
@@ -1470,7 +1470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOT-td-g1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-870" y="1545"/>
+            <point key="canvasLocation" x="-1222" y="1537"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="ElL-AW-xRg">
@@ -1888,11 +1888,11 @@
                         <viewControllerLayoutGuide type="bottom" id="MGY-cs-VLO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jZF-Rq-Mm1">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="713"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="788"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
@@ -1933,7 +1933,6 @@
                                         </state>
                                         <connections>
                                             <action selector="btnPuKuClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="Bhr-Pq-tsv"/>
-                                            <segue destination="CJV-x4-ZHP" kind="push" identifier="pushRootViewSegue" id="6X7-oP-VSG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1952,7 +1951,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvP-Ck-LKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3990" y="1505"/>
+            <point key="canvasLocation" x="5486" y="288"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="kNB-qH-Wwa">
@@ -2148,7 +2147,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6X7-oP-VSG"/>
-        <segue reference="gcE-Ag-lqG"/>
+        <segue reference="idR-LZ-S10"/>
     </inferredMetricsTieBreakers>
 </document>
