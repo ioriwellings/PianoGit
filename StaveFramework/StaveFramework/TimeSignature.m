@@ -145,7 +145,7 @@
         return Eighth;
     else if (duration >=  5*whole/64)
         return Triplet;
-    else if (duration >=  3*whole/64)
+    else if (duration >=  2.5*whole/64)
         return Sixteenth;
     /** add by sunlie start */
     else if (duration >=  3*whole/128)

@@ -1292,12 +1292,12 @@ static UIImage* chanyin = nil;
 
     if (zsFlag == 0) {
         if (numChords == 6) {
-            if (dur != Eighth) {
+            if (dur != Eighth && dur != Sixteenth) {
                 return NO;
             }
             BOOL correctTime =
             (([time numerator] == 3 && [time denominator] == 4) ||
-             ([time numerator] == 6 && [time denominator] == 8) ||
+             ([time numerator]%3 == 0 && [time denominator] == 8) ||
              ([time numerator] == 6 && [time denominator] == 4) );
             if (!correctTime) {
                 return NO;
@@ -1345,12 +1345,12 @@ static UIImage* chanyin = nil;
             /** modify by sunlie */
             BOOL valid = (dur == Triplet) ||
             (dur == Eighth &&
-             [time numerator] == 12 && [time denominator] == 8) ||
+             ([time numerator]%3 == 0) && [time denominator] == 8) ||
             ((dur == Eighth) && abs([chord0 startTime]/[time quarter]-[time quarter]/2)<[time quarter]/16) ||
             (dur == Sixteenth) ||
-            ([firstStem duration] == Sixteenth && [secondStem duration] == Sixteenth && [lastStem duration] == Eighth) ||
-            ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration] == Sixteenth) ||
-            ([firstStem duration] == Sixteenth && [secondStem duration] == Eighth && [lastStem duration] == Sixteenth);
+            ([firstStem duration] == Sixteenth && [secondStem duration] == Sixteenth && [lastStem duration]==Eighth) ||
+            ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration]==Sixteenth) ||
+            ([firstStem duration] == Sixteenth && [secondStem duration] == Eighth && [lastStem duration]==Sixteenth);
             if (!valid) {
                 return NO;
             }
@@ -1369,7 +1369,7 @@ static UIImage* chanyin = nil;
                 /* In 12/8 time, chord must start on 3*8th beat */
                 beat = [time quarter]/2 * 3;
             }
-            if (([chord0 startTime] % beat) > [time quarter]/6) {
+            if (([chord0 startTime] % beat) > [time quarter]/6 && startQuarter) {
                 return NO;
             }
         }
@@ -1392,9 +1392,9 @@ static UIImage* chanyin = nil;
         if ([chord stem] == nil) {
             return NO;
         }
-//        if ([[chord stem] duration] != dur && !dotted8_to_16 && !notesixteenFlag) {
-//            return NO;
-//        }
+        if ([[chord stem] duration] != dur && !dotted8_to_16 && !notesixteenFlag) {
+            return NO;
+        }
         if ([[chord stem] isBeam]) {
             return NO;
         }
@@ -2009,17 +2009,28 @@ static UIImage* chanyin = nil;
         ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2+NoteHeight/3;
     }
     
+    
     if (jumpedFlag == 1) {
         CGContextTranslateCTM (context, 0 , ypos);
         CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, [SheetMusic getNoteWidth]/2, [SheetMusic getNoteWidth]/2));
         CGContextTranslateCTM (context, 0 , -ypos);
     } else if (jumpedFlag == 2) {
+        
+        if (leftDirect == StemDown) {
+            ypos -=  (NoteHeight+5);
+        } else if (leftDirect == StemUp) {
+            ypos += (NoteHeight+5);
+        }
+        
+        CGContextTranslateCTM (context, 0 , ypos);
         CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
         CGContextAddLineToPoint(context, 1.5*LineSpace, 2*LineSpace);
         CGContextAddLineToPoint(context, LineSpace, 3*LineSpace);
         CGContextAddLineToPoint(context, LineSpace/2, 2*LineSpace);
         CGContextDrawPath(context, kCGPathFillStroke);
+        CGContextTranslateCTM (context, 0 , -ypos);
     }
+    
 }
 
 - (void) drawEightNotes:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff {
