@@ -29,7 +29,7 @@
  * @param measurelen The length of a measure, in pulses
  */
 /** modify by sunlie */
-- (id)initWithNotes:(Array*)notes andTime:(TimeSignature *)time andBeats:(Array*)beats andControl:(Array*)clist andTotal:(int)t {
+- (id)initWithNotes:(Array*)notes andTime:(TimeSignature *)time andBeats:(Array*)beats andControl:(Array*)clist andTotal:(int)t andTracknum:(int) num {
     /** add by sunlie start */
     int size = [beats count];
     int i = 0;
@@ -57,10 +57,18 @@
 //    measure = measurelen;
     measure = m;         /** modify by sunlie */
 
-    int mainclef = [self mainClef:notes];
+    int mainclef;
+    
+    if (num == 0) {
+        mainclef = Clef_Treble;
+    } else if (num == 1) {
+        mainclef = Clef_Bass;
+    } else {
+        mainclef = [self mainClef:notes];
+    }
+    
     int clef = mainclef;
     
-
     clefs = [IntArray new:([notes count] / 10) + 1];
     
     /** add by sunlie start */

@@ -19,7 +19,7 @@
 }
 
 /** modify by sunlie */
--(id)initWithNotes:(Array*)notes andTime:(TimeSignature *)time andBeats:(Array*)beats andControl:(Array*)clist andTotal:(int)totalpulses;
+-(id)initWithNotes:(Array*)notes andTime:(TimeSignature *)time andBeats:(Array*)beats andControl:(Array*)clist andTotal:(int)totalpulses andTracknum:(int) tracknum;
 -(int)getClef:(int)starttime;
 -(int)mainClef:(Array*)notes;
 -(void)dealloc;

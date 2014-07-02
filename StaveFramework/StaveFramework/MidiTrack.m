@@ -681,7 +681,7 @@ int sortbynote(void* note1, void* note2) {
         err2 = [time quarter]/6 - [n duration]%([time quarter]/6);
     }
     
-    if (err1 <= err2-10 || err1 < 15) {
+    if (err1 <= err2+5 || err1 < 15) {
         if ([n duration]%([time quarter]/8) > [time quarter]/16) {
             dur = ([n duration]/([time quarter]/8) + 1)*([time quarter]/8);
         } else {

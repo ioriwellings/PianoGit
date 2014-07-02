@@ -143,7 +143,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             [track createControlNotes:time];
             [track createSplitednotes:time andBeatarray:beatarray];
         }
-        ClefMeasures *clefs = [[ClefMeasures alloc] initWithNotes:[track notes] andTime:time andBeats:beatarray andControl:[track controlList] andTotal:[track totalpulses]];
+        ClefMeasures *clefs = [[ClefMeasures alloc] initWithNotes:[track notes] andTime:time andBeats:beatarray andControl:[track controlList] andTotal:[track totalpulses] andTracknum:tracknum];
         /* chords = Array of ChordSymbol */
         Array *chords = [self createChords:[track splitednotes] withKey:mainkey
                                    andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14]];
@@ -309,7 +309,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         [notegroup clear];
         [notegroup add:[midinotes get:i]];
         i++;
-        while (i < len && [(MidiNote*)[midinotes get:i] startTime] == starttime) {
+        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/64) {
             [notegroup add:[midinotes get:i]];
             i++;
         }
