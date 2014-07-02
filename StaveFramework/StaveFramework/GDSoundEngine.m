@@ -30,8 +30,8 @@ static void CheckError(OSStatus error, const char *operation) {
 #import "GDSoundEngine.h"
 #import "MIDIParser.h"
 #import "TrackSetting.h"
-
-@import AVFoundation; 
+#import <AVFoundation/AVFoundation.h>
+//@import AVFoundation; 
 
 @interface GDSoundEngine ()
 

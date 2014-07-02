@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@import AudioToolbox;
+#import <AudioToolbox/AudioToolbox.h>
 
 
 @interface MIDIParser : NSObject
