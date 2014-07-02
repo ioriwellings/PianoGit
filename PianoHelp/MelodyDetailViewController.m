@@ -53,11 +53,11 @@
     self.sfCountdownView.countdownFrom = 3;
     [self.sfCountdownView updateAppearance];
     
-    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self presentViewController:vc animated:YES completion:NULL];
+//    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+//    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    [self presentViewController:vc animated:YES completion:NULL];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -392,19 +392,20 @@
     
     
     int ff = (right + good)/((right + good + wrong)*1.0) * 100;
-    NSString *score = [NSString stringWithFormat:@"Score %i", ff];
-    
-    NSString *message = [NSString stringWithFormat:@"wrong:%d right:%d good:%d sum:%d",wrong, right, good, (wrong + right + good)];
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:score message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
-                              nil];
-    [alertView show];
-    
-    NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
+//    NSString *score = [NSString stringWithFormat:@"Score %i", ff];
+//    
+//    NSString *message = [NSString stringWithFormat:@"wrong:%d right:%d good:%d sum:%d",wrong, right, good, (wrong + right + good)];
+//    
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:score message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
+//                              nil];
+//    [alertView show];
+//    
+//    NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
     ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
     vc.iGood = good;
     vc.iRight = right;
     vc.iWrong = wrong;
+    vc.iScore = ff;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
-#import "MelodyDetailViewController.h"
 
 @interface ScroeViewController : BaseViewController
 {
@@ -19,6 +18,7 @@
 @property NSInteger iGood;
 @property NSInteger iWrong;
 @property NSInteger iRight;
+@property NSInteger iScore;
 
 @property (weak, nonatomic) IBOutlet UILabel *labScroe;
 @property (weak, nonatomic) IBOutlet UILabel *labRight;
@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labPerfect;
 @property (weak, nonatomic) IBOutlet UILabel *labGain;
 @property (weak, nonatomic) IBOutlet UILabel *labOwn;
-@property (weak, nonatomic) MelodyDetailViewController *parentVC;
 
 - (IBAction)btnClose_onclick:(id)sender;
 - (IBAction)btnCorrect_onclick:(id)sender;

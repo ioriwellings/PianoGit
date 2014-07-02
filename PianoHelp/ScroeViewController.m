@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.labScroe.text = [NSString stringWithFormat:@"%ld", (long)self.iScore];
+    self.labRight.text = [NSString stringWithFormat:@"%ld", (long)self.iRight];
+    self.labWrong.text = [NSString stringWithFormat:@"%ld", (long)self.iWrong];
+    self.labPerfect.text = [NSString stringWithFormat:@"%ld", (long)self.iGood];
 }
 
 - (void)didReceiveMemoryWarning
