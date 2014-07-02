@@ -312,17 +312,23 @@
 -(void)drawMeasureNumbers:(CGContextRef)context {
     /* Skip the left side Clef symbol and key signature */
     int xpos = keysigWidth;
-    int ypos = height - NoteHeight*3/2;
+    int ypos = ytop - NoteHeight*3;
 
-    for (int i = 0; i < [symbols count]; i++) {
-        NSObject<MusicSymbol> *s = [symbols get:i];
-        if ([s isKindOfClass:[BarSymbol class]]) {
-            int measure = 1 + [s startTime] / measureLength;
-            CGPoint point = CGPointMake(xpos + NoteWidth, ypos);
-            NSString *num = [NSString stringWithFormat:@"%d", measure];
-            [num drawAtPoint:point withAttributes:[SheetMusic fontAttributes]];
-        }
-        xpos += [s width];
+    
+    NSObject<MusicSymbol> *s = [symbols get:0];
+    if (tracknum == 0) {
+        int measure = 1 + [s startTime] / measureLength;
+        CGPoint point = CGPointMake(xpos + NoteWidth, ypos);
+        
+        char buffer[100];
+        memset(buffer, 0x00, sizeof(buffer));
+        sprintf(buffer, "%d", measure);
+        CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+        CGContextSetTextDrawingMode(context, kCGTextFill);
+        CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+        CGContextShowTextAtPoint(context, point.x, point.y, buffer, strlen(buffer));
+        
+//        [num drawAtPoint:point withAttributes:[SheetMusic fontAttributes]];
     }
 }
 
@@ -352,6 +358,7 @@
     int y = ytop - 1;
 
     UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 0.5;//fix line width by yizhq
     for (line = 1; line <= 5; line++) {
         [path moveToPoint:CGPointMake(LeftMargin, y)];
         [path addLineToPoint:CGPointMake(width-1, y)];
@@ -382,6 +389,7 @@
         yend = height;
 
     UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 0.5;//fix line width by yizhq
     [path moveToPoint:CGPointMake(LeftMargin, ystart)];
     [path addLineToPoint:CGPointMake(LeftMargin, yend)];
     
@@ -416,7 +424,7 @@
     [self drawHorizLines:context];
     [self drawEndLines:context];
     
-    if (showMeasures) {
+    if (TRUE) {
         [self drawMeasureNumbers:context];
     }
     if (lyrics != nil) {
@@ -555,7 +563,7 @@
     [self drawHorizLines:context];
     [self drawEndLines:context];
 
-    if (showMeasures) {
+    if (TRUE) {
         [self drawMeasureNumbers:context];
     }
     if (lyrics != nil) {

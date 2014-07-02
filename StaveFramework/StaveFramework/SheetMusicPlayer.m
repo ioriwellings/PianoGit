@@ -188,18 +188,19 @@ int TitleHeights = 14; /** The height for the title on the first page */
     int pos = [symbols count]/2;
 
     
-    if ([[symbols get:pos] isKindOfClass:[BarSymbol class]]) {
-        pos +=1;
-    }
+//    if ([[symbols get:pos] isKindOfClass:[BarSymbol class]]) {
+//        pos +=1;
+//    }
     id <MusicSymbol> start = [symbols get:pos];
     
-    pos += 1;
-    if ([[symbols get:pos] isKindOfClass:[BarSymbol class]]) {
-        pos +=1;
-    }
-    id <MusicSymbol> end = [symbols get:pos];
+//    pos += 1;
+//    if ([[symbols get:pos] isKindOfClass:[BarSymbol class]]) {
+//        pos +=1;
+//    }
+//    id <MusicSymbol> end = [symbols get:pos];
     
-    if (([start startTime] <= currentPulseTime) && (currentPulseTime <= [end startTime]))
+//    if (([start startTime] <= currentPulseTime) && (currentPulseTime <= [end startTime]))
+    if (([start startTime] <= currentPulseTime))
     {
         ret = TRUE;
     }
@@ -228,12 +229,14 @@ int TitleHeights = 14; /** The height for the title on the first page */
         
         //通知SheetMusicPlay开始可以更新曲谱了
         if (i == 0) {
-
+            
+            if (updateStaffsFlag) {
                 BOOL result = [self isStartUpdate:staff withPulseTime:currentPulseTime];
-                if (result && updateStaffsFlag) {
+                if (result) {
                     updateStaffsFlag = FALSE;
                     [delegate updateStaffs:types];
                 }
+            }
         }
     }
 

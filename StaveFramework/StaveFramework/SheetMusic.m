@@ -367,9 +367,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         if (cdcount3 < [list3 count]) {
             if ([chord startTime] >= [cd3 starttime] && [chord startTime] <= [cd3 endtime]) {
                 if ([cd3 cvalue] <= 64) {
-                    [chord setJumpedFlag:1];
-                } else if ([cd3 cvalue] > 64) {
                     [chord setJumpedFlag:2];
+                } else if ([cd3 cvalue] > 64) {
+                    [chord setJumpedFlag:1];
                 }
                 
                 if ([chord endTime] >= [cd3 endtime]) {
@@ -1128,21 +1128,23 @@ static BOOL isBlank(id x) {
  */
 -(void)createAllBeamedChords:(Array*)allsymbols withTime:(TimeSignature*)time {
     /** delete by sunlie start */
-    //    if (([time numerator] == 3 && [time denominator] == 4) ||
-    //        ([time numerator] == 6 && [time denominator] == 8) ||
-    //        ([time numerator] == 6 && [time denominator] == 4) ) {
-    //
-    //        [self createBeamedChords:allsymbols withTime:time
-    //              andNumChords:6 onBeat:YES];
-    //    }
+        if (([time numerator] == 3 && [time denominator] == 4) ||
+            ([time numerator]%3 == 0 && [time denominator] == 8) ||
+            ([time numerator] == 6 && [time denominator] == 4) ) {
+    
+            [self createBeamedChords:allsymbols withTime:time
+                  andNumChords:6 onBeat:YES];
+            [self createBeamedChords:allsymbols withTime:time
+                        andNumChords:6 onBeat:NO];
+        }
     /** delete by sunlie end */
     /** modify by sunlie start */
     [self createBeamedChords:allsymbols withTime:time
                 andNumChords:4 onBeat:YES];
     [self createBeamedChords:allsymbols withTime:time
-                andNumChords:3 onBeat:YES];
-    [self createBeamedChords:allsymbols withTime:time
                 andNumChords:3 onBeat:NO];
+    [self createBeamedChords:allsymbols withTime:time
+                andNumChords:3 onBeat:YES];
     [self createBeamedChords:allsymbols withTime:time
                 andNumChords:2 onBeat:YES];
     [self createBeamedChords:allsymbols withTime:time
@@ -2064,6 +2066,7 @@ static NSDictionary *fontAttr = NULL;
     int lineWidth, lineWidth1;
     
     for (int k = 0; k < [allsymbols count]; k++) {
+        i = 0;
         Array* symbols = [allsymbols get:k];
         while (i<[symbols count] - 1) {
             if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
@@ -2261,8 +2264,8 @@ static NSDictionary *fontAttr = NULL;
         
         Array* symbols = [staff symbols];
         for (int j = 0; j < [symbols count]; j++) {
-            if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
-                ChordSymbol *c = (ChordSymbol*)[symbols get:i];
+            if ([[symbols get:j] isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol *c = (ChordSymbol*)[symbols get:j];
                 [c setJudgedResult:0];
             }
         }

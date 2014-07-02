@@ -268,9 +268,17 @@
     piano = [[Piano alloc] init];
     piano.frame = CGRectMake(0, 75, 1024, 120);
     [self.view addSubview:piano];
+    //modify by yizhq start
+    piano.hidden = YES;//change hint default status is hidden by yizhq
     
     float height = sheetmusic.frame.size.height;
-    CGRect frame = CGRectMake(0, 130, 1024, 768-75-130);
+    CGRect frame;
+    if (piano.hidden == YES) {
+        frame = CGRectMake(0, 75, 1024, 768-75-130);
+    }else{
+        frame = CGRectMake(0, 130, 1024, 768-75-130);
+    }
+    //modify by yizhq end
     scrollView= [[UIScrollView alloc] initWithFrame: frame];
     scrollView.contentSize= CGSizeMake(1024, height+280);
     scrollView.backgroundColor = [UIColor whiteColor];
