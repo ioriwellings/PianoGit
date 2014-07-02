@@ -22,8 +22,10 @@ extern NSString *ScopeSongName;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
+        isNeedFixSearchBar = YES;
     }
     return self;
 }
@@ -265,6 +267,7 @@ extern NSString *ScopeSongName;
 
 -(void)fixSearchBarPosition
 {
+    if(isNeedFixSearchBar == NO) return;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
     {
         //UISearchDisplayControllerContainerView
@@ -283,7 +286,6 @@ extern NSString *ScopeSongName;
                                        dimmingView.frame.size.width,
                                        dimmingView.frame.size.height); // (0 119; 1024 574)
     }
-
 }
 
 #pragma mark - MelodyTableViewCellDelegate

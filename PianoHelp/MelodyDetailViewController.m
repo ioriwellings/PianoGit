@@ -52,6 +52,12 @@
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     self.sfCountdownView.countdownFrom = 3;
     [self.sfCountdownView updateAppearance];
+    
+    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:vc animated:YES completion:NULL];
 }
 
 -(void)viewWillAppear:(BOOL)animated

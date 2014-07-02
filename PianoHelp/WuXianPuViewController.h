@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "StaveFramework/MidiFile.h"
 #import "StaveFramework/MidiPlayer.h"
 #import "StaveFramework/Piano.h"
@@ -14,7 +15,8 @@
 #import "StaveFramework/SheetMusicPlay.h"
 #import "StaveFramework/SFCountdownView.h"
 
-@interface WuXianPuViewController : UIViewController<MidiPlayerDelegate> {
+@interface WuXianPuViewController : BaseViewController <MidiPlayerDelegate>
+{
     MidiFile *midifile;         /** The midifile that was read */
     SheetMusic *sheetmusic;     /** The sheet music to display */
     UIScrollView *scrollView;   /** For scrolling through the sheet music */

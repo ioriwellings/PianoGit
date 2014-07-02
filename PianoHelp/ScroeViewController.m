@@ -35,6 +35,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 /*
 #pragma mark - Navigation
 
@@ -63,7 +67,7 @@
 {
 }
 
-- (IBAction)btnReview:(id)sender
+- (IBAction)btnReview_click:(id)sender
 {
 }
 @end

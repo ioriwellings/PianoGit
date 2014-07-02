@@ -1892,11 +1892,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="713"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
-                                <rect key="frame" x="0.0" y="1" width="1024" height="75"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-v5-sLk">
@@ -1936,10 +1936,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="9jp-BC-qGd"/>
+                                    <constraint firstAttribute="width" constant="1024" id="cJX-rI-9dd"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O5x-Fl-wgC" firstAttribute="leading" secondItem="jZF-Rq-Mm1" secondAttribute="leading" id="5fk-l6-W7P"/>
+                            <constraint firstItem="O5x-Fl-wgC" firstAttribute="top" secondItem="jZF-Rq-Mm1" secondAttribute="top" id="9nF-ad-wVQ"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="AtP-Lk-naS"/>

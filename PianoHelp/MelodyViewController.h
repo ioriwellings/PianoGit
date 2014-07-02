@@ -19,6 +19,9 @@
 @end
 
 @interface MelodyViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, MelodyTableViewCellDelegate, FixSearchDisplayDelegate>
+{
+    BOOL isNeedFixSearchBar;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *toolBarView;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;

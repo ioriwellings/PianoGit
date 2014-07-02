@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIView *menuBar;
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
+@property BOOL isPresentScroeVC;
 
 - (IBAction)btnBack_click:(id)sender;
 - (IBAction)btnSection_click:(id)sender;

@@ -50,14 +50,17 @@
 {
     return YES;
 }
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscape;
 }
+
 // Returns interface orientation masks.
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    return UIInterfaceOrientationLandscapeLeft/* | UIInterfaceOrientationLandscapeRight*/;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    return orientation;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
