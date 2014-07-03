@@ -979,7 +979,7 @@ static UIImage* chanyin = nil;
 -(void)drawStrength:(CGContextRef)context withValue:(int)value{
 
     char *str;
-    CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+    CGContextSelectFont(context, "Georgia-Italic", 16.0, kCGEncodingMacRoman);
     CGContextSetTextDrawingMode(context, kCGTextFill);
     CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
     switch (value) {
@@ -1007,7 +1007,7 @@ static UIImage* chanyin = nil;
         default:
             return;
     }
-    CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight-20, str, 2);
+    CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight+ (NoteHeight*3-18)/2, str, 2);
 }
 /*!
  *  draw gradient symbol
@@ -2034,7 +2034,7 @@ static UIImage* chanyin = nil;
     
     if (jumpedFlag == 1) {
         CGContextTranslateCTM (context, 0 , ypos);
-        CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, [SheetMusic getNoteWidth]/2, [SheetMusic getNoteWidth]/2));
+        CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
         CGContextTranslateCTM (context, 0 , -ypos);
     } else if (jumpedFlag == 2) {
         
