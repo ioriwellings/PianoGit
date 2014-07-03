@@ -2416,6 +2416,38 @@ static UIImage* chanyin = nil;
         CGContextTranslateCTM (context, -(xnote + noteWidth/2 + 1),
                                -(ynote - LineWidth + noteHeight/2));
         
+        
+        /* Draw horizontal lines if note is above/below the staff */
+        path = [UIBezierPath bezierPath];
+        [path setLineWidth:LineWidth];
+        
+        WhiteNote *top = [topstaff add:1];
+        int dist = [note->whitenote dist:top];
+        int y = ytop - LineWidth;
+        
+        if (dist >= 2) {
+            for (int i = 2; i <= dist; i += 2) {
+                y -= noteHeight;
+                [path moveToPoint:CGPointMake(xnote - LineSpace/4, y)];
+                [path addLineToPoint:CGPointMake(xnote + noteWidth + LineSpace/4, y) ];
+            }
+        }
+        
+        WhiteNote *bottom = [top add:(-8)];
+        y = ytop + (LineSpace + LineWidth) * 4 - 1;
+        dist = [bottom dist:(note->whitenote)];
+        if (dist >= 2) {
+            for (int i = 2; i <= dist; i+= 2) {
+                y += noteHeight;
+                [path moveToPoint:CGPointMake(xnote - LineSpace/4, y) ];
+                [path addLineToPoint:CGPointMake(xnote + noteWidth + LineSpace/4, y) ];
+            }
+        }
+        [path stroke];
+        [top release];
+        [bottom release];
+        
+        /* End drawing horizontal lines */
     }
 }
 

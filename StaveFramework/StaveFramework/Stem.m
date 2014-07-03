@@ -788,8 +788,8 @@
         
         
         
-        [path moveToPoint:CGPointMake(start1-noteWidth/2, ystem + noteHeight*2)];
-        [path addLineToPoint:CGPointMake(start1 + noteWidth + LineSpace*1.5, ystem + LineSpace)];
+        [path moveToPoint:CGPointMake(start1-noteWidth/2, ystem + noteHeight*2+LineSpace)];
+        [path addLineToPoint:CGPointMake(start1 + noteWidth + LineSpace*1.5, ystem + LineSpace/2)];
     }
     
     else if (direction == StemDown) {
@@ -803,8 +803,8 @@
         
         
         
-        [path moveToPoint:CGPointMake(start1-noteWidth, ystem - noteHeight*2)];
-        [path addLineToPoint:CGPointMake(start1 + noteWidth + LineSpace, ystem - LineSpace)];
+        [path moveToPoint:CGPointMake(start1-noteWidth, ystem - noteHeight*2-3)];
+        [path addLineToPoint:CGPointMake(start1 + noteWidth + LineSpace, ystem - LineSpace+2)];
         
     }
     
