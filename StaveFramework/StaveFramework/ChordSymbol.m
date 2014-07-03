@@ -2040,17 +2040,30 @@ static UIImage* chanyin = nil;
         
         if (leftDirect == StemDown) {
             ypos -=  (NoteHeight+LineSpace);
+            
+            
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
+            CGContextAddLineToPoint(context, 1.5*LineSpace, 2*LineSpace);
+            CGContextAddLineToPoint(context, LineSpace, 3*LineSpace);
+            CGContextAddLineToPoint(context, LineSpace/2, 2*LineSpace);
+            CGContextDrawPath(context, kCGPathFillStroke);
+            CGContextTranslateCTM (context, 0 , -ypos);
+            
         } else if (leftDirect == StemUp) {
-            ypos -= NoteHeight/3;
+            
+            ypos = ytop + [topStaff dist:[stem end]] * NoteHeight/2;
+
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextMoveToPoint(context, LineSpace/2, -2*LineSpace);
+            CGContextAddLineToPoint(context, 1.5*LineSpace, -2*LineSpace);
+            CGContextAddLineToPoint(context, LineSpace, -3*LineSpace);
+            CGContextAddLineToPoint(context, LineSpace/2, -2*LineSpace);
+            CGContextDrawPath(context, kCGPathFillStroke);
+            CGContextTranslateCTM (context, 0 , -ypos);
         }
         
-        CGContextTranslateCTM (context, 0 , ypos);
-        CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
-        CGContextAddLineToPoint(context, 1.5*LineSpace, 2*LineSpace);
-        CGContextAddLineToPoint(context, LineSpace, 3*LineSpace);
-        CGContextAddLineToPoint(context, LineSpace/2, 2*LineSpace);
-        CGContextDrawPath(context, kCGPathFillStroke);
-        CGContextTranslateCTM (context, 0 , -ypos);
+
     }
     
 }
