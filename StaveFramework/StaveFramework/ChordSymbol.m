@@ -1312,9 +1312,9 @@ static UIImage* chanyin = nil;
             }
         }
         else if (numChords == 4) {
-//            if ([time numerator] == 3 && [time denominator] == 8) {
-//                return NO;
-//            }
+            if ([time numerator] == 3 && [time denominator] == 8 && dur == Eighth) {
+                return NO;
+            }
 //            BOOL correctTime =
 //            ([time numerator] == 2 || [time numerator] == 4 || [time numerator] == 8);
 //            if (!correctTime && dur != Sixteenth) {
@@ -1335,9 +1335,6 @@ static UIImage* chanyin = nil;
                 beat = [time quarter] / 2;
             }
             
-            if ([time denominator] == 8) {
-                beat = beat/2;
-            }
             if (([chord0 startTime] % beat) > [time quarter]/6) {
                 return NO;
             }
@@ -1368,11 +1365,11 @@ static UIImage* chanyin = nil;
             
             /* chord must start on quarter note */
             int beat = [time quarter];
-            if ([time numerator] == 12 && [time denominator] == 8) {
+            if ([time numerator]%3 == 0 && [time denominator] == 8) {
                 /* In 12/8 time, chord must start on 3*8th beat */
                 beat = [time quarter]/2 * 3;
             }
-            if (([chord0 startTime] % beat) > [time quarter]/6 && startQuarter) {
+            if (([chord0 startTime] % beat) > [time quarter]/6 ) {
                 return NO;
             }
         }

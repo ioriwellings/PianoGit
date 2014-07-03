@@ -595,8 +595,6 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     int ctrecord1 = 0;
     int ctrecord2 = 0;
     int ctrecord3 = 0;
-    int preValue3 = -1;
-    int preStart3 = -1;
     int ctrecord4 = 0;
     int preValue4 = -1;
     int preStart4 = -1;
@@ -2388,12 +2386,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 
         for (int i = 0; i < [[track notes] count] - 1; i++) {
             MidiNote *note1 = [[track notes] get:i];
-            /** add by sunlie start */
-            if ([note1 duration] < quarternote/16) {
-                [[track notes] remove:note1];
-                continue;
-            }
-            /** add by sunlie end */
+
             if (prevNote == nil) {
                 prevNote = note1;
             }

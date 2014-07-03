@@ -444,24 +444,14 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         }
         
         if (cdcount7 < [list7 count]) {
-            if ([chord startTime] > [cd7 starttime] && [chord endTime] < [cd7 endtime]) {
-                if (flag7 == 0) {
-                    flag7 = [chord startTime];
-                }
+            if ([chord startTime] >= [cd7 starttime] && [chord endTime] < [cd7 endtime]) {
                 [chord setYiFlag:1];
             } else if ([chord startTime] > [cd7 starttime] && [chord endTime] >= [cd7 endtime]) {
-                if (flag7 > 0) {
-                    int end = 0;
-                    [chord setStartTime:flag7];
-                    NoteData *notedatas = [chord notedata];
-                    for (int cc = 0; cc < [chord notedata_len]; cc++) {
-                        if (end < [chord startTime] + notedatas[cc].dur) {
-                            end =[chord startTime] + notedatas[cc].dur;
-                        }
-                    }
-                    [chord setEndTime:end];
+                int k = [chords count]-1;
+                while (k>=0 && [[chords get:k] yiFlag] == 1) {
+                    [[chords get:k] setStartTime:[chord startTime]-1];
+                    k--;
                 }
-                flag7 = 0;
                 cdcount7++;
                 if (cdcount7 < [list7 count]) {
                     cd7 = [list7 get:cdcount7];
@@ -1142,9 +1132,9 @@ static BOOL isBlank(id x) {
     [self createBeamedChords:allsymbols withTime:time
                 andNumChords:4 onBeat:YES];
     [self createBeamedChords:allsymbols withTime:time
-                andNumChords:3 onBeat:NO];
-    [self createBeamedChords:allsymbols withTime:time
                 andNumChords:3 onBeat:YES];
+    [self createBeamedChords:allsymbols withTime:time
+                andNumChords:3 onBeat:NO];
     [self createBeamedChords:allsymbols withTime:time
                 andNumChords:2 onBeat:YES];
     [self createBeamedChords:allsymbols withTime:time
