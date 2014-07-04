@@ -663,6 +663,11 @@ int sortbynote(void* note1, void* note2) {
     int err1 = 0;
     int err2 = 0;
     
+    int a = 0;
+    if ([note duration] > 680) {
+        a++;
+    }
+    
     n = [note copy];
     
     if([n duration]%([time quarter]/8) <= ([time quarter]/8 - [n duration]%([time quarter]/8))) {
@@ -678,7 +683,7 @@ int sortbynote(void* note1, void* note2) {
     }
     
     if (err1 <= err2+5 || err1 < 15) {
-        if ([n duration]%([time quarter]/8) > [time quarter]/16) {
+        if ([n duration]%([time quarter]/8) >= [time quarter]/16) {
             dur = ([n duration]/([time quarter]/8) + 1)*([time quarter]/8);
         } else {
             dur = ([n duration]/([time quarter]/8))*([time quarter]/8);

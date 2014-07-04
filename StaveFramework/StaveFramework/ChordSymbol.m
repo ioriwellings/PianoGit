@@ -508,13 +508,13 @@ static UIImage* chanyin = nil;
     int change = -1;
     for (i = 0; i < notedata_len; i++) {
         dur2 = notedata[i].duration;
-        if (dur1 != dur2) {
+        if (dur1 != dur2 && !((dur1 == Eighth && dur2 == Triplet) || (dur1 == Triplet && dur2 == Eighth))) {
             change = i;
             break;
         }
     }
     
-    if (dur1 != dur2) {
+    if (dur1 != dur2 && !((dur1 == Eighth && dur2 == Triplet) || (dur1 == Triplet && dur2 == Eighth))) {
         /* We have notes with different durations.  So we will need
          * two stems.  The first stem points down, and contains the
          * bottom note up to the note with the different duration.
@@ -544,6 +544,7 @@ static UIImage* chanyin = nil;
     }
     else {
         /* All notes have the same duration, so we only need one stem. */
+        hastwostems = NO;
         int direction = [ChordSymbol stemDirection:notedata[0].whitenote
                                            withTop:notedata[notedata_len-1].whitenote
                                            andClef:clef ];
@@ -1498,12 +1499,13 @@ static UIImage* chanyin = nil;
         Stem* secondStem = [c stem];
         if ([firstStem duration] == Sixteenth && [secondStem duration] == Sixteenth && [lastStem duration] == Eighth) {
             [firstStem setPairex:lastStem withWidth:spacing];
-            if ([[c accidsymbols] count] > 0) {
-                AccidSymbol *accid = [[c accidsymbols] get:0];
-                [firstStem setPair:secondStem withWidth:spacing/2 + [accid width]/2];
-            } else {
-                [firstStem setPair:secondStem withWidth:spacing/2];
-            }
+            [firstStem setPair:secondStem withWidth:spacing/2];
+//            if ([[c accidsymbols] count] > 0) {
+//                AccidSymbol *accid = [[c accidsymbols] get:0];
+//                [firstStem setPair:secondStem withWidth:spacing/2 + [accid width]/2];
+//            } else {
+//                [firstStem setPair:secondStem withWidth:spacing/2];
+//            }
         }
         else if ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration] == Sixteenth) {
             [firstStem setPair:lastStem withWidth:spacing];

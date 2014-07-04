@@ -66,6 +66,14 @@
     return 0;
 }
 
+/** add by sunlie start */
+-(int)repeatFlag {
+    return repeatFlag;
+}
+-(void)setRepeatFlag:(int)r {
+    repeatFlag = r;
+}
+/** add by sunlie end */
 
 -(void)setTrackNum:(int)num
 {

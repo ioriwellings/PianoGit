@@ -398,7 +398,6 @@
             break;
     }
 }
-
 -(void)playByType:(int)type
 {
     judgeFlag = true;

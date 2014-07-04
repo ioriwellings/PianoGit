@@ -147,7 +147,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         /* chords = Array of ChordSymbol */
         Array *chords = [self createChords:[track splitednotes] withKey:mainkey
                                    andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14]];
-        Array *sym = [self createSymbols:chords withClefs:clefs andTime:time andLastTime:lastStarttime andBeatarray:beatarray];
+        Array *sym = [self createSymbols:chords withClefs:clefs andTime:time andLastTime:lastStarttime andBeatarray:beatarray andCList15:[track controlList15]];
         [symbols add:sym];
         /** modify by sunlie end */
         [clefs release];
@@ -256,7 +256,6 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     int flag = 0;
     int flag4 = 0;
     int flag5 = 0;
-    int flag7 = 0;
     int flag8 = 0;
     
     int cdcount2 = 0;
@@ -318,10 +317,11 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         if (i < len) {
             int count = 0;
             int j;
-            MidiNote *mn;
+            MidiNote *mn, *mn1;
             for (j=0; j<[notegroup count]; j++) {
                 mn = [notegroup get:j];
-                if ([mn endTime] <= [[midinotes get:i] startTime]+[time quarter]/16) {
+                mn1 = [midinotes get:i];
+                if ([mn endTime] <= [mn1 startTime]+[time quarter]/8 || [mn1 duration] <= [time quarter]/8) {
                     break;
                 }
                 count++;
@@ -553,12 +553,12 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
  * Return a list of symbols (ChordSymbol, BarSymbol, RestSymbol, ClefSymbol)
  */
 - (Array*) createSymbols:(Array*) chords withClefs:(ClefMeasures*)clefs
-                 andTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray {
+                 andTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15{
     
     Array* symbols;
     id old;
     
-    symbols = [self addBars:chords withTime:time andLastTime:lastStartTime andBeatarray:barray];
+    symbols = [self addBars:chords withTime:time andLastTime:lastStartTime andBeatarray:barray andCList15:list15];
     old = symbols;
     symbols = [self addRests:symbols withTime:time andBeatarray:barray];
     [old release];
@@ -572,13 +572,22 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
 /** Add in the vertical bars delimiting measures.
  *  Also, add the time signature.
  */
-- (Array*)addBars:(Array*)chords withTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray {
+- (Array*)addBars:(Array*)chords withTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15 {
     Array* symbols = [Array new:[chords count]];
     BarSymbol *bar;
     int j = 1;
     int starttime = 0;
     int size = [barray count];
     BeatSignature *beat = [barray get:0];
+    
+    /* add by sunlie start */
+    ControlData *cdata;
+    int listCount = -1;
+    if ([list15 count] > 0) {
+        listCount = 0;
+        cdata = [list15 get:listCount];
+    }
+    /* add by sunlie end */
     
     TimeSigSymbol* timesymbol = [[TimeSigSymbol alloc]
                                  initWithNumer:[beat numerator] andDenom:[beat denominator] andStartTime:0];
@@ -599,6 +608,25 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     while (i < [chords count]) {
         if (measuretime <= [getSymbol(chords, i) startTime]) {
             bar = [[BarSymbol alloc] initWithTime:measuretime];
+            if (listCount >=0 && listCount < [list15 count]) {
+                if (abs([cdata starttime]-measuretime) < [time quarter]) {
+                    if ([cdata cvalue] >= 81 && [cdata cvalue] <= 127) {
+                        [bar setRepeatFlag:1];
+                    } else if ([cdata cvalue] >= 21 && [cdata cvalue] <= 50) {
+                        [bar setRepeatFlag:3];
+                    }
+                } else if (abs([cdata endtime]-measuretime) < [time quarter]) {
+                    if ([cdata cvalue] >= 81 && [cdata cvalue] <= 127) {
+                        [bar setRepeatFlag:2];
+                    } else if ([cdata cvalue] >= 21 && [cdata cvalue] <= 50) {
+                        [bar setRepeatFlag:4];
+                    }
+                    listCount++;
+                    if (listCount < [list15 count]) {
+                        cdata = [list15 get:listCount];
+                    }
+                }
+            }
             [symbols add:bar];
             [bar release];
             
@@ -660,6 +688,25 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         /* add by sunlie end */
         
         bar = [[BarSymbol alloc] initWithTime:measuretime];
+        if (listCount >=0 && listCount < [list15 count]) {
+            if (abs([cdata starttime]-measuretime) < [time quarter]) {
+                if ([cdata cvalue] >= 81 && [cdata cvalue] <= 127) {
+                    [bar setRepeatFlag:1];
+                } else if ([cdata cvalue] >= 21 && [cdata cvalue] <= 50) {
+                    [bar setRepeatFlag:3];
+                }
+            } else if (abs([cdata endtime]-measuretime) < [time quarter]) {
+                if ([cdata cvalue] >= 81 && [cdata cvalue] <= 127) {
+                    [bar setRepeatFlag:2];
+                } else if ([cdata cvalue] >= 21 && [cdata cvalue] <= 50) {
+                    [bar setRepeatFlag:4];
+                }
+                listCount++;
+                if (listCount < [list15 count]) {
+                    cdata = [list15 get:listCount];
+                }
+            }
+        }
         [symbols add:bar];
         [bar release];
         measuretime += [time measure];

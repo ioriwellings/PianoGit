@@ -77,9 +77,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
                andTime:(TimeSignature*)time andClefs:(ClefMeasures*) clefs andCList2:(Array *)list andCList3:(Array *)list3
              andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14;
 -(Array*) createSymbols:(Array*)chords withClefs:(ClefMeasures*)clefs
-                andTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray;
+                andTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15;
 -(Array*) addBars:(Array*)chords withTime:(TimeSignature*)time
-      andLastTime:(int)lastStartTime andBeatarray:(Array *)barray;
+      andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15;
 -(Array*) addRests:(Array*)chords withTime:(TimeSignature*)time andBeatarray:(Array *)barray;
 -(Array*) getRests:(TimeSignature*)time fromStart:(int)start toEnd:(int)end andBeatarray:(Array *)barray;
 -(Array*) addClefChanges:(Array*)symbols withClefs:(ClefMeasures*)clefs

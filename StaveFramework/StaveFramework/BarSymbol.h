@@ -19,6 +19,9 @@
     int straffHeight;           /** The height of the staff in pixels */
     int tracknum;               /** The track this staff represents */
     int totaltracks;            /** The total number of tracks */
+    /** add by sunlie start */
+    int repeatFlag;             /** 1: repeat start  2: repeat end  3: 1 house   4:2 house  */
+    /** add by sunlie end */
 }
 
 -(id)initWithTime:(int) starttime;
@@ -28,6 +31,10 @@
 -(void)setWidth:(int)w;
 -(int)aboveStaff;
 -(int)belowStaff;
+/** add by sunlie start */
+-(int)repeatFlag;
+-(void)setRepeatFlag:(int)r;
+/** add by sunlie end */
 
 -(void)setTrackNum:(int)num;
 -(void)setTotalTracks:(int)value;

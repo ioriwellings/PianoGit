@@ -82,7 +82,7 @@
     Array* controlList12;  /** control data for hui (25)*/
     Array* controlList13;  /** control data for tr (26)*/
     Array* controlList14;  /** control data for stress (28)*/
-    Array* controlList15;  /** control data for repeat (28)*/
+    Array* controlList15;  /** control data for repeat (29)*/
     
     /** add by sunlie end */
     int tempoMuteState;

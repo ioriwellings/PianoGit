@@ -141,7 +141,7 @@
         return Quarter;
     else if (duration >=  5*whole/32)
         return DottedEighth;
-    else if (duration >=  7*whole/64)         /** modify by sunlie */
+    else if (duration >=  6.5*whole/64)         /** modify by sunlie */
         return Eighth;
     else if (duration >=  5*whole/64)
         return Triplet;
