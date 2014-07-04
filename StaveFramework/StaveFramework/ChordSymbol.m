@@ -1508,8 +1508,11 @@ static UIImage* chanyin = nil;
 //            }
         }
         else if ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration] == Sixteenth) {
+            ChordSymbol *c3 = [chords get:2];
+            int w = [c3 width];
+            
             [firstStem setPair:lastStem withWidth:spacing];
-            [secondStem setPair:lastStem withWidth:spacing/2];
+            [secondStem setPair:lastStem withWidth:w];
         }
         else if ([firstStem duration] == Sixteenth && [secondStem duration] == Eighth && [lastStem duration] == Sixteenth) {
             [firstStem setCutNote:1];
