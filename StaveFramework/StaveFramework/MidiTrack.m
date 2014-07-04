@@ -683,14 +683,14 @@ int sortbynote(void* note1, void* note2) {
     }
     
     if (err1 <= err2+5 || err1 < 15) {
-        if ([n duration]%([time quarter]/8) >= [time quarter]/16) {
+        if ([n duration]%([time quarter]/8) >= [time quarter]/16-5) {
             dur = ([n duration]/([time quarter]/8) + 1)*([time quarter]/8);
         } else {
             dur = ([n duration]/([time quarter]/8))*([time quarter]/8);
         }
     } else {
         if ([n duration]%([time quarter]/6) > [time quarter]/12) {
-            dur = ([n duration]/([time quarter]/6) + 1)*([time quarter]/6);
+            dur = ([n duration]/([time quarter]/6) + 1)*([time quarter]/6-5);
         } else {
             dur = ([n duration]/([time quarter]/6))*([time quarter]/6);
         }

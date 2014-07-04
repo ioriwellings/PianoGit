@@ -300,6 +300,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     
     while (i < len) {
         int starttime = [(MidiNote*)[midinotes get:i] startTime];
+        int duration = [(MidiNote*)[midinotes get:i] duration];
         int clef = [clefs getClef:starttime];
         
         /* Group all the midi notes with the same start time
@@ -308,7 +309,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         [notegroup clear];
         [notegroup add:[midinotes get:i]];
         i++;
-        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/64) {
+        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/16 && duration >= [time quarter]/16) {
             [notegroup add:[midinotes get:i]];
             i++;
         }
