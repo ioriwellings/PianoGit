@@ -768,8 +768,8 @@
     int noteWidth = NoteWidth*NUMERATOR+1;
     int noteHeight = NoteHeight*NUMERATOR;
     
-    UIColor *color = [UIColor redColor];
-    [color setFill];
+//    UIColor *color = [UIColor redColor];
+//    [color setFill];
     
     int xstart = 0;
     int start1 = LineSpace/4 + 1;
