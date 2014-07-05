@@ -174,6 +174,7 @@
 -(void)jumpToMelodyForBackFromDetailView:(NSNotification *)notification
 {
     WuXianPuViewController *vc = notification.object;
+    Melody *melody = [notification.userInfo objectForKey:@"melody"];
     [self buttonToolbar_click:self.btnQinFang];
     if(vc.type == 1)//favr
     {
@@ -187,6 +188,7 @@
     {
         [qinFangVC btnScope_click:qinFangVC.btnAll];
     }
+    [qinFangVC scrollTableViewToMelody:melody type:vc.type];
 }
 
 @end

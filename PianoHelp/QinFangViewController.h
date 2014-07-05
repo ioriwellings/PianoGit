@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Melody.h"
 
 @interface QinFangViewController : UIViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -20,5 +21,7 @@
 
 - (IBAction)btnModel_click:(id)sender;
 - (IBAction)btnScope_click:(id)sender;
+
+-(void)scrollTableViewToMelody:(Melody*)melody type:(NSInteger)iSort;
 
 @end

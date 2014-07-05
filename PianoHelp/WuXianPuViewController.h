@@ -14,8 +14,9 @@
 #import "StaveFramework/SheetMusic.h"
 #import "StaveFramework/SheetMusicPlay.h"
 #import "StaveFramework/SFCountdownView.h"
+#import "Melody.h"
 
-@interface WuXianPuViewController : BaseViewController <MidiPlayerDelegate>
+@interface WuXianPuViewController : BaseViewController <MidiPlayerDelegate, UIGestureRecognizerDelegate>
 {
     MidiFile *midifile;         /** The midifile that was read */
     SheetMusic *sheetmusic;     /** The sheet music to display */
@@ -33,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property (weak, nonatomic) IBOutlet UIButton *btnPuKu;
 @property (weak, nonatomic) IBOutlet UIView *toolBarView;
-
+@property (weak, nonatomic) Melody *melody;
 
 - (IBAction)btnPuKuClick:(UIButton *)sender;
 - (IBAction)btnPlayClick:(UIButton *)sender;

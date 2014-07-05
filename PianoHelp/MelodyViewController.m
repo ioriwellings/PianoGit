@@ -97,6 +97,7 @@ extern NSString *ScopeSongName;
         NSString *filename = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) filePathForName:((MelodyButton*)sender).fileName];
         vc.fileName = filename;
         vc.type = ((MelodyButton*)sender).type;
+        vc.melody = ((MelodyButton*)sender).melody;
     }
 }
 

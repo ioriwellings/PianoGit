@@ -102,6 +102,20 @@
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
+    
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapGesture.delegate = self;
+    //[sheetmusic addGestureRecognizer:tapGesture];
+    
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapGesture.delegate = self;
+    [sheetmsic1 addGestureRecognizer:tapGesture];
+    
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapGesture.delegate = self;
+    [scrollView addGestureRecognizer:tapGesture];
+
 }
 
 
@@ -115,7 +129,7 @@
 {
     [player stop];
     [[NSNotificationCenter defaultCenter]
-     postNotificationName:kBackToQinfangNotification object:self];
+     postNotificationName:kBackToQinfangNotification object:self userInfo:@{@"melody": self.melody} ];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -135,8 +149,8 @@
         
         scrollView.hidden = YES;
         sheetmsic1.hidden = NO;
+        [self hiddenMenuAndToolBar];
     }
-    
 }
 
 - (IBAction)btnBackClick:(UIButton *)sender {
@@ -151,12 +165,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"pushRootViewSegue"])
-    {
-        [player stop];
-        RootViewController *vc = segue.destinationViewController;
-        vc.type = self.type;
-    }
+//    if([[segue identifier] isEqualToString:@"pushRootViewSegue"])
+//    {
+//        [player stop];
+//        RootViewController *vc = segue.destinationViewController;
+//        vc.type = self.type;
+//    }
 }
 
 #pragma mark MidiPlayerDelegate
@@ -164,6 +178,65 @@
 {
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
+    [self hiddenMenuAndToolBar];
 }
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (IBAction)handleTap:(UITapGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        // handling code
+        [self hiddenMenuAndToolBar];
+    }
+}
+
+-(void)hiddenMenuAndToolBar
+{
+    if(self.toolBarView.hidden)
+    {
+        self.toolBarView.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.toolBarView.frame = CGRectMake(0, 0, 1024, 75);
+
+            scrollView.frame = CGRectMake(0,
+                                          scrollView.frame.origin.y+75 ,
+                                          scrollView.frame.size.width,
+                                          scrollView.frame.size.height-75*2 );
+            sheetmsic1.frame = CGRectMake(0,
+                                          sheetmsic1.frame.origin.y+75,
+                                          sheetmsic1.frame.size.width,
+                                          sheetmsic1.frame.size.height);
+            piano.frame = CGRectMake(0,
+                                     piano.frame.origin.y + 75,
+                                     piano.frame.size.width,
+                                     piano.frame.size.height);
+        } completion:^(BOOL finished) {
+            ;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.toolBarView.frame = CGRectMake(0, -75, 1024, 75);
+            scrollView.frame = CGRectMake(0,
+                                          scrollView.frame.origin.y-75,
+                                          scrollView.frame.size.width,
+                                          scrollView.frame.size.height+75*2);
+            sheetmsic1.frame = CGRectMake(0,
+                                          sheetmsic1.frame.origin.y-75,
+                                          sheetmsic1.frame.size.width,
+                                          sheetmsic1.frame.size.height);
+            piano.frame = CGRectMake(0,
+                                     piano.frame.origin.y - 75,
+                                     piano.frame.size.width,
+                                     piano.frame.size.height);
+        } completion:^(BOOL finished) {
+            self.toolBarView.hidden = YES;
+        }];
+    }
+}
+
 
 @end

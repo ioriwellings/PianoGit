@@ -469,7 +469,7 @@
         self.fetchedResultsController2.delegate = nil;
         [self.tableView reloadData];
     }
-    else if(self.btnScope.tag == 1)
+    else if(self.btnScope.tag == 1) //task
     {
         NSError *error;
         if (![[self fetchedResultsController1] performFetch:&error])
@@ -487,7 +487,7 @@
         self.fetchedResultsController2.delegate = nil;
         [self.tableView reloadData];
     }
-    else if(self.btnScope.tag == 2)
+    else if(self.btnScope.tag == 2) // favr
     {
         NSError *error;
         if (![[self fetchedResultsController2] performFetch:&error])
@@ -505,5 +505,46 @@
         self.fetchedResultsController2.delegate = self;
         [self.tableView reloadData];
     }
+}
+
+-(void)scrollTableViewToMelody:(Melody*)melody type:(NSInteger)iSort
+{
+    int i=0;
+    if(iSort == 3) // all
+    for (MelodyFavorite *obj in self.fetchedResultsController0.fetchedObjects)
+    {
+        if(obj.melody == melody)
+        {
+//            NSLog(@"%@ -- %d", melody, i);
+            break;
+        }
+        i++;
+    }
+    
+    if(iSort == 2) // task
+    for (MelodyFavorite *obj in self.fetchedResultsController1.fetchedObjects)
+    {
+        if(obj.melody == melody)
+        {
+//            NSLog(@"%@ -- %d", melody, i);
+            break;
+        }
+        i++;
+    }
+    
+    if(iSort == 1) //favr
+    for (MelodyFavorite *obj in self.fetchedResultsController2.fetchedObjects)
+    {
+        if(obj.melody == melody)
+        {
+//            NSLog(@"%@ -- %d", melody, i);
+            break;
+        }
+        i++;
+    }
+    [self.tableView scrollRectToVisible:CGRectMake(0, i*134, self.tableView.frame.size.width, 134) animated:NO];
+    NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:0];
+//    [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 @end
