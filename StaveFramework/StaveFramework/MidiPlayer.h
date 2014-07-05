@@ -113,6 +113,8 @@ enum {
 /** add by yizhq start */
 -(void)playJumpSection:(int)startSectionNumber;
 -(void)clearJumpSection;
+-(void)setJSModel:(int)startSectionNum withEndSectionNum:(int)endSectionNum withTimeNumerator:(int)numerrator withTimeQuarter:(int)quarter withMeasure:(int)measure;
+-(void)clearJSModel;
 /** add by yizhq end */
 -(void)disConnectMIDI;
 

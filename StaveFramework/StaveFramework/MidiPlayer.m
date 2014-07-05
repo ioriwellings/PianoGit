@@ -488,11 +488,24 @@
 }
 
 /** add by yizhq start */
+-(void)setJSModel:(int)startSectionNum withEndSectionNum:(int)endSectionNum withTimeNumerator:(int)numerrator withTimeQuarter:(int)quarter withMeasure:(int)measure{
+    int start = (startSectionNum - 1) * measure;
+    int end = endSectionNum * measure;
+    
+    options.staveModel = 1;
+    options.startSecTime = start;
+    options.endSecTime = end;
+}
+
+-(void)clearJSModel{
+    options.staveModel = 0;
+    options.startSecTime = 0;
+    options.endSecTime = 0;
+}
 
 -(int)PlayerState{
     return playstate;
 }
-
 
 -(void)playJumpSection:(int)startSectionNumber{
     if (options.staveModel == 1) {
