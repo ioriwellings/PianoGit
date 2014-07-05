@@ -1878,6 +1878,8 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="btnAll" destination="Awa-8H-E4c" id="F4y-qk-Cfs"/>
+                        <outlet property="btnLove" destination="yfG-bz-xbP" id="kZl-5G-M9i"/>
                         <outlet property="btnPlayModel" destination="7ho-6K-yJF" id="pwZ-YR-h3q"/>
                         <outlet property="btnTask" destination="wT5-Oq-Fbf" id="Clu-FQ-78t"/>
                         <outlet property="tableView" destination="fCz-sd-cy7" id="5sm-XZ-ulC"/>
