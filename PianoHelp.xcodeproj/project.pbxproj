@@ -119,20 +119,6 @@
 		89429BF51566D8A70003A7D4 /* zhanting.png in Resources */ = {isa = PBXBuildFile; fileRef = 89429BC11566D8A70003A7D4 /* zhanting.png */; };
 		89429BF61566D8A70003A7D4 /* zhanting1.png in Resources */ = {isa = PBXBuildFile; fileRef = 89429BC21566D8A70003A7D4 /* zhanting1.png */; };
 		8964EBAF1945359E00DBCED9 /* libStaveFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8964EBAC1945357100DBCED9 /* libStaveFramework.a */; };
-		8964EBC2194536EC00DBCED9 /* pedal-end.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB3194536EC00DBCED9 /* pedal-end.png */; };
-		8964EBC3194536EC00DBCED9 /* pedal-start.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB4194536EC00DBCED9 /* pedal-start.png */; };
-		8964EBC4194536EC00DBCED9 /* perfect.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB5194536EC00DBCED9 /* perfect.png */; };
-		8964EBC5194536EC00DBCED9 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB6194536EC00DBCED9 /* right.png */; };
-		8964EBC6194536EC00DBCED9 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB7194536EC00DBCED9 /* wrong.png */; };
-		8964EBC7194536EC00DBCED9 /* bass.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB8194536EC00DBCED9 /* bass.png */; };
-		8964EBC8194536EC00DBCED9 /* eight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBB9194536EC00DBCED9 /* eight.png */; };
-		8964EBC9194536EC00DBCED9 /* four.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBBA194536EC00DBCED9 /* four.png */; };
-		8964EBCA194536EC00DBCED9 /* nine.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBBB194536EC00DBCED9 /* nine.png */; };
-		8964EBCB194536EC00DBCED9 /* six.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBBC194536EC00DBCED9 /* six.png */; };
-		8964EBCC194536EC00DBCED9 /* three.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBBD194536EC00DBCED9 /* three.png */; };
-		8964EBCD194536EC00DBCED9 /* treble.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBBE194536EC00DBCED9 /* treble.png */; };
-		8964EBCE194536EC00DBCED9 /* twelve.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBBF194536EC00DBCED9 /* twelve.png */; };
-		8964EBCF194536EC00DBCED9 /* two.png in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBC0194536EC00DBCED9 /* two.png */; };
 		8964EBD0194536EC00DBCED9 /* gls.dls in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBC1194536EC00DBCED9 /* gls.dls */; };
 		8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBD2194539CC00DBCED9 /* 0000.mid */; };
 		8964EBE6194539CC00DBCED9 /* 00111111.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBD5194539CC00DBCED9 /* 00111111.mid */; };
@@ -193,6 +179,27 @@
 		89FD865C193966F30021216A /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FD865B193966F30021216A /* FavoriteTableViewCell.m */; };
 		B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1919557631008DBEC7 /* HandPopViewController.m */; };
 		B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1E19557653008DBEC7 /* SoundPopViewController.m */; };
+		BA1079A11967FE4C0056F626 /* chanyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10798C1967FE4C0056F626 /* chanyin.png */; };
+		BA1079A21967FE4C0056F626 /* niboyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10798D1967FE4C0056F626 /* niboyin.png */; };
+		BA1079A31967FE4C0056F626 /* nihuiyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10798E1967FE4C0056F626 /* nihuiyin.png */; };
+		BA1079A41967FE4C0056F626 /* payin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10798F1967FE4C0056F626 /* payin.png */; };
+		BA1079A51967FE4C0056F626 /* pedal.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079901967FE4C0056F626 /* pedal.png */; };
+		BA1079A61967FE4C0056F626 /* shunboyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079911967FE4C0056F626 /* shunboyin.png */; };
+		BA1079A71967FE4C0056F626 /* shunhuiyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079921967FE4C0056F626 /* shunhuiyin.png */; };
+		BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079931967FE4C0056F626 /* pedal-end.png */; };
+		BA1079A91967FE4C0056F626 /* pedal-start.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079941967FE4C0056F626 /* pedal-start.png */; };
+		BA1079AA1967FE4C0056F626 /* perfect.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079951967FE4C0056F626 /* perfect.png */; };
+		BA1079AB1967FE4C0056F626 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079961967FE4C0056F626 /* right.png */; };
+		BA1079AC1967FE4C0056F626 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079971967FE4C0056F626 /* wrong.png */; };
+		BA1079AD1967FE4C0056F626 /* bass.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079981967FE4C0056F626 /* bass.png */; };
+		BA1079AE1967FE4C0056F626 /* eight.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079991967FE4C0056F626 /* eight.png */; };
+		BA1079AF1967FE4C0056F626 /* four.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799A1967FE4C0056F626 /* four.png */; };
+		BA1079B01967FE4C0056F626 /* nine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799B1967FE4C0056F626 /* nine.png */; };
+		BA1079B11967FE4C0056F626 /* six.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799C1967FE4C0056F626 /* six.png */; };
+		BA1079B21967FE4C0056F626 /* three.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799D1967FE4C0056F626 /* three.png */; };
+		BA1079B31967FE4C0056F626 /* treble.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799E1967FE4C0056F626 /* treble.png */; };
+		BA1079B41967FE4C0056F626 /* twelve.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799F1967FE4C0056F626 /* twelve.png */; };
+		BA1079B51967FE4C0056F626 /* two.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079A01967FE4C0056F626 /* two.png */; };
 		BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -346,20 +353,6 @@
 		89429BC11566D8A70003A7D4 /* zhanting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanting.png; sourceTree = "<group>"; };
 		89429BC21566D8A70003A7D4 /* zhanting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanting1.png; sourceTree = "<group>"; };
 		8964EBA61945357100DBCED9 /* StaveFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StaveFramework.xcodeproj; path = StaveFramework/StaveFramework.xcodeproj; sourceTree = "<group>"; };
-		8964EBB3194536EC00DBCED9 /* pedal-end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pedal-end.png"; path = "../StaveFramework/StaveFramework/pedal-end.png"; sourceTree = "<group>"; };
-		8964EBB4194536EC00DBCED9 /* pedal-start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pedal-start.png"; path = "../StaveFramework/StaveFramework/pedal-start.png"; sourceTree = "<group>"; };
-		8964EBB5194536EC00DBCED9 /* perfect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = perfect.png; path = ../StaveFramework/StaveFramework/perfect.png; sourceTree = "<group>"; };
-		8964EBB6194536EC00DBCED9 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right.png; path = ../StaveFramework/StaveFramework/right.png; sourceTree = "<group>"; };
-		8964EBB7194536EC00DBCED9 /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wrong.png; path = ../StaveFramework/StaveFramework/wrong.png; sourceTree = "<group>"; };
-		8964EBB8194536EC00DBCED9 /* bass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bass.png; path = ../StaveFramework/StaveFramework/bass.png; sourceTree = "<group>"; };
-		8964EBB9194536EC00DBCED9 /* eight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eight.png; path = ../StaveFramework/StaveFramework/eight.png; sourceTree = "<group>"; };
-		8964EBBA194536EC00DBCED9 /* four.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = four.png; path = ../StaveFramework/StaveFramework/four.png; sourceTree = "<group>"; };
-		8964EBBB194536EC00DBCED9 /* nine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nine.png; path = ../StaveFramework/StaveFramework/nine.png; sourceTree = "<group>"; };
-		8964EBBC194536EC00DBCED9 /* six.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = six.png; path = ../StaveFramework/StaveFramework/six.png; sourceTree = "<group>"; };
-		8964EBBD194536EC00DBCED9 /* three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = three.png; path = ../StaveFramework/StaveFramework/three.png; sourceTree = "<group>"; };
-		8964EBBE194536EC00DBCED9 /* treble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = treble.png; path = ../StaveFramework/StaveFramework/treble.png; sourceTree = "<group>"; };
-		8964EBBF194536EC00DBCED9 /* twelve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twelve.png; path = ../StaveFramework/StaveFramework/twelve.png; sourceTree = "<group>"; };
-		8964EBC0194536EC00DBCED9 /* two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = two.png; path = ../StaveFramework/StaveFramework/two.png; sourceTree = "<group>"; };
 		8964EBC1194536EC00DBCED9 /* gls.dls */ = {isa = PBXFileReference; lastKnownFileType = file; name = gls.dls; path = ../StaveFramework/StaveFramework/gls.dls; sourceTree = "<group>"; };
 		8964EBD2194539CC00DBCED9 /* 0000.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = 0000.mid; sourceTree = "<group>"; };
 		8964EBD5194539CC00DBCED9 /* 00111111.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = 00111111.mid; sourceTree = "<group>"; };
@@ -438,6 +431,27 @@
 		B163DA1919557631008DBEC7 /* HandPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPopViewController.m; sourceTree = "<group>"; };
 		B163DA1D19557653008DBEC7 /* SoundPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPopViewController.h; sourceTree = "<group>"; };
 		B163DA1E19557653008DBEC7 /* SoundPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundPopViewController.m; sourceTree = "<group>"; };
+		BA10798C1967FE4C0056F626 /* chanyin.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = chanyin.png; path = ../StaveFramework/StaveFramework/chanyin.png; sourceTree = "<group>"; };
+		BA10798D1967FE4C0056F626 /* niboyin.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = niboyin.png; path = ../StaveFramework/StaveFramework/niboyin.png; sourceTree = "<group>"; };
+		BA10798E1967FE4C0056F626 /* nihuiyin.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = nihuiyin.png; path = ../StaveFramework/StaveFramework/nihuiyin.png; sourceTree = "<group>"; };
+		BA10798F1967FE4C0056F626 /* payin.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = payin.png; path = ../StaveFramework/StaveFramework/payin.png; sourceTree = "<group>"; };
+		BA1079901967FE4C0056F626 /* pedal.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = pedal.png; path = ../StaveFramework/StaveFramework/pedal.png; sourceTree = "<group>"; };
+		BA1079911967FE4C0056F626 /* shunboyin.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = shunboyin.png; path = ../StaveFramework/StaveFramework/shunboyin.png; sourceTree = "<group>"; };
+		BA1079921967FE4C0056F626 /* shunhuiyin.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = shunhuiyin.png; path = ../StaveFramework/StaveFramework/shunhuiyin.png; sourceTree = "<group>"; };
+		BA1079931967FE4C0056F626 /* pedal-end.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "pedal-end.png"; path = "../StaveFramework/StaveFramework/pedal-end.png"; sourceTree = "<group>"; };
+		BA1079941967FE4C0056F626 /* pedal-start.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "pedal-start.png"; path = "../StaveFramework/StaveFramework/pedal-start.png"; sourceTree = "<group>"; };
+		BA1079951967FE4C0056F626 /* perfect.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = perfect.png; path = ../StaveFramework/StaveFramework/perfect.png; sourceTree = "<group>"; };
+		BA1079961967FE4C0056F626 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = right.png; path = ../StaveFramework/StaveFramework/right.png; sourceTree = "<group>"; };
+		BA1079971967FE4C0056F626 /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = wrong.png; path = ../StaveFramework/StaveFramework/wrong.png; sourceTree = "<group>"; };
+		BA1079981967FE4C0056F626 /* bass.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = bass.png; path = ../StaveFramework/StaveFramework/bass.png; sourceTree = "<group>"; };
+		BA1079991967FE4C0056F626 /* eight.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = eight.png; path = ../StaveFramework/StaveFramework/eight.png; sourceTree = "<group>"; };
+		BA10799A1967FE4C0056F626 /* four.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = four.png; path = ../StaveFramework/StaveFramework/four.png; sourceTree = "<group>"; };
+		BA10799B1967FE4C0056F626 /* nine.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = nine.png; path = ../StaveFramework/StaveFramework/nine.png; sourceTree = "<group>"; };
+		BA10799C1967FE4C0056F626 /* six.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = six.png; path = ../StaveFramework/StaveFramework/six.png; sourceTree = "<group>"; };
+		BA10799D1967FE4C0056F626 /* three.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = three.png; path = ../StaveFramework/StaveFramework/three.png; sourceTree = "<group>"; };
+		BA10799E1967FE4C0056F626 /* treble.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = treble.png; path = ../StaveFramework/StaveFramework/treble.png; sourceTree = "<group>"; };
+		BA10799F1967FE4C0056F626 /* twelve.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = twelve.png; path = ../StaveFramework/StaveFramework/twelve.png; sourceTree = "<group>"; };
+		BA1079A01967FE4C0056F626 /* two.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = two.png; path = ../StaveFramework/StaveFramework/two.png; sourceTree = "<group>"; };
 		BA73FAF6195B1CAB0090F9BB /* WuXianPuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WuXianPuViewController.h; sourceTree = "<group>"; };
 		BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WuXianPuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -615,20 +629,27 @@
 		8964EBB2194536D400DBCED9 /* StaveFramework-RefrenceResources */ = {
 			isa = PBXGroup;
 			children = (
-				8964EBB3194536EC00DBCED9 /* pedal-end.png */,
-				8964EBB4194536EC00DBCED9 /* pedal-start.png */,
-				8964EBB5194536EC00DBCED9 /* perfect.png */,
-				8964EBB6194536EC00DBCED9 /* right.png */,
-				8964EBB7194536EC00DBCED9 /* wrong.png */,
-				8964EBB8194536EC00DBCED9 /* bass.png */,
-				8964EBB9194536EC00DBCED9 /* eight.png */,
-				8964EBBA194536EC00DBCED9 /* four.png */,
-				8964EBBB194536EC00DBCED9 /* nine.png */,
-				8964EBBC194536EC00DBCED9 /* six.png */,
-				8964EBBD194536EC00DBCED9 /* three.png */,
-				8964EBBE194536EC00DBCED9 /* treble.png */,
-				8964EBBF194536EC00DBCED9 /* twelve.png */,
-				8964EBC0194536EC00DBCED9 /* two.png */,
+				BA10798C1967FE4C0056F626 /* chanyin.png */,
+				BA10798D1967FE4C0056F626 /* niboyin.png */,
+				BA10798E1967FE4C0056F626 /* nihuiyin.png */,
+				BA10798F1967FE4C0056F626 /* payin.png */,
+				BA1079901967FE4C0056F626 /* pedal.png */,
+				BA1079911967FE4C0056F626 /* shunboyin.png */,
+				BA1079921967FE4C0056F626 /* shunhuiyin.png */,
+				BA1079931967FE4C0056F626 /* pedal-end.png */,
+				BA1079941967FE4C0056F626 /* pedal-start.png */,
+				BA1079951967FE4C0056F626 /* perfect.png */,
+				BA1079961967FE4C0056F626 /* right.png */,
+				BA1079971967FE4C0056F626 /* wrong.png */,
+				BA1079981967FE4C0056F626 /* bass.png */,
+				BA1079991967FE4C0056F626 /* eight.png */,
+				BA10799A1967FE4C0056F626 /* four.png */,
+				BA10799B1967FE4C0056F626 /* nine.png */,
+				BA10799C1967FE4C0056F626 /* six.png */,
+				BA10799D1967FE4C0056F626 /* three.png */,
+				BA10799E1967FE4C0056F626 /* treble.png */,
+				BA10799F1967FE4C0056F626 /* twelve.png */,
+				BA1079A01967FE4C0056F626 /* two.png */,
 				8964EBC1194536EC00DBCED9 /* gls.dls */,
 			);
 			name = "StaveFramework-RefrenceResources";
@@ -921,6 +942,7 @@
 				8994D159194BCEDA0016F806 /* 09.塔兰泰拉舞曲.mid in Resources */,
 				893CEFDA193A37630097681C /* chongzou.png in Resources */,
 				893CEFE3193A37630097681C /* huigu2.png in Resources */,
+				BA1079B21967FE4C0056F626 /* three.png in Resources */,
 				893CEFF0193A37630097681C /* shiting2.png in Resources */,
 				89429BD11566D8A70003A7D4 /* Icon-72.png in Resources */,
 				89429BC61566D8A70003A7D4 /* chakan1.png in Resources */,
@@ -932,23 +954,26 @@
 				893CEFF6193A37630097681C /* zuoyoushou1.png in Resources */,
 				89429BC71566D8A70003A7D4 /* confirmKuang.png in Resources */,
 				8998E2E419381B4200A7CF12 /* zuiai2.png in Resources */,
-				8964EBCD194536EC00DBCED9 /* treble.png in Resources */,
 				893CEFEC193A37630097681C /* peilianyin2.png in Resources */,
 				8907100119219EC000BB9E2F /* InfoPlist.strings in Resources */,
 				89429BC91566D8A70003A7D4 /* ditu.png in Resources */,
 				89429BD51566D8A70003A7D4 /* loading xiao.png in Resources */,
+				BA1079AA1967FE4C0056F626 /* perfect.png in Resources */,
+				BA1079A51967FE4C0056F626 /* pedal.png in Resources */,
 				893CEFF8193A37630097681C /* zuoyoushoubiankuang.png in Resources */,
 				8977437319358B200005EF89 /* sangemoshi_bg@2x.png in Resources */,
+				BA1079AD1967FE4C0056F626 /* bass.png in Resources */,
 				8994D152194BCEDA0016F806 /* 02.849-03.mid in Resources */,
+				BA1079A21967FE4C0056F626 /* niboyin.png in Resources */,
 				89429BE51566D8A70003A7D4 /* tanzou.png in Resources */,
 				893CEFB6193A355A0097681C /* fanhui.png in Resources */,
 				8964EBF1194539CC00DBCED9 /* Easy_Songs__Jingle_Bells.mid in Resources */,
 				893CEFEF193A37630097681C /* shiting1.png in Resources */,
 				893CEFDE193A37630097681C /* fenduan2.png in Resources */,
 				893CEFF5193A37630097681C /* zuoyoushou2.png in Resources */,
-				8964EBCB194536EC00DBCED9 /* six.png in Resources */,
 				8964EBED194539CC00DBCED9 /* aqrsy.mid in Resources */,
 				890093CA19510603001F33F4 /* shopBg.jpg in Resources */,
+				BA1079AC1967FE4C0056F626 /* wrong.png in Resources */,
 				8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */,
 				8994D155194BCEDA0016F806 /* 05.森林波尔卡.mid in Resources */,
 				899AE08E193B69EB003742F3 /* xiaojietiaozhuan.png in Resources */,
@@ -957,27 +982,28 @@
 				893CEFE8193A37630097681C /* kongjian2.png in Resources */,
 				8994D15D194BCEDA0016F806 /* 13.599-054.mid in Resources */,
 				89429BDB1566D8A70003A7D4 /* quanbuyeqian.png in Resources */,
+				BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */,
+				BA1079A71967FE4C0056F626 /* shunhuiyin.png in Resources */,
 				89429BEB1566D8A70003A7D4 /* weigouwu.png in Resources */,
-				8964EBC6194536EC00DBCED9 /* wrong.png in Resources */,
 				89429BF01566D8A70003A7D4 /* xiaoxi1.png in Resources */,
+				BA1079B11967FE4C0056F626 /* six.png in Resources */,
 				893CEFDF193A37630097681C /* fenduanshuzipaineirong.png in Resources */,
 				89429BC81566D8A70003A7D4 /* daohangtiao.png in Resources */,
-				8964EBC9194536EC00DBCED9 /* four.png in Resources */,
 				8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */,
 				8964EBE6194539CC00DBCED9 /* 00111111.mid in Resources */,
 				891290D71958FF7A00B9B5B5 /* huiyuanqumu.png in Resources */,
 				8994D160194BCEDA0016F806 /* 16.卡门.mid in Resources */,
-				8964EBC8194536EC00DBCED9 /* eight.png in Resources */,
 				8994D157194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid in Resources */,
 				8994D161194BCEDA0016F806 /* 17.秋日私语.mid in Resources */,
 				89429BF31566D8A70003A7D4 /* yigouwu1.png in Resources */,
-				8964EBC7194536EC00DBCED9 /* bass.png in Resources */,
+				BA1079A31967FE4C0056F626 /* nihuiyin.png in Resources */,
 				89429BD71566D8A70003A7D4 /* puku.png in Resources */,
 				893CEFD9193A37630097681C /* baocunluyin2.png in Resources */,
 				89429BE31566D8A70003A7D4 /* shifanqupu.png in Resources */,
 				8994D153194BCEDA0016F806 /* 03.淘气包.mid in Resources */,
 				89429BEA1566D8A70003A7D4 /* weigoumaitubiao.png in Resources */,
 				89429BF61566D8A70003A7D4 /* zhanting1.png in Resources */,
+				BA1079B31967FE4C0056F626 /* treble.png in Resources */,
 				8998E2EB19381EAF00A7CF12 /* sangemoshiqumulan.png in Resources */,
 				89429BF51566D8A70003A7D4 /* zhanting.png in Resources */,
 				89429BD91566D8A70003A7D4 /* qinfang.png in Resources */,
@@ -985,16 +1011,18 @@
 				89429BCD1566D8A70003A7D4 /* gengduo1.png in Resources */,
 				8998E2EE193829A900A7CF12 /* wangguan.png in Resources */,
 				8964EBD0194536EC00DBCED9 /* gls.dls in Resources */,
-				8964EBC2194536EC00DBCED9 /* pedal-end.png in Resources */,
 				8998E2E719381B5400A7CF12 /* tanzou2.png in Resources */,
-				8964EBC5194536EC00DBCED9 /* right.png in Resources */,
 				89429BE91566D8A70003A7D4 /* tuichudangqianzhanghu.png in Resources */,
+				BA1079A11967FE4C0056F626 /* chanyin.png in Resources */,
+				BA1079B41967FE4C0056F626 /* twelve.png in Resources */,
+				BA1079AE1967FE4C0056F626 /* eight.png in Resources */,
 				891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */,
 				8994D13C194BC4330016F806 /* 01.波尔卡.mid in Resources */,
 				8994D158194BCEDA0016F806 /* 08.儿童舞.mid in Resources */,
 				89429BD21566D8A70003A7D4 /* jiaocaiqupu.png in Resources */,
 				891290DF195904BA00B9B5B5 /* zunashi.png in Resources */,
 				8994D162194BCEDA0016F806 /* 18.水边的阿第丽娜.mid in Resources */,
+				BA1079AB1967FE4C0056F626 /* right.png in Resources */,
 				893CEFF2193A37630097681C /* tishi1.png in Resources */,
 				8907100C19219EC000BB9E2F /* Images.xcassets in Resources */,
 				893CEFF4193A37630097681C /* zanting.png in Resources */,
@@ -1006,40 +1034,40 @@
 				893CEFE6193A37630097681C /* kaishi.png in Resources */,
 				893CEFF1193A37630097681C /* sudutubiao.png in Resources */,
 				89429BEF1566D8A70003A7D4 /* xiaoxi.png in Resources */,
+				BA1079AF1967FE4C0056F626 /* four.png in Resources */,
 				893CEFEE193A37630097681C /* quxiao.png in Resources */,
 				89429BF21566D8A70003A7D4 /* yigouwu.png in Resources */,
 				89429BDE1566D8A70003A7D4 /* renwu1.png in Resources */,
 				8994D154194BCEDA0016F806 /* 04.听妈妈讲那过去的故事.mid in Resources */,
 				89429BCE1566D8A70003A7D4 /* huadongshanchu1.png in Resources */,
+				BA1079A91967FE4C0056F626 /* pedal-start.png in Resources */,
 				89E814AD193AD6AB003CD7B9 /* peilianyinerjikuang.png in Resources */,
 				89429BD61566D8A70003A7D4 /* loading.png in Resources */,
 				89429BE81566D8A70003A7D4 /* tuichudangqianzhanghao1.png in Resources */,
 				89F5FB6219527DE900011C3A /* shopBg.png in Resources */,
 				8907102A19219F3A00BB9E2F /* Storyboard.storyboard in Resources */,
 				89429BD31566D8A70003A7D4 /* jiaocaishuben.png in Resources */,
-				8964EBC4194536EC00DBCED9 /* perfect.png in Resources */,
-				8964EBCF194536EC00DBCED9 /* two.png in Resources */,
+				BA1079A41967FE4C0056F626 /* payin.png in Resources */,
 				893CEFE2193A37630097681C /* huigu1.png in Resources */,
-				8964EBC3194536EC00DBCED9 /* pedal-start.png in Resources */,
 				89429BE41566D8A70003A7D4 /* sousuotiao.png in Resources */,
 				893CEFDD193A37630097681C /* fenduan1.png in Resources */,
+				BA1079B01967FE4C0056F626 /* nine.png in Resources */,
 				8994D15B194BCEDA0016F806 /* 11.星光圆舞曲.mid in Resources */,
 				891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */,
+				BA1079B51967FE4C0056F626 /* two.png in Resources */,
 				89F5FB6319527DE900011C3A /* shopItem.png in Resources */,
 				89429BF41566D8A70003A7D4 /* yinguan.png in Resources */,
 				893CEFEB193A37630097681C /* peilianyin1.png in Resources */,
 				89429BCF1566D8A70003A7D4 /* huadongshanchu2.png in Resources */,
 				893CEFE9193A37630097681C /* peilianyin,wusheng.png in Resources */,
+				BA1079A61967FE4C0056F626 /* shunboyin.png in Resources */,
 				89429BD81566D8A70003A7D4 /* puku1.png in Resources */,
 				8998E2EC19381EAF00A7CF12 /* shujia.png in Resources */,
 				899AE090193B6A82003742F3 /* yuansu.png in Resources */,
 				893CEFD8193A37630097681C /* baocunluyin1.png in Resources */,
-				8964EBCA194536EC00DBCED9 /* nine.png in Resources */,
 				89429BE21566D8A70003A7D4 /* shangcheng1.png in Resources */,
 				890093CB19510603001F33F4 /* spaceBg.jpg in Resources */,
-				8964EBCC194536EC00DBCED9 /* three.png in Resources */,
 				8994D15E194BCEDA0016F806 /* 14.布列舞曲.mid in Resources */,
-				8964EBCE194536EC00DBCED9 /* twelve.png in Resources */,
 				893CEFDC193A37630097681C /* duifu,zongjiezhong.png in Resources */,
 				893CEFED193A37630097681C /* queren.png in Resources */,
 				89429BCC1566D8A70003A7D4 /* gengduo.png in Resources */,
