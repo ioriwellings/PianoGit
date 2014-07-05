@@ -37,7 +37,7 @@
     [self setCurrentPulseTime:0];
     
     CGRect rect = [player1 frame];
-    int height = 250;
+    int height = 350;
     int width = rect.size.width;
     
     [player1 setFrame:CGRectMake(0, 0, width, height)];
