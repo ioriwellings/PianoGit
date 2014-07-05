@@ -32,12 +32,12 @@
 -(void) initViews
 {
     
-    float margin = 20;
+    float margin = 0;
     
     [self setCurrentPulseTime:0];
     
     CGRect rect = [player1 frame];
-    int height = 350;
+    int height = 384;
     int width = rect.size.width;
     
     [player1 setFrame:CGRectMake(0, 0, width, height)];

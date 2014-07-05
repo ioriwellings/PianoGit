@@ -97,7 +97,7 @@ int TitleHeights = 14; /** The height for the title on the first page */
     }
 
     size.width = (int)width + 2;
-    size.height = ((int)height) + LeftMargins;
+    size.height = 384;
     rect.size.width = size.width;
     rect.size.height = size.height;
     
