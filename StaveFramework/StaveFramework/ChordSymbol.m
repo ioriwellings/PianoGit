@@ -2015,7 +2015,7 @@ static UIImage* chanyin = nil;
 }
 
 - (void) drawJumpedNote:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff {
-    
+
     int leftDirect;
     int ypos;
     Stem *stem = nil;
@@ -2043,7 +2043,6 @@ static UIImage* chanyin = nil;
         if (leftDirect == StemDown) {
             ypos -=  (NoteHeight+LineSpace);
             
-            
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
             CGContextAddLineToPoint(context, 1.5*LineSpace, 2*LineSpace);
@@ -2054,8 +2053,7 @@ static UIImage* chanyin = nil;
             
         } else if (leftDirect == StemUp) {
             
-            ypos = ytop + [topStaff dist:[stem end]] * NoteHeight/2;
-
+            ypos = 2*ytop + [topStaff dist:[stem top]] * NoteHeight/2 + NoteHeight;
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextMoveToPoint(context, LineSpace/2, -2*LineSpace);
             CGContextAddLineToPoint(context, 1.5*LineSpace, -2*LineSpace);
