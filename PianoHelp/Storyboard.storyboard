@@ -972,6 +972,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-Tg-MYg">
+                                        <rect key="frame" x="916" y="27" width="108" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Zkl-1b-jyW"/>
@@ -1074,6 +1081,7 @@
                         <outlet property="btnPlay" destination="FyK-ha-T1b" id="hSh-Nd-Ybs"/>
                         <outlet property="btnSuDu" destination="WgW-aH-ytR" id="T2G-Ag-4Fh"/>
                         <outlet property="btnXiaoJieTiaoZhuan" destination="J0h-dF-SYW" id="6VO-4g-blb"/>
+                        <outlet property="labDebug" destination="JYc-Tg-MYg" id="MJG-f1-nLf"/>
                         <outlet property="menuBar" destination="HCk-aq-Jma" id="bCd-lc-wUU"/>
                         <outlet property="sliderSpeed" destination="ySc-Ih-QVd" id="uFd-97-SDd"/>
                         <outlet property="sliderXiaoJie" destination="JuX-Gy-E3s" id="yfd-OS-yt0"/>

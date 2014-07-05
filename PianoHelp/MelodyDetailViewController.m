@@ -264,12 +264,9 @@
     /* init player */
     piano = [[Piano alloc] init];
     piano.frame = CGRectMake(0, 75, 1024, 120);
-    //[self.view addSubview:piano];
+    [self.view addSubview:piano];
     //modify by yizhq start
-    piano.hidden = NO;//change hint default status is hidden by yizhq
-    
-    UILabel *txt = [[UILabel alloc ]initWithFrame:CGRectMake(0, 75, 1024, 120)];
-    [self.view addSubview:txt];
+    piano.hidden = YES;//change hint default status is hidden by yizhq
     
     float height = sheetmusic.frame.size.height;
     CGRect frame;
@@ -320,7 +317,7 @@
     [piano setShade:[UIColor blueColor] andShade2:[UIColor redColor]];
     [piano setMidiFile:midifile withOptions:&options];
     [player setPiano:piano];
-    player.midiData = txt;
+    player.midiData = self.labDebug;
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
@@ -388,17 +385,6 @@
     [[self btnPlay] setSelected:false];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
-
-    //add test by zyw start
-    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-    vc.iGood = 1;
-    vc.iRight = 1;
-    vc.iWrong = 1;
-    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self presentViewController:vc animated:YES completion:NULL];
-    //add test by zyw end
     
     NSLog(@"the song is end");
 }
