@@ -80,8 +80,9 @@
             [player1Staffs add:staff];
             player1.endIndex = i;
         }
-        [player1 setStaffs:player1Staffs];
         
+        player1.updateStaffsFlag = FALSE;
+        [player1 setStaffs:player1Staffs];
         [player1Staffs release];
         [player1 setNeedsDisplay];
     }

@@ -263,13 +263,6 @@
 #pragma mark - private method
 - (void) loadSheetMusic
 {
-    
-    if (splitState == true) {
-        [sheetmusic setNeedsDisplay];
-        [sheetmsic1 setNeedsDisplay];
-        return;
-    }
-    
     CGRect screensize = [[UIScreen mainScreen] applicationFrame];
     if (screensize.size.width >= 1200) {
         zoom = 1.5f;
@@ -454,7 +447,7 @@
             break;
         case 4://播放
             if (splitState == true) {
-                [player playJumpSection:splitStart];
+//                [player jumpMeasure:splitStart];
 
                 if ([player PlayerState] == stopped) {
                     [player playByType:self.iPlayMode];
@@ -504,12 +497,16 @@
         [player stop];
         [self.btnPlay setSelected:false];
     }
+    [player setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
     [sheetmusic setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
 
-    [self loadSheetMusic];
+    [player playJumpSection:from];
+    [sheetmusic setNeedsDisplay];
+    [sheetmsic1 setNeedsDisplay];
+
     splitState = true;
     splitStart = from;
-    [player playJumpSection:from];
+
 }
 
 //左右手模式
@@ -581,8 +578,11 @@
     if ([player PlayerState] == playing || [player PlayerState] == paused) {
         [player stop];
     }
+    [player clearJSModel];
     [sheetmusic clearJSModel];
-    [self loadSheetMusic];
+    
+    [sheetmsic1 setNeedsDisplay];
+    [sheetmusic setNeedsDisplay];
     [player clearJumpSection];
     splitState = false;
     splitStart = 0;
