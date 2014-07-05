@@ -79,6 +79,10 @@ enum {
     MidiKeyboard *midiHandler;
     int playModel;
     BOOL judgeFlag;
+    
+    
+
+    BOOL isLine;
 }
 
 -(id)init;
@@ -98,6 +102,7 @@ enum {
 -(void)deleteSoundFile;
 -(void)doStop;
 -(void)dealloc;
+-(int)PlayerState;
 
 //跳转小节
 -(BOOL)jumpMeasure:(int)number;
@@ -109,6 +114,7 @@ enum {
 -(void)playJumpSection:(int)startSectionNumber;
 -(void)clearJumpSection;
 /** add by yizhq end */
+-(void)disConnectMIDI;
 
 @property (strong, nonatomic) SheetMusicPlay *sheetPlay;
 @property (strong, nonatomic) CBPeripheral *peripheral;

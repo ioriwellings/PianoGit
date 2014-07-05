@@ -27,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        splitState = false;
     }
     return self;
 }
@@ -46,12 +47,6 @@
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)self.sliderSpeed.value] forState:UIControlStateNormal];
     
     [self loadSheetMusic];
-    
-    self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
-    self.sfCountdownView.delegate = self;
-    self.sfCountdownView.countdownColor = [UIColor blackColor];
-    self.sfCountdownView.countdownFrom = 3;
-    [self.sfCountdownView updateAppearance];
     
 //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
 //    vc.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -200,6 +195,9 @@
 
 - (IBAction)btnRePlay_click:(id)sender
 {
+    if (splitState == true) {
+        [self clearSplitMeasure];
+    }
     [player stop];
     option = 2;//重播
     [self.sfCountdownView start];
@@ -212,8 +210,8 @@
         option = 3;//暂停
         [((UIButton*)sender) setSelected:false];
         [player playPause];
-        scrollView.hidden = NO;
-        sheetmsic1.hidden = YES;
+//        scrollView.hidden = NO;
+//        sheetmsic1.hidden = YES;
     }
     else
     {
@@ -247,7 +245,6 @@
 }
 
 #pragma mark - private method
-
 - (void) loadSheetMusic
 {
     CGRect screensize = [[UIScreen mainScreen] applicationFrame];
@@ -264,13 +261,15 @@
     sheetmusic = [[SheetMusic alloc] initWithFile:midifile andOptions:&options];
     [sheetmusic setZoom:zoom];
     
-    
     /* init player */
     piano = [[Piano alloc] init];
     piano.frame = CGRectMake(0, 75, 1024, 120);
-    [self.view addSubview:piano];
+    //[self.view addSubview:piano];
     //modify by yizhq start
-    piano.hidden = YES;//change hint default status is hidden by yizhq
+    piano.hidden = NO;//change hint default status is hidden by yizhq
+    
+    UILabel *txt = [[UILabel alloc ]initWithFrame:CGRectMake(0, 75, 1024, 120)];
+    [self.view addSubview:txt];
     
     float height = sheetmusic.frame.size.height;
     CGRect frame;
@@ -321,9 +320,16 @@
     [piano setShade:[UIColor blueColor] andShade2:[UIColor redColor]];
     [piano setMidiFile:midifile withOptions:&options];
     [player setPiano:piano];
+    player.midiData = txt;
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
+    
+    self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
+    self.sfCountdownView.delegate = self;
+    self.sfCountdownView.countdownColor = [UIColor blackColor];
+    self.sfCountdownView.countdownFrom = 3;
+    [self.sfCountdownView updateAppearance];
 }
 
 -(void)hiddenMenuAndToolBar
@@ -378,9 +384,10 @@
 #pragma mark MidiPlayerDelegate
 -(void)endSongs
 {
+    
+    [[self btnPlay] setSelected:false];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
-    
 
     //add test by zyw start
     ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
@@ -401,8 +408,7 @@
 {
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
-    
-    
+
     int ff = (right + good)/((right + good + wrong)*1.0) * 100;
 //    NSString *score = [NSString stringWithFormat:@"Score %i", ff];
 //    
@@ -438,7 +444,25 @@
         case 3://暂停
             break;
         case 4://播放
-            [player playByType:self.iPlayMode];
+            if (splitState == true) {
+                    [player playJumpSection:splitStart];
+
+                if ([player PlayerState] == stopped) {
+                    [player playByType:self.iPlayMode];
+                }
+                else
+                {
+                    [player playPause];
+                }
+            }else{
+                if ([player PlayerState] == stopped) {
+                    [player replayByType];
+                }
+                else
+                {
+                    [player playByType:self.iPlayMode];
+                }
+            }
             break;
     }
     
@@ -466,10 +490,16 @@
 //拆分小节
 - (void) splitMeasure:(int) from andTo:(int)to
 {
+    
+    if ([player PlayerState] == playing || [player PlayerState] == paused) {
+        [player stop];
+        [self.btnPlay setSelected:false];
+    }
     [sheetmusic setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
-    
-    
+
     [self loadSheetMusic];
+    splitState = true;
+    splitStart = from;
     [player playJumpSection:from];
 }
 
@@ -507,7 +537,7 @@
     }
     
     [self.popVC dismissPopoverAnimated:YES];
-    
+    [player setMidiFile:midifile withOptions:&options andSheet:sheetmusic];
     [self btnPlay_click:self.btnPlay];
 }
 
@@ -539,9 +569,14 @@
 
 //清除拆分曲谱
 -(void)clearSplitMeasure{
+    if ([player PlayerState] == playing || [player PlayerState] == paused) {
+        [player stop];
+    }
     [sheetmusic clearJSModel];
     [self loadSheetMusic];
     [player clearJumpSection];
+    splitState = false;
+    splitStart = 0;
 }
 
 

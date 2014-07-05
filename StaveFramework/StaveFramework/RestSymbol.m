@@ -78,18 +78,8 @@
  * @param ytop The ylocation (in pixels) where the top of the staff starts.
  */
 - (void)draw:(CGContextRef)context atY:(int)ytop {
-//    NSAffineTransform *trans;
-//
-//    /* Align the rest symbol to the right */
-//    trans = [NSAffineTransform transform];
-//    [trans translateXBy:(width - [self minWidth]) yBy:0.0];
-//    [trans concat];
     
     CGContextTranslateCTM (context, (width - [self minWidth]), 0);
-    
-//    trans = [NSAffineTransform transform];
-//    [trans translateXBy:NoteHeight/2 yBy:0.0];
-//    [trans concat];
     
     CGContextTranslateCTM (context, NoteHeight/2, 0);
     
@@ -105,15 +95,8 @@
     else if (duration == Eighth) {
         [self drawEighth:context atY:ytop];
     }
-//    trans = [NSAffineTransform transform];
-//    [trans translateXBy:-NoteHeight/2 yBy:0.0];
-//    [trans concat];
     
     CGContextTranslateCTM (context, -NoteHeight/2, 0);
-    
-//    trans = [NSAffineTransform transform];
-//    [trans translateXBy:-(width - [self minWidth]) yBy:0.0];
-//    [trans concat];
     
     CGContextTranslateCTM (context, -(width - [self minWidth]), 0);
 }

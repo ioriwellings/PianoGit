@@ -24,7 +24,10 @@
 
 - (id)initWithParentView:(UIView*)view
 {
-    parent = view;
+    if(self  = [super init])
+    {
+        parent = view;
+    }
     return self;
 }
 

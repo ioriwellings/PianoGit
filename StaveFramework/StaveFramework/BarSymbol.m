@@ -50,6 +50,10 @@
  */
 - (void)setWidth:(int)w {
     width = w;
+    
+    if (repeatFlag == 1 || repeatFlag == 2) {
+        width += 5;
+    }
 }
 
 /** Get the number of pixels this symbol extends above the staff. Used
@@ -74,6 +78,10 @@
     repeatFlag = r;
 }
 /** add by sunlie end */
+-(void)setMeasureWidth:(int)v {
+    measureWidth = v;
+}
+
 
 -(void)setTrackNum:(int)num
 {
@@ -121,6 +129,68 @@
     [path addLineToPoint:CGPointMake(NoteWidth/2, yend)];
     [path stroke];
     
+    
+//    repeatFlag = 3;
+//    [self drawRepeatStartAndEnd:context atY:ytop];
+//    [self drawRepeat3And4:context atY:ytop];
+}
+
+
+
+
+-(void)drawRepeatStartAndEnd:(CGContextRef)context atY:(int)ytop {
+    
+    if (!(repeatFlag == 1 || repeatFlag == 2)) return;
+    
+    int ystart, yend, xpos = 0;
+    if (tracknum == 0)
+        ystart = ytop - LineWidth;
+    else
+        ystart = 0;
+    
+    if (tracknum == (totaltracks-1))
+        yend = ytop + 4 * NoteHeight;
+    else
+        yend = straffHeight;
+    
+    if (repeatFlag == 1) {
+        xpos = 0;
+    } else if (repeatFlag == 2) {
+        xpos = NoteWidth;
+    }
+    
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    path.lineWidth = 1;
+    [path moveToPoint:CGPointMake(xpos, ystart)];
+    [path addLineToPoint:CGPointMake(xpos, yend)];
+    [path stroke];
+}
+
+-(void)drawRepeat3And4:(CGContextRef)context atY:(int)ytop {
+    if (!(repeatFlag == 3 || repeatFlag == 4)) return;
+    
+    int ystart, xpos = 0;
+    if (tracknum == 0)
+        ystart = ytop - LineWidth;
+    else
+        ystart = ytop - LineWidth;
+    
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(xpos, ystart)];
+    [path addLineToPoint:CGPointMake(xpos, ystart + NoteHeight/2)];
+    [path setLineWidth:1];
+    
+    
+    [path moveToPoint:CGPointMake(xpos + measureWidth, ystart)];
+    [path addLineToPoint:CGPointMake(xpos + measureWidth, ystart + NoteHeight/2)];
+    
+    
+    [path moveToPoint:CGPointMake(xpos, ystart)];
+    [path addLineToPoint:CGPointMake(xpos + measureWidth, ystart)];
+    
+    [path stroke];
 }
 
 - (NSString*)description {

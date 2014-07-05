@@ -452,6 +452,7 @@
     }
 
     BOOL endFlag = FALSE;
+    int mw = 0;
     for (i = 0; i < [symbols count]; i++) {
 
         id <MusicSymbol> s = [symbols get:i];
@@ -490,12 +491,16 @@
             CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
         }
 
+        mw += [s width];
         if ([s isKindOfClass:[BarSymbol class]]) {
             BarSymbol *b = (BarSymbol*)s;
             [b setTotalTracks:totaltracks];
             [b setStraffHeight:height];
             [b setTrackNum:tracknum];
             endFlag = TRUE;
+            
+            [b setMeasureWidth:mw];
+            mw = 0;
         }
         
         if ((xpos <= clip.origin.x + clip.size.width + 50) &&
@@ -543,13 +548,17 @@
      *
      * For fast performance, only draw symbols that are in the clip area.
      */
+    int mw = 0;
     for (i = 0; i < [symbols count]; i++) {
         id <MusicSymbol> s = [symbols get:i];
+        mw += [s width];
         if ([s isKindOfClass:[BarSymbol class]]) {
             BarSymbol *b = (BarSymbol*)s;
             [b setTotalTracks:totaltracks];
             [b setStraffHeight:height];
             [b setTrackNum:tracknum];
+            [b setMeasureWidth:mw];
+            mw = 0;
         }
         
         if ((xpos <= clip.origin.x + clip.size.width + 50) &&
@@ -579,19 +588,17 @@
 
 
 - (void) shadeNotes:(CGContextRef)context withColor: (UIColor *)color {
-    
-    NSLog(@"======== shadeNotes");
+
     if (shadeCurr == nil) return;
     
     CGContextTranslateCTM (context, shadeXpos, 0);
     
-    
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [color setFill];
-    [path moveToPoint:CGPointMake(0, 0)];
-    [path addLineToPoint:CGPointMake(0, [self height])];
-    [path stroke];
-
+    CGContextSetRGBStrokeColor(context, 255/255.0, 0, 0, 1);
+	CGContextSetLineWidth(context, 1.0);
+	CGContextSetLineCap(context, kCGLineCapButt);
+	CGContextMoveToPoint(context, 0, 0);
+	CGContextAddLineToPoint(context, 0, [self height]);
+	CGContextStrokePath(context);
     
     CGContextTranslateCTM (context, -shadeXpos, 0);
 }

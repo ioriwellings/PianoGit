@@ -15,7 +15,6 @@
 #import "StaveFramework/SheetMusicPlay.h"
 #import "StaveFramework/SFCountdownView.h"
 
-
 @interface MelodyDetailViewController : BaseViewController <SFCountdownViewDelegate, MidiPlayerDelegate, UIGestureRecognizerDelegate, SheetMusicsDelegate>
 {
     MidiFile *midifile;         /** The midifile that was read */
@@ -29,6 +28,8 @@
     SheetMusicPlay *sheetmsic1;
     
     int option;
+    BOOL splitState;
+    int splitStart;
 }
 
 @property (nonatomic) NSInteger iPlayMode;

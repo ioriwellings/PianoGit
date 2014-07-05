@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CoreMIDI/CoreMIDI.h>
 
 static NSString* kNAMIDIDatas = @"kNAMIDIDatas";
 static NSString* kNAMIDINotification = @"kNAMIDINotification";
@@ -17,8 +17,12 @@ static NSString* kNAMIDI_VelocityKey = @"kNAMIDI_VelocityKey";
 
 
 
-@interface MidiKeyboard : NSObject
+@interface MidiKeyboard : NSObject {
+    MIDIPortRef inPort;
+    MIDIEndpointRef src;
+}
 
 - (BOOL) setupMIDI;
+- (void) unSetupMIDI;
 
 @end
