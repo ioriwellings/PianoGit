@@ -457,17 +457,21 @@
                 if (options->startSecTime != 0) {
                     if (options->startSecTime <= [s startTime] && [s startTime] <= options->endSecTime) {
                         CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
+                        CGContextSetRGBFillColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
                         [sheet setColors4Section:TRUE];
                     }else{
                         CGContextSetRGBStrokeColor(context, 200/255.0, 200/255.0, 200/255.0, 1);
+                        CGContextSetRGBFillColor(context, 200/255.0, 200/255.0, 200/255.0, 1);
                         [sheet setColors4Section:FALSE];
                     }
                 }else{
                     if ([s startTime] <= options->endSecTime) {
                         CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
+                        CGContextSetRGBFillColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
                                                 [sheet setColors4Section:TRUE];
                     }else{
                         CGContextSetRGBStrokeColor(context, 200/255.0, 200/255.0, 200/255.0, 1);
+                        CGContextSetRGBFillColor(context, 200/255.0, 200/255.0, 200/255.0, 1);
                                                 [sheet setColors4Section:FALSE];
                     }
                 }
@@ -475,9 +479,11 @@
                 //结束后第一个symbol
                 if([s startTime] >= options->startSecTime && [s startTime] < options->endSecTime){
                     CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
+                    CGContextSetRGBFillColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
                                             [sheet setColors4Section:TRUE];
                 }else{
                     CGContextSetRGBStrokeColor(context, 200/255.0, 200/255.0, 200/255.0, 1);
+                    CGContextSetRGBFillColor(context, 200/255.0, 200/255.0, 200/255.0, 1);
                                             [sheet setColors4Section:FALSE];
                 }
                 endFlag = FALSE;
@@ -485,6 +491,7 @@
 
         }else{
             CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
+            CGContextSetRGBFillColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
         }
 
         mw += [s width];
@@ -499,8 +506,7 @@
             mw = 0;
         }
         
-        if ((xpos <= clip.origin.x + clip.size.width + 50) &&
-            (xpos + [s width] + 50 >= clip.origin.x)) {
+        if ((xpos <= clip.origin.x + clip.size.width + 50) && (xpos + [s width] + 50 >= clip.origin.x)) {
             CGContextTranslateCTM (context, xpos, 0.0);
             [s draw:context atY:ytop];
             CGContextTranslateCTM (context, -xpos, 0.0);
@@ -510,7 +516,7 @@
     }
     
     CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
-    
+    CGContextSetRGBFillColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
     [self drawHorizLines:context];
     [self drawEndLines:context];
 }
