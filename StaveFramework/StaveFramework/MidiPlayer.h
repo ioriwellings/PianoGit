@@ -102,6 +102,7 @@ enum {
 -(void)deleteSoundFile;
 -(void)doStop;
 -(void)dealloc;
+-(int)PlayerState;
 
 //跳转小节
 -(BOOL)jumpMeasure:(int)number;
