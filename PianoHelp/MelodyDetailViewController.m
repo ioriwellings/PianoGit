@@ -220,6 +220,7 @@
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
         [self.sfCountdownView start];
+        [self hiddenMenuAndToolBar];
     }
 }
 
@@ -291,9 +292,12 @@
     
     sheetmsic1.frame = frame;
     [sheetmsic1 setZoom:zoom];
-    sheetmsic1.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:sheetmsic1];
-    [self.view addSubview:scrollView];
+    sheetmsic1.backgroundColor = [UIColor clearColor];
+    scrollView.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:sheetmsic1];
+//    [self.view addSubview:scrollView];
+    [self.view insertSubview:sheetmsic1 atIndex:1];
+    [self.view insertSubview:scrollView atIndex:1];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     tapGesture.delegate = self;
@@ -543,7 +547,7 @@
 
 -(void)dealloc
 {
-    
+    self.sfCountdownView.delegate = nil;
 }
 
 

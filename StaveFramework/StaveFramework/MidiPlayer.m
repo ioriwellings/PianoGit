@@ -621,7 +621,7 @@
 
     /* Remove all shading by redrawing the music */
     sheet.hidden = NO;
-    piano.hidden = NO;
+//    piano.hidden = NO; by IORI.
 
     startPulseTime = 0;
     currentPulseTime = 0;

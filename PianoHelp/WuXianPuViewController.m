@@ -111,9 +111,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)btnPuKuClick:(UIButton *)sender {
-    
-    
+- (IBAction)btnPuKuClick:(UIButton *)sender
+{
+    [player stop];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)btnPlayClick:(UIButton *)sender {
