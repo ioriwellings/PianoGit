@@ -17,7 +17,7 @@
 /** 
  *  使用midi连线方式进行评判，使用次函数进行初期化
  */
--(id)initWithStaff:(Array*)staffs andMidiFile:(MidiFile*)file andOptions:(MidiOptions*)options
+-(id)initWithStaff:(Array*)staffs WithtMidiFile:(MidiFile*)file andOptions:(MidiOptions*)options
 {
     pianoData = [Array new:100];
     notes = [Array new:100];
@@ -110,7 +110,12 @@
        start = 0;
     }
 
-    symbolDatas =[[NSMutableArray alloc] init];
+    if (symbolDatas == nil) {
+        symbolDatas =[[NSMutableArray alloc] init];
+    } else {
+        [symbolDatas removeAllObjects];
+    }
+    
     for (int i=start; i<[staffs count]; i+=step) {
         Staff *staff = [staffs get:i];
         Array* symbols = [staff symbols];

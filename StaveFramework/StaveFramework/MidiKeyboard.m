@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 zhengyw. All rights reserved.
 //
 
-#import <CoreMIDI/CoreMIDI.h>
+
 #import "MidiKeyboard.h"
 
 
@@ -62,6 +62,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 - (id)init
 {
     self = [super init];
+    inPort = 0;
+    src = 0;
     return self;
 }
 
@@ -78,6 +80,10 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     }
 }
 
+-(void) unSetupMIDI {
+    MIDIPortDisconnectSource(inPort, src);
+}
+
 - (BOOL)setupMIDI {
     
     BOOL result = FALSE;
@@ -87,12 +93,12 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 	MIDIClientRef client = 0;
 	MIDIClientCreate(CFSTR("NNAudio MIDI Handler"), MyMIDINotifyProc, nil, &client);
 	
-	MIDIPortRef inPort = 0;
+	
 	MIDIInputPortCreate(client, CFSTR("Input port"), MyMIDIReadProc, nil, &inPort);
 	
 	unsigned long sourceCount = MIDIGetNumberOfSources();
 	for (int i = 0; i < sourceCount; ++i) {
-		MIDIEndpointRef src = MIDIGetSource(i);
+        src = MIDIGetSource(i);
 		CFStringRef endpointName = NULL;
 		OSStatus nameErr = MIDIObjectGetStringProperty(src, kMIDIPropertyName, &endpointName);
 		if (noErr == nameErr) {

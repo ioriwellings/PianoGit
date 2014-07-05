@@ -452,6 +452,7 @@
     }
 
     BOOL endFlag = FALSE;
+    int mw = 0;
     for (i = 0; i < [symbols count]; i++) {
 
         id <MusicSymbol> s = [symbols get:i];
@@ -490,12 +491,16 @@
             CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
         }
 
+        mw += [s width];
         if ([s isKindOfClass:[BarSymbol class]]) {
             BarSymbol *b = (BarSymbol*)s;
             [b setTotalTracks:totaltracks];
             [b setStraffHeight:height];
             [b setTrackNum:tracknum];
             endFlag = TRUE;
+            
+            [b setMeasureWidth:mw];
+            mw = 0;
         }
         
         if ((xpos <= clip.origin.x + clip.size.width + 50) &&
@@ -543,13 +548,17 @@
      *
      * For fast performance, only draw symbols that are in the clip area.
      */
+    int mw = 0;
     for (i = 0; i < [symbols count]; i++) {
         id <MusicSymbol> s = [symbols get:i];
+        mw += [s width];
         if ([s isKindOfClass:[BarSymbol class]]) {
             BarSymbol *b = (BarSymbol*)s;
             [b setTotalTracks:totaltracks];
             [b setStraffHeight:height];
             [b setTrackNum:tracknum];
+            [b setMeasureWidth:mw];
+            mw = 0;
         }
         
         if ((xpos <= clip.origin.x + clip.size.width + 50) &&
@@ -592,6 +601,11 @@
     [path addLineToPoint:CGPointMake(0, [self height])];
     [path stroke];
 
+//    [color setFill];
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRect:
+//                          CGRectMake(0, 0, [shadeCurr width], [self height]) ];
+//    [path fill];
+    
     
     CGContextTranslateCTM (context, -shadeXpos, 0);
 }

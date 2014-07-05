@@ -22,6 +22,7 @@
     /** add by sunlie start */
     int repeatFlag;             /** 1: repeat start  2: repeat end  3: 1 house   4:2 house  */
     /** add by sunlie end */
+    int measureWidth;
 }
 
 -(id)initWithTime:(int) starttime;
@@ -35,6 +36,7 @@
 -(int)repeatFlag;
 -(void)setRepeatFlag:(int)r;
 /** add by sunlie end */
+-(void)setMeasureWidth:(int)v;
 
 -(void)setTrackNum:(int)num;
 -(void)setTotalTracks:(int)value;
