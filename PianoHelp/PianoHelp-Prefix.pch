@@ -17,3 +17,5 @@
 #endif
 
 #define IS_RUNNING_IOS7 ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 7)
+
+#define kBackToQinfangNotification @"backfrom"

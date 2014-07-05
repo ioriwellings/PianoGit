@@ -114,6 +114,8 @@
 - (IBAction)btnPuKuClick:(UIButton *)sender
 {
     [player stop];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:kBackToQinfangNotification object:self];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

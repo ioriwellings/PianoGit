@@ -11,11 +11,14 @@
 #import "MelodyCategory.h"
 #import "LoginViewController.h"
 #import "QinFangViewController.h"
+#import "Melody.h"
+#import "WuXianPuViewController.h"
 
 @interface RootViewController ()
 {
     LoginViewController *loginVC;
     UIPopoverController *popVC;
+    QinFangViewController *qinFangVC;
 }
 @end
 
@@ -38,6 +41,10 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ditu.png"]];
     imageView.frame = CGRectMake(0, 0, 1024, 768);
     [self.view addSubview:imageView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(jumpToMelodyForBackFromDetailView:)
+                                                 name:kBackToQinfangNotification object:nil];
     
     self.lastClickButton = self.btnQinFang;
     [self.lastClickButton setSelected:YES];
@@ -120,6 +127,7 @@
     {
         QinFangViewController *vc = [segue destinationViewController];
         vc.type = self.type;
+        qinFangVC = vc;
     }
 }
 
@@ -163,5 +171,22 @@
     }
 }
 
+-(void)jumpToMelodyForBackFromDetailView:(NSNotification *)notification
+{
+    WuXianPuViewController *vc = notification.object;
+    [self buttonToolbar_click:self.btnQinFang];
+    if(vc.type == 1)//favr
+    {
+        [qinFangVC btnScope_click:qinFangVC.btnLove];
+    }
+    else if(vc.type == 2)//task
+    {
+        [qinFangVC btnScope_click:qinFangVC.btnTask];
+    }
+    else if(vc.type == 3)//all
+    {
+        [qinFangVC btnScope_click:qinFangVC.btnAll];
+    }
+}
 
 @end

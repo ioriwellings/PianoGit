@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSString *fileName;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property (weak, nonatomic) IBOutlet UIButton *btnPuKu;
+@property (weak, nonatomic) IBOutlet UIView *toolBarView;
 
 
 - (IBAction)btnPuKuClick:(UIButton *)sender;

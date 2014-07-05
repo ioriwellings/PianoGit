@@ -184,7 +184,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="GlU-pE-uVv" kind="embed" id="Aao-k4-xii"/>
+                                    <segue destination="GlU-pE-uVv" kind="embed" identifier="EmbedQinFangSegue" id="Aao-k4-xii"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dvg-10-bgb" userLabel="Shop Container View">
@@ -1964,6 +1964,7 @@
                     <connections>
                         <outlet property="btnPlay" destination="Wum-yJ-9qc" id="lhh-Nd-a4t"/>
                         <outlet property="btnPuKu" destination="o5v-kB-9Ud" id="Cho-wT-Zmf"/>
+                        <outlet property="toolBarView" destination="O5x-Fl-wgC" id="DAK-Yd-t8w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvP-Ck-LKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
