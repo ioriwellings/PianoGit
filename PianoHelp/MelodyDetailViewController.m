@@ -160,12 +160,21 @@
     [self setCurrentButtonState:sender];
     if(isHitAnimating) return;
     isHitAnimating = YES;
+    int iPianoHeight = piano.frame.size.height;
+    int iCurrentX = 75;
+    int iHasHintX = iCurrentX + iPianoHeight;
     if(piano.hidden)
     {
         piano.hidden = NO;
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            scrollView.frame = CGRectMake(0, 130, 1024, scrollView.frame.size.height-55);
-            sheetmsic1.frame = CGRectMake(0, 130, sheetmsic1.frame.size.width, sheetmsic1.frame.size.height);
+            scrollView.frame = CGRectMake(0,
+                                          iHasHintX,
+                                          1024,
+                                          scrollView.frame.size.height-iPianoHeight);
+            sheetmsic1.frame = CGRectMake(0,
+                                          iHasHintX,
+                                          sheetmsic1.frame.size.width,
+                                          sheetmsic1.frame.size.height);
         } completion:^(BOOL finished) {
             isHitAnimating = NO;
         }];
@@ -173,10 +182,17 @@
     else
     {
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            scrollView.frame = CGRectMake(0, 75, 1024, scrollView.frame.size.height+55);
-            sheetmsic1.frame = CGRectMake(0, 75, sheetmsic1.frame.size.width, sheetmsic1.frame.size.height);
-        } completion:^(BOOL finished) {
+            scrollView.frame = CGRectMake(0,
+                                          iCurrentX,
+                                          1024,
+                                          scrollView.frame.size.height+iPianoHeight);
+            sheetmsic1.frame = CGRectMake(0,
+                                          iCurrentX,
+                                          sheetmsic1.frame.size.width,
+                                          sheetmsic1.frame.size.height);
             piano.hidden = YES;
+        } completion:^(BOOL finished) {
+            
             isHitAnimating = NO;
         }];
     }
@@ -210,8 +226,8 @@
         option = 3;//暂停
         [((UIButton*)sender) setSelected:false];
         [player playPause];
-//        scrollView.hidden = NO;
-//        sheetmsic1.hidden = YES;
+        scrollView.hidden = NO;
+        sheetmsic1.hidden = YES;
     }
     else
     {
@@ -272,15 +288,13 @@
     piano = [[Piano alloc] init];
     piano.frame = CGRectMake(0, 75, 1024, 120);
     [self.view addSubview:piano];
-    //modify by yizhq start
-    piano.hidden = YES;//change hint default status is hidden by yizhq
     
     float height = sheetmusic.frame.size.height;
     CGRect frame;
     if (piano.hidden == YES) {
-        frame = CGRectMake(0, 75, 1024, 768-75-130);
+        frame = CGRectMake(0, 75, 1024, 768-75-piano.frame.size.height);
     }else{
-        frame = CGRectMake(0, 130, 1024, 768-75-130);
+        frame = CGRectMake(0, 75+piano.frame.size.height, 1024, 768-75-75-piano.frame.size.height);
     }
     //modify by yizhq end
     scrollView= [[UIScrollView alloc] initWithFrame: frame];
@@ -328,6 +342,7 @@
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
+    [self btnHint_click:nil];
     
     self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
     self.sfCountdownView.delegate = self;
@@ -388,17 +403,18 @@
 #pragma mark MidiPlayerDelegate
 -(void)endSongs
 {
-    
     [[self btnPlay] setSelected:false];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
     
     NSLog(@"the song is end");
+    [self hiddenMenuAndToolBar];
 }
 
 
 -(void)endSongsResult:(int)good andRight:(int)right andWrong:(int)wrong
 {
+    [self hiddenMenuAndToolBar];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
 
