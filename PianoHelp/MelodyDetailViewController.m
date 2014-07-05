@@ -447,7 +447,7 @@
             break;
         case 4://播放
             if (splitState == true) {
-//                [player jumpMeasure:splitStart];
+                [player jumpMeasure:splitStart - 1];
 
                 if ([player PlayerState] == stopped) {
                     [player playByType:self.iPlayMode];

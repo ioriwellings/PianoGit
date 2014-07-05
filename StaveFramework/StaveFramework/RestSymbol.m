@@ -108,9 +108,10 @@
 - (void)drawWhole:(CGContextRef)context atY:(int)ytop {
     int y = ytop + NoteHeight;
 
-    UIBezierPath *path = [UIBezierPath bezierPathWithRect:
-        CGRectMake(0, y, NoteWidth, NoteHeight/2)];
-    [path fill];
+    CGRect rects[1];
+    rects[0] = (CGRectMake(0, y, NoteWidth, NoteHeight/2));
+    CGContextAddRects(context, rects, 1);
+    CGContextDrawPath(context, kCGPathFill);
 }
 
 /** Draw a half rest symbol, a rectangle above a staff line.
