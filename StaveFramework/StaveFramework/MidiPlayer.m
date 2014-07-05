@@ -1037,7 +1037,7 @@
     if (timer != nil) {
         [timer invalidate];
     }
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
