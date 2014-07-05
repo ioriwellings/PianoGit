@@ -1472,14 +1472,15 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             buf[3] = 0x7F;
         }
         TimeSignature *sTime = [midifile time];
-        NSLog(@"denominator %i", sTime.denominator);
+//        NSLog(@"denominator %i", sTime.denominator);
         
         if (sTime.denominator == 4) {
             tmpQuarternote = [midifile quarternote];
         }else if (sTime.denominator == 8){
             tmpQuarternote = [midifile quarternote]/2;
+        }else if(sTime.denominator == 2){
+            tmpQuarternote = [midifile quarternote]*2;
         }
-        
         
         if (bFlag == 6) {
             int tmp = tmpQuarternote%128;

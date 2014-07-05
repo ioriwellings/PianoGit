@@ -470,6 +470,12 @@
 }
 
 /** add by yizhq start */
+
+-(int)PlayerState{
+    return playstate;
+}
+
+
 -(void)playJumpSection:(int)startSectionNumber{
     if (options.staveModel == 1) {
         if (startSectionNumber < 0) {
@@ -684,7 +690,7 @@
     
     prevPulseTime = currentPulseTime;
     currentPulseTime = [[midifile time] measure]*number;
-    
+    //NSLog(@"currentpulseTime is %f", currentPulseTime);
     
     if (currentPulseTime > [midifile totalpulses]) {
         currentPulseTime -= [[midifile time] measure];

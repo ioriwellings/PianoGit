@@ -111,13 +111,8 @@ static UIImage* bass = nil;    /** The bass clef image */
  * @param ytop The ylocation (in pixels) where the top of the staff starts.
  */
 - (void)draw:(CGContextRef)context atY:(int)ytop {
-
-//    NSAffineTransform *trans = [NSAffineTransform transform];
-//    [trans translateXBy:(width - [self minWidth]) yBy:0.0];
-//    [trans concat];
-
-    CGContextTranslateCTM (context, (width - [self minWidth]), 0);
     
+    CGContextTranslateCTM (context, (width - [self minWidth]), 0);
     
     int y = ytop;
     UIImage *image;
@@ -147,18 +142,9 @@ static UIImage* bass = nil;    /** The bass clef image */
     /* Scale the image width to match the height */
     int imgwidth = (int)([image size].width * 1.0*height / [image size].height);
 
-
-//    [image drawInRect:CGRectMake(0, y, imgwidth, height)
-//           fromRect:CGRectMake(0, 0, [image size].width, [image size].height)
-//           operation:NSCompositeCopy
-//           fraction:1.0];
-
     CGRect imageRect = CGRectMake(0, y, imgwidth, height);
     [image drawInRect:imageRect];
-    
-//    trans = [NSAffineTransform transform];
-//    [trans translateXBy:-(width - [self minWidth]) yBy:0.0];
-//    [trans concat];
+
     CGContextTranslateCTM (context, -(width - [self minWidth]), 0);
 }
 

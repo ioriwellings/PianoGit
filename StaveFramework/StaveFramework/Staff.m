@@ -579,19 +579,17 @@
 
 
 - (void) shadeNotes:(CGContextRef)context withColor: (UIColor *)color {
-    
-    NSLog(@"======== shadeNotes");
+
     if (shadeCurr == nil) return;
     
     CGContextTranslateCTM (context, shadeXpos, 0);
     
-    
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [color setFill];
-    [path moveToPoint:CGPointMake(0, 0)];
-    [path addLineToPoint:CGPointMake(0, [self height])];
-    [path stroke];
-
+    CGContextSetRGBStrokeColor(context, 255/255.0, 0, 0, 1);
+	CGContextSetLineWidth(context, 1.0);
+	CGContextSetLineCap(context, kCGLineCapButt);
+	CGContextMoveToPoint(context, 0, 0);
+	CGContextAddLineToPoint(context, 0, [self height]);
+	CGContextStrokePath(context);
     
     CGContextTranslateCTM (context, -shadeXpos, 0);
 }
