@@ -246,6 +246,13 @@
 #pragma mark - private method
 - (void) loadSheetMusic
 {
+    
+    if (splitState == true) {
+        [sheetmusic setNeedsDisplay];
+        [sheetmsic1 setNeedsDisplay];
+        return;
+    }
+    
     CGRect screensize = [[UIScreen mainScreen] applicationFrame];
     if (screensize.size.width >= 1200) {
         zoom = 1.5f;
@@ -441,7 +448,7 @@
             break;
         case 4://播放
             if (splitState == true) {
-                    [player playJumpSection:splitStart];
+                [player playJumpSection:splitStart];
 
                 if ([player PlayerState] == stopped) {
                     [player playByType:self.iPlayMode];
