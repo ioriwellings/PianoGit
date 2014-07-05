@@ -135,7 +135,8 @@
 //    NSRect frame = NSMakeRect(0, 0, buttonheight * 27, buttonheight * 2);
 //    self = [super initWithFrame:frame];
 //    [self setAutoresizingMask:NSViewWidthSizable];
-
+    
+    self = [super init];
     midifile = nil;
     sheet = nil;
     memset(&options, 0, sizeof(MidiOptions));
@@ -411,6 +412,11 @@
 {
     judgeFlag = true;
     playModel = type;
+    
+//    if (!isLine) {
+//        isLine = [midiHandler setupMIDI];
+//    }
+    
     switch(playModel) {
         case PlayModel1:
             [self playModel1];
@@ -442,11 +448,6 @@
         return;
     }
     else if (playstate == stopped || playstate == paused) {
- 
-        if (!isLine) {
-            isLine = [midiHandler setupMIDI];
-        }
-        
         
         options.pauseTime = 0;
         startPulseTime = options.shifttime;
@@ -639,8 +640,6 @@
         playstate = initStop;
         usleep(400 * 1000);
         [self doStop];
-        
-        [self disConnectMIDI];
     }
     else if (playstate == paused) {
         [self doStop];
@@ -659,7 +658,7 @@
 //    [sound release];sound = nil;
     /* add by yizhq end */
     [self deleteSoundFile];
-
+    
     /* Remove all shading by redrawing the music */
     sheet.hidden = NO;
 //    piano.hidden = NO; by IORI.

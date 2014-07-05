@@ -82,6 +82,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 
 -(void) unSetupMIDI {
     MIDIPortDisconnectSource(inPort, src);
+    NSLog(@"==== unSteupMIDI");
 }
 
 - (BOOL)setupMIDI {
@@ -107,6 +108,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 		MIDIPortConnectSource(inPort, src, NULL);
         result = TRUE;
 	}
+    
+    NSLog(@"==== setupMIDI");
     
     return result;
 }

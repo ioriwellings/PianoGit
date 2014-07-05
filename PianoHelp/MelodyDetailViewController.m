@@ -126,6 +126,7 @@
 - (IBAction)btnBack_click:(id)sender
 {
     [player stop];
+    [player disConnectMIDI];
     if([self.fixSearchDisplayDelegate respondsToSelector:@selector(fixSearchBarPosition)])
     {
         //[self.fixSearchDisplayDelegate fixSearchBarPosition];
@@ -458,11 +459,11 @@
                 }
             }else{
                 if ([player PlayerState] == stopped) {
-                    [player replayByType];
+                    [player playByType:self.iPlayMode];
                 }
                 else
                 {
-                    [player playByType:self.iPlayMode];
+                    [player replayByType];
                 }
             }
             break;
