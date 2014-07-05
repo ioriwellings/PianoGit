@@ -420,10 +420,6 @@
         [sheet setColors4Section:TRUE];
     }
     
-    
-    [self drawHorizLines:context];
-    [self drawEndLines:context];
-    
     if (TRUE) {
         [self drawMeasureNumbers:context];
     }
@@ -514,6 +510,7 @@
     }
     
     CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
+    
     [self drawHorizLines:context];
     [self drawEndLines:context];
 }

@@ -2401,10 +2401,10 @@ static UIImage* chanyin = nil;
         CGContextTranslateCTM (context, (xnote + noteWidth/2 + 1), (ynote - LineWidth + noteHeight/2));
         CGContextRotateCTM(context, -45.0);
         
-        UIColor *color = [UIColor blackColor];
+//        UIColor *color = [UIColor blackColor];
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path setLineWidth:LineWidth];
-        [color setFill];
+//        [color setFill];
         [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
                           CGRectMake(-noteWidth/2, -noteHeight/2, noteWidth, noteHeight-1)]];
         [path fill];
@@ -2412,7 +2412,7 @@ static UIImage* chanyin = nil;
         
         path = [UIBezierPath bezierPath];
         [path setLineWidth:LineWidth];
-        [[UIColor blackColor] setStroke];
+//        [[UIColor blackColor] setStroke];
         [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
                           CGRectMake(-noteWidth/2, -noteHeight/2, noteWidth, noteHeight-1)]];
         [path stroke];
