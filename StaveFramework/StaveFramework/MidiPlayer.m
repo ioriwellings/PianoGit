@@ -159,7 +159,8 @@
     /* add by yizhq start */
     sound = [[GDSoundEngine alloc] init];
     /* add by yizhq end */
- 
+    isLine = FALSE;
+    
 //    /* Create the rewind button */
 //    frame = NSMakeRect(buttonheight/4, 0, 1.5*buttonheight, 2*buttonheight);
 //    rewindButton = [[NSButton alloc] initWithFrame:frame];
@@ -251,6 +252,13 @@
     piano = [p retain];
 }
 
+- (void) disConnectMIDI {
+    if(isLine ) {
+        [midiHandler unSetupMIDI];
+        isLine = FALSE;
+    }
+}
+
 /** The MidiFile and/or SheetMusic has changed. Stop any playback sound,
  *  and store the current midifile and sheet music.
  */
@@ -259,8 +267,8 @@
     /* If we're paused, and using the same midi file, redraw the
      * highlighted notes.
      */
-    BOOL isLine = [midiHandler setupMIDI];
-    //isLine = TRUE; //add by test by zyw
+    isLine = [midiHandler setupMIDI];
+//    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
         pianoData = [[PianoDataJudged alloc] init];
@@ -298,9 +306,10 @@
             [recognition release];
         }
         staffs = [sheet getStaffs];
-        recognition = [[PianoRecognition alloc] initWithStaff:staffs andMidiFile:midifile andOptions:&options];
+        
+        recognition = [[PianoRecognition alloc] initWithStaff:staffs WithtMidiFile:midifile andOptions:&options];
         recognition.endDelegate = self.delegate;
-	recognition.sheetShadeDelegate = self;
+	    recognition.sheetShadeDelegate = self;
     }
     
 }
@@ -434,6 +443,11 @@
     }
     else if (playstate == stopped || playstate == paused) {
  
+        if (!isLine) {
+            isLine = [midiHandler setupMIDI];
+        }
+        
+        
         options.pauseTime = 0;
         startPulseTime = options.shifttime;
         currentPulseTime = options.shifttime;
@@ -449,10 +463,14 @@
         }
         
         if (recognition != nil) {
+            [recognition setCurrIndex:0];
 	        [recognition setBeginTime:startTime];
 	        [recognition setPulsesPerMsec:pulsesPerMsec];
         }
-
+        
+        CGPoint initPos;
+        initPos.x = 0; initPos.y = 0;
+        [sheet scrollToShadedNotes:initPos gradualScroll:YES];
         return;
     }
 }
@@ -603,9 +621,13 @@
     }
     if (playstate == initPause || playstate == initStop || playstate == playing) {
         /* Wait for the timer to finish */
+        
+        
         playstate = initStop;
         usleep(400 * 1000);
         [self doStop];
+        
+        [self disConnectMIDI];
     }
     else if (playstate == paused) {
         [self doStop];
@@ -952,10 +974,10 @@
     [arrPacket addObject: num3];
     
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        NSString *data1 = [NSString stringWithFormat:@"ndata : %d | %d", notePlayed, velocity];
-//        [self.midiData setText:data1];
-//    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *data1 = [NSString stringWithFormat:@"ndata : %d | %d", notePlayed, velocity];
+        [self.midiData setText:data1];
+    });
     
     if (playstate == playing) {
         switch(playModel) {
