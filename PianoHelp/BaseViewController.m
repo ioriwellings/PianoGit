@@ -72,4 +72,9 @@
 {
     return YES;
 }
+
+-(void)dealloc
+{
+    NSLog(@"dealloc class : %@", [self class]);
+}
 @end

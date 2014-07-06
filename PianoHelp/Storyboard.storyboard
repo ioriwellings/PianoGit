@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRM-9e-huU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613" y="-698"/>
+            <point key="canvasLocation" x="1613" y="272"/>
         </scene>
         <!--Melody View Controller-->
         <scene sceneID="ycf-zh-roz">
@@ -527,7 +527,7 @@
                 </searchDisplayController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fql-ta-1cR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896" y="-698"/>
+            <point key="canvasLocation" x="2896" y="272"/>
         </scene>
         <!--Section Pop View Controller-->
         <scene sceneID="Qcy-Cl-zPW">
@@ -718,7 +718,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrQ-Tu-9MV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4134" y="-934"/>
+            <point key="canvasLocation" x="2896" y="1150"/>
         </scene>
         <!--Hand Pop View Controller-->
         <scene sceneID="jdm-Y1-tpg">
@@ -782,7 +782,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pk-pa-d1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4464" y="-926"/>
+            <point key="canvasLocation" x="3226" y="1158"/>
         </scene>
         <!--Sound Pop View Controller-->
         <scene sceneID="KxS-gw-RqP">
@@ -841,7 +841,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhv-Pf-AOF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4845" y="-926"/>
+            <point key="canvasLocation" x="3607" y="1158"/>
         </scene>
         <!--Melody Detail View Controller-->
         <scene sceneID="Qqa-H3-aYb">
@@ -1091,7 +1091,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VR8-U9-owF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4202" y="-650"/>
+            <point key="canvasLocation" x="2896" y="1396"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Gc9-06-jb0">
@@ -1145,7 +1145,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="zuiai2.png"/>
-                                                    <state key="highlighted" image="xihai.png"/>
                                                     <connections>
                                                         <action selector="btnFavorite_click:" destination="eJR-xh-T8e" eventType="touchUpInside" id="aRd-l1-zSC"/>
                                                     </connections>
@@ -1198,7 +1197,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnView_click:" destination="eJR-xh-T8e" eventType="touchUpInside" id="2Q3-c6-ipa"/>
-                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="searchPushWuXianPuSegue" id="rzz-nC-FZ7"/>
+                                                        <segue destination="N9J-kc-bCn" kind="push" identifier="melodyPushWuXianPuSegue" id="rzz-nC-FZ7"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查看" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIN-gx-4ye">
@@ -1254,7 +1253,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4202" y="288"/>
+            <point key="canvasLocation" x="4202" y="-588"/>
         </scene>
         <!--Scroe View Controller-->
         <scene sceneID="39O-LJ-q2q">
@@ -1415,7 +1414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UEe-9c-QKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5486" y="-650"/>
+            <point key="canvasLocation" x="4180" y="1396"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S4V-Iy-S7b">
@@ -1544,7 +1543,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqJ-Gc-4SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="1545"/>
+            <point key="canvasLocation" x="33" y="1537"/>
         </scene>
         <!--Melody Category View Controller 0 Level-->
         <scene sceneID="neI-WS-BPF">
@@ -1625,7 +1624,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Odp-jn-4fx" kind="modal" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="Ygu-rr-iLi"/>
+                                            <segue destination="Odp-jn-4fx" kind="modal" id="Ygu-rr-iLi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1647,7 +1646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Lo-sc-yys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613" y="288"/>
+            <point key="canvasLocation" x="1613" y="-588"/>
         </scene>
         <!--Qin Fang View Controller-->
         <scene sceneID="eet-AZ-WlR">
@@ -1739,11 +1738,11 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-sd-cy7">
-                                <rect key="frame" x="42" y="66" width="940" height="534"/>
+                                <rect key="frame" x="42" y="76" width="940" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="534" id="MxV-nJ-ks8"/>
+                                    <constraint firstAttribute="height" constant="524" id="MxV-nJ-ks8"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="FavoriteTableCell" id="eov-7l-9gr" customClass="FavoriteTableViewCell">
@@ -1870,7 +1869,7 @@
                         <constraints>
                             <constraint firstItem="88E-ay-lgf" firstAttribute="top" secondItem="LfA-ea-6aG" secondAttribute="bottom" id="DaN-wt-UXq"/>
                             <constraint firstAttribute="trailing" secondItem="fCz-sd-cy7" secondAttribute="trailing" constant="42" id="Yd6-mK-RJN"/>
-                            <constraint firstItem="fCz-sd-cy7" firstAttribute="top" secondItem="DWi-8K-LW3" secondAttribute="top" constant="66" id="eCi-nh-9Ap"/>
+                            <constraint firstItem="fCz-sd-cy7" firstAttribute="top" secondItem="DWi-8K-LW3" secondAttribute="top" constant="76" id="eCi-nh-9Ap"/>
                             <constraint firstItem="fCz-sd-cy7" firstAttribute="leading" secondItem="DWi-8K-LW3" secondAttribute="leading" constant="42" id="hku-xC-Xeq"/>
                             <constraint firstItem="LfA-ea-6aG" firstAttribute="leading" secondItem="DWi-8K-LW3" secondAttribute="leading" id="xg6-1d-bbp"/>
                         </constraints>
@@ -1971,7 +1970,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvP-Ck-LKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5486" y="288"/>
+            <point key="canvasLocation" x="4202" y="272"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="kNB-qH-Wwa">
@@ -2083,7 +2082,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJK-ER-H3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896" y="288"/>
+            <point key="canvasLocation" x="2896" y="-588"/>
         </scene>
     </scenes>
     <resources>
@@ -2145,7 +2144,6 @@
         <image name="weigoumaitubiao.png" width="71" height="37"/>
         <image name="xiaojietiaozhuan.png" width="48" height="48"/>
         <image name="xiaoxi1.png" width="69" height="43"/>
-        <image name="xihai.png" width="80" height="76"/>
         <image name="xingxing,jiesuanzhong.png" width="31" height="29"/>
         <image name="yigouwu.png" width="31" height="30"/>
         <image name="yigouwu1.png" width="32" height="31"/>

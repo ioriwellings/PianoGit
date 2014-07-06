@@ -307,7 +307,7 @@
     _fetchedResultsController1 = [[NSFetchedResultsController alloc]
                                   initWithFetchRequest:fetchRequest
                                   managedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext
-                                  sectionNameKeyPath:@"sort"
+                                  sectionNameKeyPath:nil
                                   cacheName:nil];
     _fetchedResultsController1.delegate = self;
     
@@ -341,7 +341,7 @@
     _fetchedResultsController2 = [[NSFetchedResultsController alloc]
                                   initWithFetchRequest:fetchRequest
                                   managedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext
-                                  sectionNameKeyPath:@"sort"
+                                  sectionNameKeyPath:nil
                                   cacheName:nil];
     _fetchedResultsController2.delegate = self;
     
@@ -510,23 +510,37 @@
 -(void)scrollTableViewToMelody:(Melody*)melody type:(NSInteger)iSort
 {
     int i=0;
-    if(iSort == 3) // all
-    for (MelodyFavorite *obj in self.fetchedResultsController0.fetchedObjects)
+    if(iSort == 3) //all
     {
-        if(obj.melody == melody)
+        NSArray *array = self.fetchedResultsController0.fetchedObjects;
+        NSInteger sectionCount = [[self.fetchedResultsController0 sections] count];
+        NSInteger section = sectionCount-1;
+        for (MelodyFavorite *obj in array)
         {
-//            NSLog(@"%@ -- %d", melody, i);
-            break;
+            if([obj.sort intValue] !=  iSort)
+            {
+                continue;
+            }
+            if(obj.melody == melody)
+            {
+                //[self.tableView scrollRectToVisible:CGRectMake(0, i*134, self.tableView.frame.size.width, 134) animated:NO];
+                NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:section];
+                [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+                [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
+                break;
+            }
+            i++;
         }
-        i++;
     }
     
-    if(iSort == 2) // task
+    if(iSort == 2) //task
     for (MelodyFavorite *obj in self.fetchedResultsController1.fetchedObjects)
     {
         if(obj.melody == melody)
         {
-//            NSLog(@"%@ -- %d", melody, i);
+            NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+            [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
             break;
         }
         i++;
@@ -537,14 +551,12 @@
     {
         if(obj.melody == melody)
         {
-//            NSLog(@"%@ -- %d", melody, i);
+            NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+            [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
             break;
         }
         i++;
     }
-    [self.tableView scrollRectToVisible:CGRectMake(0, i*134, self.tableView.frame.size.width, 134) animated:NO];
-    NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:0];
-//    [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-    [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 @end
