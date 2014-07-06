@@ -109,6 +109,44 @@
 
 #pragma mark - UITableView data source and delegate methods
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if(self.btnScope.tag == 0 )
+        return 40;
+    else
+        return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
+    headView.backgroundColor = [UIColor colorWithWhite:0.01 alpha:0.02];
+    UILabel *view = [[UILabel alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    view.textAlignment = NSTextAlignmentCenter;
+    view.shadowColor = [UIColor lightGrayColor];
+    view.shadowOffset = CGSizeMake(1, 2);
+    //view.backgroundColor = [UIColor lightGrayColor];
+//    view.alpha = 0.9;
+
+    NSString *strSectionTitle = [[[self.fetchedResultsController0 sections] objectAtIndex:section] name];
+    if([strSectionTitle isEqualToString:@"1"])
+        view.text = @"最爱";
+    if([strSectionTitle isEqualToString:@"2"])
+        view.text = @"任务";
+    if([strSectionTitle isEqualToString:@"3"])
+    {
+        view.text = @"任务与喜爱";
+        view.frame = CGRectMake(tableView.frame.size.width-100, 0, 100, 30);
+    }
+    else
+    {
+        view.frame = CGRectMake(tableView.frame.size.width-40, 0, 40, 30);
+    }
+    [headView addSubview:view];
+    return headView;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if(self.btnScope.tag == 0)

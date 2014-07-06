@@ -1849,11 +1849,11 @@
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfG-bz-xbP" userLabel="Button - 喜爱">
                                 <rect key="frame" x="394" y="26" width="154" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="喜爱" backgroundImage="quanbuyeqian.png">
+                                <state key="normal" title="最爱" backgroundImage="quanbuyeqian.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="喜爱" backgroundImage="quanbuyeqian1.png">
+                                <state key="selected" title="最爱" backgroundImage="quanbuyeqian1.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
