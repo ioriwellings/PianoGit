@@ -177,6 +177,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     [self CreateEightNodes:symbols andTime:time];
     [self CreateVolumeNodes:symbols andTime:time];
     //add by sunlie end
+    [self SetBarSymbolWidth:symbols];
     
     if (lyrics != nil) {
         [self addLyrics:lyrics toStaffs:staffs];
@@ -336,8 +337,10 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 [n setNumber:[mn number]];
                 [n setDuration:[[midinotes get:i] startTime]-[mn startTime]];
                 [n setAddflag:1];
-                [notegroup add:n];
-                [notegroup sort:sortbynote];
+                if([n duration] < [time quarter]*2/3){
+                    [notegroup add:n];
+                    [notegroup sort:sortbynote];
+                }
             }
         }
         /* add by sunlie end */
@@ -2283,6 +2286,46 @@ static NSDictionary *fontAttr = NULL;
     }
 }
 /** add by sunlie end */
+
+
+-(void) SetBarSymbolWidth:(Array*)allsymbols {
+    
+    int width1 = 0;
+    int count = 0;
+    Array* barArray = [Array new:500];
+    
+    for (int i = 0; i < [allsymbols count]; i++) {
+        
+        Array* symbols = [allsymbols get:i];
+        
+        for(int j = 0; j < [symbols count]; j ++) {
+            
+            id <MusicSymbol> s = [symbols get:j];
+            width1 += [s width];
+            if ([[symbols get:j] isKindOfClass:[BarSymbol class]]) {
+                BarSymbol *bar = (BarSymbol*)s;
+                [bar setMeasureWidth:width1];
+                width1 = 0;
+                count++;
+                [barArray add:bar];
+            }
+        }
+    }
+    
+    for(int i = 0; i < count; i++) {
+        
+        if (i != count -1) {
+            BarSymbol *bar1 = [barArray get:i];
+            BarSymbol *bar2 = [barArray get:i+1];
+            [bar1 setMeasureWidth:[bar2 getMeasureWidth]];
+        } else {
+            BarSymbol *bar1 = [barArray get:i];
+            [bar1 setMeasureWidth:0];
+        }
+    }
+    
+    [barArray release];
+}
 
 -(Array*)getStaffs
 {
