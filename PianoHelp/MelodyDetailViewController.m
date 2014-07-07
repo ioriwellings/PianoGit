@@ -217,6 +217,11 @@
     }
     [player stop];
     option = 2;//重播
+    [((UIButton*)sender) setSelected:true];
+    
+    [self.btnXiaoJieTiaoZhuan setTitle:@"1" forState:UIControlStateNormal];
+    [self.sliderXiaoJie setValue:1];
+    
     [self.sfCountdownView start];
 }
 
@@ -229,6 +234,8 @@
         [player playPause];
         scrollView.hidden = NO;
         sheetmsic1.hidden = YES;
+        
+        [sheetmusic setNeedsDisplay];
     }
     else
     {
@@ -412,16 +419,10 @@
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
 
+    [sheetmusic setNeedsDisplay];
+    
     int ff = (right + good)/((right + good + wrong)*1.0) * 100;
-//    NSString *score = [NSString stringWithFormat:@"Score %i", ff];
-//    
-//    NSString *message = [NSString stringWithFormat:@"wrong:%d right:%d good:%d sum:%d",wrong, right, good, (wrong + right + good)];
-//    
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:score message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",
-//                              nil];
-//    [alertView show];
-//    
-//    NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
+    
     ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
     vc.iGood = good;
     vc.iRight = right;
@@ -449,23 +450,8 @@
         case 4://播放
             if (splitState == true) {
                 [player jumpMeasure:splitStart - 1];
-
-                if ([player PlayerState] == stopped) {
-                    [player playByType:self.iPlayMode];
-                }
-                else
-                {
-                    [player playPause];
-                }
-            }else{
-                if ([player PlayerState] == stopped) {
-                    [player playByType:self.iPlayMode];
-                }
-                else
-                {
-                    [player replayByType];
-                }
             }
+            [player playByType:self.iPlayMode];
             break;
     }
     

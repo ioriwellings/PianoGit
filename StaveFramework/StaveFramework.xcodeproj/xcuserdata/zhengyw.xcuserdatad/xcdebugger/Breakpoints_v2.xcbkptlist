@@ -45,7 +45,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
             endingLineNumber = "88"
-            landmarkName = "-playPause"
+            landmarkName = "-init"
             landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
@@ -61,7 +61,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "530"
             endingLineNumber = "530"
-            landmarkName = "-playPause"
+            landmarkName = "-clearJumpSection"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
