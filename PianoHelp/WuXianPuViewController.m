@@ -130,6 +130,11 @@
     [player stop];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kBackToQinfangNotification object:self userInfo:@{@"melody": self.melody} ];
+    if(self.isFromSearchViewController)
+    {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+    else
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

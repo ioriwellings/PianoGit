@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPuKu;
 @property (weak, nonatomic) IBOutlet UIView *toolBarView;
 @property (weak, nonatomic) Melody *melody;
+@property BOOL isFromSearchViewController;
 
 - (IBAction)btnPuKuClick:(UIButton *)sender;
 - (IBAction)btnPlayClick:(UIButton *)sender;
