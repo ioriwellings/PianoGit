@@ -82,6 +82,9 @@
     measureWidth = v;
 }
 
+-(int)getMeasureWidth {
+    return measureWidth;
+}
 
 -(void)setTrackNum:(int)num
 {
@@ -130,9 +133,8 @@
     [path stroke];
     
     
-//    repeatFlag = 3;
-//    [self drawRepeatStartAndEnd:context atY:ytop];
-//    [self drawRepeat3And4:context atY:ytop];
+    [self drawRepeatStartAndEnd:context atY:ytop];
+    [self drawRepeat3And4:context atY:ytop];
 }
 
 
@@ -142,20 +144,13 @@
     
     if (!(repeatFlag == 1 || repeatFlag == 2)) return;
     
-    int ystart, yend, xpos = 0;
-    if (tracknum == 0)
-        ystart = ytop - LineWidth;
-    else
-        ystart = 0;
+    int xpos = NoteWidth/2;
+    int ystart = ytop - LineWidth;
+    int yend = ytop + 4 * NoteHeight;
     
-    if (tracknum == (totaltracks-1))
-        yend = ytop + 4 * NoteHeight;
-    else
-        yend = straffHeight;
-    
-    if (repeatFlag == 1) {
+    if (repeatFlag == 2) {
         xpos = 0;
-    } else if (repeatFlag == 2) {
+    } else if (repeatFlag == 1) {
         xpos = NoteWidth;
     }
     
@@ -165,22 +160,31 @@
     [path moveToPoint:CGPointMake(xpos, ystart)];
     [path addLineToPoint:CGPointMake(xpos, yend)];
     [path stroke];
+    
+    int ypos1 = ytop +  LineSpace/2;
+    CGContextTranslateCTM (context, xpos , ypos1);
+    CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
+    CGContextTranslateCTM (context, -xpos , -ypos1);
+    
+    
+    int ypos2 = ytop + 2.5 * LineSpace;
+    CGContextTranslateCTM (context, xpos , ypos2);
+    CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
+    CGContextTranslateCTM (context, -xpos , -ypos2);
+    
 }
 
 -(void)drawRepeat3And4:(CGContextRef)context atY:(int)ytop {
     if (!(repeatFlag == 3 || repeatFlag == 4)) return;
     
-    int ystart, xpos = 0;
-    if (tracknum == 0)
-        ystart = ytop - LineWidth;
-    else
-        ystart = ytop - LineWidth;
-    
+    int ystart, xpos = NoteWidth/2;
+    ystart = NoteHeight;
+    CGPoint point = CGPointMake(NoteWidth, ystart+NoteHeight);
+
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(xpos, ystart)];
     [path addLineToPoint:CGPointMake(xpos, ystart + NoteHeight/2)];
-    [path setLineWidth:1];
     
     
     [path moveToPoint:CGPointMake(xpos + measureWidth, ystart)];
@@ -191,6 +195,15 @@
     [path addLineToPoint:CGPointMake(xpos + measureWidth, ystart)];
     
     [path stroke];
+    
+    
+    char buffer[100];
+    memset(buffer, 0x00, sizeof(buffer));
+    sprintf(buffer, "%d", repeatFlag-2);
+    CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+    CGContextSetTextDrawingMode(context, kCGTextFill);
+    CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+    CGContextShowTextAtPoint(context, point.x, point.y, buffer, strlen(buffer));
 }
 
 - (NSString*)description {

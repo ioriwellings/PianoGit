@@ -37,6 +37,7 @@
 -(void)setRepeatFlag:(int)r;
 /** add by sunlie end */
 -(void)setMeasureWidth:(int)v;
+-(int) getMeasureWidth;
 
 -(void)setTrackNum:(int)num;
 -(void)setTotalTracks:(int)value;
