@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19313850196AF01C00235F63 /* 08.儿童舞.mid in Resources */ = {isa = PBXBuildFile; fileRef = 1931384E196AF01C00235F63 /* 08.儿童舞.mid */; };
+		19313851196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid in Resources */ = {isa = PBXBuildFile; fileRef = 1931384F196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid */; };
 		890093C919510603001F33F4 /* loginBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 890093C619510603001F33F4 /* loginBg.jpg */; };
 		890093CA19510603001F33F4 /* shopBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 890093C719510603001F33F4 /* shopBg.jpg */; };
 		890093CB19510603001F33F4 /* spaceBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 890093C819510603001F33F4 /* spaceBg.jpg */; };
@@ -145,8 +147,6 @@
 		8994D155194BCEDA0016F806 /* 05.森林波尔卡.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D143194BCEDA0016F806 /* 05.森林波尔卡.mid */; };
 		8994D156194BCEDA0016F806 /* 06.拜尔-100.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D144194BCEDA0016F806 /* 06.拜尔-100.mid */; };
 		8994D157194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D145194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid */; };
-		8994D158194BCEDA0016F806 /* 08.儿童舞.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D146194BCEDA0016F806 /* 08.儿童舞.mid */; };
-		8994D159194BCEDA0016F806 /* 09.塔兰泰拉舞曲.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D147194BCEDA0016F806 /* 09.塔兰泰拉舞曲.mid */; };
 		8994D15A194BCEDA0016F806 /* 10.诙谐曲.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D148194BCEDA0016F806 /* 10.诙谐曲.mid */; };
 		8994D15B194BCEDA0016F806 /* 11.星光圆舞曲.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D149194BCEDA0016F806 /* 11.星光圆舞曲.mid */; };
 		8994D15C194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8994D14A194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid */; };
@@ -228,6 +228,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1931384E196AF01C00235F63 /* 08.儿童舞.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "08.儿童舞.mid"; sourceTree = "<group>"; };
+		1931384F196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "09.塔兰泰拉舞曲.mid"; sourceTree = "<group>"; };
 		890093C619510603001F33F4 /* loginBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginBg.jpg; sourceTree = "<group>"; };
 		890093C719510603001F33F4 /* shopBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shopBg.jpg; sourceTree = "<group>"; };
 		890093C819510603001F33F4 /* spaceBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceBg.jpg; sourceTree = "<group>"; };
@@ -387,8 +389,6 @@
 		8994D143194BCEDA0016F806 /* 05.森林波尔卡.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "05.森林波尔卡.mid"; sourceTree = "<group>"; };
 		8994D144194BCEDA0016F806 /* 06.拜尔-100.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "06.拜尔-100.mid"; sourceTree = "<group>"; };
 		8994D145194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "07.带我回弗吉尼故乡.mid"; sourceTree = "<group>"; };
-		8994D146194BCEDA0016F806 /* 08.儿童舞.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "08.儿童舞.mid"; sourceTree = "<group>"; };
-		8994D147194BCEDA0016F806 /* 09.塔兰泰拉舞曲.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "09.塔兰泰拉舞曲.mid"; sourceTree = "<group>"; };
 		8994D148194BCEDA0016F806 /* 10.诙谐曲.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "10.诙谐曲.mid"; sourceTree = "<group>"; };
 		8994D149194BCEDA0016F806 /* 11.星光圆舞曲.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "11.星光圆舞曲.mid"; sourceTree = "<group>"; };
 		8994D14A194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "12.幼儿拜尔-104课.mid"; sourceTree = "<group>"; };
@@ -658,6 +658,8 @@
 		8964EBD1194539CC00DBCED9 /* songs */ = {
 			isa = PBXGroup;
 			children = (
+				1931384E196AF01C00235F63 /* 08.儿童舞.mid */,
+				1931384F196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid */,
 				8994D13B194BC4330016F806 /* 01.波尔卡.mid */,
 				8994D140194BCEDA0016F806 /* 02.849-03.mid */,
 				8994D141194BCEDA0016F806 /* 03.淘气包.mid */,
@@ -665,8 +667,6 @@
 				8994D143194BCEDA0016F806 /* 05.森林波尔卡.mid */,
 				8994D144194BCEDA0016F806 /* 06.拜尔-100.mid */,
 				8994D145194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid */,
-				8994D146194BCEDA0016F806 /* 08.儿童舞.mid */,
-				8994D147194BCEDA0016F806 /* 09.塔兰泰拉舞曲.mid */,
 				8994D148194BCEDA0016F806 /* 10.诙谐曲.mid */,
 				8994D149194BCEDA0016F806 /* 11.星光圆舞曲.mid */,
 				8994D14A194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid */,
@@ -939,7 +939,6 @@
 				893CEFE1193A37630097681C /* fenxiang2.png in Resources */,
 				8977437219358B200005EF89 /* sangemoshi_bg.png in Resources */,
 				89429BC31566D8A70003A7D4 /* bangdingxuliehao.png in Resources */,
-				8994D159194BCEDA0016F806 /* 09.塔兰泰拉舞曲.mid in Resources */,
 				893CEFDA193A37630097681C /* chongzou.png in Resources */,
 				893CEFE3193A37630097681C /* huigu2.png in Resources */,
 				BA1079B21967FE4C0056F626 /* three.png in Resources */,
@@ -965,6 +964,7 @@
 				BA1079AD1967FE4C0056F626 /* bass.png in Resources */,
 				8994D152194BCEDA0016F806 /* 02.849-03.mid in Resources */,
 				BA1079A21967FE4C0056F626 /* niboyin.png in Resources */,
+				19313851196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid in Resources */,
 				89429BE51566D8A70003A7D4 /* tanzou.png in Resources */,
 				893CEFB6193A355A0097681C /* fanhui.png in Resources */,
 				8964EBF1194539CC00DBCED9 /* Easy_Songs__Jingle_Bells.mid in Resources */,
@@ -1018,7 +1018,6 @@
 				BA1079AE1967FE4C0056F626 /* eight.png in Resources */,
 				891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */,
 				8994D13C194BC4330016F806 /* 01.波尔卡.mid in Resources */,
-				8994D158194BCEDA0016F806 /* 08.儿童舞.mid in Resources */,
 				89429BD21566D8A70003A7D4 /* jiaocaiqupu.png in Resources */,
 				891290DF195904BA00B9B5B5 /* zunashi.png in Resources */,
 				8994D162194BCEDA0016F806 /* 18.水边的阿第丽娜.mid in Resources */,
@@ -1058,6 +1057,7 @@
 				89F5FB6319527DE900011C3A /* shopItem.png in Resources */,
 				89429BF41566D8A70003A7D4 /* yinguan.png in Resources */,
 				893CEFEB193A37630097681C /* peilianyin1.png in Resources */,
+				19313850196AF01C00235F63 /* 08.儿童舞.mid in Resources */,
 				89429BCF1566D8A70003A7D4 /* huadongshanchu2.png in Resources */,
 				893CEFE9193A37630097681C /* peilianyin,wusheng.png in Resources */,
 				BA1079A61967FE4C0056F626 /* shunboyin.png in Resources */,
