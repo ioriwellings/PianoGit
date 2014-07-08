@@ -449,23 +449,8 @@
         case 4://播放
             if (splitState == true) {
                 [player jumpMeasure:splitStart - 1];
-
-                if ([player PlayerState] == stopped) {
-                    [player playByType:self.iPlayMode];
-                }
-                else
-                {
-                    [player playPause];
-                }
-            }else{
-                if ([player PlayerState] == stopped) {
-                    [player playByType:self.iPlayMode];
-                }
-                else
-                {
-                    [player replayByType];
-                }
             }
+            [player playByType:self.iPlayMode];
             break;
     }
     
