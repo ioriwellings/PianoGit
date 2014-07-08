@@ -487,6 +487,7 @@
     [player setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
     [sheetmusic setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
 
+    [sheetmusic clearStaffs];
     [player playJumpSection:from];
     [sheetmusic setNeedsDisplay];
     [sheetmsic1 setNeedsDisplay];
