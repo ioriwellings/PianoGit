@@ -259,10 +259,6 @@
             if (![self judgeNote:nd.number]) {
                 return FALSE;
             }
-//            if (nd.number != [[notes get:i] number]) {
-//                return FALSE;
-//            }
-//            [notes remove:[notes get:i]];
         }
         [notes clear];
         return TRUE;
@@ -274,6 +270,7 @@
 -(BOOL)judgeNote:(int)number {
     for (int i = 0; i < [notes count]; i++) {
         if (number == [[notes get:i] number]) {
+            [notes remove:[notes get:i]];
             return TRUE;
         }
     }

@@ -987,7 +987,7 @@
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *data1 = [NSString stringWithFormat:@"ndata : %d | %d", notePlayed, velocity];
+        NSString *data1 = [NSString stringWithFormat:@"n[%d]", notePlayed];
         [self.midiData setText:data1];
     });
     
