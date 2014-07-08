@@ -144,14 +144,16 @@
     
     if (!(repeatFlag == 1 || repeatFlag == 2)) return;
     
-    int xpos = NoteWidth/2;
+    int xpos = 0, xpos1 = 0;
     int ystart = ytop - LineWidth;
     int yend = ytop + 4 * NoteHeight;
     
     if (repeatFlag == 2) {
         xpos = 0;
+        xpos1 = -NoteWidth;
     } else if (repeatFlag == 1) {
         xpos = NoteWidth;
+        xpos1 = NoteWidth;
     }
     
     
@@ -162,15 +164,15 @@
     [path stroke];
     
     int ypos1 = ytop +  LineSpace/2;
-    CGContextTranslateCTM (context, xpos , ypos1);
+    CGContextTranslateCTM (context, xpos1 , ypos1);
     CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
-    CGContextTranslateCTM (context, -xpos , -ypos1);
+    CGContextTranslateCTM (context, -xpos1 , -ypos1);
     
     
     int ypos2 = ytop + 2.5 * LineSpace;
-    CGContextTranslateCTM (context, xpos , ypos2);
+    CGContextTranslateCTM (context, xpos1 , ypos2);
     CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
-    CGContextTranslateCTM (context, -xpos , -ypos2);
+    CGContextTranslateCTM (context, -xpos1 , -ypos2);
     
 }
 
