@@ -2028,7 +2028,7 @@ static UIImage* chanyin = nil;
     }
     
     if (leftDirect == StemDown) {
-        ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight - 5;
+        ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight/3;
     } else if (leftDirect == StemUp) {
         ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2 + NoteHeight/3;
     }
@@ -2041,7 +2041,7 @@ static UIImage* chanyin = nil;
     } else if (jumpedFlag == 2) {
         
         if (leftDirect == StemDown) {
-            ypos -=  (NoteHeight+LineSpace);
+            ypos = ypos - 2*(NoteHeight+LineSpace);
             
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
@@ -2052,8 +2052,8 @@ static UIImage* chanyin = nil;
             CGContextTranslateCTM (context, 0 , -ypos);
             
         } else if (leftDirect == StemUp) {
-            
-            ypos = 2*ytop + [topStaff dist:[stem top]] * NoteHeight/2 + NoteHeight;
+
+            ypos = ypos + 2*(NoteHeight+LineSpace);
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextMoveToPoint(context, LineSpace/2, -2*LineSpace);
             CGContextAddLineToPoint(context, 1.5*LineSpace, -2*LineSpace);
