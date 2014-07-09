@@ -2386,7 +2386,7 @@ static UIImage* chanyin = nil;
             continue;
         }
         /* Get the x,y position to draw the note */
-        int ynote = ytop + [topstaff dist:(note->whitenote)] * noteHeight/2;
+        int ynote = ytop + [topstaff dist:(note->whitenote)] * NoteHeight/2;
        
         int xnote = LineSpace/4;
         if (!note->leftside)
@@ -2399,10 +2399,8 @@ static UIImage* chanyin = nil;
         CGContextTranslateCTM (context, (xnote + noteWidth/2 + 1), (ynote - LineWidth + noteHeight/2));
         CGContextRotateCTM(context, -45.0);
         
-//        UIColor *color = [UIColor blackColor];
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path setLineWidth:LineWidth];
-//        [color setFill];
         [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
                           CGRectMake(-noteWidth/2, -noteHeight/2, noteWidth, noteHeight-1)]];
         [path fill];
@@ -2410,7 +2408,6 @@ static UIImage* chanyin = nil;
         
         path = [UIBezierPath bezierPath];
         [path setLineWidth:LineWidth];
-//        [[UIColor blackColor] setStroke];
         [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
                           CGRectMake(-noteWidth/2, -noteHeight/2, noteWidth, noteHeight-1)]];
         [path stroke];
@@ -2430,7 +2427,7 @@ static UIImage* chanyin = nil;
         
         if (dist >= 2) {
             for (int i = 2; i <= dist; i += 2) {
-                y -= noteHeight;
+                y -= NoteHeight;
                 [path moveToPoint:CGPointMake(xnote - LineSpace/4, y)];
                 [path addLineToPoint:CGPointMake(xnote + noteWidth + LineSpace/4, y) ];
             }
@@ -2441,7 +2438,7 @@ static UIImage* chanyin = nil;
         dist = [bottom dist:(note->whitenote)];
         if (dist >= 2) {
             for (int i = 2; i <= dist; i+= 2) {
-                y += noteHeight;
+                y += NoteHeight;
                 [path moveToPoint:CGPointMake(xnote - LineSpace/4, y) ];
                 [path addLineToPoint:CGPointMake(xnote + noteWidth + LineSpace/4, y) ];
             }

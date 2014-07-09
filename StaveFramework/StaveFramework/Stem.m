@@ -714,6 +714,12 @@
 
 //add by zyw start
 
+-(int)calStemNoteHeigh: (WhiteNote*) end1 atY:(int) ytop withTopStaff:(WhiteNote *)topstaff {
+    
+    return  ytop + [topstaff dist:end1] * NoteHeight/2;
+}
+
+
 /** Draw the vertical line of the stem.
  * @param ytop The y location (in pixels) where the top of the staff starts.
  * @param topstaff  The note at the top of the staff.
@@ -724,6 +730,8 @@
     int noteWidth = NoteWidth*NUMERATOR+1;
     int noteHeight = NoteHeight*NUMERATOR;
     
+    int h = [self calStemNoteHeigh:end atY:ytop withTopStaff:topstaff];
+    
     if (side == LeftSide)
         xstart = LineSpace/4 + 1;
     else
@@ -731,9 +739,8 @@
     
 
     if (direction == StemUp) {
-        int y1 = ytop + [topstaff dist:bottom] * noteHeight/2 + noteHeight/4;
-        
-        int ystem = ytop + [topstaff dist:end] * noteHeight/2;
+        int y1 = ytop + [topstaff dist:bottom] * NoteHeight/2 + noteHeight/4;
+        int ystem = y1 - (y1 - h)*NUMERATOR;
         
         
         UIBezierPath *path = [UIBezierPath bezierPath];
@@ -743,14 +750,14 @@
         [path stroke];
     }
     else if (direction == StemDown) {
-        int y1 = ytop + [topstaff dist:top] * noteHeight/2 + noteHeight-1;
+        int y1 = ytop + [topstaff dist:top] * NoteHeight/2 + noteHeight;
         
         if (side == LeftSide)
             y1 = y1 - noteHeight/4;
         else
             y1 = y1 - noteHeight/2;
         
-        int ystem = ytop + [topstaff dist:end] * noteHeight/2 + noteHeight-1;
+        int ystem = y1 + (h - y1)*NUMERATOR;
         
         
         UIBezierPath *path = [UIBezierPath bezierPath];
@@ -768,9 +775,6 @@
     int noteWidth = NoteWidth*NUMERATOR+1;
     int noteHeight = NoteHeight*NUMERATOR;
     
-//    UIColor *color = [UIColor redColor];
-//    [color setFill];
-    
     int xstart = 0;
     int start1 = LineSpace/4 + 1;
     if (side == LeftSide)
@@ -778,8 +782,12 @@
     else
         xstart = LineSpace/4 + noteWidth;
     
+    
+    int h = [self calStemNoteHeigh:end atY:ytop withTopStaff:topstaff];
+
     if (direction == StemUp) {
-        int ystem = ytop + [topstaff dist:end] * noteHeight/2;
+        int y1 = ytop + [topstaff dist:bottom] * NoteHeight/2 + noteHeight/4;
+        int ystem = y1 - (y1 - h)*NUMERATOR;
         
         [path moveToPoint:CGPointMake(xstart, ystem)];
         [path addCurveToPoint:CGPointMake(xstart + LineSpace/2, ystem + noteHeight*3)
@@ -793,7 +801,8 @@
     }
     
     else if (direction == StemDown) {
-        int ystem = ytop + [topstaff dist:end]*noteHeight/2 + noteHeight;
+        int y1 = ytop + [topstaff dist:top] * NoteHeight/2 + noteHeight;
+        int ystem = y1 + (h - y1)*NUMERATOR;
         
         [path moveToPoint:CGPointMake(xstart, ystem)];
         [path addCurveToPoint:CGPointMake(xstart + LineSpace,ystem - noteHeight*2 - LineSpace/2)
@@ -834,10 +843,22 @@
         xstart2 = LineSpace/4 + noteWidth;
     
     
+    int h1 = [self calStemNoteHeigh:end atY:ytop withTopStaff:topstaff];
+    int h2 = [self calStemNoteHeigh:[pair end] atY:ytop withTopStaff:topstaff];
+    
     if (direction == StemUp) {
         int xend = width_to_pair + xstart2;
-        int ystart = ytop + [topstaff dist:end] * noteHeight/2;
-        int yend = ytop + [topstaff dist:[pair end]] * noteHeight/2;
+        
+        int ystart = ytop + [topstaff dist:bottom] * NoteHeight/2 + noteHeight/4;
+        int y2 = (ystart - h1)*NUMERATOR;
+        ystart -=y2;
+        
+
+        int yend = ytop + [topstaff dist:[pair bottom]] * NoteHeight/2 + noteHeight/4;
+        y2 = (yend - h2)*NUMERATOR;
+        yend -=y2;
+
+
         [path moveToPoint:CGPointMake(xstart, ystart)];
         [path addLineToPoint:CGPointMake(xend, yend)];
         
@@ -849,8 +870,15 @@
     
     else {
         int xend = width_to_pair + xstart2;
-        int ystart = ytop + [topstaff dist:end] * noteHeight/2 + noteHeight;
-        int yend = ytop + [topstaff dist:[pair end]] * noteHeight/2 + noteHeight;
+        int ystart = ytop + [topstaff dist:top] * NoteHeight/2 + noteHeight/4;
+        int y2 = (h1 - ystart)*NUMERATOR;
+        ystart +=y2;
+        
+        
+        int yend = ytop + [topstaff dist:[pair top]] * NoteHeight/2 + noteHeight/4;
+        y2 = (h2 - yend)*NUMERATOR;
+        yend +=y2;
+
         [path moveToPoint:CGPointMake(xstart, ystart)];
         [path addLineToPoint:CGPointMake(xend, yend)];
         
@@ -885,10 +913,21 @@
         xstart2 = LineSpace/4 + noteWidth;
     
     
+    int h1 = [self calStemNoteHeigh:end atY:ytop withTopStaff:topstaff];
+    int h2 = [self calStemNoteHeigh:[pairex end] atY:ytop withTopStaff:topstaff];
+    
     if (direction == StemUp) {
         int xend = width_to_pairex + xstart2;
-        int ystart = ytop + [topstaff dist:end] * noteHeight/2;
-        int yend = ytop + [topstaff dist:[pairex end]] * noteHeight/2;
+
+        int ystart = ytop + [topstaff dist:bottom] * NoteHeight/2 + noteHeight/4;
+        int y2 = (ystart - h1)*NUMERATOR;
+        ystart -=y2;
+        
+        
+        int yend = ytop + [topstaff dist:[pairex bottom]] * NoteHeight/2 + noteHeight/4;
+        y2 = (yend - h2)*NUMERATOR;
+        yend -=y2;
+        
         [path moveToPoint:CGPointMake(xstart, ystart)];
         [path addLineToPoint:CGPointMake(xend, yend)];
         
@@ -900,8 +939,17 @@
     
     else {
         int xend = width_to_pairex + xstart2;
-        int ystart = ytop + [topstaff dist:end] * noteHeight/2 + noteHeight;
-        int yend = ytop + [topstaff dist:[pair end]] * noteHeight/2 + noteHeight;
+
+        int ystart = ytop + [topstaff dist:top] * NoteHeight/2 + noteHeight/4;
+        int y2 = (h1 - ystart)*NUMERATOR;
+        ystart +=y2;
+        
+        
+        int yend = ytop + [topstaff dist:[pairex top]] * NoteHeight/2 + noteHeight/4;
+        y2 = (h2 - yend)*NUMERATOR;
+        yend +=y2;
+        
+        
         [path moveToPoint:CGPointMake(xstart, ystart)];
         [path addLineToPoint:CGPointMake(xend, yend)];
         
