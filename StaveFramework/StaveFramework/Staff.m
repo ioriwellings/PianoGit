@@ -382,25 +382,36 @@
         ystart = ytop - LineWidth;
     else
         ystart = 0;
-
+    
     if (tracknum == (totaltracks-1))
         yend = ytop + 4 * NoteHeight;
     else
         yend = height;
-
+    
     UIBezierPath *path = [UIBezierPath bezierPath];
     path.lineWidth = 0.5;//fix line width by yizhq
     [path moveToPoint:CGPointMake(LeftMargin, ystart)];
     [path addLineToPoint:CGPointMake(LeftMargin, yend)];
     
+    
+    UIBezierPath *path1 = [UIBezierPath bezierPath];
+    [path1 setLineWidth:0.5];
+    
+    
     if (isEnd) {
         [path moveToPoint:CGPointMake(width-5, ystart)];
         [path addLineToPoint:CGPointMake(width-5, yend)];
+        
+        [path1 setLineWidth:2];
     }
     
-    [path moveToPoint:CGPointMake(width-1, ystart)];
-    [path addLineToPoint:CGPointMake(width-1, yend)];
+    
     [path stroke];
+    
+    
+    [path1 moveToPoint:CGPointMake(width-1, ystart)];
+    [path1 addLineToPoint:CGPointMake(width-1, yend)];
+    [path1 stroke];
 }
 
 -(UIColor *)colorWithHexValue:(NSUInteger)hexValue alpha:(CGFloat)alpha
