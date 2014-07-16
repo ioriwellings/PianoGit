@@ -33,6 +33,11 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,6 +66,13 @@
     [self.btnScope setSelected:YES];
     self.btnModel = self.btnPlayModel;
     [self.btnPlayModel setSelected:YES];
+    
+    [self setNumberoOfEveryGroup];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setNumberoOfEveryGroup)
+                                                 name:NSManagedObjectContextDidSaveNotification
+                                               object:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -136,7 +148,7 @@
         view.text = @"任务";
     if([strSectionTitle isEqualToString:@"3"])
     {
-        view.text = @"任务与喜爱";
+        view.text = @"任务与最爱";
         view.frame = CGRectMake(tableView.frame.size.width-100, 0, 100, 30);
     }
     else
@@ -180,7 +192,9 @@
         if([sections count]>0)
             sectionInfo = [sections objectAtIndex:section];
         else
+        {
             return 0;
+        }
     }
     else if(self.btnScope.tag == 1)
     {
@@ -188,7 +202,9 @@
         if([sections count]>0)
             sectionInfo = [sections objectAtIndex:section];
         else
+        {
             return 0;
+        }
     }
     else if(self.btnScope.tag == 2)
     {
@@ -196,7 +212,9 @@
         if([sections count]>0)
             sectionInfo = [sections objectAtIndex:section];
         else
+        {
             return 0;
+        }
     }
     NSUInteger iResult = [sectionInfo numberOfObjects];
     return iResult;
@@ -283,6 +301,8 @@
             abort();
         }
     }
+    
+    [self setNumberoOfEveryGroup];
 }
 
 #pragma mark - Fetched results controller
@@ -290,7 +310,7 @@
 /*
  Returns the fetched results controller. Creates and configures the controller if necessary.
  */
-- (NSFetchedResultsController *)fetchedResultsController0
+- (NSFetchedResultsController *)fetchedResultsController0 //ALL
 {
     
     if (_fetchedResultsController0 != nil) {
@@ -318,7 +338,7 @@
     return _fetchedResultsController0;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController1
+- (NSFetchedResultsController *)fetchedResultsController1 //TASK
 {
     
     if (_fetchedResultsController1 != nil) {
@@ -352,7 +372,7 @@
     return _fetchedResultsController1;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController2
+- (NSFetchedResultsController *)fetchedResultsController2 //LIKE
 {
     
     if (_fetchedResultsController2 != nil) {
@@ -437,7 +457,8 @@
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
     
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
@@ -597,4 +618,150 @@
         i++;
     }
 }
+
+-(void)setNumberoOfEveryGroup
+{
+    [self setNumberOfAllKind];
+    [self setNumberOfTaskKind];
+    [self setNumberOfFavoKind];
+}
+
+-(void)setNumberOfAllKind
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSDictionaryResultType];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
+    NSArray *sortArray = @[sort];
+    [fetchRequest setSortDescriptors:sortArray];
+    
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"sort"];
+    NSExpression *countExpression = [NSExpression expressionForFunction:@"count:"
+                                                              arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    [expressionDescription setName:@"count"];
+    [expressionDescription setExpression:countExpression];
+    [expressionDescription setExpressionResultType:NSInteger32AttributeType];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    
+    NSError *error = nil;
+    NSArray *objects = [((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (objects == nil)
+    {
+        // Handle the error.
+    }
+    else
+    {
+        if ([objects count] > 0)
+        {
+            NSNumber *oNum = [[objects objectAtIndex:0] valueForKey:@"count"];
+            if([oNum intValue] > 0)
+                self.labNumberAll.text = [oNum stringValue];
+            else
+                self.labNumberAll.text = [NSString string];
+        }
+        else
+        {
+            self.labNumberAll.text = [NSString string];
+        }
+    }
+}
+
+-(void)setNumberOfTaskKind
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSDictionaryResultType];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
+    NSArray *sortArray = @[sort];
+    [fetchRequest setSortDescriptors:sortArray];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sort = 2 or sort = 3"];
+    [fetchRequest setPredicate:predicate];
+    
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"sort"];
+    NSExpression *countExpression = [NSExpression expressionForFunction:@"count:"
+                                                              arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    [expressionDescription setName:@"count"];
+    [expressionDescription setExpression:countExpression];
+    [expressionDescription setExpressionResultType:NSInteger32AttributeType];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    
+    NSError *error = nil;
+    NSArray *objects = [((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (objects == nil)
+    {
+        // Handle the error.
+    }
+    else
+    {
+        if ([objects count] > 0)
+        {
+            NSNumber *oNum = [[objects objectAtIndex:0] valueForKey:@"count"];
+            if([oNum intValue] > 0)
+                self.labNumberTask.text = [oNum stringValue];
+            else
+                self.labNumberTask.text = [NSString string];
+        }
+        else
+        {
+            self.labNumberTask.text = [NSString string];
+        }
+    }
+}
+
+-(void)setNumberOfFavoKind
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSDictionaryResultType];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
+    NSArray *sortArray = @[sort];
+    [fetchRequest setSortDescriptors:sortArray];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sort = 1 or sort = 3"];
+    [fetchRequest setPredicate:predicate];
+    
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"sort"];
+    NSExpression *countExpression = [NSExpression expressionForFunction:@"count:"
+                                                              arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    [expressionDescription setName:@"count"];
+    [expressionDescription setExpression:countExpression];
+    [expressionDescription setExpressionResultType:NSInteger32AttributeType];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    
+    NSError *error = nil;
+    NSArray *objects = [((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (objects == nil)
+    {
+        // Handle the error.
+    }
+    else
+    {
+        if ([objects count] > 0)
+        {
+            NSNumber *oNum = [[objects objectAtIndex:0] valueForKey:@"count"];
+            if([oNum intValue] > 0)
+                self.labNumberLike.text = [oNum stringValue];
+            else
+                self.labNumberLike.text = [NSString string];
+        }
+        else
+        {
+            self.labNumberLike.text = [NSString string];
+        }
+    }
+}
+
 @end

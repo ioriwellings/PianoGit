@@ -51,4 +51,8 @@
         self.btnRank.hidden = YES;
 }
 
+- (IBAction)btnPlay_click:(id)sender
+{
+//    self.selected = YES;
+}
 @end
