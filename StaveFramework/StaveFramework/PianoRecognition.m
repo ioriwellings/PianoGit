@@ -256,7 +256,6 @@
                 number += 12;
             }
             
-            NSLog(@"===he xuang nd number[%d]  notenum [%d]", number, [[notes get:i] number]);
             if (![self judgeNote:number]) {
                 return FALSE;
             }
@@ -306,7 +305,7 @@
     [notes clear];
 
     //评判完成
-    if ((currIndex+1) == [symbolDatas count] && endDelegate != nil) {
+    if (currIndex == [symbolDatas count] && endDelegate != nil) {
         [endDelegate endSongsResult:0 andRight:(int)[symbolDatas count] andWrong:0];
     }
 }
