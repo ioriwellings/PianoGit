@@ -1784,6 +1784,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="btnPlay_click:" destination="eov-7l-9gr" eventType="touchUpInside" id="coL-8o-8I5"/>
                                                         <segue destination="71i-e3-K5Z" kind="push" identifier="melodyDetailSegue" id="rXj-7E-tRe"/>
                                                     </connections>
                                                 </button>
@@ -1864,6 +1865,27 @@
                                 <rect key="frame" x="18" y="58" width="984" height="555"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-zC-wNJ" userLabel="labNumberAll">
+                                <rect key="frame" x="190" y="34" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYp-Cd-tTn" userLabel="labNumberTask">
+                                <rect key="frame" x="344" y="34" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAT-Iy-0ZU" userLabel="labNumberLike">
+                                <rect key="frame" x="501" y="34" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1881,6 +1903,9 @@
                         <outlet property="btnLove" destination="yfG-bz-xbP" id="kZl-5G-M9i"/>
                         <outlet property="btnPlayModel" destination="7ho-6K-yJF" id="pwZ-YR-h3q"/>
                         <outlet property="btnTask" destination="wT5-Oq-Fbf" id="Clu-FQ-78t"/>
+                        <outlet property="labNumberAll" destination="U4Y-zC-wNJ" id="c1o-aE-Ul3"/>
+                        <outlet property="labNumberLike" destination="GAT-Iy-0ZU" id="ajL-Jz-RPi"/>
+                        <outlet property="labNumberTask" destination="nYp-Cd-tTn" id="Uym-g5-L2R"/>
                         <outlet property="tableView" destination="fCz-sd-cy7" id="5sm-XZ-ulC"/>
                         <outlet property="toolBar" destination="swA-mN-ic9" id="WOE-1R-h26"/>
                     </connections>

@@ -382,17 +382,22 @@
         ystart = ytop - LineWidth;
     else
         ystart = 0;
-
+    
     if (tracknum == (totaltracks-1))
         yend = ytop + 4 * NoteHeight;
     else
         yend = height;
-
+    
     UIBezierPath *path = [UIBezierPath bezierPath];
     path.lineWidth = 0.5;//fix line width by yizhq
     [path moveToPoint:CGPointMake(LeftMargin, ystart)];
     [path addLineToPoint:CGPointMake(LeftMargin, yend)];
 
+    
+    UIBezierPath *path1 = [UIBezierPath bezierPath];
+    [path1 setLineWidth:0.5];
+    
+    
     
     UIBezierPath *path1 = [UIBezierPath bezierPath];
     [path1 setLineWidth:0.5];

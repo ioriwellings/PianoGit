@@ -195,18 +195,6 @@
  */
 -(BOOL) isChord:(int)len
 {
-//    int i = 0;
-//    while((i+1) <= len) {
-//      int end = [[notes get:i] startTime];
-//      int start = [[notes get:i+1] startTime];
-//      
-//        NSLog(@"start is [%d], end is [%d] quarter[%d]", start, end, quarter);
-//      if ((start-end) > quarter) {
-//          return FALSE;
-//      }
-//      i++;
-//    }
-    
     for(int i = 0; i < len-1; i++) {
         int end = [[notes get:i] startTime];
         int start = [[notes get:i+1] startTime];
@@ -226,15 +214,22 @@
 {
     NoteData nd;
     NoteData *noteData = [chord notedata];
+    int number = 0;
+    int flag = [chord eightFlag];
     
     if ([notes count] <= 0) return FALSE;
     NSLog(@"===judgeResult count = [%d]", count);
     if (count == 1) {  //单音符
         nd = noteData[0];
+        number = nd.number;
+        if (flag == 1) {//low eight
+            number -= 12;
+        } else if (flag == 2) {//high eight
+            number += 12;
+        }
         
-        
-        NSLog(@"===nd number[%d]  notenum0[%d]", nd.number, [[notes get:0] number]);
-        if (nd.number == [[notes get:0] number]) {
+        NSLog(@"===nd number[%d]  notenum0[%d]", number, [[notes get:0] number]);
+        if (number == [[notes get:0] number]) {
             [notes remove:[notes get:0]];
             return TRUE;
         } else {
@@ -254,9 +249,15 @@
         NSLog(@"is hexuang! 3");
         for (int i = 0; i < [chord notedata_len]; i++) {
             nd = noteData[i];
+            number = nd.number;
+            if (flag == 1) {//low eight
+                number -= 12;
+            } else if (flag == 2) {//high eight
+                number += 12;
+            }
             
-            NSLog(@"===he xuang nd number[%d]  notenum [%d]", nd.number, [[notes get:i] number]);
-            if (![self judgeNote:nd.number]) {
+            NSLog(@"===he xuang nd number[%d]  notenum [%d]", number, [[notes get:i] number]);
+            if (![self judgeNote:number]) {
                 return FALSE;
             }
         }

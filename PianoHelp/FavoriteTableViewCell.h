@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labScore;
 @property (weak, nonatomic) IBOutlet UIButton *btnRank;
 @property (weak, nonatomic) IBOutlet MelodyButton *btnPlay;
+- (IBAction)btnPlay_click:(id)sender;
 
 @end

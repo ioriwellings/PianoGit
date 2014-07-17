@@ -149,6 +149,8 @@
 - (IBAction)btnBuy_click:(id)sender {
 }
 
-- (IBAction)btnView_click:(id)sender {
+- (IBAction)btnView_click:(id)sender
+{
+//    self.selected = YES;
 }
 @end

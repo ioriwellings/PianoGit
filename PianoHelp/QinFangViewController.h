@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnAll;
 @property (weak, nonatomic) IBOutlet UIButton *btnLove;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *labNumberAll;
+@property (weak, nonatomic) IBOutlet UILabel *labNumberTask;
+@property (weak, nonatomic) IBOutlet UILabel *labNumberLike;
 @property (nonatomic) int type;
 
 - (IBAction)btnModel_click:(id)sender;
