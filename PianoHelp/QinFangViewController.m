@@ -42,9 +42,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     
-    switch(self.type ) {
+    switch(self.type )
+    {
         case 1://love
             [self btnScope_click:self.btnLove];
             self.btnScope = self.btnLove;
@@ -240,6 +240,7 @@
         melodyFavo = [self.fetchedResultsController2 objectAtIndexPath:indexPath];
     }
     [((FavoriteTableViewCell*)cell) updateContent:melodyFavo];
+    ((FavoriteTableViewCell*)cell).tableView = tableView;
     return cell;
 }
 

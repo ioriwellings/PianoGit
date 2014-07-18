@@ -89,6 +89,7 @@
     // Dequeue a cell from self's table view.
 	MelodyTableViewCell *cell = (MelodyTableViewCell*)[super tableView:tableView cellForRowAtIndexPath:indexPath];
     cell.isInSearch = YES;
+    cell.tableView = tableView;
     [cell updateContent:cell.melody];
     return (UITableViewCell*)cell;
 }

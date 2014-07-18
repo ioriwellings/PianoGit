@@ -28,6 +28,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    MelodyDetailViewController *vc = self.parentVC;
+    if(vc.iPlayMode == 1)
+    {
+        ((UIButton*)self.view.subviews[3]).hidden = YES;
+    }
+    if(0)
+    {
+        
+    }
+    else if(1)
+    {
+        self.imageLeftAndRight.highlighted = YES;
+    }
+    else if(0)
+    {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

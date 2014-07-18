@@ -732,18 +732,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="zuoyoushoubiankuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyX-s6-fLT">
-                                <rect key="frame" x="0.0" y="0.0" width="335" height="122"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="zuoyoushou123.png" translatesAutoresizingMaskIntoConstraints="NO" id="RRL-Hk-cNI">
-                                <rect key="frame" x="21" y="25" width="293" height="72"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfU-bo-qiN">
-                                <rect key="frame" x="12" y="52" width="70" height="44"/>
+                                <rect key="frame" x="20" y="9" width="77" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Left">
+                                <state key="normal" image="zuoshou.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -752,9 +744,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XN-dH-h1y">
-                                <rect key="frame" x="250" y="52" width="70" height="44"/>
+                                <rect key="frame" x="238" y="9" width="77" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Right">
+                                <state key="normal" image="youshou.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -763,9 +755,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-uA-RZE">
-                                <rect key="frame" x="113" y="52" width="108" height="44"/>
+                                <rect key="frame" x="129" y="9" width="77" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
+                                <state key="normal" image="shuangshou.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -773,12 +765,29 @@
                                     <action selector="btnLeftRight_onclick:" destination="KYj-Mt-FsF" eventType="touchUpInside" id="et6-eY-V3R"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xuanzequan.png" highlightedImage="xuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pfj-4m-ksG" userLabel="imageLeft">
+                                <rect key="frame" x="51" y="102" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xuanzequan.png" highlightedImage="xuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Xw-qW-Tfp" userLabel="imageLeftAndRight">
+                                <rect key="frame" x="164" y="102" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xuanzequan.png" highlightedImage="xuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="XQy-W4-7tX" userLabel="imageRight">
+                                <rect key="frame" x="276" y="102" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="335" height="122"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="imageLeft" destination="Pfj-4m-ksG" id="pPG-w5-jtl"/>
+                        <outlet property="imageLeftAndRight" destination="5Xw-qW-Tfp" id="Xkt-eR-mi9"/>
+                        <outlet property="imageRight" destination="XQy-W4-7tX" id="Ohk-dL-hFf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pk-pa-d1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -805,11 +814,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="60" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-180" maxY="0.0"/>
-                                <state key="normal" title="陪练音" image="peilianyin.png">
+                                <state key="normal" title="陪练音" image="yinliang.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" image="peilianyin,wusheng.png"/>
+                                <state key="selected" image="jingyin.png"/>
                                 <connections>
                                     <action selector="btnPeiLian:" destination="OlT-iO-pfT" eventType="touchUpInside" id="ZXW-ZX-M3L"/>
                                 </connections>
@@ -819,11 +828,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="60" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-180" maxY="0.0"/>
-                                <state key="normal" title="节拍音" image="peilianyin.png">
+                                <state key="normal" title="节拍音" image="yinliang.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" image="peilianyin,wusheng.png"/>
+                                <state key="selected" image="jingyin.png"/>
                                 <connections>
                                     <action selector="btnJiePai:" destination="OlT-iO-pfT" eventType="touchUpInside" id="Cyo-Za-ONx"/>
                                 </connections>
@@ -1060,6 +1069,7 @@
                                         </connections>
                                     </slider>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1024" id="4wp-0w-FRf"/>
                                     <constraint firstAttribute="height" constant="75" id="iDq-UR-uEr"/>
@@ -1279,7 +1289,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-Gx-Age" userLabel="labScore">
-                                <rect key="frame" x="422" y="174" width="181" height="122"/>
+                                <rect key="frame" x="342" y="174" width="352" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="160"/>
                                 <nil key="highlightedColor"/>
@@ -1927,7 +1937,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <rect key="frame" x="-3" y="-1" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
@@ -2132,12 +2142,11 @@
         <image name="huigu2.png" width="48" height="48"/>
         <image name="jiaocaishuben.png" width="401" height="549"/>
         <image name="jiesuanfenshuduihuakuang.png" width="539" height="485"/>
+        <image name="jingyin.png" width="25" height="26"/>
         <image name="jiucuo1.png" width="48" height="48"/>
         <image name="jiucuo2.png" width="48" height="48"/>
         <image name="kaishi.png" width="24" height="29"/>
         <image name="loginBg.jpg" width="1025" height="774"/>
-        <image name="peilianyin,wusheng.png" width="29" height="30"/>
-        <image name="peilianyin.png" width="29" height="30"/>
         <image name="peilianyin1.png" width="48" height="48"/>
         <image name="peilianyin2.png" width="48" height="48"/>
         <image name="peilianyinerjikuang.png" width="198" height="124"/>
@@ -2158,6 +2167,7 @@
         <image name="shiting2.png" width="48" height="48"/>
         <image name="shopBg.png" width="1024" height="768"/>
         <image name="shopItem.png" width="896" height="176"/>
+        <image name="shuangshou.png" width="77" height="85"/>
         <image name="spaceBg.jpg" width="1024" height="768"/>
         <image name="sudutubiao.png" width="49" height="49"/>
         <image name="tanzou1.png" width="61" height="61"/>
@@ -2170,8 +2180,12 @@
         <image name="xiaojietiaozhuan.png" width="48" height="48"/>
         <image name="xiaoxi1.png" width="69" height="43"/>
         <image name="xingxing,jiesuanzhong.png" width="31" height="29"/>
+        <image name="xuanzequan.png" width="15" height="15"/>
+        <image name="xuanzhong.png" width="15" height="15"/>
         <image name="yigouwu.png" width="31" height="30"/>
         <image name="yigouwu1.png" width="32" height="31"/>
+        <image name="yinliang.png" width="25" height="26"/>
+        <image name="youshou.png" width="77" height="85"/>
         <image name="yuansu.png" width="16" height="34"/>
         <image name="zanting.png" width="24" height="29"/>
         <image name="zhanting.png" width="96" height="133"/>
@@ -2179,10 +2193,9 @@
         <image name="zuiai1.png" width="32" height="30"/>
         <image name="zuiai2.png" width="32" height="30"/>
         <image name="zunashi.png" width="37" height="32"/>
+        <image name="zuoshou.png" width="77" height="85"/>
         <image name="zuoyoushou1.png" width="48" height="48"/>
-        <image name="zuoyoushou123.png" width="293" height="72"/>
         <image name="zuoyoushou2.png" width="48" height="48"/>
-        <image name="zuoyoushoubiankuang.png" width="335" height="122"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

@@ -398,11 +398,6 @@
     [path1 setLineWidth:0.5];
     
     
-    
-    UIBezierPath *path1 = [UIBezierPath bezierPath];
-    [path1 setLineWidth:0.5];
-    
-    
     if (isEnd) {
         [path moveToPoint:CGPointMake(width-5, ystart)];
         [path addLineToPoint:CGPointMake(width-5, yend)];
