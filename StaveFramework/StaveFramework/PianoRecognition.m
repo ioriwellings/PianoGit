@@ -222,6 +222,12 @@
     if (count == 1) {  //单音符
         nd = noteData[0];
         number = nd.number;
+        
+        if (nd.previous == 1) {
+            [notes remove:[notes get:0]];
+            return TRUE;
+        }
+        
         if (flag == 1) {//low eight
             number -= 12;
         } else if (flag == 2) {//high eight
@@ -256,6 +262,9 @@
                 number += 12;
             }
             
+            if (nd.previous == 1) {
+                continue;
+            }
             if (![self judgeNote:number]) {
                 return FALSE;
             }
