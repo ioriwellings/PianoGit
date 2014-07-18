@@ -300,19 +300,6 @@
         }
         midifile = [file retain];
     }
-    
-    
-    if (isLine) {
-        if (recognition != nil) {
-            [recognition release];
-        }
-        staffs = [sheet getStaffs];
-        
-        recognition = [[PianoRecognition alloc] initWithStaff:staffs WithtMidiFile:midifile andOptions:&options];
-        recognition.endDelegate = self.delegate;
-	    recognition.sheetShadeDelegate = self;
-    }
-    
 }
 
 /** If we're paused, reshade the sheet music and piano. */
@@ -454,7 +441,17 @@
         currentPulseTime = options.shifttime;
         prevPulseTime = options.shifttime - [[midifile time] quarter];
         
-//        staffs = [sheet getStaffs];
+        if (isLine) {
+            if (recognition != nil) {
+                [recognition release];
+            }
+            staffs = [sheet getStaffs];
+            
+            recognition = [[PianoRecognition alloc] initWithStaff:staffs WithtMidiFile:midifile andOptions:&options];
+            recognition.endDelegate = self.delegate;
+            recognition.sheetShadeDelegate = self;
+        }
+        
         [self createMidiFile];
         playstate = playing;
         (void)gettimeofday(&startTime, NULL);
