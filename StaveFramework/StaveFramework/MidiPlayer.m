@@ -582,15 +582,10 @@
         staffs = [sheet getStaffs];
         
         [self createMidiFile];
-//        [sound release];
-//        sound = [[NSSound alloc] initWithContentsOfFile:tempSoundFile byReference:NO];
-//        if ([sound respondsToSelector:@selector(setVolume:)] ) {
-//            [sound setVolume:[volumeBar doubleValue] / 100.0];
-//        }
-//        [sound play];
         /* add by yizhq start */
 //        [sound loadMIDIFile:[midifile filename]];
         [sound loadMIDIFile:tempSoundFile];
+                NSLog(@"playPause currentPulseTime is %f", currentPulseTime);
         [sound playPressed];
         playstate = playing;
         /* add by yizhq end */
@@ -874,6 +869,7 @@
         /* add by yizhq end */
         prevPulseTime = currentPulseTime;
         currentPulseTime = startPulseTime + msec * pulsesPerMsec;
+        NSLog(@"timer currentPulseTime is %f", currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];

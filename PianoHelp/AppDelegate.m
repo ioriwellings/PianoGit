@@ -522,6 +522,18 @@
     {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
+    
+    
+    melody = (Melody*)[NSEntityDescription insertNewObjectForEntityForName:@"Melody" inManagedObjectContext:self.managedObjectContext];
+    melody.category = cate_sub;
+    melody.author = @"识谱模式C大调";
+    melody.name = @"识谱模式C大调";
+    melody.melodyID = melody.name;
+    melody.filePath = @"识谱模式C大调.mid";
+    if(![self.managedObjectContext save:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
 }
 
 @end

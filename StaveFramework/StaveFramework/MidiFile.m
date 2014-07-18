@@ -1332,10 +1332,11 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
  *  Return true on success, and false on error.
  */
 +(BOOL)writeToFile:(NSString*)filename withEvents:(Array*)eventlists
-           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile {//modify by yizhq
+           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options{//modify by yizhq
     u_char buf[4096];
     const char *cfilename;
     int file, error;
+    int deltaTime; 
 
     cfilename = [filename cStringUsingEncoding:NSUTF8StringEncoding];
     file = open(cfilename, O_CREAT|O_TRUNC|O_WRONLY, 0644);
@@ -1370,6 +1371,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         for (int i = 0; i < [events count]; i++) {
             MidiEvent *mevent = [events get:i];
             int varlen = varlenToBytes([mevent deltaTime], buf, 0);
+            deltaTime = [mevent deltaTime];
             dowrite(file, buf, varlen, &error);
 
             if ([mevent eventFlag] == SysexEvent1 ||
@@ -1458,7 +1460,14 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     
     for(int sectionnum = 0; sectionnum < dataLen/7;sectionnum++)
     {
-        buf[0] = 0x00;
+//        if (options->shifttime != 0 && sectionnum == 0) {
+        NSLog(@"deltaTime is %i", deltaTime);
+        if (sectionnum == 0 && options->pauseTime != 0) {
+            buf[0] = deltaTime;
+        }else{
+            buf[0] = 0x00;
+        }
+
         if(sectionnum == 0)
             buf[1] = 0x99;
         else
@@ -1612,6 +1621,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             }
             else if (!foundEventAfterPause) {
                 [mevent setDeltaTime:([mevent startTime] - pauseTime)];
+                
                 [newevents add:mevent];
                 foundEventAfterPause = YES;
             }
@@ -1650,7 +1660,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         newevents = [self applyOptionsToEvents: options];
     }
     BOOL ret = [MidiFile writeToFile:destfile withEvents:newevents
-                             andMode:trackmode andQuarter:quarternote andMidifile:midifile];
+                             andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options];
     if (newevents != events) {
         [newevents release];
     }
