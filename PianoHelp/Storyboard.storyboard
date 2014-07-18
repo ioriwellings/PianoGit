@@ -1069,6 +1069,7 @@
                                         </connections>
                                     </slider>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1024" id="4wp-0w-FRf"/>
                                     <constraint firstAttribute="height" constant="75" id="iDq-UR-uEr"/>
