@@ -2034,6 +2034,7 @@ static NSDictionary *fontAttr = NULL;
                     continue;
                 }
                 
+                [[symbols get:k] setconnectNoteCnt:[[symbols get:k] notedata_len]];
                 for (int j = 0; j < [[symbols get:k] notedata_len]; j++) {
                     if(nds[j].next == 1)
                     {
@@ -2050,8 +2051,8 @@ static NSDictionary *fontAttr = NULL;
 
                                 [[symbols get:k] setConnectNoteWidth:c withNoteData:&nds[j] andNoteWidth:bi];
                             }else{
-                                [[symbols get:k] setConnectNoteWidth:c withNoteData:&nds[j] andNoteWidth:20];
-                                [c setConnectNoteWidth2:n andNoteWidth:-15];
+                                [[symbols get:k] setConnectNoteWidth:c withNoteData:&nds[j] andNoteWidth:50];
+                                [c setConnectNoteWidth2:n andNoteWidth:-40];
                             }
                         }
                         break;
