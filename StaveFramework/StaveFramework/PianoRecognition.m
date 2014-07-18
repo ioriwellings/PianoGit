@@ -228,10 +228,10 @@
             return TRUE;
         }
         
-        if (flag == 1) {//low eight
-            number -= 12;
-        } else if (flag == 2) {//high eight
+        if(flag > 0) {
             number += 12;
+        } else if (flag < 0) {
+            number -= 12;
         }
         
         NSLog(@"===nd number[%d]  notenum0[%d]", number, [[notes get:0] number]);
@@ -256,10 +256,11 @@
         for (int i = 0; i < [chord notedata_len]; i++) {
             nd = noteData[i];
             number = nd.number;
-            if (flag == 1) {//low eight
-                number -= 12;
-            } else if (flag == 2) {//high eight
+            
+            if(flag > 0) {
                 number += 12;
+            } else if (flag < 0) {
+                number -= 12;
             }
             
             if (nd.previous == 1) {
