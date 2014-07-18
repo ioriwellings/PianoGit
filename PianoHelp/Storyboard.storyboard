@@ -1289,7 +1289,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-Gx-Age" userLabel="labScore">
-                                <rect key="frame" x="422" y="174" width="181" height="122"/>
+                                <rect key="frame" x="342" y="174" width="352" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="160"/>
                                 <nil key="highlightedColor"/>
@@ -1933,11 +1933,11 @@
                         <viewControllerLayoutGuide type="bottom" id="MGY-cs-VLO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jZF-Rq-Mm1">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="843"/>
+                                <rect key="frame" x="-3" y="-1" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
@@ -2203,6 +2203,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="idR-LZ-S10"/>
+        <segue reference="rzz-nC-FZ7"/>
     </inferredMetricsTieBreakers>
 </document>
