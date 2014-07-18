@@ -880,7 +880,7 @@ static UIImage* chanyin = nil;
 /** add by yizhq start */
     [self drawResult:context andYtop:ytop];
     [self drawConnectNote1:context andYtop:ytop andTopStaff:topstaff];
-//    [self drawConnectNote2:context andYtop:ytop andTopStaff:topstaff];
+    [self drawConnectNote2:context andYtop:ytop andTopStaff:topstaff];
 //        drawArpeggio(canvas, paint, ytop, topstaff);
 /** add by yizhq end */
     
@@ -1754,6 +1754,7 @@ static UIImage* chanyin = nil;
 
 - (void) drawConnectNote1:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff
 {
+    int nodeHeight = 5;
    	if (_connectNoteWidth == -1)
         return;
     
@@ -1780,36 +1781,54 @@ static UIImage* chanyin = nil;
         direct = leftDirect;
     }
     
-//    CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor);
     CGContextSetLineWidth(context, 1.0);
     if (direct == StemDown) {
 
-        ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-        float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2);
-        float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-        float y = ynote - 20 + radius;
-        //NSLog(@"drawConnectNote1 - StemDown - x is %f y is %f radius is %f",x,y,radius);
-        CGContextBeginPath(context);
-        CGContextAddArc(context, x, y, radius, -45*PI/180, -135*PI/180, 1);
-        CGContextStrokePath(context);
+        for (int i = 0; i < _connectNodeCnt; i++) {
+ 
+            CGContextBeginPath(context);
+            if (i < 1) {
+                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
+                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
+                float y = ynote - 3 + radius - i*nodeHeight;
+                CGContextAddArc(context, x, y, radius, -60*PI/180, -120*PI/180, 1);
+            }else{
+                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
+                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
+                float y = ynote - sqrt(radius*radius/2) + i*nodeHeight;
+                CGContextAddArc(context, x, y, radius, 60* PI/180, 120*PI/180, 0);
+            }
+            CGContextStrokePath(context);
+        }
+
 
     } else if (direct == StemUp) {
 
-        ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-        float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2);
-        float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-        float y = ynote - sqrt(radius*radius/2) + 10;
-        //NSLog(@"drawConnectNote1 - StemUp - x is %f y is %f radius is %f width %i",x,y,radius,_connectNoteWidth);
-        CGContextBeginPath(context);
-        CGContextAddArc(context, x, y, radius, 45* PI/180, 135*PI/180, 0);
-        CGContextStrokePath(context);
+        for (int i = 0; i < _connectNodeCnt; i++) {
+            CGContextBeginPath(context);
+            if (i < 1) {
+                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
+                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
+                float y = ynote - sqrt(radius*radius/2) + i*nodeHeight;
+                CGContextAddArc(context, x, y, radius, 60* PI/180, 120*PI/180, 0);
+            }else{
+                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
+                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
+                float y = ynote - 3 + radius - i*nodeHeight;
+                CGContextAddArc(context, x, y, radius, -60*PI/180, -120*PI/180, 1);
+            }
+            CGContextStrokePath(context);
+        }
     }
-    
- //  CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
 }
 
 - (void) drawConnectNote2:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff
 {
+    int nodeHeight = 5;
     if (_connectNoteWidth2 == -1)
         return;
     
@@ -1824,32 +1843,30 @@ static UIImage* chanyin = nil;
         leftDirect = [stem direction];
     }
     
-//    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetLineWidth(context, 1.0);
     
     if (leftDirect == StemDown) {
-        
-//        ynote = ytop + [topStaff dist:_connectNote2->whitenote] * [SheetMusic getNoteHeight]/2;
-        ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-        float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
-        float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
-        float y = ynote-10 + radius;
-//        NSLog(@"drawConnectNote2 - StemDown - x is %f y is %f radius is %f",x,y,radius);
-        CGContextBeginPath(context);
-        CGContextAddArc(context, x, y, radius, 15*PI/180, 165*PI/180, 0);
-        CGContextStrokePath(context);
+        for (int i = 0; i < _connectNodeCnt; i++) {
+
+            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+            float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
+            float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
+            float y = ynote + radius - 5 + i*nodeHeight;
+            CGContextBeginPath(context);
+            CGContextAddArc(context, x, y, radius, -35*PI/180, -145*PI/180, 1);
+            CGContextStrokePath(context);
+        }
     } else if (leftDirect == StemUp) {
-//        ynote = ytop + [topStaff dist:_connectNote2->whitenote] * [SheetMusic getNoteHeight]/2;
-        ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-        float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
-        float x = _connectNoteWidth2/2 + - 0 + [SheetMusic getNoteWidth]/2;
-        float y = ynote - 10 + radius;
-//        NSLog(@"drawConnectNote2 - StemUp - x is %f y is %f radius is %f",x,y,radius);
-        CGContextBeginPath(context);
-        CGContextAddArc(context, x, y, radius, -15*PI/180, -165*PI/180, 1);
-        CGContextStrokePath(context);
+        for (int i = 0; i < _connectNodeCnt; i++) {
+            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+            float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
+            float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
+            float y = ynote + radius - 40 - i*nodeHeight;
+            CGContextBeginPath(context);
+            CGContextAddArc(context, x, y, radius, 35*PI/180, 145*PI/180, 0);
+            CGContextStrokePath(context);
+        }
     }
-//    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
 }
 
 -(void)setStaffNo:(NSString *)staffNo
@@ -1871,6 +1888,10 @@ static UIImage* chanyin = nil;
 -(int)getNotedataLength
 {
     return notedata_len;
+}
+
+-(void)setconnectNoteCnt:(int)cnt{
+    _connectNodeCnt = cnt;
 }
 
 -(void)setConnectNoteWidth:(ChordSymbol*) chordSymbol withNoteData:(NoteData*)note andNoteWidth:(int)connectNoteWidth
