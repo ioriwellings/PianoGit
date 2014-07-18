@@ -1811,6 +1811,7 @@ static UIImage* chanyin = nil;
 
 - (void) drawConnectNote2:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff
 {
+    int nodeHeight = 5;
     if (_connectNoteWidth2 == -1)
         return;
     
@@ -1828,21 +1829,26 @@ static UIImage* chanyin = nil;
     CGContextSetLineWidth(context, 1.0);
     
     if (leftDirect == StemDown) {
-        ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-        float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
-        float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
-        float y = ynote-10 + radius;
-        CGContextBeginPath(context);
-        CGContextAddArc(context, x, y, radius, 15*PI/180, 165*PI/180, 0);
-        CGContextStrokePath(context);
+        for (int i = 0; i < _connectNodeCnt; i++) {
+
+            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+            float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
+            float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
+            float y = ynote - 10 + radius - 20 + i*nodeHeight;
+            CGContextBeginPath(context);
+            CGContextAddArc(context, x, y, radius, -15*PI/180, -165*PI/180, 1);
+            CGContextStrokePath(context);
+        }
     } else if (leftDirect == StemUp) {
-        ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-        float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
-        float x = _connectNoteWidth2/2 + - 0 + [SheetMusic getNoteWidth]/2;
-        float y = ynote - 10 + radius;
-        CGContextBeginPath(context);
-        CGContextAddArc(context, x, y, radius, -15*PI/180, -165*PI/180, 1);
-        CGContextStrokePath(context);
+        for (int i = 0; i < _connectNodeCnt; i++) {
+            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
+            float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
+            float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
+            float y = ynote - 10 + radius + 20 - i*nodeHeight;
+            CGContextBeginPath(context);
+            CGContextAddArc(context, x, y, radius, 15*PI/180, 165*PI/180, 0);
+            CGContextStrokePath(context);
+        }
     }
 }
 
