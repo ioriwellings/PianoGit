@@ -1788,9 +1788,9 @@ static UIImage* chanyin = nil;
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
             float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2);
             float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-            float y = ynote - 20 + radius - i*nodeHeight;
+            float y = ynote - 3 + radius - i*nodeHeight;
             CGContextBeginPath(context);
-            CGContextAddArc(context, x, y, radius, -45*PI/180, -135*PI/180, 1);
+            CGContextAddArc(context, x, y, radius, -55*PI/180, -125*PI/180, 1);
             CGContextStrokePath(context);
         }
 
@@ -1801,9 +1801,9 @@ static UIImage* chanyin = nil;
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
             float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2);
             float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-            float y = ynote - sqrt(radius*radius/2) + 10 + i*nodeHeight;
+            float y = ynote - sqrt(radius*radius/2) + i*nodeHeight;
             CGContextBeginPath(context);
-            CGContextAddArc(context, x, y, radius, 45* PI/180, 135*PI/180, 0);
+            CGContextAddArc(context, x, y, radius, 55* PI/180, 125*PI/180, 0);
             CGContextStrokePath(context);
         }
     }
@@ -1834,9 +1834,9 @@ static UIImage* chanyin = nil;
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
             float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
             float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
-            float y = ynote - 10 + radius - 20 + i*nodeHeight;
+            float y = ynote + radius - 5 + i*nodeHeight;
             CGContextBeginPath(context);
-            CGContextAddArc(context, x, y, radius, -15*PI/180, -165*PI/180, 1);
+            CGContextAddArc(context, x, y, radius, -35*PI/180, -145*PI/180, 1);
             CGContextStrokePath(context);
         }
     } else if (leftDirect == StemUp) {
@@ -1844,9 +1844,9 @@ static UIImage* chanyin = nil;
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
             float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
             float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
-            float y = ynote - 10 + radius + 20 - i*nodeHeight;
+            float y = ynote + radius - 40 - i*nodeHeight;
             CGContextBeginPath(context);
-            CGContextAddArc(context, x, y, radius, 15*PI/180, 165*PI/180, 0);
+            CGContextAddArc(context, x, y, radius, 35*PI/180, 145*PI/180, 0);
             CGContextStrokePath(context);
         }
     }
