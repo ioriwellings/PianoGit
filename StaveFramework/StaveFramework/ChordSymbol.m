@@ -1781,7 +1781,7 @@ static UIImage* chanyin = nil;
         direct = leftDirect;
     }
     
-    CGContextSetLineWidth(context, 3.0);
+    CGContextSetLineWidth(context, 1.0);
     if (direct == StemDown) {
 
         for (int i = 0; i < _connectNodeCnt; i++) {
