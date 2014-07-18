@@ -415,23 +415,27 @@
 
 -(void)endSongsResult:(int)good andRight:(int)right andWrong:(int)wrong
 {
-    [self hiddenMenuAndToolBar];
-    scrollView.hidden = NO;
-    sheetmsic1.hidden = YES;
-    
-    [sheetmusic setNeedsDisplay];
-//    NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
-    int ff = (right + good)/((right + good + wrong)*1.0) * 100;
-    
-    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-    vc.iGood = good;
-    vc.iRight = right;
-    vc.iWrong = wrong;
-    vc.iScore = ff;
-    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self presentViewController:vc animated:YES completion:NULL];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [player stop];
+        [self hiddenMenuAndToolBar];
+        scrollView.hidden = NO;
+        sheetmsic1.hidden = YES;
+        
+        [sheetmusic setNeedsDisplay];
+        //    NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
+        int ff = (right + good)/((right + good + wrong)*1.0) * 100;
+        
+        ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+        vc.iGood = good;
+        vc.iRight = right;
+        vc.iWrong = wrong;
+        vc.iScore = ff;
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self presentViewController:vc animated:YES completion:NULL];
+    });
 }
 
 #pragma mark -
