@@ -111,13 +111,27 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     //        time = options->time;
     //    }
     /** delete by sunlie end */
-    if (options->key == -1) {
-        mainkey = [self getKeySignature:tracks];
+    /** modify by sunlie start */
+    if ([[file tonearray] count] > 0) {
+        int tmpkey = [[[file tonearray] get:0] tone];
+        if (tmpkey >= 0) {
+            mainkey = [[KeySignature alloc] initWithSharps:tmpkey andFlats:0];
+        }
+        else {
+            mainkey = [[KeySignature alloc] initWithSharps:0 andFlats:-tmpkey];
+        }
     }
     else {
-        mainkey = [[KeySignature alloc] initWithNotescale:options->key];
+        if (options->key == -1) {
+            mainkey = [self getKeySignature:tracks];
+        }
+        else {
+            mainkey = [[KeySignature alloc] initWithNotescale:options->key];
+        }
+        numtracks = [tracks count];
     }
     numtracks = [tracks count];
+    /** modify by sunlie end */
     
     int lastStarttime = [file endTime] + options->shifttime;
     
@@ -310,7 +324,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         [notegroup clear];
         [notegroup add:[midinotes get:i]];
         i++;
-        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/16 && duration >= [time quarter]/16) {
+        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/12 && duration >= [time quarter]/16) {
             [notegroup add:[midinotes get:i]];
             i++;
         }
@@ -451,6 +465,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             if ([chord startTime] >= [cd7 starttime] && [chord endTime] < [cd7 endtime]) {
                 [chord setYiFlag:1];
             } else if ([chord startTime] > [cd7 starttime] && [chord endTime] >= [cd7 endtime]) {
+                [chord setStartTime:[chord startTime]+5];
                 int k = [chords count]-1;
                 while (k>=0 && [[chords get:k] yiFlag] == 1) {
                     [[chords get:k] setStartTime:[chord startTime]-1];
@@ -635,26 +650,26 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             [bar release];
             
             /* add by sunlie start */
-            if (starttime!=0 && [[chords get:i] startTime] >= starttime) {
-                BeatSignature *b = [barray get:j];
-                TimeSigSymbol* ts = [[TimeSigSymbol alloc]
-                                     initWithNumer:[b numerator] andDenom:[b denominator] andStartTime:[b starttime]];
-                bar = [[BarSymbol alloc] initWithTime:measuretime];
-                [symbols add:bar];
-                [symbols add:ts];
-                [time setNumerator:[b numerator]];
-                [time setDenominator:[b denominator]];
-                [time measure];
-                j++;
-                if (j<size) {
-                    starttime = [[beatarray get:j] starttime];
-                } else {
-                    starttime = 0;
-                }
-                [bar release];
-                [b release];
-                [ts release];
-            }
+//            if (starttime!=0 && [[chords get:i] startTime] >= starttime) {
+//                BeatSignature *b = [barray get:j];
+//                TimeSigSymbol* ts = [[TimeSigSymbol alloc]
+//                                     initWithNumer:[b numerator] andDenom:[b denominator] andStartTime:[b starttime]];
+//                bar = [[BarSymbol alloc] initWithTime:measuretime];
+//                [symbols add:bar];
+//                [symbols add:ts];
+//                [time setNumerator:[b numerator]];
+//                [time setDenominator:[b denominator]];
+//                [time measure];
+//                j++;
+//                if (j<size) {
+//                    starttime = [[beatarray get:j] starttime];
+//                } else {
+//                    starttime = 0;
+//                }
+//                [bar release];
+//                [b release];
+//                [ts release];
+//            }
             /* add by sunlie end */
             
             measuretime += [time measure];
@@ -669,26 +684,26 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     while (measuretime < lastStartTime) {
         
         /* add by sunlie start */
-        if (starttime!=0 && measuretime >= starttime) {
-            BeatSignature *b = [barray get:j];
-            TimeSigSymbol* ts = [[TimeSigSymbol alloc]
-                                 initWithNumer:[b numerator] andDenom:[b denominator] andStartTime:[b starttime]];
-            bar = [[BarSymbol alloc] initWithTime:measuretime];
-            [symbols add:bar];
-            [symbols add:ts];
-            [time setNumerator:[b numerator]];
-            [time setDenominator:[b denominator]];
-            [time measure];
-            j++;
-            if (j<size) {
-                starttime = [[beatarray get:j] starttime];
-            } else {
-                starttime = 0;
-            }
-            [bar release];
-            [b release];
-            [ts release];
-        }
+//        if (starttime!=0 && measuretime >= starttime) {
+//            BeatSignature *b = [barray get:j];
+//            TimeSigSymbol* ts = [[TimeSigSymbol alloc]
+//                                 initWithNumer:[b numerator] andDenom:[b denominator] andStartTime:[b starttime]];
+//            bar = [[BarSymbol alloc] initWithTime:measuretime];
+//            [symbols add:bar];
+//            [symbols add:ts];
+//            [time setNumerator:[b numerator]];
+//            [time setDenominator:[b denominator]];
+//            [time measure];
+//            j++;
+//            if (j<size) {
+//                starttime = [[beatarray get:j] starttime];
+//            } else {
+//                starttime = 0;
+//            }
+//            [bar release];
+//            [b release];
+//            [ts release];
+//        }
         /* add by sunlie end */
         
         bar = [[BarSymbol alloc] initWithTime:measuretime];
@@ -807,6 +822,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 case Half:
                 case Quarter:
                 case Eighth:
+                case Sixteenth:
+                case ThirtySecond:
                     r1 = [[RestSymbol alloc] initWithTime:start andDuration:nd];
                     [result add:r1];
                     [r1 release];
@@ -878,6 +895,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         case Half:
         case Quarter:
         case Eighth:
+        case Sixteenth:
+        case ThirtySecond:
             r1 = [[RestSymbol alloc] initWithTime:start andDuration:dur];
             [result add:r1];
             [r1 release];
@@ -938,23 +957,46 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                   andTime:(TimeSignature*)time {
     
     Array* result = [Array new:[symbols count]];
-    int prevclef = [clefs getClef:0];
-    int i;
+//    int prevclef = [clefs getClef:0];
+//    int i;
+//    for (i = 0; i < [symbols count]; i++) {
+//        id <MusicSymbol> symbol = [symbols get:i];
+//        /* A BarSymbol indicates a new measure */
+//        if ([symbol isKindOfClass:[BarSymbol class]]) {
+//            int clef = [clefs getClef:[symbol startTime]];
+//            if (clef != prevclef) {
+//                ClefSymbol *clefsym = [[ClefSymbol alloc]
+//                                       initWithClef:clef andTime:[symbol startTime]-1 isSmall:YES];
+//                [result add:clefsym];
+//                [clefsym release];
+//            }
+//            prevclef = clef;
+//        }
+//        [result add:symbol];
+//    }
+    
+    int i,j = 1;
+    ClefData* clefsData;
+    if (j<[clefs getClefsLen]) {
+        clefsData = [clefs getClefData];
+    }
+    
     for (i = 0; i < [symbols count]; i++) {
         id <MusicSymbol> symbol = [symbols get:i];
-        /* A BarSymbol indicates a new measure */
-        if ([symbol isKindOfClass:[BarSymbol class]]) {
-            int clef = [clefs getClef:[symbol startTime]];
-            if (clef != prevclef) {
-                ClefSymbol *clefsym = [[ClefSymbol alloc]
-                                       initWithClef:clef andTime:[symbol startTime]-1 isSmall:YES];
-                [result add:clefsym];
-                [clefsym release];
+        if (([symbol isKindOfClass:[BarSymbol class]] || [symbol isKindOfClass:[ChordSymbol class]]) &&  j<[clefs getClefsLen]
+            && [symbol startTime] >= clefsData[j].starttime && clefsData[j].starttime!=0) {
+            ClefSymbol *clefsym = [[ClefSymbol alloc]
+                                   initWithClef:clefsData[j].clef andTime:[symbol startTime]-1 isSmall:YES];
+            [result add:clefsym];
+            [clefsym release];            
+            if (clefsData[j].endtime == 0) {
+                j++;
             }
-            prevclef = clef;
+            j++;
         }
         [result add:symbol];
     }
+
     return result;
 }
 

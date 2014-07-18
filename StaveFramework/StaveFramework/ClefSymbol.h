@@ -23,6 +23,7 @@ enum {
     BOOL smallsize;      /** True if this is a small clef, false otherwise */
     int clef;            /** The clef, Clef_Treble or Clef_Bass */
     int width;
+    int endtime;
 }
 
 -(id)initWithClef:(int)c andTime:(int)t isSmall:(BOOL)small;

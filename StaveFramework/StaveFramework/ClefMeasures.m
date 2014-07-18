@@ -69,38 +69,95 @@
     
     int clef = mainclef;
     
-    clefs = [IntArray new:([notes count] / 10) + 1];
+//    clefs = [IntArray new:([notes count] / 10) + 1];
+    clefs = (ClefData*) calloc([clist count]*2+1, sizeof(ClefData));       /** modify by sunlie */
     
     /** add by sunlie start */
-    int mcount = t/m;
-    int j, k = 0;
-
-    if ([clist count] <= 0) {
-        for (j = 0; j < mcount; j++) {
-            [clefs add:clef];
-        }
-    } else {
-        ControlData *cdata = [clist get:k];
-
-        for (j = 0; j < mcount; j++) {
-            if (([cdata endtime] + [time quarter])/m <= j) {
-                k++;
-                if (k < [clist count]) {
-                    cdata = [clist get:k];
+    int k = 0;
+    ClefData *clefdata;
+    if ([clist count] > 0 && [[clist get:0] starttime] == 0) {
+        clefsLen = [clist count]*2;
+        if ([clist count] > 0) {
+            for (k = 0; k<[clist count]; k++) {
+                ControlData *cdata = [clist get:k];
+                if(k > 0) {
+                    clefdata = &(clefs[2*k-1]);
+                    clefdata->endtime = [cdata starttime];
                 }
-            }
-            if (([cdata starttime] + [time quarter])/m <= j && ([cdata endtime] + [time quarter])/m > j) {
+                clefdata = &(clefs[2*k]);
                 if (mainclef == Clef_Treble) {
-                    clef = Clef_Bass;
+                    clefdata->clef = Clef_Bass;
                 } else if(mainclef == Clef_Bass) {
-                    clef = Clef_Treble;
+                    clefdata->clef = Clef_Treble;
                 }
-            } else {
-                clef = mainclef;
+                clefdata->starttime = [cdata starttime];
+                clefdata->endtime = [cdata endtime];
+                clefdata = &(clefs[2*k+1]);
+                clefdata->clef = mainclef;
+                clefdata->starttime = [cdata endtime];
             }
-            [clefs add:clef];
         }
     }
+    else if ([clist count] > 0) {
+        clefsLen = [clist count]*2+1;
+        clefdata = &(clefs[0]);
+        clefdata->clef = mainclef;
+        clefdata->starttime = 0;
+        
+        if ([clist count] > 0) {
+            for (k = 0; k<[clist count]; k++) {
+                ControlData *cdata = [clist get:k];
+                clefdata = &(clefs[2*k]);
+                clefdata->endtime = [cdata starttime];
+                clefdata = &(clefs[2*k+1]);
+                if (mainclef == Clef_Treble) {
+                    clefdata->clef = Clef_Bass;
+                } else if(mainclef == Clef_Bass) {
+                    clefdata->clef = Clef_Treble;
+                }
+                clefdata->starttime = [cdata starttime];
+                clefdata->endtime = [cdata endtime];
+                clefdata = &(clefs[2*(k+1)]);
+                clefdata->clef = mainclef;
+                clefdata->starttime = [cdata endtime];
+            }
+        }
+    }
+    else {
+        clefsLen = 1;
+        clefdata = &(clefs[0]);
+        clefdata->clef = mainclef;
+        clefdata->starttime = 0;
+    }
+    
+
+
+//    if ([clist count] <= 0) {
+//        for (j = 0; j < mcount; j++) {
+//            [clefs add:clef];
+//        }
+//    } else {
+//        ControlData *cdata = [clist get:k];
+//
+//        for (j = 0; j < mcount; j++) {
+//            if (([cdata endtime] + [time quarter])/m <= j) {
+//                k++;
+//                if (k < [clist count]) {
+//                    cdata = [clist get:k];
+//                }
+//            }
+//            if (([cdata starttime] + [time quarter])/m <= j && ([cdata endtime] + [time quarter])/m > j) {
+//                if (mainclef == Clef_Treble) {
+//                    clef = Clef_Bass;
+//                } else if(mainclef == Clef_Bass) {
+//                    clef = Clef_Treble;
+//                }
+//            } else {
+//                clef = mainclef;
+//            }
+//            [clefs add:clef];
+//        }
+//    }
     /** add by sunlie end */
 
     /** delete by sunlie start */
@@ -147,19 +204,35 @@
 }
 
 - (void)dealloc {
-    [clefs release];
+    free(clefs);
+//    [clefs release];
     [super dealloc];
+}
+
+-(int)getClefsLen {
+    return clefsLen;
+}
+
+-(ClefData*)getClefData {
+    return clefs;
 }
 
 /** Given a time (in pulses), return the clef used for that measure. */
 - (int)getClef:(int)starttime {
     /* If the time exceeds the last measure, return the last measure */
-    if (starttime / measure >= [clefs count]) {
-        return [clefs get:([clefs count]-1) ];
+//    if (starttime / measure >= [clefs count]) {
+//        return [clefs get:([clefs count]-1) ];
+//    }
+//    else {
+//        return [clefs get:(starttime / measure) ];
+//    }
+    int i = 0;
+    for (i = 0; i < clefsLen; i++) {
+        if (starttime >= clefs[i].starttime && (starttime < clefs[i].endtime || clefs[i].endtime==0)) {
+            return clefs[i].clef;
+        }
     }
-    else {
-        return [clefs get:(starttime / measure) ];
-    }
+    return clefs[clefsLen-1].clef;
 }
 
 /** Calculate the best clef to use for the given notes.  If the

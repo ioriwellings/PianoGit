@@ -1336,9 +1336,9 @@ static UIImage* chanyin = nil;
                 beat = [time quarter] / 2;
             }
             
-            if (([chord0 startTime] % beat) > [time quarter]/6) {
-                return NO;
-            }
+//            if (([chord0 startTime] % beat) > [time quarter]/6) {
+//                return NO;
+//            }
         }
         else if (numChords == 3) {
             Stem* secondStem = [[chords get:1] stem];     /** add by sunlie */
@@ -1347,7 +1347,7 @@ static UIImage* chanyin = nil;
             BOOL valid = (dur == Triplet) ||
             (dur == Eighth &&
              ([time numerator]%3 == 0) && [time denominator] == 8) ||
-            ((dur == Eighth) && abs([chord0 startTime]/[time quarter]-[time quarter]/2)<[time quarter]/16) ||
+            ((dur == Eighth) && abs([chord0 startTime]/[time quarter]-[time quarter]/4)<[time quarter]/16) ||
             (dur == Sixteenth) ||
             ([firstStem duration] == Sixteenth && [secondStem duration] == Sixteenth && [lastStem duration]==Eighth) ||
             ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration]==Sixteenth) ||
@@ -1370,7 +1370,7 @@ static UIImage* chanyin = nil;
                 /* In 12/8 time, chord must start on 3*8th beat */
                 beat = [time quarter]/2 * 3;
             }
-            if (([chord0 startTime] % beat) > [time quarter]/6 ) {
+            if (([chord0 startTime] % beat) > [time quarter]/6 &&startQuarter) {
                 return NO;
             }
         }
@@ -1500,12 +1500,12 @@ static UIImage* chanyin = nil;
         if ([firstStem duration] == Sixteenth && [secondStem duration] == Sixteenth && [lastStem duration] == Eighth) {
             [firstStem setPairex:lastStem withWidth:spacing];
             [firstStem setPair:secondStem withWidth:spacing/2];
-//            if ([[c accidsymbols] count] > 0) {
-//                AccidSymbol *accid = [[c accidsymbols] get:0];
-//                [firstStem setPair:secondStem withWidth:spacing/2 + [accid width]/2];
-//            } else {
-//                [firstStem setPair:secondStem withWidth:spacing/2];
-//            }
+            if ([[c accidsymbols] count] > 0) {
+                AccidSymbol *accid = [[c accidsymbols] get:0];
+                [firstStem setPair:secondStem withWidth:spacing/2 + [accid width]/2];
+            } else {
+                [firstStem setPair:secondStem withWidth:spacing/2];
+            }
         }
         else if ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration] == Sixteenth) {
             ChordSymbol *c3 = [chords get:2];

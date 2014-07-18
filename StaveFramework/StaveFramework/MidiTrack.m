@@ -592,8 +592,7 @@ int sortbynote(void* note1, void* note2) {
         beginnum = [splitednotes count];
         
         if ((startTime+interval)/[time measure] != startTime/[time measure]) {
-            startTime += interval;
-            [note setDuration:[note duration]-interval];
+            startTime = ((startTime+interval)/[time measure])*[time measure];
             [note setStarttime:startTime];
         }
         
@@ -683,7 +682,7 @@ int sortbynote(void* note1, void* note2) {
     }
     
     if (err1 <= err2+5 || err1 < 15) {
-        if ([n duration]%([time quarter]/8) >= [time quarter]/16-5) {
+        if ([n duration]%([time quarter]/8) >= [time quarter]/16) {
             dur = ([n duration]/([time quarter]/8) + 1)*([time quarter]/8);
         } else {
             dur = ([n duration]/([time quarter]/8))*([time quarter]/8);
@@ -724,8 +723,8 @@ int sortbynote(void* note1, void* note2) {
             [tmpnote release];
         }
         /** add by sunlie end */
-        else if (([n duration]%([time quarter]/2) <= [time quarter]/8) ||
-                   ([n duration]%([time quarter]/3) <= [time quarter]/8)) {
+        else if (([n duration]%([time quarter]/2) <= [time quarter]/12) ||
+                   ([n duration]%([time quarter]/3) < [time quarter]/12)) {
             
             if ([n duration]/[time quarter] > 0) {
                 

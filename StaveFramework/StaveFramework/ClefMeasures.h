@@ -12,15 +12,27 @@
 #import <Foundation/NSObject.h>
 #import "Array.h"
 
+/* add by sunlie start */
+struct _ClefData {
+    int starttime;       /** Start time of the symbol */
+    int clef;            /** The clef, Clef_Treble or Clef_Bass */
+    int endtime;
+};
+typedef struct _ClefData ClefData;
+/* add by sunlie end */
+
 @interface ClefMeasures : NSObject {
-    IntArray* clefs;  /** The clefs used for each measure (for a single track) */
-    int measure;      /** The length of a measure, in pulses */
+    ClefData* clefs;
+    int clefsLen;
+    int measure;
     Array* beatarray;
 }
 
 /** modify by sunlie */
 -(id)initWithNotes:(Array*)notes andTime:(TimeSignature *)time andBeats:(Array*)beats andControl:(Array*)clist andTotal:(int)totalpulses andTracknum:(int) tracknum;
 -(int)getClef:(int)starttime;
+-(int)getClefsLen;
+-(ClefData*)getClefData;
 -(int)mainClef:(Array*)notes;
 -(void)dealloc;
 

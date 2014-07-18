@@ -183,6 +183,12 @@
                     continue;
                 }
                 
+                if([chord eightFlag] > 0) {
+                    nd.number = nd.number+12;
+                } else if ([chord eightFlag] < 0) {
+                    nd.number = nd.number-12;
+                }
+                
                 for (k = 0; k < [notes count]; k++) {
                     if (abs([[notes get:k] startTime]-start) <= [timesig quarter]/3) {
                         if (nd.number == [[notes get:k] number]) {

@@ -95,6 +95,10 @@
     else if (duration == Eighth) {
         [self drawEighth:context atY:ytop];
     }
+    else if (duration == Sixteenth) {
+    }
+    else if (duration == ThirtySecond) {
+    }
     
     CGContextTranslateCTM (context, -NoteHeight/2, 0);
     

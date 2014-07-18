@@ -498,10 +498,13 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             }
             if ([mevent metaevent] == MetaEventKeySignature) {
                 int size = [tonearray count];
+                int a;
                 ToneSignature *tonesig;
                 /** modify by yizhq start */
                 tmp = [mevent metavalue][0];
                 tone = tmp;
+                tmp = [mevent metavalue][1];
+                a = tmp;
                 /** modify by yizhq end */
                 starttime = [mevent startTime];
                 if (size == 0) {
