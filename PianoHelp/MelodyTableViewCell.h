@@ -13,7 +13,7 @@
 @protocol MelodyTableViewCellDelegate <NSObject>
 
 @optional
--(void)updateMelodyState;
+-(void)updateMelodyState; //update favo like and task flag for cell.
 
 @end
 

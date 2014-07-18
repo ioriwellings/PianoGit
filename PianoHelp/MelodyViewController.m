@@ -146,6 +146,7 @@ extern NSString *ScopeSongName;
     
 	[cell updateContent:melody];
     cell.updateDelegate = self;
+    cell.tableView = tableView;
 	return (UITableViewCell*)cell;
 }
 

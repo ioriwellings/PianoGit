@@ -53,6 +53,10 @@
 
 - (IBAction)btnPlay_click:(id)sender
 {
-//    self.selected = YES;
+    for (UITableViewCell *cell in self.tableView.visibleCells)
+    {
+        cell.selected = NO;
+    }
+    self.selected = YES;
 }
 @end

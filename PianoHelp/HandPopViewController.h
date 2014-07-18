@@ -12,6 +12,9 @@
 
 @interface HandPopViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageLeft;
+@property (weak, nonatomic) IBOutlet UIImageView *imageLeftAndRight;
+@property (weak, nonatomic) IBOutlet UIImageView *imageRight;
 
 @property (weak, nonatomic) MelodyDetailViewController *parentVC;
 @property (nonatomic, assign) id <SheetMusicsDelegate> shd;

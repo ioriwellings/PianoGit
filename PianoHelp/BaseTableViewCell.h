@@ -16,5 +16,5 @@
 @end
 
 @interface BaseTableViewCell : UITableViewCell<BaseTableViewCell>
-
+@property (nonatomic, weak) UITableView *tableView;
 @end
