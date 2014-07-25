@@ -847,10 +847,12 @@ static int initmaps = 0;
         else
             key = &sharpkeys[num_sharps][0];
         
-        key[notescale] = AccidSharp;
-        
-        for (i = notescale; i < 128; i=i+12) {
-            keymap[i] = AccidSharp;
+        if (key[notescale] == AccidFlat) {
+            key[notescale] = AccidSharp;
+            
+            for (i = notescale; i < 128; i=i+12) {
+                keymap[i] = AccidSharp;
+            }
         }
         
     } else if (accidFlag < 100) {
@@ -859,10 +861,12 @@ static int initmaps = 0;
         else
             key = &sharpkeys[num_sharps][0];
         
-        key[notescale] = AccidFlat;
-        
-        for (i = (notescale+12-3)%12; i < 128; i=i+12) {
-            keymap[i] = AccidFlat;
+        if (key[notescale] == AccidSharp) {
+            key[notescale] = AccidFlat;
+            
+            for (i = (notescale+12-3)%12; i < 128; i=i+12) {
+                keymap[i] = AccidFlat;
+            }
         }
     }
 }
