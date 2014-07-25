@@ -47,6 +47,8 @@
 -(BOOL)equals:(KeySignature*)k;
 -(NSString*)description;
 -(int)notescale;
+-(void)resetKey;
+-(void)changeAccid:(int)notenumber andAccidFlag:(int)accidFlag;
 +(NSString*)keyToString:(int)notescale;
 
 @end

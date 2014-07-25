@@ -209,6 +209,9 @@ static UIImage* chanyin = nil;
         NoteData *note = &(notedata[i]);
         note->number = [midi number];
         note->leftside = YES;
+        if ([midi accidFlag] != 100) {
+            [key changeAccid:[midi number] andAccidFlag:[midi accidFlag]];
+        }
         note->whitenote = [key getWhiteNote:[midi number]];
         note->duration = [time getNoteDuration:([midi endTime]-[midi startTime])];
         note->accid = [key getAccidentalForNote:[midi number] 
@@ -1336,9 +1339,13 @@ static UIImage* chanyin = nil;
                 beat = [time quarter] / 2;
             }
             
-//            if (([chord0 startTime] % beat) > [time quarter]/6) {
-//                return NO;
-//            }
+            if ([time denominator] == 8) {
+                beat = [time quarter] / 2;
+            }
+            
+            if (([chord0 startTime] % beat) > [time quarter]/6) {
+                return NO;
+            }
         }
         else if (numChords == 3) {
             Stem* secondStem = [[chords get:1] stem];     /** add by sunlie */
@@ -1370,7 +1377,7 @@ static UIImage* chanyin = nil;
                 /* In 12/8 time, chord must start on 3*8th beat */
                 beat = [time quarter]/2 * 3;
             }
-            if (([chord0 startTime] % beat) > [time quarter]/6 &&startQuarter) {
+            if (([chord0 startTime] % beat) > [time quarter]/6 && notesixteenFlag == YES) {
                 return NO;
             }
         }
