@@ -60,6 +60,12 @@ static void CheckError(OSStatus error, const char *operation) {
     return self;
 }
 
+-(void)dealloc
+{
+    self.trackSettings = nil;
+    [super dealloc];
+}
+
 - (void)createAndStartGraph {
     OSStatus result;
     result = NewAUGraph (&_graph);
@@ -206,17 +212,18 @@ static void CheckError(OSStatus error, const char *operation) {
     }
 }
 
-- (void) loadMIDIFile:(NSString *)filepath; {
-//    NSURL* url = [[NSBundle mainBundle] URLForResource:filepath withExtension:@"mid"];
+- (void) loadMIDIFile:(NSString *)filepath;
+{
     NSURL *url = [[NSURL alloc] initFileURLWithPath:filepath];
     NewMusicSequence(&_sequence);
     MusicSequenceFileLoad(_sequence, (__bridge CFURLRef)url, 0,0);
     
     MIDIParser *midiParser = [MIDIParser new];
     self.trackSettings = [midiParser parseMidiSequence:&_sequence];
-    
+    [midiParser release];
     [self setupAudioSession];
     [self createAndStartGraph];
+    [url release];
 }
 
 - (void)setSolo:(BOOL)solo trackIndex:(UInt32)trackIndex {

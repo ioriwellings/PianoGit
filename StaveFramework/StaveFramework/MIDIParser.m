@@ -25,6 +25,7 @@
         TrackSetting *trackSetting = [self settingsForTrack:track withNumber:i];
 //        NSLog(@"tracksetting at index %d:\n %@", i , trackSetting);
         [trackSettings addObject:trackSetting];
+        [trackSetting release];
     }
     return trackSettings;
 }

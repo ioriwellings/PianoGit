@@ -12,6 +12,13 @@
     
 }
 
+-(void)dealloc
+{
+    self.trackName = nil;
+    self.instrumentName = nil;
+    [super dealloc];
+}
+
 - (NSString *)description {
     NSMutableString *result = [@"\n" mutableCopy];
     [result appendFormat:@"track Number = %d", (int) _trackNumber];

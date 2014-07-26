@@ -252,7 +252,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ay-b4-P51" userLabel="btnBack">
-                                        <rect key="frame" x="16" y="23" width="40" height="30"/>
+                                        <rect key="frame" x="0.0" y="24" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="tuichu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -356,7 +356,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-CX-Wzn" userLabel="btnBack">
-                                        <rect key="frame" x="0.0" y="23" width="94" height="29"/>
+                                        <rect key="frame" x="0.0" y="24" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="tuichu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -807,10 +807,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="198" height="124"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="peilianyinerjikuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="WQG-fX-6HP">
-                                <rect key="frame" x="0.0" y="0.0" width="198" height="124"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqC-Rj-5nO">
                                 <rect key="frame" x="10" y="10" width="162" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -962,7 +958,6 @@
                                         <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="zanting.png"/>
                                         <connections>
                                             <action selector="btnPlay_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="TL6-mf-h3v"/>
                                         </connections>
@@ -1916,7 +1911,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wum-yJ-9qc">
-                                        <rect key="frame" x="489" y="24" width="40" height="40"/>
+                                        <rect key="frame" x="489" y="19" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1926,7 +1921,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5v-kB-9Ud">
-                                        <rect key="frame" x="956" y="23" width="40" height="29"/>
+                                        <rect key="frame" x="956" y="24" width="40" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="琴房">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2102,7 +2097,6 @@
         <image name="kaishi-01.png" width="22" height="30"/>
         <image name="loginBg.jpg" width="1025" height="774"/>
         <image name="peilianyin-01.png" width="95" height="35"/>
-        <image name="peilianyinerjikuang.png" width="198" height="124"/>
         <image name="puku.png" width="95" height="132"/>
         <image name="puku1.png" width="95" height="132"/>
         <image name="qinfang.png" width="95" height="131"/>
@@ -2146,7 +2140,6 @@
         <image name="yigouwu1.png" width="32" height="31"/>
         <image name="yinliang.png" width="25" height="26"/>
         <image name="youshou.png" width="77" height="85"/>
-        <image name="zanting.png" width="24" height="29"/>
         <image name="zhanting.png" width="96" height="133"/>
         <image name="zhanting1.png" width="96" height="133"/>
         <image name="zuiai1.png" width="32" height="30"/>
