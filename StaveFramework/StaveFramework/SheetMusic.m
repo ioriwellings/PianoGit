@@ -2054,6 +2054,7 @@ static NSDictionary *fontAttr = NULL;
 }
 
 - (void)dealloc {
+    self.scrollView = nil;
     [staffs release];
     [super dealloc];
 }
