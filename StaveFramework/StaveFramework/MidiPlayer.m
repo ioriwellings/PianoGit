@@ -947,7 +947,7 @@
     int count = [recognition getCurChordSymolNoteCount];
     int c = [recognition getNotesCount];
     NSLog(@"====current chord symbol note count [%d] rece data count[%d] aaaa %d", count, c, [recognition getCurrIndex]);
-    if (count == c) {
+     if (c >= count) {
         [recognition recognitionPlayByLine];
     }
     

@@ -14,7 +14,7 @@
 @synthesize sheetShadeDelegate;
 
 
-/** 
+/**
  *  使用midi连线方式进行评判，使用次函数进行初期化
  */
 -(id)initWithStaff:(Array*)staffs WithtMidiFile:(MidiFile*)file andOptions:(MidiOptions*)options
@@ -39,9 +39,9 @@
         if (rState == -1 && lState == 0) { //右手模式
             leftAndRight = 1;
         } else if (rState == 0 && lState == -1) { //左手模式
-           leftAndRight = 2;
+            leftAndRight = 2;
         } else {//右手模式
-           leftAndRight = 1;
+            leftAndRight = 1;
         }
     }
     
@@ -50,7 +50,7 @@
 }
 
 
-/** 
+/**
  *  使用midi连线或蓝牙方式进行评判，使用次函数进行初期化
  */
 -(id)initWithtMidiFile:(MidiFile*)file andOptions:(MidiOptions*)options
@@ -59,11 +59,11 @@
     notes = [Array new:100];
     (void)gettimeofday(&beginTime, NULL);
     
-
+    
     staffIndex = 0;
     chordIndex = 0;
     quarter = [[file time] quarter];
-
+    
     numtracks = options->numtracks;
     if (numtracks == 1) {//右手模式
         leftAndRight = 1;//right mode
@@ -76,40 +76,40 @@
         if (rState == -1 && lState == 0) { //右手模式
             leftAndRight = 1;
         } else if (rState == 0 && lState == -1) { //左手模式
-           leftAndRight = 2;
-           staffIndex = 1;
+            leftAndRight = 2;
+            staffIndex = 1;
         } else {//右手模式
-           leftAndRight = 1;
+            leftAndRight = 1;
         }
     }
     
     return self;
 }
 
-/** 
+/**
  *  从staffs中取得待评判数据
  */
 -(void)getChordSymbolDatas:(Array*)staffs
 {
     int step = 0;int start = 0;
     if (numtracks == 2) {//双音轨
-       step = 2;
-       switch(leftAndRight) {
-           case 1://右手模式
-           start = 0;
-           break;//左手模式
-           case 2:
-           start = 1;
-           break;
-           default://默认右手模式
-           start = 0;
-           break;
-       }
+        step = 2;
+        switch(leftAndRight) {
+            case 1://右手模式
+                start = 0;
+                break;//左手模式
+            case 2:
+                start = 1;
+                break;
+            default://默认右手模式
+                start = 0;
+                break;
+        }
     } else {//单音轨
-       step = 1;
-       start = 0;
+        step = 1;
+        start = 0;
     }
-
+    
     if (symbolDatas == nil) {
         symbolDatas =[[NSMutableArray alloc] init];
     } else {
@@ -151,6 +151,13 @@
     for (int i = 0; i < [data count]; i++) {
         [pianoData add:[data objectAtIndex:i]];
     }
+    
+    
+    if ([notes count] >= 30) {
+        NSLog(@"到30个还没弹对，就重新开始了");
+        [notes clear];
+    }
+    
     [self parseData];
     [pianoData clear];
 }
@@ -164,6 +171,11 @@
 }
 
 -(int)getNotesCount {
+
+    for (int i = 0; i < [notes count]; i++) {
+        NSLog(@"==========the notes number[%d]|", [[notes get:i] number]);
+    }
+    
     return [notes count];
 }
 
@@ -173,24 +185,24 @@
     int count = [pianoData count]/3;
     
     for(int i = 0; i < count; i++) {
-//    while ((i+2) < [pianoData count]) {
+        //    while ((i+2) < [pianoData count]) {
         
         if ([[pianoData get:i*3] intValue] == 0x90) {
-                struct timeval now;
-                (void)gettimeofday(&now, NULL);
-                msec = (now.tv_sec - beginTime.tv_sec)*1000 +
-                (now.tv_usec - beginTime.tv_usec)/1000;
-                starttime = msec * pulsesPerMsec;
-                MidiNote *note = [[MidiNote alloc]init];
-                [note setStarttime:starttime];
-                [note setNumber:[[pianoData get:i*3+1] intValue]];
-                [notes add:note];
+            struct timeval now;
+            (void)gettimeofday(&now, NULL);
+            msec = (now.tv_sec - beginTime.tv_sec)*1000 +
+            (now.tv_usec - beginTime.tv_usec)/1000;
+            starttime = msec * pulsesPerMsec;
+            MidiNote *note = [[MidiNote alloc]init];
+            [note setStarttime:starttime];
+            [note setNumber:[[pianoData get:i*3+1] intValue]];
+            [notes add:note];
         }
     }
     NSLog(@"oooooo [%d] mmmmmmmmmmmmmmmm [%d]", count, [notes count]);
 }
 
-/** 
+/**
  *  是否是和旋
  */
 -(BOOL) isChord:(int)len
@@ -207,7 +219,8 @@
     return TRUE;
 }
 
-/** 
+
+/**
  *  评判音符
  */
 -(BOOL) judgeResult:(ChordSymbol*)chord withCount:(int)count
@@ -235,23 +248,24 @@
         }
         
         NSLog(@"===nd number[%d]  notenum0[%d]", number, [[notes get:0] number]);
-        if (number == [[notes get:0] number]) {
-            [notes remove:[notes get:0]];
+        if ([self judgeNote:number]) {
+            [notes clear];
             return TRUE;
         } else {
             return FALSE;
         }
     } else if (count >1) { //和旋
+        
         NSLog(@"is hexuang! 1");
         if ([chord notedata_len] > [notes count]) {
             return FALSE;
         }
         
-        NSLog(@"is hexuang! 2");
-        if (![self isChord:[chord notedata_len]]) {
-           return FALSE;
-        }
-
+        //        NSLog(@"is hexuang! 2");
+        //        if (![self isChord:[chord notedata_len]]) {
+        //           return FALSE;
+        //        }
+        
         NSLog(@"is hexuang! 3");
         for (int i = 0; i < [chord notedata_len]; i++) {
             nd = noteData[i];
@@ -270,6 +284,7 @@
                 return FALSE;
             }
         }
+        
         [notes clear];
         return TRUE;
     }
@@ -280,12 +295,38 @@
 -(BOOL)judgeNote:(int)number {
     for (int i = 0; i < [notes count]; i++) {
         if (number == [[notes get:i] number]) {
-            [notes remove:[notes get:i]];
+            //            [notes remove:[notes get:i]];
             return TRUE;
         }
     }
     return FALSE;
 }
+
+
+
+-(int) getChordSymbolCount:(ChordSymbol*)chord {
+    
+    if ([chord notedata_len] <= 0) return -1;
+    
+    NoteData *noteData = [chord notedata];
+    BOOL isSingle = TRUE;
+    int number = noteData[0].number;
+    
+    for (int i = 1; i < [chord notedata_len]; i++) {
+        NoteData nd = noteData[i];
+        if (number != nd.number) {
+            isSingle = FALSE;
+            break;
+        }
+    }
+    
+    if (!isSingle) {
+        return [chord notedata_len];
+    } else {
+        return 1;
+    }
+}
+
 /**
  *  取得待评判音符的数量
  */
@@ -294,10 +335,16 @@
     if (currIndex < 0 || currIndex > [symbolDatas count]) return -1;
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
     ChordSymbol *chord = [data getChordSymbol];
-    return [chord notedata_len];
+    
+    NoteData *noteData = [chord notedata];
+    for (int i = 0; i < [chord notedata_len]; i++) {
+        NoteData nd = noteData[i];
+        NSLog(@"==========the current symbol number is[%d]|", nd.number);
+    }
+    return [self getChordSymbolCount:chord];
 }
 
-/** 
+/**
  *  midi连线评判
  */
 -(void)recognitionPlayByLine
@@ -311,16 +358,17 @@
             [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:chord];
             currIndex++;
         }
+        [notes clear];
     }
-    [notes clear];
-
+    
+    
     //评判完成
     if (currIndex == [symbolDatas count] && endDelegate != nil) {
         [endDelegate endSongsResult:0 andRight:(int)[symbolDatas count] andWrong:0];
     }
 }
 
-/** 
+/**
  *  蓝牙和midi连线评判
  */
 -(BOOL)recognitionPlay:(Array*)staffs
@@ -348,8 +396,8 @@
                     return TRUE;
                 }
             } else {
-               [notes clear];
-               return FALSE;
+                [notes clear];
+                return FALSE;
             }
         }
         
@@ -377,7 +425,7 @@
     {
         [symbolDatas release];
     }
-
+    
     [super dealloc];
 }
 
