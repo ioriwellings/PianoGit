@@ -889,7 +889,7 @@ static UIImage* chanyin = nil;
     
     /** add by sunlie start */
     if (_conLineWidth != 0 && _conLineWidth != -1) {
-        [self drawConLine:context andYtop:ytop andTopStaff:topstaff];
+//        [self drawConLine:context andYtop:ytop andTopStaff:topstaff];
     }
     
     if (jumpedFlag > 0) {
@@ -2063,9 +2063,18 @@ static UIImage* chanyin = nil;
     
     
     if (jumpedFlag == 1) {
-        CGContextTranslateCTM (context, 0 , ypos);
-        CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
-        CGContextTranslateCTM (context, 0 , -ypos);
+
+        if (leftDirect == StemDown) {
+            ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight/3 - 12;
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
+            CGContextTranslateCTM (context, 0 , -ypos);
+        } else if (leftDirect == StemUp) {
+            ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2 + NoteHeight/3;
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
+            CGContextTranslateCTM (context, 0 , -ypos);
+        }
     } else if (jumpedFlag == 2) {
         
         if (leftDirect == StemDown) {
