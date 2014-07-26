@@ -2426,7 +2426,7 @@ static UIImage* chanyin = nil;
             continue;
         }
         /* Get the x,y position to draw the note */
-        int ynote = ytop + [topstaff dist:(note->whitenote)] * NoteHeight/2;
+        int ynote = ytop + [topstaff dist:(note->whitenote)] * NoteHeight/2 + noteHeight/2;
        
         int xnote = LineSpace/4;
         if (!note->leftside)
