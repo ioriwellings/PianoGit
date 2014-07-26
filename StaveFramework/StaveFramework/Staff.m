@@ -519,7 +519,12 @@
         
         if ((xpos <= clip.origin.x + clip.size.width + 50) && (xpos + [s width] + 50 >= clip.origin.x)) {
             CGContextTranslateCTM (context, xpos, 0.0);
-            [s draw:context atY:ytop];
+
+            if ([s isKindOfClass:[ChordSymbol class]]) {
+                [s draw:context atY:ytop withStaffNum:tracknum];
+            }else{
+                [s draw:context atY:ytop];
+            }
             CGContextTranslateCTM (context, -xpos, 0.0);
         }
 
