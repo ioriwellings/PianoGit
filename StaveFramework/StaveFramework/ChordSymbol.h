@@ -164,7 +164,7 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
 -(int)minWidth;
 -(int)aboveStaff;
 -(int)belowStaff;
--(void)draw:(CGContextRef)context atY:(int)ytop;
+-(void)draw:(CGContextRef)context atY:(int)ytop withStaffNum:(int)flag;
 -(int)drawAccid:(CGContextRef)context atY:(int)ytop;
 -(void)drawNotes:(CGContextRef)context atY:(int)ytop topStaff:(WhiteNote*)topstaff;
 -(void)drawNoteLetters:(CGContextRef)context atY:(int)ytop topStaff:(WhiteNote*)topstaff;

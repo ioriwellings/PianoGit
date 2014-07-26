@@ -851,8 +851,9 @@ static UIImage* chanyin = nil;
  * - Draw the stems.
  * @param ytop The ylocation (in pixels) where the top of the staff starts.
  */
-- (void)draw:(CGContextRef)context atY:(int)ytop {
-    
+-(void)draw:(CGContextRef)context atY:(int)ytop withStaffNum:(int)flag{
+//- (void)draw:(CGContextRef)context atY:(int)ytop {
+
     /* Align the chord to the right */
     CGContextTranslateCTM (context, (width - [self minWidth]), 0);
     
@@ -913,7 +914,7 @@ static UIImage* chanyin = nil;
     }
     
     if (strengthFlag != 0) {
-        [self drawStrength:context withValue:(int)strengthFlag];
+        [self drawStrength:context withValue:(int)strengthFlag withStaffNum:flag];
     }
     
     /** add by sunlie end */
@@ -980,7 +981,7 @@ static UIImage* chanyin = nil;
  *  @param context <#context description#>
  *  @param value   <#value description#>
  */
--(void)drawStrength:(CGContextRef)context withValue:(int)value{
+-(void)drawStrength:(CGContextRef)context withValue:(int)value withStaffNum:(int)flag{
 
     char *str;
     CGContextSelectFont(context, "Georgia-Italic", 16.0, kCGEncodingMacRoman);
@@ -1011,7 +1012,12 @@ static UIImage* chanyin = nil;
         default:
             return;
     }
-    CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight+ (NoteHeight*3-18)/2, str, 2);
+    if (flag == 0) {
+        CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight + (NoteHeight*3-18)/2, str, 2);
+    }else{
+        CGContextShowTextAtPoint(context, NoteWidth/2, -(NoteHeight*3-18)/2, str, 2);
+    }
+
 }
 /*!
  *  draw gradient symbol
@@ -1764,8 +1770,7 @@ static UIImage* chanyin = nil;
     int nodeHeight = 5;
    	if (_connectNoteWidth == -1)
         return;
-    
-    
+
     int leftDirect, rightDirect, direct, ynote;
     Stem *stem = nil;
     if ([self hasTwoStems] == YES) {
@@ -2037,8 +2042,6 @@ static UIImage* chanyin = nil;
             [aPath stroke];
         }
     }
-    
-    
 //    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
 }
 
@@ -2063,9 +2066,18 @@ static UIImage* chanyin = nil;
     
     
     if (jumpedFlag == 1) {
-        CGContextTranslateCTM (context, 0 , ypos);
-        CGContextFillEllipseInRect(context, CGRectMake(LineSpace/2, LineSpace, NoteWidth/3, NoteWidth/3));
-        CGContextTranslateCTM (context, 0 , -ypos);
+
+        if (leftDirect == StemDown) {
+            ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight/3 - 12;
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
+            CGContextTranslateCTM (context, 0 , -ypos);
+        } else if (leftDirect == StemUp) {
+            ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2 + NoteHeight/3;
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
+            CGContextTranslateCTM (context, 0 , -ypos);
+        }
     } else if (jumpedFlag == 2) {
         
         if (leftDirect == StemDown) {

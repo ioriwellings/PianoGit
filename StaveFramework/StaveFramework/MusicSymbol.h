@@ -36,7 +36,7 @@ extern int NoteHeight;
 extern int NoteWidth;
 
 
-@protocol MusicSymbol
+@protocol MusicSymbol <NSObject>
 
 /** Get the time (in pulses) this symbol occurs at.
  * This is used to determine the measure this symbol belongs to.
@@ -67,6 +67,7 @@ extern int NoteWidth;
  */
 -(void) draw:(CGContextRef) context atY:(int) ytop;
 
+-(void) draw:(CGContextRef) context atY:(int) ytop withStaffNum:(int)flag;
 @end
 
 
