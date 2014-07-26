@@ -142,6 +142,13 @@
 -(void)setTrFlag:(int)t {
     trFlag = t;
 }
+
+-(int)accidFlag {
+    return accidFlag;
+}
+-(void)setAccidFlag:(int)a {
+    accidFlag = a;
+}
 /* add by sunlie end */
 
 /* A NoteOff event occurs for this note at the given time.
@@ -165,6 +172,7 @@
     [m setBoflag:boflag];
     [m setHuiFlag:huiFlag];
     [m setTrFlag:trFlag];
+    [m setAccidFlag:accidFlag];
     /* add by sunlie end */
     return m;
 }

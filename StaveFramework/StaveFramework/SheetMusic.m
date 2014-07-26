@@ -159,6 +159,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         }
         ClefMeasures *clefs = [[ClefMeasures alloc] initWithNotes:[track notes] andTime:time andBeats:beatarray andControl:[track controlList] andTotal:[track totalpulses] andTracknum:tracknum];
         /* chords = Array of ChordSymbol */
+        [mainkey resetKey];
         Array *chords = [self createChords:[track splitednotes] withKey:mainkey
                                    andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14]];
         Array *sym = [self createSymbols:chords withClefs:clefs andTime:time andLastTime:lastStarttime andBeatarray:beatarray andCList15:[track controlList15]];
@@ -350,6 +351,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 [n setChannel:[mn channel]];
                 [n setNumber:[mn number]];
                 [n setDuration:[[midinotes get:i] startTime]-[mn startTime]];
+                [n setAccidFlag:[mn accidFlag]];
                 [n setAddflag:1];
                 if([n duration] < [time quarter]*2/3){
                     [notegroup add:n];
@@ -1076,6 +1078,15 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             /* Skip all remaining symbols with the same starttime. */
             while (i < [result count] && [getSymbol(result, i) startTime] == start) {
                 i++;
+            }
+            
+            if ([symbol isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol*chord = (ChordSymbol*)symbol;
+                if ([chord threeNotes] == 1) {
+                    id <MusicSymbol> tmpSymbol = [result get:i-2];
+                    [symbol setWidth:([symbol width]+[tmpSymbol width])/2];
+                    [[result get:i-2] setWidth:[symbol width]];
+                }
             }
         }
         symbols = nil;

@@ -32,6 +32,7 @@
     int boflag;
     int huiFlag;
     int trFlag;
+    int accidFlag;
     /* add by sunlie end */
 }
 
@@ -59,6 +60,8 @@
 -(void)setHuiFlag:(int)h;
 -(int)trFlag;
 -(void)setTrFlag:(int)t;
+-(int)accidFlag;
+-(void)setAccidFlag:(int)a;
 /* add by sunlie end */
 -(void)noteOff:(int)endtime;
 -(id)copyWithZone:(NSZone*)zone;

@@ -121,8 +121,10 @@ int sortbynote(void* note1, void* note2) {
             [note setStarttime:[mevent startTime]];
             [note setChannel:[mevent channel]];
             [note setNumber:[mevent notenumber]];
+            [note setAccidFlag:[mevent velocity]];
             [self addNote:note];
             [note release];
+            NSLog(@"accid:%d",[note accidFlag]);
         }
         else if ([mevent eventFlag] == EventNoteOn && [mevent velocity] == 0) {
             [self noteOffWithChannel:[mevent channel] andNumber:[mevent notenumber]
@@ -603,6 +605,7 @@ int sortbynote(void* note1, void* note2) {
                 [newnote setChannel:[note channel]];
                 [newnote setNumber:[note number]];
                 [newnote setDuration:[time measure]-startTime%[time measure]];
+                [newnote setAccidFlag:[note accidFlag]];
                 
                 if ([tmpnotes count] > 0) {
                     MidiNote *tmpNote;
@@ -621,6 +624,7 @@ int sortbynote(void* note1, void* note2) {
                     [newnote setChannel:[note channel]];
                     [newnote setNumber:[note number]];
                     [newnote setDuration:endTime-startTime];
+                    [newnote setAccidFlag:[note accidFlag]];
                     
                     if ([tmpnotes count] > 0) {
                         MidiNote *tmpNote;
@@ -717,6 +721,7 @@ int sortbynote(void* note1, void* note2) {
             [tmpnote setChannel:[n channel]];
             [tmpnote setNumber:[n number]];
             [tmpnote setDuration:[n duration]-[n duration]%[time quarter]];
+            [tmpnote setAccidFlag:[n accidFlag]];
             [n setStarttime:[n startTime]+[tmpnote duration]];
             [n setDuration:[n duration]-[tmpnote duration]];
             [self setSplitedNote:beginnum andNote:tmpnote];
@@ -747,6 +752,7 @@ int sortbynote(void* note1, void* note2) {
                     [tmpnote setChannel:[n channel]];
                     [tmpnote setNumber:[n number]];
                     [tmpnote setDuration:[n duration]%[time quarter]];
+                    [tmpnote setAccidFlag:[n accidFlag]];
                     [n setDuration:[n duration]-[tmpnote duration]];
                     [midiNotes add:tmpnote];
                     [tmpnote release];
@@ -757,6 +763,7 @@ int sortbynote(void* note1, void* note2) {
                     [tmpnote setChannel:[n channel]];
                     [tmpnote setNumber:[n number]];
                     [tmpnote setDuration:[n duration]%[time quarter]];
+                    [tmpnote setAccidFlag:[n accidFlag]];
                     [n setDuration:[n duration]-[tmpnote duration]];
                     [n setStarttime:[n startTime]+[tmpnote duration]];
                     [self setSplitedNote:beginnum andNote:tmpnote];
@@ -775,6 +782,7 @@ int sortbynote(void* note1, void* note2) {
                     [tmpnote setChannel:[n channel]];
                     [tmpnote setNumber:[n number]];
                     [tmpnote setDuration:[n duration]%([time quarter]/2)];
+                    [tmpnote setAccidFlag:[n accidFlag]];
                     [self setSplitedNote:beginnum andNote:tmpnote];
                     
                     MidiNote *noteadd = [[MidiNote alloc] init];
@@ -782,6 +790,7 @@ int sortbynote(void* note1, void* note2) {
                     [noteadd setChannel:[n channel]];
                     [noteadd setNumber:[n number]];
                     [noteadd setDuration:[n duration]%([time quarter]/2)];
+                    [noteadd setAccidFlag:[n accidFlag]];
                     [self setSplitedNote:beginnum andNote:noteadd];
                     
                     [n setDuration:[n duration]-[tmpnote duration]];
@@ -843,6 +852,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/2)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [midiNotes add:tmpnote];
                         [tmpnote release];
@@ -852,6 +862,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/3)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [midiNotes add:tmpnote];
                         [tmpnote release];
@@ -863,6 +874,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/2)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [n setStarttime:[n startTime]+[tmpnote duration]];
                         [self setSplitedNote:beginnum andNote:tmpnote];
@@ -880,6 +892,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/3)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [n setStarttime:[n startTime]+[tmpnote duration]];
                         [self setSplitedNote:beginnum andNote:tmpnote];
@@ -927,6 +940,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/4)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [midiNotes add:tmpnote];
                         [tmpnote release];
@@ -936,6 +950,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/6)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [midiNotes add:tmpnote];
                         [tmpnote release];
@@ -947,6 +962,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/4)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [n setStarttime:[n startTime] + [tmpnote duration]];
                         [self setSplitedNote:beginnum andNote:tmpnote];
@@ -957,6 +973,7 @@ int sortbynote(void* note1, void* note2) {
                         [tmpnote setChannel:[n channel]];
                         [tmpnote setNumber:[n number]];
                         [tmpnote setDuration:[n duration]%([time quarter]/6)];
+                        [tmpnote setAccidFlag:[n accidFlag]];
                         [n setDuration:[n duration]-[tmpnote duration]];
                         [n setStarttime:[n startTime] + [tmpnote duration]];
                         [self setSplitedNote:beginnum andNote:tmpnote];

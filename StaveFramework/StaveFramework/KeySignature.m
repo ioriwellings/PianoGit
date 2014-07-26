@@ -108,15 +108,199 @@ static int initmaps = 0;
 
 /** Iniitalize the sharpkeys and flatkeys maps */
 + (void)initAccidentalMaps {
-    if (initmaps == 1)
-        return;
+//    if (initmaps == 1)
+//        return;
 
     initmaps = 1;
 
     int* map;
+//    map = &sharpkeys[C][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Asharp ] = AccidFlat;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Csharp ] = AccidSharp;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Dsharp ] = AccidSharp;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Fsharp ] = AccidSharp;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Gsharp ] = AccidSharp;
+//
+//    map = &sharpkeys[G][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Asharp ] = AccidFlat;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Csharp ] = AccidSharp;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Dsharp ] = AccidSharp;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNatural;
+//    map[ NoteScale_Fsharp ] = AccidNone;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Gsharp ] = AccidSharp;
+//
+//    map = &sharpkeys[D][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Asharp ] = AccidFlat;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNatural;
+//    map[ NoteScale_Csharp ] = AccidNone;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Dsharp ] = AccidSharp;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNatural;
+//    map[ NoteScale_Fsharp ] = AccidNone;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Gsharp ] = AccidSharp;
+//
+//    map = &sharpkeys[A][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Asharp ] = AccidFlat;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNatural;
+//    map[ NoteScale_Csharp ] = AccidNone;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Dsharp ] = AccidSharp;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNatural;
+//    map[ NoteScale_Fsharp ] = AccidNone;
+//    map[ NoteScale_G ]      = AccidNatural;
+//    map[ NoteScale_Gsharp ] = AccidNone;
+//
+//    map = &sharpkeys[E][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Asharp ] = AccidFlat;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNatural;
+//    map[ NoteScale_Csharp ] = AccidNone;
+//    map[ NoteScale_D ]      = AccidNatural;
+//    map[ NoteScale_Dsharp ] = AccidNone;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNatural;
+//    map[ NoteScale_Fsharp ] = AccidNone;
+//    map[ NoteScale_G ]      = AccidNatural;
+//    map[ NoteScale_Gsharp ] = AccidNone;
+//
+//    map = &sharpkeys[B][0];
+//    map[ NoteScale_A ]      = AccidNatural;
+//    map[ NoteScale_Asharp ] = AccidNone;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNatural;
+//    map[ NoteScale_Csharp ] = AccidNone;
+//    map[ NoteScale_D ]      = AccidNatural;
+//    map[ NoteScale_Dsharp ] = AccidNone;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNatural;
+//    map[ NoteScale_Fsharp ] = AccidNone;
+//    map[ NoteScale_G ]      = AccidNatural;
+//    map[ NoteScale_Gsharp ] = AccidNone;
+//
+//        /* Flat keys */
+//
+//    map = &flatkeys[C][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Asharp ] = AccidFlat;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Csharp ] = AccidSharp;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Dsharp ] = AccidSharp;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Fsharp ] = AccidSharp;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Gsharp ] = AccidSharp;
+//
+//    map = &flatkeys[F][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Bflat ]  = AccidNone;
+//    map[ NoteScale_B ]      = AccidNatural;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Csharp ] = AccidSharp;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Eflat ]  = AccidFlat;
+//    map[ NoteScale_E ]      = AccidNone;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Fsharp ] = AccidSharp;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Aflat ]  = AccidFlat;
+//
+//    map = &flatkeys[Bflat][0];
+//    map[ NoteScale_A ]      = AccidNone;
+//    map[ NoteScale_Bflat ]  = AccidNone;
+//    map[ NoteScale_B ]      = AccidNatural;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Csharp ] = AccidSharp;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Eflat ]  = AccidNone;
+//    map[ NoteScale_E ]      = AccidNatural;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Fsharp ] = AccidSharp;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Aflat ]  = AccidFlat;
+//
+//    map = &flatkeys[Eflat][0];
+//    map[ NoteScale_A ]      = AccidNatural;
+//    map[ NoteScale_Bflat ]  = AccidNone;
+//    map[ NoteScale_B ]      = AccidNatural;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Dflat ]  = AccidFlat;
+//    map[ NoteScale_D ]      = AccidNone;
+//    map[ NoteScale_Eflat ]  = AccidNone;
+//    map[ NoteScale_E ]      = AccidNatural;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Fsharp ] = AccidSharp;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Aflat ]  = AccidNone;
+//
+//    map = &flatkeys[Aflat][0];
+//    map[ NoteScale_A ]      = AccidNatural;
+//    map[ NoteScale_Bflat ]  = AccidNone;
+//    map[ NoteScale_B ]      = AccidNatural;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Dflat ]  = AccidNone;
+//    map[ NoteScale_D ]      = AccidNatural;
+//    map[ NoteScale_Eflat ]  = AccidNone;
+//    map[ NoteScale_E ]      = AccidNatural;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Fsharp ] = AccidSharp;
+//    map[ NoteScale_G ]      = AccidNone;
+//    map[ NoteScale_Aflat ]  = AccidNone;
+//
+//    map = &flatkeys[Dflat][0];
+//    map[ NoteScale_A ]      = AccidNatural;
+//    map[ NoteScale_Bflat ]  = AccidNone;
+//    map[ NoteScale_B ]      = AccidNatural;
+//    map[ NoteScale_C ]      = AccidNone;
+//    map[ NoteScale_Dflat ]  = AccidNone;
+//    map[ NoteScale_D ]      = AccidNatural;
+//    map[ NoteScale_Eflat ]  = AccidNone;
+//    map[ NoteScale_E ]      = AccidNatural;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Gflat ]  = AccidNone;
+//    map[ NoteScale_G ]      = AccidNatural;
+//    map[ NoteScale_Aflat ]  = AccidNone;
+//
+//    map = &flatkeys[Gflat][0];
+//    map[ NoteScale_A ]      = AccidNatural;
+//    map[ NoteScale_Bflat ]  = AccidNone;
+//    map[ NoteScale_B ]      = AccidNone;
+//    map[ NoteScale_C ]      = AccidNatural;
+//    map[ NoteScale_Dflat ]  = AccidNone;
+//    map[ NoteScale_D ]      = AccidNatural;
+//    map[ NoteScale_Eflat ]  = AccidNone;
+//    map[ NoteScale_E ]      = AccidNatural;
+//    map[ NoteScale_F ]      = AccidNone;
+//    map[ NoteScale_Gflat ]  = AccidNone;
+//    map[ NoteScale_G ]      = AccidNatural;
+//    map[ NoteScale_Aflat ]  = AccidNone;
+    
     map = &sharpkeys[C][0];
     map[ NoteScale_A ]      = AccidNone;
-    map[ NoteScale_Asharp ] = AccidFlat;
+    map[ NoteScale_Asharp ] = AccidSharp;
     map[ NoteScale_B ]      = AccidNone;
     map[ NoteScale_C ]      = AccidNone;
     map[ NoteScale_Csharp ] = AccidSharp;
@@ -127,10 +311,10 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidSharp;
     map[ NoteScale_G ]      = AccidNone;
     map[ NoteScale_Gsharp ] = AccidSharp;
-
+    
     map = &sharpkeys[G][0];
     map[ NoteScale_A ]      = AccidNone;
-    map[ NoteScale_Asharp ] = AccidFlat;
+    map[ NoteScale_Asharp ] = AccidSharp;
     map[ NoteScale_B ]      = AccidNone;
     map[ NoteScale_C ]      = AccidNone;
     map[ NoteScale_Csharp ] = AccidSharp;
@@ -141,10 +325,10 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidNone;
     map[ NoteScale_G ]      = AccidNone;
     map[ NoteScale_Gsharp ] = AccidSharp;
-
+    
     map = &sharpkeys[D][0];
     map[ NoteScale_A ]      = AccidNone;
-    map[ NoteScale_Asharp ] = AccidFlat;
+    map[ NoteScale_Asharp ] = AccidSharp;
     map[ NoteScale_B ]      = AccidNone;
     map[ NoteScale_C ]      = AccidNatural;
     map[ NoteScale_Csharp ] = AccidNone;
@@ -155,10 +339,10 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidNone;
     map[ NoteScale_G ]      = AccidNone;
     map[ NoteScale_Gsharp ] = AccidSharp;
-
+    
     map = &sharpkeys[A][0];
     map[ NoteScale_A ]      = AccidNone;
-    map[ NoteScale_Asharp ] = AccidFlat;
+    map[ NoteScale_Asharp ] = AccidSharp;
     map[ NoteScale_B ]      = AccidNone;
     map[ NoteScale_C ]      = AccidNatural;
     map[ NoteScale_Csharp ] = AccidNone;
@@ -169,10 +353,10 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidNone;
     map[ NoteScale_G ]      = AccidNatural;
     map[ NoteScale_Gsharp ] = AccidNone;
-
+    
     map = &sharpkeys[E][0];
     map[ NoteScale_A ]      = AccidNone;
-    map[ NoteScale_Asharp ] = AccidFlat;
+    map[ NoteScale_Asharp ] = AccidSharp;
     map[ NoteScale_B ]      = AccidNone;
     map[ NoteScale_C ]      = AccidNatural;
     map[ NoteScale_Csharp ] = AccidNone;
@@ -183,7 +367,7 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidNone;
     map[ NoteScale_G ]      = AccidNatural;
     map[ NoteScale_Gsharp ] = AccidNone;
-
+    
     map = &sharpkeys[B][0];
     map[ NoteScale_A ]      = AccidNatural;
     map[ NoteScale_Asharp ] = AccidNone;
@@ -197,12 +381,12 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidNone;
     map[ NoteScale_G ]      = AccidNatural;
     map[ NoteScale_Gsharp ] = AccidNone;
-
-        /* Flat keys */
-
+    
+    /* Flat keys */
+    
     map = &flatkeys[C][0];
     map[ NoteScale_A ]      = AccidNone;
-    map[ NoteScale_Asharp ] = AccidFlat;
+    map[ NoteScale_Asharp ] = AccidSharp;
     map[ NoteScale_B ]      = AccidNone;
     map[ NoteScale_C ]      = AccidNone;
     map[ NoteScale_Csharp ] = AccidSharp;
@@ -213,7 +397,7 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidSharp;
     map[ NoteScale_G ]      = AccidNone;
     map[ NoteScale_Gsharp ] = AccidSharp;
-
+    
     map = &flatkeys[F][0];
     map[ NoteScale_A ]      = AccidNone;
     map[ NoteScale_Bflat ]  = AccidNone;
@@ -221,13 +405,13 @@ static int initmaps = 0;
     map[ NoteScale_C ]      = AccidNone;
     map[ NoteScale_Csharp ] = AccidSharp;
     map[ NoteScale_D ]      = AccidNone;
-    map[ NoteScale_Eflat ]  = AccidFlat;
+    map[ NoteScale_Eflat ]  = AccidSharp;
     map[ NoteScale_E ]      = AccidNone;
     map[ NoteScale_F ]      = AccidNone;
     map[ NoteScale_Fsharp ] = AccidSharp;
     map[ NoteScale_G ]      = AccidNone;
-    map[ NoteScale_Aflat ]  = AccidFlat;
-
+    map[ NoteScale_Aflat ]  = AccidSharp;
+    
     map = &flatkeys[Bflat][0];
     map[ NoteScale_A ]      = AccidNone;
     map[ NoteScale_Bflat ]  = AccidNone;
@@ -240,14 +424,14 @@ static int initmaps = 0;
     map[ NoteScale_F ]      = AccidNone;
     map[ NoteScale_Fsharp ] = AccidSharp;
     map[ NoteScale_G ]      = AccidNone;
-    map[ NoteScale_Aflat ]  = AccidFlat;
-
+    map[ NoteScale_Aflat ]  = AccidSharp;
+    
     map = &flatkeys[Eflat][0];
     map[ NoteScale_A ]      = AccidNatural;
     map[ NoteScale_Bflat ]  = AccidNone;
     map[ NoteScale_B ]      = AccidNatural;
     map[ NoteScale_C ]      = AccidNone;
-    map[ NoteScale_Dflat ]  = AccidFlat;
+    map[ NoteScale_Dflat ]  = AccidSharp;
     map[ NoteScale_D ]      = AccidNone;
     map[ NoteScale_Eflat ]  = AccidNone;
     map[ NoteScale_E ]      = AccidNatural;
@@ -255,7 +439,7 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidSharp;
     map[ NoteScale_G ]      = AccidNone;
     map[ NoteScale_Aflat ]  = AccidNone;
-
+    
     map = &flatkeys[Aflat][0];
     map[ NoteScale_A ]      = AccidNatural;
     map[ NoteScale_Bflat ]  = AccidNone;
@@ -269,7 +453,7 @@ static int initmaps = 0;
     map[ NoteScale_Fsharp ] = AccidSharp;
     map[ NoteScale_G ]      = AccidNone;
     map[ NoteScale_Aflat ]  = AccidNone;
-
+    
     map = &flatkeys[Dflat][0];
     map[ NoteScale_A ]      = AccidNatural;
     map[ NoteScale_Bflat ]  = AccidNone;
@@ -283,7 +467,7 @@ static int initmaps = 0;
     map[ NoteScale_Gflat ]  = AccidNone;
     map[ NoteScale_G ]      = AccidNatural;
     map[ NoteScale_Aflat ]  = AccidNone;
-
+    
     map = &flatkeys[Gflat][0];
     map[ NoteScale_A ]      = AccidNatural;
     map[ NoteScale_Bflat ]  = AccidNone;
@@ -420,7 +604,7 @@ static int initmaps = 0;
         [self resetKeyMap];
         prevmeasure = measure;
     }
-
+    
     int result = keymap[notenumber];
     if (result == AccidSharp) {
         keymap[notenumber] = AccidNone;
@@ -636,6 +820,55 @@ static int initmaps = 0;
         return flatmajor[num_flats];
     else 
         return sharpmajor[num_sharps];
+}
+
+-(void)resetKey {
+    int* key;
+    [KeySignature initAccidentalMaps];
+    if (num_flats > 0)
+        key = &flatkeys[num_flats][0];
+    else
+        key = &sharpkeys[num_sharps][0];
+    
+    for (int notenumber = 0; notenumber < 128; notenumber++) {
+        int notescale = notescale_from_number(notenumber);
+        keymap[notenumber] = key[notescale];
+    }
+}
+
+-(void)changeAccid:(int)notenumber andAccidFlag:(int)accidFlag {
+    int* key;
+    int notescale = notescale_from_number(notenumber);
+    int i;
+    
+    if (accidFlag > 100) {
+        if (num_flats > 0)
+            key = &flatkeys[num_flats][0];
+        else
+            key = &sharpkeys[num_sharps][0];
+        
+        if (key[notescale] == AccidFlat) {
+            key[notescale] = AccidSharp;
+            
+            for (i = notescale; i < 128; i=i+12) {
+                keymap[i] = AccidSharp;
+            }
+        }
+        
+    } else if (accidFlag < 100) {
+        if (num_flats > 0)
+            key = &flatkeys[num_flats][0];
+        else
+            key = &sharpkeys[num_sharps][0];
+        
+        if (key[notescale] == AccidSharp) {
+            key[notescale] = AccidFlat;
+            
+            for (i = (notescale+12-3)%12; i < 128; i=i+12) {
+                keymap[i] = AccidFlat;
+            }
+        }
+    }
 }
 
 /* Convert a Major Key into a string */
