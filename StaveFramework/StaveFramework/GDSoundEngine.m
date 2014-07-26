@@ -62,10 +62,7 @@ static void CheckError(OSStatus error, const char *operation) {
 
 -(void)dealloc
 {
-    if(self.trackSettings)
-    {
-        [self.trackSettings release];
-    }
+    self.trackSettings = nil;
     [super dealloc];
 }
 
@@ -223,7 +220,7 @@ static void CheckError(OSStatus error, const char *operation) {
     
     MIDIParser *midiParser = [MIDIParser new];
     self.trackSettings = [midiParser parseMidiSequence:&_sequence];
-    
+    [midiParser release];
     [self setupAudioSession];
     [self createAndStartGraph];
     [url release];

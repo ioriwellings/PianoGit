@@ -49,7 +49,6 @@ static int initmaps = 0;
 
 @implementation KeySignature;
 
-
 /** Create new key signature, with the given number of
  * sharps and flats.  One of the two must be 0, you can't
  * have both sharps and flats in the key signature.
@@ -90,7 +89,9 @@ static int initmaps = 0;
     return self;
 }
 
-- (void) dealloc {
+- (void) dealloc
+{
+    
     [treble release];
     [bass release];
     [super dealloc];
