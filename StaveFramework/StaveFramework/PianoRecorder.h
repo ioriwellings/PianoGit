@@ -20,7 +20,7 @@
 
 
 
-@property (nonatomic, readwrite, strong) AVAudioRecorder* audioRecorder;
+@property (nonatomic, readwrite, assign) AVAudioRecorder* audioRecorder;
 
 
 @end

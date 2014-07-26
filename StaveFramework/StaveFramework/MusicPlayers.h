@@ -16,6 +16,6 @@
 - (BOOL) play:(NSString*)fileName;
 - (void) stop;
 
-@property (nonatomic, readwrite, strong) AVAudioPlayer* audioPlayer;
+@property (nonatomic, readwrite, assign) AVAudioPlayer* audioPlayer;
 
 @end

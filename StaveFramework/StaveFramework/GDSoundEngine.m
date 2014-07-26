@@ -45,8 +45,8 @@ static void CheckError(OSStatus error, const char *operation) {
 @property (nonatomic)  MusicPlayer player;
 @property (nonatomic)  MusicSequence sequence;
 
-@property (nonatomic, strong) NSMutableArray *samplerNodes;
-@property (nonatomic, strong) NSArray *trackSettings;
+@property (nonatomic, assign) NSMutableArray *samplerNodes;
+@property (nonatomic, assign) NSArray *trackSettings;
 @end
 
 @implementation GDSoundEngine
@@ -63,6 +63,7 @@ static void CheckError(OSStatus error, const char *operation) {
 -(void)dealloc
 {
     self.trackSettings = nil;
+    self.samplerNodes = nil;
     [super dealloc];
 }
 

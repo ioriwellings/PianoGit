@@ -136,7 +136,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
 +(NSDictionary*)fontAttributes;
 
 
-@property (strong, nonatomic) UIScrollView *scrollView;
+@property (assign, nonatomic) UIScrollView *scrollView;
 
 @end
 

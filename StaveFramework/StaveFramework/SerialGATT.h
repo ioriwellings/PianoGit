@@ -26,9 +26,9 @@
 }
 
 @property (nonatomic, assign) id <BTSmartSensorDelegate> delegate;
-@property (strong, nonatomic) NSMutableArray *peripherals;
-@property (strong, nonatomic) CBCentralManager *manager;
-@property (strong, nonatomic) CBPeripheral *activePeripheral;
+@property (assign, nonatomic) NSMutableArray *peripherals;
+@property (assign, nonatomic) CBCentralManager *manager;
+@property (assign, nonatomic) CBPeripheral *activePeripheral;
 
 
 #pragma mark - Methods for controlling the HMSoft Sensor

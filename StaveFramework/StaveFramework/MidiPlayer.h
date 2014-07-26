@@ -118,12 +118,12 @@ enum {
 /** add by yizhq end */
 -(void)disConnectMIDI;
 
-@property (strong, nonatomic) SheetMusicPlay *sheetPlay;
-@property (strong, nonatomic) CBPeripheral *peripheral;
-@property (strong, nonatomic) SerialGATT *sensor;
+@property (assign, nonatomic) SheetMusicPlay *sheetPlay;
+@property (assign, nonatomic) CBPeripheral *peripheral;
+@property (assign, nonatomic) SerialGATT *sensor;
 @property (nonatomic, assign) id <MidiPlayerDelegate> delegate;
 
-@property (strong, nonatomic) UILabel *midiData;
+@property (assign, nonatomic) UILabel *midiData;
 
 @end
 
