@@ -31,7 +31,8 @@
     MelodyDetailViewController *vc = self.parentVC;
     if(vc.iPlayMode == 1)
     {
-        ((UIButton*)self.view.subviews[3]).hidden = YES;
+        ((UIButton*)self.view.subviews[2]).hidden = YES;
+        ((UIButton*)self.view.subviews[4]).hidden = YES;
     }
     
     if(vc.handMode == LeftHand)
