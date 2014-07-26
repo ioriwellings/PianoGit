@@ -15,6 +15,13 @@
 #import "StaveFramework/SheetMusicPlay.h"
 #import "StaveFramework/SFCountdownView.h"
 
+typedef enum : NSUInteger
+{
+    TwoHand,
+    LeftHand,
+    RightHand
+} HandMode;
+
 @interface MelodyDetailViewController : BaseViewController <SFCountdownViewDelegate, MidiPlayerDelegate, UIGestureRecognizerDelegate, SheetMusicsDelegate>
 {
     MidiFile *midifile;         /** The midifile that was read */
@@ -47,7 +54,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property BOOL isPresentScroeVC;
 @property (weak, nonatomic) IBOutlet UILabel *labDebug;
-
+@property (nonatomic, readonly ,getter = getOption) MidiOptions *__options;
+@property (nonatomic, readonly ,getter = getMIDIFile) MidiFile * __midiFile;
+@property (nonatomic) HandMode handMode;
 
 - (IBAction)btnBack_click:(id)sender;
 - (IBAction)btnSection_click:(id)sender;

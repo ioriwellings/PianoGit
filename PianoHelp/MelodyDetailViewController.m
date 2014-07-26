@@ -22,6 +22,16 @@
 
 @implementation MelodyDetailViewController
 
+-(MidiOptions*)getOption
+{
+    return &options;
+}
+
+-(MidiFile*)getMIDIFile
+{
+    return midifile;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

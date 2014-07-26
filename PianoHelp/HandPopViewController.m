@@ -33,17 +33,18 @@
     {
         ((UIButton*)self.view.subviews[3]).hidden = YES;
     }
-    if(0)
+    
+    if(vc.handMode == LeftHand)
     {
-        
+        self.imageLeft.highlighted = YES;
     }
-    else if(1)
+    else if(vc.handMode == RightHand)
+    {
+        self.imageRight.highlighted = YES;
+    }
+    else
     {
         self.imageLeftAndRight.highlighted = YES;
-    }
-    else if(0)
-    {
-        
     }
 }
 
@@ -67,18 +68,21 @@
 - (IBAction)btnLeft:(UIButton *)sender
 {
     [self.shd handModel:1];
+    self.parentVC.handMode = LeftHand;
     [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 
 - (IBAction)btnRight:(UIButton *)sender
 {
     [self.shd handModel:2];
+    self.parentVC.handMode = RightHand;
     [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 
 - (IBAction)btnLeftRight_onclick:(id)sender
 {
     [self.shd handModel:0];
+    self.parentVC.handMode = TwoHand;
     [self.parentVC.popVC dismissPopoverAnimated:YES];
 }
 @end
