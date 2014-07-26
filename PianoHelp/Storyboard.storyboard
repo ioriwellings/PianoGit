@@ -251,14 +251,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="OBn-i5-ImK">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ay-b4-P51" userLabel="btnBack">
-                                        <rect key="frame" x="0.0" y="23" width="94" height="29"/>
+                                        <rect key="frame" x="16" y="23" width="40" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="fanhui.png">
+                                        <state key="normal" image="tuichu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -270,8 +266,8 @@
                                         <rect key="frame" x="385" y="31" width="255" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -322,7 +318,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21568629149999999" green="0.25098040700000002" blue="0.35686275360000003" alpha="1" colorSpace="deviceRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="d0O-Tf-9fe" firstAttribute="leading" secondItem="B1g-kV-JEW" secondAttribute="leading" id="SFA-CC-VPF"/>
@@ -359,14 +355,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="igu-Fa-hr5">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-CX-Wzn" userLabel="btnBack">
                                         <rect key="frame" x="0.0" y="23" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="fanhui.png">
+                                        <state key="normal" image="tuichu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -379,10 +371,11 @@
                                         <rect key="frame" x="385" y="31" width="255" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.21568629149999999" green="0.25098040700000002" blue="0.35686275360000003" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-4G-xsv">
                                 <rect key="frame" x="0.0" y="75" width="1024" height="693"/>
@@ -486,7 +479,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="btnBuy" destination="Nd3-WB-7xu" id="aF0-bW-qaq"/>
                                             <outlet property="btnFavorite" destination="mXs-wG-OrW" id="lLi-EV-Kqo"/>
@@ -871,23 +866,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-ve-m34">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <gestureRecognizers/>
-                            </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCk-aq-Jma" userLabel="toolBarView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="yEE-3W-pmt">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLK-aW-oeB" userLabel="btnBack">
                                         <rect key="frame" x="0.0" y="23" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="fanhui.png">
+                                        <state key="normal" image="tuichu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -895,12 +881,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGx-ka-sf5">
-                                        <rect key="frame" x="180" y="6" width="48" height="48"/>
+                                        <rect key="frame" x="141" y="20" width="95" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="fenduan1.png">
+                                        <state key="normal" image="fenduan-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="fenduan2.png"/>
                                         <connections>
                                             <action selector="btnSection_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="kfi-hB-sM8"/>
                                             <segue destination="jBO-gs-iq6" kind="popover" identifier="popoverSectionSegue" popoverAnchorView="yGx-ka-sf5" id="1SZ-Dd-4D1">
@@ -909,12 +894,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCT-IF-06P">
-                                        <rect key="frame" x="360" y="6" width="48" height="48"/>
+                                        <rect key="frame" x="321" y="20" width="95" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="zuoyoushou1.png">
+                                        <state key="normal" image="zuoyoushou-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="zuoyoushou2.png"/>
                                         <connections>
                                             <action selector="btnHand_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="Sed-Ev-AVA"/>
                                             <segue destination="KYj-Mt-FsF" kind="popover" identifier="popoverHandSegue" popoverAnchorView="BCT-IF-06P" id="1rC-mX-Tvz">
@@ -923,12 +907,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHk-wv-G65">
-                                        <rect key="frame" x="526" y="6" width="48" height="48"/>
+                                        <rect key="frame" x="487" y="20" width="95" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="peilianyin1.png">
+                                        <state key="normal" image="peilianyin-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="peilianyin2.png"/>
                                         <connections>
                                             <action selector="btnPeiLianYin_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="dPy-xP-i2J"/>
                                             <segue destination="OlT-iO-pfT" kind="popover" identifier="popoverSoundSegue" popoverAnchorView="aHk-wv-G65" id="BRH-Al-noO">
@@ -937,58 +920,26 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSw-VE-faB">
-                                        <rect key="frame" x="692" y="6" width="48" height="48"/>
+                                        <rect key="frame" x="653" y="20" width="95" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="tishi1.png">
+                                        <state key="normal" image="tishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="tishi2.png"/>
                                         <connections>
                                             <action selector="btnHint_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="CEo-U5-OUZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7b-eu-9P1">
-                                        <rect key="frame" x="860" y="6" width="48" height="48"/>
+                                        <rect key="frame" x="821" y="20" width="95" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="shiting1.png">
+                                        <state key="normal" image="shiting-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="shiting2.png"/>
                                         <connections>
                                             <action selector="btnTryListen_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="2zs-yA-1bd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="试听" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBv-pF-Kkq">
-                                        <rect key="frame" x="863" y="49" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="提示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUP-4A-dS9">
-                                        <rect key="frame" x="695" y="49" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="陪练音" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o84-zY-MLm">
-                                        <rect key="frame" x="529" y="49" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="左右手" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbq-LL-aFJ">
-                                        <rect key="frame" x="363" y="49" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="分段" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmu-dY-2zC">
-                                        <rect key="frame" x="183" y="49" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-Tg-MYg">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-Tg-MYg" userLabel="labDebug">
                                         <rect key="frame" x="916" y="27" width="108" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1005,15 +956,10 @@
                                 <rect key="frame" x="0.0" y="618" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="l7k-fj-C0G">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <gestureRecognizers/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyK-ha-T1b" userLabel="Button-btnPlay">
-                                        <rect key="frame" x="500" y="19" width="24" height="29"/>
+                                        <rect key="frame" x="500" y="18" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="kaishi.png">
+                                        <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="zanting.png"/>
@@ -1022,9 +968,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhW-T8-HkW" userLabel="Button-btnRePlay">
-                                        <rect key="frame" x="400" y="23" width="34" height="29"/>
+                                        <rect key="frame" x="412" y="16" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="chongzou.png">
+                                        <state key="normal" image="chongxinkaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1032,9 +978,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHt-Fh-N4Y" userLabel="Button-btnSuDu">
-                                        <rect key="frame" x="602" y="16" width="16" height="34"/>
+                                        <rect key="frame" x="575" y="16" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="yuansu.png">
+                                        <state key="normal" image="tiaosu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1042,24 +988,24 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0h-dF-SYW">
-                                        <rect key="frame" x="30" y="14" width="48" height="48"/>
+                                        <rect key="frame" x="30" y="6" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="17" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="1" backgroundImage="xiaojietiaozhuan.png">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="1" backgroundImage="xiaojietiaozhuan-01.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgW-aH-ytR">
-                                        <rect key="frame" x="689" y="16" width="48" height="48"/>
+                                        <rect key="frame" x="689" y="8" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="000" backgroundImage="sudutubiao.png">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="000" backgroundImage="biansu-01.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -1079,15 +1025,23 @@
                                             <action selector="suduSlider_valueChanged:" destination="71i-e3-K5Z" eventType="valueChanged" id="PSc-3k-hra"/>
                                         </connections>
                                     </slider>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="jiasukuang-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-m1-oDn">
+                                        <rect key="frame" x="622" y="0.0" width="400" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xiaojietiaozhuankuang-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hcy-Nw-VLe">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21568629149999999" green="0.25098040700000002" blue="0.35686275360000003" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1024" id="4wp-0w-FRf"/>
                                     <constraint firstAttribute="height" constant="75" id="iDq-UR-uEr"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21568629145622253" green="0.25098040699958801" blue="0.35686275362968445" alpha="1" colorSpace="deviceRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HCk-aq-Jma" firstAttribute="top" secondItem="1Li-Yg-eQU" secondAttribute="bottom" id="3Su-vb-WxP"/>
@@ -1699,7 +1653,7 @@
                                                     <rect key="frame" x="90" y="16" width="180" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="识谱模式" backgroundImage="sangemoshi_bg.png">
+                                                    <state key="normal" title="识谱模式">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1717,7 +1671,7 @@
                                                     <rect key="frame" x="422" y="16" width="180" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="弹奏模式" backgroundImage="sangemoshi_bg.png">
+                                                    <state key="normal" title="弹奏模式">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected">
@@ -1735,7 +1689,7 @@
                                                     <rect key="frame" x="754" y="16" width="180" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="挑战模式" backgroundImage="sangemoshi_bg.png">
+                                                    <state key="normal" title="挑战模式">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected">
@@ -1944,25 +1898,17 @@
                         <viewControllerLayoutGuide type="bottom" id="MGY-cs-VLO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jZF-Rq-Mm1">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-cU-CsR">
-                                <rect key="frame" x="-3" y="-1" width="1024" height="768"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-Fl-wgC" userLabel="toolBarView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daohangtiao.png" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-v5-sLk">
-                                        <rect key="frame" x="0.0" y="1" width="1024" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-Hf-zOE" userLabel="btnBack">
                                         <rect key="frame" x="0.0" y="24" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="fanhui.png">
+                                        <state key="normal" image="tuichu-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1970,12 +1916,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wum-yJ-9qc">
-                                        <rect key="frame" x="489" y="24" width="47" height="29"/>
+                                        <rect key="frame" x="489" y="24" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="kaishi.png">
+                                        <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="zanting.png"/>
                                         <connections>
                                             <action selector="btnPlayClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="cIw-XO-4sz"/>
                                         </connections>
@@ -1984,7 +1929,7 @@
                                         <rect key="frame" x="956" y="23" width="40" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="琴房">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1998,7 +1943,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21568629149999999" green="0.25098040700000002" blue="0.35686275360000003" alpha="1" colorSpace="deviceRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O5x-Fl-wgC" firstAttribute="leading" secondItem="jZF-Rq-Mm1" secondAttribute="leading" id="5fk-l6-W7P"/>
@@ -2135,15 +2080,12 @@
         <image name="bangdingxuliehao.png" width="69" height="51"/>
         <image name="baocunluyin1.png" width="48" height="48"/>
         <image name="baocunluyin2.png" width="48" height="47"/>
+        <image name="biansu-01.png" width="60" height="60"/>
         <image name="chakan1.png" width="26" height="35"/>
-        <image name="chongzou.png" width="34" height="29"/>
+        <image name="chongxinkaishi-01.png" width="35" height="30"/>
         <image name="cuofu,jiesuanzhong.png" width="31" height="31"/>
-        <image name="daohangtiao.png" width="1025" height="76"/>
-        <image name="ditu.png" width="1026" height="771"/>
         <image name="duifu,zongjiezhong.png" width="31" height="25"/>
-        <image name="fanhui.png" width="39" height="29"/>
-        <image name="fenduan1.png" width="48" height="48"/>
-        <image name="fenduan2.png" width="48" height="48"/>
+        <image name="fenduan-01.png" width="95" height="35"/>
         <image name="fenxiang1.png" width="48" height="48"/>
         <image name="fenxiang2.png" width="48" height="48"/>
         <image name="gengduo.png" width="95" height="133"/>
@@ -2152,14 +2094,14 @@
         <image name="huigu2.png" width="48" height="48"/>
         <image name="huishan.png" width="35" height="41"/>
         <image name="jiaocaishuben.png" width="401" height="549"/>
+        <image name="jiasukuang-01.png" width="400" height="75"/>
         <image name="jiesuanfenshuduihuakuang.png" width="539" height="485"/>
         <image name="jingyin.png" width="25" height="26"/>
         <image name="jiucuo1.png" width="48" height="48"/>
         <image name="jiucuo2.png" width="48" height="48"/>
-        <image name="kaishi.png" width="24" height="29"/>
+        <image name="kaishi-01.png" width="22" height="30"/>
         <image name="loginBg.jpg" width="1025" height="774"/>
-        <image name="peilianyin1.png" width="48" height="48"/>
-        <image name="peilianyin2.png" width="48" height="48"/>
+        <image name="peilianyin-01.png" width="95" height="35"/>
         <image name="peilianyinerjikuang.png" width="198" height="124"/>
         <image name="puku.png" width="95" height="132"/>
         <image name="puku1.png" width="95" height="132"/>
@@ -2171,13 +2113,11 @@
         <image name="queren_01.png" width="35" height="41"/>
         <image name="renwu.png" width="31" height="34"/>
         <image name="renwu1.png" width="31" height="34"/>
-        <image name="sangemoshi_bg.png" width="181" height="51"/>
         <image name="sangemoshiqumulan.png" width="931" height="536"/>
         <image name="shangcehng.png" width="95" height="132"/>
         <image name="shangcheng1.png" width="95" height="132"/>
         <image name="shifanqupu.png" width="281" height="271"/>
-        <image name="shiting1.png" width="48" height="48"/>
-        <image name="shiting2.png" width="48" height="48"/>
+        <image name="shiting-01.png" width="95" height="35"/>
         <image name="shizi1-01.png" width="35" height="42"/>
         <image name="shopBg.png" width="1024" height="768"/>
         <image name="shopItem.png" width="896" height="176"/>
@@ -2188,15 +2128,16 @@
         <image name="shuzikuang.png" width="96" height="44"/>
         <image name="shuzikuangjia.png" width="254" height="184"/>
         <image name="spaceBg.jpg" width="1024" height="768"/>
-        <image name="sudutubiao.png" width="49" height="49"/>
         <image name="tanzou1.png" width="61" height="61"/>
-        <image name="tishi1.png" width="48" height="48"/>
-        <image name="tishi2.png" width="48" height="48"/>
+        <image name="tiaosu-01.png" width="10" height="35"/>
+        <image name="tishi-01.png" width="95" height="35"/>
         <image name="toobar_bg.png" width="1024" height="75"/>
+        <image name="tuichu-01.png" width="40" height="30"/>
         <image name="tuichudangqianzhanghao1.png" width="73" height="72"/>
         <image name="wangguan.png" width="66" height="66"/>
         <image name="weigoumaitubiao.png" width="71" height="37"/>
-        <image name="xiaojietiaozhuan.png" width="48" height="48"/>
+        <image name="xiaojietiaozhuan-01.png" width="60" height="60"/>
+        <image name="xiaojietiaozhuankuang-01.png" width="400" height="75"/>
         <image name="xiaoxi1.png" width="69" height="43"/>
         <image name="xingxing,jiesuanzhong.png" width="31" height="29"/>
         <image name="xuanzequan.png" width="15" height="15"/>
@@ -2205,7 +2146,6 @@
         <image name="yigouwu1.png" width="32" height="31"/>
         <image name="yinliang.png" width="25" height="26"/>
         <image name="youshou.png" width="77" height="85"/>
-        <image name="yuansu.png" width="16" height="34"/>
         <image name="zanting.png" width="24" height="29"/>
         <image name="zhanting.png" width="96" height="133"/>
         <image name="zhanting1.png" width="96" height="133"/>
@@ -2213,8 +2153,7 @@
         <image name="zuiai2.png" width="32" height="30"/>
         <image name="zunashi.png" width="37" height="32"/>
         <image name="zuoshou.png" width="77" height="85"/>
-        <image name="zuoyoushou1.png" width="48" height="48"/>
-        <image name="zuoyoushou2.png" width="48" height="48"/>
+        <image name="zuoyoushou-01.png" width="95" height="35"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
@@ -2222,6 +2161,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rzz-nC-FZ7"/>
+        <segue reference="idR-LZ-S10"/>
     </inferredMetricsTieBreakers>
 </document>
