@@ -155,6 +155,7 @@ int sortbynote(void* note1, void* note2) {
 - (void)dealloc {
     [notes release];
     [lyrics release];
+    if(splitednotes) [splitednotes release];
     /** add by sunlie start */
     [controlList release];
     [controlList2 release];
@@ -552,7 +553,9 @@ int sortbynote(void* note1, void* note2) {
     return;
 }
 
--(void)createSplitednotes:(TimeSignature *)time andBeatarray:(Array *)beatarray {
+-(void)createSplitednotes:(TimeSignature *)time andBeatarray:(Array *)beatarray
+{
+    if(splitednotes) [splitednotes release];
     splitednotes = [Array new:500];
     int startTime;
     int endTime;

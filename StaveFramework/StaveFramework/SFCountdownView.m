@@ -20,7 +20,14 @@
 
 @implementation SFCountdownView
 
-
+-(void)dealloc
+{
+    if(self.countdownLabel)
+    {
+        self.countdownLabel = nil;
+    }
+    [super dealloc];
+}
 
 - (id)initWithParentView:(UIView*)view
 {
@@ -47,8 +54,6 @@
     [parent addSubview: self.countdownLabel];
     
     self.countdownLabel.frame =  CGRectMake(312, 300, 400, 200);
-    
-//    [self.countdownLabel setCenter:parent.center];
 }
 
 

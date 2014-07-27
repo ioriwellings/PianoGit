@@ -1335,6 +1335,7 @@ static BOOL isBlank(id x) {
             if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
                 [[symbols get:i] setStaffNo:staffNo];
             }
+            [staffNo release];
         }
         /** add by yizhq end */
         Staff *staff = [[Staff alloc] initWithSymbols:staffsymbols
@@ -2055,6 +2056,7 @@ static NSDictionary *fontAttr = NULL;
 
 - (void)dealloc {
     self.scrollView = nil;
+    if(filename)[filename release];
     [staffs release];
     [super dealloc];
 }

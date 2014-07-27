@@ -150,7 +150,10 @@ static int blackKeyOffsets[10];  /** The x pixles of the black keys */
 }
 
 /** Set the colors to use for shading */
-- (void)setShade:(UIColor*)s1 andShade2:(UIColor*)s2 {
+- (void)setShade:(UIColor*)s1 andShade2:(UIColor*)s2
+{
+    if(shadeColor) [shadeColor release];
+    if(shade2Color)[shade2Color release];
     shadeColor = s1;
     shade2Color = s2;
 }
@@ -712,6 +715,8 @@ CGContextRef context = UIGraphicsGetCurrentContext();
         [gray1 release]; gray1 = nil;
         [gray2 release]; gray1 = nil;
         [gray3 release]; gray1 = nil;
+    [shadeColor release];
+    [shade2Color release];
         [super dealloc];
 }
 

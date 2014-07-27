@@ -1728,6 +1728,7 @@ static UIImage* chanyin = nil;
     [accidsymbols release];  accidsymbols = nil;
     [stem1 release]; stem1 = nil;
     [stem2 release]; stem2 = nil;
+    if(_staffNo) [_staffNo release];
     [super dealloc];
 }
 
