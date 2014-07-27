@@ -495,6 +495,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                 starttime = [mevent startTime];
                 BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:numer andDenominator:denom andStarttime:starttime];
                 [beatarray add:beat];
+                [beat release];
             }
             if ([mevent metaevent] == MetaEventKeySignature) {
                 int size = [tonearray count];
@@ -510,12 +511,14 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                 if (size == 0) {
                     tonesig = [[ToneSignature alloc] initWithTone:tone andStarttime:starttime];
                     [tonearray add:tonesig];
+                    [tonesig release];
                 }
                 if (size > 0) {
                     ToneSignature *t =[tonearray get:(size-1)];
                     if ([t tone] != tone) {
                         tonesig = [[ToneSignature alloc] initWithTone:tone andStarttime:starttime];
                         [tonearray add:tonesig];
+                        [tonesig release];
                     }
                 }
             }
@@ -549,7 +552,10 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
+    if(beatarray)[beatarray release];
+    if(tonearray)[tonearray release];
     [filename release];
     [tracks release];
     [timesig release];
@@ -714,6 +720,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     if (ctrecord1 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList add:data];
+                        [data release];
                         ctrecord1 = 127;
                     }
                     
@@ -730,6 +737,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     } else if (ctrecord2 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList2 add:data];
+                        [data release];
                         ctrecord2 = 127;
                     }
                 }
@@ -759,6 +767,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     } else if (ctrecord3 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList3 add:data];
+                        [data release];
                         ctrecord3 = 127;
                     }
                 } else if (value == 0) {
@@ -769,6 +778,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     } else if (ctrecord3 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList3 add:data];
+                        [data release];
                         ctrecord3 = 64;
                     }
                 }
@@ -820,6 +830,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord4 != 64) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue4 andStarttime:preStart4 andEndtime:0];
                             [controlList4 add:data];
+                            [data release];
                             ctrecord4 = 64;
                         }
                         
@@ -827,6 +838,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord4 != 127) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue4 andStarttime:preStart4 andEndtime:0];
                             [controlList4 add:data];
+                            [data release];
                             ctrecord4 = 127;
                         }
                     }
@@ -858,6 +870,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     if (ctrecord5 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList5 add:data];
+                        [data release];
                         ctrecord5 = 127;
                     }
                     
@@ -878,6 +891,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     if (ctrecord6 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList6 add:data];
+                        [data release];
                         ctrecord6 = 127;
                     }
                     
@@ -897,6 +911,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     if (ctrecord7 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList7 add:data];
+                        [data release];
                         ctrecord7 = 127;
                     }
                     
@@ -915,7 +930,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     }
                     ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:start andEndtime:0];
                     [controlList8 add:data];
-                    
+                    [data release];
                 } else if (value < preValue8) {
                     ctrecord8 = -1;
                 } else if (value > preValue8) {
@@ -938,6 +953,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord9 != 1) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue9 andStarttime:preTime9 andEndtime:0];
                             [controlList9 add:data];
+                            [data release];
                             ctrecord9 = 1;
                         }
                         
@@ -945,18 +961,21 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord9 != 2) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue9 andStarttime:preTime9 andEndtime:0];
                             [controlList9 add:data];
+                            [data release];
                             ctrecord9 = 2;
                         }
                     } else if (preValue9 > 71 && preValue9 <= 95) {
                         if (ctrecord9 != 3) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue9 andStarttime:preTime9 andEndtime:0];
                             [controlList9 add:data];
+                            [data release];
                             ctrecord9 = 3;
                         }
                     } else if (preValue9 > 96 && preValue9 <= 127) {
                         if (ctrecord9 != 4) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue9 andStarttime:preTime9 andEndtime:0];
                             [controlList9 add:data];
+                            [data release];
                             ctrecord9 = 4;
                         }
                     }
@@ -988,6 +1007,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord10 != 1) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue10 andStarttime:preTime10 andEndtime:0];
                             [controlList10 add:data];
+                            [data release];
                             ctrecord10 = 1;
                         }
                         
@@ -995,12 +1015,14 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord10 != 2) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue10 andStarttime:preTime10 andEndtime:0];
                             [controlList10 add:data];
+                            [data release];
                             ctrecord10 = 2;
                         }
                     } else if (preValue10 > 81 && preValue10 <= 127) {
                         if (ctrecord10 != 3) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue10 andStarttime:preTime10 andEndtime:0];
                             [controlList10 add:data];
+                            [data release];
                             ctrecord10 = 3;
                         }
                     }
@@ -1032,6 +1054,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord11 != 64) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue11 andStarttime:preStart11 andEndtime:0];
                             [controlList11 add:data];
+                            [data release];
                             ctrecord11 = 64;
                         }
                         
@@ -1039,6 +1062,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord11 != 127) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue11 andStarttime:preStart11 andEndtime:0];
                             [controlList11 add:data];
+                            [data release];
                             ctrecord11 = 127;
                         }
                     }
@@ -1070,6 +1094,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord12 != 64) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue12 andStarttime:preStart12 andEndtime:0];
                             [controlList12 add:data];
+                            [data release];
                             ctrecord12 = 64;
                         }
                         
@@ -1077,6 +1102,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord12 != 127) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue12 andStarttime:preStart12 andEndtime:0];
                             [controlList12 add:data];
+                            [data release];
                             ctrecord12 = 127;
                         }
                     }
@@ -1108,6 +1134,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     if (ctrecord13 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList13 add:data];
+                        [data release];
                         ctrecord13 = 127;
                     }
                     
@@ -1125,6 +1152,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                     } else if (ctrecord14 == 0) {
                         ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
                         [controlList14 add:data];
+                        [data release];
                         ctrecord14 = 127;
                     }
                 }
@@ -1158,6 +1186,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord15 != 50) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue15 andStarttime:preStart15 andEndtime:0];
                             [controlList15 add:data];
+                            [data release];
                             ctrecord15 = 50;
                         }
                         
@@ -1165,12 +1194,14 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         if (ctrecord15 != 127) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue15 andStarttime:preStart15 andEndtime:0];
                             [controlList15 add:data];
+                            [data release];
                             ctrecord15 = 127;
                         }
                     } else if (preValue15 > 81 && preValue15 <= 127) {
                         if (ctrecord15 != 127) {
                             ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:preValue15 andStarttime:preStart15 andEndtime:0];
                             [controlList15 add:data];
+                            [data release];
                             ctrecord15 = 127;
                         }
                     }

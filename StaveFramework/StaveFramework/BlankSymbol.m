@@ -20,7 +20,9 @@
 @implementation BlankSymbol
 
 /** Create a new BlankSymbol with the given starttime and width */
-- (id)initWithTime:(int)start andWidth:(int)w {
+- (id)initWithTime:(int)start andWidth:(int)w
+{
+    self =  [super init];
     starttime = start;
     width = w;
     return self;

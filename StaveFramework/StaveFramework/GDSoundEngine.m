@@ -149,6 +149,7 @@ static void CheckError(OSStatus error, const char *operation) {
         [self loadFromDLSOrSoundFont:presetURL withBank:kAUSampler_DefaultMelodicBankMSB withPatch:0 withSampler:samplerUnit];
     else
         [self loadFromDLSOrSoundFont:presetURL withBank:kAUSampler_DefaultMelodicBankMSB withPatch:114 withSampler:samplerUnit];
+    [presetURL release];
     return samplerNode;
 }
 

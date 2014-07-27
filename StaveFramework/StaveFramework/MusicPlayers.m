@@ -42,8 +42,13 @@
     
 }
 
-- (void) dealloc {
-    self.audioPlayer = nil;
+- (void) dealloc
+{
+    if(self.audioPlayer)
+    {
+        [self.audioPlayer release];
+        self.audioPlayer = nil;
+    }
     [super dealloc];
 }
 

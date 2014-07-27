@@ -11,7 +11,7 @@
 @interface SFCountdownView ()
 
 @property (nonatomic) NSTimer* timer;
-@property (nonatomic) UILabel* countdownLabel;
+@property (assign,nonatomic) UILabel* countdownLabel;
 @property (nonatomic) int currentCountdownValue;
 
 @end
@@ -24,6 +24,7 @@
 {
     if(self.countdownLabel)
     {
+        [self.countdownLabel release];
         self.countdownLabel = nil;
     }
     [super dealloc];
