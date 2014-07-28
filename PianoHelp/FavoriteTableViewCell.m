@@ -13,6 +13,17 @@
 
 @implementation FavoriteTableViewCell
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if(self = [super initWithCoder:aDecoder])
+    {
+        self.contentView.layer.cornerRadius = 10;
+        self.contentView.layer.masksToBounds = YES;
+        self.contentView.clipsToBounds = YES;
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

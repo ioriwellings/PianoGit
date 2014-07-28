@@ -625,6 +625,15 @@
     [self setNumberOfAllKind];
     [self setNumberOfTaskKind];
     [self setNumberOfFavoKind];
+    self.labNumberLike.layer.cornerRadius = 6;
+    self.labNumberLike.layer.masksToBounds = YES;
+    self.labNumberLike.layer.backgroundColor = [UIColor redColor].CGColor;
+    self.labNumberTask.layer.cornerRadius = 6;
+    self.labNumberTask.layer.masksToBounds = YES;
+    self.labNumberTask.layer.backgroundColor = [UIColor redColor].CGColor;
+    self.labNumberAll.layer.masksToBounds = YES;
+    self.labNumberAll.layer.cornerRadius = 6;
+    self.labNumberAll.layer.backgroundColor = [UIColor redColor].CGColor;
 }
 
 -(void)setNumberOfAllKind
@@ -660,13 +669,20 @@
         {
             NSNumber *oNum = [[objects objectAtIndex:0] valueForKey:@"count"];
             if([oNum intValue] > 0)
+            {
                 self.labNumberAll.text = [oNum stringValue];
+                self.labNumberAll.hidden = NO;
+            }
             else
+            {
                 self.labNumberAll.text = [NSString string];
+                self.labNumberAll.hidden = YES;
+            }
         }
         else
         {
             self.labNumberAll.text = [NSString string];
+            self.labNumberAll.hidden = YES;
         }
     }
 }
@@ -707,13 +723,20 @@
         {
             NSNumber *oNum = [[objects objectAtIndex:0] valueForKey:@"count"];
             if([oNum intValue] > 0)
+            {
                 self.labNumberTask.text = [oNum stringValue];
+                self.labNumberTask.hidden = NO;
+            }
             else
+            {
                 self.labNumberTask.text = [NSString string];
+                self.labNumberTask.hidden = YES;
+            }
         }
         else
         {
             self.labNumberTask.text = [NSString string];
+            self.labNumberTask.hidden = YES;
         }
     }
 }
@@ -754,13 +777,20 @@
         {
             NSNumber *oNum = [[objects objectAtIndex:0] valueForKey:@"count"];
             if([oNum intValue] > 0)
+            {
                 self.labNumberLike.text = [oNum stringValue];
+                self.labNumberLike.hidden = NO;
+            }
             else
+            {
                 self.labNumberLike.text = [NSString string];
+                self.labNumberLike.hidden = YES;
+            }
         }
         else
         {
             self.labNumberLike.text = [NSString string];
+            self.labNumberLike.hidden = YES;
         }
     }
 }
