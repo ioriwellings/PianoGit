@@ -966,6 +966,7 @@
                                         <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="zanting.png"/>
                                         <connections>
                                             <action selector="btnPlay_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="TL6-mf-h3v"/>
                                         </connections>
@@ -1916,6 +1917,7 @@
                                         <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="zanting.png"/>
                                         <connections>
                                             <action selector="btnPlayClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="cIw-XO-4sz"/>
                                         </connections>
@@ -2140,6 +2142,7 @@
         <image name="yigouwu1.png" width="32" height="31"/>
         <image name="yinliang.png" width="25" height="26"/>
         <image name="youshou.png" width="77" height="85"/>
+        <image name="zanting.png" width="21" height="21"/>
         <image name="zhanting.png" width="96" height="133"/>
         <image name="zhanting1.png" width="96" height="133"/>
         <image name="zuiai1.png" width="32" height="30"/>
