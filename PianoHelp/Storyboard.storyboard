@@ -952,6 +952,14 @@
                                 <rect key="frame" x="0.0" y="618" width="1024" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="jiasukuang-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-m1-oDn">
+                                        <rect key="frame" x="622" y="0.0" width="400" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xiaojietiaozhuankuang-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hcy-Nw-VLe">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyK-ha-T1b" userLabel="Button-btnPlay">
                                         <rect key="frame" x="500" y="18" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1020,14 +1028,6 @@
                                             <action selector="suduSlider_valueChanged:" destination="71i-e3-K5Z" eventType="valueChanged" id="PSc-3k-hra"/>
                                         </connections>
                                     </slider>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="jiasukuang-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-m1-oDn">
-                                        <rect key="frame" x="622" y="0.0" width="400" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xiaojietiaozhuankuang-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hcy-Nw-VLe">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21568629149999999" green="0.25098040700000002" blue="0.35686275360000003" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
