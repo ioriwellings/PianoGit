@@ -12,6 +12,7 @@
 
 @interface FavoriteTableViewCell : BaseTableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageSelected;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labAuthor;
 @property (weak, nonatomic) IBOutlet UILabel *labScore;

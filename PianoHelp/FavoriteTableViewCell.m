@@ -17,7 +17,7 @@
 {
     if(self = [super initWithCoder:aDecoder])
     {
-        self.contentView.layer.cornerRadius = 10;
+        self.contentView.layer.cornerRadius = 16;
         self.contentView.layer.masksToBounds = YES;
         self.contentView.clipsToBounds = YES;
     }
@@ -66,8 +66,10 @@
 {
     for (UITableViewCell *cell in self.tableView.visibleCells)
     {
-        cell.selected = NO;
+        //cell.selected = NO;
+        ((FavoriteTableViewCell*)cell).imageSelected.hidden = YES;
     }
     self.selected = YES;
+    self.imageSelected.hidden = NO;
 }
 @end
