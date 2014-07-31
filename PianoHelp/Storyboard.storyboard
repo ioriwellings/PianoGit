@@ -967,6 +967,7 @@
                                         <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="zanting.png"/>
                                         <connections>
                                             <action selector="btnPlay_click:" destination="71i-e3-K5Z" eventType="touchUpInside" id="TL6-mf-h3v"/>
                                         </connections>
@@ -1900,6 +1901,7 @@
                                         <state key="normal" image="kaishi-01.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="zanting.png"/>
                                         <connections>
                                             <action selector="btnPlayClick:" destination="N9J-kc-bCn" eventType="touchUpInside" id="cIw-XO-4sz"/>
                                         </connections>
