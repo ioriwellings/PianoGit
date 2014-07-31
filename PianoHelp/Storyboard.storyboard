@@ -92,7 +92,7 @@
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dTB-OQ-bDf">
                                                     <rect key="frame" x="52" y="25" width="90" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="shangcehng.png"/>
+                                                    <state key="normal" image="shangcheng.png"/>
                                                     <state key="selected" backgroundImage="xuanzhongbiaoqian.png">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
@@ -2092,7 +2092,7 @@
         <image name="renwu.png" width="31" height="34"/>
         <image name="renwu1.png" width="31" height="34"/>
         <image name="renwufenye.png" width="150" height="36"/>
-        <image name="shangcehng.png" width="90" height="25"/>
+        <image name="shangcheng.png" width="90" height="25"/>
         <image name="shifanqupu.png" width="281" height="271"/>
         <image name="shipumoshi.png" width="300" height="70"/>
         <image name="shiting-01.png" width="95" height="35"/>
