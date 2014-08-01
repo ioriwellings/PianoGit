@@ -124,7 +124,7 @@ int sortbynote(void* note1, void* note2) {
             [note setAccidFlag:[mevent velocity]];
             [self addNote:note];
             [note release];
-            NSLog(@"accid:%d",[note accidFlag]);
+//            NSLog(@"accid:%d",[note accidFlag]);
         }
         else if ([mevent eventFlag] == EventNoteOn && [mevent velocity] == 0) {
             [self noteOffWithChannel:[mevent channel] andNumber:[mevent notenumber]

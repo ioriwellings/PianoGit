@@ -96,8 +96,10 @@
         [self drawEighth:context atY:ytop];
     }
     else if (duration == Sixteenth) {
+        [self drawSixteen:context atY:ytop];
     }
     else if (duration == ThirtySecond) {
+        [self drawThirtyTwo:context atY:ytop];
     }
     
     CGContextTranslateCTM (context, -NoteHeight/2, 0);
@@ -202,6 +204,65 @@
     [path addLineToPoint:CGPointMake(3*LineSpace/2,   y + LineSpace/2)];
     [path moveToPoint:CGPointMake(3*LineSpace/2,   y + LineSpace/2)];
     [path addLineToPoint:CGPointMake(3*LineSpace/4,   y + NoteHeight*2)];
+    [path setLineWidth:1];
+    [path stroke];
+}
+
+- (void)drawSixteen:(CGContextRef)context atY:(int)ytop {
+    
+    UIBezierPath *path;
+    path = [UIBezierPath bezierPath];
+    int y = ytop + NoteHeight - 1;
+    [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
+                      CGRectMake(0, y+1, LineSpace-1, LineSpace-1)]];
+    [path fill];
+    path = [UIBezierPath bezierPath];
+    [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
+                      CGRectMake(0-2, y+8, LineSpace-1, LineSpace-1)]];
+    [path fill];
+    
+    path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake((LineSpace-2)/2, y + LineSpace - 1)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/2,   y + LineSpace/2)];
+    
+    [path moveToPoint:CGPointMake((LineSpace-2)/2 - 2, y + LineSpace - 1 + 8)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/2 - 2,   y + LineSpace/2 + 8)];
+    
+    [path moveToPoint:CGPointMake(3*LineSpace/2,   y + LineSpace/2)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/4,   y + NoteHeight*2.5)];
+    [path setLineWidth:1];
+    [path stroke];
+}
+
+- (void)drawThirtyTwo:(CGContextRef)context atY:(int)ytop {
+    
+    UIBezierPath *path;
+    path = [UIBezierPath bezierPath];
+    int y = ytop + NoteHeight - 1;
+    [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
+                      CGRectMake(0, y+1, LineSpace-1, LineSpace-1)]];
+    [path fill];
+    path = [UIBezierPath bezierPath];
+    [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
+                      CGRectMake(0-2, y+8, LineSpace-1, LineSpace-1)]];
+    [path fill];
+    path = [UIBezierPath bezierPath];
+    [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
+                      CGRectMake(0-4, y+16, LineSpace-1, LineSpace-1)]];
+    [path fill];
+    
+    path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake((LineSpace-2)/2, y + LineSpace - 1)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/2,   y + LineSpace/2)];
+    
+    [path moveToPoint:CGPointMake((LineSpace-2)/2 - 2, y + LineSpace - 1 + 8)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/2 - 2,   y + LineSpace/2 + 8)];
+    
+    [path moveToPoint:CGPointMake((LineSpace-2)/2 - 4, y + LineSpace - 1 + 16)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/2 - 4,   y + LineSpace/2 + 16)];
+    
+    [path moveToPoint:CGPointMake(3*LineSpace/2,   y + LineSpace/2)];
+    [path addLineToPoint:CGPointMake(3*LineSpace/4,   y + NoteHeight*3.5)];
     [path setLineWidth:1];
     [path stroke];
 }
