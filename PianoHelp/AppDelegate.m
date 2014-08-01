@@ -247,7 +247,7 @@
 //    
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"考级";
-    cate.cover = @"huiyuanqumu.png";
+    cate.cover = @"jiaocaiqupu.png";
     
     MelodyCategory *cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"中国音协第六级－第八级";
@@ -344,7 +344,7 @@
     //=====
     cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"教程";
-    cate.cover = @"jiaocaiqupu.png";
+    cate.cover = @"kaojiqupu.png";
     
     cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"约翰汤普森现代钢琴教程，第二册";

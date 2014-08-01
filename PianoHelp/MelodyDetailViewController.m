@@ -58,6 +58,8 @@
     
     [self loadSheetMusic];
     
+    isEnd = FALSE;
+    
 //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
 //    vc.modalPresentationStyle = UIModalPresentationFullScreen;
 //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -232,6 +234,10 @@
     [self.btnXiaoJieTiaoZhuan setTitle:@"1" forState:UIControlStateNormal];
     [self.sliderXiaoJie setValue:1];
     
+    [sheetmusic clearStaffs];
+    [sheetmusic setNeedsDisplay];
+    [sheetmsic1 setNeedsDisplay];
+    
     [self.sfCountdownView start];
 }
 
@@ -249,6 +255,13 @@
     }
     else
     {
+        if (isEnd) {
+            isEnd = FALSE;
+            [sheetmusic clearStaffs];
+            [sheetmusic setNeedsDisplay];
+            [sheetmsic1 setNeedsDisplay];
+        }
+        
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
         [self.sfCountdownView start];
@@ -414,6 +427,7 @@
 #pragma mark MidiPlayerDelegate
 -(void)endSongs
 {
+    isEnd = TRUE;
     [[self btnPlay] setSelected:false];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
@@ -426,6 +440,8 @@
 -(void)endSongsResult:(int)good andRight:(int)right andWrong:(int)wrong
 {
 
+    isEnd = TRUE;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [player stop];
         [self hiddenMenuAndToolBar];

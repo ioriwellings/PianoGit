@@ -24,12 +24,12 @@
     if (self)
     {
         self.scrollDirection = UICollectionViewScrollDirectionVertical;
-        self.itemSize = (CGSize){215, 280};
-        self.sectionInset = UIEdgeInsetsMake(20, 80, 40, 80);//UIEdgeInsetsMake(54, 60, 64, 60);
+        self.itemSize = (CGSize){200, 240};
+        self.sectionInset = UIEdgeInsetsMake(10, 80, 40, 80);//UIEdgeInsetsMake(54, 60, 64, 60);
 //        self.headerReferenceSize = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad? (CGSize){50, 50} : (CGSize){43, 43}; // 100
 //        self.footerReferenceSize = (CGSize){44, 44}; // 88
         self.minimumInteritemSpacing = 10; // 40;
-        self.minimumLineSpacing = 40;//40;
+        self.minimumLineSpacing = 60;//40;
         [self registerClass:[ShelfView class] forDecorationViewOfKind:[ShelfView kind]];
     }
     return self;

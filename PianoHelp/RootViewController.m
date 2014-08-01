@@ -38,9 +38,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ditu.png"]];
-    imageView.frame = CGRectMake(0, 0, 1024, 768);
-    [self.view addSubview:imageView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(jumpToMelodyForBackFromDetailView:)

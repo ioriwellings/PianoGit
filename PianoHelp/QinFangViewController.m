@@ -78,8 +78,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    UIImage *image = [UIImage imageNamed:@"daohangtiao.png"];
-    self.toolBar.backgroundColor = [UIColor colorWithPatternImage:image];
 
     //if(!IS_RUNNING_IOS7)
     {
@@ -134,9 +132,10 @@
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
     headView.backgroundColor = [UIColor colorWithWhite:0.01 alpha:0.02];
     UILabel *view = [[UILabel alloc] init];
-    view.backgroundColor = [UIColor clearColor];
+    view.backgroundColor = [UIColor darkGrayColor];
+    view.textColor = [UIColor whiteColor];
     view.textAlignment = NSTextAlignmentCenter;
-    view.shadowColor = [UIColor lightGrayColor];
+    view.shadowColor = [UIColor grayColor];
     view.shadowOffset = CGSizeMake(1, 2);
     //view.backgroundColor = [UIColor lightGrayColor];
 //    view.alpha = 0.9;
@@ -220,6 +219,11 @@
     return iResult;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor clearColor];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Dequeue a cell from self's table view.
@@ -239,8 +243,9 @@
     {
         melodyFavo = [self.fetchedResultsController2 objectAtIndexPath:indexPath];
     }
-    [((FavoriteTableViewCell*)cell) updateContent:melodyFavo];
     ((FavoriteTableViewCell*)cell).tableView = tableView;
+    [((FavoriteTableViewCell*)cell) updateContent:melodyFavo];
+
     return cell;
 }
 
