@@ -74,7 +74,6 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
     /** add by sunlie end */
 
     /** add by yizhq start */
-    int _connectNodeCnt;
     int _connectNoteWidth;
     NoteData *_connectNote;
     ChordSymbol *_connectChordSymbol;
@@ -90,7 +89,6 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
                andTime:(TimeSignature*)time;
 
     /** add by yizhq start */
--(void)setconnectNoteCnt:(int)cnt;
 -(void)setConnectNoteWidth:(ChordSymbol*) chordSymbol withNoteData:(NoteData*)note andNoteWidth:(int)connectNoteWidth;
 -(void)setConnectNoteWidth2:(NoteData*)note andNoteWidth:(int)connectNoteWidth;
 -(NoteData *)getNotedata;

@@ -2090,7 +2090,6 @@ static NSDictionary *fontAttr = NULL;
                     continue;
                 }
                 
-                [[symbols get:k] setconnectNoteCnt:[[symbols get:k] notedata_len]];
                 for (int j = 0; j < [[symbols get:k] notedata_len]; j++) {
                     if(nds[j].next == 1)
                     {

@@ -889,9 +889,9 @@ static UIImage* chanyin = nil;
 /** add by yizhq end */
     
     /** add by sunlie start */
-    if (_conLineWidth != 0 && _conLineWidth != -1) {
-        [self drawConLine:context andYtop:ytop andTopStaff:topstaff];
-    }
+//    if (_conLineWidth != 0 && _conLineWidth != -1) {
+//        [self drawConLine:context andYtop:ytop andTopStaff:topstaff];
+//    }
     
     if (jumpedFlag > 0) {
         [self drawJumpedNote:context andYtop:ytop andTopStaff:topstaff];
@@ -1768,10 +1768,14 @@ static UIImage* chanyin = nil;
 
 - (void) drawConnectNote1:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff
 {
-    int nodeHeight = 5;
    	if (_connectNoteWidth == -1)
         return;
 
+    UIBezierPath* aPath = [UIBezierPath bezierPath];
+    aPath.lineWidth = 1;
+    aPath.lineCapStyle = kCGLineCapRound;
+    aPath.lineJoinStyle = kCGLineCapRound;
+    
     int leftDirect, rightDirect, direct, ynote;
     Stem *stem = nil;
     if ([self hasTwoStems] == YES) {
@@ -1797,21 +1801,20 @@ static UIImage* chanyin = nil;
     CGContextSetLineWidth(context, 1.0);
     if (direct == StemDown) {
 
-        for (int i = 0; i < _connectNodeCnt; i++) {
- 
+        for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
+            NoteData *note = &notedata[noteindex];
+            
             CGContextBeginPath(context);
-            if (i < 1) {
-                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
-                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-                float y = ynote - 3 + radius - i*nodeHeight;
-                CGContextAddArc(context, x, y, radius, -60*PI/180, -120*PI/180, 1);
+            if (noteindex <= 1) {
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote + 18)];
+                [aPath stroke];
             }else{
-                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
-                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-                float y = ynote - sqrt(radius*radius/2) + i*nodeHeight;
-                CGContextAddArc(context, x, y, radius, 60* PI/180, 120*PI/180, 0);
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote - 18)];
+                [aPath stroke];
             }
             CGContextStrokePath(context);
         }
@@ -1819,20 +1822,19 @@ static UIImage* chanyin = nil;
 
     } else if (direct == StemUp) {
 
-        for (int i = 0; i < _connectNodeCnt; i++) {
+        for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
+            NoteData *note = &notedata[noteindex];
             CGContextBeginPath(context);
-            if (i < 1) {
-                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
-                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-                float y = ynote - sqrt(radius*radius/2) + i*nodeHeight;
-                CGContextAddArc(context, x, y, radius, 60* PI/180, 120*PI/180, 0);
+            if (noteindex <= 1) {
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote - 18)];
+                [aPath stroke];
             }else{
-                ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-                float radius = sqrt(_connectNoteWidth*_connectNoteWidth/2)*1.2;
-                float x = _connectNoteWidth/2 + 0 + [SheetMusic getNoteWidth]/2;
-                float y = ynote - 3 + radius - i*nodeHeight;
-                CGContextAddArc(context, x, y, radius, -60*PI/180, -120*PI/180, 1);
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote + 18)];
+                [aPath stroke];
             }
             CGContextStrokePath(context);
         }
@@ -1841,10 +1843,13 @@ static UIImage* chanyin = nil;
 
 - (void) drawConnectNote2:(CGContextRef)context andYtop:(float)ytop andTopStaff:(WhiteNote *)topStaff
 {
-    int nodeHeight = 5;
     if (_connectNoteWidth2 == -1)
         return;
     
+    UIBezierPath* aPath = [UIBezierPath bezierPath];
+    aPath.lineWidth = 1;
+    aPath.lineCapStyle = kCGLineCapRound;
+    aPath.lineJoinStyle = kCGLineCapRound;
     
     int leftDirect, ynote;
     Stem *stem = nil;
@@ -1859,25 +1864,37 @@ static UIImage* chanyin = nil;
     CGContextSetLineWidth(context, 1.0);
     
     if (leftDirect == StemDown) {
-        for (int i = 0; i < _connectNodeCnt; i++) {
+        for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
 
-            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-            float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
-            float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
-            float y = ynote + radius - 5 + i*nodeHeight;
-            CGContextBeginPath(context);
-            CGContextAddArc(context, x, y, radius, -35*PI/180, -145*PI/180, 1);
-            CGContextStrokePath(context);
+            NoteData *note = &notedata[noteindex];
+            ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+            if (noteindex <= 1) {
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote + 18)];
+                [aPath stroke];
+            }else{
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote - 18)];
+                [aPath stroke];
+            }
         }
     } else if (leftDirect == StemUp) {
-        for (int i = 0; i < _connectNodeCnt; i++) {
-            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2;
-            float radius = sqrt(_connectNoteWidth2*_connectNoteWidth2/2);
-            float x = _connectNoteWidth2/2 + 0 + [SheetMusic getNoteWidth]/2;
-            float y = ynote + radius - 40 - i*nodeHeight;
-            CGContextBeginPath(context);
-            CGContextAddArc(context, x, y, radius, 35*PI/180, 145*PI/180, 0);
-            CGContextStrokePath(context);
+        for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
+            NoteData *note = &notedata[noteindex];
+            ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+            if (noteindex <= 1) {
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote - 18)];
+                [aPath stroke];
+            }else{
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote + 18)];
+                [aPath stroke];
+            }
         }
     }
 }
@@ -1901,10 +1918,6 @@ static UIImage* chanyin = nil;
 -(int)getNotedataLength
 {
     return notedata_len;
-}
-
--(void)setconnectNoteCnt:(int)cnt{
-    _connectNodeCnt = cnt;
 }
 
 -(void)setConnectNoteWidth:(ChordSymbol*) chordSymbol withNoteData:(NoteData*)note andNoteWidth:(int)connectNoteWidth
