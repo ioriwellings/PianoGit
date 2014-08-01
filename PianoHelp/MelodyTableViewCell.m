@@ -154,6 +154,7 @@
     for (UITableViewCell *cell in self.tableView.visibleCells)
     {
         cell.selected = NO;
+        ((MelodyTableViewCell*)cell).btnView.highlighted = NO;
     }
     self.selected = YES;
 }
