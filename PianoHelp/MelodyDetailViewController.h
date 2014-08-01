@@ -37,6 +37,7 @@ typedef enum : NSUInteger
     int option;
     BOOL splitState;
     int splitStart;
+    BOOL isEnd;
 }
 
 @property (nonatomic) NSInteger iPlayMode;
