@@ -1494,8 +1494,8 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     
     for(int sectionnum = 0; sectionnum < dataLen/7;sectionnum++)
     {
-        if (sectionnum == 0) {
-            buf[0] = options->shifttime;
+        if (sectionnum == 0 && options->pauseTime != 0) {
+            buf[0] = options->startSecTime - options->shifttime;
         }else{
             buf[0] = 0x00;
         }
