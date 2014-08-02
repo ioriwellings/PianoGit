@@ -1802,19 +1802,18 @@ static UIImage* chanyin = nil;
     if (direct == StemDown) {
 
         for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
-            NSLog(@"StemDown ==> index is %i; notedata_len is %i", noteindex, notedata_len);
             NoteData *note = &notedata[noteindex];
             
             CGContextBeginPath(context);
             if (noteindex <= 1) {
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote + 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote - 18)];
                 [aPath stroke];
             }else{
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote - 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote + 18)];
                 [aPath stroke];
             }
             CGContextStrokePath(context);
@@ -1823,18 +1822,17 @@ static UIImage* chanyin = nil;
     } else if (direct == StemUp) {
 
         for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
-            NSLog(@"StemUp == > index is %i; notedata_len is %i", noteindex, notedata_len);
             NoteData *note = &notedata[noteindex];
             CGContextBeginPath(context);
             if (noteindex <= 1) {
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote - 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote + 18)];
                 [aPath stroke];
             }else{
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote + 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth + NoteWidth/2)/2, ynote - 18)];
                 [aPath stroke];
             }
             CGContextStrokePath(context);
@@ -1872,12 +1870,12 @@ static UIImage* chanyin = nil;
             if (noteindex <= 1) {
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote + 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote - 18)];
                 [aPath stroke];
             }else{
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote - 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote + 18)];
                 [aPath stroke];
             }
         }
@@ -1888,12 +1886,12 @@ static UIImage* chanyin = nil;
             if (noteindex <= 1) {
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote - 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote + 18)];
                 [aPath stroke];
             }else{
                 ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
-                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote + 18)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + _connectNoteWidth2 + NoteWidth/2)/2, ynote - 18)];
                 [aPath stroke];
             }
         }
