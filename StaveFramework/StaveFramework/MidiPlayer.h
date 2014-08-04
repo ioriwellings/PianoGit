@@ -81,7 +81,6 @@ enum {
     BOOL judgeFlag;
     
     
-
     BOOL isLine;
 }
 

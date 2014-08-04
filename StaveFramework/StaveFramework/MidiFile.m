@@ -355,8 +355,8 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     trackPerChannel = NO;
 
     /** add by sunlie start */
-    beatarray = [Array new:10];
-    tonearray = [Array new:10];
+    beatarray = [Array new:5];
+    tonearray = [Array new:5];
     /** add by sunlie end */
     
     MidiFileReader *file = [[MidiFileReader alloc] initWithFile:filename];
@@ -1494,8 +1494,10 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     
     for(int sectionnum = 0; sectionnum < dataLen/7;sectionnum++)
     {
+//        if (options->shifttime != 0 && sectionnum == 0) {
+        NSLog(@"deltaTime is %i", deltaTime);
         if (sectionnum == 0 && options->pauseTime != 0) {
-            buf[0] = options->startSecTime - options->shifttime;
+            buf[0] = deltaTime;
         }else{
             buf[0] = 0x00;
         }
@@ -1506,7 +1508,6 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             buf[1] = 0x00;
         
         buf[2] = 0x60;
-
         //set tempo mute
         if ([midifile getTempoMuteState] == -1 ) {
             buf[3] = 0x00;
@@ -1514,6 +1515,8 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             buf[3] = 0x7F;
         }
         TimeSignature *sTime = [midifile time];
+//        NSLog(@"denominator %i", sTime.denominator);
+        
         if (sTime.denominator == 4) {
             tmpQuarternote = [midifile quarternote];
         }else if (sTime.denominator == 8){
@@ -1525,12 +1528,14 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         if (bFlag == 6) {
             int tmp = tmpQuarternote%128;
             buf[4] = tmp;
+            //            NSLog(@"buf[4] %i ", buf[4]);
             buf[5] = 0x4B;
         }else{
             int tmp1 = tmpQuarternote/128;
             int tmp2 = tmpQuarternote%128;
             buf[4] = tmp1 + 128;
             buf[5] = tmp2;
+            //            NSLog(@"buf[4] %i buf[5] %i", buf[4], buf[5]);
             buf[6] = 0x4B;
         }
         

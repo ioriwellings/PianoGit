@@ -124,7 +124,7 @@ int sortbynote(void* note1, void* note2) {
             [note setAccidFlag:[mevent velocity]];
             [self addNote:note];
             [note release];
-//            NSLog(@"accid:%d",[note accidFlag]);
+            NSLog(@"accid:%d",[note accidFlag]);
         }
         else if ([mevent eventFlag] == EventNoteOn && [mevent velocity] == 0) {
             [self noteOffWithChannel:[mevent channel] andNumber:[mevent notenumber]
@@ -580,6 +580,7 @@ int sortbynote(void* note1, void* note2) {
         duration = [note duration];
         endTime = startTime + duration;
         [tmpnotes clear];
+        NSLog(@"COUNT:%d",j);
         
         if (beatstarttime != 0 && startTime >= beatstarttime) {
             [time setNumerator:[beat numerator]];
@@ -749,7 +750,8 @@ int sortbynote(void* note1, void* note2) {
                     break;
                 }
                 
-                if ([n startTime]%[time quarter] <= [time quarter]/8) {
+                if ([n startTime]%[time quarter] <= [time quarter]/8
+                    || ([time quarter]-[n startTime]%[time quarter]) <= [time quarter]/8) {
                     tmpnote = [[MidiNote alloc] init];
                     [tmpnote setStarttime:[n endTime]-[n duration]%[time quarter]];
                     [tmpnote setChannel:[n channel]];
@@ -759,8 +761,10 @@ int sortbynote(void* note1, void* note2) {
                     [n setDuration:[n duration]-[tmpnote duration]];
                     [midiNotes add:tmpnote];
                     [tmpnote release];
-                } else if (([n startTime]%([time quarter]/2) <= [time quarter]/8) ||
-                           ([n startTime]%([time quarter]/3) <= [time quarter]/8)) {
+                } else if (([n startTime]%([time quarter]/2) <= [time quarter]/8)
+                           || ([n startTime]%([time quarter]/3) <= [time quarter]/8)
+                           || ((([time quarter]/2)-[n startTime]%([time quarter]/2)) <= [time quarter]/8)
+                           || ((([time quarter]/3)-[n startTime]%([time quarter]/3)) <= [time quarter]/8)) {
                     tmpnote = [[MidiNote alloc] init];
                     [tmpnote setStarttime:[n startTime]];
                     [tmpnote setChannel:[n channel]];
@@ -847,8 +851,10 @@ int sortbynote(void* note1, void* note2) {
                     break;
                 }
                 
-                if (([n startTime]%([time quarter]/2) <= [time quarter]/8) ||
-                    ([n startTime]%([time quarter]/3) <= [time quarter]/8)) {
+                if (([n startTime]%([time quarter]/2) <= [time quarter]/8)
+                    ||([n startTime]%([time quarter]/3) <= [time quarter]/8)
+                    || ((([time quarter]/2)-[n startTime]%([time quarter]/2)) <= [time quarter]/8)
+                    || ((([time quarter]/3)-[n startTime]%([time quarter]/3)) <= [time quarter]/8)) {
                     if ([n duration]%([time quarter]/4) <= [time quarter]/8) {
                         tmpnote = [[MidiNote alloc] init];
                         [tmpnote setStarttime:[n endTime]-[n duration]%([time quarter]/2)];
@@ -1023,7 +1029,7 @@ int sortbynote(void* note1, void* note2) {
     while (i < [notes count]) {
         if (cdcount6 < [controlList6 count]) {
             MidiNote* note = [notes get:i];
-            if ([note startTime] > [cd6 endtime] && flag6 > 0) {
+            if ([note startTime] > [cd6 endtime] && flag6 >= 0) {
                 for (int j = flag6; j < i-1; j++) {
                     MidiNote* mn = [notes get:j];
                     MidiNote* mn1 = [notes get:i-1];
@@ -1038,7 +1044,7 @@ int sortbynote(void* note1, void* note2) {
                 }
             }
             
-            if ([note startTime] > [cd6 starttime] && flag6 == -1) {
+            if ([note startTime] >= [cd6 starttime] && flag6 == -1) {
                 flag6 = i;
             }
         }

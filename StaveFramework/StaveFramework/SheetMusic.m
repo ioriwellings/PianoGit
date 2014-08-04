@@ -30,6 +30,7 @@
 #import "TimeSigSymbol.h"
 #import "WhiteNote.h"
 #import "SheetMusic.h"
+#import "KeySymbol.h"
 
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
@@ -115,10 +116,10 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     if ([[file tonearray] count] > 0) {
         int tmpkey = [[[file tonearray] get:0] tone];
         if (tmpkey >= 0) {
-            mainkey = [[KeySignature alloc] initWithSharps:tmpkey andFlats:0];
+            mainkey = [[KeySignature alloc] initWithSharps:tmpkey andFlats:0 andPreKey:0];
         }
         else {
-            mainkey = [[KeySignature alloc] initWithSharps:0 andFlats:-tmpkey];
+            mainkey = [[KeySignature alloc] initWithSharps:0 andFlats:-tmpkey andPreKey:0];
         }
     }
     else {
@@ -284,6 +285,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     int cdcount10 = 0;
     int cdcount14 = 0;
     
+    int tonecount = 0;
+    
     if (cdcount2 < [list count]) {
         cd2 = [list get:cdcount2];
     }
@@ -360,6 +363,27 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             }
         }
         /* add by sunlie end */
+        
+        
+        /* add by sunlie start for tone */
+        if (tonecount+1 < [tonearray count] && [[tonearray get:tonecount+1] starttime] <= [[notegroup get:0] startTime]) {
+            tonecount++;
+            if ([[tonearray get:tonecount] tone] > 0) {
+                [key setNum_flats:0];
+                [key setNum_sharps:[[tonearray get:tonecount] tone]];
+                [key resetKey];
+            } else if ([[tonearray get:tonecount] tone] < 0) {
+                [key setNum_sharps:0];
+                [key setNum_flats:-[[tonearray get:tonecount] tone]];
+                [key resetKey];
+            } else {
+                [key setNum_sharps:0];
+                [key setNum_flats:0];
+                [key setPreKey:[[tonearray get:tonecount-1] tone]];
+                [key resetKey];
+            }
+        }
+        /* add by sunlie end for tone */
         
         /* Create a single chord from the group of midi notes with
          * the same start time.
@@ -579,7 +603,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     Array* symbols;
     id old;
     
-    symbols = [self addBars:chords withTime:time andLastTime:lastStartTime andBeatarray:barray andCList15:list15];
+    symbols = [self addBars:chords withTime:time andLastTime:lastStartTime andBeatarray:barray andCList15:list15 andClefs:clefs];
     old = symbols;
     symbols = [self addRests:symbols withTime:time andBeatarray:barray];
     [old release];
@@ -593,13 +617,14 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
 /** Add in the vertical bars delimiting measures.
  *  Also, add the time signature.
  */
-- (Array*)addBars:(Array*)chords withTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15 {
+- (Array*)addBars:(Array*)chords withTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15 andClefs:(ClefMeasures *)clefs {
     Array* symbols = [Array new:[chords count]];
     BarSymbol *bar;
     int j = 1;
     int starttime = 0;
     int size = [barray count];
     BeatSignature *beat = [barray get:0];
+    int tonecount = 1;
     
     /* add by sunlie start */
     ControlData *cdata;
@@ -674,6 +699,28 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
 //            }
             /* add by sunlie end */
             
+            /* add by sunlie start */
+            if (tonecount < [tonearray count] && abs([[tonearray get:tonecount] starttime]-[bar startTime]) < 80) {
+                KeySignature *key;
+                KeySymbol *keySymbol;
+                int keyWidth;
+                int tmpvalue = [[tonearray get:tonecount] tone];
+                if (tmpvalue > 0) {
+                    key = [[KeySignature alloc] initWithSharps:tmpvalue andFlats:0 andPreKey: 0];
+                } else if (tmpvalue < 0){
+                    key = [[KeySignature alloc] initWithSharps:0 andFlats:-tmpvalue andPreKey: 0];
+                } else {
+                    key = [[KeySignature alloc] initWithSharps:0 andFlats:0 andPreKey: [[tonearray get:tonecount-1] tone]];
+                }
+
+                keyWidth = [SheetMusic keySignatureWidth:key];
+                keySymbol = [[KeySymbol alloc] initWithKey:key andClef:[clefs getClef:[bar startTime]] andWidh:keyWidth];
+                [[symbols get:[symbols count]-1] setRepeatFlag:5];
+                [symbols add:keySymbol];
+                tonecount++;
+            }
+            /* add by sunlie end */
+            
             measuretime += [time measure];
         }
         else {
@@ -728,6 +775,28 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 }
             }
         }
+        
+        /* add by sunlie start */
+        if (tonecount < [tonearray count] && abs([[tonearray get:tonecount] starttime]-[bar startTime]) < 80) {
+            KeySignature *key;
+            KeySymbol *keySymbol;
+            int keyWidth;
+            int tmpvalue = [[tonearray get:tonecount] tone];
+            if (tmpvalue > 0) {
+                key = [[KeySignature alloc] initWithSharps:tmpvalue andFlats:0 andPreKey: 0];
+            } else if (tmpvalue < 0){
+                key = [[KeySignature alloc] initWithSharps:0 andFlats:-tmpvalue andPreKey: 0];
+            } else {
+                key = [[KeySignature alloc] initWithSharps:0 andFlats:0 andPreKey: [[tonearray get:tonecount-1] tone]];
+            }
+            keyWidth = [SheetMusic keySignatureWidth:key];
+            keySymbol = [[KeySymbol alloc] initWithKey:key andClef:[clefs getClef:[bar startTime]] andWidh:keyWidth];
+            [[symbols get:[symbols count]-1] setRepeatFlag:5];
+            [symbols add:keySymbol];
+            tonecount++;
+        }
+        /* add by sunlie end */
+        
         [symbols add:bar];
         [bar release];
         measuretime += [time measure];
@@ -751,6 +820,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     int i;
     for (i = 0; i < [symbols count]; i++) {
         id <MusicSymbol> symbol = [symbols get:i];
+        if ([symbol isKindOfClass:[KeySignature class]]) {
+            continue;
+        }
         int starttime = [symbol startTime];
         Array* rests = [self getRests:time fromStart:prevtime toEnd:starttime andBeatarray:barray];
         if (rests != nil) {
@@ -1036,7 +1108,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             
             /* BarSymbols are not included in the SymbolWidths calculations */
             while (i < [symbols count] &&
-                   ([getSymbol(symbols, i) isKindOfClass:[BarSymbol class]]) &&
+                   ([getSymbol(symbols, i) isKindOfClass:[BarSymbol class]] || [getSymbol(symbols, i) isKindOfClass:[KeySymbol class]]) &&
                    ([getSymbol(symbols, i) startTime] <= start)) {
                 
                 [result add:[symbols get:i]];
@@ -1065,7 +1137,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         i = 0;
         while (i < [result count]) {
             id <MusicSymbol> symbol = [result get:i];
-            if ([symbol isKindOfClass:[BarSymbol class]]) {
+            if ([symbol isKindOfClass:[BarSymbol class]] || [symbol isKindOfClass:[KeySymbol class]]) {
                 i++;
                 continue;
             }
@@ -1277,7 +1349,7 @@ static BOOL isBlank(id x) {
          * endindex is the index of the last symbol in the staff.
          */
         int endindex = startindex;
-        int width = keysigWidth;
+        int staffwidth = keysigWidth;
         int maxwidth;
         
         /* If we're scrolling vertically, the maximum width is PageWidth. */
@@ -1289,9 +1361,8 @@ static BOOL isBlank(id x) {
         }
         
         while (endindex < [symbols count] &&
-               width + [getSymbol(symbols, endindex) width] < maxwidth) {
-            
-            width += [getSymbol(symbols, endindex) width];
+               staffwidth + [getSymbol(symbols, endindex) width] < maxwidth) {
+            staffwidth += [getSymbol(symbols, endindex) width];
             
             endindex++;
         }
@@ -1326,7 +1397,7 @@ static BOOL isBlank(id x) {
         }
         Array *staffsymbols = [symbols range:startindex end:endindex+1];
         if (scrollVert) {
-            width = PageWidth;
+            staffwidth = PageWidth;
         }
         
         /** add by yizhq start */
@@ -1338,8 +1409,22 @@ static BOOL isBlank(id x) {
             [staffNo release];
         }
         /** add by yizhq end */
+        int tonecount = 0;
+        KeySignature *staffKey;
+        for (tonecount = 0; tonecount < [tonearray count]; tonecount++) {
+            if ([[staffsymbols get:0] startTime] < [[tonearray get:tonecount] starttime]) {
+                break;
+            }
+        }
+        tonecount--;
+        if ([[tonearray get:tonecount] tone] >= 0) {
+            staffKey = [[KeySignature alloc] initWithSharps:[[tonearray get:tonecount] tone] andFlats:0 andPreKey: 0];
+        } else {
+            staffKey = [[KeySignature alloc] initWithSharps:0 andFlats:[[tonearray get:tonecount] tone] andPreKey: 0];
+        }
+        
         Staff *staff = [[Staff alloc] initWithSymbols:staffsymbols
-                                               andKey:key andOptions:options
+                                               andKey:staffKey andOptions:options
                                              andTrack:track andTotalTracks:totaltracks andSheet:self];
         
         [staffsymbols release];
@@ -2096,14 +2181,14 @@ static NSDictionary *fontAttr = NULL;
                         int index = 0;
                         int bi = 0;
                         NoteData *n = [self getConnectWidth:symbols andIndex:&index andWidth:&bi andNoteData:&nds[j] andStartIndex:k+1];
-//                        NSLog(@"index is %d",index);
+                        //                        NSLog(@"index is %d",index);
                         if (index != 0) {
                             ChordSymbol *c = [symbols get:index];
-                           
-//                            NSLog(@"-------- staffno1[%@]  staff no is %@ oooooooooo %i--------", [[symbols get:k] getStaffNo], [c getStaffNo], bi);
+                            
+                            //                            NSLog(@"-------- staffno1[%@]  staff no is %@ oooooooooo %i--------", [[symbols get:k] getStaffNo], [c getStaffNo], bi);
                             
                             if ([[[symbols get:k] getStaffNo] isEqualToString:[c getStaffNo]]) {
-
+                                
                                 [[symbols get:k] setConnectNoteWidth:c withNoteData:&nds[j] andNoteWidth:bi];
                             }else{
                                 [[symbols get:k] setConnectNoteWidth:c withNoteData:&nds[j] andNoteWidth:50];
@@ -2114,7 +2199,7 @@ static NSDictionary *fontAttr = NULL;
                     }
                 }
             }
-        
+            
         }
     }
 }

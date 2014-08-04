@@ -14,6 +14,7 @@
 #import "MusicSymbol.h"
 #import "LyricSymbol.h"
 #import "BarSymbol.h"
+#import "KeySymbol.h"
 
 /**@class IntDict
  *  The IntDict class is a dictionary mapping integers to integers. 
@@ -240,8 +241,8 @@
         id <MusicSymbol> m = [symbols get:i];
         int start = [m startTime];
         int w = [m minWidth];
-
-        if ([m isKindOfClass:[BarSymbol class]]) {
+        
+        if ([m isKindOfClass:[BarSymbol class]] || [m isKindOfClass:[KeySymbol class]]) {
             continue;
         }
         else if ([widths contains:start]) {
