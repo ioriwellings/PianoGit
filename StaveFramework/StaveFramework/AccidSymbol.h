@@ -33,6 +33,7 @@ enum {
 -(int)minWidth;
 -(int)width;
 -(void)setWidth:(int) w;
+-(void)setAccid:(int) a;
 -(int)aboveStaff;
 -(int)belowStaff;
 -(void) draw:(CGContextRef) context atY:(int) ytop;

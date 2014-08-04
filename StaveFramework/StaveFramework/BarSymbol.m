@@ -132,7 +132,6 @@
     [path addLineToPoint:CGPointMake(NoteWidth/2, yend)];
     [path stroke];
     
-    
     [self drawRepeatStartAndEnd:context atY:ytop];
     [self drawRepeat3And4:context atY:ytop];
 }

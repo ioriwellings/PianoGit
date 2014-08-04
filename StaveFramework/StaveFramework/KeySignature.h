@@ -30,11 +30,12 @@
     int keymap[129];
 
     /** The measure used in the previous call to GetAccidental() */
-    int prevmeasure; 
+    int prevmeasure;
+    int preKey;
 }
 +(void)initAccidentalMaps;
 +(id)guess:(IntArray*)notes;
--(id)initWithSharps:(int)s andFlats:(int)f;
+-(id)initWithSharps:(int)s andFlats:(int)f andPreKey:(int)p;
 -(id)initWithNotescale:(int)n;
 -(void)dealloc;
 -(int)num_sharps;
@@ -49,6 +50,12 @@
 -(int)notescale;
 -(void)resetKey;
 -(void)changeAccid:(int)notenumber andAccidFlag:(int)accidFlag;
+/* add by sunlie start */
+-(void)setNum_sharps:(int)n;
+-(void)setNum_flats:(int)n;
+-(int)preKey;
+-(void)setPreKey:(int)n;
+/* add by sunlie end */
 +(NSString*)keyToString:(int)notescale;
 
 @end

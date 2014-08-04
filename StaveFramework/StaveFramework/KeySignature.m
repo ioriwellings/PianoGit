@@ -49,14 +49,16 @@ static int initmaps = 0;
 
 @implementation KeySignature;
 
+
 /** Create new key signature, with the given number of
  * sharps and flats.  One of the two must be 0, you can't
  * have both sharps and flats in the key signature.
  */
-- (id)initWithSharps:(int)sharps andFlats:(int)flats {
+- (id)initWithSharps:(int)sharps andFlats:(int)flats andPreKey:(int)p {
     assert(sharps == 0 || flats == 0);
     num_sharps = sharps;
     num_flats = flats;
+    preKey = p;
 
     [KeySignature initAccidentalMaps];
     [self resetKeyMap];
@@ -89,9 +91,7 @@ static int initmaps = 0;
     return self;
 }
 
-- (void) dealloc
-{
-    
+- (void) dealloc {
     [treble release];
     [bass release];
     [super dealloc];
@@ -106,6 +106,21 @@ static int initmaps = 0;
     return num_flats;
 }
 
+/* add by sunlie start */
+-(void)setNum_sharps:(int)n {
+    num_sharps = n;
+}
+-(void)setNum_flats:(int)n {
+    num_flats = n;
+}
+-(int)preKey {
+    return preKey;
+}
+-(void)setPreKey:(int)n {
+    preKey = n;
+}
+
+/* add by sunlie end */
 
 /** Iniitalize the sharpkeys and flatkeys maps */
 + (void)initAccidentalMaps {
@@ -789,10 +804,10 @@ static int initmaps = 0;
         }
     }
     if (is_best_sharp) {
-        return [[KeySignature alloc] initWithSharps:bestkey andFlats:0];
+        return [[KeySignature alloc] initWithSharps:bestkey andFlats:0 andPreKey:0];
     }
     else {
-        return [[KeySignature alloc] initWithSharps:0 andFlats:bestkey];
+        return [[KeySignature alloc] initWithSharps:0 andFlats:bestkey andPreKey:0];
     }
 }
 
