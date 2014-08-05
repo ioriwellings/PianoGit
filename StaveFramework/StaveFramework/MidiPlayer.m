@@ -599,9 +599,16 @@
                  target:self selector:@selector(timerCallback:) userInfo:nil repeats:YES];
 //        [playButton setImage:pauseImage];
 //        [playButton setToolTip:@"Pause"];
-        
         if (pianoData != nil) {
-            [pianoData setBeginTime:startTime];
+            
+            struct timeval time;
+            time.tv_sec = startTime.tv_sec;
+            time.tv_usec = startTime.tv_usec;
+            
+            double shift = currentPulseTime/pulsesPerMsec*1000;
+            time.tv_usec -= shift;
+            
+            [pianoData setBeginTime:time];
             [pianoData setPulsesPerMsec:pulsesPerMsec];
             
             [pianoData judgedPianoPlay:currentPulseTime andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
