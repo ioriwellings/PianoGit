@@ -600,11 +600,12 @@
 //        [playButton setImage:pauseImage];
 //        [playButton setToolTip:@"Pause"];
         if (pianoData != nil) {
-            
+
             struct timeval time;
             time.tv_sec = startTime.tv_sec;
             time.tv_usec = startTime.tv_usec;
             
+            //get shift time
             double shift = currentPulseTime/pulsesPerMsec*1000;
             time.tv_usec -= shift;
             
