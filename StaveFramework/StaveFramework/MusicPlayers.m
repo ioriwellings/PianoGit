@@ -20,7 +20,7 @@
         self.audioPlayer = nil;
     }
     
-    NSURL *url = [NSURL URLWithString:fileName];
+    NSURL *url = [NSURL fileURLWithPath:fileName];
     self.audioPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil] autorelease];
     [self.audioPlayer setDelegate:self];
     AVAudioSession *session = [AVAudioSession sharedInstance];
