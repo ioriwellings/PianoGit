@@ -251,7 +251,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    FavoriteTableViewCell *cell = (FavoriteTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"melodyDetailSegue" sender:cell.btnPlay];
+    [cell setSelectedOnSelf];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -592,6 +595,8 @@
                 NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:section];
                 [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
                 [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
+                FavoriteTableViewCell *cell = (FavoriteTableViewCell*)[self.tableView cellForRowAtIndexPath:indexP];
+                [cell setSelectedOnSelf];
                 break;
             }
             i++;
@@ -606,6 +611,8 @@
             NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:0];
             [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
             [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
+            FavoriteTableViewCell *cell = (FavoriteTableViewCell*)[self.tableView cellForRowAtIndexPath:indexP];
+            [cell setSelectedOnSelf];
             break;
         }
         i++;
@@ -619,6 +626,8 @@
             NSIndexPath *indexP = [NSIndexPath indexPathForRow:i inSection:0];
             [self.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
             [self.tableView selectRowAtIndexPath:indexP animated:NO scrollPosition:UITableViewScrollPositionNone];
+            FavoriteTableViewCell *cell = (FavoriteTableViewCell*)[self.tableView cellForRowAtIndexPath:indexP];
+            [cell setSelectedOnSelf];
             break;
         }
         i++;

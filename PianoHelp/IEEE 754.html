@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" class="client-nojs">
+<head>
+<title>IEEE 754 - 维基百科，自由的百科全书</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.21wmf9" />
+<link rel="alternate" type="application/x-wiki" title="编辑本页" href="/w/index.php?title=IEEE_754&amp;action=edit" />
+<link rel="edit" title="编辑本页" href="/w/index.php?title=IEEE_754&amp;action=edit" />
+<link rel="apple-touch-icon" href="//zh.wikipedia.org/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (zh)" />
+<link rel="EditURI" type="application/rsd+xml" href="//zh.wikipedia.org/w/api.php?action=rsd" />
+<link rel="alternate" hreflang="zh" href="/zh/IEEE_754" />
+<link rel="alternate" hreflang="zh-hans" href="/zh-hans/IEEE_754" />
+<link rel="alternate" hreflang="zh-hant" href="/zh-hant/IEEE_754" />
+<link rel="alternate" hreflang="zh-cn" href="/zh-cn/IEEE_754" />
+<link rel="alternate" hreflang="zh-hk" href="/zh-hk/IEEE_754" />
+<link rel="alternate" hreflang="zh-sg" href="/zh-sg/IEEE_754" />
+<link rel="alternate" hreflang="zh-tw" href="/zh-tw/IEEE_754" />
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia的Atom" href="/w/index.php?title=Special:%E6%9C%80%E8%BF%91%E6%9B%B4%E6%94%B9&amp;feed=atom" />
+<link rel="stylesheet" href="//bits.wikimedia.org/zh.wikipedia.org/load.php?debug=false&amp;lang=zh-cn&amp;modules=ext.gadget.AdvancedSiteNotices%2CReferenceTooltips%2CWikiMiniAtlas%2ChideConversionTab%2CinternalLinkHelper-altcolor%2Clarge-font%2CnoteTA%2CnoteTAvector%7Cext.wikihiero%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmw.PopUpMediaTransform%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//bits.wikimedia.org/zh.wikipedia.org/load.php?debug=false&amp;lang=zh-cn&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: zhwiki:resourceloader:filter:minify-css:7:ea86fddf0b7328d662846f62cab00cde */</style>
+
+<script src="//bits.wikimedia.org/zh.wikipedia.org/load.php?debug=false&amp;lang=zh-cn&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"IEEE_754","wgTitle":"IEEE 754","wgCurRevisionId":24295820,"wgArticleId":535409,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["含有英語的條目","計算機算術","IEEE标准"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"IEEE_754","wgUserVariant":"zh-cn","wgRestrictionEdit":[],"wgRestrictionMove":[],"wgVectorEnabledModules":{"collapsiblenav":true,"collapsibletabs":true,"editwarning":true,"expandablesearch":false,"footercleanup":false,"sectioneditlinks":false,"experiments":true},"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgTrackingToken":"a64481a987f16e15f7c8b90a348d296e","wikilove-recipient":"","wikilove-anon":0,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","Geo":{"city":"","country":""},"wgNoticeProject":"wikipedia"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3
+,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"vector-simplesearch":1,"useeditwarning":1,"vector-collapsiblenav":1,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"wikilove-enabled":1,"variant":"zh-cn","language":"zh-cn","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"gadget-edit0":1,"gadget-WikiMiniAtlas":1,"gadget-ReferenceTooltips":1,"gadget-AdvancedSiteNotices":1,"gadget-hideConversionTab":1,"gadget-large-font":1,"gadget-internalLinkHelper-altcolor":1,"gadget-noteTA":1,"gadget-noteTAvector":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\",
+"patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: zhwiki:resourceloader:filter:minify-js:7:486c2b00aa31c8329347432f5099b87a */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralNotice.bannerController"]);
+}</script>
+<script src="//bits.wikimedia.org/geoiplookup"></script><link rel="dns-prefetch" href="//meta.wikimedia.org" /><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.21wmf9/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-IEEE_754 skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;" lang="zh-CN" dir="ltr"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><!-- CentralNotice --><script>
+	mw.loader.using( 'ext.centralNotice.bannerController', function() { mw.centralNotice.initialize(); } );
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+document.writeln("\x3cdiv id=\"localNotice\" lang=\"zh\" dir=\"ltr\"\x3e\x3c/div\x3e");
+/* ]]> */
+</script></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading" lang="zh-cn"><span dir="auto">IEEE 754</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">维基百科，自由的百科全书</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub" lang="zh-CN" dir="ltr"></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					跳转至：					<a href="#mw-head">导航</a>、					<a href="#p-search">搜索</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="zh-CN" dir="ltr" class="mw-content-ltr"><div class="metadata topicon noprint nopopups" title="本页使用了标题或全文手工转换" id="noteTA-topicon" style="display: none;"><img alt="本页使用了标题或全文手工转换" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zh_conversion_icon_m.svg/35px-Zh_conversion_icon_m.svg.png" width="35" height="22" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zh_conversion_icon_m.svg/53px-Zh_conversion_icon_m.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zh_conversion_icon_m.svg/70px-Zh_conversion_icon_m.svg.png 2x" /></div>
+<div id="noteTA">
+<div id="noteTA-group">
+<div id="noteTA-group-IT" data-noteta-group="IT"></div>
+</div>
+<div id="noteTA-local">
+<div id="noteTA-local-1" data-noteta-code="zh-hans%3A%E8%A7%84%E7%BA%A6%E5%BD%A2%E5%BC%8F%3B+zh-hant%3A%E6%AD%A3%E8%A6%8F%E5%BD%A2%E5%BC%8F%3B"></div>
+<div id="noteTA-local-2" data-noteta-code="zh-hans%3A%E8%A7%84%E7%BA%A6%E6%95%B0%3B+zh-hant%3A%E6%AD%A3%E8%A6%8F%E6%95%B0%3B"></div>
+<div id="noteTA-local-3" data-noteta-code="zh-hans%3A%E4%BA%8C%E8%BF%9B%E5%88%B6%3B+zh-hant%3A%E4%BA%8C%E9%80%B2%E4%BD%8D%3B"></div>
+<div id="noteTA-local-4" data-noteta-code="zh-hans%3A%E8%BF%90%E7%AE%97%E7%AC%A6%3B+zh-hant%3A%E9%81%8B%E7%AE%97%E5%AD%90%3B"></div>
+<div id="noteTA-local-5" data-noteta-code="zh-hans%3A%E8%88%8D%E5%85%A5%3B+zh-hant%3A%E4%BF%AE%E7%B4%84%3B"></div>
+</div>
+</div>
+<p><b><a href="/wiki/%E7%94%B5%E6%B0%94%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%8D%8F%E4%BC%9A" title="电气电子工程师协会" class="mw-redirect">IEEE</a>二进制浮点数算术标准</b>（<b>IEEE 754</b>）是1980年代以来最广泛使用的<a href="/wiki/%E6%B5%AE%E9%BB%9E%E6%95%B8" title="浮点数" class="mw-redirect">浮点数</a>运算标准，为许多<a href="/wiki/%E4%B8%AD%E5%A4%AE%E8%99%95%E7%90%86%E5%96%AE%E5%85%83" title="中央处理单元" class="mw-redirect">CPU</a>与<a href="/wiki/%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E5%99%A8" title="浮点运算器">浮点运算器</a>所采用。这个标准定义了表示浮点数的格式（包括负零<a href="/wiki/-0" title="-0" class="mw-redirect">-0</a>）与反常值（denormal number）），一些特殊数值（<a href="/wiki/%E7%84%A1%E7%AA%AE" title="无穷" class="mw-redirect">无穷</a>与<a href="/wiki/NaN" title="NaN">非数值</a>（NaN）），以及这些数值的“浮点数运算符”；它也指明了四种<a href="/wiki/%E6%95%B8%E5%80%BC%E4%BF%AE%E7%B4%84%E8%A6%8F%E5%89%87" title="数值舍入规则">数值舍入规则</a>和五种例外状况（包括例外发生的时机与处理方式）。</p>
+<p>IEEE 754规定了四种表示浮点数值的方式：单精确度（32位）、双精确度（64位）、延伸单精确度（43比特以上，很少使用）与延伸双精确度（79比特以上，通常以80比特实做）。只有32位模式有强制要求，其他都是选择性的。大部分<a href="/wiki/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80" title="编程语言" class="mw-redirect">编程语言</a>都有提供IEEE浮点数格式与算术，但有些将其列为非必需的。例如，IEEE 754问世之前就有的<a href="/wiki/C%E8%AA%9E%E8%A8%80" title="C语言" class="mw-redirect">C语言</a>，现在有包括IEEE算术，但不算作强制要求（C语言的<tt>float</tt>通常是指IEEE单精确度，而<tt>double</tt>是指双精确度）。</p>
+<p>该标准的全称为<b>IEEE二进制浮点数算术标准（ANSI/IEEE Std 754-1985）</b>，又称<b>IEC 60559:1989，微处理器系统的二进制浮点数算术</b>（本来的编号是IEC 559:1989）<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup>。后来还有“与基数无关的浮点数”的“IEEE 854-1987标准”，有规定基数为2跟10的状况。现在最新标准是“IEEE 854-2008标准”。</p>
+<p>在六、七十年代，各家计算机公司的各个型号的计算机，有着千差万别的浮点数表示，却没有一个业界通用的标准。这给数据交换、计算机协同工作造成了极大不便。IEEE的浮点数专业小组于七十年代末期开始酝酿浮点数的标准。在1980年，<a href="/wiki/%E8%8B%B1%E7%89%B9%E5%B0%94%E5%85%AC%E5%8F%B8" title="英特尔公司" class="mw-redirect">英特尔公司</a>就推出了单片的8087浮点数协处理器，其浮点数表示法及定义的运算具有足够的合理性、先进性，被IEEE采用作为浮点数的标准，于1985年发布。而在此前，这一标准的内容已在八十年代初期被各计算机公司广泛采用，成了事实上的业界工业标准。</p>
+<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>目录</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#.E6.B5.AE.E9.BB.9E.E6.95.B8.E5.89.96.E6.9E.90"><span class="tocnumber">1</span> <span class="toctext">浮点数剖析</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#.E6.9C.AC.E6.96.87.E8.A1.A8.E7.A4.BA.E4.BD.8D.E5.85.83.E7.9A.84.E7.B4.84.E5.AE.9A"><span class="tocnumber">1.1</span> <span class="toctext">本文表示比特的约定</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#.E6.95.B4.E9.AB.94.E5.91.88.E7.8F.BE"><span class="tocnumber">1.2</span> <span class="toctext">整体呈现</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#.E6.8C.87.E6.95.B8.E5.81.8F.E7.A7.BB.E5.80.BC"><span class="tocnumber">1.2.1</span> <span class="toctext">指数偏移值</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="#.E8.A7.84.E7.BA.A6.E5.BD.A2.E5.BC.8F.E7.9A.84.E6.B5.AE.E7.82.B9.E6.95.B0"><span class="tocnumber">1.2.2</span> <span class="toctext">规约形式的浮点数</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#.E9.9D.9E.E8.A7.84.E7.BA.A6.E5.BD.A2.E5.BC.8F.E7.9A.84.E6.B5.AE.E7.82.B9.E6.95.B0"><span class="tocnumber">1.2.3</span> <span class="toctext">非规约形式的浮点数</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#.E7.89.B9.E6.AE.8A.E5.80.BC"><span class="tocnumber">1.2.4</span> <span class="toctext">特殊值</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#32.E4.BD.8D.E5.96.AE.E7.B2.BE.E5.BA.A6"><span class="tocnumber">1.2.5</span> <span class="toctext">32位单精度</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#64.E4.BD.8D.E9.9B.99.E7.B2.BE.E5.BA.A6"><span class="tocnumber">1.2.6</span> <span class="toctext">64位双精度</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="#.E6.B5.AE.E9.BB.9E.E6.95.B8.E7.9A.84.E6.AF.94.E8.BC.83"><span class="tocnumber">1.3</span> <span class="toctext">浮点数的比较</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#.E6.B5.AE.E9.BB.9E.E6.95.B8.E7.9A.84.E6.8D.A8.E5.85.A5"><span class="tocnumber">1.4</span> <span class="toctext">浮点数的舍入</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#.E6.B5.AE.E7.82.B9.E6.95.B0.E7.9A.84.E8.BF.90.E7.AE.97.E4.B8.8E.E5.87.BD.E6.95.B0"><span class="tocnumber">1.5</span> <span class="toctext">浮点数的运算与函数</span></a>
+<ul>
+<li class="toclevel-3 tocsection-13"><a href="#.E6.A0.87.E5.87.86.E8.BF.90.E7.AE.97"><span class="tocnumber">1.5.1</span> <span class="toctext">标准运算</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-14"><a href="#.E5.BB.BA.E8.AE.AE.E7.9A.84.E5.87.BD.E6.95.B0.E4.B8.8E.E8.B0.93.E8.AF.8D"><span class="tocnumber">1.6</span> <span class="toctext">建议的函数与谓词</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="#.E5.A4.96.E9.83.A8.E9.80.A3.E7.B5.90"><span class="tocnumber">2</span> <span class="toctext">外部链接</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#.E5.8F.83.E8.80.83.E6.96.87.E7.8D.BB"><span class="tocnumber">3</span> <span class="toctext">参考文献</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<h2><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=1" title="编辑章节：浮点数剖析">编辑</a>]</span> <span class="mw-headline" id=".E6.B5.AE.E9.BB.9E.E6.95.B8.E5.89.96.E6.9E.90">浮点数剖析</span></h2>
+<p>以下是该标准对浮点数格式的描述。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=2" title="编辑章节：本文表示比特的约定">编辑</a>]</span> <span class="mw-headline" id=".E6.9C.AC.E6.96.87.E8.A1.A8.E7.A4.BA.E4.BD.8D.E5.85.83.E7.9A.84.E7.B4.84.E5.AE.9A">本文表示比特的约定</span></h3>
+<p>把W个<a href="/wiki/%E4%BD%8D%E5%85%83" title="比特">比特</a>(bit)的数据，从内存地址低端到高端，以0到W−1编码。通常将内存地址低端的比特写在最右边，称作<a href="/wiki/%E6%9C%80%E4%BD%8E%E6%9C%89%E6%95%88%E4%BD%8D" title="最低有效位">最低有效位</a>(least significant bit或lsb)，代表最小的比特，改变时对整体数值影响最小的比特。声明这一点的必要性在于X86体系架构是<a href="/wiki/%E5%B0%8F%E7%AB%AF%E5%BA%8F" title="小端序" class="mw-redirect">小端序</a>的数据存储。</p>
+<p>对于十进制整数N，必要时表示为N<sub>10</sub>以与二进制的数的表示N<sub>2</sub>相区分。</p>
+<p>对于一个数，其二进制<a href="/wiki/%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95" title="科学计数法" class="mw-redirect">科学计数法</a>表示下的指数的值，下文称之为<b>指数的实际值</b>；而根据IEEE 754标准对指数部分的编码的值，称之为浮点数表示法<b>指数域的编码值</b>。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=3" title="编辑章节：整体呈现">编辑</a>]</span> <span class="mw-headline" id=".E6.95.B4.E9.AB.94.E5.91.88.E7.8F.BE">整体呈现</span></h3>
+<div class="thumb tright">
+<div class="thumbinner" style="width:492px;"><a href="/wiki/File:General_floating_point_frac.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/75/General_floating_point_frac.svg/490px-General_floating_point_frac.svg.png" width="490" height="75" class="thumbimage" /></a>
+<div class="thumbcaption">IEEE 754浮点数的三个域</div>
+</div>
+</div>
+<p>二进制浮点数是以<a href="/wiki/%E6%9C%89%E7%AC%A6%E8%99%9F%E6%95%B8%E8%99%95%E7%90%86#.E7.AC.A6.E8.99.9F.E6.95.B8.E5.80.BC.E8.A1.A8.E7.A4.BA.E6.B3.95" title="有符号数处理">符号数值表示法</a>的格式存储——<a href="/wiki/%E6%9C%80%E9%AB%98%E6%9C%89%E6%95%88%E4%BD%8D" title="最高有效位">最高有效位</a>被指定为<a href="/wiki/%E7%AC%A6%E8%99%9F%E4%BD%8D" title="符号位" class="mw-redirect">符号位</a>(sign bit)；“指数部份”，即次高有效的e个比特，存储指数部分；最后剩下的f个低有效位的比特，存储“尾数”(significand)的小数部份（在非规约形式下整数部份默认为0，其他情况下一律默认为1）。</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=4" title="编辑章节：指数偏移值">编辑</a>]</span> <span class="mw-headline" id=".E6.8C.87.E6.95.B8.E5.81.8F.E7.A7.BB.E5.80.BC">指数偏移值</span></h4>
+<p>指数偏移值(exponent bias)，是指浮点数表示法中的指数域的编码值为指数的实际值加上某个固定的值，IEEE 754标准规定该固定值为 2<sup><i>e</i>-1</sup> - 1<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup>，其中的<i>e</i>为存储指数的比特的长度。</p>
+<p>以单精度浮点数为例，它的指数域是8个比特，固定偏移值是2<sup><i>8</i>-1</sup> - 1 = 128−1 = 127. 单精度浮点数的指数部分实际取值是从128到-127。例如指数实际值为17<sub>10</sub>，在单精度浮点数中的指数域编码值为144<sub>10</sub>， 即144<sub>10</sub> = 17<sub>10</sub> + 127<sub>10</sub>.</p>
+<p>采用指数的实际值加上固定的偏移值的办法表示浮点数的指数，好处是可以用长度为e个比特的无符号整数来表示所有的指数取值，这使得两个浮点数的指数大小的比较更为容易。</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=5" title="编辑章节：规约形式的浮点数">编辑</a>]</span> <span class="mw-headline" id=".E8.A7.84.E7.BA.A6.E5.BD.A2.E5.BC.8F.E7.9A.84.E6.B5.AE.E7.82.B9.E6.95.B0">规约形式的浮点数</span></h4>
+<p>如果浮点数中指数部分的编码值在<img class="tex" alt="0 &lt;" src="//upload.wikimedia.org/math/3/a/a/3aaf58c8949db0ec88affffed3e06bff.png" /> <i>exponent</i> <img class="tex" alt="&lt; 2^{e} - 1" src="//upload.wikimedia.org/math/7/5/0/750d4f42b5093816dda1b5fb1ad24e80.png" />之间，且尾数部分<i>最高有效位</i>（即整数字）是1，那么这个浮点数将被称为<b>规约形式的浮点数</b>。</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=6" title="编辑章节：非规约形式的浮点数">编辑</a>]</span> <span class="mw-headline" id=".E9.9D.9E.E8.A7.84.E7.BA.A6.E5.BD.A2.E5.BC.8F.E7.9A.84.E6.B5.AE.E7.82.B9.E6.95.B0">非规约形式的浮点数</span></h4>
+<p>如果浮点数的指数部分的编码值是0，尾数的最高有效位（即整数字）也是0，那么这个浮点数将被称为<b>非规约形式的浮点数</b>。IEEE 754标准规定：<b>非规约形式的浮点数的指数偏移值比规约形式的浮点数的指数偏移值大1</b>. 例如，最小的规约形式的单精度浮点数的指数部分编码值为1，指数的实际值为-126；而非规约的单精度浮点数的指数域编码值为0，对应的指数实际值也是-126而不是-127。实际上非规约形式的浮点数仍然是有效可以使用的，只是它们的绝对值已经小于所有的规约浮点数的绝对值；即所有的非规约浮点数比规约浮点数更接近0。规约浮点数的尾数大于等于1且小于2，而非规约浮点数的尾数小于1且大于0.</p>
+<p>IEEE 754-1985标准采用非规约浮点数，源于70年代末IEEE浮点数标准化专业技术委员会酝酿浮点数二进制标准时，<a href="/wiki/%E8%8B%B1%E7%89%B9%E5%B0%94" title="英特尔">Intel公司</a>对<b>渐进式下溢出</b>(gradual underflow)的力荐。当时十分流行的<a href="/wiki/DEC" title="DEC" class="mw-redirect">DEC</a> <a href="/wiki/VAX" title="VAX">VAX</a>机的浮点数表示采用了<b>突然式下溢出</b>(abrupt underflow). 如果没有渐进式下溢出，那么0与绝对值最小的浮点数之间的距离(gap)将大于相邻的小浮点数之间的距离。例如单精度浮点数的绝对值最小的规约浮点数是<img class="tex" alt="1.0\times 2^{-126}" src="//upload.wikimedia.org/math/8/d/b/8db97cc6d6a4a2090563e8b7f5ee3628.png" />, 它与绝对值次小的规约浮点数之间的距离为<img class="tex" alt="2^{-126}\times 2^{-23}=2^{-149}" src="//upload.wikimedia.org/math/7/8/2/7821370275c18053aa398dd6e1137664.png" />。如果不采用渐进式下溢出，那么绝对值最小的规约浮点数与0的距离是相邻的小浮点数之间距离的<img class="tex" alt="2^{23}" src="//upload.wikimedia.org/math/b/e/c/becfebeaafabe6a2131c1d70a1d1c5b5.png" />倍！可以说是非常突然的下溢出到0。这种情况的一种糟糕后果是：两个不等的小浮点数X与Y相减，结果将是0. 训练有素的数值分析人员可能会适应这种限制情况，但对于普通的程序员就很容易陷入错误了。采用了渐进式下溢出后将不会出现这种情况。例如对于单精度浮点数，指数部分实际最小值是(-126)，对应的尾数部分从<img class="tex" alt="1.1111\ldots 11" src="//upload.wikimedia.org/math/1/e/e/1ee98c57ce45565721110faa1b848724.png" />, <img class="tex" alt="1.1111\ldots 10" src="//upload.wikimedia.org/math/f/7/b/f7b388dd0f9729bfda3c50550ef0e079.png" />一直到<img class="tex" alt="0.0000\ldots 02" src="//upload.wikimedia.org/math/7/0/c/70cf1e4b110580911c9857ac3912433d.png" />, <img class="tex" alt="0.0000\ldots 01" src="//upload.wikimedia.org/math/2/3/7/237e42182ea13ada33a86e0f1ce6efc2.png" />，相邻两小浮点数之间的距离(gap)都是<img class="tex" alt="2^{-126}\times 2^{-23}=2^{-149}" src="//upload.wikimedia.org/math/7/8/2/7821370275c18053aa398dd6e1137664.png" />；而与0最近的浮点数(即最小的非规约数)也是<img class="tex" alt="2^{-126}\times 2^{-23}=2^{-149}" src="//upload.wikimedia.org/math/7/8/2/7821370275c18053aa398dd6e1137664.png" />。</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=7" title="编辑章节：特殊值">编辑</a>]</span> <span class="mw-headline" id=".E7.89.B9.E6.AE.8A.E5.80.BC">特殊值</span></h4>
+<p>这里有三个特殊值需要指出：</p>
+<ol>
+<li>如果 <i>指数</i> 是0 并且尾数的 <i>小数部分</i> 是0，这个数±0（和符号位相关）</li>
+<li>如果 <i>指数</i> = <img class="tex" alt="2^{e} - 1" src="//upload.wikimedia.org/math/4/4/f/44fa430dbc0eaefb569a01daeff5dc6b.png" /> 并且尾数的 <i>小数部分</i> 是0，这个数是 ±<a href="/wiki/%E6%97%A0%E7%A9%B7%E5%A4%A7" title="无穷大" class="mw-redirect">∞</a>（同样和符号位相关）</li>
+<li>如果 <i>指数</i> = <img class="tex" alt="2^{e} - 1" src="//upload.wikimedia.org/math/4/4/f/44fa430dbc0eaefb569a01daeff5dc6b.png" /> 并且尾数的 <i>小数部分</i> 非0，这个数表示为<a href="/wiki/NaN" title="NaN">不是一个数（NaN）</a>。</li>
+</ol>
+<p>以上规则，总结如下：</p>
+<table class="wikitable">
+<tr>
+<th>形式</th>
+<th>指数</th>
+<th>小数部分</th>
+</tr>
+<tr>
+<td>零</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>非规约形式</td>
+<td>0</td>
+<td>非0</td>
+</tr>
+<tr>
+<td>规约形式</td>
+<td><img class="tex" alt="1" src="//upload.wikimedia.org/math/c/4/c/c4ca4238a0b923820dcc509a6f75849b.png" /> 到 <img class="tex" alt="2^e-2" src="//upload.wikimedia.org/math/9/5/f/95f88f8dac719a8177c6364cff4abe6c.png" /></td>
+<td>任意</td>
+</tr>
+<tr>
+<td>无穷</td>
+<td><img class="tex" alt="2^e-1" src="//upload.wikimedia.org/math/e/0/7/e07d1b395450d55e7e525d6ef86b5a09.png" /></td>
+<td>0</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td><img class="tex" alt="2^e-1" src="//upload.wikimedia.org/math/e/0/7/e07d1b395450d55e7e525d6ef86b5a09.png" /></td>
+<td>非零</td>
+</tr>
+</table>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=8" title="编辑章节：32位单精度">编辑</a>]</span> <span class="mw-headline" id="32.E4.BD.8D.E5.96.AE.E7.B2.BE.E5.BA.A6">32位单精度</span></h4>
+<p>单精度二进制小数，使用32个比特存储。</p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr align="center">
+<td width="15">1</td>
+<td width="120">8</td>
+<td width="345">23　位长</td>
+</tr>
+<tr align="center">
+<td>S</td>
+<td>Exp</td>
+<td>Fraction</td>
+</tr>
+<tr align="center">
+<td><a href="/wiki/31" title="31">31</a></td>
+<td><a href="/wiki/30" title="30">30</a>至<a href="/wiki/23" title="23">23</a><br />
+偏正值 （实际的指数大小+127）</td>
+<td><a href="/wiki/22" title="22">22</a>至<a href="/wiki/0" title="0">0</a>　位编号（从右边开始为0）</td>
+</tr>
+</table>
+<p>S为符号位，Exp为指数字，Fraction为有效数字。 指数部分即使用所谓的<i>偏正值</i>形式表示，偏正值为实际的指数大小与一个固定值（32位的情况是127）的和。采用这种方式表示的目的是简化比较。因为，指数的值可能为正也可能为负，如果采用补码表示的话，全体符号位S和Exp自身的符号位将导致不能简单的进行大小比较。正因为如此，指数部分通常采用一个无符号的正数值存储。单精度的指数部分是−126～+127加上偏移值127 ，指数值的大小从1～254（0和255是特殊值）。浮点小数计算时，指数值减去偏正值将是实际的指数大小。</p>
+<p>单精度浮点数各种极值情况：</p>
+<table class="wikitable" border="1">
+<tr>
+<th>类别</th>
+<th>正负号</th>
+<th>实际指数</th>
+<th>有偏移指数</th>
+<th>指数域</th>
+<th>尾数域</th>
+<th>数值</th>
+</tr>
+<tr>
+<td>零</td>
+<td align="center">0</td>
+<td>-127</td>
+<td align="right">0</td>
+<td>0000 0000</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>负零</td>
+<td align="center">1</td>
+<td>-127</td>
+<td align="right">0</td>
+<td>0000 0000</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>−0.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="center">0</td>
+<td>0</td>
+<td align="right">127</td>
+<td>0111 1111</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>-1</td>
+<td align="center">1</td>
+<td>0</td>
+<td align="right">127</td>
+<td>0111 1111</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>−1.0</td>
+</tr>
+<tr>
+<td>最小的非规约数</td>
+<td align="center">*</td>
+<td>-126</td>
+<td align="right">0</td>
+<td>0000 0000</td>
+<td>000 0000 0000 0000 0000 0001</td>
+<td>±2<sup>−23</sup> × 2<sup>−126</sup> = ±2<sup>−149</sup> ≈ ±1.4<span lang="en" xml:lang="en">×10<sup>-45</sup></span></td>
+</tr>
+<tr>
+<td>中间大小的非规约数</td>
+<td align="center">*</td>
+<td>-126</td>
+<td align="right">0</td>
+<td>0000 0000</td>
+<td>100 0000 0000 0000 0000 0000</td>
+<td>±2<sup>−1</sup> × 2<sup>−126</sup> = ±2<sup>−127</sup> ≈ ±5.88<span lang="en" xml:lang="en">×10<sup>-39</sup></span></td>
+</tr>
+<tr>
+<td>最大的非规约数</td>
+<td align="center">*</td>
+<td>-126</td>
+<td align="right">0</td>
+<td>0000 0000</td>
+<td>111 1111 1111 1111 1111 1111</td>
+<td>±(1−2<sup>−23</sup>) × 2<sup>−126</sup> ≈ ±1.18<span lang="en" xml:lang="en">×10<sup>-38</sup></span></td>
+</tr>
+<tr>
+<td>最小的规约数</td>
+<td align="center">*</td>
+<td>-126</td>
+<td align="right">1</td>
+<td>0000 0001</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>±2<sup>−126</sup> ≈ ±1.18<span lang="en" xml:lang="en">×10<sup>-38</sup></span></td>
+</tr>
+<tr>
+<td>最大的规约数</td>
+<td align="center">*</td>
+<td>127</td>
+<td align="right">254</td>
+<td>1111 1110</td>
+<td>111 1111 1111 1111 1111 1111</td>
+<td>±(2−2<sup>−23</sup>) × 2<sup>127</sup> ≈ ±3.4<span lang="en" xml:lang="en">×10<sup>38</sup></span></td>
+</tr>
+<tr>
+<td>正无穷</td>
+<td align="center">0</td>
+<td>128</td>
+<td align="right">255</td>
+<td>1111 1111</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>+∞</td>
+</tr>
+<tr>
+<td>负无穷</td>
+<td align="center">1</td>
+<td>128</td>
+<td align="right">255</td>
+<td>1111 1111</td>
+<td>000 0000 0000 0000 0000 0000</td>
+<td>−∞</td>
+</tr>
+<tr>
+<td><a href="/wiki/NaN" title="NaN">NaN</a></td>
+<td align="center">*</td>
+<td>128</td>
+<td align="right">255</td>
+<td>1111 1111</td>
+<td>non zero</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td colspan="7">* 符号位可以为0或1&#160;.</td>
+</tr>
+</table>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=9" title="编辑章节：64位双精度">编辑</a>]</span> <span class="mw-headline" id="64.E4.BD.8D.E9.9B.99.E7.B2.BE.E5.BA.A6">64位双精度</span></h4>
+<p><a href="/wiki/%E5%8F%8C%E7%B2%BE%E5%BA%A6" title="双精度" class="mw-redirect">双精度</a>二进制小数，使用64个比特存储。</p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr align="center">
+<td width="15">1</td>
+<td width="120">11</td>
+<td width="345">52　位长</td>
+</tr>
+<tr align="center">
+<td>S</td>
+<td>Exp</td>
+<td>Fraction</td>
+</tr>
+<tr align="center">
+<td><a href="/wiki/63" title="63">63</a></td>
+<td><a href="/wiki/62" title="62">62</a>至<a href="/wiki/52" title="52">52</a><br />
+偏正值 （实际的指数大小+1023）</td>
+<td><a href="/wiki/51" title="51">51</a>至<a href="/wiki/0" title="0">0</a>　位编号（从右边开始为0）</td>
+</tr>
+</table>
+<p>S 为符号位，Exp为指数字，Fraction为有效数字。 指数部分即使用所谓的偏正值形式表示，偏正值为实际的指数大小与一个固定值（64位的情况是1023）的和。采用这种方式表示的目的是简化比较。因为，指数的值可能为正也可能为负，如果采用补码表示的话，全体符号位S和Exp自身 的符号位将导致不能简单的进行大小比较。正因为如此，指数部分通常采用一个无符号的正数值存储。双精度的指数部分是−1022～+1023加上1023 ，指数值的大小从1～2046（0(2进位全为0)和2047(2进位全为1)是特殊值）。浮点小数计算时，指数值减去偏正值将是实际的指数大小。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=10" title="编辑章节：浮点数的比较">编辑</a>]</span> <span class="mw-headline" id=".E6.B5.AE.E9.BB.9E.E6.95.B8.E7.9A.84.E6.AF.94.E8.BC.83">浮点数的比较</span></h3>
+<p>浮点数基本上可以按照符号位、指数域、尾数域的顺序作字典比较。显然，所有正数大于负数；正负号相同时，指数的二进制表示法更大的其浮点数值更大。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=11" title="编辑章节：浮点数的舍入">编辑</a>]</span> <span class="mw-headline" id=".E6.B5.AE.E9.BB.9E.E6.95.B8.E7.9A.84.E6.8D.A8.E5.85.A5">浮点数的舍入</span></h3>
+<p>任何有效数上的运算结果，通常都存放在较长的暂存器中，当结果被放回浮点格式时，必须将多出来的比特丢弃。 有多种方法可以用来运行舍入作业，实际上IEEE标准列出4种不同的方法：</p>
+<ul>
+<li><b>舍入到最接近</b>：会将结果舍入为最接近且可以表示的值。这是缺省的近似方法。</li>
+<li><b>朝+∞方向舍入</b>：会将结果朝正无限大的方向舍入。</li>
+<li><b>朝-∞方向舍入</b>： 会将结果朝负无限大的方向舍入。</li>
+<li><b>朝0方向舍入</b>： 会将结果朝0的方向舍入。</li>
+</ul>
+<h3><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=12" title="编辑章节：浮点数的运算与函数">编辑</a>]</span> <span class="mw-headline" id=".E6.B5.AE.E7.82.B9.E6.95.B0.E7.9A.84.E8.BF.90.E7.AE.97.E4.B8.8E.E5.87.BD.E6.95.B0">浮点数的运算与函数</span></h3>
+<h4><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=13" title="编辑章节：标准运算">编辑</a>]</span> <span class="mw-headline" id=".E6.A0.87.E5.87.86.E8.BF.90.E7.AE.97">标准运算</span></h4>
+<p>下述函数必须提供:</p>
+<ul>
+<li>加减乘除 Add, subtract, multiply, divide</li>
+<li>平方根 Square root</li>
+<li>浮点余数. 返回值 x-(round(x/y)*y).</li>
+<li>近似到最近的整数. 如果恰好在两个相邻整数之间，则近似到偶数.</li>
+<li>比较运算. IEEE754定义了特殊情况： -inf = -inf, inf = inf and x ≠ NaN for any x (including NaN).</li>
+</ul>
+<h3><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=14" title="编辑章节：建议的函数与谓词">编辑</a>]</span> <span class="mw-headline" id=".E5.BB.BA.E8.AE.AE.E7.9A.84.E5.87.BD.E6.95.B0.E4.B8.8E.E8.B0.93.E8.AF.8D">建议的函数与谓词</span></h3>
+<ul>
+<li>Under some C compilers, <code>copysign(x,y)</code> returns x with the sign of y, so <code>abs(x)</code> equals <code>copysign(x,1.0)</code>. This is one of the few operations which operates on a NaN in a way resembling arithmetic. The function <code>copysign</code> is new in the C99 standard.</li>
+<li>−x returns x with the sign reversed. This is different from 0−x in some cases, notably when x is 0. So −(0) is −0, but the sign of 0−0 depends on the rounding mode.</li>
+<li><code>scalb(y, N)</code></li>
+<li><code>logb(x)</code></li>
+<li><code>finite(x)</code> a <a href="/w/index.php?title=Predicate_(mathematics)&amp;action=edit&amp;redlink=1" class="new" title="Predicate (mathematics)（页面不存在）">predicate</a> for "x is a finite value", equivalent to −Inf &lt; x &lt; Inf</li>
+<li><code>isnan(x)</code> a predicate for "x is a nan", equivalent to "x ≠ x"</li>
+<li><code>x &lt;&gt; y</code> which turns out to have different exception behavior than NOT(x = y).</li>
+<li><code>unordered(x, y)</code> is true when "x is unordered with y", i.e., either x or y is a NaN.</li>
+<li><code>class(x)</code></li>
+<li><code>nextafter(x,y)</code> returns the next representable value from x in the direction towards y</li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=15" title="编辑章节：外部链接">编辑</a>]</span> <span class="mw-headline" id=".E5.A4.96.E9.83.A8.E9.80.A3.E7.B5.90">外部链接</span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://babbage.cs.qc.edu/courses/cs341/IEEE-754references.html">IEEE 754 references</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.d6.com/users/checker/pdfs/gdmfp.pdf">Let's Get To The (Floating) Point by Chris Hecker</a></li>
+<li><a rel="nofollow" class="external text" href="http://docs.sun.com/source/806-3568/ncg_goldberg.html">What Every Computer Scientist Should Know About Floating-Point Arithmetic by David Goldberg</a> - a good introduction and explanation.</li>
+<li><a rel="nofollow" class="external text" href="http://www2.hursley.ibm.com/decimal/854mins.html">IEEE 854-1987</a> History and minutes</li>
+<li><a rel="nofollow" class="external text" href="http://www.h-schmidt.net/FloatApplet/IEEE754.html">Converter</a></li>
+<li><a rel="nofollow" class="external text" href="http://babbage.cs.qc.edu/courses/cs341/IEEE-754.html">Another Converter</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.61131.com/download.htm">Converter as MS-Windows program</a></li>
+<li><a rel="nofollow" class="external text" href="http://metasharp.net/index.php?title=How_to_compare_double_or_float_in_Cpp">Comparing doubles in C++</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.cs.berkeley.edu/~wkahan/ieee754status/754story.html">An Interview with the Old Man of Floating-Point</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.coprocessor.info/">Coprocessor.info&#160;: x87 FPU pictures, development and manufacturer information</a></li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=IEEE_754&amp;action=edit&amp;section=16" title="编辑章节：参考文献">编辑</a>]</span> <span class="mw-headline" id=".E5.8F.83.E8.80.83.E6.96.87.E7.8D.BB">参考文献</span></h2>
+<div class="references-small">
+<ol class="references">
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://www.opengroup.org/onlinepubs/009695399/frontmatter/refdocs.html">Codes</a> <span style="font-family: sans-serif; cursor: default; color:#555; font-size: 0.8em; bottom: 0.1em; font-weight: bold;" title="连接到英文网页">（英文）</span>.</span><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.btitle=Codes&amp;rft.atitle=&amp;rft_id=http%3A%2F%2Fwww.opengroup.org%2Fonlinepubs%2F009695399%2Ffrontmatter%2Frefdocs.html&amp;rfr_id=info:sid/zh.wikipedia.org:IEEE_754"><span style="display: none;">&#160;</span></span></span></li>
+<li id="cite_note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text">参见<a href="/wiki/%E6%9C%89%E7%AC%A6%E8%99%9F%E6%95%B8%E8%99%95%E7%90%86" title="有符号数处理">有符号数处理</a>的Excess-N</span></li>
+</ol>
+</div>
+
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 15957/1000000
+Preprocessor generated node count: 31537/1500000
+Post-expand include size: 281817/2048000 bytes
+Template argument size: 33344/2048000 bytes
+Highest expansion depth: 16/40
+Expensive parser function count: 2/500
+-->
+
+<!-- Saved in parser cache with key zhwiki:pcache:idhash:535409-0!0!0!!zh-cn!4!zh-cn!* and timestamp 20130219064315 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				来自“<a href="http://zh.wikipedia.org/w/index.php?title=IEEE_754&amp;oldid=24295820">http://zh.wikipedia.org/w/index.php?title=IEEE_754&amp;oldid=24295820</a>”				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:%E9%A1%B5%E9%9D%A2%E5%88%86%E7%B1%BB" title="Special:页面分类">2个分类</a>：<ul><li><a href="/wiki/Category:%E8%A8%88%E7%AE%97%E6%A9%9F%E7%AE%97%E8%A1%93" title="Category:計算機算術">计算机算术</a></li><li><a href="/wiki/Category:IEEE%E6%A0%87%E5%87%86" title="Category:IEEE标准">IEEE标准</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">1个隐藏分类：<ul><li><a href="/wiki/Category:%E5%90%AB%E6%9C%89%E8%8B%B1%E8%AA%9E%E7%9A%84%E6%A2%9D%E7%9B%AE" title="Category:含有英語的條目">含有英语的条目</a></li></ul></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<div id="mw-navigation">
+			<h2>导航菜单</h2>
+			<!-- header -->
+			<div id="mw-head" class="noprint">
+				
+<!-- 0 -->
+<div id="p-personal" role="navigation" class="">
+	<h3>个人工具</h3>
+	<ul lang="zh-CN" dir="ltr">
+<li id="pt-createaccount"><a href="/w/index.php?title=Special:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;returnto=IEEE+754&amp;type=signup">创建新账户</a></li><li id="pt-login"><a href="/w/index.php?title=Special:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;returnto=IEEE+754" title="建议你登录，尽管并非必须。 [o]" accesskey="o">登录</a></li>	</ul>
+</div>
+
+<!-- /0 -->
+				<div id="left-navigation">
+					
+<!-- 0 -->
+<div id="p-namespaces" role="navigation" class="vectorTabs">
+	<h3>名字空间</h3>
+	<ul lang="zh-CN" dir="ltr">
+					<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/IEEE_754"  title="浏览条目正文 [c]" accesskey="c">条目</a></span></li>
+					<li  id="ca-talk" class="new"><span><a href="/w/index.php?title=Talk:IEEE_754&amp;action=edit&amp;redlink=1"  title="关于此页面的讨论 [t]" accesskey="t">讨论</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" role="navigation" class="vectorMenu">
+	<h3 id="mw-vector-current-variant">
+															大陆简体													</h3>
+	<h3><span>变换</span><a href="#"></a></h3>
+	<div class="menu">
+		<ul>
+							<li id="ca-varlang-0"><a href="/zh/IEEE_754" lang="zh" hreflang="zh" >不转换</a></li>
+							<li id="ca-varlang-1"><a href="/zh-hans/IEEE_754" lang="zh-hans" hreflang="zh-hans" >简体</a></li>
+							<li id="ca-varlang-2"><a href="/zh-hant/IEEE_754" lang="zh-hant" hreflang="zh-hant" >繁體</a></li>
+							<li id="ca-varlang-3" class="selected"><a href="/zh-cn/IEEE_754" lang="zh-cn" hreflang="zh-cn" >大陆简体</a></li>
+							<li id="ca-varlang-4"><a href="/zh-hk/IEEE_754" lang="zh-hk" hreflang="zh-hk" >港澳繁體</a></li>
+							<li id="ca-varlang-5"><a href="/zh-sg/IEEE_754" lang="zh-sg" hreflang="zh-sg" >马新简体</a></li>
+							<li id="ca-varlang-6"><a href="/zh-tw/IEEE_754" lang="zh-tw" hreflang="zh-tw" >台灣正體</a></li>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+				</div>
+				<div id="right-navigation">
+					
+<!-- 0 -->
+<div id="p-views" role="navigation" class="vectorTabs">
+	<h3>查看</h3>
+	<ul lang="zh-CN" dir="ltr">
+					<li id="ca-view" class="selected"><span><a href="/wiki/IEEE_754" >阅读</a></span></li>
+					<li id="ca-edit"><span><a href="/w/index.php?title=IEEE_754&amp;action=edit"  title="你可以编辑本页面。请在保存前使用预览按钮。 [e]" accesskey="e">编辑</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=IEEE_754&amp;action=history"  title="本页面的早前版本。 [h]" accesskey="h">查看历史</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet">
+	<h3><span>操作</span><a href="#"></a></h3>
+	<div class="menu">
+		<ul lang="zh-CN" dir="ltr">
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search" role="search">
+	<h3 lang="zh-CN" dir="ltr"><label for="searchInput">搜索</label></h3>
+	<form action="/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input name="search" title="搜索维基百科 [f]" accesskey="f" id="searchInput" />						<button type="submit" name="button" title="搜索含这些文字的页面" id="searchButton"><img src="//bits.wikimedia.org/static-1.21wmf9/skins/vector/images/search-ltr.png?303-4" alt="搜索" width="12" height="13" /></button>								<input type='hidden' name="title" value="Special:搜索"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+				</div>
+			</div>
+			<!-- /header -->
+			<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/zh/b/bc/Wiki.png);" href="/wiki/Wikipedia:%E9%A6%96%E9%A1%B5"  title="首页"></a></div>
+				<!-- /logo -->
+				
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- navigation -->
+<div class="portal" role="navigation" id='p-navigation'>
+	<h3 lang="zh-CN" dir="ltr">导航</h3>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="/wiki/Wikipedia:%E9%A6%96%E9%A1%B5" title="访问首页 [z]" accesskey="z">首页</a></li>
+			<li id="n-indexpage"><a href="/wiki/Wikipedia:%E5%88%86%E9%A1%9E%E7%B4%A2%E5%BC%95" title="以分类索引搜寻中文维基百科">分类索引</a></li>
+			<li id="n-Featured_content"><a href="/wiki/Portal:%E7%89%B9%E8%89%B2%E5%85%A7%E5%AE%B9" title="查看中文维基百科的特色内容">特色内容</a></li>
+			<li id="n-currentevents"><a href="/wiki/Portal:%E6%96%B0%E8%81%9E%E5%8B%95%E6%85%8B" title="提供当前新闻事件的背景资料">新闻动态</a></li>
+			<li id="n-recentchanges"><a href="/wiki/Special:%E6%9C%80%E8%BF%91%E6%9B%B4%E6%94%B9" title="列出维基百科中的最近修改 [r]" accesskey="r">最近更改</a></li>
+			<li id="n-randompage"><a href="/wiki/Special:%E9%9A%8F%E6%9C%BA%E9%A1%B5%E9%9D%A2" title="随机载入一个页面 [x]" accesskey="x">随机条目</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- help -->
+<div class="portal" role="navigation" id='p-help'>
+	<h3 lang="zh-CN" dir="ltr">帮助</h3>
+	<div class="body">
+		<ul>
+			<li id="n-help"><a href="/wiki/Help:%E7%9B%AE%E5%BD%95" title="寻求帮助">帮助</a></li>
+			<li id="n-portal"><a href="/wiki/Wikipedia:%E7%A4%BE%E5%8C%BA%E4%B8%BB%E9%A1%B5" title="关于本计划、你可以做什么、应该如何做">社区专页</a></li>
+			<li id="n-policy"><a href="/wiki/Wikipedia:%E6%96%B9%E9%87%9D%E8%88%87%E6%8C%87%E5%BC%95" title="查看维基百科的方针和指引">方针与指引</a></li>
+			<li id="n-villagepump"><a href="/wiki/Wikipedia:%E4%BA%92%E5%8A%A9%E5%AE%A2%E6%A0%88" title="参与维基百科社群的讨论">互助客栈</a></li>
+			<li id="n-Information_desk"><a href="/wiki/Wikipedia:%E8%A9%A2%E5%95%8F%E8%99%95" title="解答任何与维基百科无关的问题的地方">询问处</a></li>
+			<li id="n-conversion"><a href="/wiki/Wikipedia:%E5%AD%97%E8%AF%8D%E8%BD%AC%E6%8D%A2%E8%AF%B7%E6%B1%82%E6%88%96%E5%80%99%E9%80%89" title="提出字词转换请求">字词转换</a></li>
+			<li id="n-IRC"><a href="//zh.wikipedia.org/wiki/Wikipedia:IRC聊天频道/IRC?withJS=MediaWiki:Gadget-irc.js">IRC即时聊天</a></li>
+			<li id="n-contact"><a href="/wiki/Wikipedia:%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" title="如何联络维基百科">联系我们</a></li>
+			<li id="n-about"><a href="/wiki/Wikipedia:%E5%85%B3%E4%BA%8E" title="查看维基百科的简介">关于维基百科</a></li>
+			<li id="n-sitesupport"><a href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_zh.wikipedia.org&amp;uselang=zh" title="如果您在维基百科受益良多，您可以考虑资助我们">资助维基百科</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /help -->
+
+<!-- TOOLBOX -->
+<div class="portal" role="navigation" id='p-tb'>
+	<h3 lang="zh-CN" dir="ltr">工具箱</h3>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="/wiki/Special:%E9%93%BE%E5%85%A5%E9%A1%B5%E9%9D%A2/IEEE_754" title="列出所有与本页相链的页面 [j]" accesskey="j">链入页面</a></li>
+			<li id="t-recentchangeslinked"><a href="/wiki/Special:%E9%93%BE%E5%87%BA%E6%9B%B4%E6%94%B9/IEEE_754" title="页面链出所有页面的更改 [k]" accesskey="k">相关更改</a></li>
+			<li id="t-upload"><a href="/wiki/Project:%E4%B8%8A%E4%BC%A0" title="上传图像或多媒体文件 [u]" accesskey="u">上传文件</a></li>
+			<li id="t-specialpages"><a href="/wiki/Special:%E7%89%B9%E6%AE%8A%E9%A1%B5%E9%9D%A2" title="全部特殊页面的列表 [q]" accesskey="q">特殊页面</a></li>
+			<li id="t-print"><a href="/w/index.php?title=IEEE_754&amp;printable=yes" rel="alternate" title="本页面的可打印版本 [p]" accesskey="p">打印版本</a></li>
+			<li id="t-permalink"><a href="/w/index.php?title=IEEE_754&amp;oldid=24295820" title="本页面该版本的永久链接">永久链接</a></li>
+			<li id="t-info"><a href="/w/index.php?title=IEEE_754&amp;action=info">页面信息</a></li>
+<li id="t-cite"><a href="/w/index.php?title=Special:%E5%BC%95%E7%94%A8&amp;page=IEEE_754&amp;id=24295820" title="关于如何引用本页的信息">引用本页</a></li>		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" role="navigation" id='p-lang'>
+	<h3 lang="zh-CN" dir="ltr">其他语言</h3>
+	<div class="body">
+		<ul>
+			<li class="interwiki-ar"><a href="//ar.wikipedia.org/wiki/%D8%A2%D9%8A_%D8%A5%D9%8A_%D8%A5%D9%8A_%D8%A5%D9%8A_754-2008" title="آي إي إي إي 754-2008" lang="ar" hreflang="ar">العربية</a></li>
+			<li class="interwiki-ca"><a href="//ca.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="ca" hreflang="ca">Català</a></li>
+			<li class="interwiki-cs"><a href="//cs.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="cs" hreflang="cs">Česky</a></li>
+			<li class="interwiki-de"><a href="//de.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="de" hreflang="de">Deutsch</a></li>
+			<li class="interwiki-en"><a href="//en.wikipedia.org/wiki/IEEE_floating_point" title="IEEE floating point" lang="en" hreflang="en">English</a></li>
+			<li class="interwiki-es"><a href="//es.wikipedia.org/wiki/IEEE_coma_flotante" title="IEEE coma flotante" lang="es" hreflang="es">Español</a></li>
+			<li class="interwiki-fr"><a href="//fr.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="fr" hreflang="fr">Français</a></li>
+			<li class="interwiki-hu"><a href="//hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum" title="IEEE lebegőpontos számformátum" lang="hu" hreflang="hu">Magyar</a></li>
+			<li class="interwiki-it"><a href="//it.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="it" hreflang="it">Italiano</a></li>
+			<li class="interwiki-ja"><a href="//ja.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="ja" hreflang="ja">日本語</a></li>
+			<li class="interwiki-ko"><a href="//ko.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="ko" hreflang="ko">한국어</a></li>
+			<li class="interwiki-nl"><a href="//nl.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="nl" hreflang="nl">Nederlands</a></li>
+			<li class="interwiki-pl"><a href="//pl.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="pl" hreflang="pl">Polski</a></li>
+			<li class="interwiki-pt"><a href="//pt.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="pt" hreflang="pt">Português</a></li>
+			<li class="interwiki-ru"><a href="//ru.wikipedia.org/wiki/IEEE_754-2008" title="IEEE 754-2008" lang="ru" hreflang="ru">Русский</a></li>
+			<li class="interwiki-sr"><a href="//sr.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="sr" hreflang="sr">Српски / srpski</a></li>
+			<li class="interwiki-sv"><a href="//sv.wikipedia.org/wiki/IEEE_754-2008" title="IEEE 754-2008" lang="sv" hreflang="sv">Svenska</a></li>
+			<li class="interwiki-tr"><a href="//tr.wikipedia.org/wiki/IEEE_754-2008" title="IEEE 754-2008" lang="tr" hreflang="tr">Türkçe</a></li>
+			<li class="interwiki-uk"><a href="//uk.wikipedia.org/wiki/IEEE_754" title="IEEE 754" lang="uk" hreflang="uk">Українська</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+			<!-- /panel -->
+		</div>
+		<!-- footer -->
+		<div id="footer" role="contentinfo" lang="zh-CN" dir="ltr">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> 本页面最后修订于2012年12月30日 (星期日) 05:10。<br /></li>
+											<li id="footer-info-copyright">本站的全部文字在<a rel="license" href="//zh.wikipedia.org/zh-cn/Wikipedia%3ACC-BY-SA-3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" title="Wikipedia:CC-BY-SA-3.0协议文本">知识共享 署名-相同方式共享 3.0协议</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/deed.zh" style="display:none;"></a>之条款下提供，附加条款亦可能应用。（请参阅<a href="//wikimediafoundation.org/wiki/%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE">使用条款</a>）<br />
+Wikipedia&reg;和维基百科标志是<a href="//wikimediafoundation.org">维基媒体基金会</a>的注册商标；维基&trade;是维基媒体基金会的商标。<br />维基媒体基金会是在美国佛罗里达州登记的501(c)(3)<a href="//wikimediafoundation.org/wiki/%E8%B5%84%E5%8A%A9%E7%9A%84%E5%85%8D%E7%A8%8E%E6%94%BF%E7%AD%96">免税</a>、非营利、慈善机构。<br /></li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96" title="wikimedia:隐私政策">隐私政策</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:%E5%85%B3%E4%BA%8E" title="Wikipedia:关于">关于维基百科</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E" title="Wikipedia:免责声明">免责声明</a></li>
+											<li id="footer-places-mobileview"><a href="http://zh.m.wikipedia.org/wiki/IEEE_754" class="noprint stopMobileRedirectToggle">移动版视图</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="//wikimediafoundation.org/"><img src="//bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="//bits.wikimedia.org/static-1.21wmf9/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script src="//bits.wikimedia.org/zh.wikipedia.org/load.php?debug=false&amp;lang=zh-cn&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.loader.load(["mobile.desktop","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.WikiMiniAtlas","ext.gadget.ReferenceTooltips","ext.gadget.AdvancedSiteNotices","ext.gadget.hideConversionTab","ext.gadget.large-font","ext.gadget.internalLinkHelper-altcolor","ext.gadget.noteTA","ext.gadget.noteTAvector","mw.MwEmbedSupport.style","ext.vector.collapsibleNav","ext.vector.collapsibleTabs","ext.vector.editWarning","ext.UserBuckets","ext.articleFeedback.startup","mw.PopUpMediaTransform"], null, true);
+}</script>
+<script src="/w/index.php?title=MediaWiki:Gadget-edit0.js&amp;action=raw&amp;ctype=text/javascript&amp;22980032"></script>
+<script src="/w/index.php?title=MediaWiki:Gadget-ReferenceTooltips.js&amp;action=raw&amp;ctype=text/javascript&amp;24380138"></script>
+<script src="//bits.wikimedia.org/zh.wikipedia.org/load.php?debug=false&amp;lang=zh-cn&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<!-- Served by mw1098 in 0.242 secs. -->
+	</body>
+</html>

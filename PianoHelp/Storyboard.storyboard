@@ -87,26 +87,10 @@
                                             <constraint firstAttribute="width" constant="1024" id="zb5-06-2IM"/>
                                         </constraints>
                                         <items>
-                                            <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="xhf-UU-8ut"/>
-                                            <barButtonItem style="plain" id="uKe-Sv-Tcf">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dTB-OQ-bDf">
-                                                    <rect key="frame" x="52" y="25" width="90" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="shangcheng.png"/>
-                                                    <state key="selected" backgroundImage="xuanzhongbiaoqian.png">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="buttonToolbar_click:" destination="CJV-x4-ZHP" eventType="touchUpInside" id="s70-Ge-cWD"/>
-                                                        <segue destination="tTg-kH-P0K" kind="modal" identifier="presentShopSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="s4x-9a-MMA"/>
-                                                    </connections>
-                                                </button>
-                                                <color key="tintColor" red="0.37647062539999998" green="0.56078433989999998" blue="0.70588237050000002" alpha="1" colorSpace="deviceRGB"/>
-                                            </barButtonItem>
-                                            <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="aQL-nm-9tm"/>
+                                            <barButtonItem width="80" style="plain" systemItem="fixedSpace" id="xhf-UU-8ut"/>
                                             <barButtonItem style="plain" id="SeT-zD-18M">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1mL-pa-ABP">
-                                                    <rect key="frame" x="172" y="-3" width="205" height="80"/>
+                                                    <rect key="frame" x="92" y="-3" width="205" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="qinfang.png"/>
                                                     <state key="selected" backgroundImage="xuanzhongbiaoqian.png">
@@ -117,10 +101,10 @@
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
-                                            <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="eQ1-EC-rny"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="K7D-1Y-zbY"/>
                                             <barButtonItem style="plain" id="bO6-e6-mPN">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EMy-dp-ehN">
-                                                    <rect key="frame" x="407" y="-3" width="205" height="80"/>
+                                                    <rect key="frame" x="342" y="-3" width="205" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                                     <state key="normal" image="puku.png"/>
@@ -132,10 +116,10 @@
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
-                                            <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="f7C-HV-Hx9"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="ySE-Yg-Bfw"/>
                                             <barButtonItem style="plain" id="ajI-EQ-pKw">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tXN-d9-HdI">
-                                                    <rect key="frame" x="642" y="-3" width="205" height="80"/>
+                                                    <rect key="frame" x="592" y="-3" width="205" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="zhanting.png"/>
                                                     <state key="selected" backgroundImage="xuanzhongbiaoqian.png">
@@ -146,10 +130,10 @@
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
-                                            <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="HZ3-dM-jht"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="J9q-Xb-fll"/>
                                             <barButtonItem style="plain" id="cux-sT-SSk">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MMA-dc-ZlP">
-                                                    <rect key="frame" x="897" y="25" width="90" height="25"/>
+                                                    <rect key="frame" x="842" y="25" width="90" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="更多" image="gengduo.png"/>
                                                     <state key="selected">
@@ -162,6 +146,7 @@
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
+                                            <barButtonItem width="80" style="plain" systemItem="fixedSpace" id="xVb-BM-NIe"/>
                                         </items>
                                     </toolbar>
                                 </subviews>
@@ -222,7 +207,6 @@
                     <connections>
                         <outlet property="btnMelody" destination="EMy-dp-ehN" id="iVT-Gp-SlS"/>
                         <outlet property="btnQinFang" destination="1mL-pa-ABP" id="N9j-yI-r7C"/>
-                        <outlet property="btnShop" destination="dTB-OQ-bDf" id="vax-JM-D9h"/>
                         <outlet property="btnShow" destination="tXN-d9-HdI" id="eGx-Zg-kEV"/>
                         <outlet property="melodyContainerView" destination="clh-gE-Szr" id="X0o-ks-5zL"/>
                         <outlet property="qinFangContainerView" destination="6sB-hs-mGS" id="qjr-7Z-ph5"/>
@@ -2018,15 +2002,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="spaceBg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-vt-zhM">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lzb-qe-37j">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="693"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cE1-Fw-yYn" firstAttribute="top" secondItem="Lzb-qe-37j" secondAttribute="bottom" id="4fW-Eh-XaX"/>
+                            <constraint firstItem="Lzb-qe-37j" firstAttribute="leading" secondItem="Hq4-mA-ikD" secondAttribute="leading" id="Uv1-Ov-Ozc"/>
+                            <constraint firstItem="Lzb-qe-37j" firstAttribute="top" secondItem="ssz-k7-WbZ" secondAttribute="bottom" id="VO8-1X-KPW"/>
+                            <constraint firstAttribute="trailing" secondItem="Lzb-qe-37j" secondAttribute="trailing" id="zzc-iZ-cEp"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="webView" destination="Lzb-qe-37j" id="xUo-93-rjo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mh-ZT-q9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2091,7 +2085,6 @@
         <image name="renwu.png" width="32" height="28"/>
         <image name="renwu2.png" width="32" height="28"/>
         <image name="renwufenye.png" width="150" height="36"/>
-        <image name="shangcheng.png" width="90" height="25"/>
         <image name="shifanqupu.png" width="275" height="265"/>
         <image name="shipumoshi.png" width="300" height="70"/>
         <image name="shiting-01.png" width="95" height="35"/>
@@ -2106,7 +2099,6 @@
         <image name="shuzikuang.png" width="96" height="44"/>
         <image name="shuzikuangjia.png" width="254" height="184"/>
         <image name="sousuolan.png" width="840" height="49"/>
-        <image name="spaceBg.jpg" width="1024" height="768"/>
         <image name="tanzou.png" width="86" height="40"/>
         <image name="tanzoumoshi.png" width="300" height="70"/>
         <image name="tiaosu-01.png" width="10" height="35"/>

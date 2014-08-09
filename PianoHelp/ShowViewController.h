@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface ShowViewController : BaseViewController
+@interface ShowViewController : BaseViewController <UIWebViewDelegate>
 {
     
 }
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end

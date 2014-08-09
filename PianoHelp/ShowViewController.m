@@ -27,6 +27,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.webView.delegate = self;
+	self.webView.backgroundColor = [UIColor clearColor];
+//	self.webView.opaque = NO;
+//	self.webView.scalesPageToFit = YES;
+//	for (id subview in self.webView.subviews)
+//	{
+//        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+//		{
+//            ((UIScrollView *)subview).bounces = NO;
+//			break;
+//		}
+//	}
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
+                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
+                                                                                ]]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,5 +61,22 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - UIWebview delegate -
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+{
+    return YES;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
+}
 
 @end

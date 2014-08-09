@@ -41,13 +41,21 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    for (UITableViewCell *cell in self.tableView.visibleCells)
+    {
+        if(cell != self && cell.selected)
+        {
+            cell.selected = NO; // control selected by uitableviewcell UI in storybornd
+            ((FavoriteTableViewCell*)cell).imageSelected.hidden = YES;
+        }
+    }
     // Configure the view for the selected state
 }
 
 -(void)updateContent:(id)obj
 {
     MelodyFavorite *favo = (MelodyFavorite*)obj;
+    self.imageSelected.hidden = YES;
     self.labTitle.text = favo.melody.name;
     self.labAuthor.text = favo.melody.author;
     self.btnPlay.fileName = favo.melody.filePath;
@@ -64,12 +72,20 @@
 
 - (IBAction)btnPlay_click:(id)sender
 {
+    [self setSelectedOnSelf];
+}
+
+-(void)setSelectedOnSelf
+{
     for (UITableViewCell *cell in self.tableView.visibleCells)
     {
-        //cell.selected = NO;
-        ((FavoriteTableViewCell*)cell).imageSelected.hidden = YES;
+        if(cell.selected || ((FavoriteTableViewCell*)cell).imageSelected.hidden == NO)
+        {
+            cell.selected = NO;
+            ((FavoriteTableViewCell*)cell).imageSelected.hidden = YES;
+        }
     }
-    self.selected = YES;
     self.imageSelected.hidden = NO;
+    self.selected = YES;
 }
 @end
