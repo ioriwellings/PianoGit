@@ -24,6 +24,38 @@
     for (i=0; i<4; i++) {
         [judgedResult add:0];
     }
+    
+    type = 0;
+    return self;
+}
+
+-(id)initWithOptions:(MidiOptions*)options {
+    int i;
+    pianoData = [Array new:100];
+    notes = [Array new:100];
+    prevChordList = [Array new:100];
+    curChordList = [Array new:100];
+    judgedResult = [IntArray new:4];
+    (void)gettimeofday(&beginTime, NULL);
+    
+    for (i=0; i<4; i++) {
+        [judgedResult add:0];
+    }
+    
+    type = 0;
+    if (options->numtracks != 1) {
+        int rState = [options->mute get:0];
+        int lState = [options->mute get:1];
+        
+        //右手是第1音轨，左手是第2音轨
+        //右手模式，右手静音；左手模式，左手静音
+        if (rState == -1 && lState == 0) { //右手模式
+            type = 1;
+        } else if (rState == 0 && lState == -1) { //左手模式
+            type = 2;
+        }
+    }
+    
     return self;
 }
 
@@ -98,8 +130,28 @@
     int i;
     int j;
     int k;
+    int start = 0, step = 2;
     
-    for (i=0; i<[staffs count]; i++) {
+    switch(type) {
+        case 0:
+            start = 0;
+            step = 1;
+            break;
+        case 1://右手模式
+            start = 0;
+            step = 2;
+            break;
+        case 2:
+            start = 1;
+            step = 2;
+            break;
+        default:
+            start = 0;
+            step = 1;
+            break;
+    }
+    
+    for (i=start; i<[staffs count]; i+=step) {
         staff = [staffs get:i];
         if (([staff endTime] <= curPulseTime) || ([staff startTime] > curPulseTime)) {
             continue;
@@ -303,6 +355,7 @@
     [prevChordList release];
     [curChordList release];
     [judgedResult release];
+    [super dealloc];
 }
 
 

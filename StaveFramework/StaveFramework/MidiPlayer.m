@@ -272,7 +272,7 @@
 //    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
-        pianoData = [[PianoDataJudged alloc] init];
+        pianoData = [[PianoDataJudged alloc] initWithOptions:opt];
         arrPacket =[[NSMutableArray alloc] init];
     }
 
