@@ -151,6 +151,8 @@
             break;
     }
     
+
+    
     for (i=start; i<[staffs count]; i+=step) {
         staff = [staffs get:i];
         if (([staff endTime] <= curPulseTime) || ([staff startTime] > curPulseTime)) {
@@ -185,6 +187,8 @@
 }
 
 -(void)judgedPianoPlay:(int)curPulseTime andPrevPulseTime:(int)prevPulseTime andStaffs:(Array*)staffs andMidifile:(MidiFile *)midifile {
+    
+     NSLog(@"44444444444444444[%d]", curPulseTime);
     
     if (staffs == nil) {
         return;
@@ -268,6 +272,7 @@
             
             if ([chord judgedResult] == 0) {
                 if (result == -1 || rightCount < count) {
+                     NSLog(@"3333333333333333333[%d]", curPulseTime);
                     [chord setJudgedResult:-1];
                     [prevChordList remove:chord];
                     [judgedResult set:[judgedResult get:0]+1 index:0];
@@ -275,6 +280,8 @@
                     
                 } else if (result == 0 && curPulseTime-start > (end-start)) {
                     [chord setJudgedResult:-1];
+                    
+
                     [prevChordList remove:chord];
                     [judgedResult set:[judgedResult get:0]+1 index:0];
                     [judgedResult set:[judgedResult get:1]+1 index:1];
@@ -346,6 +353,16 @@
     }
     
     [midiNotes sort:sortbytime];
+}
+
+-(void)DataClear {
+    [curChordList clear];
+    [prevChordList clear];
+    [pianoData clear];
+    [notes clear];
+    for(int i = 0; i<4; i++) {
+        [judgedResult set:0 index:i];
+    }
 }
 
 - (void)dealloc

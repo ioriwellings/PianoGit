@@ -45,4 +45,5 @@
 -(void)FindChords:(int)curPulseTime andPrevPulseTime:(int)prevPulseTime andStaffs:(Array*)staffs;
 -(void)judgedPianoPlay:(int)curPulseTime andPrevPulseTime:(int)prevPulseTime andStaffs:(Array*)staffs andMidifile:(MidiFile *)midifile;
 -(void)RoundStartTimes:(Array*)midiNotes;
+-(void)DataClear;
 @end
