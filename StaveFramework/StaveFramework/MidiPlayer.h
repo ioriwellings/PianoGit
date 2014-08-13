@@ -69,6 +69,7 @@ enum {
     double currentPulseTime;    /** Time (in pulses) music is currently at */
     double prevPulseTime;       /** Time (in pulses) music was last at */
     double doubleValue;
+    double timeDifference;
     
     PianoDataJudged *pianoData;
     Array* staffs;

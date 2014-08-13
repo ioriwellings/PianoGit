@@ -360,7 +360,7 @@
     
     //tempSoundFile = [[midifile filename] stringByAppendingString:@".MSM.mid"];
     tempSoundFile = [tempSoundFile retain];
-    if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile] == NO) {//modify by yizhq
+    if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile secValue:timeDifference] == NO) {//modify by yizhq
         /* Failed to write to tempSoundFile */
         [tempSoundFile release]; tempSoundFile = nil;
     }
@@ -874,7 +874,8 @@
         /* add by yizhq end */
         prevPulseTime = currentPulseTime;
         currentPulseTime = startPulseTime + msec * pulsesPerMsec;
-        NSLog(@"timer currentPulseTime is %f", currentPulseTime);
+        timeDifference = currentPulseTime - prevPulseTime;
+        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];

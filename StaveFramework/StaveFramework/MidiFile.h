@@ -100,7 +100,7 @@
 -(id)initWithFile:(NSString*)path;
 -(Array*)readTrack:(MidiFileReader*)file;
 -(IntArray*)guessMeasureLength;
--(BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename;//modify by yizhq 
+-(BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename secValue:(double)pulsesPerMsec;//modify by yizhq
 -(Array*)applyOptionsToEvents:(MidiOptions *)options;
 -(Array*)applyOptionsPerChannel:(MidiOptions *)options;
 -(Array*)changeMidiNotes:(MidiOptions*)options;
