@@ -375,6 +375,7 @@
     
     [self doStop];
     [sheet clearStaffs];
+    [self clearJudgedData];
     
     if (playModel != PlayModel1) {
         [sheetPlay setCurrentPulseTime:currentPulseTime];
@@ -399,10 +400,6 @@
 {
     judgeFlag = true;
     playModel = type;
-    
-//    if (!isLine) {
-//        isLine = [midiHandler setupMIDI];
-//    }
     
     switch(playModel) {
         case PlayModel1:
@@ -823,7 +820,7 @@
             [timer invalidate]; timer = nil;
             
             if (pianoData != nil) {
-                [pianoData judgedPianoPlay:-10 andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
+//                [pianoData judgedPianoPlay:-10 andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
             }
         
 //            NSLog(@"dddddddddddddddd");
@@ -1006,6 +1003,12 @@
         }
     }
     
+}
+
+- (void) clearJudgedData {
+    if (pianoData != nil) {
+        [pianoData DataClear];
+    }
 }
 
 - (void)midiStatus:(NSNotification*)notification

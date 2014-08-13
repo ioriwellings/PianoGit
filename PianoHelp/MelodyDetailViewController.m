@@ -257,6 +257,7 @@
     {
         if (isEnd) {
             isEnd = FALSE;
+            [player clearJudgedData];
             [sheetmusic clearStaffs];
             [sheetmusic setNeedsDisplay];
             [sheetmsic1 setNeedsDisplay];
