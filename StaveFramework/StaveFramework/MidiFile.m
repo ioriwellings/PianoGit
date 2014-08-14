@@ -1366,7 +1366,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
  *  Return true on success, and false on error.
  */
 +(BOOL)writeToFile:(NSString*)filename withEvents:(Array*)eventlists
-           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options{//modify by yizhq
+           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference{//modify by yizhq
     u_char buf[4096];
     const char *cfilename;
     int file, error;
@@ -1492,12 +1492,11 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     intToBytes(dataLen, buf, 0);
     dowrite(file, buf, 4, &error);
     
-    for(int sectionnum = 0; sectionnum < dataLen/7;sectionnum++)
+    for(int sectionnum = 0; sectionnum < dataLen/7; sectionnum++)
     {
-//        if (options->shifttime != 0 && sectionnum == 0) {
-        NSLog(@"deltaTime is %i", deltaTime);
         if (sectionnum == 0 && options->pauseTime != 0) {
-            buf[0] = deltaTime;
+            buf[0] = ceil(timeDifference);
+//            NSLog(@"buf is %f", ceil(timeDifference));
         }else{
             buf[0] = 0x00;
         }
@@ -1688,13 +1687,13 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 //    return ret;
 //}
 
-- (BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile {
+- (BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference{
     Array* newevents = events;
     if (options != NULL) {
         newevents = [self applyOptionsToEvents: options];
     }
     BOOL ret = [MidiFile writeToFile:destfile withEvents:newevents
-                             andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options];
+                             andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference];
     if (newevents != events) {
         [newevents release];
     }

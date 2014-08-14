@@ -240,7 +240,7 @@
     path = [UIBezierPath bezierPath];
     int y = ytop + NoteHeight - 1;
     [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
-                      CGRectMake(0, y+4, LineSpace-2, LineSpace-2)]];
+                      CGRectMake(0, y+1, LineSpace-2, LineSpace-2)]];
     [path fill];
     path = [UIBezierPath bezierPath];
     [path appendPath:[UIBezierPath bezierPathWithOvalInRect:
