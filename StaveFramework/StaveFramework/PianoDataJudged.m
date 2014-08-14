@@ -100,6 +100,7 @@
     pulsesPerMsec = p;
 }
 
+
 -(void)parseData {
     int i = 0;
     long msec;
@@ -186,9 +187,48 @@
     }
 }
 
--(void)judgedPianoPlay:(int)curPulseTime andPrevPulseTime:(int)prevPulseTime andStaffs:(Array*)staffs andMidifile:(MidiFile *)midifile {
+
+-(void)FindTheLastChords:(Array*)staffs {
+    Staff *staff;
+    int i, j;
+    int start = 0, step = 2;
+    switch(type) {
+        case 0:
+            start = 0;
+            step = 1;
+            break;
+        case 1://右手模式
+            start = 0;
+            step = 2;
+            break;
+        case 2:
+            start = 1;
+            step = 2;
+            break;
+        default:
+            start = 0;
+            step = 1;
+            break;
+    }
     
-     NSLog(@"44444444444444444[%d]", curPulseTime);
+    for (i=start; i<[staffs count]; i+=step) {
+        staff = [staffs get:i];
+        Array* symbols = [staff symbols];
+        for (j = [symbols count]-1; j >= 0; j--) {
+            NSObject <MusicSymbol> *symbol = [symbols get:j];
+            if ([symbol isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol *chord = (ChordSymbol *)symbol;
+                NSLog(@"------- %d", [chord judgedResult]);
+                if ([chord judgedResult] == 0) {
+                    [prevChordList add:chord];
+                    break;
+                }
+            }
+        }
+    }
+}
+
+-(void)judgedPianoPlay:(int)curPulseTime andPrevPulseTime:(int)prevPulseTime andStaffs:(Array*)staffs andMidifile:(MidiFile *)midifile {
     
     if (staffs == nil) {
         return;
@@ -196,8 +236,10 @@
     
     int j;
     
-    if (curPulseTime != 10) {
+    if (prevPulseTime != -10) {
         [self FindChords:curPulseTime andPrevPulseTime:prevPulseTime andStaffs:staffs];
+    } else {
+        [self FindTheLastChords:staffs];
     }
     
     if ([prevChordList count] >= 0) {
@@ -272,7 +314,6 @@
             
             if ([chord judgedResult] == 0) {
                 if (result == -1 || rightCount < count) {
-                     NSLog(@"3333333333333333333[%d]", curPulseTime);
                     [chord setJudgedResult:-1];
                     [prevChordList remove:chord];
                     [judgedResult set:[judgedResult get:0]+1 index:0];

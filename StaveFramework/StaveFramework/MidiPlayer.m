@@ -820,7 +820,7 @@
             [timer invalidate]; timer = nil;
             
             if (pianoData != nil) {
-//                [pianoData judgedPianoPlay:-10 andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
+                [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }
         
 //            NSLog(@"dddddddddddddddd");
