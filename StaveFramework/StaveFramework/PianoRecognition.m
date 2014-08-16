@@ -344,6 +344,18 @@
     return [self getChordSymbolCount:chord];
 }
 
+
+/**
+ *  取得待评判音符
+ */
+-(ChordSymbol*)getCurChordSymol
+{
+    if (currIndex < 0 || currIndex > [symbolDatas count]) return nil;
+    RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
+    ChordSymbol *chord = [data getChordSymbol];
+    return chord;
+}
+
 /**
  *  midi连线评判
  */

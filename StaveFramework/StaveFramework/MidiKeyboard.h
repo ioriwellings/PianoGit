@@ -19,10 +19,13 @@ static NSString* kNAMIDI_VelocityKey = @"kNAMIDI_VelocityKey";
 
 @interface MidiKeyboard : NSObject {
     MIDIPortRef inPort;
+    MIDIPortRef outputPort;
+    MIDIClientRef client;
     MIDIEndpointRef src;
+    MIDIEndpointRef outEndpoint;
 }
 
 - (BOOL) setupMIDI;
 - (void) unSetupMIDI;
-
+- (BOOL) sendData:(Byte)note andVelocity:(Byte)velocity;
 @end

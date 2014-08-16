@@ -82,30 +82,56 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 
 -(void) unSetupMIDI {
     MIDIPortDisconnectSource(inPort, src);
-    NSLog(@"==== unSteupMIDI");
+}
+
+
+-(BOOL)sendData:(Byte)note andVelocity:(Byte)velocity {
+    
+    Byte status = 0x90;
+    Byte message[3] = {status, note, velocity};
+    int length = 3;
+    
+    
+    Byte buffer[1024];
+	MIDIPacketList *packet_list = (MIDIPacketList *)buffer;
+	MIDIPacket *packet = MIDIPacketListInit(packet_list);
+	
+	OSStatus result;
+    
+	packet = MIDIPacketListAdd(
+                               packet_list,
+                               sizeof(buffer),
+                               packet,
+                               0,
+                               length,
+                               message);
+	
+    
+    
+    result = MIDISend(outputPort, outEndpoint, packet_list);
+    NSLog(@"======= Sendding midi %lu", result);
+    
+    return TRUE;
 }
 
 - (BOOL)setupMIDI {
     
     BOOL result = FALSE;
-    
     [self listSources];
+    client = 0;
     
-	MIDIClientRef client = 0;
+    
 	MIDIClientCreate(CFSTR("NNAudio MIDI Handler"), MyMIDINotifyProc, nil, &client);
 	
-	
+	MIDIOutputPortCreate(client, CFSTR("Output port"), &outputPort);
 	MIDIInputPortCreate(client, CFSTR("Input port"), MyMIDIReadProc, nil, &inPort);
 	
 	unsigned long sourceCount = MIDIGetNumberOfSources();
+    NSLog(@"====count [%lu]", sourceCount);
 	for (int i = 0; i < sourceCount; ++i) {
+        outEndpoint = MIDIGetDestination(i);
         src = MIDIGetSource(i);
-		CFStringRef endpointName = NULL;
-		OSStatus nameErr = MIDIObjectGetStringProperty(src, kMIDIPropertyName, &endpointName);
-		if (noErr == nameErr) {
-            NSLog(@"MIDI source %d: %@", i, endpointName);
-		}
-		MIDIPortConnectSource(inPort, src, NULL);
+        MIDIPortConnectSource(inPort, src, NULL);
         result = TRUE;
 	}
     
@@ -114,5 +140,24 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     return result;
 }
 
+-(void)dealloc {
+    
+    if (outputPort)
+    {
+        MIDIPortDispose(outputPort);
+    }
+    
+    if (inPort)
+    {
+        MIDIPortDispose(inPort);
+    }
+    
+    if (client)
+    {
+        MIDIClientDispose(client);
+    }
+    
+    [super dealloc];
+}
 
 @end

@@ -118,6 +118,9 @@ enum {
 /** add by yizhq end */
 -(void)disConnectMIDI;
 -(void)clearJudgedData;
+-(void)PianoTips:(BOOL)isOn;
+
+
 @property (assign, nonatomic) SheetMusicPlay *sheetPlay;
 @property (assign, nonatomic) CBPeripheral *peripheral;
 @property (assign, nonatomic) SerialGATT *sensor;

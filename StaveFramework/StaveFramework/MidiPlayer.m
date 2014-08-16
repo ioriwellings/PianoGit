@@ -1023,6 +1023,56 @@
     NSLog(@"MidiKeyboard Notify, MessageID=%d", messageID);
 }
 
+-(void)PianoTips:(BOOL)isOn {
+    
+    if (playModel != PlayModel1 ) {
+        NSLog(@"current model is not PlayModel1!");
+        return;
+    }
+    
+    if (!isLine) {
+        NSLog(@"Midi Line is disconnect!");
+        return;
+    }
+    
+    if (recognition == nil ) {
+        NSLog(@"recognition is nil!");
+        return;
+    }
+    
+    ChordSymbol* c = [recognition getCurChordSymol];
+    if (c == nil) {
+        NSLog(@"current ChordSymbol is nil!");
+        return;
+    }
+    
+    int velocity = 0;
+    if (isOn) {
+        velocity = 100;
+    }
+    
+    int flag = [c eightFlag];
+    NoteData *noteData = [c notedata];
+    for (int i = 0; i < [c notedata_len]; i++) {
+        NoteData nd = noteData[i];
+        int number = nd.number;
+        
+        if (nd.previous == 1) {
+            NSLog(@"midi note is previous.");
+            continue;
+        }
+        
+        if(flag > 0) {
+            number += 12;
+        } else if (flag < 0) {
+            number -= 12;
+        }
+        
+        NSLog(@"==========the tips symbol number is[%d]|", number);
+        [midiHandler sendData:number andVelocity:velocity];
+    }
+}
+
 
 - (void)dealloc {
     [self deleteSoundFile];
