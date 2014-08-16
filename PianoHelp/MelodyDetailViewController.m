@@ -325,6 +325,7 @@
     piano = [[Piano alloc] init];
     piano.frame = CGRectMake(0, 75, 1024, 120);
     [self.view addSubview:piano];
+    piano.hidden = YES;
     
     float height = sheetmusic.frame.size.height;
     CGRect frame;

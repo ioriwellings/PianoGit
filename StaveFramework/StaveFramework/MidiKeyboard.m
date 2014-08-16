@@ -128,7 +128,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 	
 	unsigned long sourceCount = MIDIGetNumberOfSources();
     NSLog(@"====count [%lu]", sourceCount);
-	for (int i = 0; i < sourceCount; ++i) {
+	for (int i = 1; i < sourceCount; ++i) {
         outEndpoint = MIDIGetDestination(i);
         src = MIDIGetSource(i);
         MIDIPortConnectSource(inPort, src, NULL);
