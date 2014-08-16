@@ -871,8 +871,13 @@
         /* add by yizhq end */
         prevPulseTime = currentPulseTime;
         currentPulseTime = startPulseTime + msec * pulsesPerMsec;
-        timeDifference = currentPulseTime - prevPulseTime;
-        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
+
+        //modify currentPulseTime for tempo start
+        int intactTempoTime = currentPulseTime/(pulsesPerMsec*1000);
+        currentPulseTime = (intactTempoTime)*pulsesPerMsec*1000;
+        timeDifference = currentPulseTime - intactTempoTime*pulsesPerMsec*1000;
+        //modify currentPulseTime for tempo end
+//        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
