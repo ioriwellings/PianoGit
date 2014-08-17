@@ -170,46 +170,58 @@
 
 - (IBAction)btnHint_click:(id)sender
 {
-    [self setCurrentButtonState:sender];
-    if(isHitAnimating) return;
-    isHitAnimating = YES;
-    int iPianoHeight = piano.frame.size.height;
-    int iCurrentX = 75;
-    int iHasHintX = iCurrentX + iPianoHeight;
-    if(piano.hidden)
-    {
-        piano.hidden = NO;
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            scrollView.frame = CGRectMake(0,
-                                          iHasHintX,
-                                          1024,
-                                          scrollView.frame.size.height-iPianoHeight);
-            sheetmsic1.frame = CGRectMake(0,
-                                          iHasHintX,
-                                          sheetmsic1.frame.size.width,
-                                          sheetmsic1.frame.size.height);
-        } completion:^(BOOL finished) {
-            isHitAnimating = NO;
-        }];
+//    [self setCurrentButtonState:sender];
+//    if(isHitAnimating) return;
+//    isHitAnimating = YES;
+//    int iPianoHeight = piano.frame.size.height;
+//    int iCurrentX = 75;
+//    int iHasHintX = iCurrentX + iPianoHeight;
+//    if(piano.hidden)
+//    {
+//        piano.hidden = NO;
+//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            scrollView.frame = CGRectMake(0,
+//                                          iHasHintX,
+//                                          1024,
+//                                          scrollView.frame.size.height-iPianoHeight);
+//            sheetmsic1.frame = CGRectMake(0,
+//                                          iHasHintX,
+//                                          sheetmsic1.frame.size.width,
+//                                          sheetmsic1.frame.size.height);
+//        } completion:^(BOOL finished) {
+//            isHitAnimating = NO;
+//        }];
+//    }
+//    else
+//    {
+//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            scrollView.frame = CGRectMake(0,
+//                                          iCurrentX,
+//                                          1024,
+//                                          scrollView.frame.size.height+iPianoHeight);
+//            sheetmsic1.frame = CGRectMake(0,
+//                                          iCurrentX,
+//                                          sheetmsic1.frame.size.width,
+//                                          sheetmsic1.frame.size.height);
+//            piano.hidden = YES;
+//        } completion:^(BOOL finished) {
+//            
+//            isHitAnimating = NO;
+//        }];
+//    }
+    
+    [player PianoTips:YES];
+    if (timer != nil) {
+        [timer invalidate];
     }
-    else
-    {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            scrollView.frame = CGRectMake(0,
-                                          iCurrentX,
-                                          1024,
-                                          scrollView.frame.size.height+iPianoHeight);
-            sheetmsic1.frame = CGRectMake(0,
-                                          iCurrentX,
-                                          sheetmsic1.frame.size.width,
-                                          sheetmsic1.frame.size.height);
-            piano.hidden = YES;
-        } completion:^(BOOL finished) {
-            
-            isHitAnimating = NO;
-        }];
-    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(noteOffCallBack:) userInfo:nil repeats:NO];
+    
 }
+
+- (void)noteOffCallBack:(NSTimer*)arg {
+    [player PianoTips:NO];
+}
+
 
 - (IBAction)btnTryListen_click:(id)sender
 {
@@ -315,6 +327,7 @@
     piano = [[Piano alloc] init];
     piano.frame = CGRectMake(0, 75, 1024, 120);
     [self.view addSubview:piano];
+    piano.hidden = YES;
     
     float height = sheetmusic.frame.size.height;
     CGRect frame;
@@ -614,6 +627,9 @@
 -(void)dealloc
 {
     self.sfCountdownView.delegate = nil;
+    if (timer != nil) {
+        [timer invalidate];
+    }
 }
 
 
