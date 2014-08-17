@@ -50,7 +50,7 @@
     
     midifile = [[MidiFile alloc] initWithFile:self.fileName];
     [midifile initOptions:&options];
-    
+
     //set measure count
     self.sliderXiaoJie.maximumValue = [midifile getMeasureCount];
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
@@ -239,6 +239,7 @@
     [sheetmsic1 setNeedsDisplay];
     
     [self.sfCountdownView start];
+    [player playPrepareTempo];
 }
 
 - (IBAction)btnPlay_click:(id)sender
@@ -266,6 +267,7 @@
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
         [self.sfCountdownView start];
+        [player playPrepareTempo];
         [self hiddenMenuAndToolBar];
     }
 }
@@ -469,6 +471,7 @@
 #pragma mark SFCountdownViewDelegate
 - (void) countdownFinished:(SFCountdownView *)view
 {
+    [player stopPrepareTempo];
     switch (option ) {
         case 1://试听
             [player listen];
