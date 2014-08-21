@@ -2,12 +2,11 @@
 //  Score.m
 //  PianoHelp
 //
-//  Created by Jobs on 14-5-12.
-//  Copyright (c) 2014年 FlintInfo. All rights reserved.
+//  Created by Jobs on 8/13/14.
+//  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
 #import "Score.h"
-#import "Melody.h"
 
 
 @implementation Score
@@ -22,6 +21,5 @@
 @dynamic score;
 @dynamic toneCount;
 @dynamic upload;
-@dynamic melody;
 
 @end

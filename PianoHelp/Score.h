@@ -2,14 +2,13 @@
 //  Score.h
 //  PianoHelp
 //
-//  Created by Jobs on 14-5-12.
-//  Copyright (c) 2014年 FlintInfo. All rights reserved.
+//  Created by Jobs on 8/13/14.
+//  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Melody;
 
 @interface Score : NSManagedObject
 
@@ -23,6 +22,5 @@
 @property (nonatomic, retain) NSNumber * score;
 @property (nonatomic, retain) NSNumber * toneCount;
 @property (nonatomic, retain) NSNumber * upload;
-@property (nonatomic, retain) Melody *melody;
 
 @end

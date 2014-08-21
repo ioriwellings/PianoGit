@@ -12,6 +12,7 @@
 #import "Melody.h"
 #import "FavoriteTableViewCell.h"
 #import "MelodyDetailViewController.h"
+#import "UserInfo.h"
 
 @interface QinFangViewController ()
 @property (nonatomic, weak) UIButton *btnModel;
@@ -42,7 +43,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadingData:)
+                                                 name:kLoginSuccessNotification object:nil];
     
+    
+}
+
+-(void)loadingData:(NSNotification *)notification
+{
     switch(self.type )
     {
         case 1://love
@@ -142,12 +151,12 @@
 
     NSString *strSectionTitle = [[[self.fetchedResultsController0 sections] objectAtIndex:section] name];
     if([strSectionTitle isEqualToString:@"1"])
-        view.text = @"最爱";
+        view.text = @"喜爱";
     if([strSectionTitle isEqualToString:@"2"])
         view.text = @"任务";
     if([strSectionTitle isEqualToString:@"3"])
     {
-        view.text = @"任务与最爱";
+        view.text = @"任务与喜爱";
         view.frame = CGRectMake(tableView.frame.size.width-100, 0, 100, 30);
     }
     else
@@ -332,6 +341,9 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
     [fetchRequest setEntity:entity];
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@ ", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
+    
     // Create the sort descriptors array.
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
     NSArray *sortArray = @[sort];
@@ -359,6 +371,9 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@ ", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
     
     // Create the sort descriptors array.
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
@@ -393,6 +408,9 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@ ", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
     
     // Create the sort descriptors array.
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
@@ -658,6 +676,9 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setResultType:NSDictionaryResultType];
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@ ", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
+    
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
     NSArray *sortArray = @[sort];
     [fetchRequest setSortDescriptors:sortArray];
@@ -713,7 +734,7 @@
     NSArray *sortArray = @[sort];
     [fetchRequest setSortDescriptors:sortArray];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sort = 2 or sort = 3"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(sort = 2 or sort = 3) and user.userName == %@", [UserInfo sharedUserInfo].userName];
     [fetchRequest setPredicate:predicate];
     
     NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"sort"];
@@ -767,7 +788,7 @@
     NSArray *sortArray = @[sort];
     [fetchRequest setSortDescriptors:sortArray];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sort = 1 or sort = 3"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(sort = 1 or sort = 3) and user.userName == %@", [UserInfo sharedUserInfo].userName];
     [fetchRequest setPredicate:predicate];
     
     NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"sort"];

@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "UserInfo.h"
+#import "MessageBox.h"
 
 @interface LoginViewController ()
 
@@ -48,10 +51,44 @@
 
 - (IBAction)btnLogin_onclick:(id)sender
 {
+    if([self AuthenticateUser:self.txtUserName.text password:self.txtPassword.text == nil ? @"" : self.txtPassword.text])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil userInfo:nil ];
+        [self dismissViewControllerAnimated:NO completion:NULL];
+    }
+    else
+    {
+        [MessageBox showMsg:@"用户名或密码不正确！"];
+    }
     [UIView animateWithDuration:0.3 animations:^{
-        self.view.alpha=0;
-    } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
+        
+    } completion:^(BOOL finished)
+    {
+        
+        //[self.view removeFromSuperview];
+        
     }];
+}
+
+-(BOOL) AuthenticateUser:(NSString*)userName password:(NSString*)pwd //验证用户
+{
+    NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate ).managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Users" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userName == %@ AND pwd== %@ ", userName, pwd];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        [UserInfo sharedUserInfo].userName = userName;
+        [UserInfo sharedUserInfo].dbUser = [objects firstObject];
+        return YES;
+    }
+    return NO;
 }
 @end

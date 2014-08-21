@@ -11,12 +11,34 @@
 #import "MelodyCategory.h"
 #import "Melody.h"
 #import "Score.h"
+#import "UserInfo.h"
+#import "Users.h"
 
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+-(Users*)getCurrentUsers
+{
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Users" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userName == %@", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        return [objects firstObject];
+    }
+    return nil;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,6 +47,8 @@
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    self.window.backgroundColor = [UIColor lightGrayColor];
 //    [self.window makeKeyAndVisible];
+    
+    [UserInfo sharedUserInfo].userName = @"guest";
     [UIApplication sharedApplication].idleTimerDisabled=YES;
     NSInteger iLoop = 0;
     while (iLoop > 0)
@@ -33,6 +57,7 @@
         iLoop--;
     }
     [self loadDemoMidiToSQL];
+    [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
     return YES;
 }
 
@@ -120,7 +145,10 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -216,9 +244,9 @@
     favo.sort = @1;
     
     Score *score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:self.managedObjectContext];
-    score.melody = melody1;
     score.rank = @1;
     score.score = @99;
+    favo.score = score;
 
     
     for (int i=1; i<10; i++)
@@ -244,14 +272,21 @@
         [[NSFileManager defaultManager] createFileAtPath:strImageDir contents:nil attributes:nil];
     }
     else return;
-//    
+    
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
+    user.userName = [UserInfo sharedUserInfo].userName;
+    user.pwd = [NSString string];
+    
+//大类
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"考级";
     cate.cover = @"jiaocaiqupu.png";
-    
+//子类
     MelodyCategory *cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"中国音协第六级－第八级";
     cate_sub.parentCategory = cate;
+    
     Melody *melody = (Melody*)[NSEntityDescription insertNewObjectForEntityForName:@"Melody" inManagedObjectContext:self.managedObjectContext];
     melody.category = cate_sub;
     melody.author = @"拉可夫";
@@ -309,7 +344,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
-    
+//子类
     cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"中国音协第一级－第五级";
     cate_sub.parentCategory = cate;
@@ -341,11 +376,11 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
-    //=====
+//大类
     cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"教程";
     cate.cover = @"kaojiqupu.png";
-    
+//子类
     cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"约翰汤普森现代钢琴教程，第二册";
     cate_sub.parentCategory = cate;

@@ -2,8 +2,8 @@
 //  MelodyCategory.h
 //  PianoHelp
 //
-//  Created by Jobs on 14-5-20.
-//  Copyright (c) 2014年 FlintInfo. All rights reserved.
+//  Created by Jobs on 8/13/14.
+//  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

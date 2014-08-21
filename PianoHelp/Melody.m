@@ -2,14 +2,13 @@
 //  Melody.m
 //  PianoHelp
 //
-//  Created by Jobs on 14-5-20.
-//  Copyright (c) 2014年 FlintInfo. All rights reserved.
+//  Created by Jobs on 8/13/14.
+//  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
 #import "Melody.h"
 #import "MelodyCategory.h"
 #import "MelodyFavorite.h"
-#import "Score.h"
 
 
 @implementation Melody
@@ -28,6 +27,5 @@
 @dynamic style;
 @dynamic category;
 @dynamic favorite;
-@dynamic score;
 
 @end

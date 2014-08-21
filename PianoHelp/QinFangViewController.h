@@ -28,5 +28,6 @@
 - (IBAction)btnScope_click:(id)sender;
 
 -(void)scrollTableViewToMelody:(Melody*)melody type:(NSInteger)iSort;
+-(void)loadingData:(NSNotification *)notification;
 
 @end

@@ -17,22 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="126"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="bangdingxuliehao.png" translatesAutoresizingMaskIntoConstraints="NO" id="cYQ-SH-iZl">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="bangdingxuliehao2.png" translatesAutoresizingMaskIntoConstraints="NO" id="cYQ-SH-iZl">
                                 <rect key="frame" x="116" y="17" width="35" height="25"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="tuichudangqianzhanghao1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kxv-Dx-9Pj">
-                                <rect key="frame" x="20" y="81" width="32" height="36"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="xiaoxi1.png" translatesAutoresizingMaskIntoConstraints="NO" id="UVX-AY-s8E">
                                 <rect key="frame" x="20" y="20" width="35" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgR-6N-mPx">
-                                <rect key="frame" x="58" y="75" width="133" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgR-6N-mPx">
+                                <rect key="frame" x="20" y="75" width="148" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="退出当前登录账号">
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title=" 退出当前登录账号" image="tuichu2.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1414,23 +1412,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="loginBg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
-                                <rect key="frame" x="0.0" y="0.0" width="1025" height="774"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
+                                <rect key="frame" x="0.0" y="0.0" width="1025" height="768"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oq8-IV-YLc">
-                                <rect key="frame" x="461" y="528" width="197" height="63"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="gangqinpeilianbao.png" translatesAutoresizingMaskIntoConstraints="NO" id="mjJ-eV-KNi">
+                                <rect key="frame" x="48" y="28" width="617" height="203"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dengrukuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZER-zw-df3">
+                                <rect key="frame" x="316" y="247" width="392" height="388"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="zhanghao.png" translatesAutoresizingMaskIntoConstraints="NO" id="min-Ws-4aW">
+                                <rect key="frame" x="361" y="371" width="302" height="29"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="mima.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ngb-b7-ZWv">
+                                <rect key="frame" x="360" y="427" width="303" height="29"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="touxiang.png" translatesAutoresizingMaskIntoConstraints="NO" id="wC6-KT-fDG">
+                                <rect key="frame" x="465" y="264" width="94" height="94"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dalianjiayin.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uja-em-itS">
+                                <rect key="frame" x="785" y="739" width="208" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oq8-IV-YLc" userLabel="btnLogin">
+                                <rect key="frame" x="426" y="550" width="197" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="dengru.png">
+                                    <color key="titleColor" red="0.22352942819999999" green="0.25098040700000002" blue="0.36078432199999999" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="btnLogin_onclick:" destination="KLg-8X-Svs" eventType="touchUpInside" id="ToD-qA-B85"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
+                                <rect key="frame" x="415" y="371" width="248" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-ss-T1N">
+                                <rect key="frame" x="415" y="427" width="248" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7qx-yw-F47">
+                                <rect key="frame" x="422" y="488" width="89" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HJi-B0-gCa">
+                                <rect key="frame" x="584" y="488" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="记住密码" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S74-l4-ROH">
+                                <rect key="frame" x="343" y="493" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自动登录" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-eS-gJw">
+                                <rect key="frame" x="509" y="493" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="chkAutoLogin" destination="HJi-B0-gCa" id="Z79-1I-ri9"/>
+                        <outlet property="chkRemember" destination="7qx-yw-F47" id="xjy-8r-YTQ"/>
+                        <outlet property="txtPassword" destination="rmb-ss-T1N" id="mKh-xg-CcC"/>
+                        <outlet property="txtUserName" destination="nzJ-8G-0yq" id="NiH-WJ-oPY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOT-td-g1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1769,11 +1833,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awa-8H-E4c">
                                 <rect key="frame" x="68" y="33" width="150" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="全部" backgroundImage="quanbufenye.png">
+                                <state key="normal" image="quanbufenye.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected">
+                                <state key="selected" image="quanbufenye_selected.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -1783,11 +1847,11 @@
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-Oq-Fbf" userLabel="Button - 任务">
                                 <rect key="frame" x="219" y="33" width="150" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="任务" backgroundImage="renwufenye.png">
+                                <state key="normal" image="renwufenye.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="任务">
+                                <state key="selected" image="renwufenye_selected.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -1797,11 +1861,11 @@
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfG-bz-xbP" userLabel="Button - 喜爱">
                                 <rect key="frame" x="370" y="33" width="150" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="最爱" backgroundImage="xiaifenye.png">
+                                <state key="normal" image="xiaifenye.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="最爱">
+                                <state key="selected" image="xiaifenye_selected.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -2056,18 +2120,22 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bangdingxuliehao.png" width="35" height="26"/>
+        <image name="bangdingxuliehao2.png" width="35" height="26"/>
         <image name="baocunluyin1.png" width="48" height="48"/>
         <image name="baocunluyin2.png" width="48" height="47"/>
         <image name="biansu-01.png" width="60" height="60"/>
         <image name="chakan.png" width="31" height="33"/>
         <image name="chongxinkaishi-01.png" width="35" height="30"/>
         <image name="cuofu,jiesuanzhong.png" width="31" height="31"/>
+        <image name="dalianjiayin.png" width="208" height="16"/>
+        <image name="dengru.png" width="197" height="69"/>
+        <image name="dengrukuang.png" width="392" height="388"/>
         <image name="duifu,zongjiezhong.png" width="31" height="25"/>
         <image name="fenduan-01.png" width="95" height="35"/>
         <image name="fenxiang1.png" width="48" height="48"/>
         <image name="fenxiang2.png" width="48" height="48"/>
         <image name="fenyedakuang.png" width="950" height="535"/>
+        <image name="gangqinpeilianbao.png" width="617" height="203"/>
         <image name="gengduo.png" width="90" height="25"/>
         <image name="gentanmoshi.png" width="405" height="68"/>
         <image name="gentanmoshixuanzhong.png" width="405" height="68"/>
@@ -2080,17 +2148,20 @@
         <image name="jiucuo1.png" width="48" height="48"/>
         <image name="jiucuo2.png" width="48" height="48"/>
         <image name="kaishi-01.png" width="22" height="30"/>
-        <image name="loginBg.jpg" width="1025" height="774"/>
+        <image name="login_bg.png" width="1024" height="768"/>
+        <image name="mima.png" width="303" height="29"/>
         <image name="peilianyin-01.png" width="95" height="35"/>
         <image name="puku.png" width="90" height="25"/>
         <image name="qinfang.png" width="90" height="25"/>
         <image name="quanbufenye.png" width="150" height="36"/>
+        <image name="quanbufenye_selected.png" width="150" height="36"/>
         <image name="quanbushanchu.png" width="139" height="42"/>
         <image name="queren_01.png" width="35" height="41"/>
         <image name="qumuxuanzhong.png" width="950" height="110"/>
         <image name="renwu.png" width="32" height="28"/>
         <image name="renwu2.png" width="32" height="28"/>
         <image name="renwufenye.png" width="150" height="36"/>
+        <image name="renwufenye_selected.png" width="150" height="36"/>
         <image name="shifanqupu.png" width="275" height="265"/>
         <image name="shipumoshi.png" width="405" height="68"/>
         <image name="shipumoshixuanzhong.png" width="405" height="68"/>
@@ -2109,24 +2180,27 @@
         <image name="tanzou.png" width="86" height="40"/>
         <image name="tiaosu-01.png" width="10" height="35"/>
         <image name="tishi-01.png" width="95" height="35"/>
+        <image name="touxiang.png" width="94" height="94"/>
         <image name="tuichu-01.png" width="40" height="30"/>
-        <image name="tuichudangqianzhanghao1.png" width="73" height="72"/>
+        <image name="tuichu2.png" width="36" height="36"/>
         <image name="weigouami.png" width="32" height="30"/>
         <image name="weixuantanzou.png" width="86" height="40"/>
         <image name="xiai.png" width="32" height="30"/>
         <image name="xiai2.png" width="32" height="30"/>
         <image name="xiaifenye.png" width="150" height="36"/>
+        <image name="xiaifenye_selected.png" width="150" height="36"/>
         <image name="xiaojietiaozhuan-01.png" width="60" height="60"/>
         <image name="xiaojietiaozhuankuang-01.png" width="400" height="75"/>
-        <image name="xiaoxi1.png" width="69" height="43"/>
+        <image name="xiaoxi1.png" width="36" height="22"/>
         <image name="xingxing,jiesuanzhong.png" width="31" height="29"/>
         <image name="xuanzequan.png" width="15" height="15"/>
-        <image name="xuanzhong.png" width="15" height="15"/>
+        <image name="xuanzhong.png" width="29" height="29"/>
         <image name="xuanzhongtiao.png" width="256" height="75"/>
         <image name="yigoumai2.png" width="32" height="30"/>
         <image name="yinliang.png" width="25" height="26"/>
         <image name="youshou.png" width="77" height="85"/>
         <image name="zanting.png" width="21" height="21"/>
+        <image name="zhanghao.png" width="302" height="29"/>
         <image name="zhanting.png" width="90" height="25"/>
         <image name="zunashi.png" width="37" height="32"/>
         <image name="zuoshou.png" width="77" height="85"/>

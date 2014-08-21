@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *txtUserName;
+@property (weak, nonatomic) IBOutlet UITextField *txtPassword;
+@property (weak, nonatomic) IBOutlet UISwitch *chkRemember;
+@property (weak, nonatomic) IBOutlet UISwitch *chkAutoLogin;
 
 - (IBAction)btnLogin_onclick:(id)sender;
 @end

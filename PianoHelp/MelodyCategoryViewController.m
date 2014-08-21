@@ -168,7 +168,7 @@
     
     if(self.levelIndent == 0)
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(%K = %@)", @"parentCategory", nil];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(%K = %@)", @"parentCategory", nil]; //%K is a var arg substitution for a key path.
         fetchRequest.predicate = predicate;
     }
     else

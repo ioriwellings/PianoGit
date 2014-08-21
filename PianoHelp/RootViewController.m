@@ -46,14 +46,13 @@
     self.lastClickButton = self.btnQinFang;
     [self.lastClickButton setSelected:YES];
     self.title = @"首页";
-    UIImage *image = [UIImage imageNamed:@"daohangtiao.png"];
-    self.topToolbar.backgroundColor = [UIColor colorWithPatternImage:image];
-    
     
     loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self addChildViewController:loginVC];
-    if (self.type == 0) {
-        [self.view addSubview:loginVC.view];
+    //[self addChildViewController:loginVC];
+    if (self.type == 0)
+    {
+        [self presentViewController:loginVC animated:NO completion:NULL];
+        //[self.view addSubview:loginVC.view];
         //if(!IS_RUNNING_IOS7)
         {
             for (UIView *subView in self.topToolbar.subviews)
@@ -64,7 +63,9 @@
                 }
             }
         }
-    } else {
+    }
+    else
+    {
         [self buttonToolbar_click:self.btnQinFang];
     }
 }
@@ -92,8 +93,10 @@
 {
     [popVC dismissPopoverAnimated:NO];
     loginVC.view.alpha=0;
+    [self presentViewController:loginVC animated:NO completion:NULL];
     [UIView animateWithDuration:0.3 animations:^{
-        [self.view addSubview:loginVC.view];
+        
+        //[self.view addSubview:loginVC.view];
         loginVC.view.alpha = 1;
     } completion:^(BOOL finished) {
         

@@ -2,14 +2,14 @@
 //  Melody.h
 //  PianoHelp
 //
-//  Created by Jobs on 14-5-20.
-//  Copyright (c) 2014年 FlintInfo. All rights reserved.
+//  Created by Jobs on 8/13/14.
+//  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class MelodyCategory, MelodyFavorite, Score;
+@class MelodyCategory, MelodyFavorite;
 
 @interface Melody : NSManagedObject
 
@@ -26,7 +26,14 @@
 @property (nonatomic, retain) NSString * scrawlPath;
 @property (nonatomic, retain) NSString * style;
 @property (nonatomic, retain) MelodyCategory *category;
-@property (nonatomic, retain) MelodyFavorite *favorite;
-@property (nonatomic, retain) Score *score;
+@property (nonatomic, retain) NSSet *favorite;
+@end
+
+@interface Melody (CoreDataGeneratedAccessors)
+
+- (void)addFavoriteObject:(MelodyFavorite *)value;
+- (void)removeFavoriteObject:(MelodyFavorite *)value;
+- (void)addFavorite:(NSSet *)values;
+- (void)removeFavorite:(NSSet *)values;
 
 @end

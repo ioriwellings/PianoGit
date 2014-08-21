@@ -51,11 +51,11 @@
     self.labTitle.text = favo.melody.name;
     self.labAuthor.text = favo.melody.author;
     self.btnPlay.fileName = favo.melody.filePath;
-    if(favo.melody.score)
-        self.labScore.text = [favo.melody.score.score stringValue];
-    if(favo.melody.score.rank)
+    if(favo.score)
+        self.labScore.text = [favo.score.score stringValue];
+    if(favo.score.rank)
     {
-        [self.btnRank setTitle:[favo.melody.score.rank stringValue] forState:UIControlStateNormal];
+        [self.btnRank setTitle:[favo.score.rank stringValue] forState:UIControlStateNormal];
         self.btnRank.hidden = NO;
     }
     else
