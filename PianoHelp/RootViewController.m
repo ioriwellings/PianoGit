@@ -34,6 +34,11 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,6 +47,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(jumpToMelodyForBackFromDetailView:)
                                                  name:kBackToQinfangNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(removeLoginView:)
+                                                 name:kLoginSuccessNotification object:nil];
     
     self.lastClickButton = self.btnQinFang;
     [self.lastClickButton setSelected:YES];
@@ -93,6 +101,8 @@
 {
     [popVC dismissPopoverAnimated:NO];
     loginVC.view.alpha=0;
+    if(loginVC == nil)
+        loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self presentViewController:loginVC animated:NO completion:NULL];
     [UIView animateWithDuration:0.3 animations:^{
         
@@ -189,6 +199,11 @@
         [qinFangVC btnScope_click:qinFangVC.btnAll];
     }
     [qinFangVC scrollTableViewToMelody:melody type:vc.type];
+}
+
+-(void)removeLoginView:(NSNotification *)notification
+{
+    loginVC = nil;
 }
 
 @end

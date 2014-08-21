@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UISwitch *chkRemember;
 @property (weak, nonatomic) IBOutlet UISwitch *chkAutoLogin;
+@property (weak, nonatomic) IBOutlet UIView *loginContainerView;
 
+- (IBAction)view_touchDown:(id)sender;
 - (IBAction)btnLogin_onclick:(id)sender;
 @end
