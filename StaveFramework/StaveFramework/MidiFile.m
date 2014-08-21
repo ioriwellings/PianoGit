@@ -1366,11 +1366,10 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
  *  Return true on success, and false on error.
  */
 +(BOOL)writeToFile:(NSString*)filename withEvents:(Array*)eventlists
-           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options{//modify by yizhq
+           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference{//modify by yizhq
     u_char buf[4096];
     const char *cfilename;
     int file, error;
-    int deltaTime; 
 
     cfilename = [filename cStringUsingEncoding:NSUTF8StringEncoding];
     file = open(cfilename, O_CREAT|O_TRUNC|O_WRONLY, 0644);
@@ -1405,7 +1404,6 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         for (int i = 0; i < [events count]; i++) {
             MidiEvent *mevent = [events get:i];
             int varlen = varlenToBytes([mevent deltaTime], buf, 0);
-            deltaTime = [mevent deltaTime];
             dowrite(file, buf, varlen, &error);
 
             if ([mevent eventFlag] == SysexEvent1 ||
@@ -1488,19 +1486,14 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     }else{
         bFlag = 7;
     }
-    dataLen = bFlag * ceil([midifile totalpulses]/[midifile quarternote]);
+    dataLen = (bFlag + 5) * ceil([midifile totalpulses]/[midifile quarternote]);
+    NSLog(@"dataLen is %i totalpulses is %i quarternote is %i", dataLen, [midifile totalpulses], [midifile quarternote]);
     intToBytes(dataLen, buf, 0);
     dowrite(file, buf, 4, &error);
     
-    for(int sectionnum = 0; sectionnum < dataLen/7;sectionnum++)
+    for(int sectionnum = 0; sectionnum < dataLen/bFlag + 5; sectionnum++)
     {
-//        if (options->shifttime != 0 && sectionnum == 0) {
-        NSLog(@"deltaTime is %i", deltaTime);
-        if (sectionnum == 0 && options->pauseTime != 0) {
-            buf[0] = deltaTime;
-        }else{
-            buf[0] = 0x00;
-        }
+        buf[0] = 0x00;
 
         if(sectionnum == 0)
             buf[1] = 0x99;
@@ -1514,8 +1507,10 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         }else{
             buf[3] = 0x7F;
         }
+//        if (sectionnum == 0) {
+//            buf[3] = 0x00;
+//        }
         TimeSignature *sTime = [midifile time];
-//        NSLog(@"denominator %i", sTime.denominator);
         
         if (sTime.denominator == 4) {
             tmpQuarternote = [midifile quarternote];
@@ -1527,19 +1522,30 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         
         if (bFlag == 6) {
             int tmp = tmpQuarternote%128;
+            if (sectionnum == 0) {
+                tmp = tmpQuarternote + timeDifference;
+            }else{
+                tmp = tmpQuarternote;
+            }
             buf[4] = tmp;
-            //            NSLog(@"buf[4] %i ", buf[4]);
             buf[5] = 0x4B;
         }else{
-            int tmp1 = tmpQuarternote/128;
-            int tmp2 = tmpQuarternote%128;
+            int tmp1;
+            int tmp2;
+            if (sectionnum == 0) {
+                int tmp = ceil(tmpQuarternote + timeDifference);
+                tmp1 = tmp/128;
+                tmp2 = tmp%128;
+            }else{
+                tmp1 = tmpQuarternote/128;
+                tmp2 = tmpQuarternote%128;
+            }
             buf[4] = tmp1 + 128;
             buf[5] = tmp2;
-            //            NSLog(@"buf[4] %i buf[5] %i", buf[4], buf[5]);
             buf[6] = 0x4B;
         }
         
-        dowrite(file, buf, 7, &error);
+        dowrite(file, buf, bFlag, &error);
     }
     
 	buf[0] = 0x00;
@@ -1688,16 +1694,20 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 //    return ret;
 //}
 
-- (BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile {
+- (BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference{
+    BOOL ret = NO;
     Array* newevents = events;
     if (options != NULL) {
         newevents = [self applyOptionsToEvents: options];
     }
-    BOOL ret = [MidiFile writeToFile:destfile withEvents:newevents
-                             andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options];
+
+
+    ret = [MidiFile writeToFile:destfile withEvents:newevents
+                                       andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference];
     if (newevents != events) {
         [newevents release];
     }
+
     return ret;
 }
 /** modify by yizhq end */

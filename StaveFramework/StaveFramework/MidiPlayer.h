@@ -62,13 +62,13 @@ enum {
 //    UISound *sound;           /** The sound player */
     /* add by yizhq start */
     GDSoundEngine *sound;       /** The sound player */
-    NSString *tempSoundFile4Play;    /** The temporary midi file currently being played */
     /* add by yizhq end */
     struct timeval startTime;   /** Absolute time when music started playing */
     double startPulseTime;      /** Time (in pulses) when music started playing */
     double currentPulseTime;    /** Time (in pulses) music is currently at */
     double prevPulseTime;       /** Time (in pulses) music was last at */
     double doubleValue;
+    double timeDifference;
     
     PianoDataJudged *pianoData;
     Array* staffs;
@@ -114,8 +114,13 @@ enum {
 -(void)clearJumpSection;
 -(void)setJSModel:(int)startSectionNum withEndSectionNum:(int)endSectionNum withTimeNumerator:(int)numerrator withTimeQuarter:(int)quarter withMeasure:(int)measure;
 -(void)clearJSModel;
+- (void)playPrepareTempo;
+- (void)stopPrepareTempo;
 /** add by yizhq end */
 -(void)disConnectMIDI;
+-(void)clearJudgedData;
+-(void)PianoTips:(BOOL)isOn;
+
 
 @property (assign, nonatomic) SheetMusicPlay *sheetPlay;
 @property (assign, nonatomic) CBPeripheral *peripheral;

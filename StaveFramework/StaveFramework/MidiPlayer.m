@@ -74,67 +74,19 @@
 
 /** Resize an image */
 + (UIImage*) resizeImage:(UIImage*)origImage toSize:(CGSize)newsize {
-//    NSImage *image = [[NSImage alloc] initWithSize:newsize];
-//    [image lockFocus];
-//    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
-//    [origImage setScalesWhenResized:YES];
-//    [origImage setSize:newsize];
-//    [origImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
-//    [image unlockFocus];
-//    [origImage release];
-//    [image setFlipped:YES];
-//    return image;
+
     return nil;
 }
 
 
 /** Load the play/pause/stop button images */
 + (void)loadImages {
-//    float buttonheight = [[NSFont labelFontOfSize:[NSFont labelFontSize]] capHeight] * 3;
-//    NSSize imagesize;
-//    imagesize.width = buttonheight;
-//    imagesize.height = buttonheight;
-//    if (rewindImage == NULL) {
-//        NSString *name = [[NSBundle mainBundle] pathForResource:@"rewind" ofType:@"png"];
-//        rewindImage = [[NSImage alloc] initWithContentsOfFile:name];
-//        rewindImage = [MidiPlayer resizeImage:rewindImage toSize:imagesize];
-//    }
-//    if (playImage == NULL) {
-//        NSString *name = [[NSBundle mainBundle] pathForResource:@"play" ofType:@"png"];
-//        playImage = [[NSImage alloc] initWithContentsOfFile:name];
-//        playImage = [MidiPlayer resizeImage:playImage toSize:imagesize];
-//    }
-//    if (pauseImage == NULL) {
-//        NSString *name = [[NSBundle mainBundle] pathForResource:@"pause" ofType:@"png"];
-//        pauseImage = [[NSImage alloc] initWithContentsOfFile:name];
-//        pauseImage = [MidiPlayer resizeImage:pauseImage toSize:imagesize];
-//    }
-//    if (stopImage == NULL) {
-//        NSString *name = [[NSBundle mainBundle] pathForResource:@"stop" ofType:@"png"];
-//        stopImage = [[NSImage alloc] initWithContentsOfFile:name];
-//        stopImage = [MidiPlayer resizeImage:stopImage toSize:imagesize];
-//    }
-//    if (fastFwdImage == NULL) {
-//        NSString *name = [[NSBundle mainBundle] pathForResource:@"fastforward" ofType:@"png"];
-//        fastFwdImage = [[NSImage alloc] initWithContentsOfFile:name];
-//        fastFwdImage = [MidiPlayer resizeImage:fastFwdImage toSize:imagesize];
-//    }
-//    if (volumeImage == NULL) {
-//        NSString *name = [[NSBundle mainBundle] pathForResource:@"volume" ofType:@"png"];
-//        volumeImage = [[NSImage alloc] initWithContentsOfFile:name];
-//        volumeImage = [MidiPlayer resizeImage:volumeImage toSize:imagesize];
-//    }
 }
 
 /** Create a new MidiPlayer, displaying the play/stop buttons, the
  *  speed bar, and volume bar.  The midifile and sheetmusic are initially null.
  */
 - (id)init {
-//    [MidiPlayer loadImages];
-//    float buttonheight = [[NSFont labelFontOfSize:[NSFont labelFontSize]] capHeight] * 4;
-//    NSRect frame = NSMakeRect(0, 0, buttonheight * 27, buttonheight * 2);
-//    self = [super initWithFrame:frame];
-//    [self setAutoresizingMask:NSViewWidthSizable];
     
     self = [super init];
     midifile = nil;
@@ -154,99 +106,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveData:) name:kNAMIDIDatas object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(midiStatus:) name:kNAMIDINotification object:nil];
-    
-    
-//    sound = nil;
+
     /* add by yizhq start */
     sound = [[GDSoundEngine alloc] init];
     /* add by yizhq end */
     isLine = FALSE;
     
-//    /* Create the rewind button */
-//    frame = NSMakeRect(buttonheight/4, 0, 1.5*buttonheight, 2*buttonheight);
-//    rewindButton = [[NSButton alloc] initWithFrame:frame];
-//    [self addSubview:rewindButton];
-//    [rewindButton setImage:rewindImage];
-//    [rewindButton setToolTip:@"Rewind"];
-//    [rewindButton setAction:@selector(rewind:)];
-//    [rewindButton setTarget:self];
-//    [rewindButton setBezelStyle:NSRoundedBezelStyle];
-//
-//    /* Create the play button */
-//    frame.origin.x += buttonheight + buttonheight/2;
-//    playButton = [[NSButton alloc] initWithFrame:frame];
-//    [self addSubview:playButton];
-//    [playButton setImage:playImage];
-//    [playButton setToolTip:@"Play"];
-//    [playButton setAction:@selector(playPause:)];
-//    [playButton setTarget:self];
-//    [playButton setBezelStyle:NSRoundedBezelStyle];
-//
-//    /* Create the stop button */
-//    frame.origin.x += buttonheight + buttonheight/2;
-//    stopButton = [[NSButton alloc] initWithFrame:frame];
-//    [self addSubview:stopButton];
-//    [stopButton setImage:stopImage];
-//    [stopButton setToolTip:@"Stop"];
-//    [stopButton setAction:@selector(stop:)];
-//    [stopButton setTarget:self];
-//    [stopButton setBezelStyle:NSRoundedBezelStyle];
-//
-//    /* Create the fast forward button */
-//    frame.origin.x += buttonheight + buttonheight/2;
-//    fastFwdButton = [[NSButton alloc] initWithFrame:frame];
-//    [self addSubview:fastFwdButton];
-//    [fastFwdButton setImage:fastFwdImage];
-//    [fastFwdButton setToolTip:@"Fast Forward"];
-//    [fastFwdButton setAction:@selector(fastForward:)];
-//    [fastFwdButton setTarget:self];
-//    [fastFwdButton setBezelStyle:NSRoundedBezelStyle];
-//
-//    /* Create the Speed bar */
-//    frame.origin.x += 2*buttonheight;
-//    frame.origin.y = buttonheight/2;
-//    frame.size.height = buttonheight;
-//    frame.size.width = buttonheight * 2;
-//    NSButton *label = [[NSButton alloc] initWithFrame:frame];
-//    [label setTitle:@"Speed: "];
-//    [label setBordered:NO];
-//    [label setAlignment:NSRightTextAlignment];
-//    [self addSubview:label]; 
-//    [label release];
-//
-//    frame.origin.x += buttonheight*2 + 2;
-//    frame.size.width = buttonheight * 4;
-//    speedBar = [[NSSlider alloc] initWithFrame:frame];
-//    [speedBar setMinValue:1];
-//    [speedBar setMaxValue:100];
-//    [speedBar setDoubleValue:100];
-//    [self addSubview:speedBar]; 
-//
-//    /* Create the volume bar */
-//    frame.origin.x += buttonheight*4 + buttonheight/2;
-//    frame.origin.y = 0;
-//    frame.size.width = 1.5 *buttonheight;
-//    frame.size.height = 2*buttonheight;
-//    NSButton *volumeLabel = [[NSButton alloc] initWithFrame:frame]; 
-//    [self addSubview:volumeLabel];
-//    [volumeLabel setImage:volumeImage];
-//    [volumeLabel setToolTip:@"Adjust Volume"];
-//    [volumeLabel setBordered:NO]; 
-//    [volumeLabel release];
-//
-//    frame.origin.x += buttonheight*2 + 2;
-//    frame.origin.y = buttonheight/2;
-//    frame.size.width = buttonheight * 4;
-//    frame.size.height = buttonheight;
-//    volumeBar = [[NSSlider alloc] initWithFrame:frame];
-//    [volumeBar setMinValue:1];
-//    [volumeBar setMaxValue:100];
-//    [volumeBar setDoubleValue:100];
-//    [volumeBar setAction:@selector(changeVolume:)];
-//    [volumeBar setTarget:self];
-//    [self addSubview:volumeBar];
-    
-     return self;
+    return self;
 }
 
 - (void)setPiano:(Piano*)p {
@@ -272,7 +138,7 @@
 //    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
-        pianoData = [[PianoDataJudged alloc] init];
+        pianoData = [[PianoDataJudged alloc] initWithOptions:opt];
         arrPacket =[[NSMutableArray alloc] init];
     }
 
@@ -357,14 +223,27 @@
     
     NSString *tempPath = NSTemporaryDirectory();
     tempSoundFile = [NSString stringWithFormat:@"%@/temp.mid", tempPath];
-    
-    //tempSoundFile = [[midifile filename] stringByAppendingString:@".MSM.mid"];
+
     tempSoundFile = [tempSoundFile retain];
-    if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile] == NO) {//modify by yizhq
+    if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile secValue:timeDifference] == NO) {//modify by yizhq
         /* Failed to write to tempSoundFile */
         [tempSoundFile release]; tempSoundFile = nil;
     }
 }
+
+//add by yizhq start for prepare tempo
+- (void)playPrepareTempo{
+    [midifile rightHandMute:&options andState:YES];
+    [midifile leftHandMute:&options andState:YES];
+    [self playPause];
+}
+
+- (void)stopPrepareTempo{
+    [self stop];
+    [midifile rightHandMute:&options andState:NO];
+    [midifile leftHandMute:&options andState:NO];
+}
+//add by yizhq end
 
 -(void) listen {
     judgeFlag = FALSE;
@@ -375,6 +254,7 @@
     
     [self doStop];
     [sheet clearStaffs];
+    [self clearJudgedData];
     
     if (playModel != PlayModel1) {
         [sheetPlay setCurrentPulseTime:currentPulseTime];
@@ -399,10 +279,6 @@
 {
     judgeFlag = true;
     playModel = type;
-    
-//    if (!isLine) {
-//        isLine = [midiHandler setupMIDI];
-//    }
     
     switch(playModel) {
         case PlayModel1:
@@ -581,13 +457,12 @@
         [self createMidiFile];
         /* add by yizhq start */
 //        [sound loadMIDIFile:[midifile filename]];
+//        [sound loadMIDIFile:tempPrepareTempoFile];
+//        [sound playPressed];
         [sound loadMIDIFile:tempSoundFile];
-                NSLog(@"playPause currentPulseTime is %f", currentPulseTime);
         [sound playPressed];
         playstate = playing;
         /* add by yizhq end */
-        
-        
         
         (void)gettimeofday(&startTime, NULL);
         
@@ -823,10 +698,9 @@
             [timer invalidate]; timer = nil;
             
             if (pianoData != nil) {
-                [pianoData judgedPianoPlay:-10 andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
+                [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }
         
-//            NSLog(@"dddddddddddddddd");
             [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
 //            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
             
@@ -874,7 +748,13 @@
         /* add by yizhq end */
         prevPulseTime = currentPulseTime;
         currentPulseTime = startPulseTime + msec * pulsesPerMsec;
-        NSLog(@"timer currentPulseTime is %f", currentPulseTime);
+
+        //modify currentPulseTime for tempo start
+        int intactTempoTime = currentPulseTime/(pulsesPerMsec*1000);
+        currentPulseTime = (intactTempoTime)*pulsesPerMsec*1000;
+        timeDifference = currentPulseTime - intactTempoTime*pulsesPerMsec*1000;
+        //modify currentPulseTime for tempo end
+//        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
@@ -1008,10 +888,66 @@
     
 }
 
+- (void) clearJudgedData {
+    if (pianoData != nil) {
+        [pianoData DataClear];
+    }
+}
+
 - (void)midiStatus:(NSNotification*)notification
 {
     int messageID = [[notification.userInfo objectForKey:@"kNAMIDINotification"] intValue];
     NSLog(@"MidiKeyboard Notify, MessageID=%d", messageID);
+}
+
+-(void)PianoTips:(BOOL)isOn {
+    
+    if (playModel != PlayModel1 ) {
+        NSLog(@"current model is not PlayModel1!");
+        return;
+    }
+    
+    if (!isLine) {
+        NSLog(@"Midi Line is disconnect!");
+        return;
+    }
+    
+    if (recognition == nil ) {
+        NSLog(@"recognition is nil!");
+        return;
+    }
+    
+    ChordSymbol* c = [recognition getCurChordSymol];
+    if (c == nil) {
+        NSLog(@"current ChordSymbol is nil!");
+        return;
+    }
+    
+    int velocity = 0;
+    if (isOn) {
+        velocity = 100;
+    }
+    
+    int flag = [c eightFlag];
+    NoteData *noteData = [c notedata];
+    for (int i = 0; i < [c notedata_len]; i++) {
+        NoteData nd = noteData[i];
+        int number = nd.number;
+        
+        if (nd.previous == 1) {
+            NSLog(@"midi note is previous.");
+            continue;
+        }
+        
+        if(flag > 0) {
+            number += 12;
+        } else if (flag < 0) {
+            number -= 12;
+        }
+        
+        NSLog(@"==========the tips symbol number is[%d]|", number);
+        [midiHandler sendData:number andVelocity:velocity];
+    }
 }
 
 
