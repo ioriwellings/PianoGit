@@ -31,18 +31,20 @@
 	self.webView.backgroundColor = [UIColor clearColor];
 //	self.webView.opaque = NO;
 //	self.webView.scalesPageToFit = YES;
-//	for (id subview in self.webView.subviews)
-//	{
-//        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-//		{
-//            ((UIScrollView *)subview).bounces = NO;
-//			break;
-//		}
-//	}
+	for (id subview in self.webView.subviews)
+	{
+        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+		{
+            ((UIScrollView *)subview).bounces = NO;
+			break;
+		}
+	}
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
-                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
-                                                                                ]]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.duankankan.com/web2014/2014/"]];
+    [self.webView loadRequest:request];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
+//                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
+//                                                                                ]]]];
 }
 
 - (void)didReceiveMemoryWarning
