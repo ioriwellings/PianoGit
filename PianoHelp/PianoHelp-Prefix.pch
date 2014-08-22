@@ -20,3 +20,4 @@
 
 #define kBackToQinfangNotification @"backfromNotification"
 #define kLoginSuccessNotification @"loginNotification"
+#define HTTPSERVERSADDRESS @"http://192.168.0.10"

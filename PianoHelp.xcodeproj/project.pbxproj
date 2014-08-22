@@ -59,6 +59,11 @@
 		891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */; };
 		891290DF195904BA00B9B5B5 /* zunashi.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DE195904BA00B9B5B5 /* zunashi.png */; };
 		89145A8519969839008D2096 /* IEEE 754.html in Resources */ = {isa = PBXBuildFile; fileRef = 89145A8419969839008D2096 /* IEEE 754.html */; };
+		891EF86C19A6CA780038F864 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF86B19A6CA780038F864 /* RegisterViewController.m */; };
+		891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87319A6E19C0038F864 /* IoriURLConnection.m */; };
+		891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87519A6E19C0038F864 /* NSString+URLConnection.m */; };
+		891EF87C19A6E2C00038F864 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87919A6E2C00038F864 /* Reachability.m */; };
+		891EF87D19A6E2C00038F864 /* CheckNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87B19A6E2C00038F864 /* CheckNetwork.m */; };
 		89257490192E40450049EF14 /* MelodyCategoryCollectioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925748F192E40450049EF14 /* MelodyCategoryCollectioViewCell.m */; };
 		892A188F195678C4003E209A /* MorePopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892A188E195678C4003E209A /* MorePopViewController.m */; };
 		892DBBC019468E8E00621003 /* ShelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DBBBF19468E8E00621003 /* ShelfView.m */; };
@@ -401,6 +406,16 @@
 		891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xingxing,jiesuanzhong.png"; sourceTree = "<group>"; };
 		891290DE195904BA00B9B5B5 /* zunashi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zunashi.png; sourceTree = "<group>"; };
 		89145A8419969839008D2096 /* IEEE 754.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "IEEE 754.html"; sourceTree = "<group>"; };
+		891EF86A19A6CA780038F864 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		891EF86B19A6CA780038F864 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		891EF87219A6E19C0038F864 /* IoriURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IoriURLConnection.h; sourceTree = "<group>"; };
+		891EF87319A6E19C0038F864 /* IoriURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IoriURLConnection.m; sourceTree = "<group>"; };
+		891EF87419A6E19C0038F864 /* NSString+URLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLConnection.h"; sourceTree = "<group>"; };
+		891EF87519A6E19C0038F864 /* NSString+URLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLConnection.m"; sourceTree = "<group>"; };
+		891EF87819A6E2C00038F864 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		891EF87919A6E2C00038F864 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		891EF87A19A6E2C00038F864 /* CheckNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckNetwork.h; sourceTree = "<group>"; };
+		891EF87B19A6E2C00038F864 /* CheckNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckNetwork.m; sourceTree = "<group>"; };
 		8925748E192E40450049EF14 /* MelodyCategoryCollectioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyCategoryCollectioViewCell.h; sourceTree = "<group>"; };
 		8925748F192E40450049EF14 /* MelodyCategoryCollectioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyCategoryCollectioViewCell.m; sourceTree = "<group>"; };
 		892A188D195678C4003E209A /* MorePopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorePopViewController.h; sourceTree = "<group>"; };
@@ -760,6 +775,8 @@
 				8907102919219F3A00BB9E2F /* Storyboard.storyboard */,
 				890093CE1951085B001F33F4 /* LoginViewController.h */,
 				890093CF1951085B001F33F4 /* LoginViewController.m */,
+				891EF86A19A6CA780038F864 /* RegisterViewController.h */,
+				891EF86B19A6CA780038F864 /* RegisterViewController.m */,
 				8987A5631925B54600DEE6AE /* BaseViewController.h */,
 				8987A5641925B54600DEE6AE /* BaseViewController.m */,
 				8907102B1921A03900BB9E2F /* RootViewController.h */,
@@ -787,6 +804,14 @@
 				8976F67E19A43E2D00D8A860 /* MessageBox.m */,
 				BA73FAF6195B1CAB0090F9BB /* WuXianPuViewController.h */,
 				BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */,
+				891EF87219A6E19C0038F864 /* IoriURLConnection.h */,
+				891EF87319A6E19C0038F864 /* IoriURLConnection.m */,
+				891EF87419A6E19C0038F864 /* NSString+URLConnection.h */,
+				891EF87519A6E19C0038F864 /* NSString+URLConnection.m */,
+				891EF87819A6E2C00038F864 /* Reachability.h */,
+				891EF87919A6E2C00038F864 /* Reachability.m */,
+				891EF87A19A6E2C00038F864 /* CheckNetwork.h */,
+				891EF87B19A6E2C00038F864 /* CheckNetwork.m */,
 				8907100B19219EC000BB9E2F /* Images.xcassets */,
 				89070FFD19219EC000BB9E2F /* Supporting Files */,
 				8964EBB0194535B200DBCED9 /* Resources */,
@@ -1623,6 +1648,7 @@
 				8994D13F194BCEDA0016F806 /* MelodyButton.m in Sources */,
 				8987A55419258DEA00DEE6AE /* MelodyViewController.m in Sources */,
 				89F685EA195BA92600F85197 /* ScroeViewController.m in Sources */,
+				891EF87C19A6E2C00038F864 /* Reachability.m in Sources */,
 				89F93D60199C44ED0020E206 /* Users.m in Sources */,
 				89F93D5D199C44ED0020E206 /* MelodyFavorite.m in Sources */,
 				8987A5621925B12600DEE6AE /* ShowViewController.m in Sources */,
@@ -1631,9 +1657,12 @@
 				89257490192E40450049EF14 /* MelodyCategoryCollectioViewCell.m in Sources */,
 				8907100A19219EC000BB9E2F /* PianoHelp.xcdatamodeld in Sources */,
 				89F93D57199C44EC0020E206 /* MelodyCategory.m in Sources */,
+				891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */,
 				89F93D45199C3BD60020E206 /* UserInfo.m in Sources */,
 				8987A55A19258FA500DEE6AE /* ShopViewController.m in Sources */,
+				891EF87D19A6E2C00038F864 /* CheckNetwork.m in Sources */,
 				BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */,
+				891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */,
 				8936CF64192440F0001E5DCC /* SearchViewController.m in Sources */,
 				89F93D5A199C44ED0020E206 /* Score.m in Sources */,
 				89F93D63199C44ED0020E206 /* Melody.m in Sources */,
@@ -1641,6 +1670,7 @@
 				892DBBC019468E8E00621003 /* ShelfView.m in Sources */,
 				89F6C0D9193222ED00823EF5 /* MelodyDetailViewController.m in Sources */,
 				8987A55719258E2200DEE6AE /* MelodyCategoryViewController.m in Sources */,
+				891EF86C19A6CA780038F864 /* RegisterViewController.m in Sources */,
 				B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */,
 				8987A55D19258FB900DEE6AE /* QinFangViewController.m in Sources */,
 				B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */,
