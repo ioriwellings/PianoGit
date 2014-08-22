@@ -84,9 +84,9 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
 }
 
 -(id)initWithNotes:(Array*)notes andKey:(KeySignature*)key
-     andTime: (TimeSignature*)time andClef:(int)c andSheet:(void*)s;
+           andTime: (TimeSignature*)time andClef:(int)c andSheet:(void*)s andBeats:(Array*)beatarray;
 -(void) createNoteData:(Array*)notes withKey:(KeySignature*)key
-               andTime:(TimeSignature*)time;
+               andTime:(TimeSignature*)time andBeats:(Array*)beatarray;
 
     /** add by yizhq start */
 -(void)setConnectNoteWidth:(ChordSymbol*) chordSymbol withNoteData:(NoteData*)note andNoteWidth:(int)connectNoteWidth;

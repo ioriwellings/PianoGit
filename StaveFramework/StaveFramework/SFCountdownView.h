@@ -26,7 +26,7 @@ static const int kDefaultCountdownFrom = 5;
 @property (nonatomic, assign) int countdownFrom;
 @property (nonatomic, assign) NSString* finishText;
 
-// appearance settings 
+// appearance settings
 @property (nonatomic, assign) UIColor* countdownColor;
 @property (nonatomic, assign) NSString* fontName;
 

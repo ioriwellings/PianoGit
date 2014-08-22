@@ -272,7 +272,7 @@
         [[NSFileManager defaultManager] createFileAtPath:strImageDir contents:nil attributes:nil];
     }
     else return;
-    
+    [self loadTempMIDE];
     NSManagedObjectContext *moc = self.managedObjectContext;
     Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
     user.userName = [UserInfo sharedUserInfo].userName;
@@ -571,4 +571,34 @@
     }
 }
 
+-(void)loadTempMIDE
+{
+    NSArray *array = [[NSBundle mainBundle] pathsForResourcesOfType:@"mid" inDirectory:@"temp"];
+    
+    MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
+    cate.name = @"测试";
+    cate.cover = @"jiaocaiqupu.png";
+    
+    MelodyCategory *cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
+    cate_sub.name = @"临时的";
+    cate_sub.parentCategory = cate;
+    
+    for (NSString *path in array)
+    {
+
+        Melody *melody = (Melody*)[NSEntityDescription insertNewObjectForEntityForName:@"Melody" inManagedObjectContext:self.managedObjectContext];
+        melody.category = cate_sub;
+        melody.author = @"拉可夫";
+        melody.name = [path lastPathComponent];
+        melody.melodyID = melody.name;
+        melody.filePath = [NSString stringWithFormat:@"temp/%@", melody.name];
+    }
+    
+    NSError *error;
+    if(![self.managedObjectContext save:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+}
 @end

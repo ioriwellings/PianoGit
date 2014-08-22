@@ -40,6 +40,8 @@ typedef enum {
 -(void)setNumerator:(int)n;
 -(void)setDenominator:(int)d;
 -(void)setMeasure;
+-(void)setTempo:(int)t;
+-(void)setQuarter:(int)q;
 /* add by sunlie end */
 -(int)getMeasureForTime:(int)time;
 -(NoteDuration)getNoteDuration:(int)pulses;

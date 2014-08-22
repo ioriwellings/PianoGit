@@ -485,15 +485,24 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         Array *eventlist = [events get:tracknum];
         for (int i = 0; i < [eventlist count]; i++) {
             MidiEvent *mevent = [eventlist get:i];
-            if ([mevent metaevent] == MetaEventTempo && tempo == 0) {
+            if ([mevent metaevent] == MetaEventTempo) {
                 tempo = [mevent tempo];
+                if ([beatarray count] > 0) {
+                    if (abs([mevent startTime]-[[beatarray get:[beatarray count]-1] starttime]) < 30) {
+                        [[beatarray get:[beatarray count]-1] setTempo:tempo];
+                    } else {
+                        BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:[[beatarray get:[beatarray count]-1] numerator] andDenominator:[[beatarray get:[beatarray count]-1] denominator] andTempo:tempo andStarttime:[mevent startTime]];
+                        [beatarray add:beat];
+                		[beat release];
+                    }
+                }
             }
             /** modify by sunlie start */
             if ([mevent metaevent] == MetaEventTimeSignature) {
                 numer = [mevent numerator];
                 denom = [mevent denominator];
                 starttime = [mevent startTime];
-                BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:numer andDenominator:denom andStarttime:starttime];
+                BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:numer andDenominator:denom andTempo:tempo andStarttime:starttime];
                 [beatarray add:beat];
                 [beat release];
             }
@@ -537,6 +546,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         BeatSignature *beat = [beatarray get:0];
         numer = [beat numerator];
         denom = [beat denominator];
+        if ([beat tempo] != 0) {
+            tempo = [beat tempo];
+        }
     } else {
         numer = 4;
         denom = 4;

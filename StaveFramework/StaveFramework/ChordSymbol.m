@@ -61,7 +61,7 @@ static UIImage* chanyin = nil;
  * of the notes. Use the clef when drawing the chord.
  */
 - (id)initWithNotes:(Array*)midinotes andKey:(KeySignature*)key
-     andTime:(TimeSignature*)time andClef:(int)c andSheet:(void*)s {
+     andTime:(TimeSignature*)time andClef:(int)c andSheet:(void*)s andBeats:(Array *)beatarray{
 
     int i;
 
@@ -94,7 +94,7 @@ static UIImage* chanyin = nil;
     }
 
     notedata_len = [midinotes count];
-    [self createNoteData:midinotes withKey:key andTime:time];
+    [self createNoteData:midinotes withKey:key andTime:time andBeats:beatarray];
     
 
 //    /* Find out how many stems we need (1 or 2) */
@@ -198,11 +198,13 @@ static UIImage* chanyin = nil;
  * The TimeSignature is used to determine the duration.
  */
 - (void)createNoteData:(Array*)midinotes withKey:(KeySignature*)key
-       andTime:(TimeSignature*)time {
+       andTime:(TimeSignature*)time andBeats:(Array *)beatarray {
     
     notedata = (NoteData*) calloc([midinotes count], sizeof(NoteData));
     notedata_len = [midinotes count];
     NoteData *prev = NULL;
+    int measurecount = 0;
+    SheetMusic *sheet = (SheetMusic*)sheetmusic;
 
     for (int i = 0; i < [midinotes count]; i++) {
         MidiNote *midi = [midinotes get:i];
@@ -214,8 +216,25 @@ static UIImage* chanyin = nil;
         }
         note->whitenote = [key getWhiteNote:[midi number]];
         note->duration = [time getNoteDuration:([midi endTime]-[midi startTime])];
+//        int measureCount = 0;
+//        if ([beatarray count] > 1) {
+//            for (int cc = 1; cc < [beatarray count]; cc++) {
+//                if ([midi startTime] < [[beatarray get:cc] starttime]) {
+//                    TimeSignature * t  = [[TimeSignature alloc] initWithNumerator:[[beatarray get:cc-1] numerator]
+//                                    andDenominator:[[beatarray get:cc-1] denominator]
+//                                    andQuarter:[time quarter]
+//                                    andTempo:[[beatarray get:cc-1] tempo]];
+//                    measureCount += [midi startTime]/[t measure];
+//                    [t release];
+//                }
+//            }
+//        } else {
+//            measureCount = [midi startTime]/[time measure];
+//        }
+        
+        measurecount = [sheet getMeasureNum:[midi startTime] withTime:time];
         note->accid = [key getAccidentalForNote:[midi number] 
-                                 andMeasure:([midi startTime] / [time measure])];
+                                 andMeasure:measurecount];
         /* add by sunlie start */
         note->dur = [midi duration];
         note->previous = [midi previous];
@@ -253,7 +272,8 @@ static UIImage* chanyin = nil;
     }
     accidsymbols = [Array new:count];
     for (n = 0; n < notedata_len; n++) {
-        if (notedata[n].accid != AccidNone) {
+        NoteData d = notedata[n];
+        if (d.accid != AccidNone) {
             AccidSymbol *a = [[AccidSymbol alloc] initWithAccid:notedata[n].accid 
                               andNote:(notedata[n].whitenote) andClef:clef ];
             [accidsymbols add:a];

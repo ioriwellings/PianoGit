@@ -363,12 +363,75 @@
 
 /** add by yizhq start */
 -(void)setJSModel:(int)startSectionNum withEndSectionNum:(int)endSectionNum withTimeNumerator:(int)numerrator withTimeQuarter:(int)quarter withMeasure:(int)measure{
-    int start = (startSectionNum - 1) * measure;
-    int end = endSectionNum * measure;
+    TimeSignature *t;
+    Array *beatarray = [midifile beatarray];
+    BeatSignature* beat = [beatarray get:0];
+    int i;
+    int measurecount = 0;
+    int tmpTime = 0;
+    int preTime = 0;
+    //    int startTime = (startSectionNum - 1) * measure;
+    //    int endTime = endSectionNum * measure;
+    
+    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[beat tempo]];
+    if ([beatarray count] > 1) {
+        for (i = 1; i<[beatarray count]; i++) {
+            int tmp =([[beatarray get:i] starttime]-preTime)/[t measure];
+            measurecount += tmp;
+            if (measurecount > startSectionNum-1) {
+                measurecount -= tmp;
+                tmpTime = preTime+(startSectionNum-1-measurecount)*[t measure];
+                break;
+            } else {
+                preTime += tmp*[t measure];
+                beat = [beatarray get:i];
+                [t setNumerator:[beat numerator]];
+                [t setDenominator:[beat denominator]];
+                [t setTempo:[beat tempo]];
+                [t setMeasure];
+            }
+        }
+        
+        if (i == [beatarray count]) {
+            tmpTime = [beat starttime]+(startSectionNum-1-measurecount)*[t measure];
+        }
+    } else {
+        tmpTime = [[midifile time] measure]*(startSectionNum-1);
+    }
     
     options.staveModel = 1;
-    options.startSecTime = start;
-    options.endSecTime = end;
+    options.startSecTime = tmpTime;
+    beat = [beatarray get:0];
+    [t setNumerator:[beat numerator]];
+    [t setDenominator:[beat denominator]];
+    [t setTempo:[beat tempo]];
+    [t setMeasure];
+    
+    if ([beatarray count] > 1 && [[beatarray get:1] starttime]/[t measure] < endSectionNum) {
+        for (i = 1; i<[beatarray count]; i++) {
+            int tmp =([[beatarray get:i] starttime]-preTime)/[t measure];
+            measurecount += tmp;
+            if (measurecount > endSectionNum) {
+                measurecount -= tmp;
+                tmpTime = preTime+(endSectionNum-measurecount)*[t measure];
+                break;
+            } else {
+                preTime += tmp*[t measure];
+                beat = [beatarray get:i];
+                [t setNumerator:[beat numerator]];
+                [t setDenominator:[beat denominator]];
+                [t setTempo:[beat tempo]];
+                [t setMeasure];
+            }
+        }
+        
+        if (i == [beatarray count]) {
+            tmpTime = preTime+(endSectionNum-measurecount)*[t measure];
+        }
+    } else {
+        tmpTime = [[midifile time] measure]*(endSectionNum);
+    }
+    options.endSecTime = tmpTime;
 }
 
 -(void)clearJSModel{
@@ -404,6 +467,23 @@
     [sheetPlay setCurrentPulseTime:currentPulseTime];
 }
 
+- (double)getPulsesPerMsec:(int)currentTime {
+    Array *beatArray = [sheet beatarray];
+    int i = 0;
+    double tmpPulsesPerMsec = 0.0;
+    int tempo = 0;
+    
+    for (i=1; i<[beatArray count]; i++) {
+        if (currentTime < [[beatArray get:i] starttime]) {
+            break;
+        }
+    }
+    i--;
+    tempo = [[beatArray get:i] tempo];
+    tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / tempo);
+    
+    return tmpPulsesPerMsec;
+}
 /** add by yizhq end */
 /** The callback for the play/pause button (a single button).
  *  If we're stopped or pause, then play the midi file.
@@ -431,7 +511,8 @@
              * currentPulseTime is somewhere inside the loop measures.
              */
             double nearEndTime = currentPulseTime + pulsesPerMsec*50;
-            int measure = (int)(nearEndTime / [[midifile time] measure]);
+//            int measure = (int)(nearEndTime / [[midifile time] measure]);
+            int measure = [sheet getMeasureNum:nearEndTime withTime:[midifile time]];
             if ((measure < options.playMeasuresInLoopStart) ||
                 (measure > options.playMeasuresInLoopEnd)) {
 
@@ -582,6 +663,13 @@
 
 - (BOOL) jumpMeasure:(int)number
 {
+    TimeSignature *t;
+    BeatSignature* beat = [[midifile beatarray] get:0];
+    Array *beatarray = [midifile beatarray];
+    int i;
+    int measurecount = 0;
+    int tmpTime = 0;
+    int preTime = 0;
     if (number < 0) return FALSE;
     
     if (midifile == nil || sheet == nil) {
@@ -598,7 +686,35 @@
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
     
     prevPulseTime = currentPulseTime;
-    currentPulseTime = [[midifile time] measure]*number;
+    
+    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[beat tempo]];
+    if ([beatarray count] > 1) {
+        for (i = 1; i<[beatarray count]; i++) {
+            int tmp =([[beatarray get:i] starttime]-preTime)/[t measure];
+            measurecount += tmp;
+            if (measurecount > number) {
+                measurecount -= tmp;
+                tmpTime = preTime+(number-measurecount)*[t measure];
+                break;
+            } else {
+                preTime += tmp*[t measure];
+                beat = [beatarray get:i];
+                [t setNumerator:[beat numerator]];
+                [t setDenominator:[beat denominator]];
+                [t setTempo:[beat tempo]];
+                [t setMeasure];
+            }
+        }
+        
+        if (i == [beatarray count]) {
+            tmpTime = [beat starttime]+(number-measurecount)*[t measure];
+        }
+    } else {
+        tmpTime = [[midifile time] measure]*number;
+    }
+    
+    currentPulseTime = tmpTime;
+//    currentPulseTime = [[midifile time] measure]*number;
     //NSLog(@"currentpulseTime is %f", currentPulseTime);
     
     if (currentPulseTime > [midifile totalpulses]) {

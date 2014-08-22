@@ -319,6 +319,7 @@
 		BA1079B31967FE4C0056F626 /* treble.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799E1967FE4C0056F626 /* treble.png */; };
 		BA1079B41967FE4C0056F626 /* twelve.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10799F1967FE4C0056F626 /* twelve.png */; };
 		BA1079B51967FE4C0056F626 /* two.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1079A01967FE4C0056F626 /* two.png */; };
+		BA163CF519A7812D00857C4E /* temp in Resources */ = {isa = PBXBuildFile; fileRef = BA163CF419A7812D00857C4E /* temp */; };
 		BA1E31551978167F00CFAB93 /* 识谱模式C大调.mid in Resources */ = {isa = PBXBuildFile; fileRef = BA1E31541978167F00CFAB93 /* 识谱模式C大调.mid */; };
 		BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */; };
 /* End PBXBuildFile section */
@@ -700,6 +701,7 @@
 		BA10799E1967FE4C0056F626 /* treble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = treble.png; path = ../StaveFramework/StaveFramework/treble.png; sourceTree = "<group>"; };
 		BA10799F1967FE4C0056F626 /* twelve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twelve.png; path = ../StaveFramework/StaveFramework/twelve.png; sourceTree = "<group>"; };
 		BA1079A01967FE4C0056F626 /* two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = two.png; path = ../StaveFramework/StaveFramework/two.png; sourceTree = "<group>"; };
+		BA163CF419A7812D00857C4E /* temp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = temp; sourceTree = "<group>"; };
 		BA1E31541978167F00CFAB93 /* 识谱模式C大调.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "识谱模式C大调.mid"; sourceTree = "<group>"; };
 		BA73FAF6195B1CAB0090F9BB /* WuXianPuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WuXianPuViewController.h; sourceTree = "<group>"; };
 		BA73FAF7195B1CAB0090F9BB /* WuXianPuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WuXianPuViewController.m; sourceTree = "<group>"; };
@@ -953,6 +955,7 @@
 		8964EBB0194535B200DBCED9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA163CF419A7812D00857C4E /* temp */,
 				890093C719510603001F33F4 /* shopBg.jpg */,
 				890093C819510603001F33F4 /* spaceBg.jpg */,
 				89F5FB6019527DE900011C3A /* shopBg.png */,
@@ -1372,6 +1375,7 @@
 				8989B108198B2032005222C2 /* renwu@2x.png in Resources */,
 				890C39DE1983445300206740 /* tishi-01@2x.png in Resources */,
 				89F704DC19A5A2680035621C /* quanbufenye_selected@2x.png in Resources */,
+				BA163CF519A7812D00857C4E /* temp in Resources */,
 				89F704C619A5851E0035621C /* nvhai@2x.png in Resources */,
 				8964EBE7194539CC00DBCED9 /* 00111111he.mid in Resources */,
 				8989B11C198B2032005222C2 /* wenbenxinxi@2x.png in Resources */,

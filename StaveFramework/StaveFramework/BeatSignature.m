@@ -29,7 +29,12 @@
 {
     return _denominator;
 }
-
+- (void) setTempo:(int)t {
+    _tempo = t;
+}
+- (int) tempo {
+    return _tempo;
+}
 - (void) setStarttime:(int)starttime
 {
     _starttime = starttime;
@@ -39,10 +44,10 @@
     return _starttime;
 }
 
-- (id) initWithNumerator:(int)numerator andDenominator:(int)denominator andStarttime:(int)starttime
+- (id) initWithNumerator:(int)numerator andDenominator:(int)denominator andTempo:(int)tempo andStarttime:(int)starttime
 {
 
-    if(numerator <= 0 || denominator <= 0 || starttime < 0)
+    if(numerator <= 0 || denominator <= 0 || starttime < 0 || tempo < 0)
     {
         return nil;
     }
@@ -51,10 +56,11 @@
     {
         numerator = 4;
     }
-    
-    [self setDenominator:denominator];
-    [self setNumerator:numerator];
-    [self setStarttime:starttime];
+
+    _denominator = denominator;
+    _numerator = numerator;
+    _tempo = tempo;
+    _starttime = starttime;
     
     return self;
 }

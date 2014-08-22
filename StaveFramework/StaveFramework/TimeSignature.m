@@ -71,6 +71,13 @@
     }
     measure = numerator * beat;
 }
+
+-(void)setTempo:(int)t {
+    tempo = t;
+}
+-(void)setQuarter:(int)q {
+    quarter = q;
+}
 /* add by sunlie end */
 
 /** Create a new time signature, with the given numerator,

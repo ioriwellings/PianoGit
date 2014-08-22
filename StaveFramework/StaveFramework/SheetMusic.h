@@ -49,6 +49,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
     /* add by sunlie start */
     Array* beatarray;
     Array* tonearray;
+    MidiFile *midifile; 
     /* add by sunlie end */
     /** add by yizhq start */
     CGContextRef pContext;
@@ -72,6 +73,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
 }
 
 -(id)initWithFile:(MidiFile*)file andOptions:(MidiOptions*)options;
+-(Array*)beatarray;
+-(MidiFile*)midifile;
 -(KeySignature*) getKeySignature:(Array*)tracks;
 -(Array*) createChords:(Array*)midinotes withKey:(KeySignature*)key
                andTime:(TimeSignature*)time andClefs:(ClefMeasures*) clefs andCList2:(Array *)list andCList3:(Array *)list3
@@ -86,11 +89,12 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
                  andTime:(TimeSignature*) time;
 -(void) alignSymbols:(Array*)allsymbols withWidths:(SymbolWidths *)widths;
 +(int) keySignatureWidth:(KeySignature*)key;
+-(int)getMeasureNum:(int)start withTime:(TimeSignature *)tsig;
 -(Array*) createStaffsForTrack:(Array*)symbols withKey:(KeySignature*)key
                     andMeasure:(int) measurelen andOptions:(MidiOptions*)options
-                      andTrack:(int)track andTotalTracks:(int)totaltracks;
+                      andTrack:(int)track andTotalTracks:(int)totaltracks andTime:(TimeSignature*) time;
 -(Array*) createStaffs:(Array*)allsymbols withKey:(KeySignature*)key
-            andOptions:(MidiOptions*)options andMeasure:(int)measurelen;
+            andOptions:(MidiOptions*)options andMeasure:(int)measurelen andTime:(TimeSignature*) time;
 +(BOOL)findConsecutiveChords:(Array*)symbols andTime:(TimeSignature*) time
                     andStart:(int)startIndex andIndexes:(int*) chordIndexes
                 andNumChords:(int)numChords andHorizDistance:(int*)dist;

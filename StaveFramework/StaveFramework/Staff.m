@@ -317,7 +317,9 @@
     
     NSObject<MusicSymbol> *s = [symbols get:0];
     if (tracknum == 0) {
-        int measure = 1 + [s startTime] / measureLength;
+//        int measure = 1 + [s startTime] / measureLength;
+        SheetMusic *sheet = (SheetMusic *)sheetmusic;
+        int measure = [sheet getMeasureNum:[s startTime] withTime:[[sheet midifile] time]]+1;
         CGPoint point = CGPointMake(xpos + NoteWidth, ypos);
         
         char buffer[100];

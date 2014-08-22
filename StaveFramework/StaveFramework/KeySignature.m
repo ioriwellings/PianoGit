@@ -743,6 +743,8 @@ static int initmaps = 0;
     }
     if (num_flats > 0 && notescale == NoteScale_Aflat) {
         octave++;
+    } else if (accid == AccidFlat && notescale == NoteScale_Aflat) {
+        octave++;
     }
     return [WhiteNote allocWithLetter:letter andOctave:octave];
 }
@@ -880,6 +882,9 @@ static int initmaps = 0;
         if (key[notescale] == AccidSharp) {
             key[notescale] = AccidFlat;
             
+//            for (i = notescale; i < 128; i=i+12) {
+//                keymap[i] = AccidFlat;
+//            }
             for (i = (notescale+12-3)%12; i < 128; i=i+12) {
                 keymap[i] = AccidFlat;
             }

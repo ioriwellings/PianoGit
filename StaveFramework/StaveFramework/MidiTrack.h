@@ -98,7 +98,7 @@ int sortbytime(void* note1, void* note2);
 -(void)AddSplitednote:(MidiNote *)m;
 -(void)createSplitednotes:(TimeSignature *)time andBeatarray:(Array *)beatarray;
 -(void)splitedNote:(MidiNote *)note andTimeSignature:(TimeSignature *)time;
--(void)createControlNotes:(TimeSignature *)time;
+-(void)createControlNotes;
 /** add by sunlie end */
 -(NSString*)description;
 -(void)addNote:(MidiNote *)m;

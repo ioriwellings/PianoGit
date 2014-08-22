@@ -102,6 +102,7 @@ enum {
 -(void)doStop;
 -(void)dealloc;
 -(int)PlayerState;
+-(double)getPulsesPerMsec:(int)currentTime;
 
 //跳转小节
 -(BOOL)jumpMeasure:(int)number;

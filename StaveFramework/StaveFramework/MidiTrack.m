@@ -124,7 +124,6 @@ int sortbynote(void* note1, void* note2) {
             [note setAccidFlag:[mevent velocity]];
             [self addNote:note];
             [note release];
-            NSLog(@"accid:%d",[note accidFlag]);
         }
         else if ([mevent eventFlag] == EventNoteOn && [mevent velocity] == 0) {
             [self noteOffWithChannel:[mevent channel] andNumber:[mevent notenumber]
@@ -406,14 +405,26 @@ int sortbynote(void* note1, void* note2) {
  * NoteOn event, and update the duration of the MidiNote.
  */
 - (void)noteOffWithChannel:(int)channel andNumber:(int)number andTime:(int)endtime {
+    int record = 0;
+    MidiNote* note;
     for (int i = [notes count]-1; i >= 0; i--) {
-        MidiNote* note = [notes get:i];
+        note = [notes get:i];
         if ([note channel] == channel && [note number] == number &&
             [note duration] == 0) {
+            record = i;
+//            [note noteOff:endtime];
+//            return;
+        }
+        if ([note channel] == channel && [note number] == number &&
+            [note duration] != 0) {
+            note = [notes get:record];
             [note noteOff:endtime];
             return;
         }
     }
+    note = [notes get:record];
+    [note noteOff:endtime];
+    return;
 }
 
 /** Return a deep copy clone of this MidiTrack */
@@ -553,9 +564,26 @@ int sortbynote(void* note1, void* note2) {
     return;
 }
 
--(void)createSplitednotes:(TimeSignature *)time andBeatarray:(Array *)beatarray
-{
-    if(splitednotes) [splitednotes release];
+-(void)getTime:(int)time andTimeSignature:(TimeSignature *)timeSig andBeatarray:(Array *)beatarray {
+    int i;
+    BeatSignature *beat;
+    for (i=0; i<[beatarray count]; i++) {
+        beat = [beatarray get:i];
+        if (time < [beat starttime]) {
+            break;
+        }
+    }
+    i--;
+    beat = [beatarray get:i];
+    [timeSig setNumerator:[beat numerator]];
+    [timeSig setDenominator:[beat denominator]];
+    if ([beat tempo] > 0) {
+        [timeSig setTempo:[beat tempo]];
+    }
+    [timeSig setMeasure];
+}
+
+-(void)createSplitednotes:(TimeSignature *)time andBeatarray:(Array *)beatarray {
     splitednotes = [Array new:500];
     int startTime;
     int endTime;
@@ -580,11 +608,11 @@ int sortbynote(void* note1, void* note2) {
         duration = [note duration];
         endTime = startTime + duration;
         [tmpnotes clear];
-        NSLog(@"COUNT:%d",j);
         
         if (beatstarttime != 0 && startTime >= beatstarttime) {
             [time setNumerator:[beat numerator]];
             [time setDenominator:[beat denominator]];
+            [time setTempo:[beat tempo]];
             [time setMeasure];
             i++;
             if (i < size) {
@@ -1000,7 +1028,7 @@ int sortbynote(void* note1, void* note2) {
     return;
 }
 
--(void)createControlNotes:(TimeSignature *)time {
+-(void)createControlNotes {
     int flag6 = -1;
     int flag11 = -1;
     int flag12 = -1;
