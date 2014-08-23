@@ -218,7 +218,7 @@
             NSObject <MusicSymbol> *symbol = [symbols get:j];
             if ([symbol isKindOfClass:[ChordSymbol class]]) {
                 ChordSymbol *chord = (ChordSymbol *)symbol;
-                NSLog(@"------- %d", [chord judgedResult]);
+                NSLog(@"-------zzzzzz %d", [chord judgedResult]);
                 if ([chord judgedResult] == 0) {
                     [prevChordList add:chord];
                     break;

@@ -251,7 +251,9 @@
     [sheetmsic1 setNeedsDisplay];
     
     [self.sfCountdownView start];
-    [player playPrepareTempo];
+    if (self.iPlayMode != 1) {
+        [player playPrepareTempo];
+    }
 }
 
 - (IBAction)btnPlay_click:(id)sender
@@ -278,8 +280,13 @@
         
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
+        
+        
+        
         [self.sfCountdownView start];
-        [player playPrepareTempo];
+        if (self.iPlayMode != 1) {
+            [player playPrepareTempo];
+        }
         [self hiddenMenuAndToolBar];
     }
 }

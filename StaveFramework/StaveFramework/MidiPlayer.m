@@ -813,6 +813,7 @@
         /** modify by yizhq end */
             [timer invalidate]; timer = nil;
             
+            NSLog(@"ppppppppppppp!");
             if (pianoData != nil) {
                 [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }
