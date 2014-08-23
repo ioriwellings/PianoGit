@@ -117,7 +117,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 - (BOOL)setupMIDI {
     
     BOOL result = FALSE;
-    [self listSources];
+//    [self listSources];
     client = 0;
     
     
@@ -128,9 +128,18 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 	
 	unsigned long sourceCount = MIDIGetNumberOfSources();
     NSLog(@"====count [%lu]", sourceCount);
-	for (int i = 1; i < sourceCount; ++i) {
+	for (int i = 0; i < sourceCount; ++i) {
         outEndpoint = MIDIGetDestination(i);
         src = MIDIGetSource(i);
+        CFStringRef endpointName = NULL;
+        MIDIObjectGetStringProperty(src, kMIDIPropertyName, &endpointName);
+        char endpointNameC[255];
+        CFStringGetCString(endpointName, endpointNameC, 255, kCFStringEncodingUTF8);
+        NSLog(@"Source %d - %s", i, endpointNameC);
+        if (strcmp("Session 1", endpointNameC) == 0) {
+            continue;
+        }
+        
         MIDIPortConnectSource(inPort, src, NULL);
         result = TRUE;
 	}
@@ -142,6 +151,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 
 -(void)dealloc {
     
+    [self unSetupMIDI];
     if (outputPort)
     {
         MIDIPortDispose(outputPort);
