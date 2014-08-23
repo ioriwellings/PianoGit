@@ -77,7 +77,7 @@
     [self stop];
     self.currentCountdownValue = self.countdownFrom;
     self.countdownLabel.alpha = 1.0;
-    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
+//    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
     [self animate];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:sectionTime/4
                                                   target:self
@@ -123,7 +123,7 @@
                 if (self.currentCountdownValue == 0) {
                     self.countdownLabel.text = self.finishText;
                 } else {
-                    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.currentCountdownValue ];
+//                    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.currentCountdownValue ];
                 }
             }
         }
