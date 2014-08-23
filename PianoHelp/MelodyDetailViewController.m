@@ -50,7 +50,7 @@
     
     midifile = [[MidiFile alloc] initWithFile:self.fileName];
     [midifile initOptions:&options];
-
+    
     //set measure count
     self.sliderXiaoJie.maximumValue = [midifile getMeasureCount];
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
@@ -60,11 +60,11 @@
     
     isEnd = FALSE;
     
-//    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-//    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    [self presentViewController:vc animated:YES completion:NULL];
+    //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+    //    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    //    [self presentViewController:vc animated:YES completion:NULL];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -148,10 +148,10 @@
 
 -(void)setCurrentButtonState:(id)sender
 {
-//    [self.btnCurrent setSelected:NO];
-//    UIButton *btn = (UIButton*)sender;
-//    [btn setSelected:YES];
-//    self.btnCurrent = btn;
+    //    [self.btnCurrent setSelected:NO];
+    //    UIButton *btn = (UIButton*)sender;
+    //    [btn setSelected:YES];
+    //    self.btnCurrent = btn;
 }
 
 - (IBAction)btnSection_click:(id)sender
@@ -170,45 +170,45 @@
 
 - (IBAction)btnHint_click:(id)sender
 {
-//    [self setCurrentButtonState:sender];
-//    if(isHitAnimating) return;
-//    isHitAnimating = YES;
-//    int iPianoHeight = piano.frame.size.height;
-//    int iCurrentX = 75;
-//    int iHasHintX = iCurrentX + iPianoHeight;
-//    if(piano.hidden)
-//    {
-//        piano.hidden = NO;
-//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//            scrollView.frame = CGRectMake(0,
-//                                          iHasHintX,
-//                                          1024,
-//                                          scrollView.frame.size.height-iPianoHeight);
-//            sheetmsic1.frame = CGRectMake(0,
-//                                          iHasHintX,
-//                                          sheetmsic1.frame.size.width,
-//                                          sheetmsic1.frame.size.height);
-//        } completion:^(BOOL finished) {
-//            isHitAnimating = NO;
-//        }];
-//    }
-//    else
-//    {
-//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//            scrollView.frame = CGRectMake(0,
-//                                          iCurrentX,
-//                                          1024,
-//                                          scrollView.frame.size.height+iPianoHeight);
-//            sheetmsic1.frame = CGRectMake(0,
-//                                          iCurrentX,
-//                                          sheetmsic1.frame.size.width,
-//                                          sheetmsic1.frame.size.height);
-//            piano.hidden = YES;
-//        } completion:^(BOOL finished) {
-//            
-//            isHitAnimating = NO;
-//        }];
-//    }
+    //    [self setCurrentButtonState:sender];
+    //    if(isHitAnimating) return;
+    //    isHitAnimating = YES;
+    //    int iPianoHeight = piano.frame.size.height;
+    //    int iCurrentX = 75;
+    //    int iHasHintX = iCurrentX + iPianoHeight;
+    //    if(piano.hidden)
+    //    {
+    //        piano.hidden = NO;
+    //        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    //            scrollView.frame = CGRectMake(0,
+    //                                          iHasHintX,
+    //                                          1024,
+    //                                          scrollView.frame.size.height-iPianoHeight);
+    //            sheetmsic1.frame = CGRectMake(0,
+    //                                          iHasHintX,
+    //                                          sheetmsic1.frame.size.width,
+    //                                          sheetmsic1.frame.size.height);
+    //        } completion:^(BOOL finished) {
+    //            isHitAnimating = NO;
+    //        }];
+    //    }
+    //    else
+    //    {
+    //        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    //            scrollView.frame = CGRectMake(0,
+    //                                          iCurrentX,
+    //                                          1024,
+    //                                          scrollView.frame.size.height+iPianoHeight);
+    //            sheetmsic1.frame = CGRectMake(0,
+    //                                          iCurrentX,
+    //                                          sheetmsic1.frame.size.width,
+    //                                          sheetmsic1.frame.size.height);
+    //            piano.hidden = YES;
+    //        } completion:^(BOOL finished) {
+    //
+    //            isHitAnimating = NO;
+    //        }];
+    //    }
     
     [player PianoTips:YES];
     if (timer != nil) {
@@ -250,10 +250,9 @@
     [sheetmusic setNeedsDisplay];
     [sheetmsic1 setNeedsDisplay];
     
-//    [self.sfCountdownView start];
+    [self.sfCountdownView start];
     if (self.iPlayMode != 1) {
         [player playPrepareTempo];
-        [self.sfCountdownView start:[player getSectionTime]];
     }
 }
 
@@ -281,14 +280,13 @@
         
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
-//        [self.sfCountdownView start];
         
+        
+        
+        [self.sfCountdownView start];
         if (self.iPlayMode != 1) {
             [player playPrepareTempo];
-            [self.sfCountdownView start:[player getSectionTime]];
         }
-
-
         [self hiddenMenuAndToolBar];
     }
 }
@@ -360,8 +358,8 @@
     [sheetmsic1 setZoom:zoom];
     sheetmsic1.backgroundColor = [UIColor clearColor];
     scrollView.backgroundColor = [UIColor clearColor];
-//    [self.view addSubview:sheetmsic1];
-//    [self.view addSubview:scrollView];
+    //    [self.view addSubview:sheetmsic1];
+    //    [self.view addSubview:scrollView];
     [self.view insertSubview:sheetmsic1 atIndex:0];
     [self.view insertSubview:scrollView atIndex:0];
     
@@ -377,7 +375,7 @@
     tapGesture.delegate = self;
     [scrollView addGestureRecognizer:tapGesture];
     
-
+    
     player = [[MidiPlayer alloc] init];
     player.delegate = self;
     player.sheetPlay = sheetmsic1;
@@ -398,7 +396,6 @@
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     self.sfCountdownView.countdownFrom = 3;
     [self.sfCountdownView updateAppearance];
-
 }
 
 -(void)hiddenMenuAndToolBar
@@ -465,7 +462,7 @@
 
 -(void)endSongsResult:(int)good andRight:(int)right andWrong:(int)wrong
 {
-
+    
     isEnd = TRUE;
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -543,15 +540,15 @@
     }
     [player setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
     [sheetmusic setJSModel:from withEndSectionNum:to withTimeNumerator:[[midifile time] numerator] withTimeQuarter:[[midifile time]quarter] withMeasure:[[midifile time]measure]];
-
+    
     [sheetmusic clearStaffs];
     [player playJumpSection:from];
     [sheetmusic setNeedsDisplay];
     [sheetmsic1 setNeedsDisplay];
-
+    
     splitState = true;
     splitStart = from;
-
+    
 }
 
 //左右手模式
