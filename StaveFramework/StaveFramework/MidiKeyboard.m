@@ -151,6 +151,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 
 -(void)dealloc {
     
+    [self unSetupMIDI];
     if (outputPort)
     {
         MIDIPortDispose(outputPort);
