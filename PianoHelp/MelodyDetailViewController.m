@@ -254,8 +254,6 @@
     if (self.iPlayMode != 1) {
         [player playPrepareTempo];
         [self.sfCountdownView start:[player getSectionTime]];
-    }else{
-        [player playPrepareTempo];
     }
 }
 
@@ -288,8 +286,6 @@
         if (self.iPlayMode != 1) {
             [player playPrepareTempo];
             [self.sfCountdownView start:[player getSectionTime]];
-        }else{
-            [player playPrepareTempo];
         }
 
 
