@@ -250,8 +250,10 @@
     [sheetmusic setNeedsDisplay];
     [sheetmsic1 setNeedsDisplay];
     
-    [self.sfCountdownView start];
+//    [self.sfCountdownView start];
+
     [player playPrepareTempo];
+    [self.sfCountdownView start:[player getSectionTime]];
 }
 
 - (IBAction)btnPlay_click:(id)sender
@@ -278,8 +280,10 @@
         
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
-        [self.sfCountdownView start];
+//        [self.sfCountdownView start];
         [player playPrepareTempo];
+        [self.sfCountdownView start:[player getSectionTime]];
+
         [self hiddenMenuAndToolBar];
     }
 }
@@ -389,6 +393,7 @@
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     self.sfCountdownView.countdownFrom = 3;
     [self.sfCountdownView updateAppearance];
+
 }
 
 -(void)hiddenMenuAndToolBar

@@ -220,6 +220,7 @@
 //    NSLog(@"tempo is %i", options.tempo);
     /** modify by yizhq for change speed from 20 ~ 280 end */
     pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    sectionTime = pulsesPerMsec * [[midifile time] numerator];
     
     NSString *tempPath = NSTemporaryDirectory();
     tempSoundFile = [NSString stringWithFormat:@"%@/temp.mid", tempPath];
@@ -232,6 +233,10 @@
 }
 
 //add by yizhq start for prepare tempo
+- (double) getSectionTime{
+    return sectionTime;
+}
+
 - (void)playPrepareTempo{
     [midifile rightHandMute:&options andState:YES];
     [midifile leftHandMute:&options andState:YES];
@@ -866,9 +871,9 @@
         currentPulseTime = startPulseTime + msec * pulsesPerMsec;
 
         //modify currentPulseTime for tempo start
-        int intactTempoTime = currentPulseTime/(pulsesPerMsec*1000);
-        currentPulseTime = (intactTempoTime)*pulsesPerMsec*1000;
-        timeDifference = currentPulseTime - intactTempoTime*pulsesPerMsec*1000;
+        int intactTempoCnt = currentPulseTime/(pulsesPerMsec*1000);
+        currentPulseTime = (intactTempoCnt)*pulsesPerMsec*1000;
+        timeDifference = currentPulseTime - intactTempoCnt*pulsesPerMsec*1000;
         //modify currentPulseTime for tempo end
 //        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];

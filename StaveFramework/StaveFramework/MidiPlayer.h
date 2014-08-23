@@ -62,6 +62,7 @@ enum {
 //    UISound *sound;           /** The sound player */
     /* add by yizhq start */
     GDSoundEngine *sound;       /** The sound player */
+    double sectionTime;         /** The section millisec */
     /* add by yizhq end */
     struct timeval startTime;   /** Absolute time when music started playing */
     double startPulseTime;      /** Time (in pulses) when music started playing */
@@ -111,6 +112,7 @@ enum {
 -(void)replayByType;
 
 /** add by yizhq start */
+- (double) getSectionTime;
 -(void)playJumpSection:(int)startSectionNumber;
 -(void)clearJumpSection;
 -(void)setJSModel:(int)startSectionNum withEndSectionNum:(int)endSectionNum withTimeNumerator:(int)numerrator withTimeQuarter:(int)quarter withMeasure:(int)measure;

@@ -73,6 +73,19 @@
                                                  repeats:YES];
 }
 
+- (void) start:(double)sectionTime{
+    [self stop];
+    self.currentCountdownValue = self.countdownFrom;
+    self.countdownLabel.alpha = 1.0;
+    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
+    [self animate];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:sectionTime/4
+                                                  target:self
+                                                selector:@selector(animate)
+                                                userInfo:nil
+                                                 repeats:YES];
+}
+
 - (void) stop
 {
     if (self.timer && [self.timer isValid]) {

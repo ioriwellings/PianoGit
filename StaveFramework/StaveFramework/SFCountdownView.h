@@ -35,6 +35,7 @@ static const int kDefaultCountdownFrom = 5;
 - (id)initWithParentView:(UIView*)view;
 - (void) updateAppearance;
 - (void) start;
+- (void) start:(double)sectionTime;
 - (void) stop;
 
 @end
