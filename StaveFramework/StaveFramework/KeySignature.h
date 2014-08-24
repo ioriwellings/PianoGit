@@ -44,7 +44,7 @@
 -(void)createSymbols;
 -(Array*)getSymbols:(int)clef;
 -(int)getAccidentalForNote:(int)notenumber andMeasure:(int)measure;
--(WhiteNote*)getWhiteNote:(int)notenumber;
+-(WhiteNote*)getWhiteNote:(int)notenumber andMeasure:(int)measure;
 -(BOOL)equals:(KeySignature*)k;
 -(NSString*)description;
 -(int)notescale;
