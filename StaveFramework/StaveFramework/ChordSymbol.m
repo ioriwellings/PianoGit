@@ -1033,9 +1033,11 @@ static UIImage* chanyin = nil;
             return;
     }
     if (flag == 0) {
-        CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight + (NoteHeight*3-18)/2, str, 2);
+//        CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight + (NoteHeight*3-18)/2, str, 2);
+        CGContextShowTextAtPoint(context, NoteWidth/2, belongStaffHeight + (NoteHeight*3 - 24)/2, str, 2);
     }else{
-        CGContextShowTextAtPoint(context, NoteWidth/2, -(NoteHeight*3-18)/2, str, 2);
+//        CGContextShowTextAtPoint(context, NoteWidth/2, -(NoteHeight*3-18)/2, str, 2);
+        CGContextShowTextAtPoint(context, NoteWidth/2, -(NoteHeight*3 - 70)/2, str, 2);
     }
 
 }

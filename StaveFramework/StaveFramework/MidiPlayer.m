@@ -220,7 +220,16 @@
 //    NSLog(@"tempo is %i", options.tempo);
     /** modify by yizhq for change speed from 20 ~ 280 end */
     pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
-    sectionTime = pulsesPerMsec * [[midifile time] numerator];
+
+    int tmpQuarternote = 0;
+    if ([[midifile time]denominator] == 4) {
+        tmpQuarternote = [[midifile time]numerator];
+    }else if ([[midifile time]denominator] == 8){
+        tmpQuarternote = [[midifile time]numerator]/2;
+    }else if([[midifile time]denominator] == 2){
+        tmpQuarternote = [[midifile time]numerator];
+    }
+    sectionTime = pulsesPerMsec * tmpQuarternote;
     
     NSString *tempPath = NSTemporaryDirectory();
     tempSoundFile = [NSString stringWithFormat:@"%@/temp.mid", tempPath];
@@ -233,20 +242,81 @@
 }
 
 //add by yizhq start for prepare tempo
+- (void)createTempoMidiFile {
+    [tempoFile release];
+    tempoFile = nil;
+    options.tempo = (int)(60000 / doubleValue * 1000);
+    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    
+    int tmpQuarternote = 0;
+    if ([[midifile time]denominator] == 4) {
+        tmpQuarternote = [[midifile time]denominator]*2;
+            sectionTime = pulsesPerMsec * tmpQuarternote;
+    }else if ([[midifile time]denominator] == 8){
+        tmpQuarternote = [[midifile time]denominator];
+            sectionTime = pulsesPerMsec * tmpQuarternote;
+    }else if([[midifile time]denominator] == 2){
+        tmpQuarternote = [[midifile time]denominator];
+            sectionTime = pulsesPerMsec * tmpQuarternote*2;
+    }
+
+
+    NSString *tempPath = NSTemporaryDirectory();
+    tempoFile = [NSString stringWithFormat:@"%@/tempofile.mid", tempPath];
+    
+    tempoFile = [tempoFile retain];
+    if ([midifile changeSoundForTempo:&options oldMidi:midifile toFile:tempoFile secValue:timeDifference] == NO) {//modify by yizhq
+        /* Failed to write to tempSoundFile */
+        [tempoFile release]; tempoFile = nil;
+    }
+}
+
+- (void)deleteTempoFile {
+    if (tempoFile == nil) {
+        return;
+    }
+    const char *cfile = [tempoFile cStringUsingEncoding:NSUTF8StringEncoding];
+    unlink(cfile);
+    [tempoFile release];
+    tempoFile = nil;
+}
+
 - (double) getSectionTime{
+
     return sectionTime;
 }
 
-- (void)playPrepareTempo{
-    [midifile rightHandMute:&options andState:YES];
-    [midifile leftHandMute:&options andState:YES];
-    [self playPause];
+- (int)getCountDownCnt{
+    int tmpQuarternote = 0;
+    if ([[midifile time]denominator] == 4) {
+        tmpQuarternote = ceil([[midifile time]numerator]);
+    }else if ([[midifile time]denominator] == 8){
+        tmpQuarternote = ceil([[midifile time]numerator]);
+    }else if([[midifile time]denominator] == 2){
+        tmpQuarternote = ceil([[midifile time]numerator]);
+    }
+    return [[midifile time]numerator];
+}
+- (void)playPrepareTempo:(double)time{
+    prepareFlag = 1;
+    soundTempo = [[GDSoundEngine alloc] init];
+    [self createTempoMidiFile];
+    [soundTempo loadMIDIFile:tempoFile];
+    [soundTempo playPressed];
 }
 
 - (void)stopPrepareTempo{
-    [self stop];
-    [midifile rightHandMute:&options andState:NO];
-    [midifile leftHandMute:&options andState:NO];
+    prepareFlag = 0;
+        usleep(800*1000);
+    if (soundTempo != nil) {
+        [soundTempo stopPressed];
+        [soundTempo cleanup];
+        [soundTempo release];
+        soundTempo = nil;
+        [self deleteTempoFile];
+    }
+
+
 }
 //add by yizhq end
 
@@ -599,7 +669,7 @@
         
         
         playstate = initStop;
-        usleep(400 * 1000);
+            usleep(400 * 1000);
         [self doStop];
     }
     else if (playstate == paused) {
@@ -818,7 +888,6 @@
         /** modify by yizhq end */
             [timer invalidate]; timer = nil;
             
-            NSLog(@"ppppppppppppp!");
             if (pianoData != nil) {
                 [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }

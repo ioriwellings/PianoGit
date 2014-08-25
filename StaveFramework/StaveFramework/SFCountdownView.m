@@ -73,17 +73,18 @@
                                                  repeats:YES];
 }
 
-- (void) start:(double)sectionTime{
+- (void) start:(double)sectionTime withCnt:(int)countCnt{
     [self stop];
-    self.currentCountdownValue = self.countdownFrom;
+    self.currentCountdownValue = countCnt;
     self.countdownLabel.alpha = 1.0;
 //    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
     [self animate];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:sectionTime/4
+    NSLog(@"section time is %f", sectionTime/countCnt);
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:(sectionTime/countCnt)/1000
                                                   target:self
-                                                selector:@selector(animate)
+                                                selector:@selector(animate2)
                                                 userInfo:nil
-                                                 repeats:YES];
+                                                 repeats:NO];
 }
 
 - (void) stop
@@ -99,23 +100,47 @@
 - (void) animate
 {
     [UIView animateWithDuration:0.9 animations:^{
-    
         CGAffineTransform transform = CGAffineTransformMakeScale(2.5, 2.5);
+        self.countdownLabel.transform = transform;
+        self.countdownLabel.backgroundColor=[UIColor clearColor];
+        self.countdownLabel.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+        if (finished) {
+            
+            self.countdownLabel.transform = CGAffineTransformIdentity;
+            self.countdownLabel.alpha = 1.0;
+            self.countdownLabel.text = self.finishText;
+            
+            [self stop];
+            if (self.delegate) {
+                [self.delegate countdownFinished:self];
+                self.countdownLabel.text = nil;
+            }
+        }
+    }];
+}
+- (void) animate2
+{
+    [UIView animateWithDuration:0.9 animations:^{
+        
+        CGAffineTransform transform = CGAffineTransformMakeScale(2.5, 2.5);
+        self.countdownLabel.backgroundColor=[UIColor clearColor];
         self.countdownLabel.transform = transform;
         self.countdownLabel.alpha = 0;
         
     } completion:^(BOOL finished) {
         if (finished) {
             
-             if (self.currentCountdownValue == 0) {
-                 [self stop];
-                 if (self.delegate) {
-                     [self.delegate countdownFinished:self];
-                     self.countdownLabel.text = nil;
-                 }
-                 
-             } else {
-
+            if (self.currentCountdownValue == 0) {
+                [self stop];
+                if (self.delegate) {
+                    [self.delegate countdownFinished:self];
+                    self.countdownLabel.text = nil;
+                }
+                
+            } else {
+                
                 self.countdownLabel.transform = CGAffineTransformIdentity;
                 self.countdownLabel.alpha = 1.0;
                 
@@ -123,12 +148,13 @@
                 if (self.currentCountdownValue == 0) {
                     self.countdownLabel.text = self.finishText;
                 } else {
-//                    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.currentCountdownValue ];
+                    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.currentCountdownValue ];
                 }
             }
         }
     }];
 }
+
 
 #pragma mark - custom getters
 - (NSString*)finishText

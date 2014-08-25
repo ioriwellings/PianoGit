@@ -138,6 +138,7 @@
 - (IBAction)btnBack_click:(id)sender
 {
     [player stop];
+    [player stopPrepareTempo];
     [player disConnectMIDI];
     if([self.fixSearchDisplayDelegate respondsToSelector:@selector(fixSearchBarPosition)])
     {
@@ -252,8 +253,9 @@
     
     //    [self.sfCountdownView start];
     if (self.iPlayMode != 1) {
-        [player playPrepareTempo];
-        [self.sfCountdownView start:[player getSectionTime]];
+        [player playPrepareTempo:[player getSectionTime]];
+        [self.sfCountdownView start:[player getSectionTime] withCnt:[player getSectionTime]];
+
     }
 }
 
@@ -282,15 +284,11 @@
         option = 4;//播放
         [((UIButton*)sender) setSelected:true];
         //        [self.sfCountdownView start];
-        
-        
-        
-        [self.sfCountdownView start];
+
         if (self.iPlayMode != 1) {
-            [player playPrepareTempo];
-            [self.sfCountdownView start:[player getSectionTime]];
+            [player playPrepareTempo:[player getCountDownCnt]];
+            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
         }
-        
         
         [self hiddenMenuAndToolBar];
     }
@@ -399,7 +397,6 @@
     self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
     self.sfCountdownView.delegate = self;
     self.sfCountdownView.countdownColor = [UIColor blackColor];
-    self.sfCountdownView.countdownFrom = 3;
     [self.sfCountdownView updateAppearance];
     
 }
