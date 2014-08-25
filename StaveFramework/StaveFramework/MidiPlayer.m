@@ -1135,7 +1135,7 @@
         } else if (flag < 0) {
             number -= 12;
         }
-        
+        number +=1;
         NSLog(@"==========the tips symbol number is[%d]|", number);
         [midiHandler sendData:number andVelocity:velocity];
     }

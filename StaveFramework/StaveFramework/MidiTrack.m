@@ -638,6 +638,7 @@ int sortbynote(void* note1, void* note2) {
                 [newnote setNumber:[note number]];
                 [newnote setDuration:[time measure]-startTime%[time measure]];
                 [newnote setAccidFlag:[note accidFlag]];
+                [newnote setTrFlag:[note trFlag]];
                 
                 if ([tmpnotes count] > 0) {
                     MidiNote *tmpNote;
@@ -1072,7 +1073,7 @@ int sortbynote(void* note1, void* note2) {
                 }
             }
             
-            if ([note startTime] >= [cd6 starttime] && flag6 == -1) {
+            if ([note startTime] >= [cd6 starttime] && flag6 == -1 && cdcount6 < [controlList6 count]) {
                 flag6 = i;
             }
         }
@@ -1153,6 +1154,16 @@ int sortbynote(void* note1, void* note2) {
         }
         
         i++;
+    }
+    
+    if (flag6 >= 0) {
+        for (int j = flag6; j < [notes count]; j++) {
+            MidiNote* mn = [notes get:j];
+            MidiNote* mn1 = [notes get:flag6];
+            [mn setStarttime:[mn1 startTime]];
+            [mn setDuration:[mn1 duration]];
+            [mn setPaflag:1];
+        }
     }
 }
 

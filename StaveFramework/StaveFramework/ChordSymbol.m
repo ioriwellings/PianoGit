@@ -214,25 +214,14 @@ static UIImage* chanyin = nil;
         if ([midi accidFlag] != 100) {
             [key changeAccid:[midi number] andAccidFlag:[midi accidFlag]];
         }
-        note->whitenote = [key getWhiteNote:[midi number]];
-        note->duration = [time getNoteDuration:([midi endTime]-[midi startTime])];
-//        int measureCount = 0;
-//        if ([beatarray count] > 1) {
-//            for (int cc = 1; cc < [beatarray count]; cc++) {
-//                if ([midi startTime] < [[beatarray get:cc] starttime]) {
-//                    TimeSignature * t  = [[TimeSignature alloc] initWithNumerator:[[beatarray get:cc-1] numerator]
-//                                    andDenominator:[[beatarray get:cc-1] denominator]
-//                                    andQuarter:[time quarter]
-//                                    andTempo:[[beatarray get:cc-1] tempo]];
-//                    measureCount += [midi startTime]/[t measure];
-//                    [t release];
-//                }
-//            }
-//        } else {
-//            measureCount = [midi startTime]/[time measure];
-//        }
+        if ([midi startTime] > 18200) {
+            int b = 0;
+            b++;
+        }
         
         measurecount = [sheet getMeasureNum:[midi startTime] withTime:time];
+        note->whitenote = [key getWhiteNote:[midi number] andMeasure:measurecount];
+        note->duration = [time getNoteDuration:([midi endTime]-[midi startTime])];
         note->accid = [key getAccidentalForNote:[midi number] 
                                  andMeasure:measurecount];
         /* add by sunlie start */
@@ -1360,7 +1349,8 @@ static UIImage* chanyin = nil;
             int beat = [time quarter];
             if (dur == Eighth) {
                 /* 8th note chord must start on 1st or 3rd quarter note */
-                beat = [time quarter] * 2;
+//              beat = [time quarter] * 2;
+                beat = [time quarter];
             }
             else if (dur == ThirtySecond) {
                 /* 32nd note must start on an 8th beat */

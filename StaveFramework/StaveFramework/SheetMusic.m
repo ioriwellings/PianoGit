@@ -334,6 +334,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         [notegroup clear];
         [notegroup add:[midinotes get:i]];
         i++;
+        
         while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/12 && duration >= [time quarter]/16) {
             [notegroup add:[midinotes get:i]];
             i++;
@@ -344,10 +345,30 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             int count = 0;
             int j;
             MidiNote *mn, *mn1;
+            
+//            for (j=0; j<[notegroup count]; j++) {
+//                mn = [notegroup get:j];
+//                mn1 = [midinotes get:i];
+//                if ([mn endTime] > [mn1 startTime]+[time quarter]/8 && [mn endTime] > [mn1 endTime]-[time quarter]/8) {
+//                    MidiNote *n = [[MidiNote alloc]init];
+//                    [n setStarttime:[mn1 startTime]];
+//                    [n setChannel:[mn channel]];
+//                    [n setNumber:[mn number]];
+//                    [n setDuration:[mn endTime]-[n startTime]];
+//                    [mn setDuration:[n startTime]-[mn startTime]];
+//                    [n setAccidFlag:[mn accidFlag]];
+//                    [n setAddflag:1];
+//                    [midinotes add:n];
+//                    [midinotes sort:sortbytime];
+//                }
+//            }
+            
+            
+            
             for (j=0; j<[notegroup count]; j++) {
                 mn = [notegroup get:j];
                 mn1 = [midinotes get:i];
-                if ([mn endTime] <= [mn1 startTime]+[time quarter]/8 || [mn1 duration] <= [time quarter]/8) {
+                if ([mn endTime] <= [mn1 startTime]+[time quarter]/8 || [mn1 duration] <= [time quarter]/8 || [mn1 duration] >= [time quarter]) {
                     break;
                 }
                 count++;
@@ -368,8 +389,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 }
             }
         }
-        /* add by sunlie end */
         
+        /* add by sunlie end */
         
         /* add by sunlie start for tone */
         if (tonecount+1 < [tonearray count] && [[tonearray get:tonecount+1] starttime] <= [[notegroup get:0] startTime]) {
@@ -461,11 +482,12 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             } else  {
                 [chord setEightFlag:flag4];
             }
-            
+
             if ([chord eightFlag] > 0) {
+                int measurecount = [self getMeasureNum:[chord startTime] withTime:time];
                 for (int k = 0; k < [chord notedata_len]; k++) {
                     [chord notedata][k].number = [chord notedata][k].number-12;
-                    [chord notedata][k].whitenote = [key getWhiteNote:[chord notedata][k].number];
+                    [chord notedata][k].whitenote = [key getWhiteNote:[chord notedata][k].number andMeasure:measurecount];
                     if ([[chord accidsymbols] count] > 0) {
 //                        for (int ac = 0; ac<[[chord accidsymbols] count]; ac++) {
 //                            AccidSymbol *accid = [[chord accidsymbols] get:ac]
@@ -473,9 +495,10 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                     }
                 }
             } else if ([chord eightFlag] < 0) {
+                int measurecount = [self getMeasureNum:[chord startTime] withTime:time];
                 for (int k = 0; k < [chord notedata_len]; k++) {
                     [chord notedata][k].number = [chord notedata][k].number+12;
-                    [chord notedata][k].whitenote = [key getWhiteNote:[chord notedata][k].number];
+                    [chord notedata][k].whitenote = [key getWhiteNote:[chord notedata][k].number andMeasure:measurecount];
                 }
             }
         }

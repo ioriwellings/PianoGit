@@ -9,6 +9,8 @@
 #import "RegisterViewController.h"
 #import "MessageBox.h"
 #import "NSString+URLConnection.h"
+#import "AppDelegate.h"
+#import "Users.h"
 
 @interface RegisterViewController ()
 
@@ -43,15 +45,15 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)btnBack_click:(id)sender
 {
@@ -77,7 +79,7 @@
         [MessageBox showMsg:@"两次密码不一致，请重输入！"];
         return;
     }
-    NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"register.aspx"];
+    NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"register.ashx"];
     /*NSError *ER=nil;
      BOOL isConnectioned = [@"http://www.twitter.com" isReachableURLWithError:&ER];
      NSLog(@"%i", isConnectioned); ER = nil;
@@ -95,9 +97,38 @@
                            }
        completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
      {
-         if(error == nil && [data length] == 4)
+         if(error == nil && data)
          {
+             NSError *errJSON = nil;
+             id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&errJSON];
              
+             if(errJSON)
+             {
+                 [MessageBox showMsg: [NSString stringWithFormat:@"服务器错误：%@", errJSON]];
+             }
+             else
+             {
+                 if([[json objectForKey:@"success"] isEqualToString:@"NO"])
+                 {
+                     [MessageBox showMsg:[[json objectForKey:@"error" ] objectForKey:@"message"]];
+                 }
+                 else if([[json objectForKey:@"success"] isEqualToString:@"YES"])
+                 {
+                     NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+                     Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
+                     user.userName = self.txtUserName.text;
+                     user.pwd = self.txtPwd.text;
+                     NSError *error;
+                     if(![moc save:&error])
+                     {
+                         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                         [MessageBox showMsg:@"error to save!"];
+                         return;
+                     }
+                     [MessageBox showMsg:NSLocalizedString(@"Register Success", @"message used for inform login state.")];
+                     [self dismissViewControllerAnimated:YES completion:NULL];
+                 }
+             }
          }
          else if([error code] == kCFURLErrorTimedOut)
          {
@@ -109,7 +140,7 @@
              [MessageBox showMsg:NSLocalizedString(@"Login fail, Username or passowrd is invalid.", @"message used for notice login fail.")];
              return ;
          }
-         [MessageBox showMsg:NSLocalizedString(@"Register Success", @"message used for inform login state.")];
+         
      }];
 }
 @end
