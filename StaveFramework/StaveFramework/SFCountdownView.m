@@ -80,11 +80,11 @@
 //    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
     [self animate];
     NSLog(@"section time is %f", sectionTime/countCnt);
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:(sectionTime/countCnt)/1000
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:(sectionTime/countCnt)
                                                   target:self
-                                                selector:@selector(animate2)
+                                                selector:@selector(animate)
                                                 userInfo:nil
-                                                 repeats:NO];
+                                                 repeats:YES];
 }
 
 - (void) stop
@@ -107,10 +107,10 @@
         
     } completion:^(BOOL finished) {
         if (finished) {
-            
+            self.countdownLabel.text = self.finishText;
             self.countdownLabel.transform = CGAffineTransformIdentity;
             self.countdownLabel.alpha = 1.0;
-            self.countdownLabel.text = self.finishText;
+
             
             [self stop];
             if (self.delegate) {
