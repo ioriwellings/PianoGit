@@ -84,7 +84,7 @@
                                                   target:self
                                                 selector:@selector(animate)
                                                 userInfo:nil
-                                                 repeats:YES];
+                                                 repeats:NO];
 }
 
 - (void) stop
@@ -104,13 +104,9 @@
         self.countdownLabel.transform = transform;
         self.countdownLabel.backgroundColor=[UIColor clearColor];
         self.countdownLabel.alpha = 0;
-        
+        self.countdownLabel.text = self.finishText;
     } completion:^(BOOL finished) {
         if (finished) {
-            self.countdownLabel.text = self.finishText;
-            self.countdownLabel.transform = CGAffineTransformIdentity;
-            self.countdownLabel.alpha = 1.0;
-
             
             [self stop];
             if (self.delegate) {
