@@ -1,19 +1,19 @@
 //
-//  MorePopViewController.m
+//  DatePickerViewController.m
 //  PianoHelp
 //
-//  Created by Jobs on 6/21/14.
+//  Created by Jobs on 8/25/14.
 //  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
-#import "MorePopViewController.h"
-#import "UserInfo.h"
+#import "DatePickerViewController.h"
+#import "RegisterViewController.h"
 
-@interface MorePopViewController ()
+@interface DatePickerViewController ()
 
 @end
 
-@implementation MorePopViewController
+@implementation DatePickerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +28,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.labUser.text = [NSString stringWithFormat:@"( %@ )", [UserInfo sharedUserInfo].userName];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,11 +47,9 @@
 }
 */
 
-- (IBAction)btnQuit_onclick:(id)sender
+- (IBAction)datePicker_changed:(id)sender
 {
-    if([self.loginDelegate respondsToSelector:@selector(quit)])
-    {
-        [self.loginDelegate quit];
-    }
+    UIDatePicker *picker = (UIDatePicker*)sender;
+    [self.parentVC updateDateFromDatePicker:picker.date];
 }
 @end

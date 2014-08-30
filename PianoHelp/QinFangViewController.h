@@ -29,5 +29,5 @@
 
 -(void)scrollTableViewToMelody:(Melody*)melody type:(NSInteger)iSort;
 -(void)loadingData:(NSNotification *)notification;
-
+-(void)resetFetchedResultController;
 @end

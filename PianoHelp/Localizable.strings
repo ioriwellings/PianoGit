@@ -8,3 +8,6 @@
 
 "Infomation" = "提示信息";
 "Register Success" = "注册成功！";
+"The connection timed out." = "连接超时";
+"Login fail" = "登录失败，无效的用户名或密码";
+"Register fail, Unknow error." = "注册失败，服务器错误！";

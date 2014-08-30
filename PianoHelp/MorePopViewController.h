@@ -20,5 +20,6 @@
 }
 @property (nonatomic, weak) id<LoginViewControllerDelegate> loginDelegate;
 - (IBAction)btnQuit_onclick:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *labUser;
 
 @end

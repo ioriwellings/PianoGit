@@ -40,6 +40,12 @@ static UserInfo *_userInfo;
     return self;
 }
 
+-(void)logout
+{
+    self.userName = nil;
+    self.dbUser = nil;
+}
+
 //- (id)retain
 //{
 //    return self;
