@@ -59,19 +59,19 @@
 
 
 #pragma mark - start/stopping
-- (void) start
-{
-    [self stop];
-    self.currentCountdownValue = self.countdownFrom;
-    self.countdownLabel.alpha = 1.0;
-//    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
-    [self animate];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                  target:self
-                                                selector:@selector(animate)
-                                                userInfo:nil
-                                                 repeats:YES];
-}
+//- (void) start
+//{
+//    [self stop];
+//    self.currentCountdownValue = self.countdownFrom;
+//    self.countdownLabel.alpha = 1.0;
+////    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
+//    [self animate];
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+//                                                  target:self
+//                                                selector:@selector(animate)
+//                                                userInfo:nil
+//                                                 repeats:YES];
+//}
 
 - (void) start:(double)sectionTime withCnt:(int)countCnt{
     [self stop];
