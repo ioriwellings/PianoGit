@@ -292,6 +292,7 @@
     }
     return [[midifile time]numerator];
 }
+
 - (void)playPrepareTempo:(double)time{
     prepareFlag = 1;
     soundTempo = [[GDSoundEngine alloc] init];
@@ -302,7 +303,6 @@
 
 - (void)stopPrepareTempo{
     prepareFlag = 0;
-//    usleep(400*1000);
     if (soundTempo != nil) {
         [soundTempo stopPressed];
         [soundTempo cleanup];

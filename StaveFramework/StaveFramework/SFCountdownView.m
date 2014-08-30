@@ -97,7 +97,6 @@
 }
 
 #pragma mark - animation stuff
-
 - (void) animate:(double)timeP
 {
     [UIView animateWithDuration:timeP animations:^{
@@ -106,7 +105,6 @@
         self.countdownLabel.backgroundColor=[UIColor clearColor];
         self.countdownLabel.alpha = 0;
         self.countdownLabel.text = self.finishText;
-        
     } completion:^(BOOL finished) {
         if (finished) {
             
@@ -118,6 +116,7 @@
         }
     }];
 }
+
 - (void) animate2
 {
     [UIView animateWithDuration:0.9 animations:^{

@@ -1725,11 +1725,13 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 - (BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference{
     BOOL ret = NO;
 
-    int leftMuteState,rightMuteState;
+    int leftMuteState,rightMuteState, tmpTempoMuteState;
     leftMuteState = [options->mute get:0];
     rightMuteState = [options->mute get:1];
     [options->mute set:-1 index:0];
     [options->mute set:-1 index:1];
+    tmpTempoMuteState = tempoMuteState;
+    tempoMuteState = 0;
     
     Array* newevents = events;
     if (options != NULL) {
@@ -1745,7 +1747,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     
     [options->mute set:leftMuteState index:0];
     [options->mute set:rightMuteState index:1];
-    
+    tempoMuteState = tmpTempoMuteState;
     return ret;
 }
 /** modify by yizhq end */
