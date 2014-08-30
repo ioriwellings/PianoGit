@@ -191,7 +191,7 @@
     NSMutableDictionary *dictLast = [dictConf objectForKey:@"LastUser"];
     
     
-    if(dictLast && (self.txtUserName.text == nil || [self.txtUserName.text isEqualToString:@""]))
+    if(dictLast && (self.txtUserName.text == nil || [[self.txtUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]))
     {
         self.txtUserName.text = [dictLast objectForKey:@"userName"];
     }
@@ -199,7 +199,7 @@
     NSDictionary *autoLogin = [dictConf objectForKey:@"AutoLogin"];
     if(autoLogin)
     {
-        if([self.txtUserName.text isEqualToString:(NSString*)[autoLogin objectForKey:@"userName"]])
+        if([[self.txtUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ] isEqualToString:(NSString*)[autoLogin objectForKey:@"userName"]])
         {
             [self.chkAutoLogin setSelected:YES];
         }
