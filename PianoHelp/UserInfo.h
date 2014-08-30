@@ -17,4 +17,6 @@
 @property(nonatomic, strong) Users *dbUser;
 
 + (UserInfo*)sharedUserInfo;
+
+-(void)logout;
 @end

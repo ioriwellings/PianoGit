@@ -1460,7 +1460,7 @@
                                             <action selector="btnLogin_onclick:" destination="KLg-8X-Svs" eventType="touchUpInside" id="ToD-qA-B85"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
                                         <rect key="frame" x="98" y="136" width="248" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1506,6 +1506,18 @@
                                             <action selector="chkAutoLogin_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="aEX-7f-mKf"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jn9-Hq-vPB">
+                                        <rect key="frame" x="297" y="336" width="90" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="游客登录">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnAnonymity_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="4PG-Dv-xbd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1523,6 +1535,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="chkAutoLogin" destination="L4A-nh-5cO" id="01Y-Bw-NTt"/>
+                        <outlet property="chkRemember" destination="5JT-eJ-sfb" id="5V8-BM-Kcr"/>
                         <outlet property="loginContainerView" destination="B03-MB-aA0" id="fgA-l5-cfI"/>
                         <outlet property="txtPassword" destination="rmb-ss-T1N" id="mKh-xg-CcC"/>
                         <outlet property="txtUserName" destination="nzJ-8G-0yq" id="NiH-WJ-oPY"/>
@@ -1540,7 +1554,7 @@
                         <viewControllerLayoutGuide type="top" id="eFs-cO-ceh"/>
                         <viewControllerLayoutGuide type="bottom" id="nUy-Z1-R5i"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mJc-R3-zOZ">
+                    <view key="view" contentMode="scaleToFill" id="mJc-R3-zOZ" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -1725,6 +1739,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <connections>
+                            <action selector="view_touchDown:" destination="HkI-Yi-ems" eventType="touchDown" id="DMp-cd-IFL"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

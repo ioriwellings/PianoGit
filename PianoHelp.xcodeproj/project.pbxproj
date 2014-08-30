@@ -217,6 +217,11 @@
 		89D61FD21927965400355EF0 /* APLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D61FD11927965400355EF0 /* APLProduct.m */; };
 		89E814AD193AD6AB003CD7B9 /* peilianyinerjikuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E814AC193AD6AB003CD7B9 /* peilianyinerjikuang.png */; };
 		89F5B9BC193D5DFA006D40F9 /* SectionPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F5B9BB193D5DFA006D40F9 /* SectionPopViewController.m */; };
+		89F5D18619ABFD74005D5D10 /* zidongdengru_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F5D18419ABFD74005D5D10 /* zidongdengru_selected@2x.png */; };
+		89F5D18719ABFD74005D5D10 /* zidongdengru_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F5D18519ABFD74005D5D10 /* zidongdengru_selected.png */; };
+		89F5D18C19ABFE2C005D5D10 /* jizhumima_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F5D18A19ABFE2C005D5D10 /* jizhumima_selected.png */; };
+		89F5D18D19ABFE2C005D5D10 /* jizhumima_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F5D18B19ABFE2C005D5D10 /* jizhumima_selected@2x.png */; };
+		89F5D19019AC186A005D5D10 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F5D18F19AC186A005D5D10 /* DatePickerViewController.m */; };
 		89F5FB6219527DE900011C3A /* shopBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F5FB6019527DE900011C3A /* shopBg.png */; };
 		89F5FB6319527DE900011C3A /* shopItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F5FB6119527DE900011C3A /* shopItem.png */; };
 		89F66B37198884EE00EF50E2 /* fenyedakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F66B23198884EE00EF50E2 /* fenyedakuang.png */; };
@@ -588,6 +593,12 @@
 		89E814AC193AD6AB003CD7B9 /* peilianyinerjikuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peilianyinerjikuang.png; sourceTree = "<group>"; };
 		89F5B9BA193D5DFA006D40F9 /* SectionPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionPopViewController.h; sourceTree = "<group>"; };
 		89F5B9BB193D5DFA006D40F9 /* SectionPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionPopViewController.m; sourceTree = "<group>"; };
+		89F5D18419ABFD74005D5D10 /* zidongdengru_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zidongdengru_selected@2x.png"; sourceTree = "<group>"; };
+		89F5D18519ABFD74005D5D10 /* zidongdengru_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zidongdengru_selected.png; sourceTree = "<group>"; };
+		89F5D18A19ABFE2C005D5D10 /* jizhumima_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jizhumima_selected.png; sourceTree = "<group>"; };
+		89F5D18B19ABFE2C005D5D10 /* jizhumima_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jizhumima_selected@2x.png"; sourceTree = "<group>"; };
+		89F5D18E19AC186A005D5D10 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		89F5D18F19AC186A005D5D10 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		89F5FB6019527DE900011C3A /* shopBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopBg.png; sourceTree = "<group>"; };
 		89F5FB6119527DE900011C3A /* shopItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopItem.png; sourceTree = "<group>"; };
 		89F66B23198884EE00EF50E2 /* fenyedakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fenyedakuang.png; sourceTree = "<group>"; };
@@ -779,6 +790,8 @@
 				890093CF1951085B001F33F4 /* LoginViewController.m */,
 				891EF86A19A6CA780038F864 /* RegisterViewController.h */,
 				891EF86B19A6CA780038F864 /* RegisterViewController.m */,
+				89F5D18E19AC186A005D5D10 /* DatePickerViewController.h */,
+				89F5D18F19AC186A005D5D10 /* DatePickerViewController.m */,
 				8987A5631925B54600DEE6AE /* BaseViewController.h */,
 				8987A5641925B54600DEE6AE /* BaseViewController.m */,
 				8907102B1921A03900BB9E2F /* RootViewController.h */,
@@ -1095,6 +1108,8 @@
 				89F7049A19A5851E0035621C /* gou@2x.png */,
 				89F7049B19A5851E0035621C /* jizhumima.png */,
 				89F7049C19A5851E0035621C /* jizhumima@2x.png */,
+				89F5D18A19ABFE2C005D5D10 /* jizhumima_selected.png */,
+				89F5D18B19ABFE2C005D5D10 /* jizhumima_selected@2x.png */,
 				89F7049D19A5851E0035621C /* login_bg.png */,
 				89F7049E19A5851E0035621C /* login_bg@2x.png */,
 				89F7049F19A5851E0035621C /* mima.png */,
@@ -1117,6 +1132,8 @@
 				89F704B019A5851E0035621C /* zhuceditu@2x.png */,
 				89F704B119A5851E0035621C /* zidongdengru.png */,
 				89F704B219A5851E0035621C /* zidongdengru@2x.png */,
+				89F5D18419ABFD74005D5D10 /* zidongdengru_selected@2x.png */,
+				89F5D18519ABFD74005D5D10 /* zidongdengru_selected.png */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1421,9 +1438,11 @@
 				89F66B43198884EE00EF50E2 /* xiaifenye.png in Resources */,
 				19313851196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid in Resources */,
 				8989B11E198B2032005222C2 /* xiai@2x.png in Resources */,
+				89F5D18719ABFD74005D5D10 /* zidongdengru_selected.png in Resources */,
 				890C39DC1983445300206740 /* zuoyuoshou-01@2x.png in Resources */,
 				8964EBF1194539CC00DBCED9 /* Easy_Songs__Jingle_Bells.mid in Resources */,
 				890C39B719833B4E00206740 /* kaishi-01@2x.png in Resources */,
+				89F5D18D19ABFE2C005D5D10 /* jizhumima_selected@2x.png in Resources */,
 				893742EE197F3D1B007E63E5 /* yinliang@x2.png in Resources */,
 				8937431A197F3D77007E63E5 /* xuanzhonganniu.png in Resources */,
 				89F66B5A19888E6D00EF50E2 /* gengduo@2x.png in Resources */,
@@ -1450,6 +1469,7 @@
 				8994D15D194BCEDA0016F806 /* 13.599-054.mid in Resources */,
 				BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */,
 				89582DB315D4A91A008DEB3C /* gentanmoshixuanzhong@2x.png in Resources */,
+				89F5D18619ABFD74005D5D10 /* zidongdengru_selected@2x.png in Resources */,
 				8989B107198B2032005222C2 /* renwu.png in Resources */,
 				BA1079A71967FE4C0056F626 /* shunhuiyin.png in Resources */,
 				890C39CF1983436200206740 /* tuichu-01.png in Resources */,
@@ -1568,6 +1588,7 @@
 				89F66B6E1988953200EF50E2 /* weixuantanzou@2x.png in Resources */,
 				893742E9197F3D1B007E63E5 /* xuanzequan.png in Resources */,
 				8989B10D198B2032005222C2 /* shuji.png in Resources */,
+				89F5D18C19ABFE2C005D5D10 /* jizhumima_selected.png in Resources */,
 				8989B10B198B2032005222C2 /* shifanqupu.png in Resources */,
 				890C39BF19833BF300206740 /* biansu-01@2x.png in Resources */,
 				8989B119198B2032005222C2 /* weigoumai@2x.png in Resources */,
@@ -1656,6 +1677,7 @@
 				89F93D60199C44ED0020E206 /* Users.m in Sources */,
 				89F93D5D199C44ED0020E206 /* MelodyFavorite.m in Sources */,
 				8987A5621925B12600DEE6AE /* ShowViewController.m in Sources */,
+				89F5D19019AC186A005D5D10 /* DatePickerViewController.m in Sources */,
 				89D61FD21927965400355EF0 /* APLProduct.m in Sources */,
 				89FD865C193966F30021216A /* FavoriteTableViewCell.m in Sources */,
 				89257490192E40450049EF14 /* MelodyCategoryCollectioViewCell.m in Sources */,

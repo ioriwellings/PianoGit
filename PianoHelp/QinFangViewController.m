@@ -50,6 +50,14 @@
     
 }
 
+-(void)resetFetchedResultController
+{
+    self.fetchedResultsController0 = nil;
+    self.fetchedResultsController1 = nil;
+    self.fetchedResultsController2 = nil;
+    [self btnScope_click:self.btnAll]; //切换默认的tab，下次进来会强制跳到任务里，避免数据被缓存
+}
+
 -(void)loadingData:(NSNotification *)notification
 {
     switch(self.type )
@@ -382,7 +390,7 @@
     
     if(self.btnScope.tag != 0)
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sort = 2 or sort = 3"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@ AND (sort = 2 or sort = 3) ", [UserInfo sharedUserInfo].userName];
         [fetchRequest setPredicate:predicate];
     }
     
@@ -419,7 +427,7 @@
     
     if(self.btnScope.tag != 0)
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sort = 1 or sort = 3"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@ AND (sort = 1 or sort = 3)" , [UserInfo sharedUserInfo].userName];
         [fetchRequest setPredicate:predicate];
     }
     
@@ -536,6 +544,8 @@
     {
         return;
     }
+    
+    if([UserInfo sharedUserInfo].userName == nil) return;
     
     
     if(self.btnScope.tag == 0)//all

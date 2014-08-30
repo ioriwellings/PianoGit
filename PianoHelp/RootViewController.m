@@ -13,6 +13,7 @@
 #import "QinFangViewController.h"
 #import "Melody.h"
 #import "WuXianPuViewController.h"
+#import "UserInfo.h"
 
 @interface RootViewController ()
 {
@@ -103,7 +104,14 @@
     loginVC.view.alpha=0;
     if(loginVC == nil)
         loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    loginVC.isSecondtRun = YES;
     [self presentViewController:loginVC animated:NO completion:NULL];
+    
+    [[UserInfo sharedUserInfo] logout]; //must first run ,
+    
+    [qinFangVC resetFetchedResultController];
+
+    
     [UIView animateWithDuration:0.3 animations:^{
         
         //[self.view addSubview:loginVC.view];
@@ -204,6 +212,7 @@
 -(void)removeLoginView:(NSNotification *)notification
 {
     loginVC = nil;
+    [self buttonToolbar_click:self.btnQinFang];
 }
 
 @end
