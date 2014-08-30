@@ -1,0 +1,5 @@
+d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\bin\PianoWeb.dll
+d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\bin\PianoWeb.pdb
+d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\obj\Debug\ResolveAssemblyReference.cache
+d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
+d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb
