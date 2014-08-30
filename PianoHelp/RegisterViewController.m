@@ -61,6 +61,12 @@
     }];
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.scrollview.contentSize = CGSizeMake(1024, 728);
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -126,7 +132,9 @@
      isConnectioned = [@"http://192.168.0.4:8087/MateService/TagData.ashx?strMinDate=2012-01-01&strMaxDate=2013-02-01" isReachableURLWithError:&ER];
      NSLog(@"%i", isConnectioned); ER = nil;
      isConnectioned = [@"http://www.twitter.com" isURLConnectionOK:ER];*/
-    
+    if(self.txtMail.text == nil) self.txtMail.text = [NSString string];
+    if(self.txtAddr.text == nil) self.txtAddr.text = [NSString string];
+    if(self.txtBirthday.text == nil) self.txtBirthday.text = [NSString string];
     [strURL postToServer:strURL
                bodyPairs:@{
                            @"userName": [self.txtUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]],
@@ -213,7 +221,14 @@
 #pragma mark - UITextFieldDelegate Protocol -
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    if(textField == self.txtBirthday)
+        [textField resignFirstResponder];
+    if(textField == self.txtValidCode)
+    {
+        CGRect frame = self.txtValidCode.frame;
+        frame.size.height += 220;
+        [self.scrollview scrollRectToVisible:frame animated:YES];
+    }
 }
 
 #pragma mark - Upate date -
@@ -259,7 +274,7 @@
 	
 	CGRect frame = self.scrollview.frame;
 	frame.size.height = frame.size.height - keyboardRect.size.height;
-	//self.scrollview.frame = frame;
+	self.scrollview.frame = frame;
     [UIView commitAnimations];
     
 	
@@ -291,7 +306,7 @@
     
 	CGRect frame = self.scrollview.frame;
 	frame.size.height = frame.size.height + keyboardRect.size.height;
-	//self.scrollview.frame = frame;
+	self.scrollview.frame = frame;
 	[UIView commitAnimations];
 }
 
