@@ -20,5 +20,5 @@
 
 #define kBackToQinfangNotification @"backfromNotification"
 #define kLoginSuccessNotification @"loginNotification"
-//#define HTTPSERVERSADDRESS @"http://www.pcbft.com"
-#define HTTPSERVERSADDRESS @"http://192.168.1.4"
+#define HTTPSERVERSADDRESS @"http://www.pcbft.com"
+//#define HTTPSERVERSADDRESS @"http://192.168.1.4"
