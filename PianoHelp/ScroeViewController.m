@@ -7,6 +7,11 @@
 //
 
 #import "ScroeViewController.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "WebService.h"
+#import "GTMBase64.h"
+
 
 @interface ScroeViewController ()
 
@@ -65,6 +70,42 @@
 
 - (IBAction)btnShare_onclick:(id)sender
 {
+    
+    NSString *filename = [[NSBundle mainBundle] pathForResource:@"0000"
+                                                         ofType:@"mid"];
+    
+    
+    NSData *data = [NSData dataWithContentsOfFile: filename];
+    data = [GTMBase64 encodeData:data];
+    
+    
+    NSString *string = [[NSString alloc]
+                        initWithData:data
+                        encoding:NSUTF8StringEncoding];
+    
+    
+    
+    
+    //创建WebService的调用参数
+    NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
+                               @"midiFileName", @"0000.mid", @"fileData", string,
+                               @"userName",     @"zyw", @"type", @"教材",
+                               @"scroe",     @"100", nil];
+    
+    
+    
+    //调用WebService，获取响应
+    NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://192.168.1.102:9000/"
+                                                     webServiceFile:@"webservice1.asmx"
+                                                       xmlNameSpace:@"http://tempuri.org/"
+                                                     webServiceName:@"UpLoadFile"
+                                                       wsParameters:wsParas];
+    
+    //检查响应中是否包含错误
+    NSString* errMsg = [WebService checkResponseError:theResponse];
+    NSLog(@"the error message is %@", errMsg);
+    NSLog(@"the result is %@", theResponse);
+    
 }
 
 - (IBAction)btnSaveRecord_onclick:(id)sender
