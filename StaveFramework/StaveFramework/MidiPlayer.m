@@ -248,18 +248,13 @@
     options.tempo = (int)(60000 / doubleValue * 1000);
     pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
     
-    int tmpQuarternote = 0;
     if ([[midifile time]denominator] == 4) {
-        tmpQuarternote = [[midifile time]denominator]*2;
-            sectionTime = pulsesPerMsec * tmpQuarternote;
+        sectionTime = pulsesPerMsec * ([[midifile time] numerator] + 1);
     }else if ([[midifile time]denominator] == 8){
-        tmpQuarternote = [[midifile time]denominator];
-            sectionTime = pulsesPerMsec * tmpQuarternote;
+        sectionTime = pulsesPerMsec * ([[midifile time] numerator] + 1);
     }else if([[midifile time]denominator] == 2){
-        tmpQuarternote = [[midifile time]denominator];
-            sectionTime = pulsesPerMsec * tmpQuarternote*2;
+        sectionTime = pulsesPerMsec * ([[midifile time] numerator] + 1);
     }
-
 
     NSString *tempPath = NSTemporaryDirectory();
     tempoFile = [NSString stringWithFormat:@"%@/tempofile.mid", tempPath];
@@ -307,7 +302,7 @@
 
 - (void)stopPrepareTempo{
     prepareFlag = 0;
-        usleep(800*1000);
+//    usleep(400*1000);
     if (soundTempo != nil) {
         [soundTempo stopPressed];
         [soundTempo cleanup];
@@ -315,8 +310,6 @@
         soundTempo = nil;
         [self deleteTempoFile];
     }
-
-
 }
 //add by yizhq end
 

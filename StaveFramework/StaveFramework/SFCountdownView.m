@@ -78,13 +78,14 @@
     self.currentCountdownValue = countCnt;
     self.countdownLabel.alpha = 1.0;
 //    self.countdownLabel.text = [NSString stringWithFormat:@"%d", self.countdownFrom];
-    [self animate];
-    NSLog(@"section time is %f", sectionTime/countCnt);
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:(sectionTime/countCnt)
-                                                  target:self
-                                                selector:@selector(animate)
-                                                userInfo:nil
-                                                 repeats:NO];
+//    [self animate];
+//    NSLog(@"section time is %f", (sectionTime/countCnt)/1000);
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:(sectionTime/countCnt)/1000
+//                                                  target:self
+//                                                selector:@selector(animate)
+//                                                userInfo:nil
+//                                                 repeats:NO];
+    [self animate:(sectionTime/countCnt)/1000];
 }
 
 - (void) stop
@@ -97,14 +98,15 @@
 
 #pragma mark - animation stuff
 
-- (void) animate
+- (void) animate:(double)timeP
 {
-    [UIView animateWithDuration:0.9 animations:^{
+    [UIView animateWithDuration:timeP animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(2.5, 2.5);
         self.countdownLabel.transform = transform;
         self.countdownLabel.backgroundColor=[UIColor clearColor];
         self.countdownLabel.alpha = 0;
         self.countdownLabel.text = self.finishText;
+        
     } completion:^(BOOL finished) {
         if (finished) {
             
