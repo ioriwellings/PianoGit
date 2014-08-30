@@ -685,6 +685,28 @@
 		89FAE3701989C714000B4F7F /* qumuxuanzhong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qumuxuanzhong@2x.png"; sourceTree = "<group>"; };
 		89FD865A193966F30021216A /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
 		89FD865B193966F30021216A /* FavoriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewCell.m; sourceTree = "<group>"; };
+		B135CFA119B1781500EA8BF7 /* PianoWeb.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoWeb.dll; sourceTree = "<group>"; };
+		B135CFA219B1781500EA8BF7 /* PianoWeb.pdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoWeb.pdb; sourceTree = "<group>"; };
+		B135CFA319B1781500EA8BF7 /* Default.aspx */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.aspx; sourceTree = "<group>"; };
+		B135CFA419B1781500EA8BF7 /* Default.aspx.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.aspx.cs; sourceTree = "<group>"; };
+		B135CFA519B1781500EA8BF7 /* Default.aspx.designer.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = Default.aspx.designer.cs; sourceTree = "<group>"; };
+		B135CFA819B1781500EA8BF7 /* PianoWeb.csproj.FileListAbsolute.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PianoWeb.csproj.FileListAbsolute.txt; sourceTree = "<group>"; };
+		B135CFA919B1781500EA8BF7 /* PianoWeb.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoWeb.dll; sourceTree = "<group>"; };
+		B135CFAA19B1781500EA8BF7 /* PianoWeb.pdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoWeb.pdb; sourceTree = "<group>"; };
+		B135CFAC19B1781500EA8BF7 /* Model1.Designer.cs.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model1.Designer.cs.dll; sourceTree = "<group>"; };
+		B135CFAD19B1781500EA8BF7 /* PianoDataClasses.designer.cs.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoDataClasses.designer.cs.dll; sourceTree = "<group>"; };
+		B135CFAE19B1781500EA8BF7 /* PianoDataClasses.dbml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PianoDataClasses.dbml; sourceTree = "<group>"; };
+		B135CFAF19B1781500EA8BF7 /* PianoDataClasses.dbml.layout */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PianoDataClasses.dbml.layout; sourceTree = "<group>"; };
+		B135CFB019B1781500EA8BF7 /* PianoDataClasses.designer.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = PianoDataClasses.designer.cs; sourceTree = "<group>"; };
+		B135CFB119B1781500EA8BF7 /* PianoWeb.csproj */ = {isa = PBXFileReference; lastKnownFileType = text; path = PianoWeb.csproj; sourceTree = "<group>"; };
+		B135CFB219B1781500EA8BF7 /* PianoWeb.csproj.user */ = {isa = PBXFileReference; lastKnownFileType = text; path = PianoWeb.csproj.user; sourceTree = "<group>"; };
+		B135CFB419B1781500EA8BF7 /* AssemblyInfo.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = AssemblyInfo.cs; sourceTree = "<group>"; };
+		B135CFB519B1781500EA8BF7 /* Register.ashx */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.ashx; sourceTree = "<group>"; };
+		B135CFB619B1781500EA8BF7 /* Register.ashx.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.ashx.cs; sourceTree = "<group>"; };
+		B135CFB719B1781500EA8BF7 /* VerifyCode.aspx */ = {isa = PBXFileReference; lastKnownFileType = text; path = VerifyCode.aspx; sourceTree = "<group>"; };
+		B135CFB819B1781500EA8BF7 /* Web.config */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Web.config; sourceTree = "<group>"; };
+		B135CFB919B1781500EA8BF7 /* PianoWeb.sln */ = {isa = PBXFileReference; lastKnownFileType = text; path = PianoWeb.sln; sourceTree = "<group>"; };
+		B135CFBA19B1781500EA8BF7 /* PianoWeb.suo */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoWeb.suo; sourceTree = "<group>"; };
 		B163DA1819557631008DBEC7 /* HandPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPopViewController.h; sourceTree = "<group>"; };
 		B163DA1919557631008DBEC7 /* HandPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPopViewController.m; sourceTree = "<group>"; };
 		B163DA1D19557653008DBEC7 /* SoundPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPopViewController.h; sourceTree = "<group>"; };
@@ -968,6 +990,7 @@
 		8964EBB0194535B200DBCED9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B135CF9D19B1781500EA8BF7 /* PianoWeb */,
 				BA163CF419A7812D00857C4E /* temp */,
 				890093C719510603001F33F4 /* shopBg.jpg */,
 				890093C819510603001F33F4 /* spaceBg.jpg */,
@@ -1271,6 +1294,91 @@
 				89582DAF15D4A91A008DEB3C /* shipumoshixuanzhong@2x.png */,
 			);
 			path = qinfang;
+			sourceTree = "<group>";
+		};
+		B135CF9D19B1781500EA8BF7 /* PianoWeb */ = {
+			isa = PBXGroup;
+			children = (
+				B135CF9E19B1781500EA8BF7 /* PianoWeb */,
+				B135CFB919B1781500EA8BF7 /* PianoWeb.sln */,
+				B135CFBA19B1781500EA8BF7 /* PianoWeb.suo */,
+			);
+			path = PianoWeb;
+			sourceTree = "<group>";
+		};
+		B135CF9E19B1781500EA8BF7 /* PianoWeb */ = {
+			isa = PBXGroup;
+			children = (
+				B135CF9F19B1781500EA8BF7 /* App_Data */,
+				B135CFA019B1781500EA8BF7 /* bin */,
+				B135CFA319B1781500EA8BF7 /* Default.aspx */,
+				B135CFA419B1781500EA8BF7 /* Default.aspx.cs */,
+				B135CFA519B1781500EA8BF7 /* Default.aspx.designer.cs */,
+				B135CFA619B1781500EA8BF7 /* obj */,
+				B135CFAE19B1781500EA8BF7 /* PianoDataClasses.dbml */,
+				B135CFAF19B1781500EA8BF7 /* PianoDataClasses.dbml.layout */,
+				B135CFB019B1781500EA8BF7 /* PianoDataClasses.designer.cs */,
+				B135CFB119B1781500EA8BF7 /* PianoWeb.csproj */,
+				B135CFB219B1781500EA8BF7 /* PianoWeb.csproj.user */,
+				B135CFB319B1781500EA8BF7 /* Properties */,
+				B135CFB519B1781500EA8BF7 /* Register.ashx */,
+				B135CFB619B1781500EA8BF7 /* Register.ashx.cs */,
+				B135CFB719B1781500EA8BF7 /* VerifyCode.aspx */,
+				B135CFB819B1781500EA8BF7 /* Web.config */,
+			);
+			path = PianoWeb;
+			sourceTree = "<group>";
+		};
+		B135CF9F19B1781500EA8BF7 /* App_Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App_Data;
+			sourceTree = "<group>";
+		};
+		B135CFA019B1781500EA8BF7 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				B135CFA119B1781500EA8BF7 /* PianoWeb.dll */,
+				B135CFA219B1781500EA8BF7 /* PianoWeb.pdb */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		B135CFA619B1781500EA8BF7 /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				B135CFA719B1781500EA8BF7 /* Debug */,
+			);
+			path = obj;
+			sourceTree = "<group>";
+		};
+		B135CFA719B1781500EA8BF7 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				B135CFA819B1781500EA8BF7 /* PianoWeb.csproj.FileListAbsolute.txt */,
+				B135CFA919B1781500EA8BF7 /* PianoWeb.dll */,
+				B135CFAA19B1781500EA8BF7 /* PianoWeb.pdb */,
+				B135CFAB19B1781500EA8BF7 /* TempPE */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		B135CFAB19B1781500EA8BF7 /* TempPE */ = {
+			isa = PBXGroup;
+			children = (
+				B135CFAC19B1781500EA8BF7 /* Model1.Designer.cs.dll */,
+				B135CFAD19B1781500EA8BF7 /* PianoDataClasses.designer.cs.dll */,
+			);
+			path = TempPE;
+			sourceTree = "<group>";
+		};
+		B135CFB319B1781500EA8BF7 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				B135CFB419B1781500EA8BF7 /* AssemblyInfo.cs */,
+			);
+			path = Properties;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
