@@ -1378,7 +1378,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
  *  Return true on success, and false on error.
  */
 +(BOOL)writeToFile:(NSString*)filename withEvents:(Array*)eventlists
-           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference{//modify by yizhq
+           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference withFileType:(int)type{//modify by yizhq
     u_char buf[4096];
     const char *cfilename;
     int file, error;
@@ -1398,96 +1398,96 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     buf[1] = (u_char)(trackmode & 0xFF);
     dowrite(file, buf, 2, &error);
     buf[0] = 0;
-    buf[1] = (u_char)[eventlists count]+ 1;//modify by yizhq
+    buf[1] = (u_char)[eventlists count] + 1;//modify by yizhq
     dowrite(file, buf, 2, &error);
     buf[0] = (u_char)(quarter >> 8);
     buf[1] = (u_char)(quarter & 0xFF);
     dowrite(file, buf, 2, &error);
 
-    for (int tracknum = 0; tracknum < [eventlists count]; tracknum++) {
-        Array *events = [eventlists get:tracknum];
-
-        /* Write the MTrk header and track length */
-        dowrite(file, (u_char*)"MTrk", 4, &error);
-        int len = [MidiFile getTrackLength:events];
-        intToBytes(len, buf, 0);
-        dowrite(file, buf, 4, &error);
-
-        for (int i = 0; i < [events count]; i++) {
-            MidiEvent *mevent = [events get:i];
-            int varlen = varlenToBytes([mevent deltaTime], buf, 0);
-            dowrite(file, buf, varlen, &error);
-
-            if ([mevent eventFlag] == SysexEvent1 ||
-                [mevent eventFlag] == SysexEvent2 ||
-                [mevent eventFlag] == MetaEvent) {
-                buf[0] = [mevent eventFlag];
-            }
-            else {
-                buf[0] = (u_char)([mevent eventFlag] + [mevent channel]);
-            }
-            dowrite(file, buf, 1, &error);
-
-            if ([mevent eventFlag] == EventNoteOn) {
-                buf[0] = [mevent notenumber];
-                buf[1] = [mevent velocity];
-                dowrite(file, buf, 2, &error);
-            }
-            else if ([mevent eventFlag] == EventNoteOff) {
-                buf[0] = [mevent notenumber];
-                buf[1] = [mevent velocity];
-                dowrite(file, buf, 2, &error);
-            }
-            else if ([mevent eventFlag] == EventKeyPressure) {
-                buf[0] = [mevent notenumber];
-                buf[1] = [mevent keyPressure];
-                dowrite(file, buf, 2, &error);
-            }
-            else if ([mevent eventFlag] == EventControlChange) {
-                buf[0] = [mevent controlNum];
-                buf[1] = [mevent controlValue];
-                dowrite(file, buf, 2, &error);
-            }
-            else if ([mevent eventFlag] == EventProgramChange) {
-                buf[0] = [mevent instrument];
+        for (int tracknum = 0; tracknum < [eventlists count]; tracknum++) {
+            Array *events = [eventlists get:tracknum];
+            
+            /* Write the MTrk header and track length */
+            dowrite(file, (u_char*)"MTrk", 4, &error);
+            int len = [MidiFile getTrackLength:events];
+            intToBytes(len, buf, 0);
+            dowrite(file, buf, 4, &error);
+            
+            for (int i = 0; i < [events count]; i++) {
+                MidiEvent *mevent = [events get:i];
+                int varlen = varlenToBytes([mevent deltaTime], buf, 0);
+                dowrite(file, buf, varlen, &error);
+                
+                if ([mevent eventFlag] == SysexEvent1 ||
+                    [mevent eventFlag] == SysexEvent2 ||
+                    [mevent eventFlag] == MetaEvent) {
+                    buf[0] = [mevent eventFlag];
+                }
+                else {
+                    buf[0] = (u_char)([mevent eventFlag] + [mevent channel]);
+                }
                 dowrite(file, buf, 1, &error);
-            }
-            else if ([mevent eventFlag] == EventChannelPressure) {
-                buf[0] = [mevent chanPressure];
-                dowrite(file, buf, 1, &error);
-            }
-            else if ([mevent eventFlag] == EventPitchBend) {
-                buf[0] = (u_char)([mevent pitchBend] >> 8);
-                buf[1] = (u_char)([mevent pitchBend] & 0xFF);
-                dowrite(file, buf, 2, &error);
-            }
-            else if ([mevent eventFlag] == SysexEvent1) {
-                int offset = varlenToBytes([mevent metalength], buf, 0);
-                memcpy(&(buf[offset]), [mevent metavalue], [mevent metalength]);
-                dowrite(file, buf, offset + [mevent metalength], &error);
-            }
-            else if ([mevent eventFlag] == SysexEvent2) {
-                int offset = varlenToBytes([mevent metalength], buf, 0);
-                memcpy(&(buf[offset]), [mevent metavalue], [mevent metalength]);
-                dowrite(file, buf, offset + [mevent metalength], &error);
-            }
-            else if ([mevent eventFlag] == MetaEvent &&
-                     [mevent metaevent] == MetaEventTempo) {
-                buf[0] = [mevent metaevent];
-                buf[1] = 3;
-                buf[2] = (u_char)(([mevent tempo] >> 16) & 0xFF);
-                buf[3] = (u_char)(([mevent tempo] >> 8) & 0xFF);
-                buf[4] = (u_char)([mevent tempo] & 0xFF);
-                dowrite(file, buf, 5, &error);
-            }
-            else if ([mevent eventFlag] == MetaEvent) {
-                buf[0] = [mevent metaevent];
-                int offset = varlenToBytes([mevent metalength], buf, 1) + 1;
-                memcpy(&(buf[offset]), [mevent metavalue], [mevent metalength]);
-                dowrite(file, buf, offset + [mevent metalength], &error);
+                
+                if ([mevent eventFlag] == EventNoteOn) {
+                    buf[0] = [mevent notenumber];
+                    buf[1] = [mevent velocity];
+                    dowrite(file, buf, 2, &error);
+                }
+                else if ([mevent eventFlag] == EventNoteOff) {
+                    buf[0] = [mevent notenumber];
+                    buf[1] = [mevent velocity];
+                    dowrite(file, buf, 2, &error);
+                }
+                else if ([mevent eventFlag] == EventKeyPressure) {
+                    buf[0] = [mevent notenumber];
+                    buf[1] = [mevent keyPressure];
+                    dowrite(file, buf, 2, &error);
+                }
+                else if ([mevent eventFlag] == EventControlChange) {
+                    buf[0] = [mevent controlNum];
+                    buf[1] = [mevent controlValue];
+                    dowrite(file, buf, 2, &error);
+                }
+                else if ([mevent eventFlag] == EventProgramChange) {
+                    buf[0] = [mevent instrument];
+                    dowrite(file, buf, 1, &error);
+                }
+                else if ([mevent eventFlag] == EventChannelPressure) {
+                    buf[0] = [mevent chanPressure];
+                    dowrite(file, buf, 1, &error);
+                }
+                else if ([mevent eventFlag] == EventPitchBend) {
+                    buf[0] = (u_char)([mevent pitchBend] >> 8);
+                    buf[1] = (u_char)([mevent pitchBend] & 0xFF);
+                    dowrite(file, buf, 2, &error);
+                }
+                else if ([mevent eventFlag] == SysexEvent1) {
+                    int offset = varlenToBytes([mevent metalength], buf, 0);
+                    memcpy(&(buf[offset]), [mevent metavalue], [mevent metalength]);
+                    dowrite(file, buf, offset + [mevent metalength], &error);
+                }
+                else if ([mevent eventFlag] == SysexEvent2) {
+                    int offset = varlenToBytes([mevent metalength], buf, 0);
+                    memcpy(&(buf[offset]), [mevent metavalue], [mevent metalength]);
+                    dowrite(file, buf, offset + [mevent metalength], &error);
+                }
+                else if ([mevent eventFlag] == MetaEvent &&
+                         [mevent metaevent] == MetaEventTempo) {
+                    buf[0] = [mevent metaevent];
+                    buf[1] = 3;
+                    buf[2] = (u_char)(([mevent tempo] >> 16) & 0xFF);
+                    buf[3] = (u_char)(([mevent tempo] >> 8) & 0xFF);
+                    buf[4] = (u_char)([mevent tempo] & 0xFF);
+                    dowrite(file, buf, 5, &error);
+                }
+                else if ([mevent eventFlag] == MetaEvent) {
+                    buf[0] = [mevent metaevent];
+                    int offset = varlenToBytes([mevent metalength], buf, 1) + 1;
+                    memcpy(&(buf[offset]), [mevent metavalue], [mevent metalength]);
+                    dowrite(file, buf, offset + [mevent metalength], &error);
+                }
             }
         }
-    }
     
     /** add by yizhq for tempo track start */
     int dataLen, bFlag, tmpQuarternote;
@@ -1714,7 +1714,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 
 
     ret = [MidiFile writeToFile:destfile withEvents:newevents
-                                       andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference];
+                                       andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference withFileType:0];
     if (newevents != events) {
         [newevents release];
     }
@@ -1737,7 +1737,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     }
 
     ret = [MidiFile writeToFile:destfile withEvents:newevents
-                        andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference];
+                        andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference withFileType:1];
 
     if (newevents != events) {
         [newevents release];
