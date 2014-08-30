@@ -1575,119 +1575,6 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         return YES;
 }
 
-+(BOOL)writeToTempoFile:(NSString*)filename withEvents:(Array*)eventlists
-           andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference{//modify by yizhq
-    u_char buf[4096];
-    const char *cfilename;
-    int file, error;
-    
-    cfilename = [filename cStringUsingEncoding:NSUTF8StringEncoding];
-    file = open(cfilename, O_CREAT|O_TRUNC|O_WRONLY, 0644);
-    if (file < 0) {
-        return NO;
-    }
-    
-    error = 0;
-    /* Write the MThd, len = 6, track mode, number tracks, quarter note */
-    dowrite(file, (u_char*)"MThd", 4, &error);
-    intToBytes(6, buf, 0);
-    dowrite(file, buf, 4, &error);
-    buf[0] = (u_char)(trackmode >> 8);
-    buf[1] = (u_char)(trackmode & 0xFF);
-    dowrite(file, buf, 2, &error);
-    buf[0] = 0;
-    buf[1] = (u_char)[eventlists count]+ 1 - [eventlists count];//modify by yizhq
-    dowrite(file, buf, 2, &error);
-    buf[0] = (u_char)(quarter >> 8);
-    buf[1] = (u_char)(quarter & 0xFF);
-    dowrite(file, buf, 2, &error);
-    
-    /** add by yizhq for tempo track start */
-    int dataLen = 0, bFlag, tmpQuarternote;
-    dowrite(file, (u_char*)"MTrk", 4, &error);
-    
-    if ([midifile quarternote]/128 <= 0) {
-        bFlag = 6;
-    }else{
-        bFlag = 7;
-    }
-
-    if ([midifile time].denominator == 4) {
-        dataLen = bFlag * [[midifile time]numerator];
-    }else if ([midifile time].denominator == 8){
-        dataLen = bFlag * [[midifile time]numerator];
-    }else if([midifile time].denominator == 2){
-        dataLen = bFlag * [[midifile time]numerator];
-    }
-    intToBytes(dataLen, buf, 0);
-    dowrite(file, buf, 4, &error);
-    
-    for(int sectionnum = 0; sectionnum < dataLen/bFlag; sectionnum++)
-    {
-        buf[0] = 0x00;
-        
-        if(sectionnum == 0)
-            buf[1] = 0x99;
-        else
-            buf[1] = 0x00;
-        
-        buf[2] = 0x60;
-
-        buf[3] = 0x7F;
- 
-        TimeSignature *sTime = [midifile time];
-        
-        if (sTime.denominator == 4) {
-            tmpQuarternote = [midifile quarternote];
-        }else if (sTime.denominator == 8){
-            tmpQuarternote = [midifile quarternote]/2;
-        }else if(sTime.denominator == 2){
-            tmpQuarternote = [midifile quarternote]*2;
-        }
-        
-        if (bFlag == 6) {
-            int tmp = tmpQuarternote%128;
-            if (sectionnum == 0) {
-                tmp = tmpQuarternote + timeDifference;
-            }else{
-                tmp = tmpQuarternote;
-            }
-            buf[4] = tmp;
-            buf[5] = 0x4B;
-        }else{
-            int tmp1;
-            int tmp2;
-            if (sectionnum == 0) {
-                int tmp = ceil(tmpQuarternote + timeDifference);
-                tmp1 = tmp/128;
-                tmp2 = tmp%128;
-            }else{
-                tmp1 = tmpQuarternote/128;
-                tmp2 = tmpQuarternote%128;
-            }
-            buf[4] = tmp1 + 128;
-            buf[5] = tmp2;
-            buf[6] = 0x4B;
-        }
-        
-        dowrite(file, buf, bFlag, &error);
-    }
-    
-	buf[0] = 0x00;
-	buf[1] = 0x00;
-	buf[2] = 0xFF;
-	buf[3] = 0x2F;
-	buf[4] = 0x00;
-	dowrite(file, buf, 5, &error);
-    /** add by yizhq for tempo track end */
-    
-    close(file);
-    if (error)
-        return NO;
-    else
-        return YES;
-}
-
 /** Clone the list of MidiEvents */
 +(Array*)cloneMidiEvents:(Array*)origlist {
     Array *newlist = [Array new:[origlist count]];
@@ -1838,10 +1725,27 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 - (BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference{
     BOOL ret = NO;
 
+    int leftMuteState,rightMuteState;
+    leftMuteState = [options->mute get:0];
+    rightMuteState = [options->mute get:1];
+    [options->mute set:-1 index:0];
+    [options->mute set:-1 index:1];
     
-    ret = [MidiFile writeToTempoFile:destfile withEvents:events
+    Array* newevents = events;
+    if (options != NULL) {
+        newevents = [self applyOptionsToEvents: options];
+    }
+
+    ret = [MidiFile writeToFile:destfile withEvents:newevents
                         andMode:trackmode andQuarter:quarternote andMidifile:midifile andMidiOptions:options withPulsesPerMsec:timeDifference];
 
+    if (newevents != events) {
+        [newevents release];
+    }
+    
+    [options->mute set:leftMuteState index:0];
+    [options->mute set:rightMuteState index:1];
+    
     return ret;
 }
 /** modify by yizhq end */
