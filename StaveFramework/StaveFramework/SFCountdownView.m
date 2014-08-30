@@ -85,7 +85,7 @@
 //                                                selector:@selector(animate)
 //                                                userInfo:nil
 //                                                 repeats:NO];
-    [self animate:(sectionTime/countCnt)/1000];
+    [self animate:(sectionTime/countCnt)/1000 - 0.1];
 }
 
 - (void) stop
