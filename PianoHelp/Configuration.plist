@@ -5,7 +5,24 @@
 	<key>AutoLogin</key>
 	<dict>
 		<key>userName</key>
+		<string>guest</string>
+		<key>pwd</key>
 		<string></string>
 	</dict>
+	<key>RememberUsers</key>
+	<array>
+		<dict>
+			<key>userName</key>
+			<string>guest</string>
+			<key>pwd</key>
+			<string></string>
+		</dict>
+        <dict>
+			<key>userName</key>
+			<string>1</string>
+			<key>pwd</key>
+			<string>1</string>
+		</dict>
+	</array>
 </dict>
 </plist>
