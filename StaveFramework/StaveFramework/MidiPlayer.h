@@ -53,6 +53,7 @@ enum {
     MidiFile *midifile;         /** The midi file to play */
     MidiOptions options;        /** The sound options for playing the midi file */
     NSString *tempSoundFile;    /** The temporary midi file currently being played */
+    NSString *tempoFile;    /** The temporary midi file currently being played */
     double pulsesPerMsec;       /** The number of pulses per millisec */
     SheetMusic *sheet;          /** The sheet music to highlight while playing */
 
@@ -62,7 +63,10 @@ enum {
 //    UISound *sound;           /** The sound player */
     /* add by yizhq start */
     GDSoundEngine *sound;       /** The sound player */
+    GDSoundEngine *soundTempo;
     double sectionTime;         /** The section millisec */
+    int prepareFlag;
+    NSTimer * prepareTimer;
     /* add by yizhq end */
     struct timeval startTime;   /** Absolute time when music started playing */
     double startPulseTime;      /** Time (in pulses) when music started playing */
@@ -112,12 +116,13 @@ enum {
 -(void)replayByType;
 
 /** add by yizhq start */
+- (int)getCountDownCnt;
 - (double) getSectionTime;
 -(void)playJumpSection:(int)startSectionNumber;
 -(void)clearJumpSection;
 -(void)setJSModel:(int)startSectionNum withEndSectionNum:(int)endSectionNum withTimeNumerator:(int)numerrator withTimeQuarter:(int)quarter withMeasure:(int)measure;
 -(void)clearJSModel;
-- (void)playPrepareTempo;
+- (void)playPrepareTempo:(double)time;
 - (void)stopPrepareTempo;
 /** add by yizhq end */
 -(void)disConnectMIDI;

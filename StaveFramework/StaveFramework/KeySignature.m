@@ -616,10 +616,10 @@ static int initmaps = 0;
  * measure, we reset the keymap back to the key signature.
  */
 - (int)getAccidentalForNote:(int)notenumber andMeasure:(int)measure {
-    if (measure != prevmeasure) {
-        [self resetKeyMap];
-        prevmeasure = measure;
-    }
+//    if (measure != prevmeasure) {
+//        [self resetKeyMap];
+//        prevmeasure = measure;
+//    }
     
     int result = keymap[notenumber];
     if (result == AccidSharp) {
@@ -668,10 +668,14 @@ static int initmaps = 0;
  * this note in this key signature. This should be called
  * before calling getAccidental.
  */
-- (WhiteNote*)getWhiteNote:(int)notenumber {
+- (WhiteNote*)getWhiteNote:(int)notenumber andMeasure:(int)measure {
     int notescale = notescale_from_number(notenumber);
     int octave = (notenumber + 3) / 12 - 1;
     int letter = 0;
+    if (measure != prevmeasure) {
+        [self resetKeyMap];
+        prevmeasure = measure;
+    }
 
     int whole_sharps[] = { 
         WhiteNote_A, WhiteNote_A, 
@@ -741,11 +745,10 @@ static int initmaps = 0;
     if (num_flats == Gflat && notescale == NoteScale_Bflat) {
         letter = WhiteNote_B;
     }
-    if (num_flats > 0 && notescale == NoteScale_Aflat) {
-        octave++;
-    } else if (accid == AccidFlat && notescale == NoteScale_Aflat) {
+    if (notescale == NoteScale_Aflat && letter == 0) {
         octave++;
     }
+    
     return [WhiteNote allocWithLetter:letter andOctave:octave];
 }
 

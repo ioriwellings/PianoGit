@@ -108,6 +108,10 @@
 -(void)initOptions:(MidiOptions*)options;
 -(BOOL)hasLyrics;
 /** add by yizhq start */
++(BOOL)writeToTempoFile:(NSString*)filename withEvents:(Array*)eventlists
+                andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference;
+-(BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename secValue:(double)pulsesPerMsec;
+-(int)quarternote;
 -(void)rightHandMute:(MidiOptions*)options andState:(BOOL)state;
 -(void)leftHandMute:(MidiOptions*)options andState:(BOOL)state;
 -(BOOL)getRightHadnMuteState:(MidiOptions*)options;
