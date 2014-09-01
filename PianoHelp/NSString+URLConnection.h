@@ -11,6 +11,8 @@
 
 @interface NSString (URLConnection)
 
+-(NSURLConnection*)postToServerWithParams:(NSDictionary*)param completionHandle:(void (^)(NSData *data, NSError *error)) handle;
+
 -(NSURLConnection*)getDataAndCacheToDir:(NSString*)dirPath competionHandle:(void (^)(NSData* data, NSError* error))handle  progressHandle:(void (^)(float progress))pHandle;
 -(void)getCacheDataDir:(NSString*)fromDirectory completionHandler:(void (^)(NSData *data, NSError *error)) handle;
 -(void)getCacheFileInDir:(NSString*)fromDirectory isExist:(BOOL*)bExist completionHandler:(void (^)(NSData *data, NSString* filePath, NSError *error)) handle;

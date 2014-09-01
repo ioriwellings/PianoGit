@@ -98,8 +98,11 @@
     __response = response;
     
     __data = [[NSMutableData alloc] init];
-    __fileStream = [NSOutputStream outputStreamToFileAtPath:self.filePath append:NO];
-    [__fileStream open];
+    if(self.filePath)
+    {
+        __fileStream = [NSOutputStream outputStreamToFileAtPath:self.filePath append:NO];
+        [__fileStream open];
+    }
     //#pragma unused(theConnection)
     //    NSHTTPURLResponse * httpResponse;
     //    NSString *          contentTypeHeader;
@@ -141,7 +144,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [__fileStream close];
+    if(self.filePath)
+        [__fileStream close];
     if(__data && __data.length > 0)
     {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -199,6 +203,38 @@
 @end
 
 @implementation NSString (URLConnection)
+
+-(NSURLConnection*)postToServerWithParams:(NSDictionary*)params completionHandle:(void (^)(NSData *data, NSError *error)) handle
+{
+    NSURL *url = [NSURL URLWithString:[self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60];
+    [request setTimeoutInterval:60];
+    [request setHTTPMethod:@"POST"];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    NSMutableArray *pairs = [NSMutableArray array];
+    for (NSString *key in [params keyEnumerator])
+    {
+        if (!([[params valueForKey:key] isKindOfClass:[NSString class]]))
+		{
+			continue;
+		}
+		
+		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	}
+    
+    [body appendData:[[pairs componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setHTTPBody:body];
+    
+    IoriConnectionDelegate *connDelegate = [[IoriConnectionDelegate alloc] init];
+    connDelegate.operationCompletionBlock = handle;
+    NSURLConnection *theConnection = [[IoriURLConnection alloc] initWithRequest:request delegate:connDelegate];
+    
+    return theConnection;
+
+}
 
 -(NSString*)createFolder:(NSString*)dir
 {
