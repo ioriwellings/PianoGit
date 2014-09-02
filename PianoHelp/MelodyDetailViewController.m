@@ -256,6 +256,8 @@
         [player playPrepareTempo:[player getSectionTime]];
         [self.sfCountdownView start:[player getSectionTime] withCnt:[player getSectionTime]];
 
+    } else {
+        [player playByType:1];
     }
 }
 
@@ -288,6 +290,8 @@
         if (self.iPlayMode != 1) {
             [player playPrepareTempo:[player getCountDownCnt]];
             [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+        } else {
+            [player playByType:1];
         }
         
         [self hiddenMenuAndToolBar];
@@ -589,7 +593,7 @@
     
     [self.popVC dismissPopoverAnimated:YES];
     [player setMidiFile:midifile withOptions:&options andSheet:sheetmusic];
-    [self btnPlay_click:self.btnPlay];
+//    [self btnPlay_click:self.btnPlay];
 }
 
 
