@@ -1919,6 +1919,16 @@ static UIImage* chanyin = nil;
             }
             CGContextStrokePath(context);
         }
+    }else{
+        for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
+            NoteData *note = &notedata[noteindex];
+            CGContextBeginPath(context);
+                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 + NoteHeight;
+                [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
+                [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + 10 + _connectNoteWidth + NoteWidth/2)/2, ynote + radian1)];
+                [aPath stroke];
+            CGContextStrokePath(context);
+        }
     }
 }
 
@@ -2059,6 +2069,14 @@ static UIImage* chanyin = nil;
             }
             }
         }
+    }else{
+        for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
+            NoteData *note = &notedata[noteindex];
+            ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 + NoteHeight;
+            [aPath moveToPoint:CGPointMake(-NoteWidth/4, ynote)];
+            [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth2 - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/4 + _connectNoteWidth2 - 5)/2, ynote + radian1)];
+            [aPath stroke];
+        }
     }
 }
 
@@ -2103,7 +2121,7 @@ static UIImage* chanyin = nil;
         return;
     
     
-    int leftDirect, rightDirect, direct, ynote, ynote1 = 0;
+    int leftDirect, rightDirect, direct, ynote = 0, ynote1 = 0;
 //    UIColor *color = [UIColor blackColor];
 //    [color set];
     UIBezierPath* aPath = [UIBezierPath bezierPath];
@@ -2159,10 +2177,12 @@ static UIImage* chanyin = nil;
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 - NoteHeight/3;
 
             if (rightDirect == StemDown) {
-                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2- NoteHeight/3;
+                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 - NoteHeight/3;
                 
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 - NoteHeight/3;
+            }else{
+                ynote1 = ytop - [topstaff dist:[[_conLineChord stem] top]];
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote-8)];
@@ -2178,10 +2198,27 @@ static UIImage* chanyin = nil;
                 
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 + NoteHeight/3;
+            }else{
+                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]];
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote+5)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1+5) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+radian1)];
+            [aPath stroke];
+        }else{
+            ynote = ytop + NoteHeight/3;
+            
+            if (rightDirect == StemDown) {
+                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight/3;
+                
+            } else if (rightDirect == StemUp) {
+                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 + NoteHeight/3;
+            }else{
+                ynote1 = ytop - [topstaff dist:[[_conLineChord stem] top]];
+            }
+            
+            [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote+5)];
+            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1+5) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote-radian1)];
             [aPath stroke];
         }
     } else if (_conLineWidth > 0 && conLine < 0) {
@@ -2200,11 +2237,17 @@ static UIImage* chanyin = nil;
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+radian2) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+radian2)];
 //            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+5) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+45)];
             [aPath stroke];
+        }else{
+            ynote = ytop - [topStaff dist:[stem top]];
+            [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote+5)];
+            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote-radian2) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote-radian2)];
+            //            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+5) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+45)];
+            [aPath stroke];
         }
     } else if (_conLineWidth < -1) {
         if (direct == StemDown) {
             
-            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2- NoteHeight/3;
+            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 - NoteHeight/3;
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote-5)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth-NoteWidth/2, ynote-radian2) controlPoint:CGPointMake(_conLineWidth/2, ynote-radian1)];
 //            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth-NoteWidth/2, ynote-5) controlPoint:CGPointMake(_conLineWidth/2, ynote-45)];
@@ -2212,10 +2255,17 @@ static UIImage* chanyin = nil;
             
         } else if (direct == StemUp) {
             
-            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2+ NoteHeight/3;
+            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 + NoteHeight/3;
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote+5)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+radian2) controlPoint:CGPointMake(_conLineWidth/2, ynote+radian1)];
 //            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+5) controlPoint:CGPointMake(_conLineWidth/2, ynote+45)];
+            [aPath stroke];
+        }else{
+            ynote = ytop + [topStaff dist:[stem top]] + NoteHeight/2;
+
+            [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote+5)];
+            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+radian2) controlPoint:CGPointMake(_conLineWidth/2, ynote+radian1)];
+
             [aPath stroke];
         }
     }
