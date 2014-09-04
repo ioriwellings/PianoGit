@@ -980,6 +980,15 @@ static UIImage* chanyin = nil;
         CGContextAddLineToPoint(context, xpos + 6, ynote - 2.5);
         CGContextAddLineToPoint(context, xpos, ynote - 5);
         CGContextDrawPath(context, kCGPathStroke);
+    }else{
+        ynote = ytop - NoteHeight - NoteHeight/2;
+        CGContextMoveToPoint(context, xpos, ynote);
+        CGContextSetLineWidth(context, 1.5);
+        CGContextSetLineCap(context, kCGLineCapButt);
+        CGContextMoveToPoint(context, xpos, ynote);
+        CGContextAddLineToPoint(context, xpos + 6, ynote - 2.5);
+        CGContextAddLineToPoint(context, xpos, ynote - 5);
+        CGContextDrawPath(context, kCGPathStroke);
     }
 }
 
@@ -2234,10 +2243,10 @@ static UIImage* chanyin = nil;
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1+5) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+radian1)];
             [aPath stroke];
         }else{
-            ynote = ytop + NoteHeight/3;
+            ynote = ytop - NoteHeight;
             
             if (rightDirect == StemDown) {
-                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight/3;
+                ynote1 = ytop - [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight/3;
                 
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 + NoteHeight/3;
@@ -2245,8 +2254,8 @@ static UIImage* chanyin = nil;
                 ynote1 = ytop - [topstaff dist:[[_conLineChord stem] top]];
             }
             
-            [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote+5)];
-            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1+5) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote-radian1)];
+            [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
+            [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1 + 10) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote-radian1)];
             [aPath stroke];
         }
     } else if (_conLineWidth > 0 && conLine < 0) {
@@ -2332,6 +2341,11 @@ static UIImage* chanyin = nil;
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
             CGContextTranslateCTM (context, 0 , -ypos);
+        }else{
+            ypos = ytop - NoteHeight/3 - 12;
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
+            CGContextTranslateCTM (context, 0 , -ypos);
         }
     } else if (jumpedFlag == 2) {
         
@@ -2354,6 +2368,16 @@ static UIImage* chanyin = nil;
             CGContextAddLineToPoint(context, 1.0*LineSpace, -2*LineSpace);
             CGContextAddLineToPoint(context, LineSpace*3/4, -3*LineSpace);
             CGContextAddLineToPoint(context, LineSpace/2, -2*LineSpace);
+            CGContextDrawPath(context, kCGPathFillStroke);
+            CGContextTranslateCTM (context, 0 , -ypos);
+        }else{
+            ypos = ypos - 2*(NoteHeight+LineSpace);
+            
+            CGContextTranslateCTM (context, 0 , ypos);
+            CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
+            CGContextAddLineToPoint(context, 1.0*LineSpace, 2*LineSpace);
+            CGContextAddLineToPoint(context, LineSpace*3/4, 3*LineSpace);
+            CGContextAddLineToPoint(context, LineSpace/2, 2*LineSpace);
             CGContextDrawPath(context, kCGPathFillStroke);
             CGContextTranslateCTM (context, 0 , -ypos);
         }
