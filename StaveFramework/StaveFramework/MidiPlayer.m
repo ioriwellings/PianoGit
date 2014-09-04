@@ -888,7 +888,7 @@
             [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
 //            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
             
-            [self doStop];
+            [self stop];
             
             if (delegate != nil) {
                 [delegate endSongs];
