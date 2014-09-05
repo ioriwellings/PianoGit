@@ -311,6 +311,10 @@
         [self deleteTempoFile];
     }
 }
+
+-(void)resetShadeLine{
+    [sheetPlay shadeNotes:0 withPrev:(int)currentPulseTime];
+}
 //add by yizhq end
 
 -(void) listen {

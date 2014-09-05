@@ -2551,7 +2551,7 @@ static UIImage* chanyin = nil;
     }
     
     if (direct == StemUp ) {
-        ypos = ytop + [topstaff dist:[stem end]] * NoteHeight/2;
+        ypos = ytop + [topstaff dist:[stem end]] * NoteHeight/2 - [payin size].height;
     } else {
         ypos = ytop + [topstaff dist:[stem top]] * NoteHeight/2;
     }

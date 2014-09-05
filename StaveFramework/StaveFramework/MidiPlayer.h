@@ -116,6 +116,7 @@ enum {
 -(void)replayByType;
 
 /** add by yizhq start */
+-(void)resetShadeLine;
 - (int)getCountDownCnt;
 - (double) getSectionTime;
 -(void)playJumpSection:(int)startSectionNumber;
