@@ -353,6 +353,7 @@
             duration == DottedEighth ||
             duration == Triplet ||
             duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystem)];
@@ -400,6 +401,7 @@
             duration == DottedEighth ||
             duration == Triplet ||
             duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystem)];
@@ -472,6 +474,7 @@
             duration == DottedEighth ||
             duration == Triplet ||
             duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystart)];
@@ -509,6 +512,7 @@
         
         /** modify by sunlie */
         if ((duration == Sixteenth && cutNote == 0) ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystart)];
@@ -534,6 +538,7 @@
             duration == DottedEighth ||
             duration == Triplet ||
             duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystart)];
@@ -571,6 +576,7 @@
 
         /** modify by sunlie */
         if ((duration == Sixteenth && cutNote == 0) ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystart)];
@@ -614,6 +620,7 @@
             duration == DottedEighth ||
             duration == Triplet ||
             duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystart)];
@@ -658,6 +665,7 @@
             duration == DottedEighth ||
             duration == Triplet ||
             duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystart)];

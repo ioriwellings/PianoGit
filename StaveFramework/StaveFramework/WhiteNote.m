@@ -136,6 +136,13 @@ static WhiteNote* _middleC = nil;
     return octave;
 }
 
+-(void)setLetter:(int)l {
+    letter = l;
+}
+
+-(void)setOctave:(int)o {
+    octave = o;
+}
 /** Create a new note with the given letter and octave. */
 - (id)initWithLetter:(int)a andOctave:(int)o {
     letter = a;

@@ -150,6 +150,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     /* add by sunlie start */
     beatarray = [file beatarray];
     tonearray = [file tonearray];
+    tempoarray = [file tempoarray];
     /* add by sunlie end */
     
     for (int tracknum = 0; tracknum < numtracks; tracknum++) {
@@ -231,6 +232,10 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
 
 -(Array*)beatarray {
     return beatarray;
+}
+
+-(Array*)tempoarray {
+    return tempoarray;
 }
 
 -(MidiFile*)midifile {
@@ -417,7 +422,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
          */
         [notegroup sort:sortbynote];
         ChordSymbol *chord = [[ChordSymbol alloc] initWithNotes:notegroup andKey:key
-                                                        andTime:time andClef:clef andSheet:self andBeats:beatarray];
+                                                        andTime:time andClef:clef andSheet:self andBeats:beatarray andlist:list7];
         
         /* add by sunlie start */
         
@@ -460,6 +465,11 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                         [chord setEightFlag:-200];
                     } else if ([cd4 cvalue] > 64) {
                         [chord setEightFlag:200];
+                    }
+                    flag4 = 0;
+                    cdcount4++;
+                    if (cdcount4 < [list4 count]) {
+                        cd4 = [list4 get:cdcount4];
                     }
                 } else if ([cd4 cvalue] <= 64 && [chord endTime] > [cd4 starttime] ) {
                     [chord setEightFlag:-cdcount4-2];
@@ -733,7 +743,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 beat = [barray get:beatcount];
                 [time setNumerator:[beat numerator]];
                 [time setDenominator:[beat denominator]];
-                [time setTempo:[beat tempo]];
+//                [time setTempo:[beat tempo]];
                 [time setMeasure];
                 TimeSigSymbol* ts = [[TimeSigSymbol alloc]
                                      initWithNumer:[beat numerator] andDenom:[beat denominator] andStartTime:[bar startTime]];
@@ -843,7 +853,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             beat = [barray get:beatcount];
             [time setNumerator:[beat numerator]];
             [time setDenominator:[beat denominator]];
-            [time setTempo:[beat tempo]];
+//            [time setTempo:[beat tempo]];
             [time setMeasure];
             TimeSigSymbol* ts = [[TimeSigSymbol alloc]
                                  initWithNumer:[beat numerator] andDenom:[beat denominator] andStartTime:[bar startTime]];
@@ -889,7 +899,6 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             tonecount++;
         }
         /* add by sunlie end */
-        
         [symbols add:bar];
         [bar release];
         measuretime += [time measure];
@@ -901,7 +910,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     [bar release];
     [time setNumerator:[[beatarray get:0] numerator]];
     [time setDenominator:[[beatarray get:0] denominator]];
-    [time setTempo:[[beatarray get:0] tempo]];
+//    [time setTempo:[[beatarray get:0] tempo]];
     [time setMeasure];
     return symbols;
 }
@@ -1435,7 +1444,7 @@ static BOOL isBlank(id x) {
     TimeSignature *t;
     BeatSignature* beat = [beatarray get:0];
     
-    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[tsig quarter] andTempo:[beat tempo]];
+    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[tsig quarter] andTempo:[tsig tempo]];
     
     if ([beatarray count] > 1) {
         for (i = 1; i<[beatarray count]; i++) {
@@ -1446,7 +1455,7 @@ static BOOL isBlank(id x) {
                     preTime = [[beatarray get:i] starttime];
                     [t setNumerator:[beat numerator]];
                     [t setDenominator:[beat denominator]];
-                    [t setTempo:[beat tempo]];
+//                    [t setTempo:[beat tempo]];
                     [t setMeasure];
                 }
             }
@@ -1720,7 +1729,7 @@ static BOOL isBlank(id x) {
 //    int startTime = (startSectionNum - 1) * measure;
 //    int endTime = endSectionNum * measure;
     
-    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[beat tempo]];
+    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[[midifile time] tempo]];
     if ([beatarray count] > 1) {
         for (i = 1; i<[beatarray count]; i++) {
             int tmp =([[beatarray get:i] starttime]-preTime)/[t measure];
@@ -1734,7 +1743,7 @@ static BOOL isBlank(id x) {
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-                [t setTempo:[beat tempo]];
+//                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -1751,7 +1760,7 @@ static BOOL isBlank(id x) {
     beat = [beatarray get:0];
     [t setNumerator:[beat numerator]];
     [t setDenominator:[beat denominator]];
-    [t setTempo:[beat tempo]];
+//    [t setTempo:[beat tempo]];
     [t setMeasure];
     
     if ([beatarray count] > 1 && [[beatarray get:1] starttime]/[t measure] < endSectionNum) {
@@ -1767,7 +1776,7 @@ static BOOL isBlank(id x) {
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-                [t setTempo:[beat tempo]];
+//                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }

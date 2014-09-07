@@ -15,7 +15,7 @@
 
 /** The possible note durations */
 typedef enum {
-  ThirtySecond, Sixteenth, Triplet, Eighth,
+  ThirtySecond, SixteenTriplet, Sixteenth, Triplet, Eighth,
   DottedEighth, Quarter, DottedQuarter,
   Half, DottedHalf, Whole, Empty     /** add Empty by sunlie */
 } NoteDuration;

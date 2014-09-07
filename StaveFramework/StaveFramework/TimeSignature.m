@@ -152,9 +152,11 @@
         return Eighth;
     else if (duration >=  5*whole/64)
         return Triplet;
-    else if (duration >=  2.5*whole/64)
+    else if (duration >=  3*whole/64)
         return Sixteenth;
     /** add by sunlie start */
+    else if (duration >=  whole/36)
+        return SixteenTriplet;
     else if (duration >=  3*whole/128)
         return ThirtySecond;
     else
@@ -181,6 +183,7 @@
         case Eighth:        return eighth;
         case Triplet:       return quarter/3; 
         case Sixteenth:     return sixteenth;
+        case SixteenTriplet:return quarter/6;
         case ThirtySecond:  return sixteenth/2; 
         default:            return 0;
     }

@@ -49,6 +49,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
     /* add by sunlie start */
     Array* beatarray;
     Array* tonearray;
+    Array* tempoarray;
     MidiFile *midifile; 
     /* add by sunlie end */
     /** add by yizhq start */
@@ -74,6 +75,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
 
 -(id)initWithFile:(MidiFile*)file andOptions:(MidiOptions*)options;
 -(Array*)beatarray;
+-(Array*)tempoarray;
 -(MidiFile*)midifile;
 -(KeySignature*) getKeySignature:(Array*)tracks;
 -(Array*) createChords:(Array*)midinotes withKey:(KeySignature*)key

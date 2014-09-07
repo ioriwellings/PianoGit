@@ -61,7 +61,7 @@ static UIImage* chanyin = nil;
  * of the notes. Use the clef when drawing the chord.
  */
 - (id)initWithNotes:(Array*)midinotes andKey:(KeySignature*)key
-     andTime:(TimeSignature*)time andClef:(int)c andSheet:(void*)s andBeats:(Array *)beatarray{
+     andTime:(TimeSignature*)time andClef:(int)c andSheet:(void*)s andBeats:(Array *)beatarray andlist:(Array *)list{
 
     int i;
 
@@ -94,7 +94,7 @@ static UIImage* chanyin = nil;
     }
 
     notedata_len = [midinotes count];
-    [self createNoteData:midinotes withKey:key andTime:time andBeats:beatarray];
+    [self createNoteData:midinotes withKey:key andTime:time andBeats:beatarray andList:list];
     
 
 //    /* Find out how many stems we need (1 or 2) */
@@ -198,12 +198,13 @@ static UIImage* chanyin = nil;
  * The TimeSignature is used to determine the duration.
  */
 - (void)createNoteData:(Array*)midinotes withKey:(KeySignature*)key
-       andTime:(TimeSignature*)time andBeats:(Array *)beatarray {
+       andTime:(TimeSignature*)time andBeats:(Array *)beatarray andList:(Array *)list {
     
     notedata = (NoteData*) calloc([midinotes count], sizeof(NoteData));
     notedata_len = [midinotes count];
     NoteData *prev = NULL;
     int measurecount = 0;
+    bool flag = false;
     SheetMusic *sheet = (SheetMusic*)sheetmusic;
 
     for (int i = 0; i < [midinotes count]; i++) {
@@ -211,19 +212,68 @@ static UIImage* chanyin = nil;
         NoteData *note = &(notedata[i]);
         note->number = [midi number];
         note->leftside = YES;
-        if ([midi accidFlag] != 100) {
+        if (([midi accidFlag]>=90&&[midi accidFlag]<=99)||([midi accidFlag]>=101&&[midi accidFlag]<=110)) {
             [key changeAccid:[midi number] andAccidFlag:[midi accidFlag]];
         }
-        if ([midi startTime] > 18200) {
-            int b = 0;
-            b++;
+        
+        if ([list count] > 0) {
+            for (int k = 0; k < [list count]; k++) {
+                if ([midi startTime] >= [[list get:k] starttime] && [midi endTime] < [[list get:k] endtime]) {
+                    flag = true;
+                    break;
+                }
+                if ([midi startTime] < [[list get:k] starttime]) {
+                    break;
+                }
+            }
+        }
+        if (flag) {
+            measurecount = [sheet getMeasureNum:[midi startTime]+[time quarter]/8 withTime:time];
+        }
+        else {
+            measurecount = [sheet getMeasureNum:[midi startTime] withTime:time];
         }
         
-        measurecount = [sheet getMeasureNum:[midi startTime] withTime:time];
         note->whitenote = [key getWhiteNote:[midi number] andMeasure:measurecount];
         note->duration = [time getNoteDuration:([midi endTime]-[midi startTime])];
         note->accid = [key getAccidentalForNote:[midi number] 
                                  andMeasure:measurecount];
+        if ([midi accidFlag] >= 80 && [midi accidFlag] <= 84) {
+            if (note->whitenote.letter == WhiteNote_C) {
+                note->whitenote.letter = WhiteNote_B;
+                note->accid = AccidSharp;
+            } else if (note->whitenote.letter == WhiteNote_F) {
+                note->whitenote.letter = WhiteNote_E;
+                note->accid = AccidSharp;
+            }
+        } else if ([midi accidFlag] >= 116 && [midi accidFlag] <= 120) {
+            if (note->whitenote.letter == WhiteNote_E) {
+                note->whitenote.letter = WhiteNote_F;
+                note->accid = AccidFlat;
+            } else if (note->whitenote.letter == WhiteNote_B) {
+                note->whitenote.letter = WhiteNote_C;
+                note->accid = AccidFlat;
+            }
+        } else if ([midi accidFlag] >= 85 && [midi accidFlag] <= 89) {
+            if (note->whitenote.letter == WhiteNote_G) {
+                note->whitenote.letter = WhiteNote_A;
+                note->whitenote.octave = note->whitenote.octave+1;
+                note->accid = DoubleFlat;
+            } else {
+                note->whitenote.letter = note->whitenote.letter+1;
+                note->accid = DoubleFlat;
+            }
+        } else if ([midi accidFlag] >= 111 && [midi accidFlag] <= 115) {
+            if (note->whitenote.letter == WhiteNote_A) {
+                note->whitenote.letter = WhiteNote_G;
+                note->whitenote.octave = note->whitenote.octave-1;
+                note->accid = DoubleSharp;
+            } else {
+                note->whitenote.letter = note->whitenote.letter-1;
+                note->accid = DoubleSharp;
+            }
+        }
+        
         /* add by sunlie start */
         note->dur = [midi duration];
         note->previous = [midi previous];
@@ -1350,7 +1400,7 @@ static UIImage* chanyin = nil;
 //            if (!correctTime && dur != Sixteenth) {
 //                return NO;
 //            }
-            if (dur == Triplet) {
+            if (dur == Triplet || dur == SixteenTriplet) {
                 return NO;
             }
             
@@ -1378,7 +1428,7 @@ static UIImage* chanyin = nil;
             Stem* secondStem = [[chords get:1] stem];     /** add by sunlie */
             
             /** modify by sunlie */
-            BOOL valid = (dur == Triplet) ||
+            BOOL valid = (dur == Triplet) || (dur == SixteenTriplet) ||
             (dur == Eighth &&
              ([time numerator]%3 == 0) && [time denominator] == 8) ||
             ((dur == Eighth) && abs([chord0 startTime]/[time quarter]-[time quarter]/4)<[time quarter]/16) ||
@@ -1437,7 +1487,7 @@ static UIImage* chanyin = nil;
 
     /** add by sunlie start */
     if (numChords == 3) {
-        if (dur == Triplet) {
+        if (dur == Triplet || dur == SixteenTriplet) {
             [[chords get:1] setThreeNotes:1];
         }
     }

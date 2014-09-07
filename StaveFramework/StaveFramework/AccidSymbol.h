@@ -17,7 +17,7 @@
 
 /** Accidentals */
 enum {
-    AccidNone, AccidSharp, AccidFlat, AccidNatural
+    AccidNone, AccidSharp, AccidFlat, AccidNatural,DoubleSharp,DoubleFlat
 };
 
 @interface AccidSymbol : NSObject <MusicSymbol> {
