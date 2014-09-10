@@ -1013,7 +1013,7 @@ static UIImage* chanyin = nil;
 
     if (direct == StemDown) {
         
-        ynote = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight-NoteHeight/3;
+        ynote = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight - NoteHeight/2;
         CGContextMoveToPoint(context, xpos, ynote);
         CGContextSetLineWidth(context, 1.5);
         CGContextSetLineCap(context, kCGLineCapButt);
@@ -1022,7 +1022,7 @@ static UIImage* chanyin = nil;
         CGContextAddLineToPoint(context, xpos, ynote - 5);
         CGContextDrawPath(context, kCGPathStroke);
     }else if (direct == StemUp) {
-        ynote = ytop + [topStaff dist:[stem bottom]] *  NoteHeight/2 + NoteHeight*2;
+        ynote = ytop + [topStaff dist:[stem bottom]] *  NoteHeight/2 + NoteHeight*2 + 4;
         CGContextMoveToPoint(context, xpos, ynote);
         CGContextSetLineWidth(context, 1.5);
         CGContextSetLineCap(context, kCGLineCapButt);
@@ -1031,7 +1031,9 @@ static UIImage* chanyin = nil;
         CGContextAddLineToPoint(context, xpos, ynote - 5);
         CGContextDrawPath(context, kCGPathStroke);
     }else{
-        ynote = ytop - NoteHeight - NoteHeight/2;
+//        ynote = ytop + NoteHeight;
+        NoteData *note = &notedata[0];
+        ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - 5/2*NoteHeight;
         CGContextMoveToPoint(context, xpos, ynote);
         CGContextSetLineWidth(context, 1.5);
         CGContextSetLineCap(context, kCGLineCapButt);
@@ -1982,7 +1984,7 @@ static UIImage* chanyin = nil;
         for (int noteindex = 0; noteindex < notedata_len; noteindex++) {
             NoteData *note = &notedata[noteindex];
             if (notedata_len == 1) {
-                ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight/2;
+                ynote = [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight/2;
                 [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
                 [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + 10 + _connectNoteWidth + NoteWidth/2)/2, ynote - radian1)];
                 [aPath stroke];
@@ -2268,8 +2270,8 @@ static UIImage* chanyin = nil;
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight/4;
             }else{
-                NoteData *data = [_conLineChord getNotedata];
-                ynote1 = [topStaff dist:(data->whitenote)] * NoteHeight/2 + NoteHeight*4;
+                NoteData *note = &notedata[0];
+                ynote1 = ytop + [topStaff dist:(note->whitenote)] + 3*NoteHeight + NoteHeight/2;
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth, ynote)];
@@ -2286,7 +2288,8 @@ static UIImage* chanyin = nil;
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + 5*NoteHeight;
             }else{
-                ynote1 = [topStaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight*4;
+                NoteData *note = &notedata[0];
+                ynote1 = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 + 3*NoteHeight + NoteHeight/2;
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
@@ -2294,16 +2297,18 @@ static UIImage* chanyin = nil;
             [aPath stroke];
         }else{
             WhiteNote *topstaff = [WhiteNote top: [_conLineChord clef]];
-            ynote = ytop - NoteHeight;
+//            ynote = [topStaff dist:[stem bottom]] + 4*NoteHeight;
+            
+            NoteData *note = &notedata[0];
+            ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;
             
             if (rightDirect == StemDown) {
-//                ynote1 = ytop - [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight;
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 - NoteHeight/2;
             } else if (rightDirect == StemUp) {
-//                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 + NoteHeight;
-                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 - NoteHeight/2;
+                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] bottom]] * NoteHeight/2 - NoteHeight/2;
             }else{
-                ynote1 = ytop - NoteHeight;
+                NoteData *note = &notedata[0];
+                ynote1 = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
@@ -2370,9 +2375,9 @@ static UIImage* chanyin = nil;
     }
     
     if (leftDirect == StemDown) {
-        ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight/3;
+        ypos = ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight/2;
     } else if (leftDirect == StemUp) {
-        ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2 + NoteHeight/3;
+        ypos = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2 + NoteHeight/2;
     }
     
     
@@ -2389,7 +2394,10 @@ static UIImage* chanyin = nil;
             CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
             CGContextTranslateCTM (context, 0 , -ypos);
         }else{
-            ypos = ytop - NoteHeight/3 - 12;
+//            ypos = ytop + NoteHeight/2;
+            
+            NoteData *note = &notedata[0];
+            ypos = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - 5/2*NoteHeight;
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextFillEllipseInRect(context, CGRectMake(LineSpace*3/4, LineSpace, NoteWidth/3, NoteWidth/3));
             CGContextTranslateCTM (context, 0 , -ypos);
@@ -2418,7 +2426,8 @@ static UIImage* chanyin = nil;
             CGContextDrawPath(context, kCGPathFillStroke);
             CGContextTranslateCTM (context, 0 , -ypos);
         }else{
-            ypos = ypos - 2*(NoteHeight+LineSpace);
+            NoteData *note = &notedata[0];
+            ypos = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - 5/2*NoteHeight;
             
             CGContextTranslateCTM (context, 0 , ypos);
             CGContextMoveToPoint(context, LineSpace/2, 2*LineSpace);
@@ -2598,10 +2607,14 @@ static UIImage* chanyin = nil;
     }
     
     if (direct == StemUp ) {
-        ypos = ytop + [topstaff dist:[stem end]] * NoteHeight/2 - [payin size].height;
-    } else {
+        ypos = ytop + [topstaff dist:[stem bottom]] * NoteHeight/2 - [payin size].height + 10;
+    } else if (direct == StemDown ){
         ypos = ytop + [topstaff dist:[stem top]] * NoteHeight/2;
+    } else{
+        NoteData *note = &notedata[0];
+        ypos = ytop + [topstaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;
     }
+
     
     CGContextTranslateCTM (context, 0 , ypos);
     CGRect imageRect = CGRectMake(0, 0, [payin size].width, [payin size].height);
