@@ -47,32 +47,35 @@
 {
     [__data appendData:data];
     
-    NSInteger       dataLength;
-    const uint8_t * dataBytes;
-    NSInteger       bytesWritten;
-    NSInteger       bytesWrittenSoFar;
-    
-    //    assert(conn == self.connection);
-    
-    dataLength = [data length];
-    dataBytes  = [data bytes];
-    
-    bytesWrittenSoFar = 0;
-    do
+    if(self.filePath)
     {
-        bytesWritten = [__fileStream write:&dataBytes[bytesWrittenSoFar] maxLength:dataLength - bytesWrittenSoFar];
-        assert(bytesWritten != 0);
-        if (bytesWritten == -1)
+        NSInteger       dataLength;
+        const uint8_t * dataBytes;
+        NSInteger       bytesWritten;
+        NSInteger       bytesWrittenSoFar;
+        
+        //    assert(conn == self.connection);
+        
+        dataLength = [data length];
+        dataBytes  = [data bytes];
+        
+        bytesWrittenSoFar = 0;
+        do
         {
-            //            [self _stopReceiveWithStatus:@"File write error"];
-            break;
+            bytesWritten = [__fileStream write:&dataBytes[bytesWrittenSoFar] maxLength:dataLength - bytesWrittenSoFar];
+            assert(bytesWritten != 0);
+            if (bytesWritten == -1)
+            {
+                //            [self _stopReceiveWithStatus:@"File write error"];
+                break;
+            }
+            else
+            {
+                bytesWrittenSoFar += bytesWritten;
+            }
         }
-        else
-        {
-            bytesWrittenSoFar += bytesWritten;
-        }
+        while (bytesWrittenSoFar != dataLength);
     }
-    while (bytesWrittenSoFar != dataLength);
     
     if(self.operationProgressBlock)
     {
@@ -98,8 +101,11 @@
     __response = response;
     
     __data = [[NSMutableData alloc] init];
-    __fileStream = [NSOutputStream outputStreamToFileAtPath:self.filePath append:NO];
-    [__fileStream open];
+    if(self.filePath)
+    {
+        __fileStream = [NSOutputStream outputStreamToFileAtPath:self.filePath append:NO];
+        [__fileStream open];
+    }
     //#pragma unused(theConnection)
     //    NSHTTPURLResponse * httpResponse;
     //    NSString *          contentTypeHeader;
@@ -141,7 +147,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [__fileStream close];
+    if(self.filePath)
+        [__fileStream close];
     if(__data && __data.length > 0)
     {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -199,6 +206,38 @@
 @end
 
 @implementation NSString (URLConnection)
+
+-(NSURLConnection*)postToServerWithParams:(NSDictionary*)params completionHandle:(void (^)(NSData *data, NSError *error)) handle
+{
+    NSURL *url = [NSURL URLWithString:[self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60];
+    [request setTimeoutInterval:60];
+    [request setHTTPMethod:@"POST"];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    NSMutableArray *pairs = [NSMutableArray array];
+    for (NSString *key in [params keyEnumerator])
+    {
+        if (!([[params valueForKey:key] isKindOfClass:[NSString class]]))
+		{
+			continue;
+		}
+		
+		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	}
+    
+    [body appendData:[[pairs componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setHTTPBody:body];
+    
+    IoriConnectionDelegate *connDelegate = [[IoriConnectionDelegate alloc] init];
+    connDelegate.operationCompletionBlock = handle;
+    NSURLConnection *theConnection = [[IoriURLConnection alloc] initWithRequest:request delegate:connDelegate];
+    
+    return theConnection;
+
+}
 
 -(NSString*)createFolder:(NSString*)dir
 {

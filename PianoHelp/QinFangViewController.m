@@ -354,7 +354,8 @@
     
     // Create the sort descriptors array.
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    NSArray *sortArray = @[sort];
+    NSSortDescriptor *sort1 = [[NSSortDescriptor alloc] initWithKey:@"melody.name" ascending:YES selector:@selector(localizedCompare:)];
+    NSArray *sortArray = @[sort, sort1];
     [fetchRequest setSortDescriptors:sortArray];
     
     // Create and initialize the fetch results controller.
@@ -385,7 +386,8 @@
     
     // Create the sort descriptors array.
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    NSArray *sortArray = @[sort];
+    NSSortDescriptor *sort1 = [[NSSortDescriptor alloc] initWithKey:@"melody.name" ascending:YES selector:@selector(localizedCompare:)];
+    NSArray *sortArray = @[sort, sort1];
     [fetchRequest setSortDescriptors:sortArray];
     
     if(self.btnScope.tag != 0)
@@ -422,7 +424,8 @@
     
     // Create the sort descriptors array.
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    NSArray *sortArray = @[sort];
+    NSSortDescriptor *sort1 = [[NSSortDescriptor alloc] initWithKey:@"melody.name" ascending:YES selector:@selector(localizedCompare:)];
+    NSArray *sortArray = @[sort, sort1];
     [fetchRequest setSortDescriptors:sortArray];
     
     if(self.btnScope.tag != 0)

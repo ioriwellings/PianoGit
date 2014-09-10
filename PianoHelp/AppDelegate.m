@@ -13,6 +13,7 @@
 #import "Score.h"
 #import "UserInfo.h"
 #import "Users.h"
+#import "IAPHelper.h"
 
 @implementation AppDelegate
 
@@ -47,6 +48,8 @@
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    self.window.backgroundColor = [UIColor lightGrayColor];
 //    [self.window makeKeyAndVisible];
+    
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:[IAPHelper shareIAPHelper]];
     
     [UserInfo sharedUserInfo].userName = @"guest";
     [UIApplication sharedApplication].idleTimerDisabled=YES;
@@ -87,6 +90,7 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:[IAPHelper shareIAPHelper]];
 }
 
 - (void)saveContext
@@ -282,6 +286,8 @@
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"考级";
     cate.cover = @"jiaocaiqupu.png";
+    cate.buy = @2;
+    cate.buyURL = @"com.jiaYinQiJi.product.a";
 //子类
     MelodyCategory *cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"中国音协第六级－第八级";
@@ -520,6 +526,8 @@
     cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"流行歌曲";
     cate.cover = @"shifanqupu.png";
+    cate.buy = @1;
+    cate.buyURL = @"com.jiaYinQiJi.product.b";
     
     cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate_sub.name = @"经典系列";
