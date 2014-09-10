@@ -931,7 +931,6 @@
                                     andWrong:[result get:1]];
                 }
             }
-            
 
             return;
         }
