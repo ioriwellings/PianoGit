@@ -183,6 +183,7 @@
 {
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
+    [_btnPlay setSelected:false];
     [self hiddenMenuAndToolBar];
 }
 

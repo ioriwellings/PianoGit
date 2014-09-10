@@ -689,7 +689,7 @@
         
         
         playstate = initStop;
-            usleep(400 * 1000);
+        usleep(300 * 1000);
         [self doStop];
     }
     else if (playstate == paused) {
@@ -902,6 +902,7 @@
             totalTime = options.endSecTime;
         }else{
             totalTime = [midifile totalpulses];
+//            totalTime = [[staffs get:staffs.count - 1] endTime];
         }
 //        if (currentPulseTime > [midifile totalpulses]) {
         if (currentPulseTime > totalTime) {
@@ -915,7 +916,7 @@
             [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
 //            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
             
-            [self stop];
+            [self doStop];
             
             if (delegate != nil) {
                 [delegate endSongs];
@@ -930,7 +931,6 @@
                                     andWrong:[result get:1]];
                 }
             }
-            
 
             return;
         }
