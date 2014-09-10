@@ -311,6 +311,10 @@
         [self deleteTempoFile];
     }
 }
+
+-(void)resetShadeLine{
+    [sheetPlay shadeNotes:0 withPrev:(int)currentPulseTime];
+}
 //add by yizhq end
 
 -(void) listen {
@@ -441,7 +445,7 @@
     //    int startTime = (startSectionNum - 1) * measure;
     //    int endTime = endSectionNum * measure;
     
-    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[beat tempo]];
+    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[[midifile time] tempo]];
     if ([beatarray count] > 1) {
         for (i = 1; i<[beatarray count]; i++) {
             int tmp =([[beatarray get:i] starttime]-preTime)/[t measure];
@@ -455,7 +459,7 @@
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-                [t setTempo:[beat tempo]];
+//                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -472,7 +476,7 @@
     beat = [beatarray get:0];
     [t setNumerator:[beat numerator]];
     [t setDenominator:[beat denominator]];
-    [t setTempo:[beat tempo]];
+//    [t setTempo:[beat tempo]];
     [t setMeasure];
     
     if ([beatarray count] > 1 && [[beatarray get:1] starttime]/[t measure] < endSectionNum) {
@@ -488,7 +492,7 @@
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-                [t setTempo:[beat tempo]];
+//                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -536,21 +540,44 @@
 }
 
 - (double)getPulsesPerMsec:(int)currentTime {
-    Array *beatArray = [sheet beatarray];
+    Array *tempoarray = [sheet tempoarray];
     int i = 0;
     double tmpPulsesPerMsec = 0.0;
     int tempo = 0;
     
-    for (i=1; i<[beatArray count]; i++) {
-        if (currentTime < [[beatArray get:i] starttime]) {
+    for (i=1; i<[tempoarray count]; i++) {
+        if (currentTime < [[tempoarray get:i] starttime]) {
             break;
         }
     }
     i--;
-    tempo = [[beatArray get:i] tempo];
+    tempo = [[tempoarray get:i] tempo];
     tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / tempo);
     
     return tmpPulsesPerMsec;
+}
+
+- (double)getCurrentTime:(int)beginTime andMesc:(long)mesc {
+    Array *tempoarray = [sheet tempoarray];
+    int i = 0;
+    double tmpPulsesPerMsec = 0.0;
+    long tmpMesc = 0;
+    int tmpCurrentTime = beginTime;
+    long tmp;
+    
+    for (i=1; i<[tempoarray count]; i++) {
+        tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
+        tmp = ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
+        if (tmpMesc+tmp>=mesc) {
+            break;
+        }
+    }
+    i--;
+    tmpCurrentTime = [[tempoarray get:i] starttime];
+    tmp = mesc - tmpMesc;
+    tmpCurrentTime+=tmp*tmpPulsesPerMsec;
+    
+    return tmpCurrentTime;
 }
 /** add by yizhq end */
 /** The callback for the play/pause button (a single button).
@@ -755,7 +782,7 @@
     
     prevPulseTime = currentPulseTime;
     
-    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[beat tempo]];
+    t = [[TimeSignature alloc] initWithNumerator:[beat numerator] andDenominator:[beat denominator] andQuarter:[[midifile time] quarter] andTempo:[[midifile time] tempo]];
     if ([beatarray count] > 1) {
         for (i = 1; i<[beatarray count]; i++) {
             int tmp =([[beatarray get:i] starttime]-preTime)/[t measure];
@@ -769,7 +796,7 @@
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-                [t setTempo:[beat tempo]];
+//                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -888,7 +915,7 @@
             [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
 //            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
             
-            [self doStop];
+            [self stop];
             
             if (delegate != nil) {
                 [delegate endSongs];

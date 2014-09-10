@@ -40,7 +40,6 @@
     if (size > 0) {
         [time setNumerator:[[beats get:0] numerator]];
         [time setDenominator:[[beats get:0] denominator]];
-        [time setTempo:[[beats get:0] tempo]];
         [time setMeasure];
         m = [time measure];
         i = 1;

@@ -11,6 +11,7 @@
  */
 
 #import "MidiFile.h"
+#import "TempoSignature.h"
 #import <Foundation/NSAutoreleasePool.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -320,6 +321,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 -(Array*)tonearray {
     return tonearray;
 }
+-(Array*)tempoarray {
+    return tempoarray;
+}
 /** add by sunlie end */
 
 /** Parse the given Midi file, and return an instance of this MidiFile
@@ -357,6 +361,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     /** add by sunlie start */
     beatarray = [Array new:5];
     tonearray = [Array new:5];
+    tempoarray = [Array new:5];
     /** add by sunlie end */
     
     MidiFileReader *file = [[MidiFileReader alloc] initWithFile:filename];
@@ -487,22 +492,16 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             MidiEvent *mevent = [eventlist get:i];
             if ([mevent metaevent] == MetaEventTempo) {
                 tempo = [mevent tempo];
-                if ([beatarray count] > 0) {
-                    if (abs([mevent startTime]-[[beatarray get:[beatarray count]-1] starttime]) < 30) {
-                        [[beatarray get:[beatarray count]-1] setTempo:tempo];
-                    } else {
-                        BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:[[beatarray get:[beatarray count]-1] numerator] andDenominator:[[beatarray get:[beatarray count]-1] denominator] andTempo:tempo andStarttime:[mevent startTime]];
-                        [beatarray add:beat];
-                		[beat release];
-                    }
-                }
+                TempoSignature *tempoSig = [[TempoSignature alloc] initWithNumerator:tempo andStarttime:[mevent startTime]];
+                [tempoarray add:tempoSig];
+                [tempoSig release];
             }
             /** modify by sunlie start */
             if ([mevent metaevent] == MetaEventTimeSignature) {
                 numer = [mevent numerator];
                 denom = [mevent denominator];
                 starttime = [mevent startTime];
-                BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:numer andDenominator:denom andTempo:tempo andStarttime:starttime];
+                BeatSignature *beat = [[BeatSignature alloc] initWithNumerator:numer andDenominator:denom andStarttime:starttime];
                 [beatarray add:beat];
                 [beat release];
             }
@@ -546,9 +545,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         BeatSignature *beat = [beatarray get:0];
         numer = [beat numerator];
         denom = [beat denominator];
-        if ([beat tempo] != 0) {
-            tempo = [beat tempo];
-        }
+//        if ([beat tempo] != 0) {
+//            tempo = [beat tempo];
+//        }
     } else {
         numer = 4;
         denom = 4;

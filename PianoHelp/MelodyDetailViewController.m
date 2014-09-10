@@ -241,12 +241,13 @@
         [self clearSplitMeasure];
     }
     [player stop];
+    [player resetShadeLine];
     option = 2;//重播
     [((UIButton*)sender) setSelected:true];
     
     [self.btnXiaoJieTiaoZhuan setTitle:@"1" forState:UIControlStateNormal];
     [self.sliderXiaoJie setValue:1];
-    
+//        [sheetPlay shadeNotes:0 withPrev:0];
     [sheetmusic clearStaffs];
     [sheetmusic setNeedsDisplay];
     [sheetmsic1 setNeedsDisplay];
@@ -254,9 +255,12 @@
     //    [self.sfCountdownView start];
     if (self.iPlayMode != 1) {
         [player playPrepareTempo:[player getSectionTime]];
-        [self.sfCountdownView start:[player getSectionTime] withCnt:[player getSectionTime]];
+        [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
 
+    } else {
+        [player playByType:1];
     }
+    [_btnPlay setSelected:true];
 }
 
 - (IBAction)btnPlay_click:(id)sender
@@ -288,6 +292,8 @@
         if (self.iPlayMode != 1) {
             [player playPrepareTempo:[player getCountDownCnt]];
             [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+        } else {
+            [player playByType:1];
         }
         
         [self hiddenMenuAndToolBar];
@@ -589,7 +595,7 @@
     
     [self.popVC dismissPopoverAnimated:YES];
     [player setMidiFile:midifile withOptions:&options andSheet:sheetmusic];
-    [self btnPlay_click:self.btnPlay];
+//    [self btnPlay_click:self.btnPlay];
 }
 
 

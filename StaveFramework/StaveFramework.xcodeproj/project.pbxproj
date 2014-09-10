@@ -97,6 +97,7 @@
 		BA1134781931DC790039E77E /* MidiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1134771931DC790039E77E /* MidiKeyboard.m */; };
 		BA1383C1191CEEA000610B44 /* PianoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1383C0191CEEA000610B44 /* PianoRecorder.m */; };
 		BA1383C2191D226D00610B44 /* PianoRecorder.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BA1383BF191CEEA000610B44 /* PianoRecorder.h */; };
+		BA1B183919BC50BB003C27D3 /* TempoSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1B183819BC50BB003C27D3 /* TempoSignature.m */; };
 		BA1F2D4B1920F2B7009A9E73 /* MusicPlayers.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1F2D4A1920F2B7009A9E73 /* MusicPlayers.m */; };
 		BA1F2D4C1920F4C2009A9E73 /* MusicPlayers.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BA1F2D491920F2B7009A9E73 /* MusicPlayers.h */; };
 		BA3AAA9D198FCEFF009E07E3 /* KeySymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3AAA9C198FCEFF009E07E3 /* KeySymbol.m */; };
@@ -284,6 +285,8 @@
 		BA1134771931DC790039E77E /* MidiKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidiKeyboard.m; sourceTree = "<group>"; };
 		BA1383BF191CEEA000610B44 /* PianoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PianoRecorder.h; sourceTree = "<group>"; };
 		BA1383C0191CEEA000610B44 /* PianoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PianoRecorder.m; sourceTree = "<group>"; };
+		BA1B183719BC50BB003C27D3 /* TempoSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempoSignature.h; sourceTree = "<group>"; };
+		BA1B183819BC50BB003C27D3 /* TempoSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempoSignature.m; sourceTree = "<group>"; };
 		BA1F2D491920F2B7009A9E73 /* MusicPlayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayers.h; sourceTree = "<group>"; };
 		BA1F2D4A1920F2B7009A9E73 /* MusicPlayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayers.m; sourceTree = "<group>"; };
 		BA3AAA9B198FCEFF009E07E3 /* KeySymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeySymbol.h; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 		190E6E0E1907E77000AD8F6B /* MidiFile */ = {
 			isa = PBXGroup;
 			children = (
+				BA1B183719BC50BB003C27D3 /* TempoSignature.h */,
+				BA1B183819BC50BB003C27D3 /* TempoSignature.m */,
 				BA3AAA9B198FCEFF009E07E3 /* KeySymbol.h */,
 				BA3AAA9C198FCEFF009E07E3 /* KeySymbol.m */,
 				BA81EFA91939519000B477C7 /* SFCountdownView.h */,
@@ -694,6 +699,7 @@
 				190E6E671907E80800AD8F6B /* WhiteNote.m in Sources */,
 				190E6E641907E80800AD8F6B /* TimeSignature.m in Sources */,
 				190E6E861907E9C400AD8F6B /* SerialGATT.m in Sources */,
+				BA1B183919BC50BB003C27D3 /* TempoSignature.m in Sources */,
 				190E6E601907E80800AD8F6B /* SheetMusic.m in Sources */,
 				BA0BBD0319339AA100F27181 /* PianoRecognition.m in Sources */,
 			);

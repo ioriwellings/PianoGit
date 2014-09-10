@@ -68,6 +68,7 @@
     /** add by sunlie start */
     Array* beatarray;        /** The beat signature */
     Array* tonearray;        /** The tone signature */
+    Array* tempoarray;
     Array* controlList;   /** The control data list(33)         */
     Array* controlList2;  /** control data for connect line (9) */
     Array* controlList3;  /** control data for jumped notes (14) */
@@ -96,6 +97,7 @@
 /** add by sunlie start */
 -(Array*)beatarray;
 -(Array*)tonearray;
+-(Array*)tempoarray;
 /** add by sunlie end */
 -(id)initWithFile:(NSString*)path;
 -(Array*)readTrack:(MidiFileReader*)file;

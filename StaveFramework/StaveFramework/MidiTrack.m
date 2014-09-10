@@ -577,9 +577,9 @@ int sortbynote(void* note1, void* note2) {
     beat = [beatarray get:i];
     [timeSig setNumerator:[beat numerator]];
     [timeSig setDenominator:[beat denominator]];
-    if ([beat tempo] > 0) {
-        [timeSig setTempo:[beat tempo]];
-    }
+//    if ([beat tempo] > 0) {
+//        [timeSig setTempo:[beat tempo]];
+//    }
     [timeSig setMeasure];
 }
 
@@ -596,6 +596,7 @@ int sortbynote(void* note1, void* note2) {
     BeatSignature *beat;
     Array *tmpnotes = [Array new:20];
     int j;
+    int payinflag = true;
     
     if (size > 1) {
         beat = [beatarray get:i];
@@ -603,6 +604,7 @@ int sortbynote(void* note1, void* note2) {
     }
     
     for (j = 0; j<[notes count]; j++) {
+        payinflag = true;
         MidiNote *note = [notes get:j];
         startTime = [note startTime];
         duration = [note duration];
@@ -612,7 +614,6 @@ int sortbynote(void* note1, void* note2) {
         if (beatstarttime != 0 && startTime >= beatstarttime) {
             [time setNumerator:[beat numerator]];
             [time setDenominator:[beat denominator]];
-            [time setTempo:[beat tempo]];
             [time setMeasure];
             i++;
             if (i < size) {
@@ -639,6 +640,10 @@ int sortbynote(void* note1, void* note2) {
                 [newnote setDuration:[time measure]-startTime%[time measure]];
                 [newnote setAccidFlag:[note accidFlag]];
                 [newnote setTrFlag:[note trFlag]];
+                if ([note paflag] == 1 && payinflag) {
+                    [newnote setPaflag:[note paflag]];
+                    payinflag = false;
+                }
                 
                 if ([tmpnotes count] > 0) {
                     MidiNote *tmpNote;
