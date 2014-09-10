@@ -52,7 +52,7 @@
         self.imageViewBuy.image = [UIImage imageNamed:@"weigoumai.png"];
         self.imageViewBuy.hidden = NO;
         self.btnBuy.hidden = NO;
-        [self.btnBuy setTitle:@"购买" forState:UIControlStateNormal];
+        [self.btnBuy setTitle:@"点击购买" forState:UIControlStateNormal];
         self.btnBuy.layer.affineTransform = CGAffineTransformMakeRotation(M_PI_4);
         skRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:self.productID]];
         skRequest.delegate = self;

@@ -119,7 +119,7 @@
 
 - (void)provideContent:(NSString *)productIdentifier transaction:(SKPaymentTransaction*)trans
 {
-    NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"/verfyiap.ashx"];
+//    NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"/verfyiap.ashx"];
     
 //    NSError *Err;
 //    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{@"receipt-data":[trans.transactionReceipt base64Encoding]}
@@ -145,22 +145,24 @@
 //                               }
 //                           }];
     
-    [strURL postToServerWithParams:@{@"receiptData":[trans.transactionReceipt base64Encoding] } completionHandle:^(NSData *data, NSError *error)
+//    [strURL postToServerWithParams:@{@"receiptData":[trans.transactionReceipt base64Encoding] } completionHandle:^(NSData *data, NSError *error)
+//    {
+//        if(!error && data)
+//        {
+//            NSError *err;
+//            id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
+////            NSLog(@"json:%@", json);
+//            if([[json objectForKey:@"status"] intValue] == 0)
+//            {
+//                
+//            }
+//        }
+//    }];
+    
+    if([self.delegate respondsToSelector:@selector(provideProduct:)])
     {
-        if(!error && data)
-        {
-            NSError *err;
-            id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
-//            NSLog(@"json:%@", json);
-            if([[json objectForKey:@"status"] intValue] == 0)
-            {
-                if([self.delegate respondsToSelector:@selector(provideProduct:)])
-                {
-                    [self.delegate provideProduct:productIdentifier];
-                }
-            }
-        }
-    }];
+        [self.delegate provideProduct:productIdentifier];
+    }
 }
 
 -(void)recordTransaction:(SKPaymentTransaction*)transaction
@@ -220,7 +222,7 @@
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         // Optionally, display an error here.
-        NSLog(@"%@", transaction.error);
+        NSLog(@"failedTransaction Error:%@", transaction.error);
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     
