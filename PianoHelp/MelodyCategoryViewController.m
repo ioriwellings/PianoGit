@@ -13,6 +13,7 @@
 #import "MelodyViewController.h"
 #import "GridLayout.h"
 #import "AppDelegate.h"
+#import "MessageBox.h"
 
 @interface MelodyCategoryViewController ()
 
@@ -130,7 +131,15 @@
     if(self.levelIndent == 0)
     {
         MelodyCategory *selectedItem = (MelodyCategory *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [self.parentViewController performSegueWithIdentifier:@"pushMelodyLevelSegue" sender:selectedItem];
+        if([selectedItem.buy intValue] == 2)
+        {
+            MelodyCategoryCollectioViewCell *cell = (MelodyCategoryCollectioViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+            [cell btnBuy_click:nil];
+        }
+        else
+        {
+            [self.parentViewController performSegueWithIdentifier:@"pushMelodyLevelSegue" sender:selectedItem];
+        }
     }
     else if (self.levelIndent == 1)
     {
@@ -203,11 +212,15 @@
 #pragma mark -IAP ACTION-
 -(void)canotToPay
 {
-    
+    [MessageBox showMsg:@"iPad当前设置无法购买任何产品，请更改选项[通用－访问限制－应用程序内购买]"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General&path=Restrictions"]];
 }
 -(void)canotGetProductInfo:(NSError *)error
 {
-    
+    if(error)
+        [MessageBox showMsg:error.localizedDescription];
+    else
+        [MessageBox showMsg:@"无法连接App Store."];
 }
 -(void)getProductInfoSucceed:(NSArray *)products
 {
@@ -215,11 +228,11 @@
 }
 -(void)completePurchase:(SKPaymentTransaction *)transaction
 {
-    
+    [MessageBox showMsg:@"购买成功！"];
 }
 -(void)failedPurchase:(SKPaymentTransaction *)transaction
 {
-    
+    [MessageBox showMsg:transaction.error.localizedDescription];
 }
 -(void)provideProduct:(NSString*)strID
 {

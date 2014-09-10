@@ -81,4 +81,8 @@
     
 }
 
+- (IBAction)btnBack_click:(id)sender
+{
+    [self.webView goBack];
+}
 @end
