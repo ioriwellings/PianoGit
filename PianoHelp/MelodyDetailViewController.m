@@ -60,6 +60,14 @@
     
     isEnd = FALSE;
     
+    if (self.iPlayMode == 1) {//识谱模式
+        [self.btnHint setEnabled:true];
+        [self.sliderSpeed setEnabled:false];
+    }else if(self.iPlayMode == 2){//跟弹模式
+        [self.btnHint setEnabled:false];
+        [self.sliderSpeed setEnabled:true];
+    }
+    
     //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
     //    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -295,7 +303,7 @@
         } else {
             [player playByType:1];
         }
-        
+        [self.btnTryListen setEnabled:false];
         [self hiddenMenuAndToolBar];
     }
 }
@@ -304,6 +312,7 @@
 {
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)self.sliderSpeed.value] forState:UIControlStateNormal];
+    [player changeSpeed:self.sliderSpeed.value];
 }
 
 - (IBAction)xiaoJieSlider_valueChanged:(id)sender
@@ -461,6 +470,7 @@
 {
     isEnd = TRUE;
     [[self btnPlay] setSelected:false];
+    [self.btnTryListen setEnabled:true];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
     

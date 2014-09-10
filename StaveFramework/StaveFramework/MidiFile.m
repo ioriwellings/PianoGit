@@ -2891,18 +2891,18 @@ static NSArray* instrNames = NULL;
 -(void)rightHandMute:(MidiOptions*)options andState:(BOOL)state
 {
     if (state == YES) {
-        [options->mute set:-1 index:0];
+        [options->mute set:-1 index:1];
     }else{
-        [options->mute set:0 index:0];
+        [options->mute set:0 index:1];
     }
 }
 
 -(void)leftHandMute:(MidiOptions*)options andState:(BOOL)state
 {
     if (state == YES) {
-        [options->mute set:-1 index:1];
+        [options->mute set:-1 index:0];
     }else{
-        [options->mute set:0 index:1];
+        [options->mute set:0 index:0];
     }
 }
 
