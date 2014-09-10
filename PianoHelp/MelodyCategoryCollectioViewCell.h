@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IAPHelper.h"
 
-@interface MelodyCategoryCollectioViewCell : UICollectionViewCell
+@interface MelodyCategoryCollectioViewCell : UICollectionViewCell <SKProductsRequestDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBG;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBuy;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btnBuy;
+@property (strong, nonatomic) NSString *productID;
 
-
+- (IBAction)btnBuy_click:(id)sender;
 -(void) updateContent:(id)obj;
 
 @end

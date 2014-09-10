@@ -12,6 +12,7 @@
 #import "MelodyCategoryCollectioViewCell.h"
 #import "MelodyViewController.h"
 #import "GridLayout.h"
+#import "AppDelegate.h"
 
 @interface MelodyCategoryViewController ()
 
@@ -35,7 +36,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [IAPHelper shareIAPHelper].delegate = self;
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         /*
@@ -191,5 +192,57 @@
 - (IBAction)btnBack_onclick:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)btnRestoreBuy_click:(id)sender
+{
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+
+#pragma mark -IAP ACTION-
+-(void)canotToPay
+{
+    
+}
+-(void)canotGetProductInfo:(NSError *)error
+{
+    
+}
+-(void)getProductInfoSucceed:(NSArray *)products
+{
+    
+}
+-(void)completePurchase:(SKPaymentTransaction *)transaction
+{
+    
+}
+-(void)failedPurchase:(SKPaymentTransaction *)transaction
+{
+    
+}
+-(void)provideProduct:(NSString*)strID
+{
+    NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"buyURL == %@", strID];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        MelodyCategory *cate = [objects firstObject];
+        cate.buy = @1;
+        NSError *error;
+        if([moc save:&error])
+        {
+            [self.collectionView reloadData];
+        }
+    }
 }
 @end

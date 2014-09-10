@@ -47,32 +47,35 @@
 {
     [__data appendData:data];
     
-    NSInteger       dataLength;
-    const uint8_t * dataBytes;
-    NSInteger       bytesWritten;
-    NSInteger       bytesWrittenSoFar;
-    
-    //    assert(conn == self.connection);
-    
-    dataLength = [data length];
-    dataBytes  = [data bytes];
-    
-    bytesWrittenSoFar = 0;
-    do
+    if(self.filePath)
     {
-        bytesWritten = [__fileStream write:&dataBytes[bytesWrittenSoFar] maxLength:dataLength - bytesWrittenSoFar];
-        assert(bytesWritten != 0);
-        if (bytesWritten == -1)
+        NSInteger       dataLength;
+        const uint8_t * dataBytes;
+        NSInteger       bytesWritten;
+        NSInteger       bytesWrittenSoFar;
+        
+        //    assert(conn == self.connection);
+        
+        dataLength = [data length];
+        dataBytes  = [data bytes];
+        
+        bytesWrittenSoFar = 0;
+        do
         {
-            //            [self _stopReceiveWithStatus:@"File write error"];
-            break;
+            bytesWritten = [__fileStream write:&dataBytes[bytesWrittenSoFar] maxLength:dataLength - bytesWrittenSoFar];
+            assert(bytesWritten != 0);
+            if (bytesWritten == -1)
+            {
+                //            [self _stopReceiveWithStatus:@"File write error"];
+                break;
+            }
+            else
+            {
+                bytesWrittenSoFar += bytesWritten;
+            }
         }
-        else
-        {
-            bytesWrittenSoFar += bytesWritten;
-        }
+        while (bytesWrittenSoFar != dataLength);
     }
-    while (bytesWrittenSoFar != dataLength);
     
     if(self.operationProgressBlock)
     {

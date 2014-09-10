@@ -14,11 +14,15 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import <StoreKit/StoreKit.h>
 #endif
+
+#define kPurchasedProductsKey       @"purchasedProducts"
+#define kProductIdentifier          @"productid"
 
 #define IS_RUNNING_IOS7 ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 7)
 
 #define kBackToQinfangNotification @"backfromNotification"
 #define kLoginSuccessNotification @"loginNotification"
-#define HTTPSERVERSADDRESS @"http://www.pcbft.com"
-//#define HTTPSERVERSADDRESS @"http://192.168.1.4"
+//#define HTTPSERVERSADDRESS @"http://www.pcbft.com"
+#define HTTPSERVERSADDRESS @"http://192.168.1.100"

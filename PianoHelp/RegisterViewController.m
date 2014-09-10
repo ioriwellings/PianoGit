@@ -12,10 +12,13 @@
 #import "AppDelegate.h"
 #import "Users.h"
 #import "DatePickerViewController.h"
+#import "NSString+URLConnection.h"
 
 @interface RegisterViewController ()
 {
     NSString *sessionID;
+    NSURLConnection *conn1;
+    NSURLConnection *conn2;
 }
 @end
 
@@ -50,15 +53,30 @@
                                                object:nil];
 
     NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"Default.aspx"];
-    [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error)
-    {
+    
+    conn1 = [strURL postToServerWithParams:nil completionHandle:^(NSData *data, NSError *error) {
         sessionID = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:[NSString stringWithFormat:@"(S(%@))/VerifyCode.aspx", sessionID]];
-        [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error) {
-            self.labLoading.hidden = YES;
-            self.imageVerifyCode.image = [UIImage imageWithData:data];
-        }];
+        if(!error && data)
+        {
+            conn2 = [strURL postToServerWithParams:nil completionHandle:^(NSData *data, NSError *error) {
+                self.labLoading.hidden = YES;
+                self.imageVerifyCode.image = [UIImage imageWithData:data];;
+                conn2 = nil;
+                conn1 = nil;
+            }];
+        }
     }];
+    
+//    [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error)
+//    {
+//        sessionID = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//        NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:[NSString stringWithFormat:@"(S(%@))/VerifyCode.aspx", sessionID]];
+//        [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error) {
+//            self.labLoading.hidden = YES;
+//            self.imageVerifyCode.image = [UIImage imageWithData:data];
+//        }];
+//    }];
 }
 
 -(void)viewDidLayoutSubviews
@@ -95,6 +113,10 @@
 
 - (IBAction)btnBack_click:(id)sender
 {
+    [conn1 cancel];
+    [conn2 cancel];
+    conn1 = nil;
+    conn2 = nil;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

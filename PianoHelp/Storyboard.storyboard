@@ -1939,8 +1939,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <rect key="frame" x="0.0" y="0.0" width="275" height="265"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ma-66-WNO">
-                                                    <rect key="frame" x="183" y="19" width="71" height="37"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="weigoumai.png" translatesAutoresizingMaskIntoConstraints="NO" id="6ma-66-WNO">
+                                                    <rect key="frame" x="137" y="0.0" width="138" height="138"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="教材名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbr-Hn-5yG">
@@ -1950,10 +1950,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8M-1V-qQL" userLabel="btnBuy">
+                                                    <rect key="frame" x="188" y="23" width="70" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="购买">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnBuy_click:" destination="5Mj-es-hfl" eventType="touchUpInside" id="eM8-ZZ-4jW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="btnBuy" destination="w8M-1V-qQL" id="B9J-Q2-SaW"/>
                                             <outlet property="imageViewBG" destination="Kmy-Zq-hnr" id="Abq-Lc-sTb"/>
                                             <outlet property="imageViewBuy" destination="6ma-66-WNO" id="5MY-i5-W1d"/>
                                             <outlet property="labTitle" destination="Mbr-Hn-5yG" id="QR6-NR-uDD"/>
@@ -1970,17 +1981,27 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="sousuolan.png" translatesAutoresizingMaskIntoConstraints="NO" id="OeA-pf-4iP">
-                                        <rect key="frame" x="92" y="13" width="840" height="49"/>
+                                        <rect key="frame" x="61" y="13" width="840" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgh-3G-jnh" userLabel="btnSearch">
-                                        <rect key="frame" x="94" y="16" width="837" height="44"/>
+                                        <rect key="frame" x="63" y="16" width="837" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="Odp-jn-4fx" kind="modal" id="Ygu-rr-iLi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="324-AX-a0f">
+                                        <rect key="frame" x="922" y="16" width="92" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="恢复购买">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnRestoreBuy_click:" destination="HvS-xE-ckD" eventType="touchUpInside" id="wWO-qT-nIL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2526,6 +2547,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tuichu-01.png" width="40" height="30"/>
         <image name="tuichu2.png" width="36" height="36"/>
         <image name="weigouami.png" width="32" height="30"/>
+        <image name="weigoumai.png" width="137" height="138"/>
         <image name="weixuan.png" width="29" height="29"/>
         <image name="weixuantanzou.png" width="86" height="40"/>
         <image name="xiai.png" width="32" height="30"/>
