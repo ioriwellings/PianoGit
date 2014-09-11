@@ -462,6 +462,7 @@
 
     BOOL endFlag = FALSE;
     int mw = 0;
+    int total = 0, lowCnt = 0, highCnt = 0;
     for (i = 0; i < [symbols count]; i++) {
 
         id <MusicSymbol> s = [symbols get:i];
@@ -523,7 +524,14 @@
             CGContextTranslateCTM (context, xpos, 0.0);
 
             if ([s isKindOfClass:[ChordSymbol class]]) {
+                total++;
                 [s draw:context atY:ytop withStaffNum:tracknum];
+                ChordSymbol *chord = s;
+                if ([chord eightFlag] == -1) {//low
+                    lowCnt++;
+                }else if([chord eightFlag] == 1){//high
+                    highCnt++;
+                }
             }else{
                 [s draw:context atY:ytop];
             }
@@ -533,10 +541,44 @@
         xpos += [s width];
     }
     
+    if (total == lowCnt) {
+//        [self draw8va:context:CGRectMake(12*LeftMargin, height-10, 25, height-20)];
+        
+        [self drawDottedLine:context andStart:CGPointMake(12*LeftMargin, height) andEnd:CGPointMake(width - 2*LeftMargin, height)];
+    }else if(total == highCnt){
+//        [self draw8va:context:CGRectMake(12*LeftMargin, 0, 25, -10)];
+        
+        [self drawDottedLine:context andStart:CGPointMake(12*LeftMargin, 10) andEnd:CGPointMake(width - 2*LeftMargin, 10)];
+    }
+    
     CGContextSetRGBStrokeColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
     CGContextSetRGBFillColor(context, 0/255.0, 0/255.0, 0/255.0, 1);
     [self drawHorizLines:context];
     [self drawEndLines:context];
+}
+
+-(void)draw8va:(CGContextRef)context :(CGRect)rect
+{
+    CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+    CGContextSetTextDrawingMode(context, kCGTextFill);
+    CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+    CGContextShowTextAtPoint(context, rect.origin.x, rect.origin.y + 10, "8va", 3);
+}
+
+-(void)drawDottedLine:(CGContextRef)context andStart:(CGPoint)start andEnd:(CGPoint)end
+{
+    CGContextSaveGState(context);
+    
+    
+    CGFloat lengths[] = {10.0,10.0};
+    CGContextSetLineDash(context, 0, lengths,2);
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:start];
+    [path addLineToPoint:end];
+    [path setLineWidth:1];
+    [path stroke];
+    
+    CGContextRestoreGState(context);
 }
 /** add by yizhq start */
 
