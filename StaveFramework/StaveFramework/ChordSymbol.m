@@ -2262,6 +2262,7 @@ static UIImage* chanyin = nil;
         
 
         if (direct == StemDown) {
+            NoteData *data = [_conLineChord getNotedata];
             WhiteNote *topstaff = [WhiteNote top: [_conLineChord clef]];
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 - NoteHeight/2;
 
@@ -2270,8 +2271,7 @@ static UIImage* chanyin = nil;
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight/4;
             }else{
-                NoteData *note = &notedata[0];
-                ynote1 = ytop + [topStaff dist:(note->whitenote)] + 3*NoteHeight + NoteHeight/2;
+                ynote1 = [topStaff dist:(data->whitenote)] * NoteHeight/2 + 4*NoteHeight;
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth, ynote)];
@@ -2288,19 +2288,17 @@ static UIImage* chanyin = nil;
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + 5*NoteHeight;
             }else{
-                NoteData *note = &notedata[0];
-                ynote1 = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 + 3*NoteHeight + NoteHeight/2;
+                ynote1 = [topStaff dist:(data->whitenote)] * NoteHeight/2 + 5*NoteHeight + NoteHeight/2;
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+radian1)];
             [aPath stroke];
         }else{
+            NoteData *data = [_conLineChord getNotedata];
             WhiteNote *topstaff = [WhiteNote top: [_conLineChord clef]];
-//            ynote = [topStaff dist:[stem bottom]] + 4*NoteHeight;
-            
-            NoteData *note = &notedata[0];
-            ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;
+
+            ynote = ytop + [topStaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight;
             
             if (rightDirect == StemDown) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 - NoteHeight/2;
