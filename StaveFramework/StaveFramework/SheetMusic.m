@@ -162,6 +162,26 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         }
         ClefMeasures *clefs = [[ClefMeasures alloc] initWithNotes:[track notes] andTime:time andBeats:beatarray andControl:[track controlList] andTotal:[track totalpulses] andTracknum:tracknum];
         /* chords = Array of ChordSymbol */
+        /* add by sunlie start */
+        if ([[file tonearray] count] > 0) {
+            int tmpkey = [[[file tonearray] get:0] tone];
+            if (tmpkey >= 0) {
+                mainkey = [[KeySignature alloc] initWithSharps:tmpkey andFlats:0 andPreKey:0];
+            }
+            else {
+                mainkey = [[KeySignature alloc] initWithSharps:0 andFlats:-tmpkey andPreKey:0];
+            }
+        }
+        else {
+            if (options->key == -1) {
+                mainkey = [self getKeySignature:tracks];
+            }
+            else {
+                mainkey = [[KeySignature alloc] initWithNotescale:options->key];
+            }
+        }
+        /* add by sunlie end */
+
         [mainkey resetKey];
         Array *chords = [self createChords:[track splitednotes] withKey:mainkey
                                    andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14]];
@@ -328,6 +348,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     
     /** add by sunlie end */
     
+    [key resetKeyMap];
     while (i < len) {
         int starttime = [(MidiNote*)[midinotes get:i] startTime];
         int duration = [(MidiNote*)[midinotes get:i] duration];
@@ -431,7 +452,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 [chord setConLine:cdcount2+1];
                 flag = 1;
             }
-            if ([chord startTime] < [cd2 endtime] && [chord endTime] >= [cd2 endtime] && flag == 1) {
+            /* modify by sunlie  */
+            if ([chord startTime] < [cd2 endtime] && [chord minEndTime] >= [cd2 endtime] && flag == 1) {
                 [chord setConLine:cdcount2+1];
                 cdcount2++;
                 if (cdcount2 < [list count]) {

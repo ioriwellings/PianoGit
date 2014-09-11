@@ -1377,10 +1377,10 @@ static UIImage* chanyin = nil;
             if (dur != Eighth && dur != Sixteenth) {
                 return NO;
             }
+            /* modify by sunlie start */
             BOOL correctTime =
-            (([time numerator] == 3 && [time denominator] == 4) ||
-             ([time numerator]%3 == 0 && [time denominator] == 8) ||
-             ([time numerator] == 6 && [time denominator] == 4) );
+            (([time numerator]%3 == 0 && [time denominator] == 8));
+            /* modify by sunlie end */
             if (!correctTime) {
                 return NO;
             }

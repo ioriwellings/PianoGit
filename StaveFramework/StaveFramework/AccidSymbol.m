@@ -120,10 +120,11 @@
         [self drawFlat:context atY:ynote];
     else if (accid == AccidNatural)
         [self drawNatural:context atY:ynote];
+    else if (accid == DoubleSharp)//chongsheng
+        [self DrawDoubleSharp:context atY:ynote];
+    else if (accid == DoubleFlat)//chongjiang
+        [self DrawDoubleFlat:context atY:ynote];
 
-//    trans = [NSAffineTransform transform];
-//    [trans translateXBy:-(width - [self minWidth]) yBy:0.0];
-//    [trans concat];
     CGContextTranslateCTM (context, -(width - [self minWidth]), 0);
 }
 
@@ -204,6 +205,109 @@
     [path stroke];
 }
 
+//add by yizhq start
+/**
+ * Draw DoubleSharp symbol
+ *
+ */
+-(void)DrawDoubleSharp:(CGContextRef)ctx atY:(int)ynote{
+
+    int x,y,rectwidth,spacing;
+    x = - NoteHeight/2;
+    y = ynote - NoteHeight;
+    rectwidth = 5;
+    spacing = 10;
+    CGContextSetRGBStrokeColor(ctx, 0, 0, 0, 1);
+    
+    CGContextSetLineWidth(ctx, 2);
+    CGContextMoveToPoint(ctx, x+2, y+2);
+    CGContextAddLineToPoint(ctx, x+spacing+rectwidth-2, y+spacing+rectwidth-2);
+    CGContextStrokePath(ctx);
+    
+    CGContextMoveToPoint(ctx, x+2, y+spacing+rectwidth-2);
+    CGContextAddLineToPoint(ctx, x+spacing+rectwidth-2, y+2);
+    CGContextStrokePath(ctx);
+    
+	CGContextSetLineWidth(ctx, 0.5);
+	
+	CGRect rcts[4];
+	rcts[0] = CGRectMake(x, y, 5, 5);
+	rcts[1] = CGRectMake(x, y+spacing, 5, 5);
+	rcts[2] = CGRectMake(x+spacing, y, 5, 5);
+	rcts[3] = CGRectMake(x+spacing, y+spacing, 5, 5);
+	CGContextAddRects(ctx, rcts, 4);
+    CGContextDrawPath(ctx, kCGPathFill);
+	CGContextStrokePath(ctx);
+}
+
+/**
+ * Draw DoubleFlat symbol
+ *
+ */
+-(void)DrawDoubleFlat:(CGContextRef)context atY:(int)ynote{
+    int x = LineSpace/4;
+    int x1 = -LineSpace;
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    
+    [path moveToPoint:CGPointMake(x, ynote - NoteHeight - NoteHeight/2)];
+    [path addLineToPoint:CGPointMake(x, ynote + NoteHeight)];
+    
+    [path moveToPoint:CGPointMake(x, ynote + LineSpace/4)];
+    [path addCurveToPoint:CGPointMake(x, ynote + LineSpace + LineWidth + 1)
+            controlPoint1:CGPointMake(x + LineSpace/2, ynote - LineSpace/2)
+            controlPoint2:CGPointMake(x + LineSpace, ynote + LineSpace/3)
+     ];
+    
+    [path moveToPoint:CGPointMake(x, ynote + LineSpace/4)];
+    [path addCurveToPoint:CGPointMake(x, ynote + LineSpace + LineWidth + 1)
+            controlPoint1:CGPointMake(x + LineSpace/2, ynote - LineSpace/2)
+            controlPoint2:CGPointMake(x + LineSpace + LineSpace/4,
+                                      ynote + LineSpace/3 - LineSpace/4)
+     ];
+    
+    
+    [path moveToPoint:CGPointMake(x, ynote + LineSpace/4)];
+    [path addCurveToPoint:CGPointMake(x, ynote + LineSpace + LineWidth + 1)
+            controlPoint1:CGPointMake(x + LineSpace/2, ynote - LineSpace/2)
+            controlPoint2:CGPointMake(x + LineSpace + LineSpace/2,
+                                      ynote + LineSpace/3 - LineSpace/2)
+     ];
+    
+    [path moveToPoint:CGPointMake(x1, ynote - NoteHeight - NoteHeight/2)];
+    [path addLineToPoint:CGPointMake(x1, ynote + NoteHeight)];
+    
+    /* Draw 3 bezier curves.
+     * All 3 curves start and stop at the same points.
+     * Each subsequent curve bulges more and more towards
+     * the topright corner, making the curve look thicker
+     * towards the top-right.
+     */
+    
+    [path moveToPoint:CGPointMake(x1, ynote + LineSpace/4)];
+    [path addCurveToPoint:CGPointMake(x1, ynote + LineSpace + LineWidth + 1)
+            controlPoint1:CGPointMake(x1 + LineSpace/2, ynote - LineSpace/2)
+            controlPoint2:CGPointMake(x1 + LineSpace, ynote + LineSpace/3)
+     ];
+    
+    [path moveToPoint:CGPointMake(x1, ynote + LineSpace/4)];
+    [path addCurveToPoint:CGPointMake(x1, ynote + LineSpace + LineWidth + 1)
+            controlPoint1:CGPointMake(x1 + LineSpace/2, ynote - LineSpace/2)
+            controlPoint2:CGPointMake(x1 + LineSpace + LineSpace/4,
+                                      ynote + LineSpace/3 - LineSpace/4)
+     ];
+    
+    
+    [path moveToPoint:CGPointMake(x1, ynote + LineSpace/4)];
+    [path addCurveToPoint:CGPointMake(x1, ynote + LineSpace + LineWidth + 1)
+            controlPoint1:CGPointMake(x1 + LineSpace/2, ynote - LineSpace/2)
+            controlPoint2:CGPointMake(x1 + LineSpace + LineSpace/2,
+                                      ynote + LineSpace/3 - LineSpace/2)
+     ];
+    
+    [path setLineWidth:1];
+    [path stroke];
+}
+//add by yizhq end
 /** Draw a natural symbol.
  * @param ynote The pixel location of the top of the accidental's note.
  */
