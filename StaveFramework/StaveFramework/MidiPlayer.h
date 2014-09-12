@@ -22,6 +22,7 @@
 #import "PianoRecognition.h"
 #import "MidiKeyboard.h"
 #import "PianoCommon.h"
+#import "PianoRecorder.h"
 
 /* Possible playing states */
 //enum {
@@ -85,6 +86,7 @@ enum {
     int playModel;
     BOOL judgeFlag;
     
+    PianoRecorder *recorder;
     
     BOOL isLine;
 }

@@ -140,6 +140,8 @@
         sensor.delegate = self;
         pianoData = [[PianoDataJudged alloc] initWithOptions:opt];
         arrPacket =[[NSMutableArray alloc] init];
+        
+        recorder = [[PianoRecorder alloc]init];
     }
 
     if ((midifile == file && midifile != nil && playstate == paused)) {
@@ -357,6 +359,9 @@
             [self playModel1];
             break;
         case PlayModel2:
+            if (recorder != nil) {
+                [recorder startRecord];
+            }
             [self playPause];
             break;
         case PlayModel3:
@@ -713,6 +718,10 @@
     /* Remove all shading by redrawing the music */
     sheet.hidden = NO;
 //    piano.hidden = NO; by IORI.
+    
+    if (recorder != nil) {
+        [recorder stopRecord];
+    }
 
     startPulseTime = 0;
     currentPulseTime = 0;
@@ -1181,6 +1190,11 @@
     {
         [recognition release];
     }
+    if (recorder != nil)
+    {
+        [recorder release];
+    }
+    
     [tempSoundFile release];
     if (timer != nil) {
         [timer invalidate];

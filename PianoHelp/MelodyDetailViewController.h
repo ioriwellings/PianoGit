@@ -51,6 +51,7 @@ typedef enum : NSUInteger
 @property (weak, nonatomic) IBOutlet UISlider *sliderSpeed;
 
 @property (strong, nonatomic) NSString *fileName;
+@property (strong, nonatomic) NSString *saveName;
 @property (weak, nonatomic) id<FixSearchDisplayDelegate> fixSearchDisplayDelegate;
 
 @property (weak, nonatomic) IBOutlet UIView *menuBar;
