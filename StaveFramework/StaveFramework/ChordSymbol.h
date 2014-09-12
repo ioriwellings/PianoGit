@@ -50,7 +50,7 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
     void *sheetmusic;     /** Used to get colors and other SheetMusic options */
     /** add by sunlie start */
     int judgedResult;  	 /** 0: wrong 1：good 2：great     add by sunlie */
-    int threeNotes;      /** 0: init  1:Triplet  2: before 16 3: after16 4: middle 16--add by sunlie */
+    int threeNotes;      /** 0: init  1:Triplet  2: before 16 3: after16 4: middle 16--  7: 7连音add by sunlie */
     int conLine;
     ChordSymbol *_conLineChord;
     int _conLineWidth;
@@ -71,6 +71,7 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
     int huiFlag;
     int trFlag;
     int stressFlag;
+    int thirtytwoFlag;
     /** add by sunlie end */
 
     /** add by yizhq start */
@@ -152,6 +153,8 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
 -(void)setTrFlag:(int)t;
 -(int)stressFlag;
 -(void)setStressFlag:(int)s;
+-(int)thirtytwoFlag;
+-(void)setThirtytwoFlag:(int)t;
 /* add by sunlie end */
 /** add by yizhq start */
 -(Stem*) stem1;
@@ -172,7 +175,7 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
 -(int)notedata_len;
 -(NoteData*)notedata;
 
-+(BOOL)canCreateBeams:(Array*)chords withTime:(TimeSignature*)time 
++(BOOL)canCreateBeams:(Array*)chords withTime:(TimeSignature*)time
        onBeat:(BOOL)startQuarter; 
 +(void)createBeam:(Array*)chords withSpacing:(int)spacing; 
 +(void)bringStemsCloser:(Array*)chords;

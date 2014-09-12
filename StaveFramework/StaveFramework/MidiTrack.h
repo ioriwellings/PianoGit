@@ -46,6 +46,7 @@ int sortbytime(void* note1, void* note2);
     Array* controlList13;
     Array* controlList14;
     Array* controlList15;
+    Array* controlList16;
     int totalpulses;
     /** add by sunlie end */
 }
@@ -91,6 +92,8 @@ int sortbytime(void* note1, void* note2);
 -(void)setControlList14:(Array*)cl14;
 -(Array*)controlList15;
 -(void)setControlList15:(Array*)cl15;
+-(Array*)controlList16;
+-(void)setControlList16:(Array*)cl16;
 -(int)totalpulses;
 -(void)setTotalpulses:(int)t;
 -(Array*)splitednotes;

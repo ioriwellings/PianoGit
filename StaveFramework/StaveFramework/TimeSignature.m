@@ -155,7 +155,7 @@
     else if (duration >=  3*whole/64)
         return Sixteenth;
     /** add by sunlie start */
-    else if (duration >=  whole/36)
+    else if (duration >=  4.5*whole/128)
         return SixteenTriplet;
     else if (duration >=  3*whole/128)
         return ThirtySecond;
