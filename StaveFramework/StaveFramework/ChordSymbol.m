@@ -2357,7 +2357,7 @@ static UIImage* chanyin = nil;
         } else if (direct == StemUp) {
             NoteData *data = [_conLineChord getNotedata];
             WhiteNote *topstaff = [WhiteNote bottom: [_conLineChord clef]];
-            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 + NoteHeight*3/2;
+            ynote = ytop + [topStaff dist:[stem bottom]] * [SheetMusic getNoteHeight]/2 + NoteHeight*3/2;
             
             if (rightDirect == StemDown) {
                 ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + 8*NoteHeight;
