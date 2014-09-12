@@ -1042,8 +1042,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="jZY-Qt-sGV"/>
                     <connections>
+                        <outlet property="btnAccompany" destination="aHk-wv-G65" id="dq4-2N-q9v"/>
+                        <outlet property="btnHandCtl" destination="BCT-IF-06P" id="zg2-TU-slg"/>
                         <outlet property="btnHint" destination="SSw-VE-faB" id="dKt-zn-rCr"/>
                         <outlet property="btnPlay" destination="FyK-ha-T1b" id="hSh-Nd-Ybs"/>
+                        <outlet property="btnSplitSection" destination="yGx-ka-sf5" id="lkC-X9-4GC"/>
                         <outlet property="btnSuDu" destination="WgW-aH-ytR" id="T2G-Ag-4Fh"/>
                         <outlet property="btnTryListen" destination="b7b-eu-9P1" id="pEh-C4-L1V"/>
                         <outlet property="btnXiaoJieTiaoZhuan" destination="J0h-dF-SYW" id="6VO-4g-blb"/>
