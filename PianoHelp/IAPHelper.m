@@ -109,6 +109,10 @@
 
 -(void) buyProductWithID:(NSString*)strID
 {
+    if([self.delegate respondsToSelector:@selector(willToPay:)])
+    {
+        [self.delegate willToPay:strID];
+    }
     productsList = [NSMutableDictionary dictionaryWithCapacity:20];
     skRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:strID]];
     skRequest.delegate = self;
