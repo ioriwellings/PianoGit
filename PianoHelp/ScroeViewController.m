@@ -11,7 +11,7 @@
 #import "ASIFormDataRequest.h"
 #import "WebService.h"
 #import "GTMBase64.h"
-
+#import "UserInfo.h"
 
 @interface ScroeViewController ()
 
@@ -88,13 +88,13 @@
     //创建WebService的调用参数
     NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
                                @"midiFileName", saveName, @"fileData", string,
-                               @"userName",     @"iori",
+                               @"userName",     [UserInfo sharedUserInfo].userName,
                                @"scroe",     self.labScroe.text, nil];
     
     
     
     //调用WebService，获取响应
-    NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://192.168.1.102:9000/"
+    NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
                                                      webServiceFile:@"UpLoadFileWebService.asmx"
                                                        xmlNameSpace:@"http://tempuri.org/"
                                                      webServiceName:@"UpLoadFile"
