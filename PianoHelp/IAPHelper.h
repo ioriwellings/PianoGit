@@ -10,6 +10,7 @@
 
 @protocol IAPActionDelegate <NSObject>
 @optional
+-(void)willToPay:(NSString*)productID;
 -(void)canotToPay;
 -(void)canotGetProductInfo:(NSError *)error;
 -(void)getProductInfoSucceed:(NSArray *)products;
@@ -25,7 +26,7 @@
     NSSet * productIdentifiers;
     NSMutableSet * purchasedProducts;
 }
-@property (assign) NSObject<IAPActionDelegate> *delegate;
+@property (weak) NSObject<IAPActionDelegate> *delegate;
 @property (readonly) NSMutableDictionary *productsList;
 
 +(IAPHelper*)shareIAPHelper;

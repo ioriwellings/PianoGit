@@ -298,6 +298,11 @@
             CGContextSetTextDrawingMode(context, kCGTextFill);
             CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
             CGContextShowTextAtPoint(context, xstart, ystem-5, "3", 1);
+        } else if(threeFlag == 7) {
+            CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+            CGContextSetTextDrawingMode(context, kCGTextFill);
+            CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+            CGContextShowTextAtPoint(context, xstart, ystem-7, "7", 1);
         }
     }
     else if (direction == StemDown) {
@@ -327,6 +332,11 @@
             CGContextSetTextDrawingMode(context, kCGTextFill);
             CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
             CGContextShowTextAtPoint(context, xstart, ystem+12, "3", 1);
+        } else if (threeFlag == 7) {
+            CGContextSelectFont(context, "Georgia-Italic", 12.0, kCGEncodingMacRoman);
+            CGContextSetTextDrawingMode(context, kCGTextFill);
+            CGContextSetTextMatrix(context, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+            CGContextShowTextAtPoint(context, xstart, ystem+14, "7", 1);
         }
     }
 }

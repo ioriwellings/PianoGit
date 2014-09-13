@@ -42,6 +42,9 @@ typedef enum : NSUInteger
 }
 
 @property (nonatomic) NSInteger iPlayMode;
+@property (weak, nonatomic) IBOutlet UIButton *btnAccompany;
+@property (weak, nonatomic) IBOutlet UIButton *btnHandCtl;
+@property (weak, nonatomic) IBOutlet UIButton *btnSplitSection;
 @property (weak, nonatomic) IBOutlet UIButton *btnTryListen;
 @property (weak, nonatomic) IBOutlet UIButton *btnHint;
 @property (weak, nonatomic) IBOutlet UIButton *btnXiaoJieTiaoZhuan;

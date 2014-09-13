@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IoriLoadingView.h"
 
 @interface MessageBox : NSObject
 {
@@ -14,5 +15,5 @@
 }
 
 +(void)showMsg:(NSString*)strMsg;
-
++(IoriLoadingView*)showLoadingViewWithBlockOnClick:(void (^)(IoriLoadingView *loadingView))handle hasCancel:(BOOL)cancel parentViewSize:(CGSize)pSize;
 @end

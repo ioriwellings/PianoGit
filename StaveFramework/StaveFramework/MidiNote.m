@@ -50,6 +50,7 @@
     /* add by sunlie start */
     previous = -1;
     next = -1;
+    thirtytwoFlag = 0;
     /* add by sunlie end */
     return self;
 } 
@@ -149,6 +150,12 @@
 -(void)setAccidFlag:(int)a {
     accidFlag = a;
 }
+-(int)thirtytwoFlag {
+    return thirtytwoFlag;
+}
+-(void)setThirtytwoFlag:(int)t {
+    thirtytwoFlag = t;
+}
 /* add by sunlie end */
 
 /* A NoteOff event occurs for this note at the given time.
@@ -173,6 +180,7 @@
     [m setHuiFlag:huiFlag];
     [m setTrFlag:trFlag];
     [m setAccidFlag:accidFlag];
+    [m setThirtytwoFlag:thirtytwoFlag];
     /* add by sunlie end */
     return m;
 }

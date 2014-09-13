@@ -15,6 +15,7 @@
 #import "Users.h"
 #import "IAPHelper.h"
 
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -61,6 +62,10 @@
     }
     [self loadDemoMidiToSQL];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
+    
+    BOOL bResult = [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"] toDestination:[self applicationDocumentsDirectory].path delegate:self];
+    
+    
     return YES;
 }
 

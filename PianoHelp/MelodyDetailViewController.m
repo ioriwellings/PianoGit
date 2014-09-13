@@ -63,9 +63,11 @@
     if (self.iPlayMode == 1) {//识谱模式
         [self.btnHint setEnabled:true];
         [self.sliderSpeed setEnabled:false];
+        [self.btnAccompany setEnabled:false];
     }else if(self.iPlayMode == 2){//跟弹模式
         [self.btnHint setEnabled:false];
         [self.sliderSpeed setEnabled:true];
+        [self.btnAccompany setEnabled:true];
     }
     
     //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
@@ -277,6 +279,7 @@
     {
         option = 3;//暂停
         [((UIButton*)sender) setSelected:false];
+        [self btnStateCtlInPlay:3];
         [player playPause];
         scrollView.hidden = NO;
         sheetmsic1.hidden = YES;
@@ -304,6 +307,7 @@
             [player playByType:1];
         }
         [self.btnTryListen setEnabled:false];
+        [self btnStateCtlInPlay:1];
         [self hiddenMenuAndToolBar];
     }
 }
@@ -469,8 +473,9 @@
 -(void)endSongs
 {
     isEnd = TRUE;
-    [[self btnPlay] setSelected:false];
+    [self.btnPlay setSelected:false];
     [self.btnTryListen setEnabled:true];
+    [self btnStateCtlInPlay:2];
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
     
@@ -657,6 +662,48 @@
     if (timer != nil) {
         [timer invalidate];
     }
+}
+
+-(void)btnStateCtlInPlay:(int)state{
+
+    if (state == 1) {//playing
+        [self.btnTryListen setEnabled:false];
+        [self.btnHint setEnabled:false];
+        [self.btnXiaoJieTiaoZhuan setEnabled:false];
+        [self.btnSuDu setEnabled:false];
+        [self.sliderXiaoJie setEnabled:false];
+        [self.sliderSpeed setEnabled:false];
+        [self.btnAccompany setEnabled:false];
+        [self.btnHandCtl setEnabled:false];
+        [self.btnSplitSection setEnabled:false];
+    }else if(state == 2){//end playing
+        [self.btnTryListen setEnabled:true];
+        if (_iPlayMode == 2) {
+            [self.btnHint setEnabled:false];
+        }else if (_iPlayMode == 1){
+            [self.btnHint setEnabled:true];
+        }
+
+        [self.btnXiaoJieTiaoZhuan setEnabled:true];
+        [self.btnSuDu setEnabled:true];
+        [self.sliderXiaoJie setEnabled:true];
+        [self.sliderSpeed setEnabled:true];
+        [self.btnAccompany setEnabled:true];
+        [self.btnHandCtl setEnabled:true];
+        [self.btnSplitSection setEnabled:true];
+    }else if (state == 3){//pause
+        [self.btnXiaoJieTiaoZhuan setEnabled:true];
+        [self.btnSuDu setEnabled:true];
+        [self.sliderSpeed setEnabled:true];
+        if (_iPlayMode == 2) {
+            [self.btnHint setEnabled:false];
+            [self.btnHandCtl setEnabled:true];
+        }else if (_iPlayMode == 1){
+            [self.btnHint setEnabled:true];
+            [self.btnHandCtl setEnabled:false];
+        }
+    }
+    
 }
 
 

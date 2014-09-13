@@ -361,7 +361,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         [notegroup add:[midinotes get:i]];
         i++;
         
-        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/12 && duration >= [time quarter]/16) {
+        while (i < len && [(MidiNote*)[midinotes get:i] startTime]-starttime < [time quarter]/12 && duration >= [time quarter]/16 && [(MidiNote*)[midinotes get:i] thirtytwoFlag] == 0) {
             [notegroup add:[midinotes get:i]];
             i++;
         }
@@ -1368,7 +1368,7 @@ static BOOL isBlank(id x) {
  */
 -(void)createBeamedChords:(Array*)allsymbols withTime:(TimeSignature*)time
              andNumChords:(int)numChords onBeat:(BOOL)startBeat {
-    int chordIndexes[6];
+    int chordIndexes[8];
     Array* chords = [Array new:numChords];
     
     for (int track = 0; track < [allsymbols count]; track++) {
@@ -1421,6 +1421,8 @@ static BOOL isBlank(id x) {
  *  - 2 connected chords that start on any beat
  */
 -(void)createAllBeamedChords:(Array*)allsymbols withTime:(TimeSignature*)time {
+    [self createBeamedChords:allsymbols withTime:time
+                andNumChords:7 onBeat:NO];
     /** delete by sunlie start */
         if (([time numerator] == 3 && [time denominator] == 4) ||
             ([time numerator]%3 == 0 && [time denominator] == 8) ||
