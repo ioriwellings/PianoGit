@@ -134,7 +134,9 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
         CFStringRef endpointName = NULL;
         MIDIObjectGetStringProperty(src, kMIDIPropertyName, &endpointName);
         char endpointNameC[255];
-        CFStringGetCString(endpointName, endpointNameC, 255, kCFStringEncodingUTF8);
+        if ((NSString *)endpointName != nil ) {
+            CFStringGetCString(endpointName, endpointNameC, 255, kCFStringEncodingUTF8);
+        }
         NSLog(@"Source %d - %s", i, endpointNameC);
         if (strcmp("Session 1", endpointNameC) == 0) {
             continue;
