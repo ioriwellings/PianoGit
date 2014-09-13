@@ -7,6 +7,7 @@
 //
 
 #import "ShowViewController.h"
+#import "UserInfo.h"
 
 @interface ShowViewController ()
 
@@ -40,11 +41,18 @@
 		}
 	}
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.duankankan.com/web2014/2014/"]];
-    [self.webView loadRequest:request];
-//    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
-//                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadDefaultPage)
+                                                 name:kLoginSuccessNotification object:nil];
 //                                                                                ]]]];
+}
+
+-(void)loadDefaultPage
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/work.aspx?username=%@", HTTPSERVERSADDRESS, [UserInfo sharedUserInfo].userName]]];
+    [self.webView loadRequest:request];
+    //    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
+    //                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
 }
 
 - (void)didReceiveMemoryWarning
