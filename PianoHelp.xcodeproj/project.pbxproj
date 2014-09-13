@@ -222,6 +222,7 @@
 		89A3D67619C3E9E200FDC779 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 89A3D66F19C3E9E200FDC779 /* zip.c */; };
 		89A3D67719C3E9E200FDC779 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A3D67219C3E9E200FDC779 /* SSZipArchive.m */; };
 		89A3D67B19C3EE8000FDC779 /* temp.zip in Resources */ = {isa = PBXBuildFile; fileRef = 89A3D67A19C3EE8000FDC779 /* temp.zip */; };
+		89A3D67D19C4133500FDC779 /* dataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89A3D67C19C4133500FDC779 /* dataSource.plist */; };
 		89BE8D75192ADAD100686AC7 /* MelodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */; };
 		89BE8D78192AE16900686AC7 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */; };
 		89D61FD21927965400355EF0 /* APLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D61FD11927965400355EF0 /* APLProduct.m */; };
@@ -640,6 +641,7 @@
 		89A3D67119C3E9E200FDC779 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		89A3D67219C3E9E200FDC779 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		89A3D67A19C3EE8000FDC779 /* temp.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = temp.zip; sourceTree = "<group>"; };
+		89A3D67C19C4133500FDC779 /* dataSource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataSource.plist; sourceTree = "<group>"; };
 		89BE8D73192ADAD100686AC7 /* MelodyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyTableViewCell.h; sourceTree = "<group>"; };
 		89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyTableViewCell.m; sourceTree = "<group>"; };
 		89BE8D76192AE16900686AC7 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
@@ -1127,6 +1129,7 @@
 				B135CF9D19B1781500EA8BF7 /* PianoWeb */,
 				BA163CF419A7812D00857C4E /* temp */,
 				89A3D67A19C3EE8000FDC779 /* temp.zip */,
+				89A3D67C19C4133500FDC779 /* dataSource.plist */,
 				890093C719510603001F33F4 /* shopBg.jpg */,
 				890093C819510603001F33F4 /* spaceBg.jpg */,
 				89F5FB6019527DE900011C3A /* shopBg.png */,
@@ -1940,6 +1943,7 @@
 				89F5D18C19ABFE2C005D5D10 /* jizhumima_selected.png in Resources */,
 				8989B10B198B2032005222C2 /* shifanqupu.png in Resources */,
 				890C39BF19833BF300206740 /* biansu-01@2x.png in Resources */,
+				89A3D67D19C4133500FDC779 /* dataSource.plist in Resources */,
 				8989B119198B2032005222C2 /* weigoumai@2x.png in Resources */,
 				BA1079B01967FE4C0056F626 /* nine.png in Resources */,
 				8994D15B194BCEDA0016F806 /* 11.星光圆舞曲.mid in Resources */,
