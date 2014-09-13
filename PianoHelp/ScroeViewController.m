@@ -105,6 +105,8 @@
     NSLog(@"the error message is %@", errMsg);
     NSLog(@"the result is %@", theResponse);
     
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 - (IBAction)btnSaveRecord_onclick:(id)sender
