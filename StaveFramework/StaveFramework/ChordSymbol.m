@@ -91,6 +91,9 @@ static UIImage* chanyin = nil;
         if ([[midinotes get:i] trFlag] > 0) {
             trFlag = [[midinotes get:i] trFlag];
         }
+        if ([[midinotes get:i] thirtytwoFlag] > 0) {
+            thirtytwoFlag = [[midinotes get:i] thirtytwoFlag];
+        }
     }
 
     notedata_len = [midinotes count];
@@ -236,6 +239,9 @@ static UIImage* chanyin = nil;
         
         note->whitenote = [key getWhiteNote:[midi number] andMeasure:measurecount];
         note->duration = [time getNoteDuration:([midi endTime]-[midi startTime])];
+        if ([self thirtytwoFlag] > 0) {
+            note->duration = ThirtySecond;
+        }
         note->accid = [key getAccidentalForNote:[midi number] 
                                  andMeasure:measurecount];
         if ([midi accidFlag] >= 80 && [midi accidFlag] <= 84) {
@@ -560,6 +566,14 @@ static UIImage* chanyin = nil;
 -(void)setStressFlag:(int)s {
     stressFlag = s;
 }
+
+-(int)thirtytwoFlag {
+    return thirtytwoFlag;
+}
+-(void)setThirtytwoFlag:(int)t {
+    thirtytwoFlag = t;
+}
+
 -(void)setChordInfo {
     int i;
     
@@ -915,13 +929,13 @@ static UIImage* chanyin = nil;
 
     /* Align the chord to the right */
     CGContextTranslateCTM (context, (width - [self minWidth]), 0);
-    
+
     /* Draw the accidentals */
     WhiteNote *topstaff = [WhiteNote top:clef];
     int xpos = [self drawAccid:context atY:ytop];
     int w = [self drawPayin:context atY:ytop topStaff:topstaff];
     xpos += w;
-    
+
     /* Draw the notes */
     CGContextTranslateCTM (context, xpos, 0);
     
@@ -1373,7 +1387,12 @@ static UIImage* chanyin = nil;
     /** add by sunlie end */
 
     if (zsFlag == 0) {
-        if (numChords == 6) {
+        if (numChords == 7) {
+            if(dur != ThirtySecond || [chord0 thirtytwoFlag]!=7) {
+                return NO;
+            }
+        }
+        else if (numChords == 6) {
             if (dur != Eighth && dur != Sixteenth) {
                 return NO;
             }
@@ -1437,7 +1456,8 @@ static UIImage* chanyin = nil;
             (dur == Sixteenth) ||
             ([firstStem duration] == Sixteenth && [secondStem duration] == Sixteenth && [lastStem duration]==Eighth) ||
             ([firstStem duration] == Eighth && [secondStem duration] == Sixteenth && [lastStem duration]==Sixteenth) ||
-            ([firstStem duration] == Sixteenth && [secondStem duration] == Eighth && [lastStem duration]==Sixteenth);
+            ([firstStem duration] == Sixteenth && [secondStem duration] == Eighth && [lastStem duration]==Sixteenth) ||
+            (dur == ThirtySecond || [chord0 thirtytwoFlag]==3);
             if (!valid) {
                 return NO;
             }
@@ -1489,8 +1509,12 @@ static UIImage* chanyin = nil;
 
     /** add by sunlie start */
     if (numChords == 3) {
-        if (dur == Triplet || dur == SixteenTriplet) {
+        if (dur == Triplet || dur == SixteenTriplet || [chord0 thirtytwoFlag] == 3) {
             [[chords get:1] setThreeNotes:1];
+        }
+    } else if(numChords == 7) {
+        if (dur == ThirtySecond && [chord0 thirtytwoFlag] == 7) {
+            [[chords get:3] setThreeNotes:7];
         }
     }
     /** add by sunlie end */
@@ -2333,7 +2357,7 @@ static UIImage* chanyin = nil;
         } else if (direct == StemUp) {
             NoteData *data = [_conLineChord getNotedata];
             WhiteNote *topstaff = [WhiteNote bottom: [_conLineChord clef]];
-            ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 + NoteHeight*3/2;
+            ynote = ytop + [topStaff dist:[stem bottom]] * [SheetMusic getNoteHeight]/2 + NoteHeight*3/2;
             
             if (rightDirect == StemDown) {
                 ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + 8*NoteHeight;

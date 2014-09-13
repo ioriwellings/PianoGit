@@ -354,6 +354,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     controlList13 = [Array new:10];
     controlList14 = [Array new:10];
     controlList15 = [Array new:10];
+    controlList16 = [Array new:10];
     /** add by sunlie end */
     tracks = [Array new:5];
     trackPerChannel = NO;
@@ -442,6 +443,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             }
             if ([controlList15 count] > 0) {
                 [track setControlList15:controlList15];
+            }
+            if ([controlList16 count] > 0) {
+                [track setControlList16:controlList16];
             }
             /** add by sunlie end */
             [tracks add:track];
@@ -587,6 +591,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     [controlList13 release];
     [controlList14 release];
     [controlList15 release];
+    [controlList16 release];
     /** add by sunlie end */
     [super dealloc];
 }
@@ -641,6 +646,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     int ctrecord15 = 0;
     int preValue15 = -1;
     int preStart15 = -1;
+    int ctrecord16 = 0;
     
     [controlList clear];
     [controlList2 clear];
@@ -657,6 +663,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     [controlList13 clear];
     [controlList14 clear];
     [controlList15 clear];
+    [controlList16 clear];
     /** add by sunlie end */
 
     while ([file offset] < trackend) {
@@ -1230,6 +1237,23 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                 preStart15 = [mevent startTime];
                 preValue15 = value;
             }
+            if ([mevent controlNum] == 30) {
+                int value = [mevent controlValue];
+                ControlData *cdata;
+                if (value == 127) {
+                    if (ctrecord16 == 127) {
+                        cdata = [controlList16 get:[controlList16 count]-1];
+                        [cdata setEndtime:[mevent startTime]];
+                        ctrecord16 = 0;
+                    } else if (ctrecord16 == 0) {
+                        ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
+                        [controlList16 add:data];
+                        [data release];
+                        ctrecord16 = 127;
+                    }
+                }
+            }
+
             /** add by sunlie end */
         }
         else if (eventflag >= EventProgramChange && 
@@ -2060,13 +2084,13 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 +(Array*)splitTrack:(MidiTrack*) track withMeasure:(int)measurelen{
     Array *notes = [track notes];
     int notes_count = [notes count];
-
+    
     MidiTrack *top = [[MidiTrack alloc] initWithTrack:1];
     MidiTrack *bottom = [[MidiTrack alloc] initWithTrack:2];
     [top setTotalpulses:[track totalpulses]];//add by yizhq
     [bottom setTotalpulses:[track totalpulses]];//add by yizhq
     Array* result = [Array new:2];
-    [result add:top]; 
+    [result add:top];
     [result add:bottom];
 
     if (notes_count == 0)
@@ -2121,6 +2145,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         }
         if ([[track controlList15] count ] > 0) {
             [top setControlList15:[track controlList15]];
+        }
+        if ([[track controlList16] count ] > 0) {
+            [top setControlList16:[track controlList16]];
         }
     }
     /** add by sunlie end */
@@ -2285,6 +2312,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             }
             if ([[track controlList15] count ] > 0) {
                 [result setControlList15:[track controlList15]];
+            }
+            if ([[track controlList16] count ] > 0) {
+                [result setControlList16:[track controlList16]];
             }
         }
         /** add by sunlie end */
