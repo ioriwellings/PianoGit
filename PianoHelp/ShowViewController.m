@@ -44,7 +44,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadDefaultPage)
                                                  name:kLoginSuccessNotification object:nil];
-//                                                                                ]]]];
+
 }
 
 -(void)loadDefaultPage
@@ -53,6 +53,7 @@
     [self.webView loadRequest:request];
     //    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
     //                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
+    //                                                                                ]]]];
 }
 
 - (void)didReceiveMemoryWarning
