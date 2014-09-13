@@ -10,6 +10,7 @@
 #import "Users.h"
 #import "Melody.h"
 #import "MelodyFavorite.h"
+#import "MelodyCategory.h"
 #import "AppDelegate.h"
 #import "UserInfo.h"
 
@@ -72,13 +73,15 @@
     
     if(self.isInSearch)
     {
-        if([self.melody.buy intValue] == 1)
+        if([self.melody.buy intValue] == 1  || [self.melody.category.parentCategory.buy intValue] ==1)
         {
             [self.btnBuy setSelected:YES];
+            self.labBuy.text = @"已购买";
         }
         else
         {
             [self.btnBuy setSelected:NO];
+            self.labBuy.text = @"未购买";
         }
         self.btnBuy.hidden = NO;
         self.labBuy.hidden = NO;

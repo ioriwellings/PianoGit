@@ -15,7 +15,12 @@
 #import "AppDelegate.h"
 #import "MessageBox.h"
 
+
+
 @interface MelodyCategoryViewController ()
+{
+    IoriLoadingView *loadingView;
+}
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) MelodyCategory *currentMelodyCategory;
@@ -37,7 +42,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [IAPHelper shareIAPHelper].delegate = self;
+    if(self.levelIndent == 0)
+    {
+        [IAPHelper shareIAPHelper].delegate = self;
+    }
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         /*
@@ -210,13 +218,24 @@
 
 
 #pragma mark -IAP ACTION-
+
+-(void)willToPay:(NSString*)productID
+{
+    loadingView = [MessageBox showLoadingViewWithBlockOnClick:^(IoriLoadingView *loadingView) {
+        ;
+    } hasCancel:NO parentViewSize:self.view.frame.size];
+    [self.view addSubview:loadingView];
+}
+
 -(void)canotToPay
 {
+    [loadingView removeFromSuperview];
     [MessageBox showMsg:@"iPad当前设置无法购买任何产品，请更改选项[通用－访问限制－应用程序内购买]"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General&path=Restrictions"]];
 }
 -(void)canotGetProductInfo:(NSError *)error
 {
+    [loadingView removeFromSuperview];
     if(error)
         [MessageBox showMsg:error.localizedDescription];
     else
@@ -228,10 +247,12 @@
 }
 -(void)completePurchase:(SKPaymentTransaction *)transaction
 {
+    [loadingView removeFromSuperview];
     [MessageBox showMsg:@"购买成功！"];
 }
 -(void)failedPurchase:(SKPaymentTransaction *)transaction
 {
+    [loadingView removeFromSuperview];
     [MessageBox showMsg:transaction.error.localizedDescription];
 }
 -(void)provideProduct:(NSString*)strID
