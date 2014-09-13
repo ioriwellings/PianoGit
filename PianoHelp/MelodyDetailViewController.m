@@ -63,9 +63,11 @@
     if (self.iPlayMode == 1) {//识谱模式
         [self.btnHint setEnabled:true];
         [self.sliderSpeed setEnabled:false];
+        [self.btnAccompany setEnabled:false];
     }else if(self.iPlayMode == 2){//跟弹模式
         [self.btnHint setEnabled:false];
         [self.sliderSpeed setEnabled:true];
+        [self.btnAccompany setEnabled:true];
     }
     
     //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
@@ -677,6 +679,8 @@
         [self.btnTryListen setEnabled:true];
         if (_iPlayMode == 2) {
             [self.btnHint setEnabled:false];
+        }else if (_iPlayMode == 1){
+            [self.btnHint setEnabled:true];
         }
 
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
@@ -690,7 +694,13 @@
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
         [self.btnSuDu setEnabled:true];
         [self.sliderSpeed setEnabled:true];
-        [self.btnHandCtl setEnabled:true];
+        if (_iPlayMode == 2) {
+            [self.btnHint setEnabled:false];
+            [self.btnHandCtl setEnabled:true];
+        }else if (_iPlayMode == 1){
+            [self.btnHint setEnabled:true];
+            [self.btnHandCtl setEnabled:false];
+        }
     }
     
 }
