@@ -1047,7 +1047,7 @@ static UIImage* chanyin = nil;
     }else{
 //        ynote = ytop + NoteHeight;
         NoteData *note = &notedata[0];
-        ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - 5/2*NoteHeight;
+        ynote = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - 4*NoteHeight;
         CGContextMoveToPoint(context, xpos, ynote);
         CGContextSetLineWidth(context, 1.5);
         CGContextSetLineCap(context, kCGLineCapButt);
@@ -2029,7 +2029,7 @@ static UIImage* chanyin = nil;
             NoteData *note = &notedata[noteindex];
             if (notedata_len == 1) {
                 if (note->next == 1) {
-                    ynote = [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight/2;
+                    ynote = [topStaff dist:(note->whitenote)] * NoteHeight/2 + 3*NoteHeight;
                     [aPath moveToPoint:CGPointMake(NoteWidth/2 + 10, ynote)];
                     [aPath addQuadCurveToPoint:CGPointMake(_connectNoteWidth - 5 + NoteWidth/2, ynote) controlPoint:CGPointMake((NoteWidth/2 + 10 + _connectNoteWidth + NoteWidth/2)/2, ynote - radian1)];
                     [aPath stroke];
