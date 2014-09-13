@@ -11,7 +11,7 @@
 #import "ASIFormDataRequest.h"
 #import "WebService.h"
 #import "GTMBase64.h"
-
+#import "UserInfo.h"
 
 @interface ScroeViewController ()
 
@@ -71,10 +71,9 @@
 - (IBAction)btnShare_onclick:(id)sender
 {
     
-    NSString *filename = [[NSBundle mainBundle] pathForResource:@"0000"
-                                                         ofType:@"mid"];
     
-    
+    NSString *temp = NSTemporaryDirectory();
+    NSString *filename = [NSString stringWithFormat:@"%@__RecordTmp.m4a", temp];
     NSData *data = [NSData dataWithContentsOfFile: filename];
     data = [GTMBase64 encodeData:data];
     
@@ -84,19 +83,19 @@
                         encoding:NSUTF8StringEncoding];
     
     
-    
+    NSString *saveName = [self.fileName stringByReplacingOccurrencesOfString:@"mid" withString:@"m4a"];
     
     //创建WebService的调用参数
     NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
-                               @"midiFileName", @"0000.mid", @"fileData", string,
-                               @"userName",     @"zyw", @"type", @"教材",
-                               @"scroe",     @"100", nil];
+                               @"midiFileName", saveName, @"fileData", string,
+                               @"userName",     [UserInfo sharedUserInfo].userName,
+                               @"scroe",     self.labScroe.text, nil];
     
     
     
     //调用WebService，获取响应
-    NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://192.168.1.102:9000/"
-                                                     webServiceFile:@"webservice1.asmx"
+    NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
+                                                     webServiceFile:@"UpLoadFileWebService.asmx"
                                                        xmlNameSpace:@"http://tempuri.org/"
                                                      webServiceName:@"UpLoadFile"
                                                        wsParameters:wsParas];
@@ -105,6 +104,8 @@
     NSString* errMsg = [WebService checkResponseError:theResponse];
     NSLog(@"the error message is %@", errMsg);
     NSLog(@"the result is %@", theResponse);
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
 

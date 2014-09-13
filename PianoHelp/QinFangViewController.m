@@ -130,6 +130,7 @@
         //add test by zyw
         NSString *filename = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) filePathForName:((MelodyButton*)sender).fileName];
         vc.fileName = filename;
+        vc.saveName = ((MelodyButton*)sender).fileName;
     }
 }
 

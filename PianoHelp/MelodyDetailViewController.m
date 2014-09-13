@@ -506,6 +506,7 @@
         vc.iRight = right;
         vc.iWrong = wrong;
         vc.iScore = ff;
+        vc.fileName = self.saveName;
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;

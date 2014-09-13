@@ -15,6 +15,7 @@
 #import "Users.h"
 #import "IAPHelper.h"
 
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -61,6 +62,10 @@
     }
     [self loadDemoMidiToSQL];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
+    
+//    BOOL bResult = [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"] toDestination:[self applicationDocumentsDirectory].path delegate:self];
+    
+    [self initDataBaseWithPList:nil];
     return YES;
 }
 
@@ -608,5 +613,26 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
+}
+
+-(void)initDataBaseWithPList:(NSString*)strPath
+{
+    if(![[NSFileManager defaultManager] fileExistsAtPath:strPath])
+    {
+        strPath = [[NSBundle mainBundle] pathForResource:@"dataSource" ofType:@"plist"];
+    }
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:strPath];
+    NSInteger iCount =0;
+    for (id ele in dict)
+    {
+        NSLog(@"-- %i,subCate:%@", iCount, ele);
+        NSInteger jCount =0;
+        for (id items in dict[ele])
+        {
+            NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@", jCount,  [dict[ele][items] objectForKey:@"类别"], [dict[ele][items] objectForKey:@"曲谱名称"]);
+            jCount++;
+        }
+        iCount ++;
+    }
 }
 @end
