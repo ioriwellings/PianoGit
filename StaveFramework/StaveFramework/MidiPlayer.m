@@ -1112,6 +1112,8 @@
     if (pianoData != nil) {
         [pianoData DataClear];
     }
+    
+    [sheetPlay setCurrentPulseTime:0];
 }
 
 - (void)midiStatus:(NSNotification*)notification
