@@ -60,12 +60,10 @@
         [self initCategoryAndMelody];
         iLoop--;
     }
-    [self loadDemoMidiToSQL];
-    [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
-    
-//    BOOL bResult = [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"] toDestination:[self applicationDocumentsDirectory].path delegate:self];
-    
+//    [self loadDemoMidiToSQL];
     [self initDataBaseWithPList:nil];
+    [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
+
     return YES;
 }
 
@@ -199,6 +197,10 @@
 -(NSString*)filePathForName:(NSString*)fileName
 {
     NSString *strResult = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension] ofType:[fileName pathExtension]];
+    if(strResult == nil)
+    {
+        strResult = [[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:fileName];
+    }
     return strResult;
 }
 
@@ -282,10 +284,10 @@
     }
     else return;
     [self loadTempMIDE];
-    NSManagedObjectContext *moc = self.managedObjectContext;
-    Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
-    user.userName = [UserInfo sharedUserInfo].userName;
-    user.pwd = [NSString string];
+//    NSManagedObjectContext *moc = self.managedObjectContext;
+//    Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
+//    user.userName = [UserInfo sharedUserInfo].userName;
+//    user.pwd = [NSString string];
     
 //大类
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
@@ -617,22 +619,137 @@
 
 -(void)initDataBaseWithPList:(NSString*)strPath
 {
-    if(![[NSFileManager defaultManager] fileExistsAtPath:strPath])
+    NSString *strDocumentPath = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+    NSString *strImageDir = [strDocumentPath stringByAppendingPathComponent:@"initialedPLIST.file"];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:strImageDir])
     {
-        strPath = [[NSBundle mainBundle] pathForResource:@"dataSource" ofType:@"plist"];
+        [[NSFileManager defaultManager] createFileAtPath:strImageDir contents:nil attributes:nil];
     }
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:strPath];
-    NSInteger iCount =0;
-    for (id ele in dict)
-    {
-        NSLog(@"-- %i,subCate:%@", iCount, ele);
-        NSInteger jCount =0;
-        for (id items in dict[ele])
+    else return;
+    
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
+    user.userName = [UserInfo sharedUserInfo].userName;
+    user.pwd = [NSString string];
+    
+//    __block NSString *strPath = path;
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+//    {
+        if(![[NSFileManager defaultManager] fileExistsAtPath:strPath])
         {
-            NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@", jCount,  [dict[ele][items] objectForKey:@"类别"], [dict[ele][items] objectForKey:@"曲谱名称"]);
-            jCount++;
+            strPath = [[NSBundle mainBundle] pathForResource:@"dataSource" ofType:@"plist"];
         }
-        iCount ++;
-    }
+        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:strPath];
+        NSInteger iCount =0;
+        for (id ele in dict)
+        {
+            NSLog(@"-- %i,subCate:%@", iCount, ele);
+            MelodyCategory *subCate = [self getCategoryWithName:ele isSubCategory:YES];
+            MelodyCategory *cate = nil;
+            NSInteger jCount =0;
+            for (id items in dict[ele])
+            {
+                if(!cate)
+                {
+                    cate = [self getCategoryWithName:[dict[ele][items] objectForKey:@"类别"] isSubCategory:NO];
+                    if(subCate.parentCategory == nil)
+                    {
+                        subCate.parentCategory = cate;
+                    }
+                }
+                Melody* melody = [self getMelodyWithCategory:subCate
+                                                      author:[dict[ele][items] objectForKey:@"作者"]
+                                                       level:[dict[ele][items] objectForKey:@"级别"]
+                                                       style:[dict[ele][items] objectForKey:@"出版社"]
+                                                 association:[dict[ele][items] objectForKey:@"作品集"]
+                                                    filePath:[dict[ele][items] objectForKey:@"曲谱名称"]];
+                NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@", jCount, [dict[ele][items] objectForKey:@"类别"], [dict[ele][items] objectForKey:@"曲谱名称"]);
+                jCount++;
+            }
+            iCount ++;
+        }
+        
+        NSError *error;
+        if(![self.managedObjectContext save:&error])
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        }
+        
+//    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+        [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"] toDestination:[self applicationDocumentsDirectory].path delegate:self];
+    });
 }
+
+- (void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total
+{
+    NSLog(@"zipArchiveProgress:%li/%li", (long)loaded, (long)total);
+}
+
+- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPath
+{
+    
+}
+
+-(MelodyCategory*)getCategoryWithName:(NSString*)strName isSubCategory:(BOOL)bSub
+{
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    if(bSub)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@ and parentCategory != nil", strName];
+        [fetchRequest setPredicate:predicate];
+    }
+    else
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@ and parentCategory == nil", strName];
+        [fetchRequest setPredicate:predicate];
+    }
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        return (MelodyCategory*)[objects firstObject];
+    }
+    
+    MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
+    cate.name = strName;
+    if([strName isEqualToString:@"考级"])
+    {
+        cate.cover = @"kaojiqupu.png";
+        cate.buy = @2;
+        cate.buyURL = @"com.jiaYinQiJi.product.b";
+    }
+    else if([strName isEqualToString:@"教程"])
+    {
+        cate.cover = @"jiaocaiqupu.png";
+        cate.buy = @2;
+        cate.buyURL = @"com.jiaYinQiJi.product.a";
+    }
+    
+    return cate;
+}
+
+-(Melody*)getMelodyWithCategory:(MelodyCategory*)cate author:(NSString*)strAuthor level:(NSString*)strLevel style:(NSString*)strStyle association:(NSString*)strAssoc filePath:(NSString*)strPath
+{
+    Melody *melody = (Melody*)[NSEntityDescription insertNewObjectForEntityForName:@"Melody" inManagedObjectContext:self.managedObjectContext];
+    melody.category = cate;
+    melody.author = strAuthor;
+    melody.name = [strPath lastPathComponent];
+    melody.style = strStyle;
+    melody.memo = strAssoc;
+    melody.level = strLevel;
+    melody.melodyID = melody.name;
+    melody.filePath = [melody.name stringByAppendingPathExtension:@"mid"];
+    return melody;
+}
+
+
 @end
