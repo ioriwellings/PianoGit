@@ -394,7 +394,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             for (j=0; j<[notegroup count]; j++) {
                 mn = [notegroup get:j];
                 mn1 = [midinotes get:i];
-                if ([mn endTime] <= [mn1 startTime]+[time quarter]/8 || [mn1 duration] <= [time quarter]/8 || [mn1 duration] >= [time quarter]) {
+                if ([mn endTime] <= [mn1 startTime]+[time quarter]/10 || [mn1 duration] <= [time quarter]/10 || [mn1 duration] >= [time quarter]) {
                     break;
                 }
                 count++;
@@ -555,15 +555,24 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             } else if ([chord startTime] > [cd7 starttime] && [chord endTime] >= [cd7 endtime]) {
                 [chord setStartTime:[chord startTime]+5];
                 int k = [chords count]-1;
+                int cc = 1;
                 while (k>=0 && [[chords get:k] yiFlag] == 1) {
-                    [[chords get:k] setStartTime:[chord startTime]-1];
+                    [[chords get:k] setStartTime:[chord startTime]-cc];
                     k--;
+                    cc++;
+                }
+                if (k>=0 && cc >= 4 && [chord startTime]-[[chords get:k] endTime]<[time quarter]/2+20) {
+                    [[chords get:k] setEndTime:[chord startTime]];
+                    for (cc = 0; cc < [[chords get:k] notedata_len]; cc++) {
+                        int dd = [[chords get:k] endTime]-[[chords get:k] startTime];
+                        [[chords get:k] notedata][cc].dur = dd;
+                        [[chords get:k] notedata][cc].duration = [time getNoteDuration:dd];
+                    }
                 }
                 cdcount7++;
                 if (cdcount7 < [list7 count]) {
                     cd7 = [list7 get:cdcount7];
                 }
-
             }
         }
         
@@ -672,6 +681,14 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     old = symbols;
     symbols = [self addClefChanges:symbols withClefs:clefs andTime:time];
     [old release];
+    
+    for (int i = 1; i<[symbols count]; i++) {
+        if([getSymbol(symbols, i) startTime] < [getSymbol(symbols, i-1) startTime] && [getSymbol(symbols, i) isKindOfClass:[RestSymbol class]])
+        {
+            [symbols remove:getSymbol(symbols, i)];
+            i--;
+        }
+    }
     
     return symbols;
 }
@@ -1017,6 +1034,14 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     
     /** modify by sunlie start */
     if (start/[time measure] < (end-[time quarter]/16)/[time measure]) {
+//        int dur = [time measure]-start%[time measure];
+//        Array* durs = [Array new:5];
+//        int *tmp;
+//        if (dur/([time quarter]/2) > 0) {
+//            *tmp = dur/([time quarter]/2);
+//            [durs add:tmp];
+//        }
+//        
         do {
             NoteDuration nd = [time getNoteDuration:[time measure]-start%[time measure]];
             switch (nd) {
@@ -1225,7 +1250,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         Array *result = [Array new:[symbols count]];
         
         int i = 0;
-        
+
         /* If a track doesn't have a symbol for a starttime,
          * add a blank symbol.
          */
@@ -1233,11 +1258,12 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         int startTimesCount = [starttimes count];
         for (int w = 0; w < startTimesCount; w++) {
             int start = [starttimes get:w];
-            
+
             /* BarSymbols are not included in the SymbolWidths calculations */
             while (i < [symbols count] &&
-                   ([getSymbol(symbols, i) isKindOfClass:[BarSymbol class]] || [getSymbol(symbols, i) isKindOfClass:[KeySymbol class]]) &&
-                   ([getSymbol(symbols, i) startTime] <= start)) {
+                   ([getSymbol(symbols, i) isKindOfClass:[BarSymbol class]]
+                    || [getSymbol(symbols, i) isKindOfClass:[KeySymbol class]])
+                   &&  ([getSymbol(symbols, i) startTime] <= start)) {
                 
                 [result add:[symbols get:i]];
                 i++;
@@ -1245,11 +1271,18 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             
             if (i < [symbols count] && [getSymbol(symbols,i) startTime] == start) {
                 
-                while (i < [symbols count] &&
-                       [getSymbol(symbols,i) startTime] == start) {
+                while ((i < [symbols count] &&
+                       [getSymbol(symbols,i) startTime] == start)
+                       || [getSymbol(symbols, i) isKindOfClass:[KeySymbol class]]) {
                     
                     [result add:[symbols get:i]];
                     i++;
+                }
+                if ([getSymbol(symbols,i) startTime] < start && [getSymbol(symbols, i) isKindOfClass:[RestSymbol class]])
+                {
+                    
+                    [symbols remove:[symbols get:i]];
+                    i--;
                 }
             }
             else {
