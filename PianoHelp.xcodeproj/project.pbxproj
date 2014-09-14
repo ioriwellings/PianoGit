@@ -138,6 +138,8 @@
 		89582DB515D4A91A008DEB3C /* shipumoshi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89582DAD15D4A91A008DEB3C /* shipumoshi@2x.png */; };
 		89582DB615D4A91A008DEB3C /* shipumoshixuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 89582DAE15D4A91A008DEB3C /* shipumoshixuanzhong.png */; };
 		89582DB715D4A91A008DEB3C /* shipumoshixuanzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89582DAF15D4A91A008DEB3C /* shipumoshixuanzhong@2x.png */; };
+		895DB5AF19C5BC4C00E02DE4 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */; };
+		895DB5B119C5BCBD00E02DE4 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 895DB5B019C5BCBD00E02DE4 /* about.html */; };
 		8964EBAF1945359E00DBCED9 /* libStaveFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8964EBAC1945357100DBCED9 /* libStaveFramework.a */; };
 		8964EBD0194536EC00DBCED9 /* gls.dls in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBC1194536EC00DBCED9 /* gls.dls */; };
 		8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBD2194539CC00DBCED9 /* 0000.mid */; };
@@ -542,6 +544,9 @@
 		89582DAD15D4A91A008DEB3C /* shipumoshi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shipumoshi@2x.png"; sourceTree = "<group>"; };
 		89582DAE15D4A91A008DEB3C /* shipumoshixuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shipumoshixuanzhong.png; sourceTree = "<group>"; };
 		89582DAF15D4A91A008DEB3C /* shipumoshixuanzhong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shipumoshixuanzhong@2x.png"; sourceTree = "<group>"; };
+		895DB5AD19C5BC4C00E02DE4 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		895DB5B019C5BCBD00E02DE4 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		8964EBA61945357100DBCED9 /* StaveFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StaveFramework.xcodeproj; path = StaveFramework/StaveFramework.xcodeproj; sourceTree = "<group>"; };
 		8964EBC1194536EC00DBCED9 /* gls.dls */ = {isa = PBXFileReference; lastKnownFileType = file; name = gls.dls; path = ../StaveFramework/StaveFramework/gls.dls; sourceTree = "<group>"; };
 		8964EBD2194539CC00DBCED9 /* 0000.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = 0000.mid; sourceTree = "<group>"; };
@@ -950,6 +955,8 @@
 				8987A5611925B12600DEE6AE /* ShowViewController.m */,
 				8936CF62192440F0001E5DCC /* SearchViewController.h */,
 				8936CF63192440F0001E5DCC /* SearchViewController.m */,
+				895DB5AD19C5BC4C00E02DE4 /* AboutViewController.h */,
+				895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */,
 				89F5B9B9193D5DB8006D40F9 /* MelodyDetailViewController */,
 				89D61FD01927965400355EF0 /* APLProduct.h */,
 				89D61FD11927965400355EF0 /* APLProduct.m */,
@@ -1132,6 +1139,7 @@
 				89F5FB6019527DE900011C3A /* shopBg.png */,
 				89F5FB6119527DE900011C3A /* shopItem.png */,
 				89145A8419969839008D2096 /* IEEE 754.html */,
+				895DB5B019C5BCBD00E02DE4 /* about.html */,
 				8964EBD1194539CC00DBCED9 /* songs */,
 				8964EBB2194536D400DBCED9 /* StaveFramework-RefrenceResources */,
 				89A15D801921B78400647F7B /* images */,
@@ -1914,6 +1922,7 @@
 				89429BD61566D8A70003A7D4 /* loading.png in Resources */,
 				89F5FB6219527DE900011C3A /* shopBg.png in Resources */,
 				8907102A19219F3A00BB9E2F /* Storyboard.storyboard in Resources */,
+				895DB5B119C5BCBD00E02DE4 /* about.html in Resources */,
 				8989B103198B2032005222C2 /* kaojiqupu.png in Resources */,
 				B78D6B2A198749EA00F51726 /* zanting@2x.png in Resources */,
 				898D5A69199ED3B00008D42C /* Configuration.plist in Resources */,
@@ -2017,6 +2026,7 @@
 				8976F67F19A43E2D00D8A860 /* MessageBox.m in Sources */,
 				89BE8D78192AE16900686AC7 /* BaseTableViewCell.m in Sources */,
 				8907100719219EC000BB9E2F /* AppDelegate.m in Sources */,
+				895DB5AF19C5BC4C00E02DE4 /* AboutViewController.m in Sources */,
 				89A3D67719C3E9E200FDC779 /* SSZipArchive.m in Sources */,
 				892DBBC81946944B00621003 /* ConferenceLayoutAttributes.m in Sources */,
 				890093D01951085B001F33F4 /* LoginViewController.m in Sources */,
@@ -2210,8 +2220,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dalian Joy Technology Co.,Ltd (US9VB4TQ9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dalian Joy Technology Co.,Ltd (US9VB4TQ9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PianoHelp/PianoHelp-Prefix.pch";
 				INFOPLIST_FILE = "PianoHelp/PianoHelp-Info.plist";
@@ -2219,7 +2229,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "757914e8-7ea6-4234-b243-425756a4f21f";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
