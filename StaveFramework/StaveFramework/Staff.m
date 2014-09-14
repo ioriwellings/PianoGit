@@ -528,8 +528,10 @@
                 [s draw:context atY:ytop withStaffNum:tracknum];
                 ChordSymbol *chord = s;
                 if ([chord eightFlag] == -1) {//low
+
                     lowCnt++;
                 }else if([chord eightFlag] == 1){//high
+
                     highCnt++;
                 }
             }else{
@@ -540,14 +542,12 @@
 
         xpos += [s width];
     }
-    
-    if (total == lowCnt) {
-//        [self draw8va:context:CGRectMake(12*LeftMargin, height-10, 25, height-20)];
-        
+
+    if (total == lowCnt && total != 0) {
+                                NSLog(@"chord total is %i, lowCnt is %i", total, lowCnt);
         [self drawDottedLine:context andStart:CGPointMake(12*LeftMargin, height) andEnd:CGPointMake(width - 2*LeftMargin, height)];
-    }else if(total == highCnt){
-//        [self draw8va:context:CGRectMake(12*LeftMargin, 0, 25, -10)];
-        
+    }else if(total == highCnt && total != 0){
+                                NSLog(@"chord total is %i, highCnt is %i", total, highCnt);
         [self drawDottedLine:context andStart:CGPointMake(12*LeftMargin, 10) andEnd:CGPointMake(width - 2*LeftMargin, 10)];
     }
     
