@@ -22,4 +22,5 @@
 -(void)initCategoryAndMelody;
 -(NSString*)filePathForName:(NSString*)fileName;
 -(void)loadDemoMidiToSQL;
+-(BOOL)isInited;
 @end

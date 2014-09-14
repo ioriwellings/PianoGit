@@ -140,6 +140,8 @@
 		89582DB715D4A91A008DEB3C /* shipumoshixuanzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89582DAF15D4A91A008DEB3C /* shipumoshixuanzhong@2x.png */; };
 		895DB5AF19C5BC4C00E02DE4 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */; };
 		895DB5B119C5BCBD00E02DE4 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 895DB5B019C5BCBD00E02DE4 /* about.html */; };
+		895DB5B419C5D92400E02DE4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DB5B219C5D92400E02DE4 /* Default-Landscape~ipad.png */; };
+		895DB5B519C5D92400E02DE4 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 895DB5B319C5D92400E02DE4 /* Default-Landscape@2x~ipad.png */; };
 		8964EBAF1945359E00DBCED9 /* libStaveFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8964EBAC1945357100DBCED9 /* libStaveFramework.a */; };
 		8964EBD0194536EC00DBCED9 /* gls.dls in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBC1194536EC00DBCED9 /* gls.dls */; };
 		8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBD2194539CC00DBCED9 /* 0000.mid */; };
@@ -547,6 +549,8 @@
 		895DB5AD19C5BC4C00E02DE4 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		895DB5B019C5BCBD00E02DE4 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		895DB5B219C5D92400E02DE4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		895DB5B319C5D92400E02DE4 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		8964EBA61945357100DBCED9 /* StaveFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StaveFramework.xcodeproj; path = StaveFramework/StaveFramework.xcodeproj; sourceTree = "<group>"; };
 		8964EBC1194536EC00DBCED9 /* gls.dls */ = {isa = PBXFileReference; lastKnownFileType = file; name = gls.dls; path = ../StaveFramework/StaveFramework/gls.dls; sourceTree = "<group>"; };
 		8964EBD2194539CC00DBCED9 /* 0000.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = 0000.mid; sourceTree = "<group>"; };
@@ -1336,6 +1340,8 @@
 				8998E2ED193829A900A7CF12 /* wangguan.png */,
 				89429B931566D8A70003A7D4 /* confirmKuang.png */,
 				89429B9D1566D8A70003A7D4 /* Icon-72.png */,
+				895DB5B219C5D92400E02DE4 /* Default-Landscape~ipad.png */,
+				895DB5B319C5D92400E02DE4 /* Default-Landscape@2x~ipad.png */,
 				89429BA11566D8A70003A7D4 /* loading xiao.png */,
 				89429BA21566D8A70003A7D4 /* loading.png */,
 				89429BC01566D8A70003A7D4 /* yinguan.png */,
@@ -1727,6 +1733,7 @@
 				890C39E11983445300206740 /* shiting-01.png in Resources */,
 				8989B13C198B21B2005222C2 /* xiaoxi1.png in Resources */,
 				893CEFE3193A37630097681C /* huigu2.png in Resources */,
+				895DB5B419C5D92400E02DE4 /* Default-Landscape~ipad.png in Resources */,
 				89582DB215D4A91A008DEB3C /* gentanmoshixuanzhong.png in Resources */,
 				893742E7197F3D1B007E63E5 /* shuangshou.png in Resources */,
 				BA1079B21967FE4C0056F626 /* three.png in Resources */,
@@ -1818,6 +1825,7 @@
 				893742E3197F3D1B007E63E5 /* jingyin.png in Resources */,
 				8994D15D194BCEDA0016F806 /* 13.599-054.mid in Resources */,
 				BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */,
+				895DB5B519C5D92400E02DE4 /* Default-Landscape@2x~ipad.png in Resources */,
 				89582DB315D4A91A008DEB3C /* gentanmoshixuanzhong@2x.png in Resources */,
 				89F5D18619ABFD74005D5D10 /* zidongdengru_selected@2x.png in Resources */,
 				8989B107198B2032005222C2 /* renwu.png in Resources */,

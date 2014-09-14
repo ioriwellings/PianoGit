@@ -16,4 +16,5 @@
 
 +(void)showMsg:(NSString*)strMsg;
 +(IoriLoadingView*)showLoadingViewWithBlockOnClick:(void (^)(IoriLoadingView *loadingView))handle hasCancel:(BOOL)cancel parentViewSize:(CGSize)pSize;
++(IoriLoadingView*)showLoadingViewWithText:(NSString*)strString parentViewSize:(CGSize)pSize;
 @end

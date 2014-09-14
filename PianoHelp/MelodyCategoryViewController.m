@@ -46,6 +46,7 @@
     {
         [IAPHelper shareIAPHelper].delegate = self;
     }
+
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         /*

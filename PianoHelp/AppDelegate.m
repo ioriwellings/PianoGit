@@ -14,13 +14,20 @@
 #import "UserInfo.h"
 #import "Users.h"
 #import "IAPHelper.h"
-
+#import "MessageBox.h"
 
 @implementation AppDelegate
-
+{
+    BOOL bInited;
+}
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+-(BOOL)isInited
+{
+    return bInited;
+}
 
 -(Users*)getCurrentUsers
 {
@@ -617,6 +624,9 @@
     
 }
 
+
+#pragma mark - init plist methods-
+
 -(void)initDataBaseWithPList:(NSString*)strPath
 {
     NSString *strDocumentPath = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
@@ -625,7 +635,11 @@
     {
         [[NSFileManager defaultManager] createFileAtPath:strImageDir contents:nil attributes:nil];
     }
-    else return;
+    else
+    {
+        bInited = YES;
+        return;
+    }
     
     NSManagedObjectContext *moc = self.managedObjectContext;
     Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
@@ -683,15 +697,6 @@
     });
 }
 
-- (void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total
-{
-    NSLog(@"zipArchiveProgress:%li/%li", (long)loaded, (long)total);
-}
-
-- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPath
-{
-    
-}
 
 -(MelodyCategory*)getCategoryWithName:(NSString*)strName isSubCategory:(BOOL)bSub
 {
@@ -751,5 +756,18 @@
     return melody;
 }
 
+
+#pragma mark - zip delegate -
+
+- (void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total
+{
+    //NSLog(@"zipArchiveProgress:%li/%li", (long)loaded, (long)total);
+}
+
+- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPath
+{
+    bInited = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"zipOK" object:nil userInfo:nil ];
+}
 
 @end

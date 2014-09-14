@@ -12,7 +12,9 @@
 #import "MessageBox.h"
 
 @interface LoginViewController ()
-
+{
+    IoriLoadingView* loadingView;
+}
 @end
 
 @implementation LoginViewController
@@ -45,6 +47,21 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(removeLoadingView)
+                                                 name:@"zipOK"
+                                               object:nil];
+    
+    if([((AppDelegate*)[UIApplication sharedApplication].delegate) isInited] == NO)
+    {
+        loadingView = [MessageBox showLoadingViewWithText:@"程序初始化中......" parentViewSize:CGSizeMake(1024, 768)];
+        [self.view addSubview:loadingView];
+    }
+}
+
+-(void)removeLoadingView
+{
+    [loadingView removeFromSuperview];
 }
 
 -(void)viewDidAppear:(BOOL)animated

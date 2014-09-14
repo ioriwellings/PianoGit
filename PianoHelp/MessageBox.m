@@ -20,6 +20,22 @@
     
 }
 
++(IoriLoadingView*)showLoadingViewWithText:(NSString*)strString parentViewSize:(CGSize)pSize
+{
+    IoriLoadingView *view = [self showLoadingViewWithBlockOnClick:NULL hasCancel:NO parentViewSize:pSize];
+    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 300)];
+    lab.frame = CGRectMake((view.frame.size.width-lab.frame.size.width)/2,
+                           (view.frame.size.height-lab.frame.size.height)/2,
+                           lab.frame.size.width,
+                           lab.frame.size.height);
+    lab.text = [@"\n\n\n\n\n" stringByAppendingString:strString];
+    lab.numberOfLines = 6;
+    lab.textAlignment = NSTextAlignmentCenter;
+    lab.backgroundColor = [UIColor clearColor];
+    [view addSubview:lab];
+    return view;
+}
+
 
 +(IoriLoadingView*)showLoadingViewWithBlockOnClick:(void (^)(IoriLoadingView *loadingView))handle hasCancel:(BOOL)cancel parentViewSize:(CGSize)pSize
 {
