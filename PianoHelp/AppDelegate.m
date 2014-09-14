@@ -199,7 +199,7 @@
     NSString *strResult = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension] ofType:[fileName pathExtension]];
     if(strResult == nil)
     {
-        strResult = [[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:fileName];
+        strResult = [[[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:@"temp" ] stringByAppendingPathComponent:fileName];
     }
     return strResult;
 }
