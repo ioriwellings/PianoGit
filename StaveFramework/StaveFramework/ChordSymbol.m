@@ -2343,11 +2343,17 @@ static UIImage* chanyin = nil;
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 - NoteHeight/2;
 
             if (rightDirect == StemDown) {
-                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 - NoteHeight/2;
+                ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight/2;
             } else if (rightDirect == StemUp) {
-                ynote1 = ytop + [topstaff dist:[[_conLineChord stem] end]] * NoteHeight/2 + NoteHeight/4;
+                ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + NoteHeight/4;
             }else{
-                ynote1 = [topStaff dist:(data->whitenote)] * NoteHeight/2 + 4*NoteHeight;
+                if (direct == StemDown){
+                    ynote1 = ytop+ [topstaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight;
+                }else if (direct == StemUp){
+                    ynote1 = ytop+ [topstaff dist:(data->whitenote)] * NoteHeight/2 + 2*NoteHeight;
+                }else{
+                    ynote1 = ytop+ [topstaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight;
+                }
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth, ynote)];
@@ -2364,25 +2370,31 @@ static UIImage* chanyin = nil;
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + 5*NoteHeight;
             }else{
-                ynote1 = [topStaff dist:(data->whitenote)] * NoteHeight/2 + 5*NoteHeight + NoteHeight/2;
+                if (direct == StemDown){
+                    ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight/4;
+                }else if (direct == StemUp){
+                    ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 + 5*NoteHeight;
+                }else{
+                    ynote1 = ytop + [topstaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight;
+                }
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote1) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+radian1)];
             [aPath stroke];
         }else{
-            NoteData *data = [_conLineChord getNotedata];
             WhiteNote *topstaff = [WhiteNote top: [_conLineChord clef]];
 
-            ynote = ytop + [topStaff dist:(data->whitenote)] * NoteHeight/2 - NoteHeight;
+            NoteData *note = &notedata[0];
+            ynote = ytop + [topstaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;;
             
             if (rightDirect == StemDown) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] top]] * NoteHeight/2 - NoteHeight/2;
             } else if (rightDirect == StemUp) {
                 ynote1 = ytop + [topstaff dist:[[_conLineChord stem] bottom]] * NoteHeight/2 - NoteHeight/2;
             }else{
-                NoteData *note = &notedata[0];
-                ynote1 = ytop + [topStaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;
+                NoteData *note = [_conLineChord getNotedata];
+                ynote1 = ytop + [topstaff dist:(note->whitenote)] * NoteHeight/2 - NoteHeight;
             }
             
             [aPath moveToPoint:CGPointMake(NoteWidth/2, ynote)];
@@ -2390,6 +2402,7 @@ static UIImage* chanyin = nil;
             [aPath stroke];
         }
     } else if (_conLineWidth > 0 && conLine < 0) {
+
         if (direct == StemDown) {
             
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 - NoteHeight/2;
@@ -2404,12 +2417,13 @@ static UIImage* chanyin = nil;
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+radian2) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote+radian2)];
             [aPath stroke];
         }else{
-            ynote = ytop - NoteHeight;
+            ynote = ytop + [topStaff dist:[stem top]] * NoteHeight/2 + NoteHeight;
             [aPath moveToPoint:CGPointMake(NoteWidth, ynote)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote-radian2) controlPoint:CGPointMake((NoteWidth/2+_conLineWidth+NoteWidth/2)/2, ynote-radian2)];
             [aPath stroke];
         }
     } else if (_conLineWidth < -1) {
+
         if (direct == StemDown) {
             
             ynote = ytop + [topStaff dist:[stem top]] * [SheetMusic getNoteHeight]/2 - NoteHeight/2;
@@ -2424,8 +2438,14 @@ static UIImage* chanyin = nil;
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+radian2) controlPoint:CGPointMake(_conLineWidth/2, ynote+radian1)];
             [aPath stroke];
         }else{
-            ynote = ytop + [topStaff dist:[stem top]] + NoteHeight/2;
-
+            if (direct == StemDown) {
+                ynote =  ytop + [topStaff dist:[stem top]] * NoteHeight/2 - NoteHeight;
+            }else if(direct == StemUp){
+                ynote = ytop + [topStaff dist:[stem bottom]] * NoteHeight/2 + NoteHeight*2;
+            }else{
+                ynote =  ytop + [topStaff dist:[stem top]] * NoteHeight/2 - 3*NoteHeight;
+            }
+  
             [aPath moveToPoint:CGPointMake(0, ynote)];
             [aPath addQuadCurveToPoint:CGPointMake(_conLineWidth+NoteWidth/2, ynote+radian2) controlPoint:CGPointMake(_conLineWidth/2, ynote+radian1)];
 

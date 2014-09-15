@@ -65,11 +65,15 @@
         [self.sliderSpeed setEnabled:false];
         [self.btnAccompany setEnabled:false];
         [self.sliderXiaoJie setEnabled:false];
+        [self.btnXiaoJieTiaoZhuan setEnabled:false];
+        [self.btnSplitSection setEnabled:false];
     }else if(self.iPlayMode == 2){//跟弹模式
         [self.btnHint setEnabled:false];
         [self.sliderSpeed setEnabled:true];
         [self.btnAccompany setEnabled:true];
         [self.sliderXiaoJie setEnabled:true];
+        [self.btnXiaoJieTiaoZhuan setEnabled:true];
+        [self.btnSplitSection setEnabled:true];
     }
     
     //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
@@ -670,7 +674,6 @@
 
     if (state == 1) {//playing
         [self.btnTryListen setEnabled:false];
-        [self.btnHint setEnabled:false];
         [self.btnXiaoJieTiaoZhuan setEnabled:false];
         [self.btnSuDu setEnabled:false];
         [self.sliderXiaoJie setEnabled:false];
@@ -678,14 +681,22 @@
         [self.btnAccompany setEnabled:false];
         [self.btnHandCtl setEnabled:false];
         [self.btnSplitSection setEnabled:false];
+        
+        if (_iPlayMode == 2) {
+            [self.btnHint setEnabled:false];
+        }else if (_iPlayMode == 1){
+            [self.btnHint setEnabled:true];
+        }
     }else if(state == 2){//end playing
         [self.btnTryListen setEnabled:true];
         if (_iPlayMode == 2) {
             [self.btnHint setEnabled:false];
             [self.sliderXiaoJie setEnabled:true];
+            [self.sliderSpeed setEnabled:false];
         }else if (_iPlayMode == 1){
             [self.btnHint setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
+            [self.sliderSpeed setEnabled:true];
         }
 
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
@@ -698,14 +709,16 @@
     }else if (state == 3){//pause
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
         [self.btnSuDu setEnabled:true];
-        [self.sliderSpeed setEnabled:true];
+
         if (_iPlayMode == 2) {
             [self.btnHint setEnabled:false];
             [self.btnHandCtl setEnabled:true];
             [self.sliderXiaoJie setEnabled:true];
+            [self.sliderSpeed setEnabled:true];
         }else if (_iPlayMode == 1){
+            [self.sliderSpeed setEnabled:false];
             [self.btnHint setEnabled:true];
-            [self.btnHandCtl setEnabled:false];
+            [self.btnHandCtl setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
         }
     }
