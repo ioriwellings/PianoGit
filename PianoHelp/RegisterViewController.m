@@ -130,7 +130,7 @@
     }
     else if([[self.txtUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@"guest"])
     {
-        [MessageBox showMsg:@"该用户名无效！"];
+        [MessageBox showMsg:@"该昵称无效！"];
         return;
     }
     else if(self.txtPwd.text == nil ||
@@ -252,9 +252,7 @@
         [textField resignFirstResponder];
     if(textField == self.txtValidCode)
     {
-        CGRect frame = self.txtValidCode.frame;
-        frame.size.height += 220;
-        [self.scrollview scrollRectToVisible:frame animated:YES];
+        [self.scrollview setContentOffset:CGPointMake(0, 20) animated:YES];
     }
 }
 
@@ -300,7 +298,7 @@
     [UIView setAnimationDuration:animationDuration];
 	
 	CGRect frame = self.scrollview.frame;
-	frame.size.height = frame.size.height - keyboardRect.size.height;
+	frame.size.height = 728 - keyboardRect.size.height;
 	self.scrollview.frame = frame;
     [UIView commitAnimations];
     
@@ -332,7 +330,7 @@
     [UIView setAnimationDuration:animationDuration];
     
 	CGRect frame = self.scrollview.frame;
-	frame.size.height = frame.size.height + keyboardRect.size.height;
+	frame.size.height = 728;
 	self.scrollview.frame = frame;
 	[UIView commitAnimations];
 }

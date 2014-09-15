@@ -47,6 +47,7 @@
 -(void)updateContent:(id)obj
 {
     MelodyFavorite *favo = (MelodyFavorite*)obj;
+    self.favo = favo;
     self.imageSelected.hidden = YES;
     self.labTitle.text = favo.melody.name;
     self.labAuthor.text = favo.melody.author;

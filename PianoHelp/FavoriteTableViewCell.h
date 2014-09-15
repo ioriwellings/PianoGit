@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRank;
 @property (weak, nonatomic) IBOutlet MelodyButton *btnPlay;
 @property (weak, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) MelodyFavorite *favo;
 - (IBAction)btnPlay_click:(id)sender;
 -(void)setSelectedOnSelf;
 @end

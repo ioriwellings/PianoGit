@@ -128,9 +128,11 @@
         MelodyDetailViewController *vc = segue.destinationViewController;
         vc.iPlayMode = self.btnModel.tag;
         //add test by zyw
-        NSString *filename = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) filePathForName:((MelodyButton*)sender).fileName];
+        FavoriteTableViewCell *currentCell = (FavoriteTableViewCell*)sender;
+        NSString *filename = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) filePathForName:currentCell.btnPlay.fileName];
         vc.fileName = filename;
-        vc.saveName = ((MelodyButton*)sender).fileName;
+        vc.saveName = filename;
+        vc.favo = currentCell.favo;
     }
 }
 
@@ -272,7 +274,7 @@
 {
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     FavoriteTableViewCell *cell = (FavoriteTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"melodyDetailSegue" sender:cell.btnPlay];
+    [self performSegueWithIdentifier:@"melodyDetailSegue" sender:cell];
     [cell setSelectedOnSelf];
 }
 
@@ -473,7 +475,22 @@
         }
         case NSFetchedResultsChangeUpdate:
         {
-            [self.tableView cellForRowAtIndexPath:indexPath];
+            FavoriteTableViewCell *cell = (FavoriteTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            MelodyFavorite *melodyFavo;
+            if(self.btnScope.tag == 0)
+            {
+                melodyFavo = [self.fetchedResultsController0 objectAtIndexPath:indexPath];
+            }
+            else if(self.btnScope.tag == 1)
+            {
+                melodyFavo = [self.fetchedResultsController1 objectAtIndexPath:indexPath];
+            }
+            else if(self.btnScope.tag == 2)
+            {
+                melodyFavo = [self.fetchedResultsController2 objectAtIndexPath:indexPath];
+            }
+
+            [cell updateContent:melodyFavo];
             break;
         }
         case NSFetchedResultsChangeMove:
