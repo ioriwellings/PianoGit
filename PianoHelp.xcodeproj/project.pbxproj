@@ -16,7 +16,6 @@
 		89070FF719219EC000BB9E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF619219EC000BB9E2F /* CoreGraphics.framework */; };
 		89070FF919219EC000BB9E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF819219EC000BB9E2F /* UIKit.framework */; };
 		89070FFB19219EC000BB9E2F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FFA19219EC000BB9E2F /* CoreData.framework */; };
-		8907100119219EC000BB9E2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89070FFF19219EC000BB9E2F /* InfoPlist.strings */; };
 		8907100319219EC000BB9E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8907100219219EC000BB9E2F /* main.m */; };
 		8907100719219EC000BB9E2F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8907100619219EC000BB9E2F /* AppDelegate.m */; };
 		8907100A19219EC000BB9E2F /* PianoHelp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8907100819219EC000BB9E2F /* PianoHelp.xcdatamodeld */; };
@@ -60,10 +59,12 @@
 		890C39E31983445300206740 /* peilianyin-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 890C39D91983445300206740 /* peilianyin-01.png */; };
 		890C39E41983445300206740 /* fenduan-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 890C39DA1983445300206740 /* fenduan-01.png */; };
 		890C39E51983445300206740 /* fenduan-01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890C39DB1983445300206740 /* fenduan-01@2x.png */; };
+		890EF8DD19C7240900D31980 /* IEEE 754.html in Resources */ = {isa = PBXBuildFile; fileRef = 890EF8DA19C7240900D31980 /* IEEE 754.html */; };
+		890EF8DF19C7240900D31980 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 890EF8DC19C7240900D31980 /* Localizable.strings */; };
+		890EF8E019C7243F00D31980 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 890EF8E219C7243F00D31980 /* InfoPlist.strings */; };
 		891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */; };
 		891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */; };
 		891290DF195904BA00B9B5B5 /* zunashi.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DE195904BA00B9B5B5 /* zunashi.png */; };
-		89145A8519969839008D2096 /* IEEE 754.html in Resources */ = {isa = PBXBuildFile; fileRef = 89145A8419969839008D2096 /* IEEE 754.html */; };
 		891EF86C19A6CA780038F864 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF86B19A6CA780038F864 /* RegisterViewController.m */; };
 		891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87319A6E19C0038F864 /* IoriURLConnection.m */; };
 		891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87519A6E19C0038F864 /* NSString+URLConnection.m */; };
@@ -153,7 +154,6 @@
 		8964EBF2194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE1194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid */; };
 		8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE2194539CC00DBCED9 /* mnmjd.mid */; };
 		8976F67F19A43E2D00D8A860 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8976F67E19A43E2D00D8A860 /* MessageBox.m */; };
-		8976F68319A43F0800D8A860 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8976F68219A43F0800D8A860 /* Localizable.strings */; };
 		8987A55419258DEA00DEE6AE /* MelodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987A55319258DEA00DEE6AE /* MelodyViewController.m */; };
 		8987A55719258E2200DEE6AE /* MelodyCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987A55619258E2200DEE6AE /* MelodyCategoryViewController.m */; };
 		8987A55A19258FA500DEE6AE /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987A55919258FA500DEE6AE /* ShopViewController.m */; };
@@ -412,7 +412,6 @@
 		89070FF819219EC000BB9E2F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89070FFA19219EC000BB9E2F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		89070FFE19219EC000BB9E2F /* PianoHelp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PianoHelp-Info.plist"; sourceTree = "<group>"; };
-		8907100019219EC000BB9E2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8907100219219EC000BB9E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8907100419219EC000BB9E2F /* PianoHelp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PianoHelp-Prefix.pch"; sourceTree = "<group>"; };
 		8907100519219EC000BB9E2F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -459,10 +458,13 @@
 		890C39D91983445300206740 /* peilianyin-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peilianyin-01.png"; sourceTree = "<group>"; };
 		890C39DA1983445300206740 /* fenduan-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fenduan-01.png"; sourceTree = "<group>"; };
 		890C39DB1983445300206740 /* fenduan-01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fenduan-01@2x.png"; sourceTree = "<group>"; };
+		890EF8DA19C7240900D31980 /* IEEE 754.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "IEEE 754.html"; path = "Pianohelp/IEEE 754.html"; sourceTree = SOURCE_ROOT; };
+		890EF8DC19C7240900D31980 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Pianohelp/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		890EF8E119C7243F00D31980 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		890EF8E319C7244400D31980 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiesuanfenshuduihuakuang.png; sourceTree = "<group>"; };
 		891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xingxing,jiesuanzhong.png"; sourceTree = "<group>"; };
 		891290DE195904BA00B9B5B5 /* zunashi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zunashi.png; sourceTree = "<group>"; };
-		89145A8419969839008D2096 /* IEEE 754.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "IEEE 754.html"; sourceTree = "<group>"; };
 		891EF86A19A6CA780038F864 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		891EF86B19A6CA780038F864 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		891EF87219A6E19C0038F864 /* IoriURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IoriURLConnection.h; sourceTree = "<group>"; };
@@ -566,7 +568,6 @@
 		8964EBE2194539CC00DBCED9 /* mnmjd.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = mnmjd.mid; sourceTree = "<group>"; };
 		8976F67D19A43E2D00D8A860 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		8976F67E19A43E2D00D8A860 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
-		8976F68219A43F0800D8A860 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8987A55219258DEA00DEE6AE /* MelodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyViewController.h; sourceTree = "<group>"; };
 		8987A55319258DEA00DEE6AE /* MelodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyViewController.m; sourceTree = "<group>"; };
 		8987A55519258E2200DEE6AE /* MelodyCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyCategoryViewController.h; sourceTree = "<group>"; };
@@ -1000,10 +1001,11 @@
 			isa = PBXGroup;
 			children = (
 				89070FFE19219EC000BB9E2F /* PianoHelp-Info.plist */,
-				89070FFF19219EC000BB9E2F /* InfoPlist.strings */,
-				8976F68219A43F0800D8A860 /* Localizable.strings */,
 				8907100219219EC000BB9E2F /* main.m */,
 				8907100419219EC000BB9E2F /* PianoHelp-Prefix.pch */,
+				890EF8DA19C7240900D31980 /* IEEE 754.html */,
+				890EF8E219C7243F00D31980 /* InfoPlist.strings */,
+				890EF8DC19C7240900D31980 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1148,7 +1150,6 @@
 				890093C819510603001F33F4 /* spaceBg.jpg */,
 				89F5FB6019527DE900011C3A /* shopBg.png */,
 				89F5FB6119527DE900011C3A /* shopItem.png */,
-				89145A8419969839008D2096 /* IEEE 754.html */,
 				895DB5B019C5BCBD00E02DE4 /* about.html */,
 				8964EBD1194539CC00DBCED9 /* songs */,
 				8964EBB2194536D400DBCED9 /* StaveFramework-RefrenceResources */,
@@ -1693,6 +1694,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				zh_cn,
+				"zh-Hans",
 			);
 			mainGroup = 89070FE819219EBF00BB9E2F;
 			productRefGroup = 89070FF219219EC000BB9E2F /* Products */;
@@ -1767,7 +1770,6 @@
 				89429BC71566D8A70003A7D4 /* confirmKuang.png in Resources */,
 				B135CFC419B196A200EA8BF7 /* querenzhuce@2x.png in Resources */,
 				89582DB415D4A91A008DEB3C /* shipumoshi.png in Resources */,
-				8907100119219EC000BB9E2F /* InfoPlist.strings in Resources */,
 				893742E4197F3D1B007E63E5 /* jingyin@2x.png in Resources */,
 				8989B122198B2032005222C2 /* xiaoxi@2x.png in Resources */,
 				89429BD51566D8A70003A7D4 /* loading xiao.png in Resources */,
@@ -1792,7 +1794,6 @@
 				89F66B6519888E6D00EF50E2 /* zhanting.png in Resources */,
 				8994D152194BCEDA0016F806 /* 02.849-03.mid in Resources */,
 				B135CFC119B196A200EA8BF7 /* fanhui@2x.png in Resources */,
-				8976F68319A43F0800D8A860 /* Localizable.strings in Resources */,
 				890C39DD1983445300206740 /* zuoyoushou-01.png in Resources */,
 				89F704B419A5851E0035621C /* dalianjiayin@2x.png in Resources */,
 				8937432A197F4116007E63E5 /* shuzi4-01.png in Resources */,
@@ -1820,6 +1821,7 @@
 				8989B134198B21B2005222C2 /* bangdingxuliehao.png in Resources */,
 				89F704D219A5851E0035621C /* zhuceditu@2x.png in Resources */,
 				89F66B6019888E6D00EF50E2 /* shangcheng.png in Resources */,
+				890EF8DF19C7240900D31980 /* Localizable.strings in Resources */,
 				8964EBED194539CC00DBCED9 /* aqrsy.mid in Resources */,
 				890803CF19C3366600265DC3 /* image_resh@2x.png in Resources */,
 				890C39DF1983445300206740 /* tishi-01.png in Resources */,
@@ -1832,6 +1834,7 @@
 				89F66B5C19888E6D00EF50E2 /* puku@2x.png in Resources */,
 				893CEFE8193A37630097681C /* kongjian2.png in Resources */,
 				893742E3197F3D1B007E63E5 /* jingyin.png in Resources */,
+				890EF8E019C7243F00D31980 /* InfoPlist.strings in Resources */,
 				8994D15D194BCEDA0016F806 /* 13.599-054.mid in Resources */,
 				BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */,
 				895DB5B519C5D92400E02DE4 /* Default-Landscape@2x~ipad.png in Resources */,
@@ -1907,7 +1910,6 @@
 				89374325197F4116007E63E5 /* shizi1-01@2x.png in Resources */,
 				89F704BC19A5851E0035621C /* gou@2x.png in Resources */,
 				89F66B5B19888E6D00EF50E2 /* puku.png in Resources */,
-				89145A8519969839008D2096 /* IEEE 754.html in Resources */,
 				BA1079AB1967FE4C0056F626 /* right.png in Resources */,
 				89F704B719A5851E0035621C /* dengrukuang.png in Resources */,
 				8989B10F198B2032005222C2 /* shuji2.png in Resources */,
@@ -2000,6 +2002,7 @@
 				89F704D119A5851E0035621C /* zhuceditu.png in Resources */,
 				89F66B5919888E6D00EF50E2 /* gengduo.png in Resources */,
 				89F704DD19A5A2680035621C /* renwufenye_selected.png in Resources */,
+				890EF8DD19C7240900D31980 /* IEEE 754.html in Resources */,
 				89F704C819A5851E0035621C /* touxiang@2x.png in Resources */,
 				8989B10C198B2032005222C2 /* shifanqupu@2x.png in Resources */,
 				8964EBEE194539CC00DBCED9 /* Croatian Rhapsody.mid in Resources */,
@@ -2122,14 +2125,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		89070FFF19219EC000BB9E2F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8907100019219EC000BB9E2F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		8907101C19219EC000BB9E2F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2137,6 +2132,16 @@
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
+		};
+		890EF8E219C7243F00D31980 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				890EF8E119C7243F00D31980 /* zh-Hans */,
+				890EF8E319C7244400D31980 /* en */,
+			);
+			name = InfoPlist.strings;
+			path = Pianohelp;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
@@ -2249,7 +2254,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "757914e8-7ea6-4234-b243-425756a4f21f";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
