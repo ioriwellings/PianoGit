@@ -247,7 +247,7 @@
     [self.btnPlay setSelected:true];
     
     [player listen];
-    
+    [self btnStateCtlInPlay:1];
     scrollView.hidden = YES;
     sheetmsic1.hidden = NO;
 }
