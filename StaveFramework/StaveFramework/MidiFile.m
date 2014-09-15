@@ -1749,8 +1749,8 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     BOOL ret = NO;
 
     int leftMuteState,rightMuteState, tmpTempoMuteState;
-    leftMuteState = [options->mute get:0];
-    rightMuteState = [options->mute get:1];
+    leftMuteState = [options->mute get:1];
+    rightMuteState = [options->mute get:0];
     [options->mute set:-1 index:0];
     [options->mute set:-1 index:1];
     tmpTempoMuteState = tempoMuteState;
@@ -1768,8 +1768,8 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         [newevents release];
     }
     
-    [options->mute set:leftMuteState index:0];
-    [options->mute set:rightMuteState index:1];
+    [options->mute set:leftMuteState index:1];
+    [options->mute set:rightMuteState index:0];
     tempoMuteState = tmpTempoMuteState;
     return ret;
 }
@@ -2921,18 +2921,18 @@ static NSArray* instrNames = NULL;
 -(void)rightHandMute:(MidiOptions*)options andState:(BOOL)state
 {
     if (state == YES) {
-        [options->mute set:-1 index:1];
+        [options->mute set:-1 index:0];
     }else{
-        [options->mute set:0 index:1];
+        [options->mute set:0 index:0];
     }
 }
 
 -(void)leftHandMute:(MidiOptions*)options andState:(BOOL)state
 {
     if (state == YES) {
-        [options->mute set:-1 index:0];
+        [options->mute set:-1 index:1];
     }else{
-        [options->mute set:0 index:0];
+        [options->mute set:0 index:1];
     }
 }
 
