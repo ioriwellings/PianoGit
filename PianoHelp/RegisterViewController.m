@@ -128,6 +128,11 @@
         [MessageBox showMsg:@"请添写昵称！"];
         return;
     }
+    else if([[self.txtUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@"guest"])
+    {
+        [MessageBox showMsg:@"该用户名无效！"];
+        return;
+    }
     else if(self.txtPwd.text == nil ||
             [[self.txtPwd.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
     {
