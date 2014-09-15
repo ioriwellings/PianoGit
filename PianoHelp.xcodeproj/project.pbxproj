@@ -179,7 +179,7 @@
 		8989B111198B2032005222C2 /* shujia.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0DF198B2032005222C2 /* shujia.png */; };
 		8989B112198B2032005222C2 /* shujia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0E0198B2032005222C2 /* shujia@2x.png */; };
 		8989B117198B2032005222C2 /* weigouami.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0E5198B2032005222C2 /* weigouami.png */; };
-		8989B119198B2032005222C2 /* weigoumai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0E7198B2032005222C2 /* weigoumai@2x.png */; };
+		8989B119198B2032005222C2 /* weigouami@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0E7198B2032005222C2 /* weigouami@2x.png */; };
 		8989B11B198B2032005222C2 /* wenbenxinxi.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0E9198B2032005222C2 /* wenbenxinxi.png */; };
 		8989B11C198B2032005222C2 /* wenbenxinxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0EA198B2032005222C2 /* wenbenxinxi@2x.png */; };
 		8989B11D198B2032005222C2 /* xiai.png in Resources */ = {isa = PBXBuildFile; fileRef = 8989B0EB198B2032005222C2 /* xiai.png */; };
@@ -595,7 +595,7 @@
 		8989B0DF198B2032005222C2 /* shujia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shujia.png; sourceTree = "<group>"; };
 		8989B0E0198B2032005222C2 /* shujia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shujia@2x.png"; sourceTree = "<group>"; };
 		8989B0E5198B2032005222C2 /* weigouami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weigouami.png; sourceTree = "<group>"; };
-		8989B0E7198B2032005222C2 /* weigoumai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weigoumai@2x.png"; sourceTree = "<group>"; };
+		8989B0E7198B2032005222C2 /* weigouami@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weigouami@2x.png"; sourceTree = "<group>"; };
 		8989B0E9198B2032005222C2 /* wenbenxinxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wenbenxinxi.png; sourceTree = "<group>"; };
 		8989B0EA198B2032005222C2 /* wenbenxinxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wenbenxinxi@2x.png"; sourceTree = "<group>"; };
 		8989B0EB198B2032005222C2 /* xiai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiai.png; sourceTree = "<group>"; };
@@ -1238,7 +1238,7 @@
 				8989B0DF198B2032005222C2 /* shujia.png */,
 				8989B0E0198B2032005222C2 /* shujia@2x.png */,
 				8989B0E5198B2032005222C2 /* weigouami.png */,
-				8989B0E7198B2032005222C2 /* weigoumai@2x.png */,
+				8989B0E7198B2032005222C2 /* weigouami@2x.png */,
 				8989B0E9198B2032005222C2 /* wenbenxinxi.png */,
 				8989B0EA198B2032005222C2 /* wenbenxinxi@2x.png */,
 				8989B0EB198B2032005222C2 /* xiai.png */,
@@ -1957,7 +1957,7 @@
 				8989B10B198B2032005222C2 /* shifanqupu.png in Resources */,
 				890C39BF19833BF300206740 /* biansu-01@2x.png in Resources */,
 				89A3D67D19C4133500FDC779 /* dataSource.plist in Resources */,
-				8989B119198B2032005222C2 /* weigoumai@2x.png in Resources */,
+				8989B119198B2032005222C2 /* weigouami@2x.png in Resources */,
 				BA1079B01967FE4C0056F626 /* nine.png in Resources */,
 				8994D15B194BCEDA0016F806 /* 11.星光圆舞曲.mid in Resources */,
 				891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */,
@@ -2228,8 +2228,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Dalian Joy Technology Co.,Ltd (US9VB4TQ9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dalian Joy Technology Co.,Ltd (US9VB4TQ9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PianoHelp/PianoHelp-Prefix.pch";
 				INFOPLIST_FILE = "PianoHelp/PianoHelp-Info.plist";
@@ -2237,7 +2237,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "757914e8-7ea6-4234-b243-425756a4f21f";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

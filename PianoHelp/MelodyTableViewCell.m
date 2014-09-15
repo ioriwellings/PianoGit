@@ -13,6 +13,7 @@
 #import "MelodyCategory.h"
 #import "AppDelegate.h"
 #import "UserInfo.h"
+#import "MessageBox.h"
 
 @implementation MelodyTableViewCell
 
@@ -94,6 +95,11 @@
 }
 - (IBAction)btnFavorite_click:(id)sender
 {
+    if([self.melody.category.parentCategory.buy intValue] == 2)
+    {
+        [MessageBox showMsg:[NSString stringWithFormat:@"该乐曲所在专辑(%@)还未购买.", self.melody.category.parentCategory.name]];
+        return;
+    }
     NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
     MelodyFavorite *favo = [self getFavoriteByMelody];
     if (favo == nil)
@@ -137,6 +143,11 @@
 
 - (IBAction)btnTask_click:(id)sender
 {
+    if([self.melody.category.parentCategory.buy intValue] == 2)
+    {
+        [MessageBox showMsg:[NSString stringWithFormat:@"该乐曲所在专辑(%@)还未购买.", self.melody.category.parentCategory.name]];
+        return;
+    }
     NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
     MelodyFavorite *favo = [self getFavoriteByMelody];
     if (favo == nil)
