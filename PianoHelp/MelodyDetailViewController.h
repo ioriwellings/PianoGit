@@ -65,6 +65,7 @@ typedef enum : NSUInteger
 @property (nonatomic, readonly ,getter = getOption) MidiOptions *__options;
 @property (nonatomic, readonly ,getter = getMIDIFile) MidiFile * __midiFile;
 @property (nonatomic) HandMode handMode;
+@property (strong, nonatomic) MelodyFavorite *favo;
 
 - (IBAction)btnBack_click:(id)sender;
 - (IBAction)btnSection_click:(id)sender;

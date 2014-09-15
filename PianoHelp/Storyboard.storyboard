@@ -1612,16 +1612,7 @@
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okf-Wh-StN" customClass="UIControl">
                                         <rect key="frame" x="0.0" y="-40" width="1024" height="768"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="nvhai.png" translatesAutoresizingMaskIntoConstraints="NO" id="J49-n3-yQ3">
-                                                <rect key="frame" x="440" y="261" width="33" height="35"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </imageView>
-                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="view_touchDown:" destination="HkI-Yi-ems" eventType="touchDown" id="EgU-FB-ya4"/>
-                                        </connections>
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邮箱地址" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgf-Bq-PsT">
                                         <rect key="frame" x="188" y="180" width="88" height="21"/>
@@ -1675,6 +1666,10 @@
                                         <rect key="frame" x="341" y="220" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="nvhai.png" translatesAutoresizingMaskIntoConstraints="NO" id="J49-n3-yQ3">
+                                        <rect key="frame" x="440" y="221" width="33" height="35"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昵称" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOo-3s-RgJ">
                                         <rect key="frame" x="234" y="43" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1686,7 +1681,7 @@
                                         <rect key="frame" x="299" y="366" width="76" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="HkI-Yi-ems" id="5a5-0S-5AZ"/>
                                         </connections>

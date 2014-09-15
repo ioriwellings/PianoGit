@@ -11,6 +11,10 @@
 #import "HandPopViewController.h"
 #import "SoundPopViewController.h"
 #import "ScroeViewController.h"
+#import "Melody.h"
+#import "MelodyFavorite.h"
+#import "Score.h"
+#import "AppDelegate.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -77,6 +81,7 @@
     //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     //    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     //    [self presentViewController:vc animated:YES completion:NULL];
+    //[self endSongsResult:10 andRight:10 andWrong:10];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -511,6 +516,15 @@
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self presentViewController:vc animated:YES completion:NULL];
+        
+        Score *score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+        score.rank = [NSNumber numberWithInt:[self.favo.melody.level intValue]];
+//        score.good = [NSNumber numberWithInt:good];
+        score.miss = [NSNumber numberWithInt:wrong];
+        score.perfect = [NSNumber numberWithInt:right];
+        score.score = [NSNumber numberWithInt:ff];
+        self.favo.score = score;
+        [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
     });
 }
 
