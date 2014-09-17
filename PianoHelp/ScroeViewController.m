@@ -12,6 +12,7 @@
 #import "WebService.h"
 #import "GTMBase64.h"
 #import "UserInfo.h"
+#import "MessageBox.h"
 
 @interface ScroeViewController ()
 
@@ -70,7 +71,11 @@
 
 - (IBAction)btnShare_onclick:(id)sender
 {
-    
+    if ([[UserInfo sharedUserInfo].userName isEqualToString:@"guest"])
+    {
+        [MessageBox showMsg:@"匿名用户不能上传录音"];
+        return;
+    }
     
     NSString *temp = NSTemporaryDirectory();
     NSString *filename = [NSString stringWithFormat:@"%@__RecordTmp.m4a", temp];
@@ -83,7 +88,7 @@
                         encoding:NSUTF8StringEncoding];
     
     
-    NSString *saveName = [self.fileName stringByReplacingOccurrencesOfString:@"mid" withString:@"m4a"];
+    NSString *saveName = [[self.fileName lastPathComponent] stringByReplacingOccurrencesOfString:@"mid" withString:@"m4a"];
     
     //创建WebService的调用参数
     NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
