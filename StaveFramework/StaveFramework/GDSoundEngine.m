@@ -246,7 +246,7 @@ static void CheckError(OSStatus error, const char *operation) {
     // Assign the Playback category to the audio session. This category supports
     //    audio output with the Ring/Silent switch in the Silent position.
     NSError *audioSessionError = nil;
-    [mySession setCategory: AVAudioSessionCategoryPlayback error: &audioSessionError];
+    [mySession setCategory: AVAudioSessionCategoryPlayAndRecord error: &audioSessionError];
     if (audioSessionError != nil) {NSLog (@"Error setting audio session category."); return NO;}
     
     // Activate the audio session

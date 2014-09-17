@@ -64,6 +64,7 @@
 - (void) recording {
     if (!self.audioRecorder.recording) {
         AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
         [session setActive:YES error:nil];
         [self.audioRecorder record];
     }
