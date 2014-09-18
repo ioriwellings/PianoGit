@@ -114,35 +114,74 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     return TRUE;
 }
 
+-(NSString*)getDisplayName:(MIDIObjectRef) object
+{
+    // Returns the display name of a given MIDIObjectRef as an NSString
+    CFStringRef name = nil;
+    if (noErr != MIDIObjectGetStringProperty(object, kMIDIPropertyDisplayName, &name))
+        return nil;
+    return (NSString *)name;
+}
+
 - (BOOL)setupMIDI {
     
     BOOL result = FALSE;
 //    [self listSources];
     client = 0;
+    outputPort = 0;
+    inPort = 0;
+    
+	OSStatus err = MIDIClientCreate(CFSTR("NNAudio MIDI Handler"), MyMIDINotifyProc, nil, &client);
+	NSLog(@"MIDIClientCreate error code: %lu", err);
     
     
-	MIDIClientCreate(CFSTR("NNAudio MIDI Handler"), MyMIDINotifyProc, nil, &client);
+	err = MIDIOutputPortCreate(client, CFSTR("Output port"), &outputPort);
+    NSLog(@"MIDIOutputPortCreate error code: %lu", err);
+    
+    
+	err = MIDIInputPortCreate(client, CFSTR("Input port"), MyMIDIReadProc, nil, &inPort);
+    NSLog(@"MIDIInputPortCreate error code: %lu", err);
+    
 	
-	MIDIOutputPortCreate(client, CFSTR("Output port"), &outputPort);
-	MIDIInputPortCreate(client, CFSTR("Input port"), MyMIDIReadProc, nil, &inPort);
-	
-	unsigned long sourceCount = MIDIGetNumberOfSources();
-    NSLog(@"====count [%lu]", sourceCount);
-	for (int i = 0; i < sourceCount; ++i) {
-        outEndpoint = MIDIGetDestination(i);
-        src = MIDIGetSource(i);
-        CFStringRef endpointName = NULL;
-        MIDIObjectGetStringProperty(src, kMIDIPropertyName, &endpointName);
-        char endpointNameC[255];
-        if ((NSString *)endpointName != nil ) {
-            CFStringGetCString(endpointName, endpointNameC, 255, kCFStringEncodingUTF8);
+    
+    
+    ItemCount destCount = MIDIGetNumberOfDestinations();
+    for (ItemCount i = 0 ; i < destCount ; ++i) {
+        
+        // Grab a reference to a destination endpoint
+        MIDIEndpointRef dest = MIDIGetDestination(i);
+        if (dest != NULL) {
+            NSLog(@"  Destination: %@", [self getDisplayName:dest]);
         }
-        NSLog(@"Source %d - %s", i, endpointNameC);
-        if (strcmp("Session 1", endpointNameC) == 0) {
+    }
+    
+    
+    
+    
+    
+	ItemCount sourceCount = MIDIGetNumberOfSources();
+    NSLog(@"====count [%lu]", sourceCount);
+	for (ItemCount i = 0; i < sourceCount; ++i) {
+        
+        src = MIDIGetSource(i);
+
+        NSString * name = [self getDisplayName:src];
+
+        if (src != NULL) {
+            NSLog(@"  Source: %@", name);
+        }
+        
+        NSRange range = [name rangeOfString:@"Session 1"];//判断字符串是否包含
+        if (range.length >0) {
+            
+            NSLog(@"  yyyyyyyyyyyyyy");
             continue;
         }
         
-        MIDIPortConnectSource(inPort, src, NULL);
+        outEndpoint = MIDIGetDestination(i);
+        OSStatus err = MIDIPortConnectSource(inPort, src, NULL);
+        NSLog(@"MIDIPortConnectSource error code: %lu", err);
+        
         result = TRUE;
 	}
     
@@ -170,6 +209,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     }
     
     [super dealloc];
+    
+     NSLog(@"==== dealloc");
 }
 
 @end
