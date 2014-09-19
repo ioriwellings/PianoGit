@@ -88,7 +88,7 @@
                         encoding:NSUTF8StringEncoding];
     
     
-    NSString *saveName = [[self.fileName lastPathComponent] stringByReplacingOccurrencesOfString:@"mid" withString:@"m4a"];
+    NSString *saveName = [[self.fileName lastPathComponent] stringByReplacingOccurrencesOfString:@"mid" withString:@"mp3"];
     
     //创建WebService的调用参数
     NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
