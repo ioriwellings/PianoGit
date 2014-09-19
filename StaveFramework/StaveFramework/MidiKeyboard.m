@@ -14,6 +14,8 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
 {
     //Reads the source/device's name which is allocated in the MidiSetupWithSource function.
     const char *source = connRefCon;
+    NSLog(@"MyMIDIReadProc  start %lu", pktlist->numPackets);
+    
     
     //Extracting the data from the MIDI packets receieved.
     MIDIPacket *packet = (MIDIPacket *)pktlist->packet;
@@ -54,6 +56,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     NSNotification* notification = [NSNotification notificationWithName:kNAMIDINotification
                                                                  object:[NSNumber numberWithShort:message->messageID]];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    NSLog(@" MyMIDINotifyProc is %lu", message->messageID);
 }
 
 
@@ -64,6 +68,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     self = [super init];
     inPort = 0;
     src = 0;
+    MIDIRestart();
     return self;
 }
 
