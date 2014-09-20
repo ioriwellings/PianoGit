@@ -87,7 +87,6 @@
     [self.view addSubview:loading];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [loading removeFromSuperview];
         NSString *temp = NSTemporaryDirectory();
         NSString *filename = [NSString stringWithFormat:@"%@__RecordTmp.m4a", temp];
         NSData *data = [NSData dataWithContentsOfFile: filename];
@@ -120,7 +119,7 @@
         NSString* errMsg = [WebService checkResponseError:theResponse];
         NSLog(@"the error message is %@", errMsg);
         NSLog(@"the result is %@", theResponse);
-        [MessageBox showMsg:@"分享成功"];
+        [MessageBox showMsg:@"上传成功"];
         [self dismissViewControllerAnimated:YES completion:NULL];
     });
     

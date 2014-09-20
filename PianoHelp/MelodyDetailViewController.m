@@ -89,7 +89,7 @@
     //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     //    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     //    [self presentViewController:vc animated:YES completion:NULL];
-//    [self endSongsResult:10 andRight:10 andWrong:10];
+    //[self endSongsResult:10 andRight:10 andWrong:10];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -529,7 +529,7 @@
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self presentViewController:vc animated:YES completion:NULL];
         
-        Score *score = [self getCurrentScore];
+        Score *score = self.favo.score; //[self getCurrentScore];
         if(score == nil)
         {
             score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
@@ -547,7 +547,6 @@
                 score.score = [NSNumber numberWithInt:ff];
             }
         }
-        
         [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
     });
 }
