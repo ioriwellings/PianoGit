@@ -236,6 +236,8 @@
     //        }];
     //    }
     
+    if (option == 1) return;
+    
     [player PianoTips:YES];
     if (timer != nil) {
         [timer invalidate];
@@ -727,7 +729,7 @@
             [self.btnHint setEnabled:false];
             [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
-            [self.btnHint setEnabled:false];
+            [self.btnHint setEnabled:true];
             [self.btnRePlay setEnabled:true];
         }
     }else if(state == 2){//end playing
