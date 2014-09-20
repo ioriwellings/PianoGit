@@ -252,7 +252,7 @@
 {
     option = 1;//试听
     [self.btnPlay setSelected:true];
-    [self.btnHint setSelected:true];
+    [self.btnHint setSelected:false];
     
     [player listen];
     [self btnStateCtlInPlay:1];
@@ -708,8 +708,8 @@
             [self.btnHint setEnabled:false];
             [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
-            [self.btnHint setEnabled:true];
-            [self.btnRePlay setEnabled:false];
+            [self.btnHint setEnabled:false];
+            [self.btnRePlay setEnabled:true];
         }
     }else if(state == 2){//end playing
         [self.btnTryListen setEnabled:true];
