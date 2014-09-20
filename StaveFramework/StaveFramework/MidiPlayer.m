@@ -931,7 +931,7 @@
                 [delegate endSongs];
             }
             
-            if (pianoData != nil) {
+            if (pianoData != nil && judgeFlag) {
                 
                 IntArray *result = [pianoData judgedResult];
                 
