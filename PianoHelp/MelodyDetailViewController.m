@@ -19,6 +19,7 @@
 @interface MelodyDetailViewController ()
 {
     BOOL isHitAnimating;
+    BOOL isHiddenMenubar;
 }
 @property (nonatomic,weak) UIButton *btnCurrent;
 @property (strong, nonatomic) SFCountdownView *sfCountdownView;
@@ -433,16 +434,18 @@
 
 -(void)hiddenMenuAndToolBar
 {
+    if(isHiddenMenubar) return;
     if(self.menuBar.hidden)
     {
         self.menuBar.hidden = NO;
+        isHiddenMenubar = YES;
         [UIView animateWithDuration:0.3 animations:^{
             self.menuBar.frame = CGRectMake(0, 0, 1024, 75);
             self.toolBar.frame = CGRectMake(0, 693, 1024, 75);
             scrollView.frame = CGRectMake(0,
-                                          scrollView.frame.origin.y+75 ,
+                                          0+75 ,
                                           scrollView.frame.size.width,
-                                          scrollView.frame.size.height-75*2 );
+                                          618);
             sheetmsic1.frame = CGRectMake(0,
                                           sheetmsic1.frame.origin.y+75,
                                           sheetmsic1.frame.size.width,
@@ -452,18 +455,19 @@
                                      piano.frame.size.width,
                                      piano.frame.size.height);
         } completion:^(BOOL finished) {
-            ;
+            isHiddenMenubar = NO;
         }];
     }
     else
     {
+        isHiddenMenubar = YES;
         [UIView animateWithDuration:0.3 animations:^{
             self.menuBar.frame = CGRectMake(0, -75, 1024, 75);
             self.toolBar.frame = CGRectMake(0, 693+75, 1024, 75);
             scrollView.frame = CGRectMake(0,
-                                          scrollView.frame.origin.y-75,
+                                          0,
                                           scrollView.frame.size.width,
-                                          scrollView.frame.size.height+75*2);
+                                          768);
             sheetmsic1.frame = CGRectMake(0,
                                           sheetmsic1.frame.origin.y-75,
                                           sheetmsic1.frame.size.width,
@@ -474,6 +478,7 @@
                                      piano.frame.size.height);
         } completion:^(BOOL finished) {
             self.menuBar.hidden = YES;
+            isHiddenMenubar = NO;
         }];
     }
 }
