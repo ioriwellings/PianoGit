@@ -362,6 +362,8 @@
 -(void)recognitionPlayByLine
 {
     NSLog(@"=== recognitionPlayByLine index[%d] note data[%d]", currIndex , [notes count]);
+    if (currIndex < 0 || currIndex >= [symbolDatas count]) return;
+    
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
     ChordSymbol *chord = [data getChordSymbol];
     if ([self judgeResult:chord withCount:[chord notedata_len]]) {
