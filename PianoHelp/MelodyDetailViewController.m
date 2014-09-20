@@ -647,12 +647,13 @@
             [midifile rightHandMute:&options andState:NO];
             break;
         case 1://左手模式
-            [midifile leftHandMute:&options andState:NO];
-            [midifile rightHandMute:&options andState:YES];
+            [midifile leftHandMute:&options andState:YES];
+            [midifile rightHandMute:&options andState:NO];
             break;
         case 2://右手模式
-            [midifile rightHandMute:&options andState:NO];
-            [midifile leftHandMute:&options andState:YES];
+            [midifile leftHandMute:&options andState:NO];
+            [midifile rightHandMute:&options andState:YES];
+            
             break;
         default:
             break;
