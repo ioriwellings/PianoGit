@@ -252,6 +252,7 @@
 {
     option = 1;//试听
     [self.btnPlay setSelected:true];
+    [self.btnHint setSelected:true];
     
     [player listen];
     [self btnStateCtlInPlay:1];
@@ -717,20 +718,23 @@
             [self.sliderXiaoJie setEnabled:true];
             [self.sliderSpeed setEnabled:false];
             [self.btnRePlay setEnabled:true];
+            [self.btnSplitSection setEnabled:true];
+            [self.btnXiaoJieTiaoZhuan setEnabled:true];
+            [self.btnSuDu setEnabled:true];
+            [self.btnAccompany setEnabled:true];
         }else if (_iPlayMode == 1){
             [self.btnHint setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
-            [self.sliderSpeed setEnabled:true];
+            [self.sliderSpeed setEnabled:false];
             [self.btnRePlay setEnabled:false];
+            [self.btnSplitSection setEnabled:false];
+            [self.btnXiaoJieTiaoZhuan setEnabled:false];
+            [self.btnSuDu setEnabled:false];
+            [self.btnAccompany setEnabled:false];
         }
 
-        [self.btnXiaoJieTiaoZhuan setEnabled:true];
-        [self.btnSuDu setEnabled:true];
-        [self.sliderXiaoJie setEnabled:true];
-        [self.sliderSpeed setEnabled:true];
-        [self.btnAccompany setEnabled:true];
         [self.btnHandCtl setEnabled:true];
-        [self.btnSplitSection setEnabled:true];
+
     }else if (state == 3){//pause
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
         [self.btnSuDu setEnabled:true];
