@@ -918,7 +918,7 @@
         /** modify by yizhq end */
             [timer invalidate]; timer = nil;
             
-            if (pianoData != nil) {
+            if (pianoData != nil && playModel == PlayModel2) {
                 [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }
         
