@@ -427,7 +427,6 @@
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
-    [self btnHint_click:nil];
     
     self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
     self.sfCountdownView.delegate = self;
