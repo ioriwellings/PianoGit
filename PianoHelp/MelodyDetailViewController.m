@@ -253,6 +253,7 @@
 {
     option = 1;//试听
     [self.btnPlay setSelected:true];
+    [self.btnHint setSelected:false];
     
     [player listen];
     [self btnStateCtlInPlay:1];
@@ -645,24 +646,12 @@
             [midifile rightHandMute:&options andState:NO];
             break;
         case 1://左手模式
-            if ([midifile getLeftHadnMuteState:&options] == YES)
-            {
-                [midifile leftHandMute:&options andState:NO];
-            }
-            else
-            {
-                [midifile leftHandMute:&options andState:YES];
-            }
+            [midifile leftHandMute:&options andState:NO];
+            [midifile rightHandMute:&options andState:YES];
             break;
         case 2://右手模式
-            if ([midifile getRightHadnMuteState:&options] == YES)
-            {
-                [midifile rightHandMute:&options andState:NO];
-            }
-            else
-            {
-                [midifile rightHandMute:&options andState:YES];
-            }
+            [midifile rightHandMute:&options andState:NO];
+            [midifile leftHandMute:&options andState:YES];
             break;
         default:
             break;
@@ -739,8 +728,8 @@
             [self.btnHint setEnabled:false];
             [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
-            [self.btnHint setEnabled:true];
-            [self.btnRePlay setEnabled:false];
+            [self.btnHint setEnabled:false];
+            [self.btnRePlay setEnabled:true];
         }
     }else if(state == 2){//end playing
         [self.btnTryListen setEnabled:true];
@@ -749,20 +738,23 @@
             [self.sliderXiaoJie setEnabled:true];
             [self.sliderSpeed setEnabled:false];
             [self.btnRePlay setEnabled:true];
+            [self.btnSplitSection setEnabled:true];
+            [self.btnXiaoJieTiaoZhuan setEnabled:true];
+            [self.btnSuDu setEnabled:true];
+            [self.btnAccompany setEnabled:true];
         }else if (_iPlayMode == 1){
             [self.btnHint setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
-            [self.sliderSpeed setEnabled:true];
+            [self.sliderSpeed setEnabled:false];
             [self.btnRePlay setEnabled:false];
+            [self.btnSplitSection setEnabled:false];
+            [self.btnXiaoJieTiaoZhuan setEnabled:false];
+            [self.btnSuDu setEnabled:false];
+            [self.btnAccompany setEnabled:false];
         }
 
-        [self.btnXiaoJieTiaoZhuan setEnabled:true];
-        [self.btnSuDu setEnabled:true];
-        [self.sliderXiaoJie setEnabled:true];
-        [self.sliderSpeed setEnabled:true];
-        [self.btnAccompany setEnabled:true];
         [self.btnHandCtl setEnabled:true];
-        [self.btnSplitSection setEnabled:true];
+
     }else if (state == 3){//pause
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
         [self.btnSuDu setEnabled:true];
