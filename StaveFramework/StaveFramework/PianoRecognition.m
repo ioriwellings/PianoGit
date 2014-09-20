@@ -332,7 +332,7 @@
  */
 -(int)getCurChordSymolNoteCount
 {
-    if (currIndex < 0 || currIndex > [symbolDatas count]) return -1;
+    if (currIndex < 0 || currIndex >= [symbolDatas count]) return -1;
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
     ChordSymbol *chord = [data getChordSymbol];
     
@@ -350,7 +350,7 @@
  */
 -(ChordSymbol*)getCurChordSymol
 {
-    if (currIndex < 0 || currIndex > [symbolDatas count]) return nil;
+    if (currIndex < 0 || currIndex >= [symbolDatas count]) return nil;
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
     ChordSymbol *chord = [data getChordSymbol];
     return chord;
