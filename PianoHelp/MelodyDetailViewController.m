@@ -614,24 +614,12 @@
             [midifile rightHandMute:&options andState:NO];
             break;
         case 1://左手模式
-            if ([midifile getLeftHadnMuteState:&options] == YES)
-            {
-                [midifile leftHandMute:&options andState:NO];
-            }
-            else
-            {
-                [midifile leftHandMute:&options andState:YES];
-            }
+            [midifile leftHandMute:&options andState:NO];
+            [midifile rightHandMute:&options andState:YES];
             break;
         case 2://右手模式
-            if ([midifile getRightHadnMuteState:&options] == YES)
-            {
-                [midifile rightHandMute:&options andState:NO];
-            }
-            else
-            {
-                [midifile rightHandMute:&options andState:YES];
-            }
+            [midifile rightHandMute:&options andState:NO];
+            [midifile leftHandMute:&options andState:YES];
             break;
         default:
             break;
