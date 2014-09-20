@@ -13,6 +13,7 @@
 #import "GTMBase64.h"
 #import "UserInfo.h"
 #import "MessageBox.h"
+#import "IoriLoadingView.h"
 
 @interface ScroeViewController ()
 
@@ -71,51 +72,58 @@
 
 - (IBAction)btnShare_onclick:(id)sender
 {
+    
+}
+
+- (IBAction)btnSaveRecord_onclick:(id)sender
+{
     if ([[UserInfo sharedUserInfo].userName isEqualToString:@"guest"])
     {
         [MessageBox showMsg:@"匿名用户不能上传录音"];
         return;
     }
     
-    NSString *temp = NSTemporaryDirectory();
-    NSString *filename = [NSString stringWithFormat:@"%@__RecordTmp.m4a", temp];
-    NSData *data = [NSData dataWithContentsOfFile: filename];
-    data = [GTMBase64 encodeData:data];
+    IoriLoadingView *loading =[MessageBox showLoadingViewWithBlockOnClick:NULL hasCancel:NO parentViewSize:CGSizeMake(1024, 768)];
+    [self.view addSubview:loading];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *temp = NSTemporaryDirectory();
+        NSString *filename = [NSString stringWithFormat:@"%@__RecordTmp.m4a", temp];
+        NSData *data = [NSData dataWithContentsOfFile: filename];
+        data = [GTMBase64 encodeData:data];
+        
+        
+        NSString *string = [[NSString alloc]
+                            initWithData:data
+                            encoding:NSUTF8StringEncoding];
+        
+        
+        NSString *saveName = [[self.fileName lastPathComponent] stringByReplacingOccurrencesOfString:@"mid" withString:@"mp3"];
+        
+        //创建WebService的调用参数
+        NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
+                                   @"midiFileName", saveName, @"fileData", string,
+                                   @"userName",     [UserInfo sharedUserInfo].userName,
+                                   @"scroe",     self.labScroe.text, nil];
+        
+        
+        
+        //调用WebService，获取响应
+        NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
+                                                         webServiceFile:@"UpLoadFileWebService.asmx"
+                                                           xmlNameSpace:@"http://tempuri.org/"
+                                                         webServiceName:@"UpLoadFile"
+                                                           wsParameters:wsParas];
+        
+        //检查响应中是否包含错误
+        NSString* errMsg = [WebService checkResponseError:theResponse];
+        NSLog(@"the error message is %@", errMsg);
+        NSLog(@"the result is %@", theResponse);
+        [MessageBox showMsg:@"上传成功"];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    });
     
     
-    NSString *string = [[NSString alloc]
-                        initWithData:data
-                        encoding:NSUTF8StringEncoding];
-    
-    
-    NSString *saveName = [[self.fileName lastPathComponent] stringByReplacingOccurrencesOfString:@"mid" withString:@"mp3"];
-    
-    //创建WebService的调用参数
-    NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
-                               @"midiFileName", saveName, @"fileData", string,
-                               @"userName",     [UserInfo sharedUserInfo].userName,
-                               @"scroe",     self.labScroe.text, nil];
-    
-    
-    
-    //调用WebService，获取响应
-    NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
-                                                     webServiceFile:@"UpLoadFileWebService.asmx"
-                                                       xmlNameSpace:@"http://tempuri.org/"
-                                                     webServiceName:@"UpLoadFile"
-                                                       wsParameters:wsParas];
-    
-    //检查响应中是否包含错误
-    NSString* errMsg = [WebService checkResponseError:theResponse];
-    NSLog(@"the error message is %@", errMsg);
-    NSLog(@"the result is %@", theResponse);
-    
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
-}
-
-- (IBAction)btnSaveRecord_onclick:(id)sender
-{
 }
 
 - (IBAction)btnReview_click:(id)sender

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "UserInfo.h"
 #import "MessageBox.h"
+#import "NSString+URLConnection.h"
 
 @interface LoginViewController ()
 {
@@ -107,6 +108,29 @@
     }
     else
     {
+        if([HTTPSERVERSADDRESS isURLConnectionOK:nil])
+        {
+            Users *u = [self getRemoteUserWithName:self.txtUserName.text password:self.txtPassword.text];
+            if(u)
+            {
+                NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+                Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
+                user.userName = u.userName;
+                user.pwd = u.pwd;
+                NSError *error;
+                if(![moc save:&error])
+                {
+                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                    [MessageBox showMsg:@"无法正确获取用户信息!"];
+                    return;
+                }
+
+            }
+        }
+        else
+        {
+            [MessageBox showMsg:@"没有网络，无法正确获取用户信息!"];
+        }
         [MessageBox showMsg:@"用户名或密码不正确！"];
     }
     [UIView animateWithDuration:0.3 animations:^{
@@ -118,6 +142,11 @@
         //[self.view removeFromSuperview];
         
     }];
+}
+
+-(Users*)getRemoteUserWithName:(NSString*)strUserName password:(NSString*)pwd
+{
+    return nil;
 }
 
 - (IBAction)chkRemember_click:(id)sender

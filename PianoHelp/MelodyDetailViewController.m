@@ -15,6 +15,7 @@
 #import "MelodyFavorite.h"
 #import "Score.h"
 #import "AppDelegate.h"
+#import "UserInfo.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -529,15 +530,46 @@
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self presentViewController:vc animated:YES completion:NULL];
         
-        Score *score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
-        score.rank = [NSNumber numberWithInt:[self.favo.melody.level intValue]];
+        Score *score = self.favo.score; //[self getCurrentScore];
+        if(score == nil)
+        {
+            score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+            score.rank = [NSNumber numberWithInt:[self.favo.melody.level intValue]];
 //        score.good = [NSNumber numberWithInt:good];
-        score.miss = [NSNumber numberWithInt:wrong];
-        score.perfect = [NSNumber numberWithInt:right];
-        score.score = [NSNumber numberWithInt:ff];
-        self.favo.score = score;
+            score.miss = [NSNumber numberWithInt:wrong];
+            score.perfect = [NSNumber numberWithInt:right];
+            score.score = [NSNumber numberWithInt:ff];
+            self.favo.score = score;
+        }
+        else
+        {
+            if([score.score intValue] < ff)
+            {
+                score.score = [NSNumber numberWithInt:ff];
+            }
+        }
         [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
     });
+}
+
+-(Score*)getCurrentScore
+{
+    NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        return ((MelodyFavorite*)[objects firstObject]).score;
+    }
+    return nil;
 }
 
 #pragma mark -
