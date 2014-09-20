@@ -73,6 +73,7 @@
         [self.sliderXiaoJie setEnabled:false];
         [self.btnXiaoJieTiaoZhuan setEnabled:false];
         [self.btnSplitSection setEnabled:false];
+        [self.btnRePlay setEnabled:false];
     }else if(self.iPlayMode == 2){//跟弹模式
         [self.btnHint setEnabled:false];
         [self.sliderSpeed setEnabled:true];
@@ -80,6 +81,7 @@
         [self.sliderXiaoJie setEnabled:true];
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
         [self.btnSplitSection setEnabled:true];
+        [self.btnRePlay setEnabled:true];
     }
     
     //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
@@ -736,8 +738,10 @@
         
         if (_iPlayMode == 2) {
             [self.btnHint setEnabled:false];
+            [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
             [self.btnHint setEnabled:true];
+            [self.btnRePlay setEnabled:false];
         }
     }else if(state == 2){//end playing
         [self.btnTryListen setEnabled:true];
@@ -745,10 +749,12 @@
             [self.btnHint setEnabled:false];
             [self.sliderXiaoJie setEnabled:true];
             [self.sliderSpeed setEnabled:false];
+            [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
             [self.btnHint setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
             [self.sliderSpeed setEnabled:true];
+            [self.btnRePlay setEnabled:false];
         }
 
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
@@ -767,11 +773,13 @@
             [self.btnHandCtl setEnabled:true];
             [self.sliderXiaoJie setEnabled:true];
             [self.sliderSpeed setEnabled:true];
+            [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
             [self.sliderSpeed setEnabled:false];
             [self.btnHint setEnabled:true];
             [self.btnHandCtl setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
+            [self.btnRePlay setEnabled:true];
         }
     }
     
