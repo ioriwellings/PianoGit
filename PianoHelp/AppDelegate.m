@@ -68,6 +68,7 @@
         iLoop--;
     }
 //    [self loadDemoMidiToSQL];
+//    [self loadTempMIDE];//for test
     [self initDataBaseWithPList:nil];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
 

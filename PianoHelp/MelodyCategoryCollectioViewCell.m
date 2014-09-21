@@ -47,6 +47,7 @@
     {
         self.imageViewBG.image = [UIImage imageNamed:category.cover];
     }
+//    category.buy = @1;
     if([category.buy intValue] == 2)
     {
         self.imageViewBuy.image = [UIImage imageNamed:@"weigoumai.png"];
