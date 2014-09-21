@@ -15,6 +15,7 @@
 #import "MelodyFavorite.h"
 #import "Score.h"
 #import "AppDelegate.h"
+#import "UserInfo.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -235,6 +236,8 @@
     //        }];
     //    }
     
+    if (option == 1) return;
+    
     [player PianoTips:YES];
     if (timer != nil) {
         [timer invalidate];
@@ -426,7 +429,6 @@
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
-    [self btnHint_click:nil];
     
     self.sfCountdownView = [[SFCountdownView alloc] initWithParentView:self.view];
     self.sfCountdownView.delegate = self;
@@ -529,15 +531,46 @@
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
         [self presentViewController:vc animated:YES completion:NULL];
         
-        Score *score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
-        score.rank = [NSNumber numberWithInt:[self.favo.melody.level intValue]];
+        Score *score = self.favo.score; //[self getCurrentScore];
+        if(score == nil)
+        {
+            score = (Score*)[NSEntityDescription insertNewObjectForEntityForName:@"Score" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+            score.rank = [NSNumber numberWithInt:[self.favo.melody.level intValue]];
 //        score.good = [NSNumber numberWithInt:good];
-        score.miss = [NSNumber numberWithInt:wrong];
-        score.perfect = [NSNumber numberWithInt:right];
-        score.score = [NSNumber numberWithInt:ff];
-        self.favo.score = score;
+            score.miss = [NSNumber numberWithInt:wrong];
+            score.perfect = [NSNumber numberWithInt:right];
+            score.score = [NSNumber numberWithInt:ff];
+            self.favo.score = score;
+        }
+        else
+        {
+            if([score.score intValue] < ff)
+            {
+                score.score = [NSNumber numberWithInt:ff];
+            }
+        }
         [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
     });
+}
+
+-(Score*)getCurrentScore
+{
+    NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MelodyFavorite" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user.userName == %@", [UserInfo sharedUserInfo].userName];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        return ((MelodyFavorite*)[objects firstObject]).score;
+    }
+    return nil;
 }
 
 #pragma mark -
@@ -614,12 +647,13 @@
             [midifile rightHandMute:&options andState:NO];
             break;
         case 1://左手模式
-            [midifile leftHandMute:&options andState:NO];
-            [midifile rightHandMute:&options andState:YES];
+            [midifile leftHandMute:&options andState:YES];
+            [midifile rightHandMute:&options andState:NO];
             break;
         case 2://右手模式
-            [midifile rightHandMute:&options andState:NO];
-            [midifile leftHandMute:&options andState:YES];
+            [midifile leftHandMute:&options andState:NO];
+            [midifile rightHandMute:&options andState:YES];
+            
             break;
         default:
             break;
@@ -696,7 +730,7 @@
             [self.btnHint setEnabled:false];
             [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
-            [self.btnHint setEnabled:false];
+            [self.btnHint setEnabled:true];
             [self.btnRePlay setEnabled:true];
         }
     }else if(state == 2){//end playing

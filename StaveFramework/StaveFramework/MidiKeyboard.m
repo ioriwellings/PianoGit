@@ -34,7 +34,6 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
             
             NSLog(@"99999999999999999999 %s - NOTE : %d | %d", source, note, velocity);
             
-            
             NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
             [info setObject:[NSNumber numberWithInteger:note] forKey:kNAMIDI_NoteKey];
             [info setObject:[NSNumber numberWithInteger:velocity] forKey:kNAMIDI_VelocityKey];
@@ -53,9 +52,9 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
 }
 
 static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
-    NSNotification* notification = [NSNotification notificationWithName:kNAMIDINotification
-                                                                 object:[NSNumber numberWithShort:message->messageID]];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+//    NSNotification* notification = [NSNotification notificationWithName:kNAMIDINotification
+//                                                                 object:[NSNumber numberWithShort:message->messageID]];
+//    [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     NSLog(@" MyMIDINotifyProc is %lu", message->messageID);
 }

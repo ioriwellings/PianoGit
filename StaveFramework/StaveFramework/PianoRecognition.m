@@ -36,9 +36,9 @@
         
         //右手是第1音轨，左手是第2音轨
         //右手模式，右手静音；左手模式，左手静音
-        if (rState == -1 && lState == 0) { //右手模式
+        if (rState == -1 && lState == 0) { //右手模式,第一轨
             leftAndRight = 1;
-        } else if (rState == 0 && lState == -1) { //左手模式
+        } else if (rState == 0 && lState == -1) { //左手模式, 第2轨
             leftAndRight = 2;
         } else {//右手模式
             leftAndRight = 1;
@@ -73,10 +73,10 @@
         
         //右手是第1音轨，左手是第2音轨
         //右手模式，右手静音；左手模式，左手静音
-        if (rState == -1 && lState == 0) { //右手模式
-            leftAndRight = 1;
-        } else if (rState == 0 && lState == -1) { //左手模式
+        if (rState == -1 && lState == 0) { //左手模式
             leftAndRight = 2;
+        } else if (rState == 0 && lState == -1) { //右手模式
+            leftAndRight = 1;
             staffIndex = 1;
         } else {//右手模式
             leftAndRight = 1;
@@ -362,6 +362,8 @@
 -(void)recognitionPlayByLine
 {
     NSLog(@"=== recognitionPlayByLine index[%d] note data[%d]", currIndex , [notes count]);
+    if (currIndex < 0 || currIndex >= [symbolDatas count]) return;
+    
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
     ChordSymbol *chord = [data getChordSymbol];
     if ([self judgeResult:chord withCount:[chord notedata_len]]) {

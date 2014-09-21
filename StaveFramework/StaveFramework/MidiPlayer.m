@@ -1079,24 +1079,28 @@
     [arrPacket removeAllObjects];
     NSNumber *num1 = [[NSNumber alloc] initWithInt:0x90];
     [arrPacket addObject: num1];
-    
+        
     NSNumber *num2 = [[NSNumber alloc] initWithInt:notePlayed];
     [arrPacket addObject: num2];
-    
+        
     NSNumber *num3 = [[NSNumber alloc] initWithInt:velocity];
     [arrPacket addObject: num3];
-    
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *data1 = [NSString stringWithFormat:@"n[%d]", notePlayed];
         [self.midiData setText:data1];
+        
+        if (playstate == playing) {
+            switch(playModel) {
+                case PlayModel1:
+                    [self byModel1];
+                    break;
+            }
+        }
     });
     
     if (playstate == playing) {
         switch(playModel) {
-            case PlayModel1:
-                [self byModel1];
-                break;
             case PlayModel2:
                 [self byModel2];
                 break;
