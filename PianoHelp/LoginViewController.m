@@ -136,6 +136,7 @@
         else
         {
             [MessageBox showMsg:@"没有网络，无法正确获取用户信息!"];
+            return;
         }
         [MessageBox showMsg:@"用户名或密码不正确！"];
     }

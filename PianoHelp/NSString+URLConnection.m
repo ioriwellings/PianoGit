@@ -513,7 +513,7 @@
 {
     NSURLResponse *response=nil;
     NSData *data = nil;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5];
     NSError *__autoreleasing temperr = err;
     data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&temperr];
     if(temperr) err = [temperr copy]; //no effect.
@@ -529,7 +529,7 @@
 {
     NSURLResponse *response=nil;
     NSData *data = nil;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5];
     
     data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:err];
     
