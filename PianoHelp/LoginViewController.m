@@ -110,13 +110,13 @@
     {
         if([HTTPSERVERSADDRESS isURLConnectionOK:nil])
         {
-            Users *u = [self getRemoteUserWithName:self.txtUserName.text password:self.txtPassword.text];
-            if(u)
+            NSDictionary *dictUser = [self getRemoteUserWithName:self.txtUserName.text password:self.txtPassword.text];
+            if(dictUser)
             {
                 NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
                 Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
-                user.userName = u.userName;
-                user.pwd = u.pwd;
+                user.userName = [dictUser objectForKey:@"userName"];
+                user.pwd = [dictUser objectForKey:@"pwd"];
                 NSError *error;
                 if(![moc save:&error])
                 {
@@ -124,12 +124,19 @@
                     [MessageBox showMsg:@"无法正确获取用户信息!"];
                     return;
                 }
-
+                if([self AuthenticateUser:user.userName password:user.pwd])
+                {
+                    [self settingUserConfiguration];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil userInfo:nil ];
+                    [self dismissViewControllerAnimated:NO completion:NULL];
+                }
+                return;
             }
         }
         else
         {
             [MessageBox showMsg:@"没有网络，无法正确获取用户信息!"];
+            return;
         }
         [MessageBox showMsg:@"用户名或密码不正确！"];
     }
@@ -144,9 +151,27 @@
     }];
 }
 
--(Users*)getRemoteUserWithName:(NSString*)strUserName password:(NSString*)pwd
+-(NSDictionary*)getRemoteUserWithName:(NSString*)strUserName password:(NSString*)pwd
 {
-    return nil;
+    NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:[NSString stringWithFormat:@"getRemoteUser.ashx?userName=%@&pwd=%@", strUserName, pwd]];
+    NSURL *url = [NSURL URLWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60];
+    NSURLResponse *respone;
+    NSError *err;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&respone error:&err];
+    if(data == nil || [data length] == 0)
+        return nil;
+    else
+    {
+        NSError *errJSON = nil;
+        id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&errJSON];
+        if(json && errJSON == nil)
+        {
+            return json;
+        }
+        NSLog(@"error:%@", errJSON);
+        return nil;
+    }
 }
 
 - (IBAction)chkRemember_click:(id)sender

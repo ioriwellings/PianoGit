@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -1468,7 +1468,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="gangqinpeilianbao.png" translatesAutoresizingMaskIntoConstraints="NO" id="mjJ-eV-KNi">
-                                <rect key="frame" x="48" y="28" width="617" height="203"/>
+                                <rect key="frame" x="-150" y="0.0" width="1000" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B03-MB-aA0">
@@ -2539,7 +2539,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="fenxiang1.png" width="48" height="48"/>
         <image name="fenxiang2.png" width="48" height="48"/>
         <image name="fenyedakuang.png" width="950" height="535"/>
-        <image name="gangqinpeilianbao.png" width="617" height="203"/>
+        <image name="gangqinpeilianbao.png" width="1000" height="300"/>
         <image name="gengduo.png" width="90" height="25"/>
         <image name="gentanmoshi.png" width="405" height="68"/>
         <image name="gentanmoshixuanzhong.png" width="405" height="68"/>
