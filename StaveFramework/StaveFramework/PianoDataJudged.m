@@ -167,7 +167,7 @@
                     ChordSymbol *chord = (ChordSymbol *)symbol;
                     if ([chord startTime] > curPulseTime) {
                         break;
-                    } else if ([chord startTime] > prevPulseTime) {
+                    } else if ([chord startTime] >= prevPulseTime) {//fix bug > 2 >= for judge first chordsymbol
                         if (upFlag == 0) {
                             upFlag = 1;
                             if ([curChordList count] >= 0) {

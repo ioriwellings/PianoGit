@@ -2197,46 +2197,52 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         [MidiFile findExactHighLowNotes:notes startIndex:startindex withStart:[note startTime]
                   withHigh:&highExact andLow:&lowExact];
 
-        if (highExact - number > 12 || number - lowExact > 12) {
-            if (highExact - number <= number - lowExact) {
-                [top addNote:note];
-            }
-            else {
-                [bottom addNote:note];
-            }
+        if([track number] == 1){
+            [top addNote:note];
+        }else{
+            [bottom addNote:note];
         }
-        else if (high - number > 12 || number - low > 12) {
-            if (high - number <= number - low) {
-                [top addNote:note];
-            }
-            else {
-                [bottom addNote:note];
-            }
-        }
-        else if (highExact - lowExact > 12) {
-            if (highExact - number <= number - lowExact) {
-                [top addNote:note];
-            }
-            else {
-                [bottom addNote:note];
-            }
-        }
-        else if (high - low > 12) {
-            if (high - number <= number - low) {
-                [top addNote:note];
-            }
-            else {
-                [bottom addNote:note];
-            }
-        }
-        else {
-            if (prevhigh - number <= number - prevlow) {
-                [top addNote:note];
-            }
-            else {
-                [bottom addNote:note];
-            }
-        }
+        
+//        if (highExact - number > 12 || number - lowExact > 12) {
+//            if (highExact - number <= number - lowExact) {
+//                [top addNote:note];
+//            }
+//            else {
+//                [bottom addNote:note];
+//            }
+//        }
+//        else if (high - number > 12 || number - low > 12) {
+//            if (high - number <= number - low) {
+//                [top addNote:note];
+//            }
+//            else {
+//                [bottom addNote:note];
+//            }
+//        }
+//        else if (highExact - lowExact > 12) {
+//            if (highExact - number <= number - lowExact) {
+//                [top addNote:note];
+//            }
+//            else {
+//                [bottom addNote:note];
+//            }
+//        }
+//        else if (high - low > 12) {
+//            if (high - number <= number - low) {
+//                [top addNote:note];
+//            }
+//            else {
+//                [bottom addNote:note];
+//            }
+//        }
+//        else {
+//            if (prevhigh - number <= number - prevlow) {
+//                [top addNote:note];
+//            }
+//            else {
+//                [bottom addNote:note];
+//            }
+//        }
 
         /* The prevhigh/prevlow are set to the last high/low
          * that are more than an octave apart.
@@ -2271,6 +2277,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     else if ([tracks count] == 1) {
         MidiTrack *track = [tracks get:0];
         [result setTotalpulses:[track totalpulses]];//add by yizhq
+        [result setNumber:[track number]];
         for (int i = 0; i < [[track notes] count]; i++) {
             [result addNote:[[track notes] get:i] ];
         }
