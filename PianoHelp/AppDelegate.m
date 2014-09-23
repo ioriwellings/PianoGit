@@ -215,14 +215,7 @@
 -(void)initCategoryAndMelody
 {
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
-    //cate.categoryID = @"01";
     cate.name = @"示范曲谱";
-    
-    //    cate.name = @"教材曲谱";
-    
-    //    cate.name = @"会员曲谱";
-    
-    //    cate.name = @"影视金曲";
 
     MelodyCategory *cateYingHuang = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cateYingHuang.parentCategory = cate;
@@ -266,7 +259,6 @@
     score.rank = @1;
     score.score = @99;
     favo.score = score;
-
     
     for (int i=1; i<10; i++)
     {

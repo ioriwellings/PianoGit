@@ -126,9 +126,23 @@
 {
     // we're going to use a custom UICollectionViewCell, which will hold an image and its label
     //
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+    UICollectionViewCell *cell = nil;
 
     MelodyCategory *selectedItem = (MelodyCategory *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
+    if([selectedItem.name isEqualToString:@"小汤1"] || [selectedItem.name isEqualToString:@"小汤2"])
+    {
+        cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellIdentifier_h" forIndexPath:indexPath];
+        cell.frame = CGRectMake(cell.frame.origin.x,
+                                cell.frame.origin.y,
+                                210,
+                                240);
+    }
+    else
+    {
+        cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+    }
+    
     [((MelodyCategoryCollectioViewCell*)cell) updateContent:selectedItem];
     
     return cell;

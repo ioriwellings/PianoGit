@@ -8,6 +8,7 @@
 
 #import "MelodyCategoryCollectioViewCell.h"
 #import "MelodyCategory.h"
+#import "AppDelegate.h"
 
 @implementation MelodyCategoryCollectioViewCell
 {
@@ -41,11 +42,19 @@
 {
     MelodyCategory *category = (MelodyCategory*)obj;
     self.productID = category.buyURL;
-    if(category.name)
-        self.labTitle.text = category.name;
+    NSString *strPath = [[((AppDelegate*)[UIApplication sharedApplication].delegate) filePathForName:category.name] stringByAppendingPathExtension:@"png"];
     if(category.cover)
     {
         self.imageViewBG.image = [UIImage imageNamed:category.cover];
+    }
+    else if ([[NSFileManager defaultManager] fileExistsAtPath:strPath])
+    {
+        self.imageViewBG.image = [UIImage imageWithContentsOfFile:strPath];
+    }
+    //else
+    {
+        if(category.name)
+            self.labTitle.text = category.name;
     }
 //    category.buy = @1;
     if([category.buy intValue] == 2)
@@ -92,7 +101,6 @@
         [self setPriceWithProduct:product];
         break;
     }
-        
 }
 
 @end
