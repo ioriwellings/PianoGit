@@ -133,10 +133,10 @@
     if([selectedItem.name isEqualToString:@"小汤1"] || [selectedItem.name isEqualToString:@"小汤2"])
     {
         cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellIdentifier_h" forIndexPath:indexPath];
-        cell.frame = CGRectMake(cell.frame.origin.x,
-                                cell.frame.origin.y,
-                                210,
-                                240);
+//        cell.frame = CGRectMake(cell.frame.origin.x,
+//                                cell.frame.origin.y,
+//                                210,
+//                                240);
     }
     else
     {
