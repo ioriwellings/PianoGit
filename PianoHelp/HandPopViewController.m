@@ -33,15 +33,18 @@
     {
         ((UIButton*)self.view.subviews[2]).hidden = YES;
         ((UIButton*)self.view.subviews[4]).hidden = YES;
+        self.imageRight.highlighted = YES;
     }
     
     if(vc.handMode == LeftHand)
     {
         self.imageLeft.highlighted = YES;
+        self.imageRight.highlighted = NO;
     }
     else if(vc.handMode == RightHand)
     {
         self.imageRight.highlighted = YES;
+        self.imageLeft.highlighted = NO;
     }
     else
     {

@@ -265,9 +265,9 @@
 
 - (IBAction)btnRePlay_click:(id)sender
 {
-    if (splitState == true) {
-        [self clearSplitMeasure];
-    }
+//    if (splitState == true) {
+//        [self clearSplitMeasure];
+//    }
     [player stop];
     [player resetShadeLine];
     option = 2;//重播
@@ -583,7 +583,13 @@
             [player listen];
             break;
         case 2://重播
-            [player replayByType];
+            if (splitState == true) {
+                [self splitMeasure:splitStart andTo:splitEnd];
+                [player jumpMeasure:splitStart - 1];
+                [player playByType:self.iPlayMode];
+            }else{
+                [player replayByType];
+            }
             break;
         case 3://暂停
             break;
@@ -634,6 +640,7 @@
     
     splitState = true;
     splitStart = from;
+    splitEnd = to;
     
 }
 
@@ -717,7 +724,7 @@
 -(void)btnStateCtlInPlay:(int)state{
 
     if (state == 1) {//playing
-        [self.btnTryListen setEnabled:false];
+
         [self.btnXiaoJieTiaoZhuan setEnabled:false];
         [self.btnSuDu setEnabled:false];
         [self.sliderXiaoJie setEnabled:false];
@@ -729,9 +736,27 @@
         if (_iPlayMode == 2) {
             [self.btnHint setEnabled:false];
             [self.btnRePlay setEnabled:true];
+            if (option == 1) {//试听
+                [self.btnRePlay setEnabled:false];
+                [self.btnPlay setEnabled:false];
+                [self.btnTryListen setEnabled:true];
+            }else{
+                [self.btnRePlay setEnabled:true];
+                [self.btnTryListen setEnabled:false];
+                [self.btnPlay setEnabled:true];
+            }
         }else if (_iPlayMode == 1){
             [self.btnHint setEnabled:true];
-            [self.btnRePlay setEnabled:true];
+
+            if (option == 1) {//试听
+                [self.btnRePlay setEnabled:false];
+                [self.btnPlay setEnabled:false];
+                [self.btnTryListen setEnabled:true];
+            }else{
+                [self.btnRePlay setEnabled:true];
+                [self.btnTryListen setEnabled:false];
+                [self.btnPlay setEnabled:true];
+            }
         }
     }else if(state == 2){//end playing
         [self.btnTryListen setEnabled:true];
@@ -754,7 +779,7 @@
             [self.btnSuDu setEnabled:false];
             [self.btnAccompany setEnabled:false];
         }
-
+        [self.btnPlay setEnabled:true];
         [self.btnHandCtl setEnabled:true];
 
     }else if (state == 3){//pause
