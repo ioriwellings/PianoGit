@@ -970,9 +970,11 @@
         currentPulseTime = startPulseTime + msec * pulsesPerMsec;
 
         //modify currentPulseTime for tempo start
-        int intactTempoCnt = currentPulseTime/(pulsesPerMsec*1000);
+//        int intactTempoCnt = currentPulseTime/(pulsesPerMsec*1000);
+        int intactTempoCnt = currentPulseTime/[midifile quarternote];
         currentPulseTime = (intactTempoCnt)*pulsesPerMsec*1000;
         timeDifference = currentPulseTime - intactTempoCnt*pulsesPerMsec*1000;
+//        int intactTempoCnt = currentPulseTime/[midifile quarternote];
         //modify currentPulseTime for tempo end
 //        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
