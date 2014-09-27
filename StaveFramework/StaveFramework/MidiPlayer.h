@@ -137,7 +137,7 @@ enum {
 @property (assign, nonatomic) CBPeripheral *peripheral;
 @property (assign, nonatomic) SerialGATT *sensor;
 @property (nonatomic, assign) id <MidiPlayerDelegate> delegate;
-
+@property (assign, nonatomic)  BOOL isSpeed;
 @property (assign, nonatomic) UILabel *midiData;
 
 @end

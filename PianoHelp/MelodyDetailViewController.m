@@ -334,6 +334,7 @@
 {
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)self.sliderSpeed.value] forState:UIControlStateNormal];
+    player.isSpeed = FALSE;
     [player changeSpeed:self.sliderSpeed.value];
 }
 
@@ -350,7 +351,9 @@
     UISlider *slider = (UISlider*)sender;
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)slider.value] forState:UIControlStateNormal];
     
+    player.isSpeed = TRUE;
     [player changeSpeed:slider.value];
+    
 }
 
 #pragma mark - private method

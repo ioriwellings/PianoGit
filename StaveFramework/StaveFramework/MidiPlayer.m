@@ -66,6 +66,7 @@
 @synthesize sensor;
 @synthesize sheetPlay;
 @synthesize delegate;
+@synthesize isSpeed;
 
 -(void) changeVolume:(double)value
 {
@@ -111,6 +112,7 @@
     sound = [[GDSoundEngine alloc] init];
     /* add by yizhq end */
     isLine = FALSE;
+    self.isSpeed = FALSE;
     
     return self;
 }
