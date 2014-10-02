@@ -99,6 +99,40 @@
 -(void)setPulsesPerMsec:(double)p {
     pulsesPerMsec = p;
 }
+-(void)setSheetMusic:(SheetMusic *)s {
+    sheet = s;
+}
+-(void)setIsSpeed:(BOOL)flag {
+    isSpeed = flag;
+}
+
+- (double)getCurrentTime: (long)mesc {
+    Array *tempoarray = [sheet tempoarray];
+    int i = 0;
+    double tmpPulsesPerMsec = 0.0;
+    long tmpMesc = 0;
+    double tmpCurrentTime = 0;
+    long tmp;
+    
+    int tmpFlag = 0;
+    for (i=1; i<[tempoarray count]; i++) {
+        tmpPulsesPerMsec = [[[sheet midifile] time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
+        tmp = ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
+
+        if (tmpMesc+tmp>=mesc) {
+            tmpFlag--;
+            break;
+        }
+        tmpMesc+=tmp;
+    }
+    i--;
+    tmpPulsesPerMsec = [[[sheet midifile] time] quarter]*(1000.0 / [[tempoarray get:i] tempo]);
+    tmpCurrentTime = [[tempoarray get:i] starttime];
+    tmp = mesc - tmpMesc;
+    tmpCurrentTime+=tmp*tmpPulsesPerMsec;
+    
+    return tmpCurrentTime;
+}
 
 
 -(void)parseData {
@@ -114,7 +148,12 @@
                 (void)gettimeofday(&now, NULL);
                 msec = (now.tv_sec - beginTime.tv_sec)*1000 +
                 (now.tv_usec - beginTime.tv_usec)/1000;
-                starttime = msec * pulsesPerMsec;
+                if ([[sheet tempoarray] count] == 1 || isSpeed) {
+                    starttime = msec * pulsesPerMsec;
+                } else {
+                    starttime = [self getCurrentTime:msec];
+                }
+
                 MidiNote *note = [[MidiNote alloc]init];
                 [note setStarttime:starttime];
                 [note setNumber:[[pianoData get:i+1] intValue]];

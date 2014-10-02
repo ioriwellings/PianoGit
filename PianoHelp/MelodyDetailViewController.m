@@ -283,8 +283,8 @@
     //    [self.sfCountdownView start];
     if (self.iPlayMode != 1) {
         [player playPrepareTempo:[player getSectionTime]];
-        [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
-
+//        [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+        [self.sfCountdownView start:[player getSectionTime]];
     } else {
         [player playByType:1];
     }
@@ -320,7 +320,8 @@
 
         if (self.iPlayMode != 1) {
             [player playPrepareTempo:[player getCountDownCnt]];
-            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+//            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+            [self.sfCountdownView start:[player getSectionTime]];
         } else {
             [player playByType:1];
         }

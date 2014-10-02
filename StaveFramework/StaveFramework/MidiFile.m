@@ -1522,7 +1522,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
         bFlag = 7;
     }
     dataLen = (bFlag + 5) * ceil([midifile totalpulses]/[midifile quarternote]);
-    NSLog(@"dataLen is %i totalpulses is %i quarternote is %i", dataLen, [midifile totalpulses], [midifile quarternote]);
+//    NSLog(@"dataLen is %i totalpulses is %i quarternote is %i", dataLen, [midifile totalpulses], [midifile quarternote]);
     intToBytes(dataLen, buf, 0);
     dowrite(file, buf, 4, &error);
     
@@ -1728,11 +1728,11 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
 //    return ret;
 //}
 
-- (BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference{
+- (BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference andSpeed:(BOOL)isSpeed{
     BOOL ret = NO;
     Array* newevents = events;
     if (options != NULL) {
-        newevents = [self applyOptionsToEvents: options];
+        newevents = [self applyOptionsToEvents: options andSpeed:isSpeed];
     }
 
 
@@ -1745,7 +1745,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     return ret;
 }
 
-- (BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference{
+- (BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)destfile secValue:(double)timeDifference andSpeed:(BOOL)isSpeed{
     BOOL ret = NO;
 
     int leftMuteState,rightMuteState, tmpTempoMuteState;
@@ -1764,7 +1764,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     
     Array* newevents = events;
     if (options != NULL) {
-        newevents = [self applyOptionsToEvents: options];
+        newevents = [self applyOptionsToEvents: options andSpeed:isSpeed];
     }
 
     ret = [MidiFile writeToFile:destfile withEvents:newevents
@@ -1795,7 +1795,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
  * Save the modified midi data to the given filename.
  * Return true if the file was saved successfully, else false.
  */
-- (Array*)applyOptionsToEvents:(MidiOptions *)options {
+- (Array*)applyOptionsToEvents:(MidiOptions *)options andSpeed:(BOOL)isSpeed {
     if (trackPerChannel) {
         return [self applyOptionsPerChannel:options];
     }
@@ -1824,7 +1824,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     }
 
     Array *newevents = [MidiFile cloneMidiEvents:events];
-    [MidiFile addTempoEvent:newevents withTempo:options->tempo];
+    if (isSpeed) {
+        [MidiFile addTempoEvent:newevents withTempo:options->tempo];
+    }
 
     /* Change the note number (transpose), instrument, and tempo */
     for (int tracknum = 0; tracknum < [newevents count]; tracknum++) {
@@ -1840,7 +1842,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             if (!options->useDefaultInstruments) {
                 [mevent setInstrument:(u_char)[instruments get:tracknum] ];
             }
-            [mevent setTempo:options->tempo];
+            if (isSpeed) {
+                [mevent setTempo:options->tempo];
+            }
         }
     }
 

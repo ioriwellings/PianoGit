@@ -88,6 +88,14 @@
     [self animate:(sectionTime/countCnt)/1000 - 0.1];
 }
 
+- (void) start:(double)prepareTime{
+    [self stop];
+    self.countdownLabel.alpha = 1.0;
+
+    [self animate:(prepareTime)/1000 - 0.1];
+}
+
+
 - (void) stop
 {
     if (self.timer && [self.timer isValid]) {

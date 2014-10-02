@@ -223,8 +223,14 @@
     options.tempo = (int)(60000 / doubleValue * 1000);
 //    NSLog(@"tempo is %i", options.tempo);
     /** modify by yizhq for change speed from 20 ~ 280 end */
-    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+//    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
 
+    if (isSpeed == true) {
+        pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    }else{
+        pulsesPerMsec = [self getPulsesPerMsec:currentPulseTime];
+    }
+    
     int tmpQuarternote = 0;
     if ([[midifile time]denominator] == 4) {
         tmpQuarternote = [[midifile time]numerator];
@@ -239,7 +245,7 @@
     tempSoundFile = [NSString stringWithFormat:@"%@/temp.mid", tempPath];
 
     tempSoundFile = [tempSoundFile retain];
-    if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile secValue:timeDifference] == NO) {//modify by yizhq
+    if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile secValue:timeDifference andSpeed:isSpeed] == NO) {//modify by yizhq
         /* Failed to write to tempSoundFile */
         [tempSoundFile release]; tempSoundFile = nil;
     }
@@ -250,7 +256,12 @@
     [tempoFile release];
     tempoFile = nil;
     options.tempo = (int)(60000 / doubleValue * 1000);
-    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+//    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    if (isSpeed == true) {
+        pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    }else{
+        pulsesPerMsec = [self getPulsesPerMsec:currentPulseTime];
+    }
     
     if ([[midifile time]denominator] == 4) {
         sectionTime = pulsesPerMsec * ([[midifile time] numerator] + 1);
@@ -264,7 +275,7 @@
     tempoFile = [NSString stringWithFormat:@"%@/tempofile.mid", tempPath];
     
     tempoFile = [tempoFile retain];
-    if ([midifile changeSoundForTempo:&options oldMidi:midifile toFile:tempoFile secValue:timeDifference] == NO) {//modify by yizhq
+    if ([midifile changeSoundForTempo:&options oldMidi:midifile toFile:tempoFile secValue:timeDifference andSpeed:isSpeed] == NO) {//modify by yizhq
         /* Failed to write to tempSoundFile */
         [tempoFile release]; tempoFile = nil;
     }
@@ -281,8 +292,25 @@
 }
 
 - (double) getSectionTime{
+    double tempoTime = 0;
+    double tmpPulsesPerMsec = 0;
+    
+    if (isSpeed == true) {
+        tmpPulsesPerMsec = [[midifile time] quarter] * (1000.0 / ( (int)(60000 / doubleValue * 1000)));
+    }else{
+        tmpPulsesPerMsec = [self getPulsesPerMsec:currentPulseTime];
+    }
 
-    return sectionTime;
+    if ([[midifile time] denominator] == 4) {
+        tempoTime = [midifile quarternote]/tmpPulsesPerMsec;
+    }else if ([[midifile time] denominator] == 8){
+        tempoTime = [midifile quarternote]/2/tmpPulsesPerMsec;
+    }else if ([[midifile time] denominator] == 2){
+        tempoTime = [midifile quarternote]*2/tmpPulsesPerMsec;
+    }
+
+    NSLog(@"prepare time is %f", tempoTime*[[midifile time] numerator]);
+    return tempoTime*[[midifile time] numerator];
 }
 
 - (int)getCountDownCnt{
@@ -546,7 +574,7 @@
     [sheetPlay setCurrentPulseTime:currentPulseTime];
 }
 
-- (double)getPulsesPerMsec:(int)currentTime {
+- (double)getPulsesPerMsec:(double)currentTime {
     Array *tempoarray = [sheet tempoarray];
     int i = 0;
     double tmpPulsesPerMsec = 0.0;
@@ -564,27 +592,59 @@
     return tmpPulsesPerMsec;
 }
 
-- (double)getCurrentTime:(int)beginTime andMesc:(long)mesc {
+- (double)getCurrentTime:(double)beginTime andMesc:(long)mesc {
     Array *tempoarray = [sheet tempoarray];
     int i = 0;
     double tmpPulsesPerMsec = 0.0;
     long tmpMesc = 0;
-    int tmpCurrentTime = beginTime;
+    double tmpCurrentTime = beginTime;
     long tmp;
+    long beginMesc = 0;
     
     for (i=1; i<[tempoarray count]; i++) {
         tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
-        tmp = ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
-        if (tmpMesc+tmp>=mesc) {
+        if ([[tempoarray get:i] starttime] >= beginTime) {
             break;
         }
+        beginMesc += ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
     }
     i--;
-    tmpCurrentTime = [[tempoarray get:i] starttime];
+    beginMesc += (beginTime-[[tempoarray get:i] starttime])/tmpPulsesPerMsec;
+    i++;
+    
+    int tmpFlag = 0;
+    for (; i<[tempoarray count]; i++) {
+        tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
+        if (tmpFlag == 0) {
+            tmp = ([[tempoarray get:i] starttime]-beginTime)/tmpPulsesPerMsec;
+            tmpFlag = 1;
+        } else {
+            tmp = ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
+            tmpFlag++;
+        }
+        
+        if (tmpMesc+tmp>=mesc) {
+            tmpFlag--;
+            break;
+        }
+        tmpMesc+=tmp;
+    }
+    i--;
+    tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i] tempo]);
+    if (tmpFlag <= 0) {
+        tmpCurrentTime = beginTime;
+    } else {
+        tmpCurrentTime = [[tempoarray get:i] starttime];
+    }
+    
     tmp = mesc - tmpMesc;
     tmpCurrentTime+=tmp*tmpPulsesPerMsec;
     
     return tmpCurrentTime;
+}
+
+-(SheetMusic*)sheetMusic {
+    return sheet;
 }
 /** add by yizhq end */
 /** The callback for the play/pause button (a single button).
@@ -664,14 +724,58 @@
             time.tv_usec = startTime.tv_usec;
             
             //get shift time
-            double shift = currentPulseTime/pulsesPerMsec*1000;
+            double shift = 0;
+            if ([[sheet tempoarray] count] == 1 || isSpeed) {
+                shift = currentPulseTime/pulsesPerMsec*1000;
+            } else {
+                Array *tempoarray = [sheet tempoarray];
+                double tmpPulsesPerMsec = 0.0;
+                long tmpMesc = 0;
+                int k;
+                
+                for (k=1; k<[tempoarray count]; k++) {
+                    tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0/[[tempoarray get:k-1] tempo]);
+                    if ([[tempoarray get:k] starttime] >= currentPulseTime) {
+                        break;
+                    }
+                    tmpMesc += ([[tempoarray get:k] starttime]-[[tempoarray get:k-1] starttime])/tmpPulsesPerMsec;
+                }
+                k--;
+                tmpMesc += (currentPulseTime-[[tempoarray get:k] starttime])/tmpPulsesPerMsec;
+                shift = tmpMesc*1000;
+            }
             time.tv_usec -= shift;
             
             [pianoData setBeginTime:time];
             [pianoData setPulsesPerMsec:pulsesPerMsec];
+            [pianoData setIsSpeed:isSpeed];
+            [pianoData setSheetMusic:[self sheetMusic]];
             
             [pianoData judgedPianoPlay:currentPulseTime andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
         }
+    
+        
+        
+//        Array *tempoarray = [sheet tempoarray];
+//        int i = 0;
+//        double tmpPulsesPerMsec = 0.0;
+//        long tmpMesc = 0;
+//        double tmpCurrentTime = beginTime;
+//        long tmp;
+//        long beginMesc = 0;
+//        
+//        for (i=1; i<[tempoarray count]; i++) {
+//            tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
+//            if ([[tempoarray get:i] starttime] >= beginTime) {
+//                break;
+//            }
+//            beginMesc += ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
+//        }
+//        i--;
+//        beginMesc += (beginTime-[[tempoarray get:i] starttime])/tmpPulsesPerMsec;
+        
+
+        
         
 
 
@@ -895,7 +999,12 @@
         long msec = (now.tv_sec - startTime.tv_sec)*1000 +
                     (now.tv_usec - startTime.tv_usec)/1000;
         prevPulseTime = currentPulseTime;
-        currentPulseTime = startPulseTime + msec * pulsesPerMsec;
+
+        if ([[sheet tempoarray] count] == 1 || isSpeed == true) {
+            currentPulseTime = startPulseTime + msec * pulsesPerMsec;
+        } else {
+            currentPulseTime = [self getCurrentTime:startPulseTime andMesc:msec];
+        }
 
         /* If we're playing in a loop, stop and restart */
         if (options.playMeasuresInLoop) {
@@ -969,8 +1078,12 @@
 //        [sound release];sound = nil;
         /* add by yizhq end */
         prevPulseTime = currentPulseTime;
-        currentPulseTime = startPulseTime + msec * pulsesPerMsec;
 
+        if ([[sheet tempoarray] count] == 1 || isSpeed == true) {
+            currentPulseTime = startPulseTime + msec * pulsesPerMsec;
+        } else {
+            currentPulseTime = [self getCurrentTime:startPulseTime andMesc:msec];
+        }
         //modify currentPulseTime for tempo start
 //        int intactTempoCnt = currentPulseTime/(pulsesPerMsec*1000);
         int intactTempoCnt = currentPulseTime/[midifile quarternote];
