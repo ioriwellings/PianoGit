@@ -207,7 +207,8 @@
     NSString *strResult = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension] ofType:[fileName pathExtension]];
     if(strResult == nil)
     {
-        strResult = [[[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:@"temp" ] stringByAppendingPathComponent:fileName];
+        NSString *strCachePath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+        strResult = [[strCachePath stringByAppendingPathComponent:@"temp"] stringByAppendingPathComponent:fileName];
     }
     return strResult;
 }
@@ -622,7 +623,7 @@
 
 -(void)initDataBaseWithPList:(NSString*)strPath
 {
-    NSString *strDocumentPath = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+    NSString *strDocumentPath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
     NSString *strImageDir = [strDocumentPath stringByAppendingPathComponent:@"initialedPLIST.file"];
     if(![[NSFileManager defaultManager] fileExistsAtPath:strImageDir])
     {
@@ -686,7 +687,10 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"] toDestination:[self applicationDocumentsDirectory].path delegate:self];
+        NSString *strCachePath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+        [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"]
+                        toDestination:strCachePath
+                             delegate:self];
     });
 }
 
