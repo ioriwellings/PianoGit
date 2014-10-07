@@ -103,7 +103,7 @@
 -(id)initWithFile:(NSString*)path;
 -(Array*)readTrack:(MidiFileReader*)file;
 -(IntArray*)guessMeasureLength;
--(BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename secValue:(double)pulsesPerMsec;//modify by yizhq
+-(BOOL)changeSound:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename secValue:(double)pulsesPerMsec andSpeed:(BOOL)isSpeed;//modify by yizhq
 -(Array*)applyOptionsToEvents:(MidiOptions *)options;
 -(Array*)applyOptionsPerChannel:(MidiOptions *)options;
 -(Array*)changeMidiNotes:(MidiOptions*)options;
@@ -113,7 +113,7 @@
 /** add by yizhq start */
 +(BOOL)writeToTempoFile:(NSString*)filename withEvents:(Array*)eventlists
                 andMode:(int)trackmode andQuarter:(int)quarter andMidifile:(MidiFile *)midifile andMidiOptions:(MidiOptions *)options withPulsesPerMsec:(double)timeDifference;
--(BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename secValue:(double)pulsesPerMsec;
+-(BOOL)changeSoundForTempo:(MidiOptions *)options oldMidi:(MidiFile *)midifile toFile:(NSString*)filename secValue:(double)pulsesPerMsec andSpeed:(BOOL)isSpeed;
 -(int)quarternote;
 -(void)rightHandMute:(MidiOptions*)options andState:(BOOL)state;
 -(void)leftHandMute:(MidiOptions*)options andState:(BOOL)state;

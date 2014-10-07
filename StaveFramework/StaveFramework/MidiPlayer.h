@@ -109,7 +109,9 @@ enum {
 -(void)doStop;
 -(void)dealloc;
 -(int)PlayerState;
--(double)getPulsesPerMsec:(int)currentTime;
+-(double)getPulsesPerMsec:(double)currentTime;
+-(double)getCurrentTime:(double)beginTime andMesc:(long)mesc;
+-(SheetMusic*)sheetMusic;
 
 //跳转小节
 -(BOOL)jumpMeasure:(int)number;
@@ -137,7 +139,7 @@ enum {
 @property (assign, nonatomic) CBPeripheral *peripheral;
 @property (assign, nonatomic) SerialGATT *sensor;
 @property (nonatomic, assign) id <MidiPlayerDelegate> delegate;
-
+@property (assign, nonatomic)  BOOL isSpeed;
 @property (assign, nonatomic) UILabel *midiData;
 
 @end

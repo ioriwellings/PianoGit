@@ -283,8 +283,8 @@
     //    [self.sfCountdownView start];
     if (self.iPlayMode != 1) {
         [player playPrepareTempo:[player getSectionTime]];
-        [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
-
+//        [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+        [self.sfCountdownView start:[player getSectionTime]];
     } else {
         [player playByType:1];
     }
@@ -320,7 +320,8 @@
 
         if (self.iPlayMode != 1) {
             [player playPrepareTempo:[player getCountDownCnt]];
-            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+//            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+            [self.sfCountdownView start:[player getSectionTime]];
         } else {
             [player playByType:1];
         }
@@ -334,6 +335,7 @@
 {
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)self.sliderSpeed.value] forState:UIControlStateNormal];
+    player.isSpeed = FALSE;
     [player changeSpeed:self.sliderSpeed.value];
 }
 
@@ -350,7 +352,9 @@
     UISlider *slider = (UISlider*)sender;
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)slider.value] forState:UIControlStateNormal];
     
+    player.isSpeed = TRUE;
     [player changeSpeed:slider.value];
+    
 }
 
 #pragma mark - private method

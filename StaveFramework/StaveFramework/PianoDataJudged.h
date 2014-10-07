@@ -16,6 +16,7 @@
 #import "MusicSymbol.h"
 #import "ChordSymbol.h"
 #import "MidiFile.h"
+#import "SheetMusic.h"
 
 @interface PianoDataJudged : NSObject {
     Array* pianoData;
@@ -27,6 +28,8 @@
     double pulsesPerMsec;
     IntArray* judgedResult;     //0: total count 1: wrong count  2:right count 3: good count:
     int type;//0 right and left 1 right 2 left
+    SheetMusic* sheet;
+    BOOL isSpeed;
 }
 
 -(IntArray*)judgedResult;
@@ -37,6 +40,9 @@
 -(void)setTimesig:(TimeSignature*)t;
 -(double)pulsesPerMsec;
 -(void)setPulsesPerMsec:(double)p;
+-(void)setSheetMusic:(SheetMusic *)s;
+-(double)getCurrentTime:(long)mesc;
+-(void)setIsSpeed:(BOOL)flag;
 
 -(id)init;
 -(id)initWithOptions:(MidiOptions*)options;
