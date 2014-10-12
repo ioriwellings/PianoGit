@@ -438,7 +438,6 @@
     self.sfCountdownView.delegate = self;
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     [self.sfCountdownView updateAppearance];
-    
 }
 
 -(void)hiddenMenuAndToolBar
@@ -513,7 +512,7 @@
 {
     
     isEnd = TRUE;
-    
+    [self btnStateCtlInPlay:2];
     dispatch_async(dispatch_get_main_queue(), ^{
         [player stop];
         [self hiddenMenuAndToolBar];
@@ -783,6 +782,7 @@
             [self.btnSuDu setEnabled:false];
             [self.btnAccompany setEnabled:false];
         }
+        [self.btnPlay setSelected:FALSE];
         [self.btnPlay setEnabled:true];
         [self.btnHandCtl setEnabled:true];
 
