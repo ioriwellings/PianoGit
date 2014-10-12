@@ -44,15 +44,21 @@
     
     type = 0;
     if (options->numtracks != 1) {
-        int rState = [options->mute get:0];
-        int lState = [options->mute get:1];
-        
-        //右手是第1音轨，左手是第2音轨
-        //右手模式，右手静音；左手模式，左手静音
-        if (rState == -1 && lState == 0) { //右手模式
+        int rState;
+        int lState;
+        if ([options->mute count] == 1) {
+            rState = [options->mute get:0];
             type = 1;
-        } else if (rState == 0 && lState == -1) { //左手模式
-            type = 2;
+        }else{
+            rState = [options->mute get:0];
+            lState = [options->mute get:1];
+            //右手是第1音轨，左手是第2音轨
+            //右手模式，右手静音；左手模式，左手静音
+            if (rState == -1 && lState == 0) { //右手模式
+                type = 1;
+            } else if (rState == 0 && lState == -1) { //左手模式
+                type = 2;
+            }
         }
     }
     
