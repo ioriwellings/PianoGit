@@ -236,7 +236,7 @@
 		89AA9ED419ECFD3B0017BADA /* btnClose_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89AA9ECD19ECFD3B0017BADA /* btnClose_1@2x.png */; };
 		89AA9ED519ECFD3B0017BADA /* bg_learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 89AA9ECE19ECFD3B0017BADA /* bg_learn.png */; };
 		89AA9ED619ECFD3B0017BADA /* bg_learn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89AA9ECF19ECFD3B0017BADA /* bg_learn@2x.png */; };
-		89AA9ED719ECFD3B0017BADA /* 用时-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 89AA9ED019ECFD3B0017BADA /* 用时-01.png */; };
+		89AA9EDC19ED001C0017BADA /* Score2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA9EDB19ED001C0017BADA /* Score2ViewController.m */; };
 		89BE8D75192ADAD100686AC7 /* MelodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */; };
 		89BE8D78192AE16900686AC7 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */; };
 		89D61FD21927965400355EF0 /* APLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D61FD11927965400355EF0 /* APLProduct.m */; };
@@ -670,7 +670,8 @@
 		89AA9ECD19ECFD3B0017BADA /* btnClose_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnClose_1@2x.png"; sourceTree = "<group>"; };
 		89AA9ECE19ECFD3B0017BADA /* bg_learn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_learn.png; sourceTree = "<group>"; };
 		89AA9ECF19ECFD3B0017BADA /* bg_learn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_learn@2x.png"; sourceTree = "<group>"; };
-		89AA9ED019ECFD3B0017BADA /* 用时-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "用时-01.png"; sourceTree = "<group>"; };
+		89AA9EDA19ED001C0017BADA /* Score2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score2ViewController.h; sourceTree = "<group>"; };
+		89AA9EDB19ED001C0017BADA /* Score2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score2ViewController.m; sourceTree = "<group>"; };
 		89BE8D73192ADAD100686AC7 /* MelodyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyTableViewCell.h; sourceTree = "<group>"; };
 		89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyTableViewCell.m; sourceTree = "<group>"; };
 		89BE8D76192AE16900686AC7 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
@@ -1120,7 +1121,6 @@
 				89AA9ECD19ECFD3B0017BADA /* btnClose_1@2x.png */,
 				89AA9ECE19ECFD3B0017BADA /* bg_learn.png */,
 				89AA9ECF19ECFD3B0017BADA /* bg_learn@2x.png */,
-				89AA9ED019ECFD3B0017BADA /* 用时-01.png */,
 			);
 			path = melodyViewDetail;
 			sourceTree = "<group>";
@@ -1468,6 +1468,8 @@
 				B163DA1E19557653008DBEC7 /* SoundPopViewController.m */,
 				89F685E8195BA92600F85197 /* ScroeViewController.h */,
 				89F685E9195BA92600F85197 /* ScroeViewController.m */,
+				89AA9EDA19ED001C0017BADA /* Score2ViewController.h */,
+				89AA9EDB19ED001C0017BADA /* Score2ViewController.m */,
 			);
 			name = MelodyDetailViewController;
 			sourceTree = "<group>";
@@ -2021,7 +2023,6 @@
 				893CEFDC193A37630097681C /* duifu,zongjiezhong.png in Resources */,
 				89F704C119A5851E0035621C /* mima.png in Resources */,
 				89F66B6619888E6D00EF50E2 /* zhanting@2x.png in Resources */,
-				89AA9ED719ECFD3B0017BADA /* 用时-01.png in Resources */,
 				893CEFED193A37630097681C /* queren.png in Resources */,
 				8989B13A198B21B2005222C2 /* tuichu2@2x.png in Resources */,
 				8994D15C194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid in Resources */,
@@ -2112,6 +2113,7 @@
 				891EF87D19A6E2C00038F864 /* CheckNetwork.m in Sources */,
 				BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */,
 				891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */,
+				89AA9EDC19ED001C0017BADA /* Score2ViewController.m in Sources */,
 				89A3D67619C3E9E200FDC779 /* zip.c in Sources */,
 				8936CF64192440F0001E5DCC /* SearchViewController.m in Sources */,
 				89F93D5A199C44ED0020E206 /* Score.m in Sources */,
