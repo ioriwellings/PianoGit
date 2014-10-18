@@ -639,8 +639,10 @@
         strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:[NSString stringWithFormat:@"checkForUpdate.ashx?update=%@", strValue]];
     }
     
-    [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if(error == NULL && data.length >0)
+    [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        NSHTTPURLResponse* __response = (NSHTTPURLResponse*)response;
+        if(error == NULL && data.length >0 && [__response statusCode] != 404 && [__response statusCode] != 503)
         {
             NSString *strUpdateDirPath = [[self getCacheDirectoryURL] stringByAppendingPathComponent:@"updateZip"];
             NSString *strFilePath = [[self getCacheDirectoryURL] stringByAppendingPathComponent:@"update.zip"];
@@ -672,7 +674,7 @@
     NSInteger iCount =0;
     for (id ele in dict)
     {
-        NSLog(@"-- %i,subCate:%@", iCount, ele);
+//        NSLog(@"-- %i,subCate:%@", iCount, ele);
         MelodyCategory *subCate = [self getCategoryWithName:ele isSubCategory:YES];
         MelodyCategory *cate = nil;
         NSInteger jCount =0;
@@ -692,11 +694,11 @@
                                                    style:[dict[ele][items] objectForKey:@"出版社"]
                                              association:[dict[ele][items] objectForKey:@"作品集"]
                                                 filePath:[dict[ele][items] objectForKey:@"曲谱名称"]];
-            NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@, memody:%@",
-                  jCount,
-                  [dict[ele][items] objectForKey:@"类别"],
-                  [dict[ele][items] objectForKey:@"曲谱名称"],
-                  melody);
+//            NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@, memody:%@",
+//                  jCount,
+//                  [dict[ele][items] objectForKey:@"类别"],
+//                  [dict[ele][items] objectForKey:@"曲谱名称"],
+//                  melody);
             jCount++;
         }
         iCount ++;
@@ -761,7 +763,7 @@
         NSInteger iCount =0;
         for (id ele in dict)
         {
-            NSLog(@"-- %i,subCate:%@", iCount, ele);
+//            NSLog(@"-- %i,subCate:%@", iCount, ele);
             MelodyCategory *subCate = [self getCategoryWithName:ele isSubCategory:YES];
             MelodyCategory *cate = nil;
             NSInteger jCount =0;
@@ -785,11 +787,11 @@
                                                        style:[dict[ele][items] objectForKey:@"出版社"]
                                                  association:[dict[ele][items] objectForKey:@"作品集"]
                                                     filePath:[dict[ele][items] objectForKey:@"曲谱名称"]];
-                NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@, memody:%@",
-                      jCount,
-                      [dict[ele][items] objectForKey:@"类别"],
-                      [dict[ele][items] objectForKey:@"曲谱名称"],
-                      melody);
+//                NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@, memody:%@",
+//                      jCount,
+//                      [dict[ele][items] objectForKey:@"类别"],
+//                      [dict[ele][items] objectForKey:@"曲谱名称"],
+//                      melody);
                 jCount++;
             }
             iCount ++;
