@@ -92,7 +92,7 @@
     //    [self presentViewController:vc animated:YES completion:NULL];
     //[self endSongsResult:10 andRight:10 andWrong:10];
     
-    [self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
+    //[self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
