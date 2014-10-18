@@ -53,11 +53,24 @@
                                                  name:@"zipOK"
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(removeLoadingView)
+                                                 name:@"updateOK"
+                                               object:nil];
+    
+    
     if([((AppDelegate*)[UIApplication sharedApplication].delegate) isInited] == NO)
     {
         loadingView = [MessageBox showLoadingViewWithText:@"程序初始化中......" parentViewSize:CGSizeMake(1024, 768)];
         [self.view addSubview:loadingView];
     }
+    else if(self.isSecondtRun == NO)
+    {
+        [((AppDelegate*)[UIApplication sharedApplication].delegate) checkForUpdate];
+        loadingView = [MessageBox showLoadingViewWithText:@"检查更新中......" parentViewSize:CGSizeMake(1024, 768)];
+        [self.view addSubview:loadingView];
+    }
+    
 }
 
 -(void)removeLoadingView

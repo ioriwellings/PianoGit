@@ -107,7 +107,7 @@
     loginVC.isSecondtRun = YES;
     [self presentViewController:loginVC animated:NO completion:NULL];
     
-    [[UserInfo sharedUserInfo] logout]; //must first run ,
+    [[UserInfo sharedUserInfo] logout]; //must first run befor next line ,
     
     [qinFangVC resetFetchedResultController];
 

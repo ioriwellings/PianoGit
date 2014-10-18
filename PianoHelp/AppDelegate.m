@@ -15,6 +15,7 @@
 #import "Users.h"
 #import "IAPHelper.h"
 #import "MessageBox.h"
+#import "NSString+URLConnection.h"
 
 @implementation AppDelegate
 {
@@ -71,7 +72,6 @@
 //    [self loadTempMIDE];//for test
     [self initDataBaseWithPList:nil];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
-
     return YES;
 }
 
@@ -207,7 +207,7 @@
     NSString *strResult = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension] ofType:[fileName pathExtension]];
     if(strResult == nil)
     {
-        NSString *strCachePath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+        NSString *strCachePath = [self getCacheDirectoryURL];
         strResult = [[strCachePath stringByAppendingPathComponent:@"temp"] stringByAppendingPathComponent:fileName];
     }
     return strResult;
@@ -277,7 +277,7 @@
 
 -(void)loadDemoMidiToSQL
 {
-    NSString *strDocumentPath = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+    NSString *strDocumentPath = [self getCacheDirectoryURL];
     NSString *strImageDir = [strDocumentPath stringByAppendingPathComponent:@"initialedData.file"];
     if(![[NSFileManager defaultManager] fileExistsAtPath:strImageDir])
     {
@@ -618,12 +618,122 @@
     
 }
 
+#pragma mark -Update melody from webserver-
+
+-(NSString*)getCacheDirectoryURL
+{
+    return [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+}
+
+-(void)checkForUpdate
+{
+    NSString *strUpdateFile = [[self getCacheDirectoryURL] stringByAppendingPathComponent:@"update.config"];
+    NSString *strURL;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:strUpdateFile])
+    {
+        strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"checkForUpdate.ashx"];
+    }
+    else
+    {
+        NSString *strValue = [NSString stringWithContentsOfFile:strUpdateFile encoding:NSASCIIStringEncoding error:nil];
+        strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:[NSString stringWithFormat:@"checkForUpdate.ashx?update=%@", strValue]];
+    }
+    
+    [strURL getURLData:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if(error == NULL && data.length >0)
+        {
+            NSString *strUpdateDirPath = [[self getCacheDirectoryURL] stringByAppendingPathComponent:@"updateZip"];
+            NSString *strFilePath = [[self getCacheDirectoryURL] stringByAppendingPathComponent:@"update.zip"];
+            [data writeToFile:strFilePath atomically:YES];
+            [SSZipArchive unzipFileAtPath:strFilePath
+                            toDestination:strUpdateDirPath
+                                 delegate:self];
+            NSString *plistPath = [strUpdateDirPath stringByAppendingPathComponent:@"update.plist"];
+            NSString *zipPath = [strUpdateDirPath stringByAppendingPathComponent:@"temp"];
+            
+            [self updatingWithPlist:plistPath zip:zipPath];
+            [self saveContext];
+            
+            [[NSFileManager defaultManager] removeItemAtPath:strFilePath error:nil];
+            [[NSFileManager defaultManager] removeItemAtPath:strUpdateDirPath error:nil];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+            NSString *strContent = [formatter stringFromDate:[NSDate date]];
+            [strContent writeToFile:strUpdateFile atomically:YES encoding:NSASCIIStringEncoding error:nil];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateOK" object:nil userInfo:nil];
+    }];
+}
+
+-(void)updatingWithPlist:(NSString*)plistPath zip:(NSString*)zipPath
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    NSInteger iCount =0;
+    for (id ele in dict)
+    {
+        NSLog(@"-- %i,subCate:%@", iCount, ele);
+        MelodyCategory *subCate = [self getCategoryWithName:ele isSubCategory:YES];
+        MelodyCategory *cate = nil;
+        NSInteger jCount =0;
+        for (id items in dict[ele])
+        {
+            if(!cate)
+            {
+                cate = [self getCategoryWithName:[dict[ele][items] objectForKey:@"类别"] isSubCategory:NO];
+                if(subCate.parentCategory == nil)
+                {
+                    subCate.parentCategory = cate;
+                }
+            }
+            Melody* melody = [self getMelodyWithCategory:subCate
+                                                  author:[dict[ele][items] objectForKey:@"作者"]
+                                                   level:[dict[ele][items] objectForKey:@"级别"]
+                                                   style:[dict[ele][items] objectForKey:@"出版社"]
+                                             association:[dict[ele][items] objectForKey:@"作品集"]
+                                                filePath:[dict[ele][items] objectForKey:@"曲谱名称"]];
+            NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@, memody:%@",
+                  jCount,
+                  [dict[ele][items] objectForKey:@"类别"],
+                  [dict[ele][items] objectForKey:@"曲谱名称"],
+                  melody);
+            jCount++;
+        }
+        iCount ++;
+    }
+    [NSFileManager defaultManager].delegate = self;
+    [[NSFileManager defaultManager] copyItemAtPath:zipPath toPath:[[self getCacheDirectoryURL] stringByAppendingPathComponent:@"temp"] error:nil];
+}
+
+- (BOOL)fileManager:(NSFileManager *)fileManager shouldProceedAfterError:(NSError *)error movingItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath;
+{
+    BOOL isDir;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dstPath isDirectory:&isDir] && isDir == NO)
+    {
+        NSFileWrapper *wrap = [[NSFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:dstPath] options:NSFileWrapperReadingImmediate error:nil];
+        [wrap setFilename:[[dstPath lastPathComponent] stringByAppendingPathComponent:@"123"]];
+    }
+    return YES;
+}
+
+
+- (BOOL)fileManager:(NSFileManager *)fileManager shouldProceedAfterError:(NSError *)error copyingItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath
+{
+    BOOL isDir;
+    //NSString *dstPath = [[[self getCacheDirectoryURL] stringByAppendingPathComponent:@"temp"] stringByAppendingPathComponent:[zipPath lastPathComponent]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dstPath isDirectory:&isDir] && isDir == NO)
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:dstPath error:nil];
+        [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:dstPath error:nil];
+    }
+    return YES;
+}
 
 #pragma mark - init plist methods-
 
 -(void)initDataBaseWithPList:(NSString*)strPath
 {
-    NSString *strDocumentPath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+    NSString *strDocumentPath = [self getCacheDirectoryURL];
     NSString *strImageDir = [strDocumentPath stringByAppendingPathComponent:@"initialedPLIST.file"];
     if(![[NSFileManager defaultManager] fileExistsAtPath:strImageDir])
     {
@@ -664,6 +774,10 @@
                     {
                         subCate.parentCategory = cate;
                     }
+                    if([cate.name isEqualToString:@"试练曲集"])
+                    {
+                        
+                    }
                 }
                 Melody* melody = [self getMelodyWithCategory:subCate
                                                       author:[dict[ele][items] objectForKey:@"作者"]
@@ -671,7 +785,11 @@
                                                        style:[dict[ele][items] objectForKey:@"出版社"]
                                                  association:[dict[ele][items] objectForKey:@"作品集"]
                                                     filePath:[dict[ele][items] objectForKey:@"曲谱名称"]];
-                NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@", jCount, [dict[ele][items] objectForKey:@"类别"], [dict[ele][items] objectForKey:@"曲谱名称"]);
+                NSLog(@"    -- %i, Cate:%@, 曲谱名称:%@, memody:%@",
+                      jCount,
+                      [dict[ele][items] objectForKey:@"类别"],
+                      [dict[ele][items] objectForKey:@"曲谱名称"],
+                      melody);
                 jCount++;
             }
             iCount ++;
@@ -687,7 +805,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        NSString *strCachePath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+        NSString *strCachePath = [self getCacheDirectoryURL];
         [SSZipArchive unzipFileAtPath:[self filePathForName:@"temp.zip"]
                         toDestination:strCachePath
                              delegate:self];
@@ -741,6 +859,20 @@
 
 -(Melody*)getMelodyWithCategory:(MelodyCategory*)cate author:(NSString*)strAuthor level:(NSString*)strLevel style:(NSString*)strStyle association:(NSString*)strAssoc filePath:(NSString*)strPath
 {
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Melody" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", [strPath lastPathComponent]];
+    [fetchRequest setPredicate:predicate];
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        //return (Melody*)[objects firstObject];
+    }
+    
     Melody *melody = (Melody*)[NSEntityDescription insertNewObjectForEntityForName:@"Melody" inManagedObjectContext:self.managedObjectContext];
     melody.category = cate;
     melody.author = strAuthor;
