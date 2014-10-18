@@ -844,13 +844,13 @@
     if([strName isEqualToString:@"考级"])
     {
         cate.cover = @"kaojiqupu.png";
-        cate.buy = @1;
+        cate.buy = @2;
         cate.buyURL = @"com.jiaYinQiJi.product.b";
     }
     else if([strName isEqualToString:@"教程"])
     {
         cate.cover = @"jiaocaiqupu.png";
-        cate.buy = @1;
+        cate.buy = @2;
         cate.buyURL = @"com.jiaYinQiJi.product.a";
     }
     
