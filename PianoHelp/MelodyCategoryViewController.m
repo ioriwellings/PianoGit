@@ -41,6 +41,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.collectionView.delegate = nil;
+    self.collectionView.dataSource = nil;
     // Do any additional setup after loading the view.
     if(self.levelIndent == 0)
     {
@@ -60,6 +62,8 @@
 
 -(void)loadingData:(NSNotification *)notification
 {
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         /*
