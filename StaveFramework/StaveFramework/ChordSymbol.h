@@ -72,6 +72,7 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
     int trFlag;
     int stressFlag;
     int thirtytwoFlag;
+    int mergeNotesFlag;
     /** add by sunlie end */
 
     /** add by yizhq start */
@@ -155,6 +156,8 @@ int sortChordSymbol(id chord1, id chord2, void *unused);
 -(void)setStressFlag:(int)s;
 -(int)thirtytwoFlag;
 -(void)setThirtytwoFlag:(int)t;
+-(int)mergeNotesFlag;
+-(void)setMergeNotesFlag:(int)m;
 /* add by sunlie end */
 /** add by yizhq start */
 -(Stem*) stem1;

@@ -85,6 +85,8 @@
     Array* controlList14;  /** control data for stress (28)*/
     Array* controlList15;  /** control data for repeat (29)*/
     Array* controlList16;  /** control data for 32 note (30)*/
+    Array* controlList17;  /** control data for 音符合并 (85)*/
+    Array* controlList18;  /** control data for 音符拆分 (86)*/
     
     /** add by sunlie end */
     int tempoMuteState;
