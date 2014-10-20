@@ -41,12 +41,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.collectionView.delegate = nil;
+    self.collectionView.dataSource = nil;
     // Do any additional setup after loading the view.
     if(self.levelIndent == 0)
     {
         [IAPHelper shareIAPHelper].delegate = self;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadingData:)
+                                                 name:kLoginSuccessNotification object:nil];
+    
+    if(self.levelIndent == 1)
+    {
+        [self loadingData:nil];
+        [self.collectionView setCollectionViewLayout:[[GridLayout alloc] init]];
+    }
+}
 
+-(void)loadingData:(NSNotification *)notification
+{
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         /*
@@ -57,11 +74,8 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    if(self.levelIndent == 1)
-    {
-        [self.collectionView setCollectionViewLayout:[[GridLayout alloc] init]];
-    }
-//    NSArray *arrayResult = self.fetchedResultsController.fetchedObjects;
+    
+    //    NSArray *arrayResult = self.fetchedResultsController.fetchedObjects;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -87,6 +101,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

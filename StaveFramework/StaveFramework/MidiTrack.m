@@ -85,6 +85,8 @@ int sortbynote(void* note1, void* note2) {
     controlList14 = [Array new:10];
     controlList15 = [Array new:10];
     controlList16 = [Array new:10];
+    controlList17 = [Array new:10];
+    controlList18 = [Array new:10];
     /** add by sunlie end */
     instrument = 0;
     return self;
@@ -114,6 +116,8 @@ int sortbynote(void* note1, void* note2) {
     controlList14 = [Array new:10];
     controlList15 = [Array new:10];
     controlList16 = [Array new:10];
+    controlList17 = [Array new:10];
+    controlList18 = [Array new:10];
     /** add by sunlie end */
     
     for (int i= 0;i < [list count]; i++) {
@@ -174,6 +178,8 @@ int sortbynote(void* note1, void* note2) {
     [controlList14 release];
     [controlList15 release];
     [controlList16 release];
+    [controlList17 release];
+    [controlList18 release];
     /** add by sunlie end */
     [super dealloc];
 }
@@ -393,6 +399,30 @@ int sortbynote(void* note1, void* note2) {
         [controlList16 add:[cd copy]];
     }
 }
+
+-(Array*)controlList17 {
+    return controlList17;
+}
+
+-(void)setControlList17:(Array*)cl {
+    for (int i = 0; i < [cl count]; i++) {
+        ControlData *cd = [cl get:i];
+        [controlList17 add:[cd copy]];
+    }
+}
+
+
+-(Array*)controlList18 {
+    return controlList18;
+}
+
+-(void)setControlList18:(Array*)cl {
+    for (int i = 0; i < [cl count]; i++) {
+        ControlData *cd = [cl get:i];
+        [controlList18 add:[cd copy]];
+    }
+}
+
 -(int)totalpulses {
     return totalpulses;
 }
@@ -565,6 +595,18 @@ int sortbynote(void* note1, void* note2) {
         for (int i = 0; i < [controlList16 count]; i++) {
             ControlData *cd = [controlList16 get:i];
             [[track controlList16] add:[cd copy]];
+        }
+    }
+    if ([controlList17 count] > 0) {
+        for (int i = 0; i < [controlList17 count]; i++) {
+            ControlData *cd = [controlList17 get:i];
+            [[track controlList17] add:[cd copy]];
+        }
+    }
+    if ([controlList18 count] > 0) {
+        for (int i = 0; i < [controlList18 count]; i++) {
+            ControlData *cd = [controlList18 get:i];
+            [[track controlList18] add:[cd copy]];
         }
     }
     /** add by sunlie end */

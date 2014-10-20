@@ -16,6 +16,7 @@
 #import "Score.h"
 #import "AppDelegate.h"
 #import "UserInfo.h"
+#import "Score2ViewController.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -94,6 +95,8 @@
     //    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     //    [self presentViewController:vc animated:YES completion:NULL];
     //[self endSongsResult:10 andRight:10 andWrong:10];
+    
+    //[self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -159,6 +162,13 @@
             vc.sparringMute = NO;
         }
         self.popVC = ((UIStoryboardPopoverSegue*)segue).popoverController;
+    }
+    
+    if([segue.identifier isEqualToString:@"modalScroe2Segue"])
+    {
+        Score2ViewController *vc = [segue destinationViewController];
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
     }
 }
 

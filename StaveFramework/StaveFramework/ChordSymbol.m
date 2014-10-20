@@ -179,6 +179,7 @@ static UIImage* chanyin = nil;
     pedalFlag = 0;
     eightWidth = 0;
     stressFlag = 0;
+    mergeNotesFlag = 0;
     /* add by sunlie end */
     
     [ChordSymbol loadImages];
@@ -572,6 +573,12 @@ static UIImage* chanyin = nil;
 }
 -(void)setThirtytwoFlag:(int)t {
     thirtytwoFlag = t;
+}
+-(int)mergeNotesFlag {
+    return mergeNotesFlag;
+}
+-(void)setMergeNotesFlag:(int)m {
+    mergeNotesFlag = m;
 }
 
 -(void)setChordInfo {
@@ -1359,6 +1366,12 @@ static UIImage* chanyin = nil;
     
     if (firstStem == nil || lastStem == nil) {
         return NO;
+    }
+    
+    for (int k = 0; k < [chords count]; k++) {
+        if ([[chords get:k] mergeNotesFlag] != 0) {
+            return NO;
+        }
     }
     int measure = [[chords get:0] startTime] / [time measure];
     NoteDuration dur = [firstStem duration];

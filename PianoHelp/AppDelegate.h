@@ -23,4 +23,5 @@
 -(NSString*)filePathForName:(NSString*)fileName;
 -(void)loadDemoMidiToSQL;
 -(BOOL)isInited;
+-(void)checkForUpdate;
 @end

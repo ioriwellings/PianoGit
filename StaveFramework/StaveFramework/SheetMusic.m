@@ -184,7 +184,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
 
         [mainkey resetKey];
         Array *chords = [self createChords:[track splitednotes] withKey:mainkey
-                                   andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14]];
+                                   andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14] andCList17:[track controlList17] andCList18:[track controlList18]];
         Array *sym = [self createSymbols:chords withClefs:clefs andTime:time andLastTime:lastStarttime andBeatarray:beatarray andCList15:[track controlList15]];
         [symbols add:sym];
         /** modify by sunlie end */
@@ -293,18 +293,21 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
  */
 - (Array*) createChords:(Array*)midinotes withKey:(KeySignature*)key
                 andTime:(TimeSignature*)time andClefs:(ClefMeasures*)clefs andCList2:(Array *)list andCList3:(Array *)list3
-                andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14{
+                andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14 andCList17:(Array *)list17 andCList18:(Array *)list18{
     
     int i = 0;
     int len = [midinotes count];
     Array* chords = [Array new:len/4];
     Array* notegroup = [Array new:12];
     /** add by sunlie start */
-    ControlData *cd2, *cd3, *cd4, *cd5, *cd7,*cd8,*cd9,*cd10,*cd14;
+    ControlData *cd2, *cd3, *cd4, *cd5, *cd7,*cd8,*cd9,*cd10,*cd14, *cd17,*cd18;
     int flag = 0;
     int flag4 = 0;
     int flag5 = 0;
     int flag8 = 0;
+    int flag17 = 0;
+    int count17 = 0;
+    int flag18 = 0;
     
     int cdcount2 = 0;
     int cdcount3 = 0;
@@ -315,6 +318,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     int cdcount9 = 0;
     int cdcount10 = 0;
     int cdcount14 = 0;
+    int cdcount17 = 0;
+    int cdcount18 = 0;
     
     int tonecount = 0;
     
@@ -344,6 +349,12 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     }
     if (cdcount14 < [list14 count]) {
         cd14 = [list14 get:cdcount14];
+    }
+    if (cdcount17 < [list17 count]) {
+        cd17 = [list17 get:cdcount17];
+    }
+    if (cdcount18 < [list18 count]) {
+        cd18 = [list18 get:cdcount18];
     }
     
     /** add by sunlie end */
@@ -650,6 +661,42 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                         cd14 = [list14 get:cdcount14];
                     }
                 }
+            }
+        }
+        
+        if (cdcount17 < [list17 count]) {
+            if ([chord startTime] >= [cd17 starttime]  && flag17 == 0) {
+                [chord setMergeNotesFlag:1];
+                count17 = [chords count];
+                flag17 = 1;
+            } else if ([chord startTime] < [cd17 endtime] && [chord endTime] >= [cd17 endtime] && flag17 >= 1) {
+                [chord setMergeNotesFlag:100];
+                cdcount17++;
+                [[chords get:count17] setMergeNotesFlag:flag17+1];
+                flag17 = 0;
+                if (cdcount17 < [list17 count]) {
+                    cd17 = [list17 get:cdcount17];
+                }
+            } else if (flag17 >= 1) {
+                [chord setMergeNotesFlag:1];
+                flag17++;
+            }
+        }
+        
+        if (cdcount18 < [list18 count]) {
+            if ([chord startTime] >= [cd18 starttime]  && flag18 == 0) {
+                [chord setMergeNotesFlag:-100];
+                flag18 = -1;
+            } else if ([chord startTime] < [cd18 endtime] && [chord endTime] >= [cd18 endtime] && flag18 <= -1) {
+                [chord setMergeNotesFlag:flag18-1];
+                cdcount18++;
+                flag18 = 0;
+                if (cdcount18 < [list18 count]) {
+                    cd18 = [list18 get:cdcount18];
+                }
+            } else if (flag18 <= -1) {
+                [chord setMergeNotesFlag:-1];
+                flag18--;
             }
         }
         
@@ -1394,6 +1441,53 @@ static BOOL isBlank(id x) {
     }
 }
 
++(BOOL)findConsecutiveChordsAdd:(Array*)symbols andTime:(TimeSignature*) time
+                    andStart:(int)startIndex andIndexes:(int*) chordIndexes
+                andNumChords:(int)numChords andHorizDistance:(int*)dist {
+    int i = startIndex;
+    while (true) {
+        int horizDistance = 0;
+        
+        /* Find the starting chord */
+        while (i < [symbols count] - numChords) {
+            if (isChord([symbols get:i])) {
+                ChordSymbol* c = (ChordSymbol*) [symbols get:i];
+                if ([c stem] != nil) {
+                    break;
+                }
+            }
+            i++;
+        }
+        if (i >= [symbols count] - numChords) {
+            return NO;
+        }
+        chordIndexes[0] = i;
+        BOOL foundChords = YES;
+        for (int chordIndex = 1; chordIndex < numChords; chordIndex++) {
+            i++;
+            int remaining = numChords - 1 - chordIndex;
+            while ((i < [symbols count] - remaining) && (isBlank([symbols get:i])) ) {
+                horizDistance += [getSymbol(symbols, i) width];
+                i++;
+            }
+            if (i >= [symbols count] - remaining) {
+                return NO;
+            }
+            if (!isChord([symbols get:i])) {
+                foundChords = NO;
+                break;
+            }
+            chordIndexes[chordIndex] = i;
+            horizDistance += [getSymbol(symbols, i) width];
+        }
+        if (foundChords) {
+            *dist = horizDistance;
+            return YES;
+        }
+        
+        /* Else, start searching again from index i */
+    }
+}
 
 /** Connect chords of the same duration with a horizontal beam.
  *  numChords is the number of chords per beam (2, 3, 4, or 6).
@@ -1442,6 +1536,42 @@ static BOOL isBlank(id x) {
     [chords release];
 }
 
+-(void)createBeamedChordsAdd:(Array*)allsymbols withTime:(TimeSignature*)time {
+    int chordIndexes[20];
+    int horizDistance = 0;
+    Array* chords;
+    
+    for (int track = 0; track < [allsymbols count]; track++) {
+        Array* symbols = [allsymbols get:track];
+//        int startIndex = 0;
+        int i = 0;
+        while (i < [symbols count]) {
+            if (isChord([symbols get:i])) {
+                ChordSymbol* c = (ChordSymbol*) [symbols get:i];
+                if ([c mergeNotesFlag] > 1 && [c mergeNotesFlag] != 100) {
+                    chords = [Array new:[c mergeNotesFlag]];
+                    [SheetMusic findConsecutiveChordsAdd:symbols
+                                              andTime:time
+                                             andStart:i
+                                           andIndexes:chordIndexes
+                                         andNumChords:[c mergeNotesFlag]
+                                     andHorizDistance: &horizDistance];
+                    for (int j = 0; j < [c mergeNotesFlag]; j++) {
+                        [chords add: [symbols get:(chordIndexes[j])] ];
+                    }
+                    [ChordSymbol createBeam:chords withSpacing:horizDistance];
+                    [chords release];
+                    i += [c mergeNotesFlag];
+                    continue;
+                }
+            }
+            i++;
+        }
+    }
+//    [chords clear];
+//    [chords release];
+}
+
 
 /** Connect chords of the same duration with a horizontal beam.
  *
@@ -1478,6 +1608,7 @@ static BOOL isBlank(id x) {
                 andNumChords:2 onBeat:YES];
     [self createBeamedChords:allsymbols withTime:time
                 andNumChords:2 onBeat:NO];
+    [self createBeamedChordsAdd:allsymbols withTime:time];
     /** modify by sunlie end */
 }
 
