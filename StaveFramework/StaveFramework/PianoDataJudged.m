@@ -44,21 +44,15 @@
     
     type = 0;
     if (options->numtracks != 1) {
-        int rState;
-        int lState;
-        if ([options->mute count] == 1) {
-            rState = [options->mute get:0];
+        int rState = [options->mute get:0];
+        int lState = [options->mute get:1];
+        
+        //右手是第1音轨，左手是第2音轨
+        //右手模式，右手静音；左手模式，左手静音
+        if (rState == -1 && lState == 0) { //右手模式
             type = 1;
-        }else{
-            rState = [options->mute get:0];
-            lState = [options->mute get:1];
-            //右手是第1音轨，左手是第2音轨
-            //右手模式，右手静音；左手模式，左手静音
-            if (rState == -1 && lState == 0) { //右手模式
-                type = 1;
-            } else if (rState == 0 && lState == -1) { //左手模式
-                type = 2;
-            }
+        } else if (rState == 0 && lState == -1) { //左手模式
+            type = 2;
         }
     }
     
@@ -215,7 +209,7 @@
                     } else if ([chord startTime] >= prevPulseTime) {//fix bug > 2 >= for judge first chordsymbol
                         if (upFlag == 0) {
                             upFlag = 1;
-                            if ([curChordList count] >= 0) {
+                            if ([curChordList count] > 0) {
                                 for (k = 0; k < [curChordList count]; k++) {
                                     [prevChordList add:[curChordList get:k]];
                                 }
@@ -224,6 +218,14 @@
                             [curChordList add:chord];
                         } else {
                             [curChordList add:chord];
+                        }
+                    } else if ([curChordList count] > 0 && curPulseTime - [[curChordList get:0] startTime] > [[[sheet midifile] time] quarter]) {//fix bug > 2 >= for judge first chordsymbol
+                        if (upFlag == 0) {
+                            upFlag = 1;
+                            for (k = 0; k < [curChordList count]; k++) {
+                                [prevChordList add:[curChordList get:k]];
+                            }
+                            [curChordList clear];
                         }
                     }
                 }
