@@ -85,6 +85,10 @@
         [self.btnRePlay setEnabled:true];
     }
     
+    if ([options.mute count] == 1) {
+        [self.btnHandCtl setEnabled:FALSE];
+    }
+    
     //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
     //    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -794,7 +798,11 @@
         }
         [self.btnPlay setSelected:FALSE];
         [self.btnPlay setEnabled:true];
-        [self.btnHandCtl setEnabled:true];
+        if ([options.mute count] == 1) {
+            [self.btnHandCtl setEnabled:false];
+        }else{
+            [self.btnHandCtl setEnabled:true];
+        }
 
     }else if (state == 3){//pause
         [self.btnXiaoJieTiaoZhuan setEnabled:true];
@@ -802,16 +810,19 @@
 
         if (_iPlayMode == 2) {
             [self.btnHint setEnabled:false];
-            [self.btnHandCtl setEnabled:true];
             [self.sliderXiaoJie setEnabled:true];
             [self.sliderSpeed setEnabled:true];
             [self.btnRePlay setEnabled:true];
         }else if (_iPlayMode == 1){
             [self.sliderSpeed setEnabled:false];
             [self.btnHint setEnabled:true];
-            [self.btnHandCtl setEnabled:true];
             [self.sliderXiaoJie setEnabled:false];
             [self.btnRePlay setEnabled:true];
+        }
+        if ([options.mute count] == 1) {
+            [self.btnHandCtl setEnabled:false];
+        }else{
+            [self.btnHandCtl setEnabled:true];
         }
     }
     

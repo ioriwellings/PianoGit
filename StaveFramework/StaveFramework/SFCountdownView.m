@@ -43,8 +43,8 @@
 - (void) updateAppearance
 {
     // countdown label
-    float fontSize = parent.bounds.size.width * COUNTDOWN_LABEL_FONT_SCALE_FACTOR;
-    
+//    float fontSize = parent.bounds.size.width * COUNTDOWN_LABEL_FONT_SCALE_FACTOR;
+    float fontSize = 240.0;
     self.countdownLabel = [[UILabel alloc] init];
     [self.countdownLabel setFont:[UIFont fontWithName:self.fontName size:fontSize]];
     [self.countdownLabel setTextColor:self.countdownColor];
@@ -54,7 +54,7 @@
     self.countdownLabel.alpha = 0;
     [parent addSubview: self.countdownLabel];
     
-    self.countdownLabel.frame =  CGRectMake(312, 300, 400, 200);
+    self.countdownLabel.frame = CGRectMake(312, 300, 400, 200);
 }
 
 
@@ -109,6 +109,7 @@
 {
     [UIView animateWithDuration:timeP animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(2.5, 2.5);
+
         self.countdownLabel.transform = transform;
         self.countdownLabel.backgroundColor=[UIColor clearColor];
         self.countdownLabel.alpha = 0;

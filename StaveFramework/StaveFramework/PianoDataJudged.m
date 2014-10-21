@@ -209,7 +209,7 @@
                     } else if ([chord startTime] >= prevPulseTime) {//fix bug > 2 >= for judge first chordsymbol
                         if (upFlag == 0) {
                             upFlag = 1;
-                            if ([curChordList count] >= 0) {
+                            if ([curChordList count] > 0) {
                                 for (k = 0; k < [curChordList count]; k++) {
                                     [prevChordList add:[curChordList get:k]];
                                 }
@@ -218,6 +218,14 @@
                             [curChordList add:chord];
                         } else {
                             [curChordList add:chord];
+                        }
+                    } else if ([curChordList count] > 0 && curPulseTime - [[curChordList get:0] startTime] > [[[sheet midifile] time] quarter]) {//fix bug > 2 >= for judge first chordsymbol
+                        if (upFlag == 0) {
+                            upFlag = 1;
+                            for (k = 0; k < [curChordList count]; k++) {
+                                [prevChordList add:[curChordList get:k]];
+                            }
+                            [curChordList clear];
                         }
                     }
                 }
