@@ -89,14 +89,18 @@
         [self.btnHandCtl setEnabled:FALSE];
     }
     
-    //    ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-    //    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    //    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    //    [self presentViewController:vc animated:YES completion:NULL];
-    //[self endSongsResult:10 andRight:10 andWrong:10];
+//ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+//vc.modalPresentationStyle = UIModalPresentationFullScreen;
+//vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//if ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 8)
+//{
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//}
+//[self presentViewController:vc animated:YES completion:NULL];
+//[self endSongsResult:10 andRight:10 andWrong:10];
     
-    //[self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
+//    [self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -168,7 +172,10 @@
     {
         Score2ViewController *vc = [segue destinationViewController];
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        
+        if ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 8)
+        {
+            vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        }
     }
 }
 
@@ -546,6 +553,10 @@
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        if ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 8)
+        {
+            vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        }
         [self presentViewController:vc animated:YES completion:NULL];
         
         Score *score = self.favo.score; //[self getCurrentScore];
