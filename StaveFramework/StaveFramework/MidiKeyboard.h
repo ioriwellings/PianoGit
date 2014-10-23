@@ -23,9 +23,11 @@ static NSString* kNAMIDI_VelocityKey = @"kNAMIDI_VelocityKey";
     MIDIClientRef client;
     MIDIEndpointRef src;
     MIDIEndpointRef outEndpoint;
+    BOOL isConnect;
 }
 
 - (BOOL) setupMIDI;
 - (void) unSetupMIDI;
 - (BOOL) sendData:(Byte)note andVelocity:(Byte)velocity;
+- (BOOL) isConnect;
 @end

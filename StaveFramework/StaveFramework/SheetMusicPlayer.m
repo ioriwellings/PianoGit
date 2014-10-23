@@ -213,7 +213,7 @@ int TitleHeights = 14; /** The height for the title on the first page */
  *  If scrollGradually is true, scroll gradually (smooth scrolling)
  *  to the shaded notes.
  */
-- (void)shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime {
+- (void)shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk {
 
     shadeCurrentPulseTime = currentPulseTime;
     shadePrevPulseTime = prevPulseTime;
@@ -224,7 +224,8 @@ int TitleHeights = 14; /** The height for the title on the first page */
         Staff *staff = [staffs get:i];
         
         int x_shade = 0;
-        [staff calcShadeNotes:currentPulseTime withPrev:prevPulseTime andX:&x_shade];
+        [staff calcShadeNotes:currentPulseTime withPrev:prevPulseTime andX:&x_shade
+            andKeyboard:mk];
 
         
         //通知SheetMusicPlay开始可以更新曲谱了

@@ -666,12 +666,49 @@
     CGContextTranslateCTM (context, -shadeXpos, 0);
 }
 
+- (void)SendDataToDevice:(ChordSymbol*)chord withMidi:(MidiKeyboard *)keyword
+               withOnOff:(BOOL) isOn {
+    
+    if (![keyword isConnect]) {
+        return;
+    }
+    
+    
+    int velocity = 0;
+    if (isOn) {
+        velocity = 100;
+    }
+    
+    int flag = [chord eightFlag];
+    NoteData *noteData = [chord notedata];
+    for (int i = 0; i < [chord notedata_len]; i++) {
+        NoteData nd = noteData[i];
+        int number = nd.number;
+        
+        if (nd.previous == 1) {
+            NSLog(@"midi note is previous.");
+            continue;
+        }
+        
+        if(flag > 0) {
+            number += 12;
+        } else if (flag < 0) {
+            number -= 12;
+        }
+        number +=1;
+        NSLog(@"==========the tips symbol number is[%d]|", number);
+        [keyword sendData:number andVelocity:velocity];
+    }
+
+    
+}
 
 /** Shade all the chords played in the given time.
  *  Un-shade any chords shaded in the previous pulse time.
  *  Store the x coordinate location where the shade was drawn.
  */
-- (int) calcShadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andX:(int *)x_shade {
+- (int) calcShadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
+                  andX:(int *)x_shade andKeyboard:(MidiKeyboard *)mk {
     //NSAffineTransform *trans;
     
     /* If there's nothing to unshade, or shade, return */
@@ -731,7 +768,13 @@
 //        BOOL redrawLines = FALSE;
 //
 //        /* If symbol is in the previous time, draw a white background */
-//        if ((start <= prevPulseTime) && (prevPulseTime < end)) {
+        if ((start <= prevPulseTime) && (prevPulseTime < end)) {
+            
+            if ([shadeCurr isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol *chord = (ChordSymbol*)shadeCurr;
+                [self SendDataToDevice:chord withMidi:mk withOnOff:FALSE];
+            }
+            
 ////            trans = [NSAffineTransform transform];
 ////            [trans translateXBy:xpos-2 yBy:-2];
 ////            [trans concat];
@@ -759,11 +802,17 @@
 //            
 //            
 //            redrawLines = YES;
-//        }
+        }
 
         /* If symbol is in the current time, draw a shaded background */
         if ((start <= currentPulseTime) && (currentPulseTime < end)) {
             *x_shade = shadeXpos;
+            
+            if ([shadeCurr isKindOfClass:[ChordSymbol class]]) {
+                ChordSymbol *chord = (ChordSymbol*)shadeCurr;
+                [self SendDataToDevice:chord withMidi:mk withOnOff:TRUE];
+            }
+            
             return 1;
 //            trans = [NSAffineTransform transform];
 //            [trans translateXBy:xpos yBy:0.0];

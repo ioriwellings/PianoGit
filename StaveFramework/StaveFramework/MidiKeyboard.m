@@ -67,6 +67,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     self = [super init];
     inPort = 0;
     src = 0;
+    isConnect = FALSE;
+    
     MIDIRestart();
     return self;
 }
@@ -127,6 +129,10 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     return (NSString *)name;
 }
 
+- (BOOL) isConnect {
+    return isConnect;
+}
+
 - (BOOL)setupMIDI {
     
     BOOL result = FALSE;
@@ -185,7 +191,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
         outEndpoint = MIDIGetDestination(i);
         OSStatus err = MIDIPortConnectSource(inPort, src, NULL);
         NSLog(@"MIDIPortConnectSource error code: %lu", err);
-        
+        isConnect = TRUE;
         result = TRUE;
 	}
     
