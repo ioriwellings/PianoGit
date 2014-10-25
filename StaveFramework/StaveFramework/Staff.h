@@ -19,6 +19,7 @@
 #import "MidiFile.h"
 #import "ChordSymbol.h"
 #import "SheetMusic.h"
+#import "MidiKeyboard.h"
 
 @interface Staff : NSObject {
     Array* symbols;             /** The list of music symbols in this staff */
@@ -77,7 +78,9 @@
 -(void)dealloc;
 -(NSString*)description;
 
-- (int)calcShadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andX:(int *)x_shade;
+- (int)calcShadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
+                 andX:(int *)x_shade andKeyboard:(MidiKeyboard*)mk;
+- (void)SendClearDataToDevice:(MidiKeyboard *)keyword;
 - (void)shadeNotes:(CGContextRef)context withColor: (UIColor *)color;
 - (void)cleanShadeNote;
 - (int)setShadeNotesModel1:(int)value withChordSymbol:(ChordSymbol*)symbol andX:(int *)x_shade;

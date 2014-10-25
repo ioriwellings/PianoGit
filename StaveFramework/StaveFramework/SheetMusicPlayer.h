@@ -15,6 +15,7 @@
 #import "MusicSymbol.h"
 #import "Staff.h"
 #import "SheetMusicDelegate.h"
+#import "MidiKeyboard.h"
 
 #define maxs(x,y) ((x) > (y) ? (x) : (y))
 
@@ -39,7 +40,8 @@
 
 -(void) drawRect:(CGRect) rect;
 -(void) setStaffs:(Array*) staff;
--(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime;
+-(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk;
+-(void) ClearShadeDataForDevice:(MidiKeyboard*)mk;
 
 @property (nonatomic, assign) id <SheetMusicDelegate> delegate;
 @property BOOL updateStaffsFlag;

@@ -67,6 +67,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     self = [super init];
     inPort = 0;
     src = 0;
+    isConnect = FALSE;
+    
     MIDIRestart();
     return self;
 }
@@ -118,6 +120,39 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     return TRUE;
 }
 
+-(BOOL)sendClearData:(Byte)velocity {
+    
+    Byte status = 0x90;
+    Byte message[3];
+    int length = 3;
+    
+    for(int i = 20; i < 109; i++){
+
+        message[0] = status;
+        message[1] = i;
+        message[2] = velocity;
+        
+        Byte buffer[1024];
+        MIDIPacketList *packet_list = (MIDIPacketList *)buffer;
+        MIDIPacket *packet = MIDIPacketListInit(packet_list);
+        
+        OSStatus result;
+        
+        packet = MIDIPacketListAdd(
+                                   packet_list,
+                                   sizeof(buffer),
+                                   packet,
+                                   0,
+                                   length,
+                                   message);
+
+        result = MIDISend(outputPort, outEndpoint, packet_list);
+        NSLog(@" clear data is %d", i);
+    }
+
+    return TRUE;
+}
+
 -(NSString*)getDisplayName:(MIDIObjectRef) object
 {
     // Returns the display name of a given MIDIObjectRef as an NSString
@@ -125,6 +160,10 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     if (noErr != MIDIObjectGetStringProperty(object, kMIDIPropertyDisplayName, &name))
         return nil;
     return (NSString *)name;
+}
+
+- (BOOL) isConnect {
+    return isConnect;
 }
 
 - (BOOL)setupMIDI {
@@ -185,7 +224,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
         outEndpoint = MIDIGetDestination(i);
         OSStatus err = MIDIPortConnectSource(inPort, src, NULL);
         NSLog(@"MIDIPortConnectSource error code: %lu", err);
-        
+        isConnect = TRUE;
         result = TRUE;
 	}
     

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SheetMusicPlayer.h"
 #import "SheetMusicDelegate.h"
+#import "MidiKeyboard.h"
 
 @interface SheetMusicPlay : UIView <SheetMusicDelegate> {
     Array* staffs;            /** The array of Staffs to display (from top to bottom) */
@@ -21,7 +22,8 @@
 
 -(id)initWithStaffs:(Array*) staff andTrackCount:(int) count andOptions:(MidiOptions*)options;
 -(void) setCurrentPulseTime:(int)currentPulseTime;
--(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime;
+-(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk;
 -(void)setZoom:(float)value;
+-(void)ClearShadeDataForDevice:(MidiKeyboard*)mk;
 
 @end

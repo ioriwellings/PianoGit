@@ -154,7 +154,7 @@
         memcpy(&options, opt, sizeof(MidiOptions));
 
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:-10 gradualScroll:NO];
-        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:-10];
+        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:-10 andKeyboard:nil];
         [NSTimer scheduledTimerWithTimeInterval:0.2
                  target:self selector:@selector(reshade:) userInfo:nil repeats:NO];
     }
@@ -175,7 +175,7 @@
 /** If we're paused, reshade the sheet music and piano. */
 - (void)reshade:(NSTimer*)arg {
     if (playstate == paused) {
-        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:-10];
+        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:-10 andKeyboard:nil];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:-10 gradualScroll:NO];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
     }
@@ -345,7 +345,7 @@
 }
 
 -(void)resetShadeLine{
-    [sheetPlay shadeNotes:0 withPrev:(int)currentPulseTime];
+    [sheetPlay shadeNotes:0 withPrev:(int)currentPulseTime andKeyboard:nil];
 }
 //add by yizhq end
 
@@ -567,7 +567,7 @@
     currentPulseTime = 0;
     
     /* Remove any highlighted notes */
-    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
+    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
     
     prevPulseTime = currentPulseTime;
@@ -773,13 +773,8 @@
 //        }
 //        i--;
 //        beginMesc += (beginTime-[[tempoarray get:i] starttime])/tmpPulsesPerMsec;
-        
 
-        
-        
-
-
-        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
+        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:midiHandler];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
         return;
@@ -800,6 +795,7 @@
         
         
         playstate = initStop;
+        [sheetPlay ClearShadeDataForDevice:midiHandler];
         usleep(300 * 1000);
         [self doStop];
     }
@@ -857,7 +853,7 @@
     }
 
     /* Remove any highlighted notes */
-    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
+    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
 //    [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
 
@@ -868,7 +864,7 @@
     }
     [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
 //    [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:NO];
-    [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
+    [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:nil];
 }
 
 - (BOOL) jumpMeasure:(int)number
@@ -892,7 +888,7 @@
     
 
     /* Remove any highlighted notes */
-    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
+    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
     
     prevPulseTime = currentPulseTime;
@@ -958,7 +954,7 @@
     playstate = paused;
 
     /* Remove any highlighted notes */
-    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
+    [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
 //    [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
 
@@ -969,10 +965,13 @@
     }
     [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
 //    [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:NO];
-    [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
+    [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:nil];
 }
 
 
+- (void)ClearTimerCallback:(NSTimer*)arg{
+    [sheetPlay ClearShadeDataForDevice:midiHandler];
+}
 /** The callback for the timer. If the midi is still playing,
  *  update the currentPulseTime and shade the sheet music.
  *  If a stop or pause has been initiated (by someone clicking
@@ -1033,7 +1032,7 @@
                 [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }
         
-            [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime];
+            [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:midiHandler];
 //            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
             
             [self doStop];
@@ -1051,7 +1050,7 @@
                                     andWrong:[result get:1]];
                 }
             }
-
+            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(ClearTimerCallback:) userInfo:nil repeats:NO];
             return;
         }
         
@@ -1059,7 +1058,8 @@
             [pianoData judgedPianoPlay:currentPulseTime andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
         }
         
-        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
+        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
+                  andKeyboard:midiHandler];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
         return;
@@ -1092,7 +1092,8 @@
 //        int intactTempoCnt = currentPulseTime/[midifile quarternote];
         //modify currentPulseTime for tempo end
 //        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
-        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
+        [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
+                  andKeyboard:midiHandler];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
         prevPulseTime = currentPulseTime - [[midifile time] measure];
