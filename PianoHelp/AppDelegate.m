@@ -866,13 +866,16 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Melody" inManagedObjectContext:moc];
     [fetchRequest setEntity:entity];
     [fetchRequest setResultType:NSManagedObjectResultType];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", [strPath lastPathComponent]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@ AND category=%@ AND author=%@",
+                              [strPath lastPathComponent],
+                              cate,
+                              strAuthor];
     [fetchRequest setPredicate:predicate];
     NSError *error = nil;
     NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
     if([objects count]>0)
     {
-        //return (Melody*)[objects firstObject];
+        return (Melody*)[objects firstObject];
     }
     
     Melody *melody = (Melody*)[NSEntityDescription insertNewObjectForEntityForName:@"Melody" inManagedObjectContext:self.managedObjectContext];
