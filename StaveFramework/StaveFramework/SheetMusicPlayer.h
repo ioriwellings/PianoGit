@@ -41,6 +41,7 @@
 -(void) drawRect:(CGRect) rect;
 -(void) setStaffs:(Array*) staff;
 -(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk;
+-(void) ClearShadeDataForDevice:(MidiKeyboard*)mk;
 
 @property (nonatomic, assign) id <SheetMusicDelegate> delegate;
 @property BOOL updateStaffsFlag;

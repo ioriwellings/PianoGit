@@ -241,7 +241,17 @@ int TitleHeights = 14; /** The height for the title on the first page */
         }
     }
 
+
 	[self setNeedsDisplay];
+}
+
+- (void) ClearShadeDataForDevice:(MidiKeyboard*)mk{
+    
+    for (int i = 0; i < [staffs count]; i++) {
+        Staff *staff = [staffs get:i];
+        
+        [staff SendClearDataToDevice:mk];
+    }
 }
 
 

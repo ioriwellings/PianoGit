@@ -80,6 +80,7 @@
 
 - (int)calcShadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
                  andX:(int *)x_shade andKeyboard:(MidiKeyboard*)mk;
+- (void)SendClearDataToDevice:(MidiKeyboard *)keyword;
 - (void)shadeNotes:(CGContextRef)context withColor: (UIColor *)color;
 - (void)cleanShadeNote;
 - (int)setShadeNotesModel1:(int)value withChordSymbol:(ChordSymbol*)symbol andX:(int *)x_shade;

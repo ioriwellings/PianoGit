@@ -973,6 +973,9 @@
 }
 
 
+- (void)ClearTimerCallback:(NSTimer*)arg{
+    [sheetPlay ClearShadeDataForDevice:midiHandler];
+}
 /** The callback for the timer. If the midi is still playing,
  *  update the currentPulseTime and shade the sheet music.
  *  If a stop or pause has been initiated (by someone clicking
@@ -1051,7 +1054,7 @@
                                     andWrong:[result get:1]];
                 }
             }
-
+            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(ClearTimerCallback:) userInfo:nil repeats:NO];
             return;
         }
         

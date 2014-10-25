@@ -29,5 +29,6 @@ static NSString* kNAMIDI_VelocityKey = @"kNAMIDI_VelocityKey";
 - (BOOL) setupMIDI;
 - (void) unSetupMIDI;
 - (BOOL) sendData:(Byte)note andVelocity:(Byte)velocity;
+- (BOOL)sendClearData:(Byte)velocity;
 - (BOOL) isConnect;
 @end

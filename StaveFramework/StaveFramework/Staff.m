@@ -666,6 +666,14 @@
     CGContextTranslateCTM (context, -shadeXpos, 0);
 }
 
+- (void)SendClearDataToDevice:(MidiKeyboard *)keyword{
+    if (![keyword isConnect]) {
+        return;
+    }
+    
+    [keyword sendClearData:0];
+}
+
 - (void)SendDataToDevice:(ChordSymbol*)chord withMidi:(MidiKeyboard *)keyword
                withOnOff:(BOOL) isOn {
     
@@ -699,8 +707,6 @@
         NSLog(@"==========the tips symbol number is[%d]|", number);
         [keyword sendData:number andVelocity:velocity];
     }
-
-    
 }
 
 /** Shade all the chords played in the given time.

@@ -109,10 +109,15 @@
     [player2 setZoom:value];
 }
 
--(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk;
+-(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk
 {
     [player1 shadeNotes:currentPulseTime withPrev:prevPulseTime andKeyboard:mk];
     [player2 shadeNotes:currentPulseTime withPrev:prevPulseTime andKeyboard:mk];
+}
+
+-(void)ClearShadeDataForDevice:(MidiKeyboard*)mk
+{
+    [player1 ClearShadeDataForDevice:mk];
 }
 
 //SheetMusicDeletegate

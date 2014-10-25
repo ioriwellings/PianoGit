@@ -24,5 +24,6 @@
 -(void) setCurrentPulseTime:(int)currentPulseTime;
 -(void) shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:(MidiKeyboard*)mk;
 -(void)setZoom:(float)value;
+-(void)ClearShadeDataForDevice:(MidiKeyboard*)mk;
 
 @end
