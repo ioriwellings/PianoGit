@@ -773,11 +773,6 @@
 //        }
 //        i--;
 //        beginMesc += (beginTime-[[tempoarray get:i] starttime])/tmpPulsesPerMsec;
-        
-
-        
-        
-
 
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:midiHandler];
 //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
@@ -800,6 +795,7 @@
         
         
         playstate = initStop;
+        [sheetPlay ClearShadeDataForDevice:midiHandler];
         usleep(300 * 1000);
         [self doStop];
     }
