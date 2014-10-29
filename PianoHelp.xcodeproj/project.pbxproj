@@ -154,6 +154,85 @@
 		8964EBF2194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE1194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid */; };
 		8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE2194539CC00DBCED9 /* mnmjd.mid */; };
 		8976F67F19A43E2D00D8A860 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8976F67E19A43E2D00D8A860 /* MessageBox.m */; };
+		897D78061A01278D00AD1896 /* 演示20001.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B71A01278D00AD1896 /* 演示20001.png */; };
+		897D78071A01278D00AD1896 /* 演示20002.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B81A01278D00AD1896 /* 演示20002.png */; };
+		897D78081A01278D00AD1896 /* 演示20003.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B91A01278D00AD1896 /* 演示20003.png */; };
+		897D78091A01278D00AD1896 /* 演示20004.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77BA1A01278D00AD1896 /* 演示20004.png */; };
+		897D780A1A01278D00AD1896 /* 演示20005.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77BB1A01278D00AD1896 /* 演示20005.png */; };
+		897D780B1A01278D00AD1896 /* 演示20006.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77BC1A01278D00AD1896 /* 演示20006.png */; };
+		897D780C1A01278D00AD1896 /* 演示20007.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77BD1A01278D00AD1896 /* 演示20007.png */; };
+		897D780D1A01278D00AD1896 /* 演示20008.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77BE1A01278D00AD1896 /* 演示20008.png */; };
+		897D780E1A01278D00AD1896 /* 演示20009.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77BF1A01278D00AD1896 /* 演示20009.png */; };
+		897D780F1A01278D00AD1896 /* 演示20010.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C01A01278D00AD1896 /* 演示20010.png */; };
+		897D78101A01278D00AD1896 /* 演示20011.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C11A01278D00AD1896 /* 演示20011.png */; };
+		897D78111A01278D00AD1896 /* 演示20012.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C21A01278D00AD1896 /* 演示20012.png */; };
+		897D78121A01278D00AD1896 /* 演示20013.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C31A01278D00AD1896 /* 演示20013.png */; };
+		897D78131A01278D00AD1896 /* 演示20014.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C41A01278D00AD1896 /* 演示20014.png */; };
+		897D78141A01278D00AD1896 /* 演示20015.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C51A01278D00AD1896 /* 演示20015.png */; };
+		897D78151A01278D00AD1896 /* 演示20016.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C61A01278D00AD1896 /* 演示20016.png */; };
+		897D78161A01278D00AD1896 /* 演示20017.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C71A01278D00AD1896 /* 演示20017.png */; };
+		897D78171A01278D00AD1896 /* 演示20018.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C81A01278D00AD1896 /* 演示20018.png */; };
+		897D78181A01278D00AD1896 /* 演示20019.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77C91A01278D00AD1896 /* 演示20019.png */; };
+		897D78191A01278D00AD1896 /* 演示20020.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77CA1A01278D00AD1896 /* 演示20020.png */; };
+		897D781A1A01278D00AD1896 /* 演示20021.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77CB1A01278D00AD1896 /* 演示20021.png */; };
+		897D781B1A01278D00AD1896 /* 演示20022.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77CC1A01278D00AD1896 /* 演示20022.png */; };
+		897D781C1A01278D00AD1896 /* 演示20023.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77CD1A01278D00AD1896 /* 演示20023.png */; };
+		897D781D1A01278D00AD1896 /* 演示20024.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77CE1A01278D00AD1896 /* 演示20024.png */; };
+		897D781E1A01278D00AD1896 /* 演示20025.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77CF1A01278D00AD1896 /* 演示20025.png */; };
+		897D781F1A01278D00AD1896 /* 演示20026.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D01A01278D00AD1896 /* 演示20026.png */; };
+		897D78201A01278D00AD1896 /* 演示20027.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D11A01278D00AD1896 /* 演示20027.png */; };
+		897D78211A01278D00AD1896 /* 演示20028.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D21A01278D00AD1896 /* 演示20028.png */; };
+		897D78221A01278D00AD1896 /* 演示20029.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D31A01278D00AD1896 /* 演示20029.png */; };
+		897D78231A01278D00AD1896 /* 演示20030.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D41A01278D00AD1896 /* 演示20030.png */; };
+		897D78241A01278D00AD1896 /* 演示20031.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D51A01278D00AD1896 /* 演示20031.png */; };
+		897D78251A01278D00AD1896 /* 演示20032.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D61A01278D00AD1896 /* 演示20032.png */; };
+		897D78261A01278D00AD1896 /* 演示20033.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D71A01278D00AD1896 /* 演示20033.png */; };
+		897D78271A01278D00AD1896 /* 演示20034.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D81A01278D00AD1896 /* 演示20034.png */; };
+		897D78281A01278D00AD1896 /* 演示20035.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77D91A01278D00AD1896 /* 演示20035.png */; };
+		897D78291A01278D00AD1896 /* 演示20036.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77DA1A01278D00AD1896 /* 演示20036.png */; };
+		897D782A1A01278D00AD1896 /* 演示20037.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77DB1A01278D00AD1896 /* 演示20037.png */; };
+		897D782B1A01278D00AD1896 /* 演示20038.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77DC1A01278D00AD1896 /* 演示20038.png */; };
+		897D782C1A01278D00AD1896 /* 演示20039.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77DD1A01278D00AD1896 /* 演示20039.png */; };
+		897D782D1A01278D00AD1896 /* 演示20040.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77DE1A01278D00AD1896 /* 演示20040.png */; };
+		897D782E1A01278D00AD1896 /* 演示20041.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77DF1A01278D00AD1896 /* 演示20041.png */; };
+		897D782F1A01278D00AD1896 /* 演示20042.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E01A01278D00AD1896 /* 演示20042.png */; };
+		897D78301A01278D00AD1896 /* 演示20043.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E11A01278D00AD1896 /* 演示20043.png */; };
+		897D78311A01278D00AD1896 /* 演示20044.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E21A01278D00AD1896 /* 演示20044.png */; };
+		897D78321A01278D00AD1896 /* 演示20045.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E31A01278D00AD1896 /* 演示20045.png */; };
+		897D78331A01278D00AD1896 /* 演示20046.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E41A01278D00AD1896 /* 演示20046.png */; };
+		897D78341A01278D00AD1896 /* 演示20047.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E51A01278D00AD1896 /* 演示20047.png */; };
+		897D78351A01278D00AD1896 /* 演示20048.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E61A01278D00AD1896 /* 演示20048.png */; };
+		897D78361A01278D00AD1896 /* 演示20049.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E71A01278D00AD1896 /* 演示20049.png */; };
+		897D78371A01278D00AD1896 /* 演示20050.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E81A01278D00AD1896 /* 演示20050.png */; };
+		897D78381A01278D00AD1896 /* 演示20051.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77E91A01278D00AD1896 /* 演示20051.png */; };
+		897D78391A01278D00AD1896 /* 演示20052.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77EA1A01278D00AD1896 /* 演示20052.png */; };
+		897D783A1A01278D00AD1896 /* 演示20053.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77EB1A01278D00AD1896 /* 演示20053.png */; };
+		897D783B1A01278D00AD1896 /* 演示20054.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77EC1A01278D00AD1896 /* 演示20054.png */; };
+		897D783C1A01278D00AD1896 /* 演示20055.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77ED1A01278D00AD1896 /* 演示20055.png */; };
+		897D783D1A01278D00AD1896 /* 演示20056.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77EE1A01278D00AD1896 /* 演示20056.png */; };
+		897D783E1A01278D00AD1896 /* 演示20057.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77EF1A01278D00AD1896 /* 演示20057.png */; };
+		897D783F1A01278D00AD1896 /* 演示20058.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F01A01278D00AD1896 /* 演示20058.png */; };
+		897D78401A01278D00AD1896 /* 演示20059.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F11A01278D00AD1896 /* 演示20059.png */; };
+		897D78411A01278D00AD1896 /* 演示20060.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F21A01278D00AD1896 /* 演示20060.png */; };
+		897D78421A01278D00AD1896 /* 演示20061.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F31A01278D00AD1896 /* 演示20061.png */; };
+		897D78431A01278D00AD1896 /* 演示20062.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F41A01278D00AD1896 /* 演示20062.png */; };
+		897D78441A01278D00AD1896 /* 演示20063.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F51A01278D00AD1896 /* 演示20063.png */; };
+		897D78451A01278D00AD1896 /* 演示20064.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F61A01278D00AD1896 /* 演示20064.png */; };
+		897D78461A01278D00AD1896 /* 演示20065.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F71A01278D00AD1896 /* 演示20065.png */; };
+		897D78471A01278D00AD1896 /* 演示20066.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F81A01278D00AD1896 /* 演示20066.png */; };
+		897D78481A01278D00AD1896 /* 演示20067.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77F91A01278D00AD1896 /* 演示20067.png */; };
+		897D78491A01278D00AD1896 /* 演示20068.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77FA1A01278D00AD1896 /* 演示20068.png */; };
+		897D784A1A01278D00AD1896 /* 演示20069.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77FB1A01278D00AD1896 /* 演示20069.png */; };
+		897D784B1A01278D00AD1896 /* 演示20070.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77FC1A01278D00AD1896 /* 演示20070.png */; };
+		897D784C1A01278D00AD1896 /* 演示20071.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77FD1A01278D00AD1896 /* 演示20071.png */; };
+		897D784D1A01278D00AD1896 /* 演示20072.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77FE1A01278D00AD1896 /* 演示20072.png */; };
+		897D784E1A01278D00AD1896 /* 演示20073.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77FF1A01278D00AD1896 /* 演示20073.png */; };
+		897D784F1A01278D00AD1896 /* 演示20074.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D78001A01278D00AD1896 /* 演示20074.png */; };
+		897D78501A01278D00AD1896 /* 演示20075.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D78011A01278D00AD1896 /* 演示20075.png */; };
+		897D78511A01278D00AD1896 /* 演示20076.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D78021A01278D00AD1896 /* 演示20076.png */; };
+		897D78521A01278D00AD1896 /* 演示20077.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D78031A01278D00AD1896 /* 演示20077.png */; };
+		897D78531A01278D00AD1896 /* 演示20078.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D78041A01278D00AD1896 /* 演示20078.png */; };
+		897D78541A01278D00AD1896 /* 演示20079.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D78051A01278D00AD1896 /* 演示20079.png */; };
 		8987A55419258DEA00DEE6AE /* MelodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987A55319258DEA00DEE6AE /* MelodyViewController.m */; };
 		8987A55719258E2200DEE6AE /* MelodyCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987A55619258E2200DEE6AE /* MelodyCategoryViewController.m */; };
 		8987A55A19258FA500DEE6AE /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987A55919258FA500DEE6AE /* ShopViewController.m */; };
@@ -575,6 +654,85 @@
 		8964EBE2194539CC00DBCED9 /* mnmjd.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = mnmjd.mid; sourceTree = "<group>"; };
 		8976F67D19A43E2D00D8A860 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		8976F67E19A43E2D00D8A860 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
+		897D77B71A01278D00AD1896 /* 演示20001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20001.png"; sourceTree = "<group>"; };
+		897D77B81A01278D00AD1896 /* 演示20002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20002.png"; sourceTree = "<group>"; };
+		897D77B91A01278D00AD1896 /* 演示20003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20003.png"; sourceTree = "<group>"; };
+		897D77BA1A01278D00AD1896 /* 演示20004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20004.png"; sourceTree = "<group>"; };
+		897D77BB1A01278D00AD1896 /* 演示20005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20005.png"; sourceTree = "<group>"; };
+		897D77BC1A01278D00AD1896 /* 演示20006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20006.png"; sourceTree = "<group>"; };
+		897D77BD1A01278D00AD1896 /* 演示20007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20007.png"; sourceTree = "<group>"; };
+		897D77BE1A01278D00AD1896 /* 演示20008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20008.png"; sourceTree = "<group>"; };
+		897D77BF1A01278D00AD1896 /* 演示20009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20009.png"; sourceTree = "<group>"; };
+		897D77C01A01278D00AD1896 /* 演示20010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20010.png"; sourceTree = "<group>"; };
+		897D77C11A01278D00AD1896 /* 演示20011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20011.png"; sourceTree = "<group>"; };
+		897D77C21A01278D00AD1896 /* 演示20012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20012.png"; sourceTree = "<group>"; };
+		897D77C31A01278D00AD1896 /* 演示20013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20013.png"; sourceTree = "<group>"; };
+		897D77C41A01278D00AD1896 /* 演示20014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20014.png"; sourceTree = "<group>"; };
+		897D77C51A01278D00AD1896 /* 演示20015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20015.png"; sourceTree = "<group>"; };
+		897D77C61A01278D00AD1896 /* 演示20016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20016.png"; sourceTree = "<group>"; };
+		897D77C71A01278D00AD1896 /* 演示20017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20017.png"; sourceTree = "<group>"; };
+		897D77C81A01278D00AD1896 /* 演示20018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20018.png"; sourceTree = "<group>"; };
+		897D77C91A01278D00AD1896 /* 演示20019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20019.png"; sourceTree = "<group>"; };
+		897D77CA1A01278D00AD1896 /* 演示20020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20020.png"; sourceTree = "<group>"; };
+		897D77CB1A01278D00AD1896 /* 演示20021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20021.png"; sourceTree = "<group>"; };
+		897D77CC1A01278D00AD1896 /* 演示20022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20022.png"; sourceTree = "<group>"; };
+		897D77CD1A01278D00AD1896 /* 演示20023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20023.png"; sourceTree = "<group>"; };
+		897D77CE1A01278D00AD1896 /* 演示20024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20024.png"; sourceTree = "<group>"; };
+		897D77CF1A01278D00AD1896 /* 演示20025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20025.png"; sourceTree = "<group>"; };
+		897D77D01A01278D00AD1896 /* 演示20026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20026.png"; sourceTree = "<group>"; };
+		897D77D11A01278D00AD1896 /* 演示20027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20027.png"; sourceTree = "<group>"; };
+		897D77D21A01278D00AD1896 /* 演示20028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20028.png"; sourceTree = "<group>"; };
+		897D77D31A01278D00AD1896 /* 演示20029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20029.png"; sourceTree = "<group>"; };
+		897D77D41A01278D00AD1896 /* 演示20030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20030.png"; sourceTree = "<group>"; };
+		897D77D51A01278D00AD1896 /* 演示20031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20031.png"; sourceTree = "<group>"; };
+		897D77D61A01278D00AD1896 /* 演示20032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20032.png"; sourceTree = "<group>"; };
+		897D77D71A01278D00AD1896 /* 演示20033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20033.png"; sourceTree = "<group>"; };
+		897D77D81A01278D00AD1896 /* 演示20034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20034.png"; sourceTree = "<group>"; };
+		897D77D91A01278D00AD1896 /* 演示20035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20035.png"; sourceTree = "<group>"; };
+		897D77DA1A01278D00AD1896 /* 演示20036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20036.png"; sourceTree = "<group>"; };
+		897D77DB1A01278D00AD1896 /* 演示20037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20037.png"; sourceTree = "<group>"; };
+		897D77DC1A01278D00AD1896 /* 演示20038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20038.png"; sourceTree = "<group>"; };
+		897D77DD1A01278D00AD1896 /* 演示20039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20039.png"; sourceTree = "<group>"; };
+		897D77DE1A01278D00AD1896 /* 演示20040.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20040.png"; sourceTree = "<group>"; };
+		897D77DF1A01278D00AD1896 /* 演示20041.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20041.png"; sourceTree = "<group>"; };
+		897D77E01A01278D00AD1896 /* 演示20042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20042.png"; sourceTree = "<group>"; };
+		897D77E11A01278D00AD1896 /* 演示20043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20043.png"; sourceTree = "<group>"; };
+		897D77E21A01278D00AD1896 /* 演示20044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20044.png"; sourceTree = "<group>"; };
+		897D77E31A01278D00AD1896 /* 演示20045.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20045.png"; sourceTree = "<group>"; };
+		897D77E41A01278D00AD1896 /* 演示20046.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20046.png"; sourceTree = "<group>"; };
+		897D77E51A01278D00AD1896 /* 演示20047.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20047.png"; sourceTree = "<group>"; };
+		897D77E61A01278D00AD1896 /* 演示20048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20048.png"; sourceTree = "<group>"; };
+		897D77E71A01278D00AD1896 /* 演示20049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20049.png"; sourceTree = "<group>"; };
+		897D77E81A01278D00AD1896 /* 演示20050.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20050.png"; sourceTree = "<group>"; };
+		897D77E91A01278D00AD1896 /* 演示20051.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20051.png"; sourceTree = "<group>"; };
+		897D77EA1A01278D00AD1896 /* 演示20052.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20052.png"; sourceTree = "<group>"; };
+		897D77EB1A01278D00AD1896 /* 演示20053.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20053.png"; sourceTree = "<group>"; };
+		897D77EC1A01278D00AD1896 /* 演示20054.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20054.png"; sourceTree = "<group>"; };
+		897D77ED1A01278D00AD1896 /* 演示20055.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20055.png"; sourceTree = "<group>"; };
+		897D77EE1A01278D00AD1896 /* 演示20056.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20056.png"; sourceTree = "<group>"; };
+		897D77EF1A01278D00AD1896 /* 演示20057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20057.png"; sourceTree = "<group>"; };
+		897D77F01A01278D00AD1896 /* 演示20058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20058.png"; sourceTree = "<group>"; };
+		897D77F11A01278D00AD1896 /* 演示20059.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20059.png"; sourceTree = "<group>"; };
+		897D77F21A01278D00AD1896 /* 演示20060.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20060.png"; sourceTree = "<group>"; };
+		897D77F31A01278D00AD1896 /* 演示20061.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20061.png"; sourceTree = "<group>"; };
+		897D77F41A01278D00AD1896 /* 演示20062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20062.png"; sourceTree = "<group>"; };
+		897D77F51A01278D00AD1896 /* 演示20063.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20063.png"; sourceTree = "<group>"; };
+		897D77F61A01278D00AD1896 /* 演示20064.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20064.png"; sourceTree = "<group>"; };
+		897D77F71A01278D00AD1896 /* 演示20065.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20065.png"; sourceTree = "<group>"; };
+		897D77F81A01278D00AD1896 /* 演示20066.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20066.png"; sourceTree = "<group>"; };
+		897D77F91A01278D00AD1896 /* 演示20067.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20067.png"; sourceTree = "<group>"; };
+		897D77FA1A01278D00AD1896 /* 演示20068.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20068.png"; sourceTree = "<group>"; };
+		897D77FB1A01278D00AD1896 /* 演示20069.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20069.png"; sourceTree = "<group>"; };
+		897D77FC1A01278D00AD1896 /* 演示20070.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20070.png"; sourceTree = "<group>"; };
+		897D77FD1A01278D00AD1896 /* 演示20071.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20071.png"; sourceTree = "<group>"; };
+		897D77FE1A01278D00AD1896 /* 演示20072.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20072.png"; sourceTree = "<group>"; };
+		897D77FF1A01278D00AD1896 /* 演示20073.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20073.png"; sourceTree = "<group>"; };
+		897D78001A01278D00AD1896 /* 演示20074.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20074.png"; sourceTree = "<group>"; };
+		897D78011A01278D00AD1896 /* 演示20075.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20075.png"; sourceTree = "<group>"; };
+		897D78021A01278D00AD1896 /* 演示20076.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20076.png"; sourceTree = "<group>"; };
+		897D78031A01278D00AD1896 /* 演示20077.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20077.png"; sourceTree = "<group>"; };
+		897D78041A01278D00AD1896 /* 演示20078.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20078.png"; sourceTree = "<group>"; };
+		897D78051A01278D00AD1896 /* 演示20079.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20079.png"; sourceTree = "<group>"; };
 		8987A55219258DEA00DEE6AE /* MelodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyViewController.h; sourceTree = "<group>"; };
 		8987A55319258DEA00DEE6AE /* MelodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyViewController.m; sourceTree = "<group>"; };
 		8987A55519258E2200DEE6AE /* MelodyCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyCategoryViewController.h; sourceTree = "<group>"; };
@@ -1244,6 +1402,93 @@
 			path = songs;
 			sourceTree = "<group>";
 		};
+		897D77B61A01278D00AD1896 /* listlearn */ = {
+			isa = PBXGroup;
+			children = (
+				897D77B71A01278D00AD1896 /* 演示20001.png */,
+				897D77B81A01278D00AD1896 /* 演示20002.png */,
+				897D77B91A01278D00AD1896 /* 演示20003.png */,
+				897D77BA1A01278D00AD1896 /* 演示20004.png */,
+				897D77BB1A01278D00AD1896 /* 演示20005.png */,
+				897D77BC1A01278D00AD1896 /* 演示20006.png */,
+				897D77BD1A01278D00AD1896 /* 演示20007.png */,
+				897D77BE1A01278D00AD1896 /* 演示20008.png */,
+				897D77BF1A01278D00AD1896 /* 演示20009.png */,
+				897D77C01A01278D00AD1896 /* 演示20010.png */,
+				897D77C11A01278D00AD1896 /* 演示20011.png */,
+				897D77C21A01278D00AD1896 /* 演示20012.png */,
+				897D77C31A01278D00AD1896 /* 演示20013.png */,
+				897D77C41A01278D00AD1896 /* 演示20014.png */,
+				897D77C51A01278D00AD1896 /* 演示20015.png */,
+				897D77C61A01278D00AD1896 /* 演示20016.png */,
+				897D77C71A01278D00AD1896 /* 演示20017.png */,
+				897D77C81A01278D00AD1896 /* 演示20018.png */,
+				897D77C91A01278D00AD1896 /* 演示20019.png */,
+				897D77CA1A01278D00AD1896 /* 演示20020.png */,
+				897D77CB1A01278D00AD1896 /* 演示20021.png */,
+				897D77CC1A01278D00AD1896 /* 演示20022.png */,
+				897D77CD1A01278D00AD1896 /* 演示20023.png */,
+				897D77CE1A01278D00AD1896 /* 演示20024.png */,
+				897D77CF1A01278D00AD1896 /* 演示20025.png */,
+				897D77D01A01278D00AD1896 /* 演示20026.png */,
+				897D77D11A01278D00AD1896 /* 演示20027.png */,
+				897D77D21A01278D00AD1896 /* 演示20028.png */,
+				897D77D31A01278D00AD1896 /* 演示20029.png */,
+				897D77D41A01278D00AD1896 /* 演示20030.png */,
+				897D77D51A01278D00AD1896 /* 演示20031.png */,
+				897D77D61A01278D00AD1896 /* 演示20032.png */,
+				897D77D71A01278D00AD1896 /* 演示20033.png */,
+				897D77D81A01278D00AD1896 /* 演示20034.png */,
+				897D77D91A01278D00AD1896 /* 演示20035.png */,
+				897D77DA1A01278D00AD1896 /* 演示20036.png */,
+				897D77DB1A01278D00AD1896 /* 演示20037.png */,
+				897D77DC1A01278D00AD1896 /* 演示20038.png */,
+				897D77DD1A01278D00AD1896 /* 演示20039.png */,
+				897D77DE1A01278D00AD1896 /* 演示20040.png */,
+				897D77DF1A01278D00AD1896 /* 演示20041.png */,
+				897D77E01A01278D00AD1896 /* 演示20042.png */,
+				897D77E11A01278D00AD1896 /* 演示20043.png */,
+				897D77E21A01278D00AD1896 /* 演示20044.png */,
+				897D77E31A01278D00AD1896 /* 演示20045.png */,
+				897D77E41A01278D00AD1896 /* 演示20046.png */,
+				897D77E51A01278D00AD1896 /* 演示20047.png */,
+				897D77E61A01278D00AD1896 /* 演示20048.png */,
+				897D77E71A01278D00AD1896 /* 演示20049.png */,
+				897D77E81A01278D00AD1896 /* 演示20050.png */,
+				897D77E91A01278D00AD1896 /* 演示20051.png */,
+				897D77EA1A01278D00AD1896 /* 演示20052.png */,
+				897D77EB1A01278D00AD1896 /* 演示20053.png */,
+				897D77EC1A01278D00AD1896 /* 演示20054.png */,
+				897D77ED1A01278D00AD1896 /* 演示20055.png */,
+				897D77EE1A01278D00AD1896 /* 演示20056.png */,
+				897D77EF1A01278D00AD1896 /* 演示20057.png */,
+				897D77F01A01278D00AD1896 /* 演示20058.png */,
+				897D77F11A01278D00AD1896 /* 演示20059.png */,
+				897D77F21A01278D00AD1896 /* 演示20060.png */,
+				897D77F31A01278D00AD1896 /* 演示20061.png */,
+				897D77F41A01278D00AD1896 /* 演示20062.png */,
+				897D77F51A01278D00AD1896 /* 演示20063.png */,
+				897D77F61A01278D00AD1896 /* 演示20064.png */,
+				897D77F71A01278D00AD1896 /* 演示20065.png */,
+				897D77F81A01278D00AD1896 /* 演示20066.png */,
+				897D77F91A01278D00AD1896 /* 演示20067.png */,
+				897D77FA1A01278D00AD1896 /* 演示20068.png */,
+				897D77FB1A01278D00AD1896 /* 演示20069.png */,
+				897D77FC1A01278D00AD1896 /* 演示20070.png */,
+				897D77FD1A01278D00AD1896 /* 演示20071.png */,
+				897D77FE1A01278D00AD1896 /* 演示20072.png */,
+				897D77FF1A01278D00AD1896 /* 演示20073.png */,
+				897D78001A01278D00AD1896 /* 演示20074.png */,
+				897D78011A01278D00AD1896 /* 演示20075.png */,
+				897D78021A01278D00AD1896 /* 演示20076.png */,
+				897D78031A01278D00AD1896 /* 演示20077.png */,
+				897D78041A01278D00AD1896 /* 演示20078.png */,
+				897D78051A01278D00AD1896 /* 演示20079.png */,
+			);
+			name = listlearn;
+			path = PianoHelp/images/listlearn;
+			sourceTree = SOURCE_ROOT;
+		};
 		8989B0C2198B1CD4005222C2 /* melodyList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1344,6 +1589,7 @@
 			isa = PBXGroup;
 			children = (
 				89E261D519BF4C8100E04EA5 /* category */,
+				897D77B61A01278D00AD1896 /* listlearn */,
 				8989B129198B21B2005222C2 /* Login */,
 				8989B0C2198B1CD4005222C2 /* melodyList */,
 				89F66B20198884D900EF50E2 /* qinfang */,
@@ -1761,12 +2007,16 @@
 			files = (
 				890C39E41983445300206740 /* fenduan-01.png in Resources */,
 				89374319197F3D77007E63E5 /* shuzikuangjia@2x.png in Resources */,
+				897D78071A01278D00AD1896 /* 演示20002.png in Resources */,
 				B135CFC319B196A200EA8BF7 /* querenzhuce.png in Resources */,
 				89FAE3721989C714000B4F7F /* qumuxuanzhong@2x.png in Resources */,
 				89F66B3B198884EE00EF50E2 /* renwufenye.png in Resources */,
+				897D780B1A01278D00AD1896 /* 演示20006.png in Resources */,
 				893CEFE1193A37630097681C /* fenxiang2.png in Resources */,
+				897D78101A01278D00AD1896 /* 演示20011.png in Resources */,
 				890C39E11983445300206740 /* shiting-01.png in Resources */,
 				8989B13C198B21B2005222C2 /* xiaoxi1.png in Resources */,
+				897D78131A01278D00AD1896 /* 演示20014.png in Resources */,
 				893CEFE3193A37630097681C /* huigu2.png in Resources */,
 				895DB5B419C5D92400E02DE4 /* Default-Landscape~ipad.png in Resources */,
 				89582DB215D4A91A008DEB3C /* gentanmoshixuanzhong.png in Resources */,
@@ -1788,6 +2038,7 @@
 				8989B109198B2032005222C2 /* renwu2.png in Resources */,
 				8989B136198B21B2005222C2 /* bangdingxuliehao2@2x.png in Resources */,
 				8989B137198B21B2005222C2 /* bangdingxuliehao@2x.png in Resources */,
+				897D78421A01278D00AD1896 /* 演示20061.png in Resources */,
 				8994D15F194BCEDA0016F806 /* 15.599-058.mid in Resources */,
 				89374329197F4116007E63E5 /* shuzi3-01@2x.png in Resources */,
 				89429BC71566D8A70003A7D4 /* confirmKuang.png in Resources */,
@@ -1795,13 +2046,16 @@
 				89582DB415D4A91A008DEB3C /* shipumoshi.png in Resources */,
 				893742E4197F3D1B007E63E5 /* jingyin@2x.png in Resources */,
 				8989B122198B2032005222C2 /* xiaoxi@2x.png in Resources */,
+				897D78491A01278D00AD1896 /* 演示20068.png in Resources */,
 				89429BD51566D8A70003A7D4 /* loading xiao.png in Resources */,
+				897D78301A01278D00AD1896 /* 演示20043.png in Resources */,
 				890C39E51983445300206740 /* fenduan-01@2x.png in Resources */,
 				BA1079AA1967FE4C0056F626 /* perfect.png in Resources */,
 				89F704E019A5A2680035621C /* xiaifenye_selected@2x.png in Resources */,
 				BA1079A51967FE4C0056F626 /* pedal.png in Resources */,
 				89F704CF19A5851E0035621C /* zhanghao.png in Resources */,
 				89F704B519A5851E0035621C /* dengru.png in Resources */,
+				897D78381A01278D00AD1896 /* 演示20051.png in Resources */,
 				890803CC19C3366600265DC3 /* image_resh.png in Resources */,
 				890C39E21983445300206740 /* peilianyin-01@2x.png in Resources */,
 				8989B10E198B2032005222C2 /* shuji@2x.png in Resources */,
@@ -1812,21 +2066,30 @@
 				BA1079AD1967FE4C0056F626 /* bass.png in Resources */,
 				893742EC197F3D1B007E63E5 /* xuanzhong@2x.png in Resources */,
 				89F704B619A5851E0035621C /* dengru@2x.png in Resources */,
+				897D78351A01278D00AD1896 /* 演示20048.png in Resources */,
 				89F704C519A5851E0035621C /* nvhai.png in Resources */,
 				89F66B5F19888E6D00EF50E2 /* shangcheng@2x.png in Resources */,
+				897D78471A01278D00AD1896 /* 演示20066.png in Resources */,
+				897D783A1A01278D00AD1896 /* 演示20053.png in Resources */,
 				89F66B6519888E6D00EF50E2 /* zhanting.png in Resources */,
+				897D78181A01278D00AD1896 /* 演示20019.png in Resources */,
 				8994D152194BCEDA0016F806 /* 02.849-03.mid in Resources */,
 				B135CFC119B196A200EA8BF7 /* fanhui@2x.png in Resources */,
+				897D78211A01278D00AD1896 /* 演示20028.png in Resources */,
+				897D781B1A01278D00AD1896 /* 演示20022.png in Resources */,
 				890C39DD1983445300206740 /* zuoyoushou-01.png in Resources */,
 				89F704B419A5851E0035621C /* dalianjiayin@2x.png in Resources */,
 				8937432A197F4116007E63E5 /* shuzi4-01.png in Resources */,
 				89F704B319A5851E0035621C /* dalianjiayin.png in Resources */,
 				893742F2197F3D1B007E63E5 /* zuoshou@2x.png in Resources */,
+				897D781E1A01278D00AD1896 /* 演示20025.png in Resources */,
 				89F704C019A5851E0035621C /* login_bg@2x.png in Resources */,
 				BA1079A21967FE4C0056F626 /* niboyin.png in Resources */,
 				89F66B43198884EE00EF50E2 /* xiaifenye.png in Resources */,
+				897D78391A01278D00AD1896 /* 演示20052.png in Resources */,
 				19313851196AF01C00235F63 /* 09.塔兰泰拉舞曲.mid in Resources */,
 				8989B11E198B2032005222C2 /* xiai@2x.png in Resources */,
+				897D782A1A01278D00AD1896 /* 演示20037.png in Resources */,
 				89F5D18719ABFD74005D5D10 /* zidongdengru_selected.png in Resources */,
 				890C39DC1983445300206740 /* zuoyuoshou-01@2x.png in Resources */,
 				8964EBF1194539CC00DBCED9 /* Easy_Songs__Jingle_Bells.mid in Resources */,
@@ -1845,15 +2108,23 @@
 				8989B134198B21B2005222C2 /* bangdingxuliehao.png in Resources */,
 				89F704D219A5851E0035621C /* zhuceditu@2x.png in Resources */,
 				89F66B6019888E6D00EF50E2 /* shangcheng.png in Resources */,
+				897D78111A01278D00AD1896 /* 演示20012.png in Resources */,
 				89AA9ED319ECFD3B0017BADA /* btnClose_1.png in Resources */,
 				890EF8DF19C7240900D31980 /* Localizable.strings in Resources */,
+				897D781C1A01278D00AD1896 /* 演示20023.png in Resources */,
 				8964EBED194539CC00DBCED9 /* aqrsy.mid in Resources */,
+				897D783F1A01278D00AD1896 /* 演示20058.png in Resources */,
 				890803CF19C3366600265DC3 /* image_resh@2x.png in Resources */,
+				897D783E1A01278D00AD1896 /* 演示20057.png in Resources */,
 				890C39DF1983445300206740 /* tishi-01.png in Resources */,
 				890093CA19510603001F33F4 /* shopBg.jpg in Resources */,
 				BA1079AC1967FE4C0056F626 /* wrong.png in Resources */,
 				8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */,
+				897D78361A01278D00AD1896 /* 演示20049.png in Resources */,
 				8994D155194BCEDA0016F806 /* 05.森林波尔卡.mid in Resources */,
+				897D781D1A01278D00AD1896 /* 演示20024.png in Resources */,
+				897D78061A01278D00AD1896 /* 演示20001.png in Resources */,
+				897D78251A01278D00AD1896 /* 演示20032.png in Resources */,
 				89AA9ED619ECFD3B0017BADA /* bg_learn@2x.png in Resources */,
 				890C39B519833B4E00206740 /* tiaosu-01@2x.png in Resources */,
 				89F66B5E19888E6D00EF50E2 /* qinfang@2x.png in Resources */,
@@ -1861,6 +2132,9 @@
 				893CEFE8193A37630097681C /* kongjian2.png in Resources */,
 				893742E3197F3D1B007E63E5 /* jingyin.png in Resources */,
 				89AA9ED119ECFD3B0017BADA /* btnOK_1.png in Resources */,
+				897D782F1A01278D00AD1896 /* 演示20042.png in Resources */,
+				897D781F1A01278D00AD1896 /* 演示20026.png in Resources */,
+				897D784D1A01278D00AD1896 /* 演示20072.png in Resources */,
 				890EF8E019C7243F00D31980 /* InfoPlist.strings in Resources */,
 				8994D15D194BCEDA0016F806 /* 13.599-054.mid in Resources */,
 				BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */,
@@ -1885,6 +2159,7 @@
 				89F704BD19A5851E0035621C /* jizhumima.png in Resources */,
 				89F704BA19A5851E0035621C /* gangqinpeilianbao@2x.png in Resources */,
 				89582DB015D4A91A008DEB3C /* gentanmoshi.png in Resources */,
+				897D78261A01278D00AD1896 /* 演示20033.png in Resources */,
 				89E261DD19BF4C8100E04EA5 /* qinggengxin@2x.png in Resources */,
 				8964EBE6194539CC00DBCED9 /* 00111111.mid in Resources */,
 				893742EB197F3D1B007E63E5 /* xuanzhong.png in Resources */,
@@ -1900,17 +2175,21 @@
 				893CEFD9193A37630097681C /* baocunluyin2.png in Resources */,
 				89374316197F3D77007E63E5 /* shuzikuang.png in Resources */,
 				8989B128198B2032005222C2 /* yigoumai2@2x.png in Resources */,
+				897D784B1A01278D00AD1896 /* 演示20070.png in Resources */,
 				8937430C197F3D77007E63E5 /* queren_01.png in Resources */,
 				8994D153194BCEDA0016F806 /* 03.淘气包.mid in Resources */,
 				8989B111198B2032005222C2 /* shujia.png in Resources */,
+				897D78511A01278D00AD1896 /* 演示20076.png in Resources */,
 				8989B13B198B21B2005222C2 /* tuichu@2x.png in Resources */,
 				8989B112198B2032005222C2 /* shujia@2x.png in Resources */,
 				89963A2919C6FD7E00D2D684 /* Icon-76@2x.png in Resources */,
+				897D78241A01278D00AD1896 /* 演示20031.png in Resources */,
 				BA1079B31967FE4C0056F626 /* treble.png in Resources */,
 				89F66B39198884EE00EF50E2 /* quanbufenye.png in Resources */,
 				893742ED197F3D1B007E63E5 /* yinliang.png in Resources */,
 				89F704BB19A5851E0035621C /* gou.png in Resources */,
 				89E261E019BF4C8100E04EA5 /* yigoumai.png in Resources */,
+				897D78161A01278D00AD1896 /* 演示20017.png in Resources */,
 				893CEFE7193A37630097681C /* kongjian1.png in Resources */,
 				89F66B3C198884EE00EF50E2 /* renwufenye@2x.png in Resources */,
 				8998E2EE193829A900A7CF12 /* wangguan.png in Resources */,
@@ -1928,15 +2207,20 @@
 				89963A2819C6FD7E00D2D684 /* Icon-76.png in Resources */,
 				891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */,
 				8989B11B198B2032005222C2 /* wenbenxinxi.png in Resources */,
+				897D78081A01278D00AD1896 /* 演示20003.png in Resources */,
 				8994D13C194BC4330016F806 /* 01.波尔卡.mid in Resources */,
 				891290DF195904BA00B9B5B5 /* zunashi.png in Resources */,
+				897D782D1A01278D00AD1896 /* 演示20040.png in Resources */,
 				8989B135198B21B2005222C2 /* bangdingxuliehao2.png in Resources */,
+				897D784F1A01278D00AD1896 /* 演示20074.png in Resources */,
 				89F66B6D1988953200EF50E2 /* weixuantanzou.png in Resources */,
 				89F704D319A5851E0035621C /* zidongdengru.png in Resources */,
 				89AA9ED219ECFD3B0017BADA /* btnOK_1@2x.png in Resources */,
+				897D780D1A01278D00AD1896 /* 演示20008.png in Resources */,
 				8994D162194BCEDA0016F806 /* 18.水边的阿第丽娜.mid in Resources */,
 				89374325197F4116007E63E5 /* shizi1-01@2x.png in Resources */,
 				89F704BC19A5851E0035621C /* gou@2x.png in Resources */,
+				897D78201A01278D00AD1896 /* 演示20027.png in Resources */,
 				89F66B5B19888E6D00EF50E2 /* puku.png in Resources */,
 				BA1079AB1967FE4C0056F626 /* right.png in Resources */,
 				89F704B719A5851E0035621C /* dengrukuang.png in Resources */,
@@ -1944,30 +2228,39 @@
 				8907100C19219EC000BB9E2F /* Images.xcassets in Resources */,
 				8994D163194BCEDA0016F806 /* 19.献给爱丽丝.mid in Resources */,
 				89582DB115D4A91A008DEB3C /* gentanmoshi@2x.png in Resources */,
+				897D78411A01278D00AD1896 /* 演示20060.png in Resources */,
 				893CEFDB193A37630097681C /* cuofu,jiesuanzhong.png in Resources */,
 				890C39B619833B4E00206740 /* tiaosu-01.png in Resources */,
 				890C39C019833BF300206740 /* biansu-01.png in Resources */,
 				890C39CA1983436200206740 /* jiasukuang-01@2x.png in Resources */,
+				897D783C1A01278D00AD1896 /* 演示20055.png in Resources */,
 				893CEFE5193A37630097681C /* jiucuo2.png in Resources */,
 				8937430B197F3D77007E63E5 /* quanbushanchu@2x.png in Resources */,
+				897D78341A01278D00AD1896 /* 演示20047.png in Resources */,
 				893742F0197F3D1B007E63E5 /* youshou@2x.png in Resources */,
 				89374328197F4116007E63E5 /* shuzi3-01.png in Resources */,
 				890803CD19C3366600265DC3 /* image_resh2.png in Resources */,
 				8937431B197F3D77007E63E5 /* xuanzhonganniu@2x.png in Resources */,
 				B135CFC219B196A200EA8BF7 /* fanhui.png in Resources */,
 				8989B120198B2032005222C2 /* xiai2@2x.png in Resources */,
+				897D782C1A01278D00AD1896 /* 演示20039.png in Resources */,
+				897D784C1A01278D00AD1896 /* 演示20071.png in Resources */,
 				89AA9ED519ECFD3B0017BADA /* bg_learn.png in Resources */,
 				893742F1197F3D1B007E63E5 /* zuoshou.png in Resources */,
 				89374309197F3D77007E63E5 /* huishan@2x.png in Resources */,
+				897D780A1A01278D00AD1896 /* 演示20005.png in Resources */,
 				8989B139198B21B2005222C2 /* tuichu2.png in Resources */,
 				BA1079AF1967FE4C0056F626 /* four.png in Resources */,
 				89E261E119BF4C8100E04EA5 /* yigoumai@2x.png in Resources */,
 				893CEFEE193A37630097681C /* quxiao.png in Resources */,
 				89374326197F4116007E63E5 /* shuzi2-01.png in Resources */,
 				8989B104198B2032005222C2 /* kaojiqupu@2x.png in Resources */,
+				897D781A1A01278D00AD1896 /* 演示20021.png in Resources */,
 				890C39CD1983436200206740 /* xiaojietiaozhuankuang-01.png in Resources */,
 				8994D154194BCEDA0016F806 /* 04.听妈妈讲那过去的故事.mid in Resources */,
 				89374317197F3D77007E63E5 /* shuzikuang@2x.png in Resources */,
+				897D78311A01278D00AD1896 /* 演示20044.png in Resources */,
+				897D780E1A01278D00AD1896 /* 演示20009.png in Resources */,
 				BA1079A91967FE4C0056F626 /* pedal-start.png in Resources */,
 				89E814AD193AD6AB003CD7B9 /* peilianyinerjikuang.png in Resources */,
 				89429BD61566D8A70003A7D4 /* loading.png in Resources */,
@@ -1980,9 +2273,12 @@
 				89582DB615D4A91A008DEB3C /* shipumoshixuanzhong.png in Resources */,
 				89F704C219A5851E0035621C /* mima@2x.png in Resources */,
 				89582DB515D4A91A008DEB3C /* shipumoshi@2x.png in Resources */,
+				897D782B1A01278D00AD1896 /* 演示20038.png in Resources */,
 				89374308197F3D77007E63E5 /* huishan.png in Resources */,
 				890C39CC1983436200206740 /* xiaojietiaozhuankuang-01@2x.png in Resources */,
+				897D78291A01278D00AD1896 /* 演示20036.png in Resources */,
 				89F704C419A5851E0035621C /* nansheng@2x.png in Resources */,
+				897D78431A01278D00AD1896 /* 演示20062.png in Resources */,
 				89F704D419A5851E0035621C /* zidongdengru@2x.png in Resources */,
 				BA1079A41967FE4C0056F626 /* payin.png in Resources */,
 				89F66B3A198884EE00EF50E2 /* quanbufenye@2x.png in Resources */,
@@ -1991,21 +2287,31 @@
 				89F704BF19A5851E0035621C /* login_bg.png in Resources */,
 				893CEFE2193A37630097681C /* huigu1.png in Resources */,
 				8989B11D198B2032005222C2 /* xiai.png in Resources */,
+				897D78401A01278D00AD1896 /* 演示20059.png in Resources */,
 				890C39CE1983436200206740 /* tuichu-01@2x.png in Resources */,
 				89F66B6E1988953200EF50E2 /* weixuantanzou@2x.png in Resources */,
 				893742E9197F3D1B007E63E5 /* xuanzequan.png in Resources */,
 				8989B10D198B2032005222C2 /* shuji.png in Resources */,
+				897D78141A01278D00AD1896 /* 演示20015.png in Resources */,
+				897D78461A01278D00AD1896 /* 演示20065.png in Resources */,
+				897D783D1A01278D00AD1896 /* 演示20056.png in Resources */,
+				897D78221A01278D00AD1896 /* 演示20029.png in Resources */,
 				890803CE19C3366600265DC3 /* image_resh2@2x.png in Resources */,
 				89F5D18C19ABFE2C005D5D10 /* jizhumima_selected.png in Resources */,
 				8989B10B198B2032005222C2 /* shifanqupu.png in Resources */,
 				890C39BF19833BF300206740 /* biansu-01@2x.png in Resources */,
+				897D78231A01278D00AD1896 /* 演示20030.png in Resources */,
 				89A3D67D19C4133500FDC779 /* dataSource.plist in Resources */,
+				897D78321A01278D00AD1896 /* 演示20045.png in Resources */,
 				8989B119198B2032005222C2 /* weigouami@2x.png in Resources */,
 				BA1079B01967FE4C0056F626 /* nine.png in Resources */,
+				897D78271A01278D00AD1896 /* 演示20034.png in Resources */,
+				897D782E1A01278D00AD1896 /* 演示20041.png in Resources */,
 				8994D15B194BCEDA0016F806 /* 11.星光圆舞曲.mid in Resources */,
 				891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */,
 				BA1079B51967FE4C0056F626 /* two.png in Resources */,
 				8989B10A198B2032005222C2 /* renwu2@2x.png in Resources */,
+				897D784A1A01278D00AD1896 /* 演示20069.png in Resources */,
 				89F5FB6319527DE900011C3A /* shopItem.png in Resources */,
 				89429BF41566D8A70003A7D4 /* yinguan.png in Resources */,
 				19313850196AF01C00235F63 /* 08.儿童舞.mid in Resources */,
@@ -2013,10 +2319,13 @@
 				BA1079A61967FE4C0056F626 /* shunboyin.png in Resources */,
 				89582DB715D4A91A008DEB3C /* shipumoshixuanzhong@2x.png in Resources */,
 				89E261DF19BF4C8100E04EA5 /* weigoumai@2x.png in Resources */,
+				897D784E1A01278D00AD1896 /* 演示20073.png in Resources */,
 				89F66B44198884EE00EF50E2 /* xiaifenye@2x.png in Resources */,
 				893CEFD8193A37630097681C /* baocunluyin1.png in Resources */,
+				897D783B1A01278D00AD1896 /* 演示20054.png in Resources */,
 				89F704C319A5851E0035621C /* nansheng.png in Resources */,
 				89374318197F3D77007E63E5 /* shuzikuangjia.png in Resources */,
+				897D78521A01278D00AD1896 /* 演示20077.png in Resources */,
 				890093CB19510603001F33F4 /* spaceBg.jpg in Resources */,
 				8994D15E194BCEDA0016F806 /* 14.布列舞曲.mid in Resources */,
 				890C39E01983445300206740 /* shiting-01@2x.png in Resources */,
@@ -2028,13 +2337,20 @@
 				8994D15C194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid in Resources */,
 				89F66B6C1988953200EF50E2 /* tanzou@2x.png in Resources */,
 				8937430A197F3D77007E63E5 /* quanbushanchu.png in Resources */,
+				897D78121A01278D00AD1896 /* 演示20013.png in Resources */,
 				89F704D119A5851E0035621C /* zhuceditu.png in Resources */,
+				897D78191A01278D00AD1896 /* 演示20020.png in Resources */,
 				89F66B5919888E6D00EF50E2 /* gengduo.png in Resources */,
+				897D78501A01278D00AD1896 /* 演示20075.png in Resources */,
 				89F704DD19A5A2680035621C /* renwufenye_selected.png in Resources */,
 				890EF8DD19C7240900D31980 /* IEEE 754.html in Resources */,
+				897D78281A01278D00AD1896 /* 演示20035.png in Resources */,
 				89F704C819A5851E0035621C /* touxiang@2x.png in Resources */,
+				897D78331A01278D00AD1896 /* 演示20046.png in Resources */,
 				8989B10C198B2032005222C2 /* shifanqupu@2x.png in Resources */,
+				897D78451A01278D00AD1896 /* 演示20064.png in Resources */,
 				8964EBEE194539CC00DBCED9 /* Croatian Rhapsody.mid in Resources */,
+				897D780C1A01278D00AD1896 /* 演示20007.png in Resources */,
 				8937430D197F3D77007E63E5 /* queren_01@2x.png in Resources */,
 				8989B121198B2032005222C2 /* xiaoxi.png in Resources */,
 				89F704BE19A5851E0035621C /* jizhumima@2x.png in Resources */,
@@ -2042,17 +2358,26 @@
 				89F66B37198884EE00EF50E2 /* fenyedakuang.png in Resources */,
 				8994D15A194BCEDA0016F806 /* 10.诙谐曲.mid in Resources */,
 				89F704C719A5851E0035621C /* touxiang.png in Resources */,
+				897D780F1A01278D00AD1896 /* 演示20010.png in Resources */,
 				893CEFE0193A37630097681C /* fenxiang1.png in Resources */,
 				89A3D67B19C3EE8000FDC779 /* temp.zip in Resources */,
+				897D78091A01278D00AD1896 /* 演示20004.png in Resources */,
 				8994D156194BCEDA0016F806 /* 06.拜尔-100.mid in Resources */,
 				893742EF197F3D1B007E63E5 /* youshou.png in Resources */,
 				8989B117198B2032005222C2 /* weigouami.png in Resources */,
+				897D78171A01278D00AD1896 /* 演示20018.png in Resources */,
 				8937432B197F4116007E63E5 /* shuzi4-01@2x.png in Resources */,
+				897D78441A01278D00AD1896 /* 演示20063.png in Resources */,
 				8964EBF2194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid in Resources */,
+				897D78371A01278D00AD1896 /* 演示20050.png in Resources */,
+				897D78481A01278D00AD1896 /* 演示20067.png in Resources */,
 				89F704D019A5851E0035621C /* zhanghao@2x.png in Resources */,
 				89F66B6219888E6D00EF50E2 /* sousuolan@2x.png in Resources */,
 				89F704C919A5851E0035621C /* weixuan.png in Resources */,
+				897D78151A01278D00AD1896 /* 演示20016.png in Resources */,
+				897D78531A01278D00AD1896 /* 演示20078.png in Resources */,
 				893CEFE4193A37630097681C /* jiucuo1.png in Resources */,
+				897D78541A01278D00AD1896 /* 演示20079.png in Resources */,
 				BA1E31551978167F00CFAB93 /* 识谱模式C大调.mid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

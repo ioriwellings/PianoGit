@@ -14,7 +14,10 @@ extern NSString *ScopeAuthor;
 extern NSString *ScopeSongName;
 
 @interface MelodyViewController ()
-
+{
+    UIImageView *animateImageView;
+    UITapGestureRecognizer *tapRecognizer;
+}
 @end
 
 @implementation MelodyViewController
@@ -55,6 +58,31 @@ extern NSString *ScopeSongName;
     
     [self.searchDisplayController searchResultsTableView].rowHeight = 64;
     self.searchDisplayController.searchBar.scopeButtonTitles = scopeButtonTitles;
+    
+    
+    NSString *strImagePath = @"演示200%02d.png";
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:80];
+    for (int i =1; i<80; i++)
+    {
+        NSString *temp = [NSString stringWithFormat:strImagePath, i];
+        [array addObject:[UIImage imageNamed:temp]];
+    }
+    UIImageView *uiimageview = [[UIImageView alloc] initWithImage:[UIImage animatedImageWithImages:array duration:2]];
+    uiimageview.frame = CGRectMake(0, 20, 1024, 768);
+    [self.tableView addSubview:uiimageview];
+    animateImageView = uiimageview;
+    
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.tableView addGestureRecognizer:tapRecognizer];
+}
+
+-(void)handleSingleTap:(UITapGestureRecognizer*)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        [animateImageView removeFromSuperview];
+        [self.tableView removeGestureRecognizer:tapRecognizer];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
