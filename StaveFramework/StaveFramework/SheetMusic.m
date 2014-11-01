@@ -2402,7 +2402,7 @@ static BOOL isBlank(id x) {
             y_shade += [staff height];
         }
         
-        int ret = [staff calcShadeNotes:currentPulseTime withPrev:prevPulseTime andX:&x_shade];
+        int ret = [staff calcShadeNotes:currentPulseTime withPrev:prevPulseTime andX:&x_shade andKeyboard:nil];
 
         
         //        trans = [NSAffineTransform transform];
