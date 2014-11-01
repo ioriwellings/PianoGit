@@ -278,6 +278,14 @@
     [self.btnPlay setSelected:true];
     [self.btnHint setSelected:false];
     
+    if (isEnd) {
+        isEnd = FALSE;
+        [player clearJudgedData];
+        [sheetmusic clearStaffs];
+        [sheetmusic setNeedsDisplay];
+        [sheetmsic1 setNeedsDisplay];
+    }
+    
     [player listen];
     [self btnStateCtlInPlay:1];
     scrollView.hidden = YES;
