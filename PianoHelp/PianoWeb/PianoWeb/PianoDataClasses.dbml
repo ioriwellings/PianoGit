@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="pianoWeb" Class="PianoDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=IORI2008;Initial Catalog=pianoWeb;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="pianoWebConnectionString1" Provider="System.Data.SqlClient" />
+<Database Name="qds0270282_db" Class="PianoDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=qds-027.hichina.com;Initial Catalog=qds0270282_db;Persist Security Info=True;User ID=qds0270282" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="pianoWebConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Adornment" Member="Adornment">
     <Type Name="Adornment">
       <Column Name="ID" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -17,15 +17,6 @@
       <Association Name="Adornment_House4" Member="House4" ThisKey="ID" OtherKey="sofaID" Type="House" />
     </Type>
   </Table>
-  <Table Name="dbo.UsersAdornment" Member="UsersAdornment">
-    <Type Name="UsersAdornment">
-      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="adornmentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
-      <Association Name="Adornment_UsersAdornment" Member="Adornment" ThisKey="adornmentID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
-      <Association Name="Users_UsersAdornment" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.AlbumUpdate" Member="AlbumUpdate">
     <Type Name="AlbumUpdate">
       <Column Name="ID" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier" IsDbGenerated="true" CanBeNull="true" />
@@ -38,37 +29,11 @@
       <Association Name="Users_AlbumUpdate" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Attention" Member="Attention">
-    <Type Name="Attention">
-      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="attentionUser" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
-      <Association Name="Users_Attention" Member="Users" ThisKey="attentionUser" OtherKey="userName" Type="Users" IsForeignKey="true" />
-      <Association Name="Users_Attention1" Member="Users1" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Config" Member="Config">
     <Type Name="Config">
       <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="memo" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="turnOn" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.House" Member="House">
-    <Type Name="House">
-      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="pianoID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="sofaID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="frescoID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="floorID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="pendantLampID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
-      <Association Name="Adornment_House" Member="Adornment" ThisKey="floorID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
-      <Association Name="Adornment_House1" Member="Adornment1" ThisKey="frescoID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
-      <Association Name="Adornment_House2" Member="Adornment2" ThisKey="pendantLampID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
-      <Association Name="Adornment_House3" Member="Adornment3" ThisKey="pianoID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
-      <Association Name="Adornment_House4" Member="Adornment4" ThisKey="sofaID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
-      <Association Name="Users_House" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.Opus" Member="Opus">
@@ -83,16 +48,6 @@
       <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
       <Association Name="Opus_OpusComment" Member="OpusComment" ThisKey="ID" OtherKey="opusID" Type="OpusComment" />
       <Association Name="Users_Opus" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" DeleteRule="CASCADE" />
-    </Type>
-  </Table>
-  <Table Name="dbo.OpusComment" Member="OpusComment">
-    <Type Name="OpusComment">
-      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="opusID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="comment" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
-      <Association Name="Opus_OpusComment" Member="Opus" ThisKey="opusID" OtherKey="ID" Type="Opus" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="Users_OpusComment" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -112,13 +67,60 @@
       <Column Name="tencentWeiBo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="dModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
-      <Association Name="Users_UsersAdornment" Member="UsersAdornment" ThisKey="userName" OtherKey="userName" Type="UsersAdornment" />
       <Association Name="Users_AlbumUpdate" Member="AlbumUpdate" ThisKey="userName" OtherKey="userName" Type="AlbumUpdate" />
-      <Association Name="Users_Attention" Member="Attention" ThisKey="userName" OtherKey="attentionUser" Type="Attention" />
-      <Association Name="Users_Attention1" Member="Attention1" ThisKey="userName" OtherKey="userName" Type="Attention" />
-      <Association Name="Users_House" Member="House" ThisKey="userName" OtherKey="userName" Type="House" />
       <Association Name="Users_Opus" Member="Opus" ThisKey="userName" OtherKey="userName" Type="Opus" />
       <Association Name="Users_OpusComment" Member="OpusComment" ThisKey="userName" OtherKey="userName" Type="OpusComment" />
+      <Association Name="Users_UsersAdornment" Member="UsersAdornment" ThisKey="userName" OtherKey="userName" Type="UsersAdornment" />
+      <Association Name="Users_House" Member="House" ThisKey="userName" OtherKey="userName" Type="House" />
+      <Association Name="Users_Attention" Member="Attention" ThisKey="userName" OtherKey="attentionUser" Type="Attention" />
+      <Association Name="Users_Attention1" Member="Attention1" ThisKey="userName" OtherKey="userName" Type="Attention" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OpusComment" Member="OpusComment">
+    <Type Name="OpusComment">
+      <Column Name="commentID" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="opusID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="dCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Opus_OpusComment" Member="Opus" ThisKey="opusID" OtherKey="ID" Type="Opus" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Users_OpusComment" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsersAdornment" Member="UsersAdornment">
+    <Type Name="UsersAdornment">
+      <Column Name="userName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="adornmentID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
+      <Association Name="Adornment_UsersAdornment" Member="Adornment" ThisKey="adornmentID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
+      <Association Name="Users_UsersAdornment" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.House" Member="House">
+    <Type Name="House">
+      <Column Name="house_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pianoID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="sofaID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="frescoID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="floorID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="pendantLampID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
+      <Association Name="Adornment_House" Member="Adornment" ThisKey="floorID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
+      <Association Name="Adornment_House1" Member="Adornment1" ThisKey="frescoID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
+      <Association Name="Adornment_House2" Member="Adornment2" ThisKey="pendantLampID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
+      <Association Name="Adornment_House3" Member="Adornment3" ThisKey="pianoID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
+      <Association Name="Adornment_House4" Member="Adornment4" ThisKey="sofaID" OtherKey="ID" Type="Adornment" IsForeignKey="true" />
+      <Association Name="Users_House" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attention" Member="Attention">
+    <Type Name="Attention">
+      <Column Name="userName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="attentionUser" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Users_Attention" Member="Users" ThisKey="attentionUser" OtherKey="userName" Type="Users" IsForeignKey="true" />
+      <Association Name="Users_Attention1" Member="Users1" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

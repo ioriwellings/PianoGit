@@ -3,3 +3,17 @@ d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\bin\PianoWeb.pdb
 d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\obj\Debug\ResolveAssemblyReference.cache
 d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
 d:\My Documents\Visual Studio 2008\Projects\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb
+C:\Users\zhengyw\Desktop\PianoWeb\PianoWeb\bin\PianoWeb.dll
+C:\Users\zhengyw\Desktop\PianoWeb\PianoWeb\bin\PianoWeb.pdb
+C:\Users\zhengyw\Desktop\PianoWeb\PianoWeb\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhengyw\Desktop\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
+C:\Users\zhengyw\Desktop\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb
+D:\PianoWeb\PianoWeb\bin\PianoWeb.dll
+D:\PianoWeb\PianoWeb\bin\PianoWeb.pdb
+D:\PianoWeb\PianoWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
+D:\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb
+C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\bin\PianoWeb.dll
+C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\bin\PianoWeb.pdb
+C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
+C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb
