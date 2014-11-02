@@ -380,7 +380,7 @@ ul,li
 	height: 50px;
 	background-color: #EDF2F6;
 	line-height: 50px;
-	width: 512px;
+	width: 312px;
 	color: #333333;
 	position: relative;
 	text-align: right;
@@ -389,7 +389,7 @@ ul,li
 	border-bottom-color: #333333;
 	right: 0px;
 	top: 0px;
-	float: right;
+	float: left;
 }
 .list2y .txt a{
 	color: #FFFFFF;
@@ -457,7 +457,7 @@ ul,li
 	border-bottom-width: 0px;
 	border-left-width: 0px;
 	width: 60px;
-	float: right;
+	float: left;
 	vertical-align: middle;
 	margin-right: 10px;
 	padding-top: 15px;
