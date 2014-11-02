@@ -49,7 +49,17 @@
 
 -(void)loadDefaultPage
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/work.aspx?username=%@", HTTPSERVERSADDRESS, [UserInfo sharedUserInfo].userName]]];
+    NSString * userName = [UserInfo sharedUserInfo].userName;
+
+    NSURLRequest *request = nil;
+    
+    if ([userName isEqualToString:@"guest"]) {
+        request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/guestForm.aspx?username=%@", HTTPSERVERSADDRESS, [UserInfo sharedUserInfo].userName]]];
+    } else {
+        request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/Room.aspx?username=%@", HTTPSERVERSADDRESS, [UserInfo sharedUserInfo].userName]]];
+    }
+    
+
     [self.webView loadRequest:request];
     //    [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",
     //                                                                                  [[NSBundle mainBundle] pathForResource:@"IEEE 754" ofType:@"html"]
