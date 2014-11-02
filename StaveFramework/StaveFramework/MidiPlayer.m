@@ -136,7 +136,11 @@
     /* If we're paused, and using the same midi file, redraw the
      * highlighted notes.
      */
-    isLine = [midiHandler setupMIDI];
+    if (!isLine)
+    {
+        isLine = [midiHandler setupMIDI];
+    }
+    
 //    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
