@@ -29,7 +29,8 @@
     return self;
 }
 
--(id)initWithOptions:(MidiOptions*)options {
+-(id)initWithOptions:(MidiOptions*)options
+{
     int i;
     pianoData = [Array new:100];
     notes = [Array new:100];
@@ -38,20 +39,28 @@
     judgedResult = [IntArray new:4];
     (void)gettimeofday(&beginTime, NULL);
     
-    for (i=0; i<4; i++) {
+    for (i=0; i<4; i++)
+    {
         [judgedResult add:0];
     }
     
     type = 0;
-    if (options->numtracks != 1) {
+    int trackCount = [options->tracks count];
+    NSLog(@"=====numtracks:%d", trackCount);
+    if (trackCount != 1)
+    {
         int rState = [options->mute get:0];
+        
         int lState = [options->mute get:1];
         
         //右手是第1音轨，左手是第2音轨
         //右手模式，右手静音；左手模式，左手静音
-        if (rState == -1 && lState == 0) { //右手模式
+        if (rState == -1 && lState == 0)
+        { //右手模式
             type = 1;
-        } else if (rState == 0 && lState == -1) { //左手模式
+        }
+        else if (rState == 0 && lState == -1)
+        { //左手模式
             type = 2;
         }
     }
