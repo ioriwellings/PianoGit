@@ -417,7 +417,6 @@
 		B135CFC419B196A200EA8BF7 /* querenzhuce@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B135CFC019B196A200EA8BF7 /* querenzhuce@2x.png */; };
 		B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1919557631008DBEC7 /* HandPopViewController.m */; };
 		B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1E19557653008DBEC7 /* SoundPopViewController.m */; };
-		B16604CD1A065853003BC7F8 /* PianoWeb in Resources */ = {isa = PBXBuildFile; fileRef = B16604CC1A065853003BC7F8 /* PianoWeb */; };
 		B78D6B29198749EA00F51726 /* zanting.png in Resources */ = {isa = PBXBuildFile; fileRef = B78D6B27198749EA00F51726 /* zanting.png */; };
 		B78D6B2A198749EA00F51726 /* zanting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B78D6B28198749EA00F51726 /* zanting@2x.png */; };
 		BA1079A11967FE4C0056F626 /* chanyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10798C1967FE4C0056F626 /* chanyin.png */; };
@@ -2061,7 +2060,6 @@
 				89F704B819A5851E0035621C /* dengrukuang@2x.png in Resources */,
 				8994D160194BCEDA0016F806 /* 16.卡门.mid in Resources */,
 				8994D157194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid in Resources */,
-				B16604CD1A065853003BC7F8 /* PianoWeb in Resources */,
 				89F704CB19A5851E0035621C /* xuanzhong.png in Resources */,
 				8994D161194BCEDA0016F806 /* 17.秋日私语.mid in Resources */,
 				B78D6B29198749EA00F51726 /* zanting.png in Resources */,
