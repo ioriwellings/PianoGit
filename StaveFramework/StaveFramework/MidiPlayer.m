@@ -1217,20 +1217,26 @@
                 case PlayModel1:
                     [self byModel1];
                     break;
+                case PlayModel2:
+                    [self byModel2];
+                    break;
+                case PlayModel3:
+                    [self byModel2];
+                    break;
             }
         }
     });
     
-    if (playstate == playing) {
-        switch(playModel) {
-            case PlayModel2:
-                [self byModel2];
-                break;
-            case PlayModel3:
-                [self byModel2];
-                break;
-        }
-    }
+//    if (playstate == playing) {
+//        switch(playModel) {
+//            case PlayModel2:
+//                [self byModel2];
+//                break;
+//            case PlayModel3:
+//                [self byModel2];
+//                break;
+//        }
+//    }
     
 }
 
