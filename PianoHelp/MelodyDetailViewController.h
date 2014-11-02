@@ -51,7 +51,7 @@ typedef enum : NSUInteger
 @property (weak, nonatomic) IBOutlet UIButton *btnXiaoJieTiaoZhuan;
 @property (weak, nonatomic) IBOutlet UIButton *btnSuDu;
 @property (weak, nonatomic) IBOutlet UIButton *btnRePlay;
-@property (weak, nonatomic) UIPopoverController *popVC;
+@property (strong, nonatomic) UIPopoverController *popVC;
 @property (weak, nonatomic) IBOutlet UISlider *sliderXiaoJie;
 @property (weak, nonatomic) IBOutlet UISlider *sliderSpeed;
 

@@ -42,11 +42,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadingData:)
                                                  name:kLoginSuccessNotification object:nil];
-    
     
 }
 
@@ -60,6 +61,8 @@
 
 -(void)loadingData:(NSNotification *)notification
 {
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     switch(self.type )
     {
         case 1://love
