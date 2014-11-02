@@ -75,7 +75,7 @@
 
 /** Resize an image */
 + (UIImage*) resizeImage:(UIImage*)origImage toSize:(CGSize)newsize {
-
+    
     return nil;
 }
 
@@ -101,13 +101,13 @@
     timer = nil;
     pianoData = nil;
     sensor = nil;
-	recognition = nil;
+    recognition = nil;
     midiHandler = [[MidiKeyboard alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveData:) name:kNAMIDIDatas object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(midiStatus:) name:kNAMIDINotification object:nil];
-
+    
     /* add by yizhq start */
     sound = [[GDSoundEngine alloc] init];
     /* add by yizhq end */
@@ -132,7 +132,7 @@
  *  and store the current midifile and sheet music.
  */
 - (void)setMidiFile:(MidiFile*)file withOptions:(MidiOptions*)opt andSheet:(SheetMusic*)s {
-
+    
     /* If we're paused, and using the same midi file, redraw the
      * highlighted notes.
      */
@@ -141,7 +141,7 @@
         isLine = [midiHandler setupMIDI];
     }
     
-//    isLine = TRUE;
+    //    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
         pianoData = [[PianoDataJudged alloc] initWithOptions:opt];
@@ -149,18 +149,18 @@
         
         recorder = [[PianoRecorder alloc]init];
     }
-
+    
     if ((midifile == file && midifile != nil && playstate == paused)) {
         if (sheet != nil) {
             [sheet release];
         }
         sheet = [s retain];
         memcpy(&options, opt, sizeof(MidiOptions));
-
-//        [sheet shadeNotes:(int)currentPulseTime withPrev:-10 gradualScroll:NO];
+        
+        //        [sheet shadeNotes:(int)currentPulseTime withPrev:-10 gradualScroll:NO];
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:-10 andKeyboard:nil];
         [NSTimer scheduledTimerWithTimeInterval:0.2
-                 target:self selector:@selector(reshade:) userInfo:nil repeats:NO];
+                                         target:self selector:@selector(reshade:) userInfo:nil repeats:NO];
     }
     else {
         [self stop];
@@ -180,7 +180,7 @@
 - (void)reshade:(NSTimer*)arg {
     if (playstate == paused) {
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:-10 andKeyboard:nil];
-//        [sheet shadeNotes:(int)currentPulseTime withPrev:-10 gradualScroll:NO];
+        //        [sheet shadeNotes:(int)currentPulseTime withPrev:-10 gradualScroll:NO];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
     }
     [arg invalidate];
@@ -198,7 +198,7 @@
     [tempSoundFile release];
     tempSoundFile = nil;
 }
-    
+
 
 /** Return the number of tracks selected in the MidiOptions.
  *  If the number of tracks is 0, there is no sound to play.
@@ -225,10 +225,10 @@
     //    double inverse_tempo_scaled = inverse_tempo * doubleValue / 100.0;
     //    options.tempo = (int)(1.0 / inverse_tempo_scaled);
     options.tempo = (int)(60000 / doubleValue * 1000);
-//    NSLog(@"tempo is %i", options.tempo);
+    //    NSLog(@"tempo is %i", options.tempo);
     /** modify by yizhq for change speed from 20 ~ 280 end */
-//    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
-
+    //    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    
     if (isSpeed == true) {
         pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
     }else{
@@ -247,7 +247,7 @@
     
     NSString *tempPath = NSTemporaryDirectory();
     tempSoundFile = [NSString stringWithFormat:@"%@/temp.mid", tempPath];
-
+    
     tempSoundFile = [tempSoundFile retain];
     if ([midifile changeSound:&options oldMidi:midifile toFile:tempSoundFile secValue:timeDifference andSpeed:isSpeed] == NO) {//modify by yizhq
         /* Failed to write to tempSoundFile */
@@ -260,7 +260,7 @@
     [tempoFile release];
     tempoFile = nil;
     options.tempo = (int)(60000 / doubleValue * 1000);
-//    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
+    //    pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
     if (isSpeed == true) {
         pulsesPerMsec = [[midifile time] quarter] * (1000.0 / options.tempo);
     }else{
@@ -274,7 +274,7 @@
     }else if([[midifile time]denominator] == 2){
         sectionTime = pulsesPerMsec * ([[midifile time] numerator] + 1);
     }
-
+    
     NSString *tempPath = NSTemporaryDirectory();
     tempoFile = [NSString stringWithFormat:@"%@/tempofile.mid", tempPath];
     
@@ -304,7 +304,7 @@
     }else{
         tmpPulsesPerMsec = [self getPulsesPerMsec:currentPulseTime];
     }
-
+    
     if ([[midifile time] denominator] == 4) {
         tempoTime = [midifile quarternote]/tmpPulsesPerMsec;
     }else if ([[midifile time] denominator] == 8){
@@ -312,7 +312,7 @@
     }else if ([[midifile time] denominator] == 2){
         tempoTime = [midifile quarternote]*2/tmpPulsesPerMsec;
     }
-
+    
     NSLog(@"prepare time is %f", tempoTime*[[midifile time] numerator]);
     return tempoTime*[[midifile time] numerator];
 }
@@ -407,7 +407,7 @@
 }
 
 
-/** 
+/**
  *  识谱模式演奏
  */
 - (void)playModel1 {
@@ -449,8 +449,8 @@
         
         if (recognition != nil) {
             [recognition setCurrIndex:0];
-	        [recognition setBeginTime:startTime];
-	        [recognition setPulsesPerMsec:pulsesPerMsec];
+            [recognition setBeginTime:startTime];
+            [recognition setPulsesPerMsec:pulsesPerMsec];
         }
         
         CGPoint initPos;
@@ -498,7 +498,7 @@
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-//                [t setTempo:[beat tempo]];
+                //                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -515,7 +515,7 @@
     beat = [beatarray get:0];
     [t setNumerator:[beat numerator]];
     [t setDenominator:[beat denominator]];
-//    [t setTempo:[beat tempo]];
+    //    [t setTempo:[beat tempo]];
     [t setMeasure];
     
     if ([beatarray count] > 1 && [[beatarray get:1] starttime]/[t measure] < endSectionNum) {
@@ -531,7 +531,7 @@
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-//                [t setTempo:[beat tempo]];
+                //                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -657,7 +657,7 @@
  *  (The actual pause is done when the timer is invoked).
  */
 - (void)playPause {
-//    if (midifile == nil || sheet == nil || [self numberTracks] == 0) {modify by yizhq
+    //    if (midifile == nil || sheet == nil || [self numberTracks] == 0) {modify by yizhq
     if (midifile == nil || sheet == nil) {
         return;
     }
@@ -677,13 +677,13 @@
              * currentPulseTime is somewhere inside the loop measures.
              */
             double nearEndTime = currentPulseTime + pulsesPerMsec*50;
-//            int measure = (int)(nearEndTime / [[midifile time] measure]);
+            //            int measure = (int)(nearEndTime / [[midifile time] measure]);
             int measure = [sheet getMeasureNum:nearEndTime withTime:[midifile time]];
             if ((measure < options.playMeasuresInLoopStart) ||
                 (measure > options.playMeasuresInLoopEnd)) {
-
-                currentPulseTime = options.playMeasuresInLoopStart * 
-                                   [[midifile time] measure];
+                
+                currentPulseTime = options.playMeasuresInLoopStart *
+                [[midifile time] measure];
             }
             startPulseTime = currentPulseTime;
             options.pauseTime = (int)(currentPulseTime - options.shifttime);
@@ -703,9 +703,9 @@
         
         [self createMidiFile];
         /* add by yizhq start */
-//        [sound loadMIDIFile:[midifile filename]];
-//        [sound loadMIDIFile:tempPrepareTempoFile];
-//        [sound playPressed];
+        //        [sound loadMIDIFile:[midifile filename]];
+        //        [sound loadMIDIFile:tempPrepareTempoFile];
+        //        [sound playPressed];
         [sound loadMIDIFile:tempSoundFile];
         [sound playPressed];
         playstate = playing;
@@ -718,11 +718,11 @@
             [timer invalidate];
         }
         timer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                 target:self selector:@selector(timerCallback:) userInfo:nil repeats:YES];
-//        [playButton setImage:pauseImage];
-//        [playButton setToolTip:@"Pause"];
+                                                 target:self selector:@selector(timerCallback:) userInfo:nil repeats:YES];
+        //        [playButton setImage:pauseImage];
+        //        [playButton setToolTip:@"Pause"];
         if (pianoData != nil) {
-
+            
             struct timeval time;
             time.tv_sec = startTime.tv_sec;
             time.tv_usec = startTime.tv_usec;
@@ -757,29 +757,29 @@
             
             [pianoData judgedPianoPlay:currentPulseTime andPrevPulseTime:prevPulseTime andStaffs:staffs andMidifile:midifile];
         }
-    
         
         
-//        Array *tempoarray = [sheet tempoarray];
-//        int i = 0;
-//        double tmpPulsesPerMsec = 0.0;
-//        long tmpMesc = 0;
-//        double tmpCurrentTime = beginTime;
-//        long tmp;
-//        long beginMesc = 0;
-//        
-//        for (i=1; i<[tempoarray count]; i++) {
-//            tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
-//            if ([[tempoarray get:i] starttime] >= beginTime) {
-//                break;
-//            }
-//            beginMesc += ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
-//        }
-//        i--;
-//        beginMesc += (beginTime-[[tempoarray get:i] starttime])/tmpPulsesPerMsec;
-
+        
+        //        Array *tempoarray = [sheet tempoarray];
+        //        int i = 0;
+        //        double tmpPulsesPerMsec = 0.0;
+        //        long tmpMesc = 0;
+        //        double tmpCurrentTime = beginTime;
+        //        long tmp;
+        //        long beginMesc = 0;
+        //
+        //        for (i=1; i<[tempoarray count]; i++) {
+        //            tmpPulsesPerMsec = [[midifile time] quarter]*(1000.0 / [[tempoarray get:i-1] tempo]);
+        //            if ([[tempoarray get:i] starttime] >= beginTime) {
+        //                break;
+        //            }
+        //            beginMesc += ([[tempoarray get:i] starttime]-[[tempoarray get:i-1] starttime])/tmpPulsesPerMsec;
+        //        }
+        //        i--;
+        //        beginMesc += (beginTime-[[tempoarray get:i] starttime])/tmpPulsesPerMsec;
+        
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:midiHandler];
-//        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
+        //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
         return;
     }
@@ -813,27 +813,27 @@
  */
 - (void)doStop {
     playstate = stopped;
-//    [sound stop];
-//    [sound release]; sound = nil;
+    //    [sound stop];
+    //    [sound release]; sound = nil;
     /* add by yizhq start */
     [sound stopPressed];
-//    [sound release];sound = nil;
+    //    [sound release];sound = nil;
     /* add by yizhq end */
     [self deleteSoundFile];
     
     /* Remove all shading by redrawing the music */
     sheet.hidden = NO;
-//    piano.hidden = NO; by IORI.
+    //    piano.hidden = NO; by IORI.
     
     if (recorder != nil) {
         [recorder stopRecord];
     }
-
+    
     startPulseTime = 0;
     currentPulseTime = 0;
     prevPulseTime = 0;
-//    [playButton setImage:playImage];
-//    [playButton setToolTip:@"Play"];
+    //    [playButton setImage:playImage];
+    //    [playButton setToolTip:@"Play"];
     return;
 }
 
@@ -855,19 +855,19 @@
     if (midifile == nil || sheet == nil || playstate != paused) {
         return;
     }
-
+    
     /* Remove any highlighted notes */
     [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
-//    [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
+    //    [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
-
+    
     prevPulseTime = currentPulseTime;
     currentPulseTime -= [[midifile time] measure];
     if (currentPulseTime < options.shifttime) {
         currentPulseTime = options.shifttime;
     }
     [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
-//    [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:NO];
+    //    [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:NO];
     [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:nil];
 }
 
@@ -890,7 +890,7 @@
     }
     playstate = paused;
     
-
+    
     /* Remove any highlighted notes */
     [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
@@ -911,7 +911,7 @@
                 beat = [beatarray get:i];
                 [t setNumerator:[beat numerator]];
                 [t setDenominator:[beat denominator]];
-//                [t setTempo:[beat tempo]];
+                //                [t setTempo:[beat tempo]];
                 [t setMeasure];
             }
         }
@@ -924,7 +924,7 @@
     }
     
     currentPulseTime = tmpTime;
-//    currentPulseTime = [[midifile time] measure]*number;
+    //    currentPulseTime = [[midifile time] measure]*number;
     //NSLog(@"currentpulseTime is %f", currentPulseTime);
     
     if (currentPulseTime > [midifile totalpulses]) {
@@ -956,19 +956,19 @@
         return;
     }
     playstate = paused;
-
+    
     /* Remove any highlighted notes */
     [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:nil];
-//    [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
+    //    [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
     [piano shadeNotes:-10 withPrev:(int)currentPulseTime];
-
+    
     prevPulseTime = currentPulseTime;
     currentPulseTime += [[midifile time] measure];
     if (currentPulseTime > [midifile totalpulses]) {
         currentPulseTime -= [[midifile time] measure];
     }
     [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
-//    [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:NO];
+    //    [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:NO];
     [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime andKeyboard:nil];
 }
 
@@ -995,20 +995,20 @@
     else if (playstate == initStop) {
         [timer invalidate]; timer = nil;
         return;
-    } 
+    }
     else if (playstate == playing) {
         struct timeval now;
         gettimeofday(&now, NULL);
         long msec = (now.tv_sec - startTime.tv_sec)*1000 +
-                    (now.tv_usec - startTime.tv_usec)/1000;
+        (now.tv_usec - startTime.tv_usec)/1000;
         prevPulseTime = currentPulseTime;
-
+        
         if ([[sheet tempoarray] count] == 1 || isSpeed == true) {
             currentPulseTime = startPulseTime + msec * pulsesPerMsec;
         } else {
             currentPulseTime = [self getCurrentTime:startPulseTime andMesc:msec];
         }
-
+        
         /* If we're playing in a loop, stop and restart */
         if (options.playMeasuresInLoop) {
             int measure = (int)(currentPulseTime / [[midifile time] measure]);
@@ -1017,7 +1017,7 @@
                 return;
             }
         }
-
+        
         /* Stop if we've reached the end of the song */
         /** modify by yizhq start */
         int totalTime = 0;
@@ -1025,19 +1025,19 @@
             totalTime = options.endSecTime;
         }else{
             totalTime = [midifile totalpulses];
-//            totalTime = [[staffs get:staffs.count - 1] endTime];
+            //            totalTime = [[staffs get:staffs.count - 1] endTime];
         }
-//        if (currentPulseTime > [midifile totalpulses]) {
+        //        if (currentPulseTime > [midifile totalpulses]) {
         if (currentPulseTime > totalTime) {
-        /** modify by yizhq end */
+            /** modify by yizhq end */
             [timer invalidate]; timer = nil;
             
             if (pianoData != nil && playModel == PlayModel2) {
                 [pianoData judgedPianoPlay:prevPulseTime andPrevPulseTime:-10 andStaffs:staffs andMidifile:midifile];
             }
-        
+            
             [sheetPlay shadeNotes:-10 withPrev:(int)currentPulseTime andKeyboard:midiHandler];
-//            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
+            //            [sheet shadeNotes:-10 withPrev:(int)currentPulseTime gradualScroll:NO];
             
             [self doStop];
             
@@ -1054,7 +1054,8 @@
                                     andWrong:[result get:1]];
                 }
             }
-            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(ClearTimerCallback:) userInfo:nil repeats:NO];
+//            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(ClearTimerCallback:) userInfo:nil repeats:NO];
+            [self ClearTimerCallback:nil];
             return;
         }
         
@@ -1064,7 +1065,7 @@
         
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
                   andKeyboard:midiHandler];
-//        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
+        //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
         return;
     }
@@ -1072,37 +1073,37 @@
         [timer invalidate]; timer = nil;
         struct timeval now;
         gettimeofday(&now, NULL);
-        long msec = (now.tv_sec - startTime.tv_sec)*1000 + 
-                    (now.tv_usec - startTime.tv_usec)/1000;
-
-//        [sound stop];
-//        [sound release]; sound = nil;
+        long msec = (now.tv_sec - startTime.tv_sec)*1000 +
+        (now.tv_usec - startTime.tv_usec)/1000;
+        
+        //        [sound stop];
+        //        [sound release]; sound = nil;
         /* add by yizhq start */
         [sound stopPressed];
-//        [sound release];sound = nil;
+        //        [sound release];sound = nil;
         /* add by yizhq end */
         prevPulseTime = currentPulseTime;
-
+        
         if ([[sheet tempoarray] count] == 1 || isSpeed == true) {
             currentPulseTime = startPulseTime + msec * pulsesPerMsec;
         } else {
             currentPulseTime = [self getCurrentTime:startPulseTime andMesc:msec];
         }
         //modify currentPulseTime for tempo start
-//        int intactTempoCnt = currentPulseTime/(pulsesPerMsec*1000);
+        //        int intactTempoCnt = currentPulseTime/(pulsesPerMsec*1000);
         int intactTempoCnt = currentPulseTime/[midifile quarternote];
         currentPulseTime = (intactTempoCnt + 1)*[midifile quarternote];
-//        timeDifference = currentPulseTime - (startPulseTime + msec * pulsesPerMsec);
-//        int intactTempoCnt = currentPulseTime/[midifile quarternote];
+        //        timeDifference = currentPulseTime - (startPulseTime + msec * pulsesPerMsec);
+        //        int intactTempoCnt = currentPulseTime/[midifile quarternote];
         //modify currentPulseTime for tempo end
-//        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
+        //        NSLog(@"timer prevPulseTime is %f currentPulseTime is %f", prevPulseTime, currentPulseTime);
         [sheetPlay shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime
                   andKeyboard:midiHandler];
-//        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
+        //        [sheet shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime gradualScroll:YES];
         [piano shadeNotes:(int)currentPulseTime withPrev:(int)prevPulseTime];
         prevPulseTime = currentPulseTime - [[midifile time] measure];
-//        [playButton setImage:playImage];
-//        [playButton setToolTip:@"Play"];
+        //        [playButton setImage:playImage];
+        //        [playButton setToolTip:@"Play"];
         playstate = paused;
         return;
     }
@@ -1115,7 +1116,7 @@
     [timer invalidate]; timer = nil;
     [self doStop];
     [NSTimer scheduledTimerWithTimeInterval:0.4
-                 target:self selector:@selector(replay:) userInfo:nil repeats:NO];
+                                     target:self selector:@selector(replay:) userInfo:nil repeats:NO];
 }
 
 -(void)replay:(NSTimer*)arg {
@@ -1142,10 +1143,10 @@
     for(int i = 0; i < data.length; i++)
     {
         NSNumber *num = [[NSNumber alloc] initWithInt:buffers[i]];
-//        NSLog(@"MidiPlayer rece num is %x", [num intValue]);
+        //        NSLog(@"MidiPlayer rece num is %x", [num intValue]);
         [arrPacket addObject: num];
     }
-
+    
     len += data.length;
     if (len %3 == 0) {
         if (playstate == playing) {
@@ -1171,13 +1172,13 @@
 
 
 -(void)byModel1{
-//    [recognition setTimesig:[midifile time]];
+    //    [recognition setTimesig:[midifile time]];
     
     [recognition setPianoData:arrPacket];
     int count = [recognition getCurChordSymolNoteCount];
     int c = [recognition getNotesCount];
     NSLog(@"====current chord symbol note count [%d] rece data count[%d] aaaa %d", count, c, [recognition getCurrIndex]);
-     if (c >= count) {
+    if (c >= count) {
         [recognition recognitionPlayByLine];
     }
     
@@ -1201,10 +1202,10 @@
     [arrPacket removeAllObjects];
     NSNumber *num1 = [[NSNumber alloc] initWithInt:0x90];
     [arrPacket addObject: num1];
-        
+    
     NSNumber *num2 = [[NSNumber alloc] initWithInt:notePlayed];
     [arrPacket addObject: num2];
-        
+    
     NSNumber *num3 = [[NSNumber alloc] initWithInt:velocity];
     [arrPacket addObject: num3];
     
@@ -1307,12 +1308,12 @@
 
 - (void)dealloc {
     [self deleteSoundFile];
-//    [playButton release]; 
-//    [stopButton release];
-//    [rewindButton release];
-//    [fastFwdButton release];
-//    [speedBar release];
-//    [volumeBar release];
+    //    [playButton release];
+    //    [stopButton release];
+    //    [rewindButton release];
+    //    [fastFwdButton release];
+    //    [speedBar release];
+    //    [volumeBar release];
     [midifile release];
     [sheet release]; 
     [piano release];
