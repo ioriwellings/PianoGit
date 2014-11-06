@@ -100,11 +100,19 @@
         
         NSString *saveName = [[self.fileName lastPathComponent] stringByReplacingOccurrencesOfString:@"mid" withString:@"mp3"];
         
+        NSString *coins = nil;
+        if (self.iRight <= 0) {
+            coins = @"0";
+        } else {
+            coins = [NSString stringWithFormat:@"%ld", (long)self.iRight];
+        }
+        
         //创建WebService的调用参数
         NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
                                    @"midiFileName", saveName, @"fileData", string,
                                    @"userName",     [UserInfo sharedUserInfo].userName,
-                                   @"scroe",     self.labScroe.text, nil];
+                                   @"scroe",        self.labScroe.text,
+                                   @"coins",        coins, nil];
         
         
         

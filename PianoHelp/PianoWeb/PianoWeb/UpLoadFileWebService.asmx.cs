@@ -19,8 +19,8 @@ namespace PianoWeb
     {
 
         [WebMethod]
-        public string UpLoadFile(string midiFileName, string fileData, string userName, string scroe)
-        //public string UpLoadFile(string midiFileName, string fileData, string userName, string scroe, string coins)
+        //public string UpLoadFile(string midiFileName, string fileData, string userName, string scroe)
+       public string UpLoadFile(string midiFileName, string fileData, string userName, string scroe, string coins)
         {
             String result = "OK";
             try
@@ -53,7 +53,7 @@ namespace PianoWeb
 
                 String f = "./" + userName + "/" + midiFileName;
                 //5.向Opus添加一条记录
-                string coins = "10";
+                //string coins = "10";
                 UpdateDB(midiFileName, f, userName, scroe, coins);
             }
             catch (Exception ex)
