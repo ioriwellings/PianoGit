@@ -16,7 +16,7 @@
 #import "IAPHelper.h"
 #import "MessageBox.h"
 #import "NSString+URLConnection.h"
-
+#import "StaveFramework/MidiKeyboard.h"
 @implementation AppDelegate
 {
     BOOL bInited;
@@ -71,6 +71,7 @@
 //    [self loadDemoMidiToSQL];
 //    [self loadTempMIDE];//for test
     [self initDataBaseWithPList:nil];
+    [MidiKeyboard sharedMidiKeyboard];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
     return YES;
 }

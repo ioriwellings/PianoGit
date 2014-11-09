@@ -14,7 +14,6 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
 {
     //Reads the source/device's name which is allocated in the MidiSetupWithSource function.
     const char *source = connRefCon;
-    NSLog(@"MyMIDIReadProc  start %lu", pktlist->numPackets);
     
     
     //Extracting the data from the MIDI packets receieved.
@@ -32,7 +31,7 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
             
             if (velocity == 0) continue;
             
-            NSLog(@"99999999999999999999 %s - NOTE : %d | %d", source, note, velocity);
+            NSLog(@"MyMIDIReadProc %s - NOTE : %d | %d", source, note, velocity);
             
             NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
             [info setObject:[NSNumber numberWithInteger:note] forKey:kNAMIDI_NoteKey];
@@ -40,10 +39,7 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
             NSNotification* notification = [NSNotification notificationWithName:kNAMIDIDatas object:nil userInfo:info];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
             
-		} else {
-            
-//            NSLog(@"%s - CNTRL  : %d | %d", source, note, velocity);
-        }
+		}
         
         //After we are done reading the data, move to the next packet.
         packet = MIDIPacketNext(packet);
@@ -52,44 +48,67 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
 }
 
 static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
-//    NSNotification* notification = [NSNotification notificationWithName:kNAMIDINotification
-//                                                                 object:[NSNumber numberWithShort:message->messageID]];
-//    [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+    NSLog(@"the MyMIDINotifyProc is [%d]", message->messageID);
+
     
-    NSLog(@" MyMIDINotifyProc is %lu", message->messageID);
+    NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+    [info setObject:[NSNumber numberWithInteger:message->messageID] forKey:kNAMIDI_MessageID];
+    NSNotification* notification = [NSNotification notificationWithName:kNAMIDINotification
+                                                                 object:nil userInfo:info];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    
+    MidiKeyboard *mkb = (__bridge MidiKeyboard*)refCon;
+    if (message->messageID == kMIDIMsgObjectAdded && ![mkb isConnect]) {
+        [mkb connectMidiDevice];
+        
+    } else if (message->messageID == kMIDIMsgObjectRemoved && [mkb isConnect]) {
+        [mkb disconnectMidiDevice];
+    } else if (message->messageID == kMIDIMsgIOError) {
+
+        MIDIRestart();
+        [mkb connectMidiDevice];
+    }
+    
 }
 
 
 @implementation MidiKeyboard
+    static MidiKeyboard *_mkb = nil;
+
++ (MidiKeyboard*)sharedMidiKeyboard
+{
+    @synchronized(self)
+    {
+        if (_mkb == nil)
+            _mkb = [[self alloc] init];
+    }
+    return _mkb;
+}
 
 - (id)init
 {
     self = [super init];
-    inPort = 0;
-    src = 0;
-    isConnect = FALSE;
     
-    MIDIRestart();
+    if (self) {
+        
+        client = 0;
+        MIDIClientCreate(CFSTR("NNAudio MIDI Handler"), MyMIDINotifyProc,
+                         (__bridge void *)self, &client);
+        
+        outputPort = 0;
+        MIDIOutputPortCreate(client, CFSTR("Output port"), &outputPort);
+        
+        inPort = 0;
+        MIDIInputPortCreate(client, CFSTR("Input port"), MyMIDIReadProc, nil, &inPort);
+        
+        src = 0;
+        isConnect = FALSE;
+    }
+    
     return self;
 }
-
-- (void) listSources
-{
-    unsigned long sourceCount = MIDIGetNumberOfSources();
-    for (int i=0; i<sourceCount; i++) {
-        MIDIEndpointRef source = MIDIGetSource(i);
-        CFStringRef endpointName = NULL;
-        MIDIObjectGetStringProperty(source, kMIDIPropertyName, &endpointName);
-        char endpointNameC[255];
-        CFStringGetCString(endpointName, endpointNameC, 255, kCFStringEncodingUTF8);
-        NSLog(@"Source %d - %s", i, endpointNameC);
-    }
-}
-
--(void) unSetupMIDI {
-    MIDIPortDisconnectSource(inPort, src);
-}
-
 
 -(BOOL)sendData:(Byte)note andVelocity:(Byte)velocity {
     
@@ -115,7 +134,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     
     
     result = MIDISend(outputPort, outEndpoint, packet_list);
-    NSLog(@"======= Sendding midi %lu", result);
+    NSLog(@"======= Sendding midi %d", result);
     
     return TRUE;
 }
@@ -166,76 +185,92 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     return isConnect;
 }
 
-- (BOOL)setupMIDI {
+-(void) disconnectMidiDevice {
+    MIDIPortDisconnectSource(inPort, src);
+}
+
+
+- (BOOL)connectMidiDevice {
     
     BOOL result = FALSE;
-//    [self listSources];
-    client = 0;
-    outputPort = 0;
-    inPort = 0;
-    
-	OSStatus err = MIDIClientCreate(CFSTR("NNAudio MIDI Handler"), MyMIDINotifyProc, nil, &client);
-	NSLog(@"MIDIClientCreate error code: %lu", err);
-    
-    
-	err = MIDIOutputPortCreate(client, CFSTR("Output port"), &outputPort);
-    NSLog(@"MIDIOutputPortCreate error code: %lu", err);
-    
-    
-	err = MIDIInputPortCreate(client, CFSTR("Input port"), MyMIDIReadProc, nil, &inPort);
-    NSLog(@"MIDIInputPortCreate error code: %lu", err);
-    
-	
+    isConnect = FALSE;
     
     
     ItemCount destCount = MIDIGetNumberOfDestinations();
+    NSLog(@"====dest count [%ld]", destCount);
     for (ItemCount i = 0 ; i < destCount ; ++i) {
         
         // Grab a reference to a destination endpoint
         MIDIEndpointRef dest = MIDIGetDestination(i);
-        if (dest != NULL) {
+        if (dest != 0) {
             NSLog(@"  Destination: %@", [self getDisplayName:dest]);
         }
     }
     
     
-    
-    
-    
 	ItemCount sourceCount = MIDIGetNumberOfSources();
-    NSLog(@"====count [%lu]", sourceCount);
+    NSLog(@"====source count [%ld]", sourceCount);
 	for (ItemCount i = 0; i < sourceCount; ++i) {
         
         src = MIDIGetSource(i);
-
         NSString * name = [self getDisplayName:src];
-
-        if (src != NULL) {
-            NSLog(@"  Source: %@", name);
+        if (src != 0) {
+            NSLog(@"  Source: %@", [self getDisplayName:src]);
         }
         
         NSRange range = [name rangeOfString:@"Session 1"];//判断字符串是否包含
         if (range.length >0) {
-            
-            NSLog(@"  yyyyyyyyyyyyyy");
             continue;
         }
         
         outEndpoint = MIDIGetDestination(i);
         OSStatus err = MIDIPortConnectSource(inPort, src, NULL);
-        NSLog(@"MIDIPortConnectSource error code: %lu", err);
+        NSLog(@"MIDIPortConnectSource code: %d", err);
+        
         isConnect = TRUE;
         result = TRUE;
 	}
     
-    NSLog(@"==== setupMIDI");
-    
     return result;
+}
+
+
++(id)allocWithZone:(NSZone *)zone {
+    
+    @synchronized(self){
+        
+        if (!_mkb) {
+            
+            _mkb = [super allocWithZone:zone]; //确保使用同一块内存地址
+            return _mkb;
+        }
+    }
+    
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self; //确保copy对象也是唯一
+}
+
+
+
+-(id)retain {
+    return self; //确保计数唯一
+}
+
+- (id)autorelease {
+    return self;//确保计数唯一
+} 
+
+
+
+- (oneway void)release {
+    //重写计数释放方法
 }
 
 -(void)dealloc {
     
-    [self unSetupMIDI];
     if (outputPort)
     {
         MIDIPortDispose(outputPort);
@@ -253,7 +288,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
     
     [super dealloc];
     
-     NSLog(@"==== dealloc");
+    NSLog(@"midikeyboard is dealloc!");
 }
 
 @end

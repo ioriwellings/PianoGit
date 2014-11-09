@@ -13,6 +13,7 @@ static NSString* kNAMIDIDatas = @"kNAMIDIDatas";
 static NSString* kNAMIDINotification = @"kNAMIDINotification";
 
 static NSString* kNAMIDI_NoteKey = @"kNAMIDI_NoteKey";
+static NSString* kNAMIDI_MessageID = @"kNAMIDI_MessageID";
 static NSString* kNAMIDI_VelocityKey = @"kNAMIDI_VelocityKey";
 
 
@@ -26,9 +27,10 @@ static NSString* kNAMIDI_VelocityKey = @"kNAMIDI_VelocityKey";
     BOOL isConnect;
 }
 
-- (BOOL) setupMIDI;
-- (void) unSetupMIDI;
++ (MidiKeyboard*)sharedMidiKeyboard;
+- (BOOL) connectMidiDevice;
+- (void) disconnectMidiDevice;
 - (BOOL) sendData:(Byte)note andVelocity:(Byte)velocity;
-- (BOOL)sendClearData:(Byte)velocity;
+- (BOOL) sendClearData:(Byte)velocity;
 - (BOOL) isConnect;
 @end

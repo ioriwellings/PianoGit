@@ -102,7 +102,7 @@
     pianoData = nil;
     sensor = nil;
     recognition = nil;
-    midiHandler = [[MidiKeyboard alloc] init];
+    midiHandler = [MidiKeyboard sharedMidiKeyboard];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveData:) name:kNAMIDIDatas object:nil];
     
@@ -122,10 +122,7 @@
 }
 
 - (void) disConnectMIDI {
-    if(isLine ) {
-        [midiHandler unSetupMIDI];
-        isLine = FALSE;
-    }
+    isLine = FALSE;
 }
 
 /** The MidiFile and/or SheetMusic has changed. Stop any playback sound,
@@ -136,11 +133,8 @@
     /* If we're paused, and using the same midi file, redraw the
      * highlighted notes.
      */
-    if (!isLine)
-    {
-        isLine = [midiHandler setupMIDI];
-    }
-    
+    isLine = [midiHandler isConnect];
+
     //    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
@@ -1211,7 +1205,11 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *data1 = [NSString stringWithFormat:@"n[%d]", notePlayed];
-        [self.midiData setText:data1];
+        
+        if (self.midiData != nil) {
+            [self.midiData setText:data1];
+        }
+        
         
         if (playstate == playing) {
             switch(playModel) {
@@ -1251,8 +1249,18 @@
 
 - (void)midiStatus:(NSNotification*)notification
 {
-    int messageID = [[notification.userInfo objectForKey:@"kNAMIDINotification"] intValue];
+    int messageID = [[notification.userInfo objectForKey:@"kNAMIDI_MessageID"] intValue];
     NSLog(@"MidiKeyboard Notify, MessageID=%d", messageID);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (self.midiData == nil) return;
+        
+        if (messageID == kMIDIMsgObjectAdded) {
+            [self.midiData setText:@"connect"];
+        } else if (messageID == kMIDIMsgObjectRemoved) {
+            [self.midiData setText:@"disconnect"];
+        }
+    });
 }
 
 -(void)PianoTips:(BOOL)isOn {
@@ -1320,7 +1328,7 @@
     [sound release];
     [pianoData release];
     [arrPacket release];
-    [midiHandler release];
+
     if (recognition != nil)
     {
         [recognition release];
