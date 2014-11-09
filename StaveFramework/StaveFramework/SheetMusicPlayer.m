@@ -131,7 +131,9 @@ int TitleHeights = 14; /** The height for the title on the first page */
 
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:rect];
-    [[UIColor whiteColor] setFill];
+    UIColor *backColor = [UIColor colorWithRed:241.0/255.0 green:244.0/255.0 blue:212.0/255.0 alpha:1.0];
+    //  UIColor *a = [UIColor colorWithRed:rgb/255.0 green:rgb/255.0 blue:rgb/255.0 alpha:1.0];
+    [backColor setFill];
     [path fill];
     
     
