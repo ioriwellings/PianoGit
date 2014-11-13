@@ -105,6 +105,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
         
         src = 0;
         isConnect = FALSE;
+        
+        [self connectMidiDevice];
     }
     
     return self;
@@ -186,6 +188,7 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
 }
 
 -(void) disconnectMidiDevice {
+    isConnect = FALSE;
     MIDIPortDisconnectSource(inPort, src);
 }
 

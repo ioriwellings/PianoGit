@@ -133,7 +133,7 @@ enum {
 -(void)disConnectMIDI;
 -(void)clearJudgedData;
 -(void)PianoTips:(BOOL)isOn;
-
+-(void)setIsLine:(BOOL)status;
 
 @property (assign, nonatomic) SheetMusicPlay *sheetPlay;
 @property (assign, nonatomic) CBPeripheral *peripheral;

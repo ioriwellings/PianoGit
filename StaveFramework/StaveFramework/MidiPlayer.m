@@ -400,6 +400,28 @@
     }
 }
 
+-(void)setIsLine:(BOOL)status
+{
+    isLine = status;
+    
+    if (isLine) {
+        sensor.delegate = self;
+        
+        if (pianoData == nil) {
+            pianoData = [[PianoDataJudged alloc] initWithOptions:&options];
+        }
+        
+        if (arrPacket == nil) {
+            arrPacket =[[NSMutableArray alloc] init];
+        }
+        
+        
+        if (recorder == nil) {
+            recorder = [[PianoRecorder alloc]init];
+        }
+        
+    }
+}
 
 /**
  *  识谱模式演奏
@@ -1257,8 +1279,10 @@
         
         if (messageID == kMIDIMsgObjectAdded) {
             [self.midiData setText:@"connect"];
+            [self setIsLine:TRUE];
         } else if (messageID == kMIDIMsgObjectRemoved) {
             [self.midiData setText:@"disconnect"];
+            [self setIsLine:FALSE];
         }
     });
 }
