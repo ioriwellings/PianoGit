@@ -151,34 +151,6 @@
     long msec;
     double starttime;
     
-    
-    
-//    int count = [pianoData count]/3;
-//    for(int i = 0; i < count; i++) {
-//        
-//        if ([[pianoData get:i] intValue] == 0x90) {
-//            if ([[pianoData get:i*3] integerValue] > 0) {
-//                struct timeval now;
-//                (void)gettimeofday(&now, NULL);
-//                msec = (now.tv_sec - beginTime.tv_sec)*1000 +
-//                (now.tv_usec - beginTime.tv_usec)/1000;
-//                if ([[sheet tempoarray] count] == 1 || isSpeed) {
-//                    starttime = msec * pulsesPerMsec;
-//                } else {
-//                    starttime = [self getCurrentTime:msec];
-//                }
-//                
-//                MidiNote *note = [[MidiNote alloc]init];
-//                [note setStarttime:starttime];
-//                [note setNumber:[[pianoData get:i*3+1] intValue]];
-//                [notes add:note];
-//                NSLog(@"======= parseData note number[%d]=========", [note number]);
-//            }
-//        }
-//        
-//    }
-    
-    
     NSLog(@"========= pianoData is [%d]===========", [pianoData count]);
     while ((i+2) < [pianoData count]) {
         NSLog(@"======= while piano i[%d] i+1 [%d], i+2 [%d]",
