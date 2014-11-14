@@ -71,6 +71,8 @@
 -(void)setPianoData:(NSMutableArray*)data {
     int i;
     for (i = 0; i < [data count]; i++) {
+        int c = [[data objectAtIndex:i] intValue];
+        NSLog(@"======== setPianoData is [%d]=======", c);
         [pianoData add:[data objectAtIndex:i]];
     }
     [self parseData];
@@ -149,7 +151,40 @@
     long msec;
     double starttime;
     
+    
+    
+//    int count = [pianoData count]/3;
+//    for(int i = 0; i < count; i++) {
+//        
+//        if ([[pianoData get:i] intValue] == 0x90) {
+//            if ([[pianoData get:i*3] integerValue] > 0) {
+//                struct timeval now;
+//                (void)gettimeofday(&now, NULL);
+//                msec = (now.tv_sec - beginTime.tv_sec)*1000 +
+//                (now.tv_usec - beginTime.tv_usec)/1000;
+//                if ([[sheet tempoarray] count] == 1 || isSpeed) {
+//                    starttime = msec * pulsesPerMsec;
+//                } else {
+//                    starttime = [self getCurrentTime:msec];
+//                }
+//                
+//                MidiNote *note = [[MidiNote alloc]init];
+//                [note setStarttime:starttime];
+//                [note setNumber:[[pianoData get:i*3+1] intValue]];
+//                [notes add:note];
+//                NSLog(@"======= parseData note number[%d]=========", [note number]);
+//            }
+//        }
+//        
+//    }
+    
+    
+    NSLog(@"========= pianoData is [%d]===========", [pianoData count]);
     while ((i+2) < [pianoData count]) {
+        NSLog(@"======= while piano i[%d] i+1 [%d], i+2 [%d]",
+              [[pianoData get:i] intValue], [[pianoData get:i+1] intValue],
+              [[pianoData get:i+2] intValue]);
+        
         
         if ([[pianoData get:i] intValue] == 0x90) {
             if ([[pianoData get:i+2] integerValue] > 0) {
@@ -167,6 +202,7 @@
                 [note setStarttime:starttime];
                 [note setNumber:[[pianoData get:i+1] intValue]];
                 [notes add:note];
+                NSLog(@"======= parseData note number[%d]=========", [note number]);
             }
         }
         i += 3;
@@ -344,6 +380,7 @@
                 }
                 
                 for (k = 0; k < [notes count]; k++) {
+                    NSLog(@"================== note number[%d]", [[notes get:k] number] );
                     if (abs([[notes get:k] startTime]-start) <= [timesig quarter]/3) {
                         if (nd.number == [[notes get:k] number]) {
                             if (result == 0) {
@@ -369,6 +406,8 @@
             }
             
             if ([chord judgedResult] == 0) {
+                NSLog(@"====== result[%d] rightCount [%d]=====", result, rightCount);
+                
                 if (result == -1 || rightCount < count) {
                     [chord setJudgedResult:-1];
                     [prevChordList remove:chord];
