@@ -352,6 +352,10 @@
 //            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
             [self.sfCountdownView start:[player getSectionTime]];
         } else {
+            
+            scrollView.hidden = YES;
+            sheetmsic1.hidden = NO;
+            
             [player playByType:1];
         }
         [self.btnTryListen setEnabled:false];
@@ -638,7 +642,6 @@
     }
     
     if (self.iPlayMode == 2 || self.iPlayMode == 3) {
-        
         scrollView.hidden = YES;
         sheetmsic1.hidden = NO;
     }

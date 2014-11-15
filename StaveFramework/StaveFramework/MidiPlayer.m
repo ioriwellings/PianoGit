@@ -481,8 +481,12 @@
 {
     NSLog(@"====sheetShade === staff index = [%d] chord Index = [%d]", staffIndex, chordIndex);
     
+    int currentPulseTimes = [chord endTime];
+    int prevPulseTimes = [chord startTime];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        [sheet shadeNotesByModel1:staffIndex andChordIndex:chordIndex andChord:chord];
+        //[sheet shadeNotesByModel1:staffIndex andChordIndex:chordIndex andChord:chord];
+        [sheetPlay shadeNotes:currentPulseTimes withPrev:prevPulseTimes andKeyboard:nil];
     });
     
     
