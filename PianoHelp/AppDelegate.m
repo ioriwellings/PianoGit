@@ -17,6 +17,7 @@
 #import "MessageBox.h"
 #import "NSString+URLConnection.h"
 #import "StaveFramework/MidiKeyboard.h"
+#import "PracticeRecord.h"
 @implementation AppDelegate
 {
     BOOL bInited;
@@ -24,6 +25,19 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+
+-(void)addPracticeRecordWithName:(NSString*)strName score:(NSNumber *)iScore mode:(NSString *)str
+{
+    strName = [[strName stringByDeletingPathExtension] lastPathComponent];
+    PracticeRecord *_record = (PracticeRecord*)[NSEntityDescription insertNewObjectForEntityForName:@"PracticeRecord" inManagedObjectContext:((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext];
+    _record.melodyName = strName;
+    _record.createDate = [NSDate date];
+    _record.mode = str;
+    _record.score = iScore;
+    [[UserInfo sharedUserInfo].dbUser addRecordObject:_record];
+    [self saveContext];
+}
 
 -(BOOL)isInited
 {
@@ -73,6 +87,7 @@
     [self initDataBaseWithPList:nil];
     [MidiKeyboard sharedMidiKeyboard];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
+//    [self addPracticeRecordWithName:[NSDate date].description score:0 mode:nil];
     return YES;
 }
 

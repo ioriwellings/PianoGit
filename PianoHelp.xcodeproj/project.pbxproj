@@ -316,8 +316,15 @@
 		89AA9ED519ECFD3B0017BADA /* bg_learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 89AA9ECE19ECFD3B0017BADA /* bg_learn.png */; };
 		89AA9ED619ECFD3B0017BADA /* bg_learn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89AA9ECF19ECFD3B0017BADA /* bg_learn@2x.png */; };
 		89AA9EDC19ED001C0017BADA /* Score2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA9EDB19ED001C0017BADA /* Score2ViewController.m */; };
+		89B28F601A1B74F700A0BA14 /* PracticeRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B28F5F1A1B74F700A0BA14 /* PracticeRecordViewController.m */; };
+		89B28F651A1B81C000A0BA14 /* PracticeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B28F641A1B81C000A0BA14 /* PracticeRecordCell.m */; };
+		89B28F681A1B88A100A0BA14 /* lianqinjilu.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B28F661A1B88A100A0BA14 /* lianqinjilu.png */; };
+		89B28F691A1B88A100A0BA14 /* lianqinjilu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B28F671A1B88A100A0BA14 /* lianqinjilu@2x.png */; };
 		89BE8D75192ADAD100686AC7 /* MelodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */; };
 		89BE8D78192AE16900686AC7 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */; };
+		89CA47411A18D5C1008296DC /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47401A18D5C1008296DC /* Users.m */; };
+		89CA47441A18D5C2008296DC /* PracticeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47431A18D5C2008296DC /* PracticeRecord.m */; };
+		89CA47471A18D5C2008296DC /* MelodyFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47461A18D5C2008296DC /* MelodyFavorite.m */; };
 		89D61FD21927965400355EF0 /* APLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D61FD11927965400355EF0 /* APLProduct.m */; };
 		89E261DC19BF4C8100E04EA5 /* qinggengxin.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E261D619BF4C8100E04EA5 /* qinggengxin.png */; };
 		89E261DD19BF4C8100E04EA5 /* qinggengxin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E261D719BF4C8100E04EA5 /* qinggengxin@2x.png */; };
@@ -403,8 +410,6 @@
 		89F93D45199C3BD60020E206 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F93D44199C3BD60020E206 /* UserInfo.m */; };
 		89F93D57199C44EC0020E206 /* MelodyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F93D56199C44EC0020E206 /* MelodyCategory.m */; };
 		89F93D5A199C44ED0020E206 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F93D59199C44ED0020E206 /* Score.m */; };
-		89F93D5D199C44ED0020E206 /* MelodyFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F93D5C199C44ED0020E206 /* MelodyFavorite.m */; };
-		89F93D60199C44ED0020E206 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F93D5F199C44ED0020E206 /* Users.m */; };
 		89F93D63199C44ED0020E206 /* Melody.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F93D62199C44ED0020E206 /* Melody.m */; };
 		89FAE3711989C714000B4F7F /* qumuxuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FAE36F1989C714000B4F7F /* qumuxuanzhong.png */; };
 		89FAE3721989C714000B4F7F /* qumuxuanzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FAE3701989C714000B4F7F /* qumuxuanzhong@2x.png */; };
@@ -830,10 +835,23 @@
 		89AA9ECF19ECFD3B0017BADA /* bg_learn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_learn@2x.png"; sourceTree = "<group>"; };
 		89AA9EDA19ED001C0017BADA /* Score2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score2ViewController.h; sourceTree = "<group>"; };
 		89AA9EDB19ED001C0017BADA /* Score2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score2ViewController.m; sourceTree = "<group>"; };
+		89B28F5E1A1B74F700A0BA14 /* PracticeRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticeRecordViewController.h; sourceTree = "<group>"; };
+		89B28F5F1A1B74F700A0BA14 /* PracticeRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticeRecordViewController.m; sourceTree = "<group>"; };
+		89B28F631A1B81C000A0BA14 /* PracticeRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticeRecordCell.h; sourceTree = "<group>"; };
+		89B28F641A1B81C000A0BA14 /* PracticeRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticeRecordCell.m; sourceTree = "<group>"; };
+		89B28F661A1B88A100A0BA14 /* lianqinjilu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lianqinjilu.png; sourceTree = "<group>"; };
+		89B28F671A1B88A100A0BA14 /* lianqinjilu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lianqinjilu@2x.png"; sourceTree = "<group>"; };
 		89BE8D73192ADAD100686AC7 /* MelodyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyTableViewCell.h; sourceTree = "<group>"; };
 		89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyTableViewCell.m; sourceTree = "<group>"; };
 		89BE8D76192AE16900686AC7 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		89CA473F1A18D5C1008296DC /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
+		89CA47401A18D5C1008296DC /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
+		89CA47421A18D5C2008296DC /* PracticeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticeRecord.h; sourceTree = "<group>"; };
+		89CA47431A18D5C2008296DC /* PracticeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticeRecord.m; sourceTree = "<group>"; };
+		89CA47451A18D5C2008296DC /* MelodyFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyFavorite.h; sourceTree = "<group>"; };
+		89CA47461A18D5C2008296DC /* MelodyFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyFavorite.m; sourceTree = "<group>"; };
+		89CB46B41A18CA4D00737B90 /* PianoHelp V3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PianoHelp V3.xcdatamodel"; sourceTree = "<group>"; };
 		89D61FD01927965400355EF0 /* APLProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLProduct.h; sourceTree = "<group>"; };
 		89D61FD11927965400355EF0 /* APLProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLProduct.m; sourceTree = "<group>"; };
 		89E261D619BF4C8100E04EA5 /* qinggengxin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qinggengxin.png; sourceTree = "<group>"; };
@@ -927,10 +945,6 @@
 		89F93D56199C44EC0020E206 /* MelodyCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyCategory.m; sourceTree = "<group>"; };
 		89F93D58199C44ED0020E206 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
 		89F93D59199C44ED0020E206 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
-		89F93D5B199C44ED0020E206 /* MelodyFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyFavorite.h; sourceTree = "<group>"; };
-		89F93D5C199C44ED0020E206 /* MelodyFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyFavorite.m; sourceTree = "<group>"; };
-		89F93D5E199C44ED0020E206 /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
-		89F93D5F199C44ED0020E206 /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
 		89F93D61199C44ED0020E206 /* Melody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Melody.h; sourceTree = "<group>"; };
 		89F93D62199C44ED0020E206 /* Melody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Melody.m; sourceTree = "<group>"; };
 		89FAE36F1989C714000B4F7F /* qumuxuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qumuxuanzhong.png; sourceTree = "<group>"; };
@@ -1120,6 +1134,8 @@
 				8936CF63192440F0001E5DCC /* SearchViewController.m */,
 				895DB5AD19C5BC4C00E02DE4 /* AboutViewController.h */,
 				895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */,
+				89B28F5E1A1B74F700A0BA14 /* PracticeRecordViewController.h */,
+				89B28F5F1A1B74F700A0BA14 /* PracticeRecordViewController.m */,
 				89F5B9B9193D5DB8006D40F9 /* MelodyDetailViewController */,
 				89D61FD01927965400355EF0 /* APLProduct.h */,
 				89D61FD11927965400355EF0 /* APLProduct.m */,
@@ -1574,6 +1590,8 @@
 				89F66B20198884D900EF50E2 /* qinfang */,
 				893742D2197F3D1B007E63E5 /* melodyViewDetail */,
 				890803C719C3366600265DC3 /* loading */,
+				89B28F661A1B88A100A0BA14 /* lianqinjilu.png */,
+				89B28F671A1B88A100A0BA14 /* lianqinjilu@2x.png */,
 				893CEFB7193A37630097681C /* baocunluyin1.png */,
 				893CEFB8193A37630097681C /* baocunluyin2.png */,
 				893CEFBA193A37630097681C /* cuofu,jiesuanzhong.png */,
@@ -1614,14 +1632,16 @@
 				8907100819219EC000BB9E2F /* PianoHelp.xcdatamodeld */,
 				89F93D61199C44ED0020E206 /* Melody.h */,
 				89F93D62199C44ED0020E206 /* Melody.m */,
-				89F93D5E199C44ED0020E206 /* Users.h */,
-				89F93D5F199C44ED0020E206 /* Users.m */,
-				89F93D5B199C44ED0020E206 /* MelodyFavorite.h */,
-				89F93D5C199C44ED0020E206 /* MelodyFavorite.m */,
 				89F93D58199C44ED0020E206 /* Score.h */,
 				89F93D59199C44ED0020E206 /* Score.m */,
 				89F93D55199C44EC0020E206 /* MelodyCategory.h */,
 				89F93D56199C44EC0020E206 /* MelodyCategory.m */,
+				89CA47451A18D5C2008296DC /* MelodyFavorite.h */,
+				89CA47461A18D5C2008296DC /* MelodyFavorite.m */,
+				89CA47421A18D5C2008296DC /* PracticeRecord.h */,
+				89CA47431A18D5C2008296DC /* PracticeRecord.m */,
+				89CA473F1A18D5C1008296DC /* Users.h */,
+				89CA47401A18D5C1008296DC /* Users.m */,
 			);
 			name = SQLModel;
 			sourceTree = "<group>";
@@ -1663,6 +1683,8 @@
 				89FD865B193966F30021216A /* FavoriteTableViewCell.m */,
 				8994D13D194BCEDA0016F806 /* MelodyButton.h */,
 				8994D13E194BCEDA0016F806 /* MelodyButton.m */,
+				89B28F631A1B81C000A0BA14 /* PracticeRecordCell.h */,
+				89B28F641A1B81C000A0BA14 /* PracticeRecordCell.m */,
 			);
 			name = TableCell;
 			sourceTree = "<group>";
@@ -2010,6 +2032,7 @@
 				897D783F1A01278D00AD1896 /* 演示20058.png in Resources */,
 				890803CF19C3366600265DC3 /* image_resh@2x.png in Resources */,
 				897D783E1A01278D00AD1896 /* 演示20057.png in Resources */,
+				89B28F691A1B88A100A0BA14 /* lianqinjilu@2x.png in Resources */,
 				890C39DF1983445300206740 /* tishi-01.png in Resources */,
 				890093CA19510603001F33F4 /* shopBg.jpg in Resources */,
 				BA1079AC1967FE4C0056F626 /* wrong.png in Resources */,
@@ -2231,6 +2254,7 @@
 				8994D15C194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid in Resources */,
 				89F66B6C1988953200EF50E2 /* tanzou@2x.png in Resources */,
 				8937430A197F3D77007E63E5 /* quanbushanchu.png in Resources */,
+				89B28F681A1B88A100A0BA14 /* lianqinjilu.png in Resources */,
 				897D78121A01278D00AD1896 /* 演示20013.png in Resources */,
 				89F704D119A5851E0035621C /* zhuceditu.png in Resources */,
 				897D78191A01278D00AD1896 /* 演示20020.png in Resources */,
@@ -2304,18 +2328,18 @@
 				890803C419C3355700265DC3 /* IoriLoadingView.m in Sources */,
 				892DBBC519468F6C00621003 /* GridLayout.m in Sources */,
 				8987A5651925B54600DEE6AE /* BaseViewController.m in Sources */,
+				89B28F601A1B74F700A0BA14 /* PracticeRecordViewController.m in Sources */,
 				BA1CD63C19B1B76A003DC259 /* ASINetworkQueue.m in Sources */,
 				89A3D67519C3E9E200FDC779 /* unzip.c in Sources */,
 				89BE8D75192ADAD100686AC7 /* MelodyTableViewCell.m in Sources */,
 				B1357AB919B4B52800694FD2 /* IAPHelper.m in Sources */,
 				8994D13F194BCEDA0016F806 /* MelodyButton.m in Sources */,
 				8987A55419258DEA00DEE6AE /* MelodyViewController.m in Sources */,
+				89CA47441A18D5C2008296DC /* PracticeRecord.m in Sources */,
 				BA1CD63A19B1B76A003DC259 /* ASIHTTPRequest.m in Sources */,
 				89F685EA195BA92600F85197 /* ScroeViewController.m in Sources */,
 				89A3D67419C3E9E200FDC779 /* mztools.c in Sources */,
-				89F93D60199C44ED0020E206 /* Users.m in Sources */,
 				89A3D67319C3E9E200FDC779 /* ioapi.c in Sources */,
-				89F93D5D199C44ED0020E206 /* MelodyFavorite.m in Sources */,
 				8987A5621925B12600DEE6AE /* ShowViewController.m in Sources */,
 				89F5D19019AC186A005D5D10 /* DatePickerViewController.m in Sources */,
 				BA1CD63B19B1B76A003DC259 /* ASIInputStream.m in Sources */,
@@ -2329,7 +2353,9 @@
 				891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */,
 				89F93D45199C3BD60020E206 /* UserInfo.m in Sources */,
 				8987A55A19258FA500DEE6AE /* ShopViewController.m in Sources */,
+				89CA47411A18D5C1008296DC /* Users.m in Sources */,
 				891EF87D19A6E2C00038F864 /* CheckNetwork.m in Sources */,
+				89CA47471A18D5C2008296DC /* MelodyFavorite.m in Sources */,
 				BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */,
 				891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */,
 				89AA9EDC19ED001C0017BADA /* Score2ViewController.m in Sources */,
@@ -2346,6 +2372,7 @@
 				8987A55719258E2200DEE6AE /* MelodyCategoryViewController.m in Sources */,
 				BA1CD64419B1B7AC003DC259 /* Constant.m in Sources */,
 				891EF86C19A6CA780038F864 /* RegisterViewController.m in Sources */,
+				89B28F651A1B81C000A0BA14 /* PracticeRecordCell.m in Sources */,
 				B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */,
 				8987A55D19258FB900DEE6AE /* QinFangViewController.m in Sources */,
 				B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */,
@@ -2588,10 +2615,11 @@
 		8907100819219EC000BB9E2F /* PianoHelp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				89CB46B41A18CA4D00737B90 /* PianoHelp V3.xcdatamodel */,
 				8903555B199AF49B0048819B /* PianoHelp V2.xcdatamodel */,
 				8907100919219EC000BB9E2F /* PianoHelp.xcdatamodel */,
 			);
-			currentVersion = 8903555B199AF49B0048819B /* PianoHelp V2.xcdatamodel */;
+			currentVersion = 89CB46B41A18CA4D00737B90 /* PianoHelp V3.xcdatamodel */;
 			path = PianoHelp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

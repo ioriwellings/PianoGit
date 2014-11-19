@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "UserInfo.h"
 #import "Score2ViewController.h"
+#import "PracticeRecord.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -589,6 +590,7 @@
                 score.score = [NSNumber numberWithInt:ff];
             }
         }
+        [((AppDelegate*)[UIApplication sharedApplication].delegate) addPracticeRecordWithName:self.fileName score:[NSNumber numberWithInteger:ff] mode:(self.iPlayMode == 1)?@"识谱模式":@"跟弹模式" ];
         [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
     });
 }

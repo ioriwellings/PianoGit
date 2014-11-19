@@ -2,7 +2,7 @@
 //  MelodyFavorite.m
 //  PianoHelp
 //
-//  Created by Jobs on 8/13/14.
+//  Created by Jobs on 11/16/14.
 //  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 @dynamic melodyID;
 @dynamic sort;
 @dynamic melody;
-@dynamic user;
 @dynamic score;
+@dynamic user;
 
 @end

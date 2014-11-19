@@ -75,7 +75,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-ca-nA3">
-                                <rect key="frame" x="55" y="14" width="91" height="39"/>
+                                <rect key="frame" x="16" y="14" width="91" height="39"/>
                                 <state key="normal" title="关于">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,6 +83,17 @@
                                 <connections>
                                     <segue destination="zaI-kO-87r" kind="popover" popoverAnchorView="3SE-ca-nA3" id="jlc-2h-z59">
                                         <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-gJ-6Ml">
+                                <rect key="frame" x="134" y="12" width="38" height="36"/>
+                                <state key="normal" image="lianqinjilu.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="XKf-Rw-z13" kind="popover" popoverAnchorView="NjN-gJ-6Ml" id="Mig-k1-XWr">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
@@ -1558,6 +1569,78 @@
             </objects>
             <point key="canvasLocation" x="-1222" y="1537"/>
         </scene>
+        <!--Practice Record View Controller-->
+        <scene sceneID="BJR-Ce-Gt0">
+            <objects>
+                <viewController id="XKf-Rw-z13" customClass="PracticeRecordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7bb-Hz-d0h"/>
+                        <viewControllerLayoutGuide type="bottom" id="zJS-35-9Q8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MvH-Tf-QLg">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bNu-S4-l7J">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="DoV-ms-uXi" customClass="PracticeRecordCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DoV-ms-uXi" id="0KL-rV-bXe">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8Q-7I-S4T" userLabel="labDate">
+                                                    <rect key="frame" x="21" y="14" width="195" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klB-dR-s3a" userLabel="labName">
+                                                    <rect key="frame" x="231" y="14" width="233" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3w-AB-aBw" userLabel="labScore">
+                                                    <rect key="frame" x="613" y="14" width="150" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWL-bs-UFQ" userLabel="labMode">
+                                                    <rect key="frame" x="476" y="14" width="129" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labDate" destination="s8Q-7I-S4T" id="VRd-Kp-0Iv"/>
+                                            <outlet property="labMode" destination="aWL-bs-UFQ" id="qMy-Q0-drw"/>
+                                            <outlet property="labName" destination="klB-dR-s3a" id="pJ1-DA-wHb"/>
+                                            <outlet property="labScore" destination="n3w-AB-aBw" id="ZIS-VH-ved"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XKf-Rw-z13" id="CDy-28-dnc"/>
+                                    <outlet property="delegate" destination="XKf-Rw-z13" id="v7b-bs-WYL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="bNu-S4-l7J" id="EZc-6o-sDR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUD-S6-gzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2467" y="2074"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="hzG-B5-xFt">
             <objects>
@@ -2430,6 +2513,7 @@
         <image name="jizhumima.png" width="90" height="17"/>
         <image name="jizhumima_selected.png" width="90" height="17"/>
         <image name="kaishi-01.png" width="22" height="30"/>
+        <image name="lianqinjilu.png" width="38" height="36"/>
         <image name="login_bg.png" width="1024" height="768"/>
         <image name="mima.png" width="303" height="29"/>
         <image name="nansheng.png" width="43" height="43"/>

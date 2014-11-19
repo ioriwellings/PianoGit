@@ -2,7 +2,7 @@
 //  MelodyFavorite.h
 //  PianoHelp
 //
-//  Created by Jobs on 8/13/14.
+//  Created by Jobs on 11/16/14.
 //  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString * melodyID;
 @property (nonatomic, retain) NSNumber * sort;
 @property (nonatomic, retain) Melody *melody;
-@property (nonatomic, retain) Users *user;
 @property (nonatomic, retain) Score *score;
+@property (nonatomic, retain) Users *user;
 
 @end
