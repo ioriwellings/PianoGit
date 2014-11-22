@@ -366,8 +366,8 @@
         [((UIButton*)sender) setSelected:true];
         //        [self.sfCountdownView start];
 
-        if (self.iPlayMode != 1) {
-            [player playPrepareTempo:[player getCountDownCnt]];
+        if (self.iPlayMode != 1)
+        {
 //            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
             if (_player == NULL)
             {
@@ -377,13 +377,16 @@
                 _player.controlStyle = MPMovieControlStyleNone;
                 [[_player view] setFrame:CGRectMake((1024-960)/2, (768-540)/2, 960, 540)]; // size to fit parent view exactly
                 _player.view.alpha = .75;
-                [self.view addSubview:[_player view]];
+                
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(playerFinish:)
                                                              name:MPMoviePlayerPlaybackDidFinishNotification
                                                            object:nil];
             }
+            [self.view addSubview:[_player view]];
             [_player play];
+            [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2.5]];
+            [player playPrepareTempo:[player getCountDownCnt]];
             [self.sfCountdownView start:[player getSectionTime]];
         } else {
             
