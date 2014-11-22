@@ -18,11 +18,13 @@
 #import "UserInfo.h"
 #import "Score2ViewController.h"
 #import "PracticeRecord.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface MelodyDetailViewController ()
 {
     BOOL isHitAnimating;
     BOOL isHiddenMenubar;
+    MPMoviePlayerController *_player;
 }
 @property (nonatomic,weak) UIButton *btnCurrent;
 @property (strong, nonatomic) SFCountdownView *sfCountdownView;
@@ -48,6 +50,20 @@
         splitState = false;
     }
     return self;
+}
+
+-(void)dealloc
+{
+    self.sfCountdownView.delegate = nil;
+    if (timer != nil) {
+        [timer invalidate];
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)playerFinish:(NSNotification*)noti
+{
+    [_player.view removeFromSuperview];
 }
 
 - (void)viewDidLoad
@@ -351,6 +367,21 @@
         if (self.iPlayMode != 1) {
             [player playPrepareTempo:[player getCountDownCnt]];
 //            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+            if (_player == NULL)
+            {
+                NSString *strPath = [[NSBundle mainBundle] pathForResource:@"小火车7" ofType:@"mp4"];
+                _player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:strPath]];
+                _player.fullscreen = NO;
+                _player.controlStyle = MPMovieControlStyleNone;
+                [[_player view] setFrame:CGRectMake((1024-960)/2, (768-540)/2, 960, 540)]; // size to fit parent view exactly
+                _player.view.alpha = .75;
+                [self.view addSubview:[_player view]];
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(playerFinish:)
+                                                             name:MPMoviePlayerPlaybackDidFinishNotification
+                                                           object:nil];
+            }
+            [_player play];
             [self.sfCountdownView start:[player getSectionTime]];
         } else {
             
@@ -751,15 +782,6 @@
     [player clearJumpSection];
     splitState = false;
     splitStart = 0;
-}
-
-
--(void)dealloc
-{
-    self.sfCountdownView.delegate = nil;
-    if (timer != nil) {
-        [timer invalidate];
-    }
 }
 
 -(void)btnStateCtlInPlay:(int)state{
