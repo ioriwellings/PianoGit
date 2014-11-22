@@ -422,6 +422,8 @@
 		B135CFC419B196A200EA8BF7 /* querenzhuce@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B135CFC019B196A200EA8BF7 /* querenzhuce@2x.png */; };
 		B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1919557631008DBEC7 /* HandPopViewController.m */; };
 		B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1E19557653008DBEC7 /* SoundPopViewController.m */; };
+		B1F43F641A206FF100A7BB27 /* 小火车7.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B1F43F631A206FF100A7BB27 /* 小火车7.mp4 */; };
+		B1F43F691A2071C100A7BB27 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F43F681A2071C100A7BB27 /* MediaPlayer.framework */; };
 		B78D6B29198749EA00F51726 /* zanting.png in Resources */ = {isa = PBXBuildFile; fileRef = B78D6B27198749EA00F51726 /* zanting.png */; };
 		B78D6B2A198749EA00F51726 /* zanting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B78D6B28198749EA00F51726 /* zanting@2x.png */; };
 		BA1079A11967FE4C0056F626 /* chanyin.png in Resources */ = {isa = PBXBuildFile; fileRef = BA10798C1967FE4C0056F626 /* chanyin.png */; };
@@ -963,6 +965,8 @@
 		B163DA1D19557653008DBEC7 /* SoundPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPopViewController.h; sourceTree = "<group>"; };
 		B163DA1E19557653008DBEC7 /* SoundPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundPopViewController.m; sourceTree = "<group>"; };
 		B16604CC1A065853003BC7F8 /* PianoWeb */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PianoWeb; sourceTree = "<group>"; };
+		B1F43F631A206FF100A7BB27 /* 小火车7.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "小火车7.mp4"; sourceTree = "<group>"; };
+		B1F43F681A2071C100A7BB27 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B78D6B27198749EA00F51726 /* zanting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zanting.png; sourceTree = "<group>"; };
 		B78D6B28198749EA00F51726 /* zanting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zanting@2x.png"; sourceTree = "<group>"; };
 		BA10798C1967FE4C0056F626 /* chanyin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chanyin.png; path = ../StaveFramework/StaveFramework/chanyin.png; sourceTree = "<group>"; };
@@ -1029,6 +1033,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F43F691A2071C100A7BB27 /* MediaPlayer.framework in Frameworks */,
 				B1357ABC19B4B85400694FD2 /* StoreKit.framework in Frameworks */,
 				BA1CD65019B1B8FC003DC259 /* CFNetwork.framework in Frameworks */,
 				BA1CD64E19B1B8EB003DC259 /* MobileCoreServices.framework in Frameworks */,
@@ -1081,6 +1086,7 @@
 		89070FF319219EC000BB9E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B1F43F681A2071C100A7BB27 /* MediaPlayer.framework */,
 				B1357ABB19B4B85400694FD2 /* StoreKit.framework */,
 				BA1CD64F19B1B8FC003DC259 /* CFNetwork.framework */,
 				BA1CD64D19B1B8EB003DC259 /* MobileCoreServices.framework */,
@@ -1325,6 +1331,7 @@
 				89F5FB6019527DE900011C3A /* shopBg.png */,
 				89F5FB6119527DE900011C3A /* shopItem.png */,
 				895DB5B019C5BCBD00E02DE4 /* about.html */,
+				B1F43F631A206FF100A7BB27 /* 小火车7.mp4 */,
 				8964EBD1194539CC00DBCED9 /* songs */,
 				8964EBB2194536D400DBCED9 /* StaveFramework-RefrenceResources */,
 				89A15D801921B78400647F7B /* images */,
@@ -2009,6 +2016,7 @@
 				89F5D18719ABFD74005D5D10 /* zidongdengru_selected.png in Resources */,
 				890C39DC1983445300206740 /* zuoyuoshou-01@2x.png in Resources */,
 				8964EBF1194539CC00DBCED9 /* Easy_Songs__Jingle_Bells.mid in Resources */,
+				B1F43F641A206FF100A7BB27 /* 小火车7.mp4 in Resources */,
 				890C39B719833B4E00206740 /* kaishi-01@2x.png in Resources */,
 				89AA9ED419ECFD3B0017BADA /* btnClose_1@2x.png in Resources */,
 				89F5D18D19ABFE2C005D5D10 /* jizhumima_selected@2x.png in Resources */,

@@ -125,6 +125,10 @@
     isLine = FALSE;
 }
 
+- (BOOL) getDeviceStatus {
+    return [midiHandler isConnect];
+}
+
 /** The MidiFile and/or SheetMusic has changed. Stop any playback sound,
  *  and store the current midifile and sheet music.
  */
@@ -481,8 +485,13 @@
 {
     NSLog(@"====sheetShade === staff index = [%d] chord Index = [%d]", staffIndex, chordIndex);
     
-    int currentPulseTimes = [chord endTime];
+    
+    
+    int currentPulseTimes = [chord startTime];
     int prevPulseTimes = [chord startTime];
+    
+    NSLog(@"====chord === currentPulseTimes = [%d] prevPulseTimes = [%d]",
+          currentPulseTimes, prevPulseTimes);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         //[sheet shadeNotesByModel1:staffIndex andChordIndex:chordIndex andChord:chord];
@@ -994,7 +1003,9 @@
 
 
 - (void)ClearTimerCallback:(NSTimer*)arg{
-    [sheetPlay ClearShadeDataForDevice:midiHandler];
+    if (isLine) {
+        [midiHandler sendClearData:0];
+    }
 }
 /** The callback for the timer. If the midi is still playing,
  *  update the currentPulseTime and shade the sheet music.
@@ -1230,7 +1241,7 @@
     [arrPacket addObject: num3];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *data1 = [NSString stringWithFormat:@"n[%d]", notePlayed];
+        NSString *data1 = [NSString stringWithFormat:@"键号:%d", notePlayed];
         
         if (self.midiData != nil) {
             [self.midiData setText:data1];
@@ -1285,10 +1296,10 @@
         if (self.midiData == nil) return;
         
         if (messageID == kMIDIMsgObjectAdded) {
-            [self.midiData setText:@"connect"];
+            [self.midiData setText:@"设备已连接"];
             [self setIsLine:TRUE];
         } else if (messageID == kMIDIMsgObjectRemoved) {
-            [self.midiData setText:@"disconnect"];
+            [self.midiData setText:@"设备未连接"];
             [self setIsLine:FALSE];
         }
     });

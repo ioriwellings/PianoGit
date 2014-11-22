@@ -18,11 +18,13 @@
 #import "UserInfo.h"
 #import "Score2ViewController.h"
 #import "PracticeRecord.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface MelodyDetailViewController ()
 {
     BOOL isHitAnimating;
     BOOL isHiddenMenubar;
+    MPMoviePlayerController *_player;
 }
 @property (nonatomic,weak) UIButton *btnCurrent;
 @property (strong, nonatomic) SFCountdownView *sfCountdownView;
@@ -48,6 +50,20 @@
         splitState = false;
     }
     return self;
+}
+
+-(void)dealloc
+{
+    self.sfCountdownView.delegate = nil;
+    if (timer != nil) {
+        [timer invalidate];
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)playerFinish:(NSNotification*)noti
+{
+    [_player.view removeFromSuperview];
 }
 
 - (void)viewDidLoad
@@ -186,7 +202,9 @@
 {
     [player stop];
     [player stopPrepareTempo];
+    [player ClearTimerCallback:nil];
     [player disConnectMIDI];
+    
     if([self.fixSearchDisplayDelegate respondsToSelector:@selector(fixSearchBarPosition)])
     {
         //[self.fixSearchDisplayDelegate fixSearchBarPosition];
@@ -348,9 +366,27 @@
         [((UIButton*)sender) setSelected:true];
         //        [self.sfCountdownView start];
 
-        if (self.iPlayMode != 1) {
-            [player playPrepareTempo:[player getCountDownCnt]];
+        if (self.iPlayMode != 1)
+        {
 //            [self.sfCountdownView start:[midifile getMidiFileTimes] withCnt:[midifile getMeasureCount]];
+            if (_player == NULL)
+            {
+                NSString *strPath = [[NSBundle mainBundle] pathForResource:@"小火车7" ofType:@"mp4"];
+                _player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:strPath]];
+                _player.fullscreen = NO;
+                _player.controlStyle = MPMovieControlStyleNone;
+                [[_player view] setFrame:CGRectMake((1024-960)/2, (768-540)/2, 960, 540)]; // size to fit parent view exactly
+                _player.view.alpha = .75;
+                
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(playerFinish:)
+                                                             name:MPMoviePlayerPlaybackDidFinishNotification
+                                                           object:nil];
+            }
+            [self.view addSubview:[_player view]];
+            [_player play];
+            [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2.5]];
+            [player playPrepareTempo:[player getCountDownCnt]];
             [self.sfCountdownView start:[player getSectionTime]];
         } else {
             
@@ -472,6 +508,16 @@
     self.sfCountdownView.delegate = self;
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     [self.sfCountdownView updateAppearance];
+    
+    
+    self.labDebug.font = [UIFont systemFontOfSize:17];
+    self.labDebug.textColor = [UIColor whiteColor];
+    BOOL isConnect = [player getDeviceStatus];
+    if (isConnect) {
+        [self.labDebug setText:@"设备已连接"];
+    } else {
+        [self.labDebug setText:@"设备未连接"];
+    }
 }
 
 -(void)hiddenMenuAndToolBar
@@ -751,15 +797,6 @@
     [player clearJumpSection];
     splitState = false;
     splitStart = 0;
-}
-
-
--(void)dealloc
-{
-    self.sfCountdownView.delegate = nil;
-    if (timer != nil) {
-        [timer invalidate];
-    }
 }
 
 -(void)btnStateCtlInPlay:(int)state{

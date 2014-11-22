@@ -232,7 +232,9 @@
     
     if ([notes count] <= 0) return FALSE;
     NSLog(@"===judgeResult count = [%d]", count);
-    if (count == 1) {  //单音符
+    
+    BOOL isSingle = [self chordIsSingle:chord];
+    if (isSingle) {  //单音符
         nd = noteData[0];
         number = nd.number;
         
@@ -304,6 +306,29 @@
 
 
 
+-(int) chordIsSingle:(ChordSymbol*)chord {
+    
+    if ([chord notedata_len] <= 0) return -1;
+    
+    if ([chord notedata_len] == 1) {
+        return TRUE;
+    }
+    
+    NoteData *noteData = [chord notedata];
+    BOOL isSingle = TRUE;
+    int number = noteData[0].number;
+    
+    for (int i = 1; i < [chord notedata_len]; i++) {
+        NoteData nd = noteData[i];
+        if (number != nd.number) {
+            isSingle = FALSE;
+            break;
+        }
+    }
+    
+    return isSingle;
+}
+
 -(int) getChordSymbolCount:(ChordSymbol*)chord {
     
     if ([chord notedata_len] <= 0) return -1;
@@ -321,7 +346,15 @@
     }
     
     if (!isSingle) {
-        return [chord notedata_len];
+        int count = 0;
+        for (int i = 0; i < [chord notedata_len]; i++) {
+            NoteData nd = noteData[i];
+            if (nd.previous != 1) {
+                count++;
+            }
+        }
+        
+        return count;
     } else {
         return 1;
     }
@@ -336,11 +369,6 @@
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
     ChordSymbol *chord = [data getChordSymbol];
     
-    NoteData *noteData = [chord notedata];
-    for (int i = 0; i < [chord notedata_len]; i++) {
-        NoteData nd = noteData[i];
-        NSLog(@"==========the current symbol number is[%d]|", nd.number);
-    }
     return [self getChordSymbolCount:chord];
 }
 
@@ -356,6 +384,56 @@
     return chord;
 }
 
+-(void)recognitionPlayGoOn
+{
+    if (currIndex > [symbolDatas count]) return;
+    
+    int start = currIndex;
+    for(int i = start; i < [symbolDatas count]; i++) {
+        
+        
+        RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
+        ChordSymbol *chord = [data getChordSymbol];
+        
+        NoteData *noteData = [chord notedata];
+        int count = 0;
+        for (int j = 0; j < [chord notedata_len]; j++) {
+            NoteData nd = noteData[j];
+            if (nd.previous == 1) {
+                NSLog(@"=========nd is previous!!");
+                count++;
+            } else {
+                break;
+            }
+        }
+        
+        
+        NSLog(@"the count is[%d] and chord notedate is [%d]!", count, [chord notedata_len]);
+        
+        if (count == [chord notedata_len]) {
+            
+            NSLog(@"the count is ==== chord notedate len!");
+            if (sheetShadeDelegate != nil) {
+                [chord setJudgedResult:1];
+                currIndex++;
+                
+                [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:chord];
+                
+                //评判完成
+                if (currIndex == [symbolDatas count] && endDelegate != nil) {
+                    [endDelegate endSongsResult:0 andRight:(int)[symbolDatas count] andWrong:0];
+                }
+            }
+        } else {
+            
+            NSLog(@"the count is !=== chord notedate len!");
+            break;
+        }
+    }
+    
+    
+}
+
 /**
  *  midi连线评判
  */
@@ -369,9 +447,15 @@
     if ([self judgeResult:chord withCount:[chord notedata_len]]) {
         if (sheetShadeDelegate != nil) {
             [chord setJudgedResult:1];
-            [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:chord];
+            
             currIndex++;
+            
+            [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:chord];
+            
+            [self recognitionPlayGoOn];
+            
         }
+        
         [notes clear];
     }
     

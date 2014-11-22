@@ -167,6 +167,8 @@ static void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
                                    length,
                                    message);
 
+        usleep(1000);
+        
         result = MIDISend(outputPort, outEndpoint, packet_list);
         NSLog(@" clear data is %d", i);
     }
