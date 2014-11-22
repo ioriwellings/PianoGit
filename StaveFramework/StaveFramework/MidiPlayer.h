@@ -134,6 +134,8 @@ enum {
 -(void)clearJudgedData;
 -(void)PianoTips:(BOOL)isOn;
 -(void)setIsLine:(BOOL)status;
+-(BOOL)getDeviceStatus;
+-(void)ClearTimerCallback:(NSTimer*)arg;
 
 @property (assign, nonatomic) SheetMusicPlay *sheetPlay;
 @property (assign, nonatomic) CBPeripheral *peripheral;
