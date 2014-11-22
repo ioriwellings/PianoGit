@@ -249,11 +249,11 @@ int TitleHeights = 14; /** The height for the title on the first page */
 
 - (void) ClearShadeDataForDevice:(MidiKeyboard*)mk{
     
-    for (int i = 0; i < [staffs count]; i++) {
-        Staff *staff = [staffs get:i];
-        
+//    for (int i = 0; i < [staffs count]; i++) {
+        Staff *staff = [staffs get:0];
+    
         [staff SendClearDataToDevice:mk];
-    }
+//    }
 }
 
 

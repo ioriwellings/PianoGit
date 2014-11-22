@@ -186,7 +186,9 @@
 {
     [player stop];
     [player stopPrepareTempo];
+    [player ClearTimerCallback:nil];
     [player disConnectMIDI];
+    
     if([self.fixSearchDisplayDelegate respondsToSelector:@selector(fixSearchBarPosition)])
     {
         //[self.fixSearchDisplayDelegate fixSearchBarPosition];
@@ -472,6 +474,16 @@
     self.sfCountdownView.delegate = self;
     self.sfCountdownView.countdownColor = [UIColor blackColor];
     [self.sfCountdownView updateAppearance];
+    
+    
+    self.labDebug.font = [UIFont systemFontOfSize:17];
+    self.labDebug.textColor = [UIColor whiteColor];
+    BOOL isConnect = [player getDeviceStatus];
+    if (isConnect) {
+        [self.labDebug setText:@"设备已连接"];
+    } else {
+        [self.labDebug setText:@"设备未连接"];
+    }
 }
 
 -(void)hiddenMenuAndToolBar
