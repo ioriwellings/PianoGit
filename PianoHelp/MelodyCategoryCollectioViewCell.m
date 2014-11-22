@@ -51,6 +51,17 @@
     {
         self.imageViewBG.image = [UIImage imageWithContentsOfFile:strPath];
     }
+    else
+    {
+        if (category.parentCategory == NULL)
+        {
+            self.imageViewBG.image = [UIImage imageNamed:@"shifanqupu.png"];
+        }
+        else
+        {
+            self.imageViewBG.image = [UIImage imageNamed:@"shuji.png"];
+        }
+    }
     //else
     {
         if(category.name)
