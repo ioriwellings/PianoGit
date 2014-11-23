@@ -41,12 +41,12 @@
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardDidShowNotification
+                                                 name:UIKeyboardWillShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardDidHideNotification
+                                                 name:UIKeyboardWillHideNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -437,10 +437,9 @@
     // Animate the resize of the text view's frame in sync with the keyboard's appearance.
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
-	
-	CGRect frame = self.loginContainerView.frame;
-	frame.origin.y = keyboardTop - frame.size.height;
-	self.loginContainerView.frame = frame;
+    
+    self.loginYConstraint.constant = keyboardTop - 388;
+    
     [UIView commitAnimations];
     
 	
@@ -472,7 +471,7 @@
     
 	CGRect frame = self.loginContainerView.frame;
 	frame.origin.y = 247;
-	self.loginContainerView.frame = frame;
+	self.loginYConstraint.constant =  247;
 	[UIView commitAnimations];
 }
 

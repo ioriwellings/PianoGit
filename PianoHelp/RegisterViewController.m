@@ -44,12 +44,12 @@
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
+                                                 name:UIKeyboardDidShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
+                                                 name:UIKeyboardDidHideNotification
                                                object:nil];
 
     NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"Default.aspx"];

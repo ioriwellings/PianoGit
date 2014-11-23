@@ -1454,17 +1454,17 @@
                         <viewControllerLayoutGuide type="top" id="xeY-do-SeB"/>
                         <viewControllerLayoutGuide type="bottom" id="CSZ-xM-URu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cVT-08-Cmb" customClass="UIControl">
+                    <view key="view" contentMode="scaleToFill" id="cVT-08-Cmb" userLabel="RootView" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
-                                <rect key="frame" x="0.0" y="0.0" width="1025" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="gangqinpeilianbao.png" translatesAutoresizingMaskIntoConstraints="NO" id="mjJ-eV-KNi">
-                                <rect key="frame" x="-150" y="0.0" width="1000" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="980" height="300"/>
                             </imageView>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B03-MB-aA0">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B03-MB-aA0" userLabel="loginView">
                                 <rect key="frame" x="316" y="247" width="392" height="388"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="dengrukuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZER-zw-df3">
@@ -1551,6 +1551,12 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="leading" secondItem="cVT-08-Cmb" secondAttribute="leading" constant="316" id="2KM-D3-nWr"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="centerX" secondItem="cVT-08-Cmb" secondAttribute="centerX" id="5my-S0-tOx"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="top" secondItem="xeY-do-SeB" secondAttribute="bottom" constant="247" id="DhQ-8c-3lY"/>
+                            <constraint firstItem="CSZ-xM-URu" firstAttribute="top" secondItem="B03-MB-aA0" secondAttribute="bottom" constant="133" id="ZsA-Qq-0gc"/>
+                        </constraints>
                         <connections>
                             <action selector="view_touchDown:" destination="KLg-8X-Svs" eventType="touchDown" id="kwq-fk-HOW"/>
                         </connections>
@@ -1561,6 +1567,7 @@
                         <outlet property="chkAutoLogin" destination="L4A-nh-5cO" id="01Y-Bw-NTt"/>
                         <outlet property="chkRemember" destination="5JT-eJ-sfb" id="5V8-BM-Kcr"/>
                         <outlet property="loginContainerView" destination="B03-MB-aA0" id="fgA-l5-cfI"/>
+                        <outlet property="loginYConstraint" destination="DhQ-8c-3lY" id="1x6-qv-po5"/>
                         <outlet property="txtPassword" destination="rmb-ss-T1N" id="mKh-xg-CcC"/>
                         <outlet property="txtUserName" destination="nzJ-8G-0yq" id="NiH-WJ-oPY"/>
                     </connections>

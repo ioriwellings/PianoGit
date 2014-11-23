@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "BaseViewController.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>
+@interface LoginViewController : BaseViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtUserName;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UIView *loginContainerView;
@@ -21,5 +22,8 @@
 - (IBAction)chkRemember_click:(id)sender;
 - (IBAction)chkAutoLogin_click:(id)sender;
 - (IBAction)btnAnonymity_click:(id)sender;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginYConstraint;
+
 
 @end
