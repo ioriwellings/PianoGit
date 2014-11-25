@@ -83,7 +83,7 @@
 
 -(void)showLoadingForCheckUpdate
 {
-    loadingView = [MessageBox showLoadingViewWithText:@"检查更新中......" parentViewSize:CGSizeMake(1024, 768)];
+    loadingView = [MessageBox showLoadingViewWithText:@"正在下载更新曲目......" parentViewSize:CGSizeMake(1024, 768)];
     [self.view addSubview:loadingView];
     [((AppDelegate*)[UIApplication sharedApplication].delegate) checkForUpdate];
 }
