@@ -64,6 +64,7 @@ typedef enum : NSUInteger
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property BOOL isPresentScroeVC;
 @property (weak, nonatomic) IBOutlet UILabel *labDebug;
+@property (weak, nonatomic) IBOutlet UIButton *btnRedirect;
 @property (nonatomic, readonly ,getter = getOption) MidiOptions *__options;
 @property (nonatomic, readonly ,getter = getMIDIFile) MidiFile * __midiFile;
 @property (nonatomic) HandMode handMode;
@@ -78,6 +79,7 @@ typedef enum : NSUInteger
 - (IBAction)btnRePlay_click:(id)sender;
 - (IBAction)btnPlay_click:(id)sender;
 - (IBAction)btnSudu_click:(id)sender;
+- (IBAction)btnDeviceRedirect_click:(id)sender;
 
 - (IBAction)xiaoJieSlider_valueChanged:(id)sender;
 - (IBAction)suduSlider_valueChanged:(id)sender;

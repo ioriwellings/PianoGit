@@ -1296,9 +1296,11 @@
         if (self.midiData == nil) return;
         
         if (messageID == kMIDIMsgObjectAdded) {
+            self.midiData.textColor = [UIColor whiteColor];
             [self.midiData setText:@"设备已连接"];
             [self setIsLine:TRUE];
         } else if (messageID == kMIDIMsgObjectRemoved) {
+            self.midiData.textColor = [UIColor redColor];
             [self.midiData setText:@"设备未连接"];
             [self setIsLine:FALSE];
         }

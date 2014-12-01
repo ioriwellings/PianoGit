@@ -82,6 +82,8 @@
     
     [self loadSheetMusic];
     
+    self.btnRedirect.backgroundColor = [UIColor clearColor];
+    
     isEnd = FALSE;
     
     if (self.iPlayMode == 1) {//识谱模式
@@ -427,6 +429,11 @@
     
 }
 
+- (IBAction)btnDeviceRedirect_click:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.cnblogs.com/foxmin"]];
+}
+
 #pragma mark - private method
 - (void) loadSheetMusic
 {
@@ -500,6 +507,7 @@
     [piano setMidiFile:midifile withOptions:&options];
     [player setPiano:piano];
     player.midiData = self.labDebug;
+    self.labDebug.userInteractionEnabled = YES;
     
     scrollView.hidden = NO;
     sheetmsic1.hidden = YES;
@@ -511,11 +519,13 @@
     
     
     self.labDebug.font = [UIFont systemFontOfSize:17];
-    self.labDebug.textColor = [UIColor whiteColor];
+//    self.labDebug.textColor = [UIColor whiteColor];
     BOOL isConnect = [player getDeviceStatus];
     if (isConnect) {
+        self.labDebug.textColor = [UIColor whiteColor];
         [self.labDebug setText:@"设备已连接"];
     } else {
+        self.labDebug.textColor = [UIColor redColor];
         [self.labDebug setText:@"设备未连接"];
     }
 }
