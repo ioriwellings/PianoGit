@@ -868,7 +868,7 @@
     else if([strName isEqualToString:@"教程"])
     {
         cate.cover = @"jiaocaiqupu.png";
-        cate.buy = @2;
+        cate.buy = @0;
         cate.buyURL = @"com.jiaYinQiJi.product.a";
     }
     
