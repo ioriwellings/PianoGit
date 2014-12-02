@@ -77,7 +77,7 @@
     // Dequeue a cell from self's table view.
     static NSString *CellIdentifier = @"TableViewCell";
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    NSOrderedSet *_dataSource = [UserInfo sharedUserInfo].dbUser.record;
+    NSOrderedSet *_dataSource = [[UserInfo sharedUserInfo].dbUser.record reversedOrderedSet];
     [((PracticeRecordCell*)cell) updateContent:((PracticeRecord*)[_dataSource objectAtIndex:indexPath.row])];
     return cell;
 }
@@ -103,7 +103,7 @@
     [fetchRequest setPredicate:predicate];
     
     // Create the sort descriptors array.
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:YES];
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:NO];
     NSArray *sortArray = @[sort];
     [fetchRequest setSortDescriptors:sortArray];
     
