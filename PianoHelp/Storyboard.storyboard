@@ -451,7 +451,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXs-wG-OrW" userLabel="btnFavorite">
-                                                    <rect key="frame" x="638" y="6" width="32" height="30"/>
+                                                    <rect key="frame" x="600" y="6" width="32" height="30"/>
                                                     <state key="normal" image="xiai.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -460,13 +460,13 @@
                                                         <action selector="btnFavorite_click:" destination="yu7-Vz-Vhd" eventType="touchUpInside" id="1Vo-65-728"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我的最爱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGT-NT-Utw">
-                                                    <rect key="frame" x="623" y="36" width="70" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="添加到我的最爱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGT-NT-Utw">
+                                                    <rect key="frame" x="563" y="37" width="106" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vC-QA-DEy" userLabel="btnTask">
-                                                    <rect key="frame" x="711" y="4" width="31" height="34"/>
+                                                    <rect key="frame" x="701" y="4" width="31" height="34"/>
                                                     <state key="normal" image="renwu2.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -475,8 +475,8 @@
                                                         <action selector="btnTask_click:" destination="yu7-Vz-Vhd" eventType="touchUpInside" id="WGK-iP-pao"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我的任务" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-8c-2g3">
-                                                    <rect key="frame" x="691" y="36" width="70" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="添加到我的任务" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-8c-2g3">
+                                                    <rect key="frame" x="663" y="36" width="106" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -553,7 +553,7 @@
                 </searchDisplayController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fql-ta-1cR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896" y="272"/>
+            <point key="canvasLocation" x="2896" y="271"/>
         </scene>
         <!--Section Pop View Controller-->
         <scene sceneID="Qcy-Cl-zPW">
@@ -2288,6 +2288,7 @@
                         <outlet property="btnAll" destination="Awa-8H-E4c" id="F4y-qk-Cfs"/>
                         <outlet property="btnLove" destination="yfG-bz-xbP" id="kZl-5G-M9i"/>
                         <outlet property="btnPlayModel" destination="7ho-6K-yJF" id="pwZ-YR-h3q"/>
+                        <outlet property="btnShiPuModel" destination="ypx-KV-UX7" id="nQF-RR-SUx"/>
                         <outlet property="btnTask" destination="wT5-Oq-Fbf" id="Clu-FQ-78t"/>
                         <outlet property="labNumberAll" destination="U4Y-zC-wNJ" id="c1o-aE-Ul3"/>
                         <outlet property="labNumberLike" destination="GAT-Iy-0ZU" id="ajL-Jz-RPi"/>

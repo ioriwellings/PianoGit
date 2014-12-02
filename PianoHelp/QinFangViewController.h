@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIButton *btnTask;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlayModel;
+@property (weak, nonatomic) IBOutlet UIButton *btnShiPuModel;
 @property (weak, nonatomic) IBOutlet UIButton *btnAll;
 @property (weak, nonatomic) IBOutlet UIButton *btnLove;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
