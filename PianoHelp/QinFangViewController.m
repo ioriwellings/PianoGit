@@ -86,6 +86,7 @@
     [self.btnScope setSelected:YES];
     self.btnModel = self.btnPlayModel;
     [self.btnPlayModel setSelected:YES];
+    [self.btnShiPuModel setSelected:NO];
     
     [self setNumberoOfEveryGroup];
     

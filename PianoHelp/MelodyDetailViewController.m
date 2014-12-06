@@ -79,9 +79,8 @@
     self.sliderXiaoJie.maximumValue = [midifile getMeasureCount];
     self.sliderSpeed.value = 60000000/[[midifile time] tempo];
     [self.btnSuDu setTitle:[NSString stringWithFormat:@"%d", (int)self.sliderSpeed.value] forState:UIControlStateNormal];
-    
     [self loadSheetMusic];
-    
+
     self.btnRedirect.backgroundColor = [UIColor clearColor];
     
     isEnd = FALSE;
@@ -431,7 +430,7 @@
 
 - (IBAction)btnDeviceRedirect_click:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.cnblogs.com/foxmin"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.jiayinqiji.com"]];
 }
 
 #pragma mark - private method
@@ -587,7 +586,7 @@
 -(void)endSongs
 {
     isEnd = TRUE;
-    [self.btnPlay setSelected:false];
+
     [self.btnTryListen setEnabled:true];
     [self btnStateCtlInPlay:2];
     scrollView.hidden = NO;
@@ -768,7 +767,6 @@
 //    [self btnPlay_click:self.btnPlay];
 }
 
-
 //陪练音开启关闭
 - (void) SparringMute:(int)value
 {
@@ -867,7 +865,7 @@
             [self.btnSuDu setEnabled:false];
             [self.btnAccompany setEnabled:false];
         }
-        [self.btnPlay setSelected:FALSE];
+        [self.btnPlay setSelected:false];
         [self.btnPlay setEnabled:true];
         if ([options.mute count] == 1) {
             [self.btnHandCtl setEnabled:false];
