@@ -83,7 +83,7 @@
         iLoop--;
     }
 //    [self loadDemoMidiToSQL];
-//    [self loadTempMIDE];//for test
+    [self loadTempMIDE];//for test
     [self initDataBaseWithPList:nil];
     [MidiKeyboard sharedMidiKeyboard];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
@@ -606,6 +606,22 @@
 -(void)loadTempMIDE
 {
     NSArray *array = [[NSBundle mainBundle] pathsForResourcesOfType:@"mid" inDirectory:@"temp"];
+    if([array count] == 0) return;
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Category" inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@ and parentCategory == nil", @"测试"];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [moc executeFetchRequest:fetchRequest error:&error];
+    if([objects count]>0)
+    {
+        return ;
+    }
     
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
     cate.name = @"测试";
@@ -626,12 +642,7 @@
         melody.filePath = [NSString stringWithFormat:@"temp/%@", melody.name];
     }
     
-    NSError *error;
-    if(![self.managedObjectContext save:&error])
-    {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    
+    [self saveContext];
 }
 
 #pragma mark -Update melody from webserver-
@@ -792,7 +803,7 @@
                     {
                         subCate.parentCategory = cate;
                     }
-                    if([cate.name isEqualToString:@"试练曲集"])
+                    if([cate.name isEqualToString:@"流行经典"])
                     {
                         
                     }
