@@ -601,8 +601,9 @@
 {
     
     isEnd = TRUE;
-    [self btnStateCtlInPlay:2];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self btnStateCtlInPlay:2];
         [player stop];
         [self hiddenMenuAndToolBar];
         scrollView.hidden = NO;
