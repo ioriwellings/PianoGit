@@ -48,7 +48,7 @@
 -(BOOL)recognitionPlay:(Array*)staffs;
 -(void)recognitionPlayByLine;
 -(int)getNotesCount;
--(ChordSymbol*)getCurChordSymol;
+-(NSMutableArray*)getCurChordSymol;
 @property (nonatomic, assign) id <MidiPlayerDelegate> endDelegate;
 @property (nonatomic, assign) id <SheetShadeDelegate> sheetShadeDelegate;
 

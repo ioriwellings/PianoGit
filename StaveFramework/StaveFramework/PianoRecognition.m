@@ -41,7 +41,7 @@
         } else if (rState == 0 && lState == -1) { //左手模式, 第2轨
             leftAndRight = 2;
         } else {//右手模式
-            leftAndRight = 1;
+            leftAndRight = 3;
         }
     }
     
@@ -86,11 +86,105 @@
     return self;
 }
 
+
+-(void)getAllSymbolDatas:(Array*)staffs
+{
+    if (symbolDatas == nil) {
+        symbolDatas =[[NSMutableArray alloc] init];
+    } else {
+        [symbolDatas removeAllObjects];
+    }
+    
+    NSMutableArray* leftDatas =[[NSMutableArray alloc] init];
+    NSMutableArray* rightDatas =[[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[staffs count]; i++) {
+        Staff *staff = [staffs get:i];
+        Array* symbols = [staff symbols];
+        for (int j = 0; j < [symbols count]; j++) {
+            NSObject <MusicSymbol> *symbol = [symbols get:j];
+            if ([symbol isKindOfClass:[ChordSymbol class]]) {
+                
+                if (i%2 == 0) {
+                    [rightDatas addObject:symbol];
+                } else {
+                    [leftDatas addObject:symbol];
+                }
+            }
+        }
+    }
+    
+    int rcount = [rightDatas count];
+    int lcount = [leftDatas count];
+    
+    int r = 0; int l = 0;
+    while (r < rcount && l < lcount) {
+        
+        ChordSymbol *c1 = [rightDatas objectAtIndex:r];
+        ChordSymbol *c2 = [leftDatas objectAtIndex:l];
+        
+        NSMutableArray* chords =[[NSMutableArray alloc] init];
+        
+        
+        if ([c1 startTime] == [c2 startTime] ) {
+            
+            [chords addObject:c1];
+            [chords addObject:c2];
+            
+            r++;
+            l++;
+            
+        } else if ([c1 startTime] < [c2 startTime]) {
+            
+            [chords addObject:c1];
+            
+            r++;
+        } else {
+            
+            [chords addObject:c2];
+            l++;
+        }
+        
+        RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:-1 andChordIndex:-1 andChordSymbols:chords];
+        [symbolDatas addObject: data];
+    }
+    
+    
+    while(l < lcount) {
+        ChordSymbol *c = [leftDatas objectAtIndex:l];
+        
+        NSMutableArray* chords =[[NSMutableArray alloc] init];
+        [chords addObject:c];
+
+        RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:-1 andChordIndex:-1 andChordSymbols:chords];
+        [symbolDatas addObject: data];
+        l++;
+    }
+    
+    while(r < rcount) {
+        
+        ChordSymbol *c = [rightDatas objectAtIndex:r];
+        
+        NSMutableArray* chords =[[NSMutableArray alloc] init];
+        [chords addObject:c];
+        
+        RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:-1 andChordIndex:-1 andChordSymbols:chords];
+        [symbolDatas addObject: data];
+        r++;
+    }
+
+}
 /**
  *  从staffs中取得待评判数据
  */
 -(void)getChordSymbolDatas:(Array*)staffs
 {
+    if (leftAndRight == 3) {//双手模式
+        [self getAllSymbolDatas:staffs];
+        NSLog(@"the music staff is count[%d]", [symbolDatas count]);
+        return;
+    }
+    
     int step = 0;int start = 0;
     if (numtracks == 2) {//双音轨
         step = 2;
@@ -100,9 +194,6 @@
                 break;//左手模式
             case 2:
                 start = 1;
-                break;
-            default://默认右手模式
-                start = 0;
                 break;
         }
     } else {//单音轨
@@ -116,6 +207,7 @@
         [symbolDatas removeAllObjects];
     }
     
+    
     for (int i=start; i<[staffs count]; i+=step) {
         Staff *staff = [staffs get:i];
         Array* symbols = [staff symbols];
@@ -125,7 +217,10 @@
             if ([symbol isKindOfClass:[ChordSymbol class]]) {
                 ChordSymbol *chord = (ChordSymbol *)symbol;
                 
-                RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:i andChordIndex:j andChordSymbol:chord];
+                NSMutableArray* chords =[[NSMutableArray alloc] init];
+                [chords addObject:chord];
+                
+                RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:i andChordIndex:j andChordSymbols:chords];
                 [symbolDatas addObject: data];
             }
         }
@@ -223,6 +318,62 @@
 /**
  *  评判音符
  */
+-(BOOL) judgeResult:(NSMutableArray*)datas
+{
+    BOOL result = TRUE;
+    
+    for (int j = 0; j < [datas count];j++) {
+        ChordSymbol *chord = [datas objectAtIndex:j];
+        NoteData *noteData = [chord notedata];
+        
+        int rightCount = 0;
+        int count = 0;
+        
+        for (int i = 0; i < [chord notedata_len]; i++) {
+            NoteData nd = noteData[i];
+            if (nd.previous == 1) {
+                continue;
+            } else
+            {
+                count++;
+            }
+        }
+        
+        for (int i = 0; i < [chord notedata_len]; i++) {
+            NoteData nd = noteData[i];
+            if (nd.previous == 1) {
+                continue;
+            }
+            
+            if([chord eightFlag] > 0) {
+                nd.number = nd.number+12;
+            } else if ([chord eightFlag] < 0) {
+                nd.number = nd.number-12;
+            }
+            
+            if ([self judgeNote:nd.number]) {
+                rightCount++;
+            } else {
+                break;
+            }
+        }
+        
+        if (rightCount == count) {
+            [chord setJudgedResult:1];
+        } else {
+            result = FALSE;
+            break;
+        }
+    }
+    
+//    [notes clear];
+    return result;
+}
+
+
+/**
+ *  评判音符
+ */
 -(BOOL) judgeResult:(ChordSymbol*)chord withCount:(int)count
 {
     NoteData nd;
@@ -263,11 +414,6 @@
             return FALSE;
         }
         
-        //        NSLog(@"is hexuang! 2");
-        //        if (![self isChord:[chord notedata_len]]) {
-        //           return FALSE;
-        //        }
-        
         NSLog(@"is hexuang! 3");
         for (int i = 0; i < [chord notedata_len]; i++) {
             nd = noteData[i];
@@ -297,7 +443,7 @@
 -(BOOL)judgeNote:(int)number {
     for (int i = 0; i < [notes count]; i++) {
         if (number == [[notes get:i] number]) {
-            //            [notes remove:[notes get:i]];
+//            [notes remove:[notes get:i]];
             return TRUE;
         }
     }
@@ -367,21 +513,26 @@
 {
     if (currIndex < 0 || currIndex >= [symbolDatas count]) return -1;
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
-    ChordSymbol *chord = [data getChordSymbol];
     
-    return [self getChordSymbolCount:chord];
+    int count = 0;
+    for(int i = 0; i < [[data chordSymbols] count]; i++) {
+        
+        ChordSymbol* c = [[data chordSymbols] objectAtIndex:i];
+        count += [self getChordSymbolCount:c];
+    }
+    
+    return count;
 }
 
 
 /**
  *  取得待评判音符
  */
--(ChordSymbol*)getCurChordSymol
+-(NSMutableArray*)getCurChordSymol
 {
     if (currIndex < 0 || currIndex >= [symbolDatas count]) return nil;
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
-    ChordSymbol *chord = [data getChordSymbol];
-    return chord;
+    return [data chordSymbols];
 }
 
 -(void)recognitionPlayGoOn
@@ -392,32 +543,44 @@
     for(int i = start; i < [symbolDatas count]; i++) {
         
         
-        RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
-        ChordSymbol *chord = [data getChordSymbol];
+        RecognitionData *data = [symbolDatas objectAtIndex:i];
+        NSMutableArray *chords = [data chordSymbols];
         
-        NoteData *noteData = [chord notedata];
-        int count = 0;
-        for (int j = 0; j < [chord notedata_len]; j++) {
-            NoteData nd = noteData[j];
-            if (nd.previous == 1) {
-                NSLog(@"=========nd is previous!!");
-                count++;
-            } else {
-                break;
+        BOOL result = TRUE;
+        
+        for(int m = 0; m < [chords count]; m++) {
+            
+            
+            ChordSymbol *chord = [chords objectAtIndex:m];
+            NoteData *noteData = [chord notedata];
+            int count = 0;
+            
+            for (int j = 0; j < [chord notedata_len]; j++) {
+                NoteData nd = noteData[j];
+                if (nd.previous == 1) {
+                    count++;
+                } else {
+                    break;
+                }
             }
+            
+            if (count != [chord notedata_len]) {
+                result = FALSE;
+                break;
+            } else {
+                [chord setJudgedResult:1];
+            }
+
         }
         
-        
-        NSLog(@"the count is[%d] and chord notedate is [%d]!", count, [chord notedata_len]);
-        
-        if (count == [chord notedata_len]) {
-            
-            NSLog(@"the count is ==== chord notedate len!");
+        if (result) {
+            NSLog(@"the result is TRUE!");
             if (sheetShadeDelegate != nil) {
-                [chord setJudgedResult:1];
+
                 currIndex++;
+                ChordSymbol* c = [chords objectAtIndex:0];
                 
-                [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:chord];
+                [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:c];
                 
                 //评判完成
                 if (currIndex == [symbolDatas count] && endDelegate != nil) {
@@ -425,13 +588,10 @@
                 }
             }
         } else {
-            
-            NSLog(@"the count is !=== chord notedate len!");
+            NSLog(@"the recognitionPlayGoOn is finished!");
             break;
         }
     }
-    
-    
 }
 
 /**
@@ -443,15 +603,16 @@
     if (currIndex < 0 || currIndex >= [symbolDatas count]) return;
     
     RecognitionData *data = [symbolDatas objectAtIndex:currIndex];
-    ChordSymbol *chord = [data getChordSymbol];
-    if ([self judgeResult:chord withCount:[chord notedata_len]]) {
+    NSMutableArray *chords = [data chordSymbols];
+    //if ([self judgeResult:chord withCount:[chord notedata_len]]) {
+    if ([self judgeResult:chords]) {
         if (sheetShadeDelegate != nil) {
-            [chord setJudgedResult:1];
+            //[chord setJudgedResult:1];
             
+            ChordSymbol* c = [chords objectAtIndex:0];
             currIndex++;
             
-            [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:chord];
-            
+            [sheetShadeDelegate sheetShade:[data getStaffIndex] andChordIndex:[data getChordIndex] andChordSymbol:c];
             [self recognitionPlayGoOn];
             
         }

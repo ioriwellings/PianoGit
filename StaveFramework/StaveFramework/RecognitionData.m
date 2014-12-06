@@ -10,13 +10,14 @@
 
 @implementation RecognitionData
 
--(id) initWithStaffIndex:(int)index1 andChordIndex:(int)index2 andChordSymbol:(ChordSymbol*)symbol
+-(id)initWithStaffIndex:(int)index1 andChordIndex:(int)index2 andChordSymbols:(NSMutableArray *)data
 {
     staffIndex = index1;
     chordIndex = index2;
-    chord = symbol;
+    chords = [data retain];
     return self;
 }
+
 
 -(int)getStaffIndex
 {
@@ -28,10 +29,15 @@
     return chordIndex;
 }
 
--(ChordSymbol*)getChordSymbol
+-(NSMutableArray*)chordSymbols
 {
-    return chord;
+    return chords;
 }
 
+- (void)dealloc
+{
+    [chords release];
+    [super dealloc];
+}
 
 @end

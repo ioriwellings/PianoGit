@@ -447,7 +447,6 @@
         startPulseTime = options.shifttime;
         currentPulseTime = options.shifttime;
         prevPulseTime = options.shifttime - [[midifile time] quarter];
-        
         if (isLine) {
             if (recognition != nil) {
                 [recognition release];
@@ -1324,36 +1323,46 @@
         return;
     }
     
-    ChordSymbol* c = [recognition getCurChordSymol];
-    if (c == nil) {
-        NSLog(@"current ChordSymbol is nil!");
+    
+    
+    NSMutableArray* mary = [recognition getCurChordSymol];
+    if (mary == nil) {
+        NSLog(@"current ChordSymbols is nil!");
         return;
     }
     
-    int velocity = 0;
-    if (isOn) {
-        velocity = 100;
-    }
     
-    int flag = [c eightFlag];
-    NoteData *noteData = [c notedata];
-    for (int i = 0; i < [c notedata_len]; i++) {
-        NoteData nd = noteData[i];
-        int number = nd.number;
+    for(int i = 0; i < [mary count]; i++) {
         
-        if (nd.previous == 1) {
-            NSLog(@"midi note is previous.");
-            continue;
+        ChordSymbol* c = [mary objectAtIndex:i];
+
+        int velocity = 0;
+        if (isOn) {
+            velocity = 100;
         }
         
-        if(flag > 0) {
-            number += 12;
-        } else if (flag < 0) {
-            number -= 12;
+        int flag = [c eightFlag];
+        NoteData *noteData = [c notedata];
+        for (int i = 0; i < [c notedata_len]; i++) {
+            NoteData nd = noteData[i];
+            int number = nd.number;
+            
+            if (nd.previous == 1) {
+                NSLog(@"midi note is previous.");
+                continue;
+            }
+            
+            if(flag > 0) {
+                number += 12;
+            } else if (flag < 0) {
+                number -= 12;
+            }
+            number +=1;
+            NSLog(@"==========the tips symbol number is[%d]|", number);
+            
+            usleep(1000);
+            [midiHandler sendData:number andVelocity:velocity];
         }
-        number +=1;
-        NSLog(@"==========the tips symbol number is[%d]|", number);
-        [midiHandler sendData:number andVelocity:velocity];
     }
 }
 

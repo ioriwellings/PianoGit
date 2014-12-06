@@ -7,18 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ChordSymbol.h"
 
 @interface RecognitionData : NSObject {
     int staffIndex;
     int chordIndex;
-	ChordSymbol *chord;
+    
+    NSMutableArray* chords;
 }
 
--(id) initWithStaffIndex:(int)index1 andChordIndex:(int)index2 andChordSymbol:(ChordSymbol*)symbol;
+-(id) initWithStaffIndex:(int)index1 andChordIndex:(int)index2 andChordSymbols:(NSMutableArray*)data;
 
 -(int)getStaffIndex;
 -(int)getChordIndex;
--(ChordSymbol*)getChordSymbol;
+-(NSMutableArray*)chordSymbols;
 
 @end
