@@ -69,7 +69,6 @@
 		891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87319A6E19C0038F864 /* IoriURLConnection.m */; };
 		891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87519A6E19C0038F864 /* NSString+URLConnection.m */; };
 		891EF87D19A6E2C00038F864 /* CheckNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87B19A6E2C00038F864 /* CheckNetwork.m */; };
-		8921B0A31A334A57007E7443 /* temp in Resources */ = {isa = PBXBuildFile; fileRef = 8921B0A21A334A57007E7443 /* temp */; };
 		89257490192E40450049EF14 /* MelodyCategoryCollectioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925748F192E40450049EF14 /* MelodyCategoryCollectioViewCell.m */; };
 		892A188F195678C4003E209A /* MorePopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892A188E195678C4003E209A /* MorePopViewController.m */; };
 		892DBBC019468E8E00621003 /* ShelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892DBBBF19468E8E00621003 /* ShelfView.m */; };
@@ -568,7 +567,6 @@
 		891EF87919A6E2C00038F864 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		891EF87A19A6E2C00038F864 /* CheckNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckNetwork.h; sourceTree = "<group>"; };
 		891EF87B19A6E2C00038F864 /* CheckNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckNetwork.m; sourceTree = "<group>"; };
-		8921B0A21A334A57007E7443 /* temp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = temp; sourceTree = "<group>"; };
 		8925748E192E40450049EF14 /* MelodyCategoryCollectioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyCategoryCollectioViewCell.h; sourceTree = "<group>"; };
 		8925748F192E40450049EF14 /* MelodyCategoryCollectioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyCategoryCollectioViewCell.m; sourceTree = "<group>"; };
 		892A188D195678C4003E209A /* MorePopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorePopViewController.h; sourceTree = "<group>"; };
@@ -1325,7 +1323,6 @@
 			children = (
 				B16604CC1A065853003BC7F8 /* PianoWeb */,
 				89A3D67A19C3EE8000FDC779 /* temp.zip */,
-				8921B0A21A334A57007E7443 /* temp */,
 				89A3D67C19C4133500FDC779 /* dataSource.plist */,
 				890093C719510603001F33F4 /* shopBg.jpg */,
 				890093C819510603001F33F4 /* spaceBg.jpg */,
@@ -2077,7 +2074,6 @@
 				BA1079B11967FE4C0056F626 /* six.png in Resources */,
 				8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */,
 				8989B127198B2032005222C2 /* yigoumai2.png in Resources */,
-				8921B0A31A334A57007E7443 /* temp in Resources */,
 				89F704CA19A5851E0035621C /* weixuan@2x.png in Resources */,
 				89F704B919A5851E0035621C /* gangqinpeilianbao.png in Resources */,
 				89F704CD19A5851E0035621C /* yanzhengma.png in Resources */,
