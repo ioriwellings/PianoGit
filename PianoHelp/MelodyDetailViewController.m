@@ -431,7 +431,7 @@
 
 - (IBAction)btnDeviceRedirect_click:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.cnblogs.com/foxmin"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.jiayinqiji.com"]];
 }
 
 #pragma mark - private method
@@ -587,7 +587,6 @@
 -(void)endSongs
 {
     isEnd = TRUE;
-    [self.btnPlay setSelected:false];
     [self.btnTryListen setEnabled:true];
     [self btnStateCtlInPlay:2];
     scrollView.hidden = NO;
