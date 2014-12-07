@@ -601,7 +601,6 @@
 {
     
     isEnd = TRUE;
-    [self btnStateCtlInPlay:2];
     dispatch_async(dispatch_get_main_queue(), ^{
         [player stop];
         [self hiddenMenuAndToolBar];
@@ -647,6 +646,8 @@
         }
         [((AppDelegate*)[UIApplication sharedApplication].delegate) addPracticeRecordWithName:self.fileName score:[NSNumber numberWithInteger:ff] mode:(self.iPlayMode == 1)?@"识谱模式":@"跟弹模式" ];
         [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
+        
+        [self btnStateCtlInPlay:2];
     });
 }
 
