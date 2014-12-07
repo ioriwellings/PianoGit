@@ -420,7 +420,6 @@
 		B135CFC219B196A200EA8BF7 /* fanhui.png in Resources */ = {isa = PBXBuildFile; fileRef = B135CFBE19B196A200EA8BF7 /* fanhui.png */; };
 		B135CFC319B196A200EA8BF7 /* querenzhuce.png in Resources */ = {isa = PBXBuildFile; fileRef = B135CFBF19B196A200EA8BF7 /* querenzhuce.png */; };
 		B135CFC419B196A200EA8BF7 /* querenzhuce@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B135CFC019B196A200EA8BF7 /* querenzhuce@2x.png */; };
-		B152BFFF1A32CFEF009861B6 /* temp in Resources */ = {isa = PBXBuildFile; fileRef = B152BFFE1A32CFEF009861B6 /* temp */; };
 		B163DA1A19557631008DBEC7 /* HandPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1919557631008DBEC7 /* HandPopViewController.m */; };
 		B163DA1F19557653008DBEC7 /* SoundPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163DA1E19557653008DBEC7 /* SoundPopViewController.m */; };
 		B1F43F691A2071C100A7BB27 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F43F681A2071C100A7BB27 /* MediaPlayer.framework */; };
@@ -960,7 +959,6 @@
 		B135CFBE19B196A200EA8BF7 /* fanhui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhui.png; sourceTree = "<group>"; };
 		B135CFBF19B196A200EA8BF7 /* querenzhuce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = querenzhuce.png; sourceTree = "<group>"; };
 		B135CFC019B196A200EA8BF7 /* querenzhuce@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "querenzhuce@2x.png"; sourceTree = "<group>"; };
-		B152BFFE1A32CFEF009861B6 /* temp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = temp; sourceTree = "<group>"; };
 		B163DA1819557631008DBEC7 /* HandPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPopViewController.h; sourceTree = "<group>"; };
 		B163DA1919557631008DBEC7 /* HandPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPopViewController.m; sourceTree = "<group>"; };
 		B163DA1D19557653008DBEC7 /* SoundPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPopViewController.h; sourceTree = "<group>"; };
@@ -1325,7 +1323,6 @@
 			children = (
 				B16604CC1A065853003BC7F8 /* PianoWeb */,
 				89A3D67A19C3EE8000FDC779 /* temp.zip */,
-				B152BFFE1A32CFEF009861B6 /* temp */,
 				89A3D67C19C4133500FDC779 /* dataSource.plist */,
 				890093C719510603001F33F4 /* shopBg.jpg */,
 				890093C819510603001F33F4 /* spaceBg.jpg */,
@@ -2077,7 +2074,6 @@
 				BA1079B11967FE4C0056F626 /* six.png in Resources */,
 				8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */,
 				8989B127198B2032005222C2 /* yigoumai2.png in Resources */,
-				B152BFFF1A32CFEF009861B6 /* temp in Resources */,
 				89F704CA19A5851E0035621C /* weixuan@2x.png in Resources */,
 				89F704B919A5851E0035621C /* gangqinpeilianbao.png in Resources */,
 				89F704CD19A5851E0035621C /* yanzhengma.png in Resources */,
