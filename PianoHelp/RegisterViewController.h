@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageVerifyCode;
 @property (weak, nonatomic) IBOutlet UILabel *labLoading;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 - (IBAction)btnBack_click:(id)sender;
 - (IBAction)btnRegister_click:(id)sender;

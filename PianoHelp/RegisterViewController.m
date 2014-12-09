@@ -44,12 +44,12 @@
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardDidShowNotification
+                                                 name:UIKeyboardWillShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardDidHideNotification
+                                                 name:UIKeyboardWillHideNotification
                                                object:nil];
 
     NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:@"Default.aspx"];
@@ -82,7 +82,8 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.scrollview.contentSize = CGSizeMake(1024, 728);
+    self.scrollview.contentSize = CGSizeMake(1016, 728);
+    self.scrollview.layer.borderWidth =4;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -297,9 +298,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
 	
-	CGRect frame = self.scrollview.frame;
-	frame.size.height = 728 - keyboardRect.size.height;
-	self.scrollview.frame = frame;
+    self.bottomConstraint.constant = keyboardTop;
     [UIView commitAnimations];
     
 	
@@ -329,9 +328,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     
-	CGRect frame = self.scrollview.frame;
-	frame.size.height = 728;
-	self.scrollview.frame = frame;
+    self.bottomConstraint.constant = 0;
 	[UIView commitAnimations];
 }
 
