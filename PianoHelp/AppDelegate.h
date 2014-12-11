@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SSZipArchive.h"
+#import "WXApi.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, SSZipArchiveDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, SSZipArchiveDelegate, WXApiDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

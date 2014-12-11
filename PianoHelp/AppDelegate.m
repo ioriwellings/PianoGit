@@ -72,6 +72,8 @@
 //    self.window.backgroundColor = [UIColor lightGrayColor];
 //    [self.window makeKeyAndVisible];
     
+    [WXApi registerApp:@""];
+    
     [[SKPaymentQueue defaultQueue] addTransactionObserver:[IAPHelper shareIAPHelper]];
     
     [UserInfo sharedUserInfo].userName = @"guest";
@@ -89,6 +91,26 @@
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
 //    [self addPracticeRecordWithName:[NSDate date].description score:0 mode:nil];
     return YES;
+}
+
+-(BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(void)onReq:(BaseReq *)req
+{
+    
+}
+
+-(void)onResp:(BaseResp *)resp
+{
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
