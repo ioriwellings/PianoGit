@@ -154,6 +154,7 @@
 		8964EBF2194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE1194539CC00DBCED9 /* Easy_Songs__Silent_Night.mid */; };
 		8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE2194539CC00DBCED9 /* mnmjd.mid */; };
 		8976F67F19A43E2D00D8A860 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8976F67E19A43E2D00D8A860 /* MessageBox.m */; };
+		897784F71A3B08B300B8B7B9 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 897784F61A3B08B300B8B7B9 /* libc++.dylib */; };
 		897D78061A01278D00AD1896 /* 演示20001.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B71A01278D00AD1896 /* 演示20001.png */; };
 		897D78071A01278D00AD1896 /* 演示20002.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B81A01278D00AD1896 /* 演示20002.png */; };
 		897D78081A01278D00AD1896 /* 演示20003.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B91A01278D00AD1896 /* 演示20003.png */; };
@@ -665,6 +666,7 @@
 		8964EBE2194539CC00DBCED9 /* mnmjd.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = mnmjd.mid; sourceTree = "<group>"; };
 		8976F67D19A43E2D00D8A860 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		8976F67E19A43E2D00D8A860 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
+		897784F61A3B08B300B8B7B9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		897D77B71A01278D00AD1896 /* 演示20001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20001.png"; sourceTree = "<group>"; };
 		897D77B81A01278D00AD1896 /* 演示20002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20002.png"; sourceTree = "<group>"; };
 		897D77B91A01278D00AD1896 /* 演示20003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20003.png"; sourceTree = "<group>"; };
@@ -1043,6 +1045,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				897784F71A3B08B300B8B7B9 /* libc++.dylib in Frameworks */,
 				89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */,
 				89C58CCE1A39D37200652BA5 /* libz.dylib in Frameworks */,
 				89C58CCC1A39D35B00652BA5 /* SystemConfiguration.framework in Frameworks */,
@@ -1101,6 +1104,7 @@
 		89070FF319219EC000BB9E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				897784F61A3B08B300B8B7B9 /* libc++.dylib */,
 				89C58CCF1A39D38400652BA5 /* libsqlite3.0.dylib */,
 				89C58CCD1A39D37200652BA5 /* libz.dylib */,
 				89C58CCB1A39D35B00652BA5 /* SystemConfiguration.framework */,
