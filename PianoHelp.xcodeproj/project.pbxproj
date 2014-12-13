@@ -331,7 +331,6 @@
 		89C58CCC1A39D35B00652BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCB1A39D35B00652BA5 /* SystemConfiguration.framework */; };
 		89C58CCE1A39D37200652BA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCD1A39D37200652BA5 /* libz.dylib */; };
 		89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCF1A39D38400652BA5 /* libsqlite3.0.dylib */; };
-		89C58CD61A39D6B500652BA5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CD21A39D6B500652BA5 /* libWeChatSDK.a */; };
 		89C58CD71A39D6B500652BA5 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89C58CD31A39D6B500652BA5 /* read_me.txt */; };
 		89CA47411A18D5C1008296DC /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47401A18D5C1008296DC /* Users.m */; };
 		89CA47441A18D5C2008296DC /* PracticeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47431A18D5C2008296DC /* PracticeRecord.m */; };
@@ -1051,7 +1050,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89C58CD61A39D6B500652BA5 /* libWeChatSDK.a in Frameworks */,
 				89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */,
 				89C58CCE1A39D37200652BA5 /* libz.dylib in Frameworks */,
 				89C58CCC1A39D35B00652BA5 /* SystemConfiguration.framework in Frameworks */,
