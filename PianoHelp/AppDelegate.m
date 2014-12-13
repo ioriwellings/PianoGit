@@ -26,6 +26,44 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+-(void)addLoginDay
+{
+    Users *user = [UserInfo sharedUserInfo].dbUser;
+    if(85)
+    {
+        if(user.lastLoginDate)
+        {
+            NSDate *currentDay = [NSDate date];
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            NSDateComponents *currentDateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
+                                                                  fromDate:currentDay];
+            NSDateComponents *lastLoginDateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
+                                                                    fromDate:user.lastLoginDate];
+            
+            if(currentDateComponents.year == lastLoginDateComponents.year
+               && currentDateComponents.month == lastLoginDateComponents.month
+               && currentDateComponents.day == lastLoginDateComponents.day)
+            {
+            }
+            else
+            {
+                user.lastLoginDate = [NSDate date];
+                //user.currentLoginDays = @((user.currentLoginDays.integerValue+1));
+                user.totalLoginDays = @(user.totalLoginDays.integerValue +1);
+                [self saveContext];
+            }
+            
+        }
+        else
+        {
+            user.lastLoginDate = [NSDate date];
+            //user.currentLoginDays = @1;
+            user.totalLoginDays = @1;
+            [self saveContext];
+        }
+    }
+
+}
 
 -(void)addPracticeRecordWithName:(NSString*)strName score:(NSNumber *)iScore mode:(NSString *)str
 {
@@ -72,7 +110,7 @@
 //    self.window.backgroundColor = [UIColor lightGrayColor];
 //    [self.window makeKeyAndVisible];
     
-    [WXApi registerApp:@""];
+    [WXApi registerApp:@"wxf74aed408cdebe00"];
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:[IAPHelper shareIAPHelper]];
     
@@ -90,6 +128,7 @@
     [MidiKeyboard sharedMidiKeyboard];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
 //    [self addPracticeRecordWithName:[NSDate date].description score:0 mode:nil];
+    [self addLoginDay];
     return YES;
 }
 
