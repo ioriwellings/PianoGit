@@ -62,7 +62,7 @@
     function postToWb() {
 
         var _t = encodeURI(document.title);
-        var _url = encodeURI(document.location);
+        var _url = encodeURI(window.location);
         var _appkey = encodeURI("123"); //你从腾讯获得的appkey
         var _pic = encodeURI(''); //（列如：var _pic='图片url1|图片url2|图片url3....）
         var _site = ''; //你的网站地址
@@ -145,9 +145,11 @@
                         width="70" height="70" onclick="btnDel_Click" onclientclick="return delete_configure()"/>                                         <br />删除</li>
                 
                 <li id="lshare" ><a href="#" onclick="postToWb()"><img src="images/workshow3d-03.png"  width="70" height="70">
-                        <br />分享</a></li>
+                        <br />腾讯微博</a></li>
                 
-                
+                <li id="Li1" style="margin-top:25px"><wb:share-button appkey="5r6txS" addition="simple" type="button" default_text="我的弹奏曲"
+                    picture_search="false"></wb:share-button></li>
+                                        
                  <li><asp:ImageButton ID="btnGuanZhu" runat="server" src="images/workshow3d-01.png"
                        Visible="False"/><br/></li>
                     

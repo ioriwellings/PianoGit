@@ -50,32 +50,6 @@
       <Association Name="Users_Opus" Member="Users" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="Users">
-      <Column Name="userName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="gender" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="constellation" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Column Name="scroe" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="pianoLevel" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="memo" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="sinaWeiBo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="qq" Type="System.String" DbType="Char(20)" CanBeNull="true" />
-      <Column Name="tencentWeiBo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="dModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
-      <Association Name="Users_AlbumUpdate" Member="AlbumUpdate" ThisKey="userName" OtherKey="userName" Type="AlbumUpdate" />
-      <Association Name="Users_Opus" Member="Opus" ThisKey="userName" OtherKey="userName" Type="Opus" />
-      <Association Name="Users_OpusComment" Member="OpusComment" ThisKey="userName" OtherKey="userName" Type="OpusComment" />
-      <Association Name="Users_UsersAdornment" Member="UsersAdornment" ThisKey="userName" OtherKey="userName" Type="UsersAdornment" />
-      <Association Name="Users_House" Member="House" ThisKey="userName" OtherKey="userName" Type="House" />
-      <Association Name="Users_Attention" Member="Attention" ThisKey="userName" OtherKey="attentionUser" Type="Attention" />
-      <Association Name="Users_Attention1" Member="Attention1" ThisKey="userName" OtherKey="userName" Type="Attention" />
-    </Type>
-  </Table>
   <Table Name="dbo.OpusComment" Member="OpusComment">
     <Type Name="OpusComment">
       <Column Name="commentID" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -121,6 +95,33 @@
       <Column Name="dCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="Users_Attention" Member="Users" ThisKey="attentionUser" OtherKey="userName" Type="Users" IsForeignKey="true" />
       <Association Name="Users_Attention1" Member="Users1" ThisKey="userName" OtherKey="userName" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="userName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="gender" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="constellation" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="scroe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pianoLevel" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="memo" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="sinaWeiBo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="qq" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="tencentWeiBo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="dModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="dCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="landingDays" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Users_AlbumUpdate" Member="AlbumUpdate" ThisKey="userName" OtherKey="userName" Type="AlbumUpdate" />
+      <Association Name="Users_Opus" Member="Opus" ThisKey="userName" OtherKey="userName" Type="Opus" />
+      <Association Name="Users_OpusComment" Member="OpusComment" ThisKey="userName" OtherKey="userName" Type="OpusComment" />
+      <Association Name="Users_UsersAdornment" Member="UsersAdornment" ThisKey="userName" OtherKey="userName" Type="UsersAdornment" />
+      <Association Name="Users_House" Member="House" ThisKey="userName" OtherKey="userName" Type="House" />
+      <Association Name="Users_Attention" Member="Attention" ThisKey="userName" OtherKey="attentionUser" Type="Attention" />
+      <Association Name="Users_Attention1" Member="Attention1" ThisKey="userName" OtherKey="userName" Type="Attention" />
     </Type>
   </Table>
 </Database>

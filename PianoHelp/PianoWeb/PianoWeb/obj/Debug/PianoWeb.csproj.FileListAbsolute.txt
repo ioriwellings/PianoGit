@@ -13,7 +13,3 @@ D:\PianoWeb\PianoWeb\bin\PianoWeb.pdb
 D:\PianoWeb\PianoWeb\obj\Debug\ResolveAssemblyReference.cache
 D:\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
 D:\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb
-C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\bin\PianoWeb.dll
-C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\bin\PianoWeb.pdb
-C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\obj\Debug\PianoWeb.dll
-C:\Users\Administrator\Desktop\PianoWeb\PianoWeb\obj\Debug\PianoWeb.pdb

@@ -72,7 +72,7 @@ namespace PianoWeb
 
 
                 userPhoto.ImageUrl = userPhotoPath;
-                lblLevel.Text = GetUserLevel(Convert.ToUInt32(result[0].pianoLevel));
+                lblLevel.Text = GetUserLevel(Convert.ToUInt32(result[0].landingDays));
             }
         }
 
@@ -153,7 +153,16 @@ namespace PianoWeb
         /// <returns></returns>
         private string GetUserLevel(uint level)
         {
-            return "Level1 琴童";
+            if (level != 0)
+            {
+                int j = (int)level / 3;
+                return j + "级";
+            }
+            else
+            {
+                return "无级别";
+            }
+
         }
 
         /// <summary>
