@@ -1523,14 +1523,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B03-MB-aA0" userLabel="loginView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                            </imageView>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B03-MB-aA0" userLabel="loginView">
-                                <rect key="frame" x="139" y="378" width="268" height="273"/>
                                 <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dalianjiayin.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uja-em-itS">
+                                        <rect key="frame" x="808" y="744" width="208" height="16"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqinbanlv.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-38-XhW" userLabel="gangqinbanlv.png">
+                                        <rect key="frame" x="99" y="73" width="357" height="101"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqin.png" translatesAutoresizingMaskIntoConstraints="NO" id="fo0-Jc-vit">
+                                        <rect key="frame" x="604" y="280" width="351" height="392"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oq8-IV-YLc" userLabel="btnLogin">
-                                        <rect key="frame" x="36" y="132" width="197" height="69"/>
+                                        <rect key="frame" x="168" y="512" width="197" height="69"/>
                                         <state key="normal" image="dengru.png">
                                             <color key="titleColor" red="0.22352942819999999" green="0.25098040700000002" blue="0.36078432199999999" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
@@ -1539,12 +1548,12 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-ss-T1N">
-                                        <rect key="frame" x="69" y="63" width="154" height="30"/>
+                                        <rect key="frame" x="212" y="437" width="154" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmR-nc-H3v">
-                                        <rect key="frame" x="16" y="184" width="70" height="44"/>
+                                        <rect key="frame" x="154" y="572" width="70" height="44"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="注册">
                                             <color key="titleColor" red="0.792156862745098" green="0.37647058823529411" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
@@ -1555,7 +1564,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-eJ-sfb" userLabel="chkRemember">
-                                        <rect key="frame" x="26" y="111" width="95" height="18"/>
+                                        <rect key="frame" x="168" y="486" width="95" height="18"/>
                                         <state key="normal" image="jizhumima.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1565,7 +1574,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-nh-5cO" userLabel="chkAutoLogin">
-                                        <rect key="frame" x="138" y="108" width="90" height="24"/>
+                                        <rect key="frame" x="281" y="483" width="90" height="24"/>
                                         <state key="normal" image="zidongdengru.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1574,8 +1583,28 @@
                                             <action selector="chkAutoLogin_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="aEX-7f-mKf"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" borderStyle="line" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
+                                        <rect key="frame" x="212" y="399" width="154" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="KLg-8X-Svs" id="0y0-OO-FbI"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyt-a2-not">
+                                        <rect key="frame" x="168" y="441" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" red="0.79276315789999996" green="0.37828947369999999" blue="0.43092105260000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="账号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi1-b4-Jhs">
+                                        <rect key="frame" x="168" y="403" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" red="0.79276315789473684" green="0.37828947368421051" blue="0.43092105263157893" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jn9-Hq-vPB">
-                                        <rect key="frame" x="138" y="184" width="90" height="44"/>
+                                        <rect key="frame" x="286" y="572" width="90" height="44"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="游客登录">
                                             <color key="titleColor" red="0.792156862745098" green="0.37647058823529411" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
@@ -1585,45 +1614,16 @@
                                             <action selector="btnAnonymity_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="4PG-Dv-xbd"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" borderStyle="line" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
-                                        <rect key="frame" x="69" y="20" width="154" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="KLg-8X-Svs" id="0y0-OO-FbI"/>
-                                        </connections>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyt-a2-not">
-                                        <rect key="frame" x="25" y="67" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <color key="textColor" red="0.79276315789999996" green="0.37828947369999999" blue="0.43092105260000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="账号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi1-b4-Jhs">
-                                        <rect key="frame" x="25" y="24" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <color key="textColor" red="0.79276315789473684" green="0.37828947368421051" blue="0.43092105263157893" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dalianjiayin.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uja-em-itS">
-                                <rect key="frame" x="785" y="739" width="208" height="16"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqinbanlv.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-38-XhW" userLabel="gangqinbanlv.png">
-                                <rect key="frame" x="69" y="73" width="357" height="101"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqin.png" translatesAutoresizingMaskIntoConstraints="NO" id="fo0-Jc-vit">
-                                <rect key="frame" x="538" y="368" width="351" height="392"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="B03-MB-aA0" firstAttribute="leading" secondItem="cVT-08-Cmb" secondAttribute="leading" constant="316" id="2KM-D3-nWr"/>
-                            <constraint firstItem="B03-MB-aA0" firstAttribute="centerX" secondItem="cVT-08-Cmb" secondAttribute="centerX" id="5my-S0-tOx"/>
-                            <constraint firstItem="B03-MB-aA0" firstAttribute="top" secondItem="xeY-do-SeB" secondAttribute="bottom" constant="247" id="DhQ-8c-3lY"/>
-                            <constraint firstItem="CSZ-xM-URu" firstAttribute="top" secondItem="B03-MB-aA0" secondAttribute="bottom" constant="133" id="ZsA-Qq-0gc"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="top" secondItem="cVT-08-Cmb" secondAttribute="top" id="FMh-8K-Okn"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="leading" secondItem="cVT-08-Cmb" secondAttribute="leading" id="YdR-oV-07O"/>
+                            <constraint firstAttribute="trailing" secondItem="B03-MB-aA0" secondAttribute="trailing" id="ext-c9-y3u"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="bottom" secondItem="CSZ-xM-URu" secondAttribute="top" id="uBY-9b-cmI"/>
                         </constraints>
                         <connections>
                             <action selector="view_touchDown:" destination="KLg-8X-Svs" eventType="touchDown" id="kwq-fk-HOW"/>
@@ -1635,14 +1635,14 @@
                         <outlet property="chkAutoLogin" destination="L4A-nh-5cO" id="01Y-Bw-NTt"/>
                         <outlet property="chkRemember" destination="5JT-eJ-sfb" id="5V8-BM-Kcr"/>
                         <outlet property="loginContainerView" destination="B03-MB-aA0" id="fgA-l5-cfI"/>
-                        <outlet property="loginYConstraint" destination="DhQ-8c-3lY" id="1x6-qv-po5"/>
+                        <outlet property="loginYConstraint" destination="FMh-8K-Okn" id="1rp-OJ-B3y"/>
                         <outlet property="txtPassword" destination="rmb-ss-T1N" id="mKh-xg-CcC"/>
                         <outlet property="txtUserName" destination="nzJ-8G-0yq" id="NiH-WJ-oPY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOT-td-g1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222" y="1537"/>
+            <point key="canvasLocation" x="-1174" y="1537"/>
         </scene>
         <!--Practice Record View Controller-->
         <scene sceneID="BJR-Ce-Gt0">
