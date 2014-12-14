@@ -108,15 +108,15 @@
         [self.btnHandCtl setEnabled:FALSE];
     }
     
-ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-vc.modalPresentationStyle = UIModalPresentationFullScreen;
-vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+//vc.modalPresentationStyle = UIModalPresentationFullScreen;
+//vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
 //if ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 8)
 //{
 //    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //}
-[self presentViewController:vc animated:YES completion:NULL];
+//[self presentViewController:vc animated:YES completion:NULL];
 //[self endSongsResult:10 andRight:10 andWrong:10];
     
 //    [self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
@@ -622,7 +622,7 @@ self.navigationController.modalPresentationStyle = UIModalPresentationCurrentCon
         vc.iWrong = wrong;
         vc.iScore = ff;
         vc.fileName = self.saveName;
-        if(ff>=0 && self.iPlayMode == 2)
+        if(ff>=85 && self.iPlayMode == 2)
         {
             [((AppDelegate*)[UIApplication sharedApplication].delegate) addLoginDay];
             //创建WebService的调用参数

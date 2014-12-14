@@ -2139,7 +2139,7 @@ namespace PianoWeb
 		
 		private System.Nullable<System.DateTime> _dCreate;
 		
-		private System.Nullable<long> _landingDays;
+		private long _landingDays;
 		
 		private EntitySet<Opus> _Opus;
 		
@@ -2187,7 +2187,7 @@ namespace PianoWeb
     partial void OndModifiedChanged();
     partial void OndCreateChanging(System.Nullable<System.DateTime> value);
     partial void OndCreateChanged();
-    partial void OnlandingDaysChanging(System.Nullable<long> value);
+    partial void OnlandingDaysChanging(long value);
     partial void OnlandingDaysChanged();
     #endregion
 		
@@ -2503,7 +2503,7 @@ namespace PianoWeb
 		}
 		
 		[Column(Storage="_landingDays", DbType="BigInt")]
-		public System.Nullable<long> landingDays
+		public long landingDays
 		{
 			get
 			{

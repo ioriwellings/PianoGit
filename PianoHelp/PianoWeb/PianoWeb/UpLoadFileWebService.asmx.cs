@@ -85,7 +85,7 @@ namespace PianoWeb
                 if (result.Count() > 0)
                 {
                     result[0].score = int.Parse(scroe);
-                    result[0].dCreate = DateTime.Now;
+                 //   result[0].dCreate = DateTime.Now;
 
                 }
                 else
