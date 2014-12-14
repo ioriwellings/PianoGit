@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SSZipArchive.h"
+#import "WXApi.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, SSZipArchiveDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, SSZipArchiveDelegate, WXApiDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -25,4 +26,5 @@
 -(BOOL)isInited;
 -(void)checkForUpdate;
 -(void)addPracticeRecordWithName:(NSString*)strName score:(NSNumber*)iScore mode:(NSString*)str;
+-(void)addLoginDay;
 @end

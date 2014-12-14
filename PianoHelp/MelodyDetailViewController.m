@@ -535,6 +535,7 @@
     if(self.menuBar.hidden)
     {
         self.menuBar.hidden = NO;
+        self.toolBar.hidden = NO;
         isHiddenMenubar = YES;
         [UIView animateWithDuration:0.3 animations:^{
             self.menuBar.frame = CGRectMake(0, 0, 1024, 75);
@@ -575,6 +576,7 @@
                                      piano.frame.size.height);
         } completion:^(BOOL finished) {
             self.menuBar.hidden = YES;
+            self.toolBar.hidden = YES;
             isHiddenMenubar = NO;
         }];
     }
@@ -648,6 +650,8 @@
         }
         [((AppDelegate*)[UIApplication sharedApplication].delegate) addPracticeRecordWithName:self.fileName score:[NSNumber numberWithInteger:ff] mode:(self.iPlayMode == 1)?@"识谱模式":@"跟弹模式" ];
         [((AppDelegate*)[UIApplication sharedApplication].delegate) saveContext];
+        
+        [self btnStateCtlInPlay:2];
     });
 }
 
