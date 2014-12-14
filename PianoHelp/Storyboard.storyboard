@@ -1522,29 +1522,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="gangqinpeilianbao.png" translatesAutoresizingMaskIntoConstraints="NO" id="mjJ-eV-KNi">
-                                <rect key="frame" x="0.0" y="0.0" width="980" height="300"/>
-                            </imageView>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B03-MB-aA0" userLabel="loginView">
-                                <rect key="frame" x="316" y="247" width="392" height="388"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="dengrukuang.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZER-zw-df3">
-                                        <rect key="frame" x="0.0" y="0.0" width="392" height="388"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="afr-1l-HUV">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="zhanghao.png" translatesAutoresizingMaskIntoConstraints="NO" id="min-Ws-4aW">
-                                        <rect key="frame" x="45" y="136" width="302" height="29"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dalianjiayin.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uja-em-itS">
+                                        <rect key="frame" x="808" y="744" width="208" height="16"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="mima.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ngb-b7-ZWv">
-                                        <rect key="frame" x="44" y="180" width="303" height="29"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqinbanlv.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-38-XhW" userLabel="gangqinbanlv.png">
+                                        <rect key="frame" x="99" y="73" width="357" height="101"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="touxiang.png" translatesAutoresizingMaskIntoConstraints="NO" id="wC6-KT-fDG">
-                                        <rect key="frame" x="149" y="20" width="94" height="94"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqin.png" translatesAutoresizingMaskIntoConstraints="NO" id="fo0-Jc-vit">
+                                        <rect key="frame" x="604" y="280" width="351" height="392"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oq8-IV-YLc" userLabel="btnLogin">
-                                        <rect key="frame" x="98" y="299" width="197" height="69"/>
+                                        <rect key="frame" x="168" y="512" width="197" height="69"/>
                                         <state key="normal" image="dengru.png">
                                             <color key="titleColor" red="0.22352942819999999" green="0.25098040700000002" blue="0.36078432199999999" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
@@ -1552,24 +1546,16 @@
                                             <action selector="btnLogin_onclick:" destination="KLg-8X-Svs" eventType="touchUpInside" id="ToD-qA-B85"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
-                                        <rect key="frame" x="98" y="136" width="248" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="KLg-8X-Svs" id="0y0-OO-FbI"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-ss-T1N">
-                                        <rect key="frame" x="98" y="179" width="248" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-ss-T1N">
+                                        <rect key="frame" x="212" y="437" width="154" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmR-nc-H3v">
-                                        <rect key="frame" x="11" y="336" width="70" height="44"/>
+                                        <rect key="frame" x="154" y="572" width="70" height="44"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="注册">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.792156862745098" green="0.37647058823529411" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1577,7 +1563,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-eJ-sfb" userLabel="chkRemember">
-                                        <rect key="frame" x="98" y="229" width="95" height="18"/>
+                                        <rect key="frame" x="168" y="486" width="95" height="18"/>
                                         <state key="normal" image="jizhumima.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1587,7 +1573,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-nh-5cO" userLabel="chkAutoLogin">
-                                        <rect key="frame" x="246" y="226" width="90" height="24"/>
+                                        <rect key="frame" x="281" y="483" width="90" height="24"/>
                                         <state key="normal" image="zidongdengru.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1596,11 +1582,31 @@
                                             <action selector="chkAutoLogin_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="aEX-7f-mKf"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" borderStyle="line" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
+                                        <rect key="frame" x="212" y="399" width="154" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="KLg-8X-Svs" id="0y0-OO-FbI"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyt-a2-not">
+                                        <rect key="frame" x="168" y="441" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" red="0.79276315789999996" green="0.37828947369999999" blue="0.43092105260000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="账号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi1-b4-Jhs">
+                                        <rect key="frame" x="168" y="403" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" red="0.79276315789473684" green="0.37828947368421051" blue="0.43092105263157893" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jn9-Hq-vPB">
-                                        <rect key="frame" x="297" y="336" width="90" height="44"/>
+                                        <rect key="frame" x="286" y="572" width="90" height="44"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="游客登录">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.792156862745098" green="0.37647058823529411" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1610,16 +1616,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dalianjiayin.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uja-em-itS">
-                                <rect key="frame" x="785" y="739" width="208" height="16"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="B03-MB-aA0" firstAttribute="leading" secondItem="cVT-08-Cmb" secondAttribute="leading" constant="316" id="2KM-D3-nWr"/>
-                            <constraint firstItem="B03-MB-aA0" firstAttribute="centerX" secondItem="cVT-08-Cmb" secondAttribute="centerX" id="5my-S0-tOx"/>
-                            <constraint firstItem="B03-MB-aA0" firstAttribute="top" secondItem="xeY-do-SeB" secondAttribute="bottom" constant="247" id="DhQ-8c-3lY"/>
-                            <constraint firstItem="CSZ-xM-URu" firstAttribute="top" secondItem="B03-MB-aA0" secondAttribute="bottom" constant="133" id="ZsA-Qq-0gc"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="top" secondItem="cVT-08-Cmb" secondAttribute="top" id="FMh-8K-Okn"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="leading" secondItem="cVT-08-Cmb" secondAttribute="leading" id="YdR-oV-07O"/>
+                            <constraint firstAttribute="trailing" secondItem="B03-MB-aA0" secondAttribute="trailing" id="ext-c9-y3u"/>
+                            <constraint firstItem="B03-MB-aA0" firstAttribute="bottom" secondItem="CSZ-xM-URu" secondAttribute="top" id="uBY-9b-cmI"/>
                         </constraints>
                         <connections>
                             <action selector="view_touchDown:" destination="KLg-8X-Svs" eventType="touchDown" id="kwq-fk-HOW"/>
@@ -1631,14 +1634,14 @@
                         <outlet property="chkAutoLogin" destination="L4A-nh-5cO" id="01Y-Bw-NTt"/>
                         <outlet property="chkRemember" destination="5JT-eJ-sfb" id="5V8-BM-Kcr"/>
                         <outlet property="loginContainerView" destination="B03-MB-aA0" id="fgA-l5-cfI"/>
-                        <outlet property="loginYConstraint" destination="DhQ-8c-3lY" id="1x6-qv-po5"/>
+                        <outlet property="loginYConstraint" destination="FMh-8K-Okn" id="1rp-OJ-B3y"/>
                         <outlet property="txtPassword" destination="rmb-ss-T1N" id="mKh-xg-CcC"/>
                         <outlet property="txtUserName" destination="nzJ-8G-0yq" id="NiH-WJ-oPY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOT-td-g1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222" y="1537"/>
+            <point key="canvasLocation" x="-1174" y="1537"/>
         </scene>
         <!--Practice Record View Controller-->
         <scene sceneID="BJR-Ce-Gt0">
@@ -1728,7 +1731,7 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="zhuceditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="N6d-1I-Cd8">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="rVE-e4-Dre">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="rVE-e4-Dre">
                                 <rect key="frame" x="4" y="40" width="1016" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okf-Wh-StN" customClass="UIControl">
@@ -2567,15 +2570,15 @@
         <image name="chongxinkaishi-01.png" width="35" height="30"/>
         <image name="cuofu,jiesuanzhong.png" width="31" height="31"/>
         <image name="dalianjiayin.png" width="208" height="16"/>
-        <image name="dengru.png" width="197" height="69"/>
-        <image name="dengrukuang.png" width="392" height="388"/>
+        <image name="dengru.png" width="140" height="41"/>
         <image name="duifu,zongjiezhong.png" width="31" height="25"/>
         <image name="fanhui.png" width="87" height="41"/>
         <image name="fenduan-01.png" width="95" height="35"/>
         <image name="fenxiang1.png" width="48" height="48"/>
         <image name="fenxiang2.png" width="48" height="48"/>
         <image name="fenyedakuang.png" width="950" height="535"/>
-        <image name="gangqinpeilianbao.png" width="1000" height="300"/>
+        <image name="gangqin.png" width="364" height="389"/>
+        <image name="gangqinbanlv.png" width="334" height="87"/>
         <image name="gengduo.png" width="90" height="25"/>
         <image name="gentanmoshi.png" width="405" height="68"/>
         <image name="gentanmoshixuanzhong.png" width="405" height="68"/>
@@ -2593,7 +2596,6 @@
         <image name="levelBg.png" width="1151" height="1001"/>
         <image name="lianqinjilu.png" width="38" height="36"/>
         <image name="login_bg.png" width="1024" height="768"/>
-        <image name="mima.png" width="303" height="29"/>
         <image name="nansheng.png" width="43" height="43"/>
         <image name="nvhai.png" width="40" height="40"/>
         <image name="peilianyin-01.png" width="95" height="35"/>
@@ -2627,7 +2629,6 @@
         <image name="tanzou.png" width="86" height="40"/>
         <image name="tiaosu-01.png" width="10" height="35"/>
         <image name="tishi-01.png" width="95" height="35"/>
-        <image name="touxiang.png" width="94" height="94"/>
         <image name="tuichu-01.png" width="40" height="30"/>
         <image name="tuichu2.png" width="36" height="36"/>
         <image name="weigouami.png" width="32" height="30"/>
@@ -2648,7 +2649,7 @@
         <image name="yinliang.png" width="25" height="26"/>
         <image name="youshou.png" width="77" height="85"/>
         <image name="zanting.png" width="21" height="21"/>
-        <image name="zhanghao.png" width="302" height="29"/>
+        <image name="zhanghudenglukuang.png" width="151" height="27"/>
         <image name="zhanting.png" width="90" height="25"/>
         <image name="zhuceditu.png" width="1024" height="768"/>
         <image name="zidongdengru.png" width="89" height="17"/>

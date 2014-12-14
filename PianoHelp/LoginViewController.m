@@ -438,7 +438,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     
-    self.loginYConstraint.constant = keyboardTop - 388;
+    self.loginYConstraint.constant = -216;
     
     [UIView commitAnimations];
     
@@ -471,7 +471,7 @@
     
 	CGRect frame = self.loginContainerView.frame;
 	frame.origin.y = 247;
-	self.loginYConstraint.constant =  247;
+	self.loginYConstraint.constant =  0;
 	[UIView commitAnimations];
 }
 
