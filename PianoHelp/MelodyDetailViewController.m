@@ -19,6 +19,7 @@
 #import "Score2ViewController.h"
 #import "PracticeRecord.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "WebService.h"
 
 @interface MelodyDetailViewController ()
 {
@@ -107,15 +108,15 @@
         [self.btnHandCtl setEnabled:FALSE];
     }
     
-//ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
-//vc.modalPresentationStyle = UIModalPresentationFullScreen;
-//vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
+vc.modalPresentationStyle = UIModalPresentationFullScreen;
+vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
 //if ([[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 8)
 //{
 //    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //}
-//[self presentViewController:vc animated:YES completion:NULL];
+[self presentViewController:vc animated:YES completion:NULL];
 //[self endSongsResult:10 andRight:10 andWrong:10];
     
 //    [self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
@@ -621,6 +622,25 @@
         vc.iWrong = wrong;
         vc.iScore = ff;
         vc.fileName = self.saveName;
+        if(ff>=0 && self.iPlayMode == 2)
+        {
+            [((AppDelegate*)[UIApplication sharedApplication].delegate) addLoginDay];
+            //创建WebService的调用参数
+            NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
+                                       
+                                       @"userName",     [UserInfo sharedUserInfo].userName,
+                                       @"days",        [UserInfo sharedUserInfo].dbUser.totalLoginDays,
+                                       nil];
+            
+            
+            
+            //调用WebService，获取响应
+            NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
+                                                             webServiceFile:@"UpdateLandingDaysWebService.asmx"
+                                                               xmlNameSpace:@"http://tempuri.org/"
+                                                             webServiceName:@"updateLandingDays"
+                                                               wsParameters:wsParas];
+        }
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;

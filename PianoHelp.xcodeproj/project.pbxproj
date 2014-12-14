@@ -437,6 +437,7 @@
 		89FAE3711989C714000B4F7F /* qumuxuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FAE36F1989C714000B4F7F /* qumuxuanzhong.png */; };
 		89FAE3721989C714000B4F7F /* qumuxuanzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FAE3701989C714000B4F7F /* qumuxuanzhong@2x.png */; };
 		89FD865C193966F30021216A /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FD865B193966F30021216A /* FavoriteTableViewCell.m */; };
+		B133F03F1A3D5100009C043A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CD21A39D6B500652BA5 /* libWeChatSDK.a */; };
 		B1357AB919B4B52800694FD2 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B1357AB819B4B52800694FD2 /* IAPHelper.m */; };
 		B1357ABC19B4B85400694FD2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1357ABB19B4B85400694FD2 /* StoreKit.framework */; };
 		B135CFC119B196A200EA8BF7 /* fanhui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B135CFBD19B196A200EA8BF7 /* fanhui@2x.png */; };
@@ -1082,6 +1083,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B133F03F1A3D5100009C043A /* libWeChatSDK.a in Frameworks */,
 				897784F71A3B08B300B8B7B9 /* libc++.dylib in Frameworks */,
 				89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */,
 				89C58CCE1A39D37200652BA5 /* libz.dylib in Frameworks */,

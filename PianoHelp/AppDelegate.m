@@ -58,7 +58,7 @@
         {
             user.lastLoginDate = [NSDate date];
             //user.currentLoginDays = @1;
-            user.totalLoginDays = @1;
+            user.totalLoginDays = @(user.totalLoginDays.integerValue +1);
             [self saveContext];
         }
     }
@@ -128,7 +128,6 @@
     [MidiKeyboard sharedMidiKeyboard];
     [UserInfo sharedUserInfo].dbUser = [self getCurrentUsers];
 //    [self addPracticeRecordWithName:[NSDate date].description score:0 mode:nil];
-    [self addLoginDay];
     return YES;
 }
 

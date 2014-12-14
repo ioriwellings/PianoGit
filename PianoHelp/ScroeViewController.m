@@ -14,6 +14,7 @@
 #import "UserInfo.h"
 #import "MessageBox.h"
 #import "IoriLoadingView.h"
+#import "UserInfo.h"
 
 @interface ScroeViewController ()
 
@@ -38,6 +39,31 @@
     self.labRight.text = [NSString stringWithFormat:@"%ld", (long)self.iRight];
     self.labWrong.text = [NSString stringWithFormat:@"%ld", (long)self.iWrong];
     self.labPerfect.text = [NSString stringWithFormat:@"%ld", (long)self.iGood];
+    self.labGain.text = [@(self.iRight+self.iGood) stringValue];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *strURL = [HTTPSERVERSADDRESS stringByAppendingPathComponent:[NSString stringWithFormat:@"getUserCoins.ashx?userName=%@",[UserInfo sharedUserInfo].userName ]];
+        NSURL *url = [NSURL URLWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:20];
+        NSURLResponse *respone;
+        NSError *err;
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&respone error:&err];
+        if(data == nil || [data length] == 0)
+        {
+            
+        }
+        else
+        {
+            NSError *errJSON = nil;
+            id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&errJSON];
+            if(json && errJSON == nil)
+            {
+                self.labOwn.text = [[json valueForKey:@"Coins"] stringValue];
+            }
+        }
+
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,7 +130,7 @@
         if (self.iRight <= 0) {
             coins = @"0";
         } else {
-            coins = [NSString stringWithFormat:@"%ld", (long)self.iRight];
+            coins = [NSString stringWithFormat:@"%ld", (long)self.iRight + self.iGood];
         }
         
         //创建WebService的调用参数

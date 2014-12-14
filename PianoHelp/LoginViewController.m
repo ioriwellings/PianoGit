@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "MessageBox.h"
 #import "NSString+URLConnection.h"
+#import "WebService.h"
 
 @interface LoginViewController ()
 {
@@ -128,6 +129,27 @@
         [self settingUserConfiguration];
         [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil userInfo:nil ];
         [self dismissViewControllerAnimated:NO completion:NULL];
+        //创建WebService的调用参数
+        NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
+                                   
+                                   @"userName",     [UserInfo sharedUserInfo].userName,
+                                   @"days",        [UserInfo sharedUserInfo].dbUser.totalLoginDays,
+                                nil];
+        
+        
+        
+        //调用WebService，获取响应
+        NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
+                                                         webServiceFile:@"UpdateLandingDaysWebService.asmx"
+                                                           xmlNameSpace:@"http://tempuri.org/"
+                                                         webServiceName:@"updateLandingDays"
+                                                           wsParameters:wsParas];
+        
+        //检查响应中是否包含错误
+//        NSString* errMsg = [WebService checkResponseError:theResponse];
+//        NSLog(@"the error message is %@", errMsg);
+//        NSLog(@"the result is %@", theResponse);
+//        [MessageBox showMsg:@"上传成功"];
     }
     else
     {
@@ -140,6 +162,7 @@
                 Users *user = (Users*)[NSEntityDescription insertNewObjectForEntityForName:@"Users" inManagedObjectContext:moc];
                 user.userName = [dictUser objectForKey:@"userName"];
                 user.pwd = [dictUser objectForKey:@"pwd"];
+                user.totalLoginDays = @([[dictUser objectForKey:@"days"] integerValue]);
                 NSError *error;
                 if(![moc save:&error])
                 {

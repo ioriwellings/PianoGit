@@ -83,7 +83,7 @@
 {
     [super viewDidLayoutSubviews];
     self.scrollview.contentSize = CGSizeMake(1016, 728);
-    self.scrollview.layer.borderWidth =4;
+    //self.scrollview.layer.borderWidth =4;
 }
 
 -(void)viewDidAppear:(BOOL)animated
