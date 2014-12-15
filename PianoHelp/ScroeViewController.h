@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
+#import "WXApi.h"
 
-@interface ScroeViewController : BaseViewController
+@interface ScroeViewController : BaseViewController <WXApiDelegate>
 {
     
 }

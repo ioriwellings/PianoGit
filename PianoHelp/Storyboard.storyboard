@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -1322,7 +1322,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-4r-xHB">
                                 <rect key="frame" x="438" y="477" width="48" height="48"/>
-                                <state key="normal" image="fenxiang1.png">
+                                <state key="normal" image="fenxiang2.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="fenxiang2.png"/>
@@ -1332,7 +1332,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blb-pK-Iuj">
                                 <rect key="frame" x="549" y="477" width="48" height="48"/>
-                                <state key="normal" image="baocunluyin1.png">
+                                <state key="normal" image="baocunluyin2.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="baocunluyin2.png"/>
@@ -2561,7 +2561,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="baocunluyin1.png" width="48" height="48"/>
         <image name="baocunluyin2.png" width="48" height="47"/>
         <image name="bg_learn.png" width="525" height="460"/>
         <image name="biansu-01.png" width="60" height="60"/>
@@ -2575,7 +2574,6 @@
         <image name="duifu,zongjiezhong.png" width="31" height="25"/>
         <image name="fanhui.png" width="87" height="41"/>
         <image name="fenduan-01.png" width="95" height="35"/>
-        <image name="fenxiang1.png" width="48" height="48"/>
         <image name="fenxiang2.png" width="48" height="48"/>
         <image name="fenyedakuang.png" width="950" height="535"/>
         <image name="gangqin.png" width="364" height="389"/>
