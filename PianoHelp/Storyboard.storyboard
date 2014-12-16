@@ -1790,7 +1790,6 @@
                                             </segue>
                                         </connections>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpD-XZ-I1b"/>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="注册码" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJr-Qw-vW0">
                                         <rect key="frame" x="197" y="370" width="79" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1902,6 +1901,7 @@
                                             <action selector="btnRegister_click:" destination="HkI-Yi-ems" eventType="touchUpInside" id="aN7-RN-5Y4"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpD-XZ-I1b"/>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="HkI-Yi-ems" id="Ovp-yH-aWR"/>
