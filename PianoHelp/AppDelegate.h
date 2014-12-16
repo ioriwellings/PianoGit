@@ -26,4 +26,5 @@
 -(BOOL)isInited;
 -(void)checkForUpdate;
 -(void)addPracticeRecordWithName:(NSString*)strName score:(NSNumber*)iScore mode:(NSString*)str;
+-(void)addLoginDay;
 @end

@@ -55,7 +55,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0LU-i9-EWh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eM8-hc-jxX">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="126"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="160"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgR-6N-mPx">
@@ -70,7 +70,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFd-uh-CnI" userLabel="labUser">
-                                <rect key="frame" x="27" y="102" width="148" height="21"/>
+                                <rect key="frame" x="0.0" y="118" width="148" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -98,10 +98,22 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6s-dJ1">
+                                <rect key="frame" x="117" y="107" width="72" height="44"/>
+                                <state key="normal" title="等级">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dbk-0A-pmm" kind="popover" popoverAnchorView="WbG-6s-dJ1" id="ZIQ-KY-7Kr">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="200" height="126"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="160"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="labUser" destination="OFd-uh-CnI" id="VGD-PB-bXr"/>
@@ -109,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3e-OP-40G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="857" y="82"/>
+            <point key="canvasLocation" x="761" y="-429"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Z0v-kx-HF7">
@@ -1426,6 +1438,49 @@
             </objects>
             <point key="canvasLocation" x="4191" y="2275"/>
         </scene>
+        <!--LevelViewController-->
+        <scene sceneID="o6A-pB-pMl">
+            <objects>
+                <viewController id="dbk-0A-pmm" userLabel="LevelViewController" customClass="LevelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OWL-CD-gWU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ba9-BS-Aa2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6ZH-h5-yZ3">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="levelBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Gy-6h-3rV">
+                                <rect key="frame" x="0.0" y="0.0" width="575" height="500"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DX-k7-LJx" userLabel="labLevel">
+                                <rect key="frame" x="305" y="207" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c2-vl-M9c" userLabel="StarView">
+                                <rect key="frame" x="169" y="200" width="118" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSp-sm-S9Z" userLabel="labDays">
+                                <rect key="frame" x="253" y="287" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="575" height="500"/>
+                    <connections>
+                        <outlet property="labDays" destination="FSp-sm-S9Z" id="A2r-pR-bRD"/>
+                        <outlet property="labLevel" destination="8DX-k7-LJx" id="yFw-u9-B8s"/>
+                        <outlet property="starContainer" destination="0c2-vl-M9c" id="vkd-D7-Nh8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQu-iB-fOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2190" y="-30"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="S4V-Iy-S7b">
             <objects>
@@ -2536,6 +2591,7 @@
         <image name="jizhumima.png" width="90" height="17"/>
         <image name="jizhumima_selected.png" width="90" height="17"/>
         <image name="kaishi-01.png" width="22" height="30"/>
+        <image name="levelBg.png" width="1151" height="1001"/>
         <image name="lianqinjilu.png" width="38" height="36"/>
         <image name="login_bg.png" width="1024" height="768"/>
         <image name="mima.png" width="303" height="29"/>

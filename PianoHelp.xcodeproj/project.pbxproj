@@ -155,6 +155,21 @@
 		8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE2194539CC00DBCED9 /* mnmjd.mid */; };
 		8976F67F19A43E2D00D8A860 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8976F67E19A43E2D00D8A860 /* MessageBox.m */; };
 		897784F71A3B08B300B8B7B9 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 897784F61A3B08B300B8B7B9 /* libc++.dylib */; };
+		897784FB1A3B155800B8B7B9 /* levelBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 897784FA1A3B155800B8B7B9 /* levelBg.png */; };
+		897784FF1A3B247400B8B7B9 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 897784FE1A3B247400B8B7B9 /* Users.m */; };
+		897785021A3B378B00B8B7B9 /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897785011A3B378B00B8B7B9 /* LevelViewController.m */; };
+		8977850F1A3B3EBD00B8B7B9 /* level_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785031A3B3EBD00B8B7B9 /* level_10.png */; };
+		897785101A3B3EBD00B8B7B9 /* level_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785041A3B3EBD00B8B7B9 /* level_10@2x.png */; };
+		897785111A3B3EBD00B8B7B9 /* level_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785051A3B3EBD00B8B7B9 /* level_100.png */; };
+		897785121A3B3EBD00B8B7B9 /* level_100@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785061A3B3EBD00B8B7B9 /* level_100@2x.png */; };
+		897785131A3B3EBD00B8B7B9 /* level_200.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785071A3B3EBD00B8B7B9 /* level_200.png */; };
+		897785141A3B3EBD00B8B7B9 /* level_200@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785081A3B3EBD00B8B7B9 /* level_200@2x.png */; };
+		897785151A3B3EBD00B8B7B9 /* level_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785091A3B3EBD00B8B7B9 /* level_300.png */; };
+		897785161A3B3EBD00B8B7B9 /* level_300@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8977850A1A3B3EBD00B8B7B9 /* level_300@2x.png */; };
+		897785171A3B3EBD00B8B7B9 /* level_400.png in Resources */ = {isa = PBXBuildFile; fileRef = 8977850B1A3B3EBD00B8B7B9 /* level_400.png */; };
+		897785181A3B3EBD00B8B7B9 /* level_400@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8977850C1A3B3EBD00B8B7B9 /* level_400@2x.png */; };
+		897785191A3B3EBD00B8B7B9 /* level_500.png in Resources */ = {isa = PBXBuildFile; fileRef = 8977850D1A3B3EBD00B8B7B9 /* level_500.png */; };
+		8977851A1A3B3EBD00B8B7B9 /* level_500@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8977850E1A3B3EBD00B8B7B9 /* level_500@2x.png */; };
 		897D78061A01278D00AD1896 /* 演示20001.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B71A01278D00AD1896 /* 演示20001.png */; };
 		897D78071A01278D00AD1896 /* 演示20002.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B81A01278D00AD1896 /* 演示20002.png */; };
 		897D78081A01278D00AD1896 /* 演示20003.png in Resources */ = {isa = PBXBuildFile; fileRef = 897D77B91A01278D00AD1896 /* 演示20003.png */; };
@@ -328,7 +343,6 @@
 		89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCF1A39D38400652BA5 /* libsqlite3.0.dylib */; };
 		89C58CD61A39D6B500652BA5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CD21A39D6B500652BA5 /* libWeChatSDK.a */; };
 		89C58CD71A39D6B500652BA5 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89C58CD31A39D6B500652BA5 /* read_me.txt */; };
-		89CA47411A18D5C1008296DC /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47401A18D5C1008296DC /* Users.m */; };
 		89CA47441A18D5C2008296DC /* PracticeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47431A18D5C2008296DC /* PracticeRecord.m */; };
 		89CA47471A18D5C2008296DC /* MelodyFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA47461A18D5C2008296DC /* MelodyFavorite.m */; };
 		89D61FD21927965400355EF0 /* APLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D61FD11927965400355EF0 /* APLProduct.m */; };
@@ -667,6 +681,24 @@
 		8976F67D19A43E2D00D8A860 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		8976F67E19A43E2D00D8A860 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		897784F61A3B08B300B8B7B9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		897784FA1A3B155800B8B7B9 /* levelBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelBg.png; sourceTree = "<group>"; };
+		897784FC1A3B22AC00B8B7B9 /* PianoHelp V4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PianoHelp V4.xcdatamodel"; sourceTree = "<group>"; };
+		897784FD1A3B247400B8B7B9 /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
+		897784FE1A3B247400B8B7B9 /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
+		897785001A3B378B00B8B7B9 /* LevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelViewController.h; sourceTree = "<group>"; };
+		897785011A3B378B00B8B7B9 /* LevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelViewController.m; sourceTree = "<group>"; };
+		897785031A3B3EBD00B8B7B9 /* level_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_10.png; sourceTree = "<group>"; };
+		897785041A3B3EBD00B8B7B9 /* level_10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_10@2x.png"; sourceTree = "<group>"; };
+		897785051A3B3EBD00B8B7B9 /* level_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_100.png; sourceTree = "<group>"; };
+		897785061A3B3EBD00B8B7B9 /* level_100@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_100@2x.png"; sourceTree = "<group>"; };
+		897785071A3B3EBD00B8B7B9 /* level_200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_200.png; sourceTree = "<group>"; };
+		897785081A3B3EBD00B8B7B9 /* level_200@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_200@2x.png"; sourceTree = "<group>"; };
+		897785091A3B3EBD00B8B7B9 /* level_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_300.png; sourceTree = "<group>"; };
+		8977850A1A3B3EBD00B8B7B9 /* level_300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_300@2x.png"; sourceTree = "<group>"; };
+		8977850B1A3B3EBD00B8B7B9 /* level_400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_400.png; sourceTree = "<group>"; };
+		8977850C1A3B3EBD00B8B7B9 /* level_400@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_400@2x.png"; sourceTree = "<group>"; };
+		8977850D1A3B3EBD00B8B7B9 /* level_500.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_500.png; sourceTree = "<group>"; };
+		8977850E1A3B3EBD00B8B7B9 /* level_500@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_500@2x.png"; sourceTree = "<group>"; };
 		897D77B71A01278D00AD1896 /* 演示20001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20001.png"; sourceTree = "<group>"; };
 		897D77B81A01278D00AD1896 /* 演示20002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20002.png"; sourceTree = "<group>"; };
 		897D77B91A01278D00AD1896 /* 演示20003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "演示20003.png"; sourceTree = "<group>"; };
@@ -860,8 +892,6 @@
 		89C58CD31A39D6B500652BA5 /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		89C58CD41A39D6B500652BA5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		89C58CD51A39D6B500652BA5 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		89CA473F1A18D5C1008296DC /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
-		89CA47401A18D5C1008296DC /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
 		89CA47421A18D5C2008296DC /* PracticeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticeRecord.h; sourceTree = "<group>"; };
 		89CA47431A18D5C2008296DC /* PracticeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticeRecord.m; sourceTree = "<group>"; };
 		89CA47451A18D5C2008296DC /* MelodyFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyFavorite.h; sourceTree = "<group>"; };
@@ -1164,6 +1194,8 @@
 				895DB5AE19C5BC4C00E02DE4 /* AboutViewController.m */,
 				89B28F5E1A1B74F700A0BA14 /* PracticeRecordViewController.h */,
 				89B28F5F1A1B74F700A0BA14 /* PracticeRecordViewController.m */,
+				897785001A3B378B00B8B7B9 /* LevelViewController.h */,
+				897785011A3B378B00B8B7B9 /* LevelViewController.m */,
 				89F5B9B9193D5DB8006D40F9 /* MelodyDetailViewController */,
 				89D61FD01927965400355EF0 /* APLProduct.h */,
 				89D61FD11927965400355EF0 /* APLProduct.m */,
@@ -1650,6 +1682,19 @@
 				891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */,
 				891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */,
 				891290DE195904BA00B9B5B5 /* zunashi.png */,
+				897784FA1A3B155800B8B7B9 /* levelBg.png */,
+				897785031A3B3EBD00B8B7B9 /* level_10.png */,
+				897785041A3B3EBD00B8B7B9 /* level_10@2x.png */,
+				897785051A3B3EBD00B8B7B9 /* level_100.png */,
+				897785061A3B3EBD00B8B7B9 /* level_100@2x.png */,
+				897785071A3B3EBD00B8B7B9 /* level_200.png */,
+				897785081A3B3EBD00B8B7B9 /* level_200@2x.png */,
+				897785091A3B3EBD00B8B7B9 /* level_300.png */,
+				8977850A1A3B3EBD00B8B7B9 /* level_300@2x.png */,
+				8977850B1A3B3EBD00B8B7B9 /* level_400.png */,
+				8977850C1A3B3EBD00B8B7B9 /* level_400@2x.png */,
+				8977850D1A3B3EBD00B8B7B9 /* level_500.png */,
+				8977850E1A3B3EBD00B8B7B9 /* level_500@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -1658,6 +1703,8 @@
 			isa = PBXGroup;
 			children = (
 				8907100819219EC000BB9E2F /* PianoHelp.xcdatamodeld */,
+				897784FD1A3B247400B8B7B9 /* Users.h */,
+				897784FE1A3B247400B8B7B9 /* Users.m */,
 				89F93D61199C44ED0020E206 /* Melody.h */,
 				89F93D62199C44ED0020E206 /* Melody.m */,
 				89F93D58199C44ED0020E206 /* Score.h */,
@@ -1668,8 +1715,6 @@
 				89CA47461A18D5C2008296DC /* MelodyFavorite.m */,
 				89CA47421A18D5C2008296DC /* PracticeRecord.h */,
 				89CA47431A18D5C2008296DC /* PracticeRecord.m */,
-				89CA473F1A18D5C1008296DC /* Users.h */,
-				89CA47401A18D5C1008296DC /* Users.m */,
 			);
 			name = SQLModel;
 			sourceTree = "<group>";
@@ -2008,9 +2053,11 @@
 				B135CFC419B196A200EA8BF7 /* querenzhuce@2x.png in Resources */,
 				89582DB415D4A91A008DEB3C /* shipumoshi.png in Resources */,
 				893742E4197F3D1B007E63E5 /* jingyin@2x.png in Resources */,
+				897785131A3B3EBD00B8B7B9 /* level_200.png in Resources */,
 				8989B122198B2032005222C2 /* xiaoxi@2x.png in Resources */,
 				897D78491A01278D00AD1896 /* 演示20068.png in Resources */,
 				89429BD51566D8A70003A7D4 /* loading xiao.png in Resources */,
+				8977850F1A3B3EBD00B8B7B9 /* level_10.png in Resources */,
 				897D78301A01278D00AD1896 /* 演示20043.png in Resources */,
 				890C39E51983445300206740 /* fenduan-01@2x.png in Resources */,
 				BA1079AA1967FE4C0056F626 /* perfect.png in Resources */,
@@ -2083,7 +2130,9 @@
 				890C39DF1983445300206740 /* tishi-01.png in Resources */,
 				890093CA19510603001F33F4 /* shopBg.jpg in Resources */,
 				BA1079AC1967FE4C0056F626 /* wrong.png in Resources */,
+				897785101A3B3EBD00B8B7B9 /* level_10@2x.png in Resources */,
 				8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */,
+				8977851A1A3B3EBD00B8B7B9 /* level_500@2x.png in Resources */,
 				897D78361A01278D00AD1896 /* 演示20049.png in Resources */,
 				8994D155194BCEDA0016F806 /* 05.森林波尔卡.mid in Resources */,
 				897D781D1A01278D00AD1896 /* 演示20024.png in Resources */,
@@ -2129,6 +2178,7 @@
 				8964EBE6194539CC00DBCED9 /* 00111111.mid in Resources */,
 				893742EB197F3D1B007E63E5 /* xuanzhong.png in Resources */,
 				89F704B819A5851E0035621C /* dengrukuang@2x.png in Resources */,
+				897785121A3B3EBD00B8B7B9 /* level_100@2x.png in Resources */,
 				8994D160194BCEDA0016F806 /* 16.卡门.mid in Resources */,
 				8994D157194BCEDA0016F806 /* 07.带我回弗吉尼故乡.mid in Resources */,
 				89F704CB19A5851E0035621C /* xuanzhong.png in Resources */,
@@ -2136,6 +2186,7 @@
 				B78D6B29198749EA00F51726 /* zanting.png in Resources */,
 				BA1079A31967FE4C0056F626 /* nihuiyin.png in Resources */,
 				89F66B6119888E6D00EF50E2 /* sousuolan.png in Resources */,
+				897785181A3B3EBD00B8B7B9 /* level_400@2x.png in Resources */,
 				893742E8197F3D1B007E63E5 /* shuangshoux@2x.png in Resources */,
 				893CEFD9193A37630097681C /* baocunluyin2.png in Resources */,
 				89374316197F3D77007E63E5 /* shuzikuang.png in Resources */,
@@ -2185,6 +2236,7 @@
 				8994D162194BCEDA0016F806 /* 18.水边的阿第丽娜.mid in Resources */,
 				89374325197F4116007E63E5 /* shizi1-01@2x.png in Resources */,
 				89F704BC19A5851E0035621C /* gou@2x.png in Resources */,
+				897784FB1A3B155800B8B7B9 /* levelBg.png in Resources */,
 				897D78201A01278D00AD1896 /* 演示20027.png in Resources */,
 				89F66B5B19888E6D00EF50E2 /* puku.png in Resources */,
 				BA1079AB1967FE4C0056F626 /* right.png in Resources */,
@@ -2209,6 +2261,7 @@
 				B135CFC219B196A200EA8BF7 /* fanhui.png in Resources */,
 				8989B120198B2032005222C2 /* xiai2@2x.png in Resources */,
 				897D782C1A01278D00AD1896 /* 演示20039.png in Resources */,
+				897785141A3B3EBD00B8B7B9 /* level_200@2x.png in Resources */,
 				897D784C1A01278D00AD1896 /* 演示20071.png in Resources */,
 				89AA9ED519ECFD3B0017BADA /* bg_learn.png in Resources */,
 				893742F1197F3D1B007E63E5 /* zuoshou.png in Resources */,
@@ -2218,6 +2271,7 @@
 				BA1079AF1967FE4C0056F626 /* four.png in Resources */,
 				89E261E119BF4C8100E04EA5 /* yigoumai@2x.png in Resources */,
 				893CEFEE193A37630097681C /* quxiao.png in Resources */,
+				897785151A3B3EBD00B8B7B9 /* level_300.png in Resources */,
 				89374326197F4116007E63E5 /* shuzi2-01.png in Resources */,
 				8989B104198B2032005222C2 /* kaojiqupu@2x.png in Resources */,
 				897D781A1A01278D00AD1896 /* 演示20021.png in Resources */,
@@ -2240,6 +2294,7 @@
 				89582DB515D4A91A008DEB3C /* shipumoshi@2x.png in Resources */,
 				897D782B1A01278D00AD1896 /* 演示20038.png in Resources */,
 				89374308197F3D77007E63E5 /* huishan.png in Resources */,
+				897785161A3B3EBD00B8B7B9 /* level_300@2x.png in Resources */,
 				890C39CC1983436200206740 /* xiaojietiaozhuankuang-01@2x.png in Resources */,
 				897D78291A01278D00AD1896 /* 演示20036.png in Resources */,
 				89F704C419A5851E0035621C /* nansheng@2x.png in Resources */,
@@ -2274,6 +2329,7 @@
 				897D782E1A01278D00AD1896 /* 演示20041.png in Resources */,
 				8994D15B194BCEDA0016F806 /* 11.星光圆舞曲.mid in Resources */,
 				891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */,
+				897785111A3B3EBD00B8B7B9 /* level_100.png in Resources */,
 				BA1079B51967FE4C0056F626 /* two.png in Resources */,
 				8989B10A198B2032005222C2 /* renwu2@2x.png in Resources */,
 				897D784A1A01278D00AD1896 /* 演示20069.png in Resources */,
@@ -2283,6 +2339,7 @@
 				8989B11F198B2032005222C2 /* xiai2.png in Resources */,
 				BA1079A61967FE4C0056F626 /* shunboyin.png in Resources */,
 				89582DB715D4A91A008DEB3C /* shipumoshixuanzhong@2x.png in Resources */,
+				897785191A3B3EBD00B8B7B9 /* level_500.png in Resources */,
 				89E261DF19BF4C8100E04EA5 /* weigoumai@2x.png in Resources */,
 				897D784E1A01278D00AD1896 /* 演示20073.png in Resources */,
 				89F66B44198884EE00EF50E2 /* xiaifenye@2x.png in Resources */,
@@ -2298,6 +2355,7 @@
 				89F704C119A5851E0035621C /* mima.png in Resources */,
 				89F66B6619888E6D00EF50E2 /* zhanting@2x.png in Resources */,
 				893CEFED193A37630097681C /* queren.png in Resources */,
+				897785171A3B3EBD00B8B7B9 /* level_400.png in Resources */,
 				8989B13A198B21B2005222C2 /* tuichu2@2x.png in Resources */,
 				8994D15C194BCEDA0016F806 /* 12.幼儿拜尔-104课.mid in Resources */,
 				89F66B6C1988953200EF50E2 /* tanzou@2x.png in Resources */,
@@ -2384,6 +2442,7 @@
 				8994D13F194BCEDA0016F806 /* MelodyButton.m in Sources */,
 				8987A55419258DEA00DEE6AE /* MelodyViewController.m in Sources */,
 				89CA47441A18D5C2008296DC /* PracticeRecord.m in Sources */,
+				897785021A3B378B00B8B7B9 /* LevelViewController.m in Sources */,
 				BA1CD63A19B1B76A003DC259 /* ASIHTTPRequest.m in Sources */,
 				89F685EA195BA92600F85197 /* ScroeViewController.m in Sources */,
 				89A3D67419C3E9E200FDC779 /* mztools.c in Sources */,
@@ -2401,7 +2460,6 @@
 				891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */,
 				89F93D45199C3BD60020E206 /* UserInfo.m in Sources */,
 				8987A55A19258FA500DEE6AE /* ShopViewController.m in Sources */,
-				89CA47411A18D5C1008296DC /* Users.m in Sources */,
 				891EF87D19A6E2C00038F864 /* CheckNetwork.m in Sources */,
 				89CA47471A18D5C2008296DC /* MelodyFavorite.m in Sources */,
 				BA73FAF8195B1CAB0090F9BB /* WuXianPuViewController.m in Sources */,
@@ -2416,6 +2474,7 @@
 				89F93D63199C44ED0020E206 /* Melody.m in Sources */,
 				8907102D1921A03900BB9E2F /* RootViewController.m in Sources */,
 				892DBBC019468E8E00621003 /* ShelfView.m in Sources */,
+				897784FF1A3B247400B8B7B9 /* Users.m in Sources */,
 				89F6C0D9193222ED00823EF5 /* MelodyDetailViewController.m in Sources */,
 				8987A55719258E2200DEE6AE /* MelodyCategoryViewController.m in Sources */,
 				BA1CD64419B1B7AC003DC259 /* Constant.m in Sources */,
@@ -2666,10 +2725,11 @@
 			isa = XCVersionGroup;
 			children = (
 				89CB46B41A18CA4D00737B90 /* PianoHelp V3.xcdatamodel */,
+				897784FC1A3B22AC00B8B7B9 /* PianoHelp V4.xcdatamodel */,
 				8903555B199AF49B0048819B /* PianoHelp V2.xcdatamodel */,
 				8907100919219EC000BB9E2F /* PianoHelp.xcdatamodel */,
 			);
-			currentVersion = 89CB46B41A18CA4D00737B90 /* PianoHelp V3.xcdatamodel */;
+			currentVersion = 897784FC1A3B22AC00B8B7B9 /* PianoHelp V4.xcdatamodel */;
 			path = PianoHelp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

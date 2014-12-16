@@ -2,7 +2,7 @@
 //  Users.m
 //  PianoHelp
 //
-//  Created by Jobs on 11/16/14.
+//  Created by Jobs on 12/12/14.
 //  Copyright (c) 2014 FlintInfo. All rights reserved.
 //
 
@@ -16,6 +16,9 @@
 @dynamic pwd;
 @dynamic remmberPWD;
 @dynamic userName;
+@dynamic totalLoginDays;
+@dynamic currentLoginDays;
+@dynamic lastLoginDate;
 @dynamic favorite;
 @dynamic record;
 
