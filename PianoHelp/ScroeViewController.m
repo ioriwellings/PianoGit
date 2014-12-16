@@ -90,7 +90,36 @@
 
 - (IBAction)btnClose_onclick:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    IoriLoadingView *loading =[MessageBox showLoadingViewWithBlockOnClick:NULL hasCancel:NO parentViewSize:CGSizeMake(1024, 768)];
+    [self.view addSubview:loading];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+         NSString *coins = nil;
+        if (self.iRight <= 0) {
+            coins = @"0";
+        } else {
+            coins = [NSString stringWithFormat:@"%ld", (long)self.iRight + self.iGood];
+        }
+        
+        //创建WebService的调用参数
+        NSMutableArray* wsParas = [[NSMutableArray alloc] initWithObjects:
+                                   @"userName",     [UserInfo sharedUserInfo].userName,
+                                   @"coins",        coins, nil];
+        
+        //调用WebService，获取响应
+        NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
+                                                         webServiceFile:@"UpdateLandingDaysWebService.asmx"
+                                                           xmlNameSpace:@"http://tempuri.org/"
+                                                         webServiceName:@"updateCoins"
+                                                           wsParameters:wsParas];
+        
+        //检查响应中是否包含错误
+        NSString* errMsg = [WebService checkResponseError:theResponse];
+        NSLog(@"the error message is %@", errMsg);
+        NSLog(@"the result is %@", theResponse);
+        [MessageBox showMsg:@"金币上传成功"];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    });
 }
 
 - (IBAction)btnCorrect_onclick:(id)sender
