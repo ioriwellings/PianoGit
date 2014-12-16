@@ -19,13 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     int iDays = [UserInfo sharedUserInfo].dbUser.totalLoginDays.integerValue;
-    int iLevel = iDays / 3;
-    if(iLevel<0) iLevel = 1;
+    int iLevel = ceil(iDays / 3.0);
+    if(iLevel<0) iLevel = 1.0;
     self.labLevel.text = [NSString stringWithFormat:@"%d", iLevel];
     self.labDays.text = [UserInfo sharedUserInfo].dbUser.totalLoginDays.stringValue;
     if(iDays<100)
     {
-        int starCount = (iDays) / 1 ;
+        int starCount = ceil(iDays / 10.0) ;
         for (int i=0; i<starCount; i++)
         {
             UIImage *image = [UIImage imageNamed:@"level_10.png"];
@@ -35,47 +35,140 @@
                                          40,
                                          40);
             [self.starContainer addSubview:imageView];
-            
         }
     }
     else if(iDays>= 100 && iDays<200)
     {
-        int starCount = (iDays - 100 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_100.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 100 ) / 10.0);
         for (int i=1; i<=starCount; i++)
         {
-            UIImage *image = [UIImage imageNamed:@"level_100.png"];
+            UIImage *image = [UIImage imageNamed:@"level_10.png"];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            imageView.frame = CGRectMake(i*imageView.frame.size.width,
+            imageView.frame = CGRectMake(i*40,
                                          0,
-                                         imageView.frame.size.width,
-                                         imageView.frame.size.height);
+                                         40,
+                                         40);
             [self.starContainer addSubview:imageView];
-            
         }
     }
     else if(iDays>= 200 && iDays<300)
     {
-        int starCount = (iDays - 200 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_200.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 200 ) / 10.0);
+        for (int i=1; i<=starCount; i++)
+        {
+            UIImage *image = [UIImage imageNamed:@"level_10.png"];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(i*40,
+                                         0,
+                                         40,
+                                         40);
+            [self.starContainer addSubview:imageView];
+        }
     }
     else if(iDays>= 300 && iDays<400)
     {
-        int starCount = (iDays - 300 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_300.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 300 ) / 10.0);
+        for (int i=1; i<=starCount; i++)
+        {
+            UIImage *image = [UIImage imageNamed:@"level_10.png"];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(i*40,
+                                         0,
+                                         40,
+                                         40);
+            [self.starContainer addSubview:imageView];
+        }
     }
     else if(iDays>= 400 && iDays<500)
     {
-        int starCount = (iDays - 400 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_400.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 400 ) / 10.0);
+        for (int i=1; i<=starCount; i++)
+        {
+            UIImage *image = [UIImage imageNamed:@"level_10.png"];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(i*40,
+                                         0,
+                                         40,
+                                         40);
+            [self.starContainer addSubview:imageView];
+        }
     }
     else if(iDays>= 500 && iDays<600)
     {
-        int starCount = (iDays - 500 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_500.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 500 ) / 10.0);
+        for (int i=1; i<=starCount; i++)
+        {
+            UIImage *image = [UIImage imageNamed:@"level_10.png"];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(i*40,
+                                         0,
+                                         40,
+                                         40);
+            [self.starContainer addSubview:imageView];
+        }
     }
     else if(iDays>= 600 && iDays<700)
     {
-        int starCount = (iDays - 600 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_500.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 600 ) / 10.0);
+        for (int i=1; i<=starCount; i++)
+        {
+            UIImage *image = [UIImage imageNamed:@"level_100.png"];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(i*40,
+                                         0,
+                                         40,
+                                         40);
+            [self.starContainer addSubview:imageView];
+        }
     }
     else
     {
-        int starCount = (iDays - 700 ) / 10 ;
+        UIImage *star = [UIImage imageNamed:@"level_500.png"];
+        UIImageView *view = [[UIImageView alloc] initWithImage:star];
+        view.frame = CGRectMake(0, 0, 40, 40);
+        [self.starContainer addSubview:view];
+        
+        int starCount = ceil((iDays - 600 ) / 100.0);
+        for (int i=1; i<=starCount; i++)
+        {
+            UIImage *image = [UIImage imageNamed:@"level_500.png"];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(i*40,
+                                         0,
+                                         40,
+                                         40);
+            [self.starContainer addSubview:imageView];
+        }
     }
 }
 

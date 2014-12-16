@@ -1450,16 +1450,12 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="levelBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Gy-6h-3rV">
-                                <rect key="frame" x="0.0" y="0.0" width="575" height="500"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="level.png" translatesAutoresizingMaskIntoConstraints="NO" id="F3l-PQ-IQG">
+                                <rect key="frame" x="162" y="152" width="152" height="175"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c2-vl-M9c" userLabel="StarView">
-                                <rect key="frame" x="140" y="88" width="392" height="42"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSp-sm-S9Z" userLabel="labDays">
-                                <rect key="frame" x="253" y="287" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="270" y="346" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DX-k7-LJx" userLabel="labLevel">
@@ -1467,10 +1463,43 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon-76.png" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Vq-2Ng">
+                                <rect key="frame" x="40" y="71" width="76" height="76"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xi-82-odG">
+                                <rect key="frame" x="26" y="338" width="463" height="131"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="＊升级规则      ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="STHeitiSC-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="在跟弹模式下，每天完成一首，得分85分以上，                            为一个有效登录天数，有效登录3天升一级.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="STHeitiSC-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="登录天数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nko-BZ-waq">
+                                <rect key="frame" x="188" y="346" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c2-vl-M9c" userLabel="StarView">
+                                <rect key="frame" x="124" y="84" width="644" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="575" height="500"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="500"/>
                     <connections>
                         <outlet property="labDays" destination="FSp-sm-S9Z" id="A2r-pR-bRD"/>
                         <outlet property="labLevel" destination="8DX-k7-LJx" id="yFw-u9-B8s"/>
@@ -1583,7 +1612,7 @@
                                             <action selector="chkAutoLogin_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="aEX-7f-mKf"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="guest" borderStyle="line" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="zhanghudenglukuang.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-8G-0yq">
                                         <rect key="frame" x="212" y="399" width="154" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2561,6 +2590,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon-76.png" width="76" height="76"/>
         <image name="baocunluyin2.png" width="48" height="47"/>
         <image name="bg_learn.png" width="525" height="460"/>
         <image name="biansu-01.png" width="60" height="60"/>
@@ -2592,7 +2622,7 @@
         <image name="jizhumima.png" width="90" height="17"/>
         <image name="jizhumima_selected.png" width="90" height="17"/>
         <image name="kaishi-01.png" width="22" height="30"/>
-        <image name="levelBg.png" width="1151" height="1001"/>
+        <image name="level.png" width="152" height="175"/>
         <image name="lianqinjilu.png" width="38" height="36"/>
         <image name="login_bg.png" width="1024" height="768"/>
         <image name="nansheng.png" width="43" height="43"/>

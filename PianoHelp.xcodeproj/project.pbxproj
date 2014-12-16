@@ -18,6 +18,9 @@
 		890093CA19510603001F33F4 /* shopBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 890093C719510603001F33F4 /* shopBg.jpg */; };
 		890093CB19510603001F33F4 /* spaceBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 890093C819510603001F33F4 /* spaceBg.jpg */; };
 		890093D01951085B001F33F4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890093CF1951085B001F33F4 /* LoginViewController.m */; };
+		8900FB611A4071AA00024F39 /* images_about in Resources */ = {isa = PBXBuildFile; fileRef = 8900FB601A4071AA00024F39 /* images_about */; };
+		8900FB661A407B2400024F39 /* level.png in Resources */ = {isa = PBXBuildFile; fileRef = 8900FB641A407B2400024F39 /* level.png */; };
+		8900FB671A407B2400024F39 /* level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8900FB651A407B2400024F39 /* level@2x.png */; };
 		89070FF519219EC000BB9E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF419219EC000BB9E2F /* Foundation.framework */; };
 		89070FF719219EC000BB9E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF619219EC000BB9E2F /* CoreGraphics.framework */; };
 		89070FF919219EC000BB9E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF819219EC000BB9E2F /* UIKit.framework */; };
@@ -71,6 +74,7 @@
 		891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */; };
 		891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */; };
 		891290DF195904BA00B9B5B5 /* zunashi.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DE195904BA00B9B5B5 /* zunashi.png */; };
+		891E0F8A1A3F2D78008B6C23 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891E0F891A3F2D78008B6C23 /* ImageIO.framework */; };
 		891EF86C19A6CA780038F864 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF86B19A6CA780038F864 /* RegisterViewController.m */; };
 		891EF87619A6E19C0038F864 /* IoriURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87319A6E19C0038F864 /* IoriURLConnection.m */; };
 		891EF87719A6E19C0038F864 /* NSString+URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EF87519A6E19C0038F864 /* NSString+URLConnection.m */; };
@@ -161,7 +165,6 @@
 		8964EBF3194539CC00DBCED9 /* mnmjd.mid in Resources */ = {isa = PBXBuildFile; fileRef = 8964EBE2194539CC00DBCED9 /* mnmjd.mid */; };
 		8976F67F19A43E2D00D8A860 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8976F67E19A43E2D00D8A860 /* MessageBox.m */; };
 		897784F71A3B08B300B8B7B9 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 897784F61A3B08B300B8B7B9 /* libc++.dylib */; };
-		897784FB1A3B155800B8B7B9 /* levelBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 897784FA1A3B155800B8B7B9 /* levelBg.png */; };
 		897784FF1A3B247400B8B7B9 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 897784FE1A3B247400B8B7B9 /* Users.m */; };
 		897785021A3B378B00B8B7B9 /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897785011A3B378B00B8B7B9 /* LevelViewController.m */; };
 		8977850F1A3B3EBD00B8B7B9 /* level_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 897785031A3B3EBD00B8B7B9 /* level_10.png */; };
@@ -527,6 +530,9 @@
 		890093C819510603001F33F4 /* spaceBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceBg.jpg; sourceTree = "<group>"; };
 		890093CE1951085B001F33F4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		890093CF1951085B001F33F4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8900FB601A4071AA00024F39 /* images_about */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images_about; sourceTree = "<group>"; };
+		8900FB641A407B2400024F39 /* level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level.png; sourceTree = "<group>"; };
+		8900FB651A407B2400024F39 /* level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level@2x.png"; sourceTree = "<group>"; };
 		8903555B199AF49B0048819B /* PianoHelp V2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PianoHelp V2.xcdatamodel"; sourceTree = "<group>"; };
 		89070FF119219EC000BB9E2F /* PianoHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PianoHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89070FF419219EC000BB9E2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -587,6 +593,7 @@
 		891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiesuanfenshuduihuakuang.png; sourceTree = "<group>"; };
 		891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xingxing,jiesuanzhong.png"; sourceTree = "<group>"; };
 		891290DE195904BA00B9B5B5 /* zunashi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zunashi.png; sourceTree = "<group>"; };
+		891E0F891A3F2D78008B6C23 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		891EF86A19A6CA780038F864 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		891EF86B19A6CA780038F864 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		891EF87219A6E19C0038F864 /* IoriURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IoriURLConnection.h; sourceTree = "<group>"; };
@@ -691,7 +698,6 @@
 		8976F67D19A43E2D00D8A860 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		8976F67E19A43E2D00D8A860 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		897784F61A3B08B300B8B7B9 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		897784FA1A3B155800B8B7B9 /* levelBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelBg.png; sourceTree = "<group>"; };
 		897784FC1A3B22AC00B8B7B9 /* PianoHelp V4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PianoHelp V4.xcdatamodel"; sourceTree = "<group>"; };
 		897784FD1A3B247400B8B7B9 /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
 		897784FE1A3B247400B8B7B9 /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
@@ -1083,6 +1089,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				891E0F8A1A3F2D78008B6C23 /* ImageIO.framework in Frameworks */,
 				B133F03F1A3D5100009C043A /* libWeChatSDK.a in Frameworks */,
 				897784F71A3B08B300B8B7B9 /* libc++.dylib in Frameworks */,
 				89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */,
@@ -1142,6 +1149,7 @@
 		89070FF319219EC000BB9E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				891E0F891A3F2D78008B6C23 /* ImageIO.framework */,
 				897784F61A3B08B300B8B7B9 /* libc++.dylib */,
 				89C58CCF1A39D38400652BA5 /* libsqlite3.0.dylib */,
 				89C58CCD1A39D37200652BA5 /* libz.dylib */,
@@ -1393,6 +1401,7 @@
 				89F5FB6019527DE900011C3A /* shopBg.png */,
 				89F5FB6119527DE900011C3A /* shopItem.png */,
 				895DB5B019C5BCBD00E02DE4 /* about.html */,
+				8900FB601A4071AA00024F39 /* images_about */,
 				8964EBD1194539CC00DBCED9 /* songs */,
 				8964EBB2194536D400DBCED9 /* StaveFramework-RefrenceResources */,
 				89A15D801921B78400647F7B /* images */,
@@ -1694,7 +1703,8 @@
 				891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */,
 				891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */,
 				891290DE195904BA00B9B5B5 /* zunashi.png */,
-				897784FA1A3B155800B8B7B9 /* levelBg.png */,
+				8900FB641A407B2400024F39 /* level.png */,
+				8900FB651A407B2400024F39 /* level@2x.png */,
 				897785031A3B3EBD00B8B7B9 /* level_10.png */,
 				897785041A3B3EBD00B8B7B9 /* level_10@2x.png */,
 				897785051A3B3EBD00B8B7B9 /* level_100.png */,
@@ -2075,6 +2085,7 @@
 				19F4B4BE1A39E67F00437817 /* gangqinbanlv.png in Resources */,
 				BA1079AA1967FE4C0056F626 /* perfect.png in Resources */,
 				89F704E019A5A2680035621C /* xiaifenye_selected@2x.png in Resources */,
+				8900FB671A407B2400024F39 /* level@2x.png in Resources */,
 				BA1079A51967FE4C0056F626 /* pedal.png in Resources */,
 				89F704CF19A5851E0035621C /* zhanghao.png in Resources */,
 				89F704B519A5851E0035621C /* dengru.png in Resources */,
@@ -2189,6 +2200,7 @@
 				89F704BD19A5851E0035621C /* jizhumima.png in Resources */,
 				89582DB015D4A91A008DEB3C /* gentanmoshi.png in Resources */,
 				897D78261A01278D00AD1896 /* 演示20033.png in Resources */,
+				8900FB661A407B2400024F39 /* level.png in Resources */,
 				89E261DD19BF4C8100E04EA5 /* qinggengxin@2x.png in Resources */,
 				8964EBE6194539CC00DBCED9 /* 00111111.mid in Resources */,
 				893742EB197F3D1B007E63E5 /* xuanzhong.png in Resources */,
@@ -2251,7 +2263,6 @@
 				8994D162194BCEDA0016F806 /* 18.水边的阿第丽娜.mid in Resources */,
 				89374325197F4116007E63E5 /* shizi1-01@2x.png in Resources */,
 				89F704BC19A5851E0035621C /* gou@2x.png in Resources */,
-				897784FB1A3B155800B8B7B9 /* levelBg.png in Resources */,
 				897D78201A01278D00AD1896 /* 演示20027.png in Resources */,
 				89F66B5B19888E6D00EF50E2 /* puku.png in Resources */,
 				BA1079AB1967FE4C0056F626 /* right.png in Resources */,
@@ -2380,6 +2391,7 @@
 				897D78121A01278D00AD1896 /* 演示20013.png in Resources */,
 				89F704D119A5851E0035621C /* zhuceditu.png in Resources */,
 				897D78191A01278D00AD1896 /* 演示20020.png in Resources */,
+				8900FB611A4071AA00024F39 /* images_about in Resources */,
 				89F66B5919888E6D00EF50E2 /* gengduo.png in Resources */,
 				897D78501A01278D00AD1896 /* 演示20075.png in Resources */,
 				89F704DD19A5A2680035621C /* renwufenye_selected.png in Resources */,
