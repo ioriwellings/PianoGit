@@ -1901,7 +1901,9 @@
                                             <action selector="btnRegister_click:" destination="HkI-Yi-ems" eventType="touchUpInside" id="aN7-RN-5Y4"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpD-XZ-I1b"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpD-XZ-I1b">
+                                        <rect key="frame" x="383" y="370" width="60" height="22"/>
+                                    </imageView>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="HkI-Yi-ems" id="Ovp-yH-aWR"/>
