@@ -1361,6 +1361,9 @@
                                     <action selector="btnReview_click:" destination="WuE-OY-h6W" eventType="touchUpInside" id="Ial-F1-rPb"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon-76.png" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-WY-Dwt">
+                                <rect key="frame" x="291" y="188" width="76" height="76"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -1368,6 +1371,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="labGain" destination="yla-30-nKr" id="CgS-hz-WBu"/>
+                        <outlet property="labName" destination="39b-wU-cI7" id="SmS-OI-Eht"/>
                         <outlet property="labOwn" destination="Wrz-Bm-MDC" id="bk4-du-l1o"/>
                         <outlet property="labPerfect" destination="Jf3-zv-Wtx" id="GEe-4e-bGh"/>
                         <outlet property="labRight" destination="0dp-es-KWG" id="VY7-dO-7d1"/>

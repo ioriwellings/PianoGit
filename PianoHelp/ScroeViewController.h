@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labGain;
 @property (weak, nonatomic) IBOutlet UILabel *labOwn;
 @property (strong, nonatomic) NSString *fileName;
+@property (weak, nonatomic) IBOutlet UILabel *labName;
 
 - (IBAction)btnClose_onclick:(id)sender;
 - (IBAction)btnCorrect_onclick:(id)sender;
