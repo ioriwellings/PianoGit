@@ -277,6 +277,8 @@
 		190E6E821907E8FE00AD8F6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		190E6E841907E9C400AD8F6B /* SerialGATT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialGATT.h; sourceTree = "<group>"; };
 		190E6E851907E9C400AD8F6B /* SerialGATT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialGATT.m; sourceTree = "<group>"; };
+		89C6D6001A41C5E600422890 /* bass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bass@2x.png"; sourceTree = "<group>"; };
+		89C6D6011A41C5E600422890 /* treble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "treble@2x.png"; sourceTree = "<group>"; };
 		BA0BBCFE193393AC00F27181 /* PianoCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PianoCommon.h; sourceTree = "<group>"; };
 		BA0BBCFF193393AC00F27181 /* PianoCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PianoCommon.m; sourceTree = "<group>"; };
 		BA0BBD0119339AA100F27181 /* PianoRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PianoRecognition.h; sourceTree = "<group>"; };
@@ -545,12 +547,14 @@
 				BA48D8BF193AD1CA00DC424E /* right.png */,
 				BA48D8C0193AD1CA00DC424E /* wrong.png */,
 				190E6E681907E84900AD8F6B /* bass.png */,
+				89C6D6001A41C5E600422890 /* bass@2x.png */,
 				190E6E691907E84900AD8F6B /* eight.png */,
 				190E6E6A1907E84900AD8F6B /* four.png */,
 				190E6E6B1907E84900AD8F6B /* nine.png */,
 				190E6E6C1907E84900AD8F6B /* six.png */,
 				190E6E6D1907E84900AD8F6B /* three.png */,
 				190E6E6E1907E84900AD8F6B /* treble.png */,
+				89C6D6011A41C5E600422890 /* treble@2x.png */,
 				190E6E6F1907E84900AD8F6B /* twelve.png */,
 				190E6E701907E84900AD8F6B /* two.png */,
 				190E6E051907E4CA00AD8F6B /* gls.dls */,

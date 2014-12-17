@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.labUser.text = [NSString stringWithFormat:@"( %@ )", [UserInfo sharedUserInfo].userName];
+    self.labUser.text = [NSString stringWithFormat:@" %@ ", [UserInfo sharedUserInfo].userName];
 }
 
 - (void)didReceiveMemoryWarning

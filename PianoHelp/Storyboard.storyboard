@@ -55,13 +55,13 @@
                         <viewControllerLayoutGuide type="bottom" id="0LU-i9-EWh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eM8-hc-jxX">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgR-6N-mPx">
-                                <rect key="frame" x="20" y="70" width="148" height="36"/>
+                                <rect key="frame" x="38" y="165" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title=" 退出当前登录账号" image="tuichu2.png">
+                                <state key="normal" title=" 退出登录" backgroundImage="help_btn_close.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -69,18 +69,20 @@
                                     <action selector="btnQuit_onclick:" destination="dTG-LN-rZD" eventType="touchUpInside" id="bYS-yo-EN4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFd-uh-CnI" userLabel="labUser">
-                                <rect key="frame" x="0.0" y="118" width="148" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="guest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFd-uh-CnI" userLabel="labUser">
+                                <rect key="frame" x="104" y="8" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-ca-nA3">
-                                <rect key="frame" x="16" y="14" width="91" height="39"/>
-                                <state key="normal" title="关于">
+                                <rect key="frame" x="38" y="121" width="145" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="使用说明">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" backgroundImage="help_menumover_bg.png"/>
                                 <connections>
                                     <segue destination="zaI-kO-87r" kind="popover" popoverAnchorView="3SE-ca-nA3" id="jlc-2h-z59">
                                         <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
@@ -88,10 +90,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-gJ-6Ml">
-                                <rect key="frame" x="134" y="12" width="38" height="36"/>
-                                <state key="normal" image="lianqinjilu.png">
+                                <rect key="frame" x="38" y="43" width="145" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="成绩记录">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" backgroundImage="help_menumover_bg.png"/>
+                                <state key="highlighted" backgroundImage="help_menumover_bg.png"/>
                                 <connections>
                                     <segue destination="XKf-Rw-z13" kind="popover" popoverAnchorView="NjN-gJ-6Ml" id="Mig-k1-XWr">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -99,21 +105,27 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6s-dJ1">
-                                <rect key="frame" x="117" y="107" width="72" height="44"/>
-                                <state key="normal" title="等级">
+                                <rect key="frame" x="38" y="82" width="145" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="您的等级">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" backgroundImage="help_menumover_bg.png"/>
+                                <state key="highlighted" backgroundImage="help_menumover_bg.png"/>
                                 <connections>
                                     <segue destination="dbk-0A-pmm" kind="popover" popoverAnchorView="WbG-6s-dJ1" id="ZIQ-KY-7Kr">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                        <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_img_ren.png" translatesAutoresizingMaskIntoConstraints="NO" id="P7t-8O-42o">
+                                <rect key="frame" x="71" y="6" width="25" height="25"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="200" height="160"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="220" height="220"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="labUser" destination="OFd-uh-CnI" id="VGD-PB-bXr"/>
@@ -194,7 +206,7 @@
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MMA-dc-ZlP">
                                                     <rect key="frame" x="842" y="25" width="90" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="更多" image="gengduo.png"/>
+                                                    <state key="normal" image="gengduo.png"/>
                                                     <state key="selected">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
@@ -1447,7 +1459,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Ba9-BS-Aa2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6ZH-h5-yZ3">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="20" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="level.png" translatesAutoresizingMaskIntoConstraints="NO" id="F3l-PQ-IQG">
@@ -1493,7 +1505,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c2-vl-M9c" userLabel="StarView">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="123" y="84" width="366" height="40"/>
+                                <color key="backgroundColor" red="0.94117653369903564" green="0.94117653369903564" blue="0.94117653369903564" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1507,7 +1520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQu-iB-fOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2190" y="-30"/>
+            <point key="canvasLocation" x="-2155" y="-15"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S4V-Iy-S7b">
@@ -2612,6 +2625,9 @@
         <image name="gengduo.png" width="90" height="25"/>
         <image name="gentanmoshi.png" width="405" height="68"/>
         <image name="gentanmoshixuanzhong.png" width="405" height="68"/>
+        <image name="help_btn_close.png" width="145" height="30"/>
+        <image name="help_img_ren.png" width="24" height="25"/>
+        <image name="help_menumover_bg.png" width="210" height="40"/>
         <image name="huigu1.png" width="48" height="48"/>
         <image name="huigu2.png" width="48" height="48"/>
         <image name="huishan.png" width="35" height="41"/>
@@ -2624,7 +2640,6 @@
         <image name="jizhumima_selected.png" width="90" height="17"/>
         <image name="kaishi-01.png" width="22" height="30"/>
         <image name="level.png" width="152" height="175"/>
-        <image name="lianqinjilu.png" width="38" height="36"/>
         <image name="login_bg.png" width="1024" height="768"/>
         <image name="nansheng.png" width="43" height="43"/>
         <image name="nvhai.png" width="40" height="40"/>
@@ -2660,7 +2675,6 @@
         <image name="tiaosu-01.png" width="10" height="35"/>
         <image name="tishi-01.png" width="95" height="35"/>
         <image name="tuichu-01.png" width="40" height="30"/>
-        <image name="tuichu2.png" width="36" height="36"/>
         <image name="weigouami.png" width="32" height="30"/>
         <image name="weigoumai.png" width="137" height="138"/>
         <image name="weixuan.png" width="29" height="29"/>
