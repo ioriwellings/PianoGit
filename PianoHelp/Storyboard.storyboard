@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -1254,14 +1254,14 @@
                                 <rect key="frame" x="243" y="114" width="539" height="485"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="本次练习得分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39b-wU-cI7">
-                                <rect key="frame" x="323" y="132" width="379" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <rect key="frame" x="323" y="143" width="379" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-Gx-Age" userLabel="labScore">
-                                <rect key="frame" x="342" y="174" width="352" height="122"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="160"/>
+                                <rect key="frame" x="342" y="182" width="352" height="122"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="110"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="cuofu,jiesuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="nl0-iA-Edd">
@@ -1311,17 +1311,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-kd-NjE">
-                                <rect key="frame" x="482" y="541" width="70" height="44"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="关闭">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-kd-NjE">
+                                <rect key="frame" x="442" y="538" width="140" height="38"/>
+                                <state key="normal" image="s_close_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="s_close_btn_over.png"/>
                                 <connections>
                                     <action selector="btnClose_onclick:" destination="WuE-OY-h6W" eventType="touchUpInside" id="1Ej-uj-x6r"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSk-N8-NTV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSk-N8-NTV">
                                 <rect key="frame" x="296" y="477" width="103" height="48"/>
                                 <state key="normal" image="jiucuo1.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1332,26 +1332,28 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-4r-xHB">
-                                <rect key="frame" x="438" y="477" width="48" height="48"/>
-                                <state key="normal" image="fenxiang2.png">
+                                <rect key="frame" x="341" y="482" width="140" height="38"/>
+                                <state key="normal" image="s_share_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="fenxiang2.png"/>
+                                <state key="highlighted" image="s_share_btn_over.png"/>
                                 <connections>
                                     <action selector="btnShare_onclick:" destination="WuE-OY-h6W" eventType="touchUpInside" id="Sz2-xa-6bj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blb-pK-Iuj">
-                                <rect key="frame" x="549" y="477" width="48" height="48"/>
-                                <state key="normal" image="baocunluyin2.png">
+                                <rect key="frame" x="551" y="482" width="140" height="38"/>
+                                <state key="normal" image="s_save_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="baocunluyin2.png"/>
+                                <state key="highlighted" image="s_save_btn_over.png"/>
                                 <connections>
                                     <action selector="btnSaveRecord_onclick:" destination="WuE-OY-h6W" eventType="touchUpInside" id="HFK-17-ZZo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN7-kP-2vw">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN7-kP-2vw">
                                 <rect key="frame" x="653" y="477" width="48" height="48"/>
                                 <state key="normal" image="huigu1.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1361,8 +1363,8 @@
                                     <action selector="btnReview_click:" destination="WuE-OY-h6W" eventType="touchUpInside" id="Ial-F1-rPb"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon-76.png" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-WY-Dwt">
-                                <rect key="frame" x="291" y="188" width="76" height="76"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon76_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-WY-Dwt">
+                                <rect key="frame" x="291" y="205" width="76" height="76"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1479,7 +1481,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon-76.png" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-Vq-2Ng">
-                                <rect key="frame" x="40" y="71" width="76" height="76"/>
+                                <rect key="frame" x="26" y="70" width="76" height="76"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xi-82-odG">
                                 <rect key="frame" x="26" y="338" width="463" height="131"/>
@@ -1509,10 +1511,10 @@
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c2-vl-M9c" userLabel="StarView">
                                 <rect key="frame" x="123" y="84" width="366" height="40"/>
-                                <color key="backgroundColor" red="0.94117653369903564" green="0.94117653369903564" blue="0.94117653369903564" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="500" height="500"/>
                     <connections>
@@ -2608,6 +2610,7 @@
     </scenes>
     <resources>
         <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon76_circle.png" width="76" height="76"/>
         <image name="baocunluyin2.png" width="48" height="47"/>
         <image name="bg_learn.png" width="525" height="460"/>
         <image name="biansu-01.png" width="60" height="60"/>
@@ -2659,6 +2662,12 @@
         <image name="renwu2.png" width="32" height="28"/>
         <image name="renwufenye.png" width="150" height="36"/>
         <image name="renwufenye_selected.png" width="150" height="36"/>
+        <image name="s_close_btn.png" width="210" height="56"/>
+        <image name="s_close_btn_over.png" width="210" height="56"/>
+        <image name="s_save_btn.png" width="210" height="56"/>
+        <image name="s_save_btn_over.png" width="205" height="55"/>
+        <image name="s_share_btn.png" width="210" height="56"/>
+        <image name="s_share_btn_over.png" width="410" height="110"/>
         <image name="shifanqupu.png" width="275" height="265"/>
         <image name="shipumoshi.png" width="405" height="68"/>
         <image name="shipumoshixuanzhong.png" width="405" height="68"/>

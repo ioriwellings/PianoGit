@@ -26,6 +26,8 @@
     BOOL isHitAnimating;
     BOOL isHiddenMenubar;
     MPMoviePlayerController *_player;
+    
+    NSDate *startTime;
 }
 @property (nonatomic,weak) UIButton *btnCurrent;
 @property (strong, nonatomic) SFCountdownView *sfCountdownView;
@@ -71,6 +73,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    startTime = [NSDate date];
+    [NSThread sleepForTimeInterval:20];
     if (self.fileName == nil) return;
     
     midifile = [[MidiFile alloc] initWithFile:self.fileName];
@@ -117,7 +121,7 @@
 //    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //}
 //[self presentViewController:vc animated:YES completion:NULL];
-//[self endSongsResult:10 andRight:10 andWrong:10];
+[self endSongsResult:10 andRight:10 andWrong:10];
     
 //    [self performSegueWithIdentifier:@"modalScroe2Segue" sender:nil];
 }
@@ -390,7 +394,9 @@
 //            [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2.5]];
             [player playPrepareTempo:[player getCountDownCnt]];
             [self.sfCountdownView start:[player getSectionTime]];
-        } else {
+        }
+        else
+        {
             
             scrollView.hidden = YES;
             sheetmsic1.hidden = NO;
@@ -615,6 +621,16 @@
         [sheetmusic setNeedsDisplay];
         //    NSLog(@"the result good[%i] right[%i] wrong[%i]", good, right, wrong);
         int ff = (right + good)/((right + good + wrong)*1.0) * 100;
+        if(self.iPlayMode == 1)
+        {
+            NSDate *endTime = [NSDate date];
+            NSTimeInterval timeLong = [endTime timeIntervalSinceDate:startTime];
+            
+            if(timeLong > [self.__midiFile getMidiFileTimes]/1000.0 * 2.0 )
+            {
+                ff = [self.__midiFile getMidiFileTimes]/1000.0/timeLong * 100;
+            }
+        }
         
         ScroeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ScroeViewController"];
         vc.iGood = good;
@@ -716,10 +732,12 @@
         case 3://暂停
             break;
         case 4://播放
-            if (splitState == true) {
+            if (splitState == true)
+            {
                 [player jumpMeasure:splitStart - 1];
             }
             [player playByType:self.iPlayMode];
+            startTime = [NSDate date];
             break;
     }
     
