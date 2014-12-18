@@ -347,6 +347,7 @@
 
 - (IBAction)btnPlay_click:(id)sender
 {
+    startTime = [NSDate date];
     if([((UIButton*)sender) isSelected])
     {
         option = 3;//暂停
@@ -737,7 +738,7 @@
                 [player jumpMeasure:splitStart - 1];
             }
             [player playByType:self.iPlayMode];
-            startTime = [NSDate date];
+            
             break;
     }
     
