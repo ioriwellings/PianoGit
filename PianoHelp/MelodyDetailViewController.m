@@ -73,8 +73,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    startTime = [NSDate date];
-    [NSThread sleepForTimeInterval:20];
+    //startTime = [NSDate date];
+    //[NSThread sleepForTimeInterval:20];
     if (self.fileName == nil) return;
     
     midifile = [[MidiFile alloc] initWithFile:self.fileName];
