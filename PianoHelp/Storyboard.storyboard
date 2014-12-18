@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -55,11 +55,11 @@
                         <viewControllerLayoutGuide type="bottom" id="0LU-i9-EWh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eM8-hc-jxX">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgR-6N-mPx">
-                                <rect key="frame" x="38" y="165" width="145" height="30"/>
+                                <rect key="frame" x="38" y="194" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title=" 退出登录" backgroundImage="help_btn_close.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,22 +74,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-ca-nA3">
-                                <rect key="frame" x="38" y="121" width="145" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8X-1z-XYJ">
+                                <rect key="frame" x="39" y="153" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="使用说明">
+                                <state key="normal" title="了解更多">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" backgroundImage="help_menumover_bg.png"/>
+                                <state key="highlighted" backgroundImage="help_menumover_bg.png"/>
                                 <connections>
-                                    <segue destination="zaI-kO-87r" kind="popover" popoverAnchorView="3SE-ca-nA3" id="jlc-2h-z59">
-                                        <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
-                                    </segue>
+                                    <action selector="btnOfficeWeb_click:" destination="dTG-LN-rZD" eventType="touchUpInside" id="mej-3X-pg4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-gJ-6Ml">
-                                <rect key="frame" x="38" y="43" width="145" height="30"/>
+                                <rect key="frame" x="38" y="42" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="成绩记录">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -104,7 +103,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-6s-dJ1">
-                                <rect key="frame" x="38" y="82" width="145" height="30"/>
+                                <rect key="frame" x="38" y="77" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="您的等级">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -121,10 +120,25 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_img_ren.png" translatesAutoresizingMaskIntoConstraints="NO" id="P7t-8O-42o">
                                 <rect key="frame" x="71" y="6" width="25" height="25"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-ca-nA3">
+                                <rect key="frame" x="38" y="116" width="145" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="使用说明">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="help_menumover_bg.png"/>
+                                <state key="highlighted" backgroundImage="help_menumover_bg.png"/>
+                                <connections>
+                                    <segue destination="zaI-kO-87r" kind="popover" popoverAnchorView="3SE-ca-nA3" id="jlc-2h-z59">
+                                        <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="220" height="220"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="220" height="240"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="labUser" destination="OFd-uh-CnI" id="VGD-PB-bXr"/>

@@ -55,4 +55,8 @@
         [self.loginDelegate quit];
     }
 }
+- (IBAction)btnOfficeWeb_click:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://jiayinqiji.com"]];
+}
 @end
