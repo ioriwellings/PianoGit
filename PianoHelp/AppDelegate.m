@@ -110,7 +110,7 @@
 //    self.window.backgroundColor = [UIColor lightGrayColor];
 //    [self.window makeKeyAndVisible];
     
-    [WXApi registerApp:@"wxf74aed408cdebe00"];
+    [WXApi registerApp:@"wxfe3172f273fc7761"];
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:[IAPHelper shareIAPHelper]];
     

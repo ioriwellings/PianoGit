@@ -36,11 +36,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.labScroe.text = [NSString stringWithFormat:@"%ld", (long)self.iScore];
+    self.labScroe.text = [NSString stringWithFormat:@"%ld分", (long)self.iScore];
     self.labRight.text = [NSString stringWithFormat:@"%ld", (long)self.iRight];
     self.labWrong.text = [NSString stringWithFormat:@"%ld", (long)self.iWrong];
     self.labPerfect.text = [NSString stringWithFormat:@"%ld", (long)self.iGood];
-    self.labGain.text = [@(self.iRight+self.iGood) stringValue];
+    self.labGain.text = [[@(self.iRight+self.iGood) stringValue] stringByAppendingString:@"枚"];
     
     self.labName.text = [[self.fileName lastPathComponent] stringByDeletingPathExtension];
     
@@ -61,7 +61,7 @@
             id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&errJSON];
             if(json && errJSON == nil)
             {
-                self.labOwn.text = [[json valueForKey:@"Coins"] stringValue];
+                self.labOwn.text = [[[json valueForKey:@"Coins"] stringValue] stringByAppendingString:@"枚"];
             }
         }
 
@@ -135,13 +135,13 @@
 - (IBAction)btnShare_onclick:(id)sender
 {
     
-    UIGraphicsBeginImageContext(self.view.frame.size);
+    UIGraphicsBeginImageContext(CGSizeMake(1024, 768));
     CGContextRef context = UIGraphicsGetCurrentContext();
     [self.view.layer renderInContext:context];
     UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    CGRect rect = CGRectMake(244, 115, 540, 486);
+    CGRect rect = CGRectMake(237, 94, 580, 526);
     CGImageRef imageRefRect =CGImageCreateWithImageInRect(theImage.CGImage, rect);
     UIImage *sendImage = [[UIImage alloc] initWithCGImage:imageRefRect];
     
