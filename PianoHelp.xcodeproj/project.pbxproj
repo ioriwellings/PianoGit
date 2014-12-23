@@ -33,7 +33,6 @@
 		8907101419219EC000BB9E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF419219EC000BB9E2F /* Foundation.framework */; };
 		8907101519219EC000BB9E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FF819219EC000BB9E2F /* UIKit.framework */; };
 		8907101619219EC000BB9E2F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89070FFA19219EC000BB9E2F /* CoreData.framework */; };
-		8907101E19219EC000BB9E2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8907101C19219EC000BB9E2F /* InfoPlist.strings */; };
 		8907102019219EC000BB9E2F /* PianoHelpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8907101F19219EC000BB9E2F /* PianoHelpTests.m */; };
 		8907102A19219F3A00BB9E2F /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8907102919219F3A00BB9E2F /* Storyboard.storyboard */; };
 		8907102D1921A03900BB9E2F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8907102C1921A03900BB9E2F /* RootViewController.m */; };
@@ -70,7 +69,6 @@
 		890C39E51983445300206740 /* fenduan-01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 890C39DB1983445300206740 /* fenduan-01@2x.png */; };
 		890EF8DD19C7240900D31980 /* IEEE 754.html in Resources */ = {isa = PBXBuildFile; fileRef = 890EF8DA19C7240900D31980 /* IEEE 754.html */; };
 		890EF8DF19C7240900D31980 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 890EF8DC19C7240900D31980 /* Localizable.strings */; };
-		890EF8E019C7243F00D31980 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 890EF8E219C7243F00D31980 /* InfoPlist.strings */; };
 		891290DB195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */; };
 		891290DD1959046700B9B5B5 /* xingxing,jiesuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */; };
 		891290DF195904BA00B9B5B5 /* zunashi.png in Resources */ = {isa = PBXBuildFile; fileRef = 891290DE195904BA00B9B5B5 /* zunashi.png */; };
@@ -347,6 +345,7 @@
 		89B28F691A1B88A100A0BA14 /* lianqinjilu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B28F671A1B88A100A0BA14 /* lianqinjilu@2x.png */; };
 		89B298E51A49B262009A46E1 /* Icon76_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B298E41A49B262009A46E1 /* Icon76_circle@2x.png */; };
 		89B298E71A49B44E009A46E1 /* jiesuanfenshuduihuakuang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B298E61A49B44D009A46E1 /* jiesuanfenshuduihuakuang@2x.png */; };
+		89B298EC1A49C2CD009A46E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B298EB1A49C2CD009A46E1 /* InfoPlist.strings */; };
 		89BE8D75192ADAD100686AC7 /* MelodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */; };
 		89BE8D78192AE16900686AC7 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */; };
 		89C58CCC1A39D35B00652BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCB1A39D35B00652BA5 /* SystemConfiguration.framework */; };
@@ -573,7 +572,6 @@
 		8907101119219EC000BB9E2F /* PianoHelpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PianoHelpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8907101219219EC000BB9E2F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8907101B19219EC000BB9E2F /* PianoHelpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PianoHelpTests-Info.plist"; sourceTree = "<group>"; };
-		8907101D19219EC000BB9E2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8907101F19219EC000BB9E2F /* PianoHelpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PianoHelpTests.m; sourceTree = "<group>"; };
 		8907102919219F3A00BB9E2F /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8907102B1921A03900BB9E2F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -612,8 +610,6 @@
 		890C39DB1983445300206740 /* fenduan-01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fenduan-01@2x.png"; sourceTree = "<group>"; };
 		890EF8DA19C7240900D31980 /* IEEE 754.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "IEEE 754.html"; path = "Pianohelp/IEEE 754.html"; sourceTree = SOURCE_ROOT; };
 		890EF8DC19C7240900D31980 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Pianohelp/Localizable.strings; sourceTree = SOURCE_ROOT; };
-		890EF8E119C7243F00D31980 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		890EF8E319C7244400D31980 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		891290DA195900D400B9B5B5 /* jiesuanfenshuduihuakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiesuanfenshuduihuakuang.png; sourceTree = "<group>"; };
 		891290DC1959046700B9B5B5 /* xingxing,jiesuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xingxing,jiesuanzhong.png"; sourceTree = "<group>"; };
 		891290DE195904BA00B9B5B5 /* zunashi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zunashi.png; sourceTree = "<group>"; };
@@ -923,6 +919,7 @@
 		89B28F671A1B88A100A0BA14 /* lianqinjilu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lianqinjilu@2x.png"; sourceTree = "<group>"; };
 		89B298E41A49B262009A46E1 /* Icon76_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon76_circle@2x.png"; sourceTree = "<group>"; };
 		89B298E61A49B44D009A46E1 /* jiesuanfenshuduihuakuang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiesuanfenshuduihuakuang@2x.png"; sourceTree = "<group>"; };
+		89B298EB1A49C2CD009A46E1 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		89BE8D73192ADAD100686AC7 /* MelodyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyTableViewCell.h; sourceTree = "<group>"; };
 		89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyTableViewCell.m; sourceTree = "<group>"; };
 		89BE8D76192AE16900686AC7 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
@@ -1296,8 +1293,8 @@
 				8907100219219EC000BB9E2F /* main.m */,
 				8907100419219EC000BB9E2F /* PianoHelp-Prefix.pch */,
 				890EF8DA19C7240900D31980 /* IEEE 754.html */,
-				890EF8E219C7243F00D31980 /* InfoPlist.strings */,
 				890EF8DC19C7240900D31980 /* Localizable.strings */,
+				89B298EB1A49C2CD009A46E1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1315,7 +1312,6 @@
 			isa = PBXGroup;
 			children = (
 				8907101B19219EC000BB9E2F /* PianoHelpTests-Info.plist */,
-				8907101C19219EC000BB9E2F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2259,7 +2255,6 @@
 				897D782F1A01278D00AD1896 /* 演示20042.png in Resources */,
 				897D781F1A01278D00AD1896 /* 演示20026.png in Resources */,
 				897D784D1A01278D00AD1896 /* 演示20072.png in Resources */,
-				890EF8E019C7243F00D31980 /* InfoPlist.strings in Resources */,
 				8994D15D194BCEDA0016F806 /* 13.599-054.mid in Resources */,
 				BA1079A81967FE4C0056F626 /* pedal-end.png in Resources */,
 				895DB5B519C5D92400E02DE4 /* Default-Landscape@2x~ipad.png in Resources */,
@@ -2277,6 +2272,7 @@
 				BA1079B11967FE4C0056F626 /* six.png in Resources */,
 				8964EBE3194539CC00DBCED9 /* 0000.mid in Resources */,
 				8989B127198B2032005222C2 /* yigoumai2.png in Resources */,
+				89B298EC1A49C2CD009A46E1 /* InfoPlist.strings in Resources */,
 				89F704CA19A5851E0035621C /* weixuan@2x.png in Resources */,
 				89F704CD19A5851E0035621C /* yanzhengma.png in Resources */,
 				89F704BD19A5851E0035621C /* jizhumima.png in Resources */,
@@ -2534,7 +2530,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8907101E19219EC000BB9E2F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2630,27 +2625,6 @@
 			targetProxy = 8907101719219EC000BB9E2F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8907101C19219EC000BB9E2F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8907101D19219EC000BB9E2F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		890EF8E219C7243F00D31980 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				890EF8E119C7243F00D31980 /* zh-Hans */,
-				890EF8E319C7244400D31980 /* en */,
-			);
-			name = InfoPlist.strings;
-			path = Pianohelp;
-			sourceTree = SOURCE_ROOT;
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8907102119219EC000BB9E2F /* Debug */ = {

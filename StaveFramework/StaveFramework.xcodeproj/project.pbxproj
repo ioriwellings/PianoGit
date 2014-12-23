@@ -277,6 +277,7 @@
 		190E6E821907E8FE00AD8F6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		190E6E841907E9C400AD8F6B /* SerialGATT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialGATT.h; sourceTree = "<group>"; };
 		190E6E851907E9C400AD8F6B /* SerialGATT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialGATT.m; sourceTree = "<group>"; };
+		89B298E81A49C1E5009A46E1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		89C6D6001A41C5E600422890 /* bass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bass@2x.png"; sourceTree = "<group>"; };
 		89C6D6011A41C5E600422890 /* treble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "treble@2x.png"; sourceTree = "<group>"; };
 		BA0BBCFE193393AC00F27181 /* PianoCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PianoCommon.h; sourceTree = "<group>"; };
@@ -624,6 +625,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 190E6DD31907E27200AD8F6B;
 			productRefGroup = 190E6DDD1907E27200AD8F6B /* Products */;
@@ -732,6 +734,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				190E6DF91907E27200AD8F6B /* en */,
+				89B298E81A49C1E5009A46E1 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
