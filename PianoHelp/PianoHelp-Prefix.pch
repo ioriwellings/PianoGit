@@ -24,5 +24,6 @@
 
 #define kBackToQinfangNotification @"backfromNotification"
 #define kLoginSuccessNotification @"loginNotification"
-#define HTTPSERVERSADDRESS @"http://www.pcbft.com"
+#define HTTPSERVERSADDRESS @"http://www.pianopartner.cn"
+//#define HTTPSERVERSADDRESS @"http://www.pcbft.com"
 //#define HTTPSERVERSADDRESS @"http://192.168.1.100"
