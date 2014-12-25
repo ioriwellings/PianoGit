@@ -218,38 +218,41 @@
         }
     }
     
-    function on_option() {
+    function on_option(flag) {
 
-        var opt = 1;
-        var c = 0;
-        var t = document.getElementById("btnOption").value;
-        if (t == "设置") {
-            opt = 1;
-
+        if (flag == 0) {//预览
             adornment_change();
-        } else {
-            opt = 2;
+        } else {//购买
+            var opt = 1;
+            var c = 0;
+            var t = document.getElementById("btnOption").value;
+            if (t == "设置") {
+                opt = 1;
 
-            var m = parseInt(document.getElementById("lblMoney").value);
-            c = parseInt(t);
-            if (c > m) {
-                alert("您的余额不足!");
-                return;
+                adornment_change();
+            } else {
+                opt = 2;
+
+                var m = parseInt(document.getElementById("<%=lblMoney.ClientID%>").innerText);
+                c = parseInt(t);
+                if (c > m) {
+                    alert("您的余额不足!");
+                    return;
+                }
+
+                document.getElementById("btnOption").value = "设置";
+                document.getElementById("<%=lblMoney.ClientID%>").innerText = m - c;
+
+                adornment_change();
             }
 
-            document.getElementById("btnOption").value = "设置";
-            document.getElementById("lblMoney").value = m - c;
-
-            adornment_change();
+            var id = document.getElementById("hidenAdornmentID").value;
+            var type = document.getElementById("hidenAdornmentType").value;
+            var user = document.getElementById("hidenUser").value;
+            var url1 = "./Room.aspx?option=" + opt + "&userName=" + user + "&coins=" + c +
+                "&adornment_id=" + id + "&type=" + type;
+            $.ajax({ url: url1, async: false });
         }
-
-        var id = document.getElementById("hidenAdornmentID").value;
-        var type = document.getElementById("hidenAdornmentType").value;
-        var user = document.getElementById("hidenUser").value;
-        var url1 = "./Room.aspx?option=" + opt + "&userName=" + user + "&coins=" + c +
-            "&adornment_id=" + id + "&type=" + type;
-        $.ajax({ url: url1, async: false });
-
     }
     
 </script>
@@ -291,15 +294,15 @@
                     <div class="t"></div>
                     
                     <div  class="drl">
-                        <div class="l"><a href="javascript://" onclick="goto_data(1);on_option()">
+                        <div class="l"><a href="javascript://" onclick="goto_data(1);on_option(0)">
                             <img src="images/drl01.png"  width="24" height="44"></a>
                         </div>
                         <div style="vertical-align: middle;	text-align: center;	float: left;width:200px;margin:0 auto;">
 
                         <label id="adornment_name">aaaaaaaaaaa</label><br/>
-                        <input id="btnOption" type="button" onclick="" class="but"/>
+                        <input id="btnOption" type="button" onclick="on_option(1)" class="but"/>
                         </div>
-                        <div class="r"><a href="javascript://" onclick="goto_data(2);on_option()"><img src="images/drl02.png"  width="24" height="44"></a></div>
+                        <div class="r"><a href="javascript://" onclick="goto_data(2);on_option(0)"><img src="images/drl02.png"  width="24" height="44"></a></div>
                     </div>
 
                 </div>

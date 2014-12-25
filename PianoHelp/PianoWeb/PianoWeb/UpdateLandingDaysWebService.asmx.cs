@@ -48,5 +48,37 @@ namespace PianoWeb
 
             return result;
         }
+
+
+
+        [WebMethod]
+        public string updateCoins(string userName, string coins)
+        {
+            String result = "OK";
+            try
+            {
+                PianoDataClassesDataContext piano = new PianoDataClassesDataContext();
+
+                if (Convert.ToInt32(coins) > 0)
+                {
+                    var u = from item in piano.Users
+                            where item.userName.Equals(userName)
+                            select item;
+                    var r = u.ToList();
+                    if (r.Count() > 0)
+                    {
+                        r[0].scroe = Convert.ToInt32(r[0].scroe) + Convert.ToInt32(coins);
+                    }
+
+                    piano.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+
+            return result;
+        }
     }
 }

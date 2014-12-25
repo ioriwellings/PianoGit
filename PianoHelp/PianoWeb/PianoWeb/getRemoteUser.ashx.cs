@@ -21,12 +21,6 @@ namespace PianoWeb
             set;
             get;
         }
-
-        public string days
-        {
-            set;
-            get;
-        }
     }
 
     /// <summary>
@@ -65,8 +59,7 @@ namespace PianoWeb
                     var u = new JSONUser()
                     {
                         userName = result.userName,
-                        pwd = result.password,
-                        days = Convert.ToString(result.landingDays)
+                        pwd = result.password
                     };
                     context.Response.Write(jserial.Serialize(u));
                 }

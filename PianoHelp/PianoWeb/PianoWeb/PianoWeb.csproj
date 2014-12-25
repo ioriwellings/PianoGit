@@ -103,6 +103,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PianoDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="PListCreater.ashx.cs">
+      <DependentUpon>PListCreater.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReceiptVerification.cs" />
     <Compile Include="Register.ashx.cs">
@@ -163,9 +166,11 @@
     <Content Include="getRemoteUser.ashx" />
     <Content Include="getUserCoins.ashx" />
     <Content Include="checkForUpdate.ashx" />
+    <None Include="dataList.csv" />
     <None Include="PianoDataClasses.dbml.layout">
       <DependentUpon>PianoDataClasses.dbml</DependentUpon>
     </None>
+    <Content Include="PListCreater.ashx" />
     <Content Include="GuestForm.aspx" />
     <Content Include="Room.aspx" />
     <Content Include="UpdateLandingDaysWebService.asmx" />

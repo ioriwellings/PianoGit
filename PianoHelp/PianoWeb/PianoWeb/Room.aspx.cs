@@ -17,7 +17,7 @@ namespace PianoWeb
         {
             string userName = Request.Params["userName"];
             hidenUser.Value = userName;
-
+         //   userName = "刘德华1";
             string option = Request.Params["option"];
 
             getUserAllAdornments(userName);
@@ -69,7 +69,8 @@ namespace PianoWeb
             var result = t.ToList();
             if (result.Count > 0)
             {
-                lblMoney.Text = Convert.ToString(result[0].scroe);
+                int money = Convert.ToInt32(result[0].scroe);
+                lblMoney.Text = Convert.ToString(money);
             }
         }
 

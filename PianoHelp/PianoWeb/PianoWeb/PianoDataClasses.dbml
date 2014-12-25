@@ -113,7 +113,7 @@
       <Column Name="qq" Type="System.String" DbType="Char(20)" CanBeNull="true" />
       <Column Name="tencentWeiBo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="dModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="dCreate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="dCreate" AutoSync="Never" Type="System.DateTime" DbType="Date" IsDbGenerated="true" CanBeNull="true" />
       <Column Name="landingDays" Type="System.Int64" DbType="BigInt" CanBeNull="false" />
       <Association Name="Users_AlbumUpdate" Member="AlbumUpdate" ThisKey="userName" OtherKey="userName" Type="AlbumUpdate" />
       <Association Name="Users_Opus" Member="Opus" ThisKey="userName" OtherKey="userName" Type="Opus" />

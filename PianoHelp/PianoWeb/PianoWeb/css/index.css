@@ -383,13 +383,14 @@ ul,li
 	width: 512px;
 	color: #333333;
 	position: relative;
-	text-align: right;
+	text-align: left;
 	border-bottom-width: 1px;
 	border-bottom-style: dotted;
 	border-bottom-color: #333333;
+	margin-left:10px;
 	right: 0px;
 	top: 0px;
-	float: right;
+	float: left;
 }
 .list2y .txt a{
 	color: #FFFFFF;
@@ -650,7 +651,7 @@ ul,li
 	filter:alpha(Opacity=30);
 -moz-opacity:0.3;		opacity: 0.3;
 	top: 20px;
-	right: 20px;
+	right: 80px;
 	color: #FFFFFF;
 }
 .room .top_right-jf a{
@@ -672,7 +673,7 @@ ul,li
 	width: 60px;
 	height: 32px;
 	font-size: 16px;
-	margin-right: 10px;
+	margin-left: 0px;
 }
 .newb02{
 	color: #000000;

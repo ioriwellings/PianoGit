@@ -101,17 +101,19 @@ namespace PianoWeb
                 }
             }
 
-
-            var u = from item in piano.Users
-                    where item.userName.Equals(userName)
-                    select item;
-            var r = u.ToList();
-            if (r.Count() > 0)
+            if (Convert.ToInt32(coins) > 0)
             {
-                r[0].scroe = Convert.ToInt32(r[0].scroe) + Convert.ToInt32(coins);
-            }
+                var u = from item in piano.Users
+                        where item.userName.Equals(userName)
+                        select item;
+                var r = u.ToList();
+                if (r.Count() > 0)
+                {
+                    r[0].scroe = Convert.ToInt32(r[0].scroe) + Convert.ToInt32(coins);
+                }
 
-            piano.SubmitChanges();
+                piano.SubmitChanges();
+            }
         }
     }
 }
