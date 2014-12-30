@@ -1,0 +1,5 @@
+C:\Documents and Settings\杨林\桌面\PianoWeb\PianoWeb\bin\PianoWeb.dll
+C:\Documents and Settings\杨林\桌面\PianoWeb\PianoWeb\bin\PianoWeb.pdb
+C:\Documents and Settings\杨林\桌面\PianoWeb\PianoWeb\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\杨林\桌面\PianoWeb\PianoWeb\obj\Release\PianoWeb.dll
+C:\Documents and Settings\杨林\桌面\PianoWeb\PianoWeb\obj\Release\PianoWeb.pdb
