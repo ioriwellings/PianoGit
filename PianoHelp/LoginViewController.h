@@ -22,6 +22,8 @@
 - (IBAction)chkRemember_click:(id)sender;
 - (IBAction)chkAutoLogin_click:(id)sender;
 - (IBAction)btnAnonymity_click:(id)sender;
+- (IBAction)btnProduct_click:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginYConstraint;
 

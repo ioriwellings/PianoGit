@@ -245,6 +245,11 @@
     }
 }
 
+- (IBAction)btnProduct_click:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:HTTPSERVERSADDRESS]];
+}
+
 -(BOOL) AuthenticateUser:(NSString*)userName password:(NSString*)pwd //验证用户
 {
     NSManagedObjectContext *moc = ((AppDelegate*)[UIApplication sharedApplication].delegate ).managedObjectContext;

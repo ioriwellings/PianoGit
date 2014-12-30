@@ -1592,9 +1592,6 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dalianjiayin.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uja-em-itS">
                                         <rect key="frame" x="808" y="744" width="208" height="16"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqinbanlv.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-38-XhW" userLabel="gangqinbanlv.png">
-                                        <rect key="frame" x="99" y="73" width="413" height="87"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqin.png" translatesAutoresizingMaskIntoConstraints="NO" id="fo0-Jc-vit">
                                         <rect key="frame" x="604" y="280" width="351" height="392"/>
                                     </imageView>
@@ -1674,6 +1671,21 @@
                                             <action selector="btnAnonymity_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="4PG-Dv-xbd"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kO-m1-AI1">
+                                        <rect key="frame" x="586" y="130" width="229" height="168"/>
+                                        <state key="normal" image="chanpingoumaitongdao.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnProduct_click:" destination="KLg-8X-Svs" eventType="touchUpInside" id="Xxh-RW-Sfe"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yinkubi.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Nd-hT-PWh">
+                                        <rect key="frame" x="86" y="17" width="368" height="104"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqinbanlv.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-38-XhW" userLabel="gangqinbanlv.png">
+                                        <rect key="frame" x="301" y="130" width="153" height="32"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -2630,6 +2642,7 @@
         <image name="btnClose_1.png" width="33" height="33"/>
         <image name="btnOK_1.png" width="84" height="37"/>
         <image name="chakan.png" width="31" height="33"/>
+        <image name="chanpingoumaitongdao.png" width="229" height="168"/>
         <image name="chongxinkaishi-01.png" width="35" height="30"/>
         <image name="cuofu,jiesuanzhong.png" width="31" height="31"/>
         <image name="dalianjiayin.png" width="208" height="16"/>
@@ -2715,6 +2728,7 @@
         <image name="xuanzhong.png" width="29" height="29"/>
         <image name="xuanzhongtiao.png" width="256" height="75"/>
         <image name="yigoumai2.png" width="32" height="30"/>
+        <image name="yinkubi.png" width="368" height="104"/>
         <image name="yinliang.png" width="25" height="26"/>
         <image name="youshou.png" width="77" height="85"/>
         <image name="zanting.png" width="21" height="21"/>
