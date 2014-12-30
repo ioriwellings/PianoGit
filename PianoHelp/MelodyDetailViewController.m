@@ -438,7 +438,7 @@
 
 - (IBAction)btnDeviceRedirect_click:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.jiayinqiji.com"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.pianopartner.cn/"]];
 }
 
 #pragma mark - private method
