@@ -36,6 +36,10 @@
     Stem* pairex;
     int width_to_pairex;
     int cutNote;        /** init: 0   cutnote:1  */
+    Stem* beambegin;    //控制器连接符尾起始音符
+    Stem* beamend;      //控制器连接符尾结束音符
+    Stem* after;
+    int beam_afterx;
     /** add by sunlie end */
     
     int yiFlag;
@@ -59,8 +63,14 @@
 -(void)setPair:(Stem*)pair withWidth:(int)width_to_pair;
 /** add by sunlie start */
 -(void)setPairex:(Stem*)pair withWidth:(int)width_to_pair;
+-(void)setAfterPair:(Stem*)p;
+-(void)setBeamBegin:(Stem*)p;
+-(void)setBeamEnd:(Stem*)p;
 -(int)cutNote;
 -(void)setCutNote:(int)c;
+-(int)beam_afterx;
+-(void)setBeamAfterx:(int)c;
+
 -(void)drawBeamStemEx:(CGContextRef)context atY:(int)ytop topStaff:(WhiteNote*)topstaff;
 /** add by sunlie end */
 -(void)draw:(CGContextRef)context atY:(int)ytop topStaff:(WhiteNote*)topstaff threeFlag:(int)threeFlag;

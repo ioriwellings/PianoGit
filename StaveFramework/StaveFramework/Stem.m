@@ -99,6 +99,12 @@
 - (void)setCutNote:(int)c {
     cutNote = c;
 }
+-(int)beam_afterx {
+    return beam_afterx;
+}
+-(void)setBeamAfterx:(int)c {
+    beam_afterx = c;
+}
 /** add by sunlie end */
 
 
@@ -207,6 +213,22 @@
     [old release];
     width_to_pairex = width;
 }
+
+-(void)setAfterPair:(Stem*)p {
+    id old = after;
+    after = [p retain];
+    [old release];
+}
+-(void)setBeamBegin:(Stem*)p {
+    id old = beambegin;
+    beambegin = [p retain];
+    [old release];
+}
+-(void)setBeamEnd:(Stem*)p {
+    id old = beamend;
+    beamend = [p retain];
+    [old release];
+}
 /** add by sunlie end */
 
 -(BOOL)isBeam {
@@ -233,12 +255,12 @@
         duration == DottedQuarter ||
         duration == Half ||
         duration == DottedHalf ||
-        (receiver_in_pair && pair == nil)) {
+        (receiver_in_pair && pair == nil && after == nil)) {
         
         return;
     }
     
-    if (pair != nil) {
+    if (pair != nil || after != nil) {
         
         if (yiFlag == 1) {//装饰音
             [self drawGraceBeamStems:context atY:ytop topStaff:topstaff];
@@ -464,140 +486,275 @@
     int xstart = 0;
     int xstart2 = 0;
     
-    if (side == LeftSide)
-        xstart = LineSpace/4 + 1;
-    else if (side == RightSide)
-        xstart = LineSpace/4 + NoteWidth;
+    //int beamflag = 0; //标记是否是控制器符尾连接 并且连接的音符时值不一样 不一样：1 一样：0
     
-    if ([pair side] == LeftSide)
-        xstart2 = LineSpace/4 + 1;
-    else if ([pair side] == RightSide)
-        xstart2 = LineSpace/4 + NoteWidth;
-    
-    
-    if (direction == StemUp) {
-        int xend = width_to_pair + xstart2;
-        int ystart = ytop + [topstaff dist:end] * NoteHeight/2;
-        int yend = ytop + [topstaff dist:[pair end]] * NoteHeight/2;
-        
-        if (duration == Eighth ||
-            duration == DottedEighth ||
-            duration == Triplet ||
-            duration == Sixteenth ||
-            duration == SixteenTriplet ||
-            duration == ThirtySecond) {
+    if (after != nil) {
+       //beamflag = 1;
+        if (beam_afterx != 0) {
+            if (side == LeftSide)
+                xstart = LineSpace/4 + 1;
+            else if (side == RightSide)
+                xstart = LineSpace/4 + NoteWidth;
             
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        ystart += NoteHeight;
-        yend += NoteHeight;
-        
-        /* A dotted eighth will connect to a 16th note. */
-        if (duration == DottedEighth) {
-            int x = xend - NoteHeight;
-            double slope = (yend - ystart) * 1.0 / (xend - xstart);
-            int y = (int)(slope * (x - xend) + yend);
+            if ([after side] == LeftSide)
+                xstart2 = LineSpace/4 + 1;
+            else if ([after side] == RightSide)
+                xstart2 = LineSpace/4 + NoteWidth;
             
-            [path moveToPoint:CGPointMake(x, y)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        
-        /** add by sunlie start */
-        if (cutNote == 1) {
-            int x = xstart + NoteHeight;
-            double slope = (yend - ystart) * 1.0 / (xend - xstart);
-            int y = (int)(slope * (x - xstart) + ystart);
             
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(x, y)];
-            
-            x = xend - NoteHeight;
-            y = (int)(slope * (x - xend) + yend);
-            
-            [path moveToPoint:CGPointMake(x, y)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        /** add by sunlie end */
-        
-        /** modify by sunlie */
-        if ((duration == Sixteenth && cutNote == 0) ||
-            duration == SixteenTriplet ||
-            duration == ThirtySecond) {
-            
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        ystart += NoteHeight;
-        yend += NoteHeight;
-        
-        if (duration == ThirtySecond) {
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-    }
-    
-    else {
-        int xend = width_to_pair + xstart2;
-        int ystart = ytop + [topstaff dist:end] * NoteHeight/2 +
-        NoteHeight;
-        int yend = ytop + [topstaff dist:[pair end]] * NoteHeight/2
-        + NoteHeight;
-        
-        if (duration == Eighth ||
-            duration == DottedEighth ||
-            duration == Triplet ||
-            duration == Sixteenth ||
-            duration == SixteenTriplet ||
-            duration == ThirtySecond) {
-            
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        ystart -= NoteHeight;
-        yend -= NoteHeight;
-        
-        /* A dotted eighth will connect to a 16th note. */
-        if (duration == DottedEighth) {
-            int x = xend - NoteHeight;
-            double slope = (yend - ystart) * 1.0 / (xend - xstart);
-            int y = (int)(slope * (x - xend) + yend);
-            
-            [path moveToPoint:CGPointMake(x, y)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        
-        /** add by sunlie start */
-        if (cutNote == 1) {
-            int x = xstart + NoteHeight;
-            double slope = (yend - ystart) * 1.0 / (xend - xstart);
-            int y = (int)(slope * (x - xstart) + ystart);
-            
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(x, y)];
-            
-            x = xend - NoteHeight;
-            y = (int)(slope * (x - xend) + yend);
-            
-            [path moveToPoint:CGPointMake(x, y)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
-        }
-        /** add by sunlie end */
+            if (direction == StemUp) {
+                int xend = beam_afterx + xstart2;
+//                int ystart = ytop + [topstaff dist:end] * NoteHeight/2;
+//                int yend = ytop + [topstaff dist:[after end]] * NoteHeight/2;
+                double slope = ([topstaff dist:[beamend end]] - [topstaff dist:[beambegin end]])*(NoteHeight/2) * 1.0 / width_to_pair;
 
-        /** modify by sunlie */
-        if ((duration == Sixteenth && cutNote == 0) ||
-            duration == SixteenTriplet ||
-            duration == ThirtySecond) {
+                int ystart;
+                if (self == beambegin) {
+                    ystart= ytop + [topstaff dist:end] * NoteHeight/2;
+                }
+                else {
+                    int wid = 0;
+                    Stem * s = beambegin;
+                    while (self != s->after) {
+                        wid += s->beam_afterx;
+                        s = s->after;
+                    }
+                    wid += s->beam_afterx;
+                    ystart = (int)(ytop + [topstaff dist:[beambegin end]] * NoteHeight/2 + slope * wid);
+                }
+                
+                int yend = (int)(slope * (xend - xstart) + ystart);
+                
+                if (duration == Eighth ||
+                    duration == DottedEighth ||
+                    duration == Triplet ||
+                    duration == Sixteenth ||
+                    duration == SixteenTriplet ||
+                    duration == ThirtySecond ) {
+                    
+                    [path moveToPoint:CGPointMake(xstart, ystart)];
+                    [path addLineToPoint:CGPointMake(xend, yend)];
+                }
+                
+                ystart += NoteHeight;
+                yend += NoteHeight;
+
+                /** modify by sunlie */
+                if (((duration == Sixteenth && cutNote == 0) ||
+                    duration == SixteenTriplet ||
+                    duration == ThirtySecond) && ([after duration] == Sixteenth
+                    ||[after duration] == SixteenTriplet
+                    ||[after duration] == ThirtySecond)) {
+                    
+                    [path moveToPoint:CGPointMake(xstart, ystart)];
+                    [path addLineToPoint:CGPointMake(xend, yend)];
+                }
+                ystart += NoteHeight;
+                yend += NoteHeight;
+                
+                if (duration == ThirtySecond && [after duration] == ThirtySecond) {
+                    [path moveToPoint:CGPointMake(xstart, ystart)];
+                    [path addLineToPoint:CGPointMake(xend, yend)];
+                }
+            }
             
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
+            else {
+                int xend = beam_afterx + xstart2;
+//                int ystart = ytop + [topstaff dist:end] * NoteHeight/2 +
+//                NoteHeight;
+//                int yend = ytop + [topstaff dist:[after end]] * NoteHeight/2
+//                + NoteHeight;
+                
+                double slope = ([topstaff dist:[beamend end]] - [topstaff dist:[beambegin end]])*(NoteHeight/2) * 1.0 / width_to_pair;
+
+                int ystart = 0;
+                if (self == beambegin) {
+                    ystart= ytop + [topstaff dist:end] * NoteHeight/2+NoteHeight;
+                }
+                else {
+                    Stem * s = beambegin;
+                    int wid = 0;
+                    while (self != s->after) {
+                        wid += s->beam_afterx;
+                        s = s->after;
+                    }
+                    wid += s->beam_afterx;
+                    ystart = (int)(ytop + [topstaff dist:[beambegin end]] * NoteHeight/2 + NoteHeight + slope * wid);
+                }
+                int yend = (int)(slope * (xend - xstart) + ystart);
+                
+                if (duration == Eighth ||
+                    duration == DottedEighth ||
+                    duration == Triplet ||
+                    duration == Sixteenth ||
+                    duration == SixteenTriplet ||
+                    duration == ThirtySecond ) {
+                    
+                    [path moveToPoint:CGPointMake(xstart, ystart)];
+                    [path addLineToPoint:CGPointMake(xend, yend)];
+                }
+
+                ystart -= NoteHeight;
+                yend -= NoteHeight;
+                
+                /** modify by sunlie */
+                if (((duration == Sixteenth && cutNote == 0) ||
+                    duration == SixteenTriplet ||
+                     duration == ThirtySecond) && ([after duration] == Sixteenth
+                    ||[after duration] == SixteenTriplet
+                    ||[after duration] == ThirtySecond)) {
+                    
+                    [path moveToPoint:CGPointMake(xstart, ystart)];
+                    [path addLineToPoint:CGPointMake(xend, yend)];
+                }
+                ystart -= NoteHeight;
+                yend -= NoteHeight;
+                
+                if (duration == ThirtySecond && [after duration] == ThirtySecond) {
+                    [path moveToPoint:CGPointMake(xstart, ystart)];
+                    [path addLineToPoint:CGPointMake(xend, yend)];
+                }
+            }
         }
-        ystart -= NoteHeight;
-        yend -= NoteHeight;
+        [path stroke];
+        return;
+    }
+    if (pair != 0) {
+        if (side == LeftSide)
+            xstart = LineSpace/4 + 1;
+        else if (side == RightSide)
+            xstart = LineSpace/4 + NoteWidth;
         
-        if (duration == ThirtySecond) {
-            [path moveToPoint:CGPointMake(xstart, ystart)];
-            [path addLineToPoint:CGPointMake(xend, yend)];
+        if ([pair side] == LeftSide)
+            xstart2 = LineSpace/4 + 1;
+        else if ([pair side] == RightSide)
+            xstart2 = LineSpace/4 + NoteWidth;
+        
+        
+        if (direction == StemUp) {
+            int xend = width_to_pair + xstart2;
+            int ystart = ytop + [topstaff dist:end] * NoteHeight/2;
+            int yend = ytop + [topstaff dist:[pair end]] * NoteHeight/2;
+            
+            if (duration == Eighth ||
+                duration == DottedEighth ||
+                duration == Triplet ||
+                duration == Sixteenth ||
+                duration == SixteenTriplet ||
+                duration == ThirtySecond ) {
+                
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            ystart += NoteHeight;
+            yend += NoteHeight;
+            
+            /* A dotted eighth will connect to a 16th note. */
+            if (duration == DottedEighth) {
+                int x = xend - NoteHeight;
+                double slope = (yend - ystart) * 1.0 / (xend - xstart);
+                int y = (int)(slope * (x - xend) + yend);
+                
+                [path moveToPoint:CGPointMake(x, y)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            
+            /** add by sunlie start */
+            if (cutNote == 1) {
+                int x = xstart + NoteHeight;
+                double slope = (yend - ystart) * 1.0 / (xend - xstart);
+                int y = (int)(slope * (x - xstart) + ystart);
+                
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(x, y)];
+                
+                x = xend - NoteHeight;
+                y = (int)(slope * (x - xend) + yend);
+                
+                [path moveToPoint:CGPointMake(x, y)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            /** add by sunlie end */
+            
+            /** modify by sunlie */
+            if ((duration == Sixteenth && cutNote == 0) ||
+                 duration == SixteenTriplet ||
+                 duration == ThirtySecond) {
+                
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            ystart += NoteHeight;
+            yend += NoteHeight;
+            
+            if (duration == ThirtySecond) {
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+        }
+        
+        else {
+            int xend = width_to_pair + xstart2;
+            int ystart = ytop + [topstaff dist:end] * NoteHeight/2 +
+            NoteHeight;
+            int yend = ytop + [topstaff dist:[pair end]] * NoteHeight/2
+            + NoteHeight;
+            
+            if (duration == Eighth ||
+                duration == DottedEighth ||
+                duration == Triplet ||
+                duration == Sixteenth ||
+                duration == SixteenTriplet ||
+                duration == ThirtySecond ) {
+                
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            ystart -= NoteHeight;
+            yend -= NoteHeight;
+            
+            /* A dotted eighth will connect to a 16th note. */
+            if (duration == DottedEighth) {
+                int x = xend - NoteHeight;
+                double slope = (yend - ystart) * 1.0 / (xend - xstart);
+                int y = (int)(slope * (x - xend) + yend);
+                
+                [path moveToPoint:CGPointMake(x, y)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            
+            /** add by sunlie start */
+            if (cutNote == 1) {
+                int x = xstart + NoteHeight;
+                double slope = (yend - ystart) * 1.0 / (xend - xstart);
+                int y = (int)(slope * (x - xstart) + ystart);
+                
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(x, y)];
+                
+                x = xend - NoteHeight;
+                y = (int)(slope * (x - xend) + yend);
+                
+                [path moveToPoint:CGPointMake(x, y)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            /** add by sunlie end */
+            
+            /** modify by sunlie */
+            if ((duration == Sixteenth && cutNote == 0) ||
+                 duration == SixteenTriplet ||
+                 duration == ThirtySecond) {
+                
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
+            ystart -= NoteHeight;
+            yend -= NoteHeight;
+            
+            if (duration == ThirtySecond) {
+                [path moveToPoint:CGPointMake(xstart, ystart)];
+                [path addLineToPoint:CGPointMake(xend, yend)];
+            }
         }
     }
     [path stroke];

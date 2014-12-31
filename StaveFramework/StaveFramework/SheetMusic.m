@@ -1447,9 +1447,9 @@ static BOOL isBlank(id x) {
     int i = startIndex;
     while (true) {
         int horizDistance = 0;
-        
+        int dis = 0;
         /* Find the starting chord */
-        while (i < [symbols count] - numChords) {
+        while (i <= [symbols count] - numChords) {
             if (isChord([symbols get:i])) {
                 ChordSymbol* c = (ChordSymbol*) [symbols get:i];
                 if ([c stem] != nil) {
@@ -1458,16 +1458,18 @@ static BOOL isBlank(id x) {
             }
             i++;
         }
-        if (i >= [symbols count] - numChords) {
+        if (i > [symbols count] - numChords) {
             return NO;
         }
         chordIndexes[0] = i;
         BOOL foundChords = YES;
         for (int chordIndex = 1; chordIndex < numChords; chordIndex++) {
             i++;
+            dis = 0;
             int remaining = numChords - 1 - chordIndex;
             while ((i < [symbols count] - remaining) && (isBlank([symbols get:i])) ) {
                 horizDistance += [getSymbol(symbols, i) width];
+                dis += [getSymbol(symbols, i) width];
                 i++;
             }
             if (i >= [symbols count] - remaining) {
@@ -1479,6 +1481,9 @@ static BOOL isBlank(id x) {
             }
             chordIndexes[chordIndex] = i;
             horizDistance += [getSymbol(symbols, i) width];
+            dis += [getSymbol(symbols, i) width];
+            ChordSymbol* c1 = (ChordSymbol*) [symbols get:chordIndexes[chordIndex-1]];
+            [[c1 stem] setBeamAfterx:dis];
         }
         if (foundChords) {
             *dist = horizDistance;
