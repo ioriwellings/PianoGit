@@ -57,6 +57,6 @@
 }
 - (IBAction)btnOfficeWeb_click:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://jiayinqiji.com"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:HTTPSERVERSADDRESS]];
 }
 @end
