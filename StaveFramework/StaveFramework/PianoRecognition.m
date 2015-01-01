@@ -27,6 +27,8 @@
     quarter = [[file time] quarter];
     currIndex = 0;
     
+    [self updateStartEndTime:options];
+    
     numtracks = [options->tracks count];
     if (numtracks == 1) {//单音轨
         leftAndRight = 1;//right mode
@@ -86,6 +88,12 @@
     return self;
 }
 
+-(void)updateStartEndTime:(MidiOptions *)options
+{
+    staveModel = options->staveModel;
+    startSecTime = options->startSecTime;
+    endSecTime = options->endSecTime;
+}
 
 -(void)getAllSymbolDatas:(Array*)staffs
 {
@@ -105,11 +113,24 @@
             NSObject <MusicSymbol> *symbol = [symbols get:j];
             if ([symbol isKindOfClass:[ChordSymbol class]]) {
                 
-                if (i%2 == 0) {
-                    [rightDatas addObject:symbol];
+                
+                if (staveModel == 1) {
+                    ChordSymbol *chord = (ChordSymbol *)symbol;
+                    if ([chord startTime] >= startSecTime && [chord endTime] <= endSecTime) {
+                        if (i%2 == 0) {
+                            [rightDatas addObject:symbol];
+                        } else {
+                            [leftDatas addObject:symbol];
+                        }
+                    }
                 } else {
-                    [leftDatas addObject:symbol];
+                    if (i%2 == 0) {
+                        [rightDatas addObject:symbol];
+                    } else {
+                        [leftDatas addObject:symbol];
+                    }
                 }
+
             }
         }
     }
@@ -217,11 +238,23 @@
             if ([symbol isKindOfClass:[ChordSymbol class]]) {
                 ChordSymbol *chord = (ChordSymbol *)symbol;
                 
-                NSMutableArray* chords =[[NSMutableArray alloc] init];
-                [chords addObject:chord];
-                
-                RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:i andChordIndex:j andChordSymbols:chords];
-                [symbolDatas addObject: data];
+                if (staveModel == 1) {
+                    if ([chord startTime] >= startSecTime && [chord endTime] <= endSecTime) {
+                        NSMutableArray* chords =[[NSMutableArray alloc] init];
+                        [chords addObject:chord];
+                        
+                        RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:i andChordIndex:j andChordSymbols:chords];
+                        [symbolDatas addObject: data];
+                    }
+                } else {
+                    
+                    NSMutableArray* chords =[[NSMutableArray alloc] init];
+                    [chords addObject:chord];
+                    
+                    RecognitionData *data = [[RecognitionData alloc] initWithStaffIndex:i andChordIndex:j andChordSymbols:chords];
+                    [symbolDatas addObject: data];
+                }
+
             }
         }
     }

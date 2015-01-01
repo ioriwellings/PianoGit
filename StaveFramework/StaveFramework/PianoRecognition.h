@@ -31,6 +31,10 @@
     int numtracks;     /** Total number of tracks */
     int leftAndRight;  //1:right 2:left
     double pulsesPerMsec;
+    
+    int staveModel; //0:normol 1:jump section
+    int startSecTime;
+    int endSecTime;
 }
 
 -(id)initWithStaff:(Array*)staffs WithtMidiFile:(MidiFile*)file andOptions:(MidiOptions*)options;
@@ -49,6 +53,7 @@
 -(void)recognitionPlayByLine;
 -(int)getNotesCount;
 -(NSMutableArray*)getCurChordSymol;
+-(void)updateStartEndTime:(MidiOptions*)options;
 @property (nonatomic, assign) id <MidiPlayerDelegate> endDelegate;
 @property (nonatomic, assign) id <SheetShadeDelegate> sheetShadeDelegate;
 

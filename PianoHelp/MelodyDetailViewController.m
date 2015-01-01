@@ -96,7 +96,7 @@
         [self.btnAccompany setEnabled:false];
         [self.sliderXiaoJie setEnabled:false];
         [self.btnXiaoJieTiaoZhuan setEnabled:false];
-        [self.btnSplitSection setEnabled:false];
+        [self.btnSplitSection setEnabled:true];//edit by zyw
         [self.btnRePlay setEnabled:false];
     }else if(self.iPlayMode == 2){//跟弹模式
         [self.btnHint setEnabled:false];
@@ -904,7 +904,7 @@
             [self.sliderXiaoJie setEnabled:false];
             [self.sliderSpeed setEnabled:false];
             [self.btnRePlay setEnabled:false];
-            [self.btnSplitSection setEnabled:false];
+            [self.btnSplitSection setEnabled:true];
             [self.btnXiaoJieTiaoZhuan setEnabled:false];
             [self.btnSuDu setEnabled:false];
             [self.btnAccompany setEnabled:false];

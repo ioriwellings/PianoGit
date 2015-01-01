@@ -139,7 +139,7 @@
      */
     isLine = [midiHandler isConnect];
 
-    //    isLine = TRUE;
+    isLine = TRUE;
     if(sensor != nil || isLine) {
         sensor.delegate = self;
         pianoData = [[PianoDataJudged alloc] initWithOptions:opt];
