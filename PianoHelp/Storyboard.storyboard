@@ -1280,48 +1280,48 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="cuofu,jiesuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="nl0-iA-Edd">
-                                <rect key="frame" x="502" y="336" width="31" height="31"/>
+                                <rect key="frame" x="502" y="331" width="31" height="31"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xingxing,jiesuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="esd-dC-eZS">
-                                <rect key="frame" x="658" y="338" width="31" height="29"/>
+                                <rect key="frame" x="658" y="333" width="31" height="29"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="duifu,zongjiezhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="f5w-yc-iv8">
-                                <rect key="frame" x="330" y="342" width="31" height="25"/>
+                                <rect key="frame" x="330" y="337" width="31" height="25"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="本次获得金币数" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-Jt-lXq">
-                                <rect key="frame" x="301" y="428" width="130" height="21"/>
+                                <rect key="frame" x="317" y="428" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总金币数" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZy-Lr-7SD">
-                                <rect key="frame" x="508" y="428" width="100" height="21"/>
+                                <rect key="frame" x="524" y="428" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yla-30-nKr" userLabel="labGain">
-                                <rect key="frame" x="440" y="428" width="100" height="21"/>
+                                <rect key="frame" x="456" y="428" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrz-Bm-MDC" userLabel="labOwn">
-                                <rect key="frame" x="619" y="428" width="151" height="21"/>
+                                <rect key="frame" x="635" y="428" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-es-KWG" userLabel="labRight">
-                                <rect key="frame" x="287" y="375" width="120" height="21"/>
+                                <rect key="frame" x="287" y="370" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9s-Oa-WRG" userLabel="labWrong">
-                                <rect key="frame" x="458" y="375" width="120" height="21"/>
+                                <rect key="frame" x="458" y="370" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf3-zv-Wtx" userLabel="labPerfect">
-                                <rect key="frame" x="613" y="375" width="120" height="21"/>
+                                <rect key="frame" x="613" y="370" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1371,7 +1371,7 @@
                                 <rect key="frame" x="271" y="172" width="76" height="76"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-kd-NjE" userLabel="btnClose">
-                                <rect key="frame" x="413" y="547" width="210" height="56"/>
+                                <rect key="frame" x="413" y="544" width="210" height="56"/>
                                 <state key="normal" image="s_close_btn_over.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
