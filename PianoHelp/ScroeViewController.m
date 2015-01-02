@@ -36,7 +36,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.labScroe.text = [NSString stringWithFormat:@"%ld分", (long)self.iScore];
+    if(self.iScore < 60)
+    {
+        self.labScroe.text = @"加油";
+    }
+    else
+        self.labScroe.text = [NSString stringWithFormat:@"%ld分", (long)self.iScore];
     self.labRight.text = [NSString stringWithFormat:@"%ld", (long)self.iRight];
     self.labWrong.text = [NSString stringWithFormat:@"%ld", (long)self.iWrong];
     self.labPerfect.text = [NSString stringWithFormat:@"%ld", (long)self.iGood];

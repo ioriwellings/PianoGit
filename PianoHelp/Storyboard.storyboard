@@ -1325,16 +1325,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-kd-NjE">
-                                <rect key="frame" x="757" y="94" width="55" height="55"/>
-                                <state key="normal" image="s_close_btn.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="s_close_btn_over.png"/>
-                                <connections>
-                                    <action selector="btnClose_onclick:" destination="WuE-OY-h6W" eventType="touchUpInside" id="1Ej-uj-x6r"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSk-N8-NTV">
                                 <rect key="frame" x="296" y="477" width="103" height="48"/>
                                 <state key="normal" image="jiucuo1.png">
@@ -1346,7 +1336,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-4r-xHB">
-                                <rect key="frame" x="341" y="492" width="140" height="38"/>
+                                <rect key="frame" x="341" y="480" width="140" height="38"/>
                                 <state key="normal" image="s_share_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1357,7 +1347,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blb-pK-Iuj">
-                                <rect key="frame" x="551" y="492" width="140" height="38"/>
+                                <rect key="frame" x="551" y="480" width="140" height="38"/>
                                 <state key="normal" image="s_save_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1380,6 +1370,16 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon76_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-WY-Dwt">
                                 <rect key="frame" x="271" y="172" width="76" height="76"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-kd-NjE" userLabel="btnClose">
+                                <rect key="frame" x="413" y="547" width="210" height="56"/>
+                                <state key="normal" image="s_close_btn_over.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="s_close_btn_over.png"/>
+                                <connections>
+                                    <action selector="btnClose_onclick:" destination="WuE-OY-h6W" eventType="touchUpInside" id="1Ej-uj-x6r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -2688,7 +2688,6 @@
         <image name="renwu2.png" width="32" height="28"/>
         <image name="renwufenye.png" width="150" height="36"/>
         <image name="renwufenye_selected.png" width="150" height="36"/>
-        <image name="s_close_btn.png" width="55" height="55"/>
         <image name="s_close_btn_over.png" width="210" height="56"/>
         <image name="s_save_btn.png" width="210" height="56"/>
         <image name="s_save_btn_over.png" width="205" height="55"/>
