@@ -629,7 +629,7 @@
             
             if(timeLong > [self.__midiFile getMidiFileTimes]/1000.0 * 2.0 )
             {
-                ff = [self.__midiFile getMidiFileTimes]/1000.0/timeLong * 100;
+                ff = [self.__midiFile getMidiFileTimes]/1000.0/timeLong * 100 * 2;
             }
         }
         
