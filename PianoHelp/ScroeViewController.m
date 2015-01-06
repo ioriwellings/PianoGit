@@ -41,7 +41,7 @@
         self.labScroe.text = @"加油";
     }
     else
-        self.labScroe.text = [NSString stringWithFormat:@"%ld分", (long)self.iScore];
+        self.labScroe.text = [NSString stringWithFormat:@"%ld", (long)self.iScore];
     self.labRight.text = [NSString stringWithFormat:@"%ld", (long)self.iRight];
     self.labWrong.text = [NSString stringWithFormat:@"%ld", (long)self.iWrong];
     self.labPerfect.text = [NSString stringWithFormat:@"%ld", (long)self.iGood];

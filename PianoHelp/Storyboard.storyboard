@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TlK-oE-sdM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1276,7 +1276,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-Gx-Age" userLabel="labScore">
                                 <rect key="frame" x="342" y="188" width="352" height="122"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="110"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="cuofu,jiesuanzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="nl0-iA-Edd">
@@ -1367,11 +1367,8 @@
                                     <action selector="btnReview_click:" destination="WuE-OY-h6W" eventType="touchUpInside" id="Ial-F1-rPb"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon76_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-WY-Dwt">
-                                <rect key="frame" x="271" y="172" width="76" height="76"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-kd-NjE" userLabel="btnClose">
-                                <rect key="frame" x="413" y="544" width="210" height="56"/>
+                                <rect key="frame" x="436" y="544" width="140" height="38"/>
                                 <state key="normal" image="s_close_btn_over.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1380,6 +1377,9 @@
                                     <action selector="btnClose_onclick:" destination="WuE-OY-h6W" eventType="touchUpInside" id="1Ej-uj-x6r"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Icon76_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-WY-Dwt">
+                                <rect key="frame" x="285" y="211" width="76" height="76"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -1683,9 +1683,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yinkubi.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Nd-hT-PWh">
                                         <rect key="frame" x="86" y="17" width="368" height="104"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gangqinbanlv.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8i-38-XhW" userLabel="gangqinbanlv.png">
-                                        <rect key="frame" x="301" y="130" width="153" height="32"/>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1804,7 +1801,7 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="zhuceditu.png" translatesAutoresizingMaskIntoConstraints="NO" id="N6d-1I-Cd8">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="rVE-e4-Dre">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="rVE-e4-Dre">
                                 <rect key="frame" x="4" y="40" width="1016" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okf-Wh-StN" customClass="UIControl">
@@ -2653,7 +2650,6 @@
         <image name="fenxiang2.png" width="48" height="48"/>
         <image name="fenyedakuang.png" width="950" height="535"/>
         <image name="gangqin.png" width="364" height="389"/>
-        <image name="gangqinbanlv.png" width="413" height="87"/>
         <image name="gengduo.png" width="90" height="25"/>
         <image name="gentanmoshi.png" width="405" height="68"/>
         <image name="gentanmoshixuanzhong.png" width="405" height="68"/>
@@ -2664,7 +2660,7 @@
         <image name="huigu2.png" width="48" height="48"/>
         <image name="huishan.png" width="35" height="41"/>
         <image name="jiasukuang-01.png" width="400" height="75"/>
-        <image name="jiesuanfenshuduihuakuang.png" width="550" height="500"/>
+        <image name="jiesuanfenshuduihuakuang.png" width="536" height="483"/>
         <image name="jingyin.png" width="25" height="26"/>
         <image name="jiucuo1.png" width="48" height="48"/>
         <image name="jiucuo2.png" width="48" height="48"/>
