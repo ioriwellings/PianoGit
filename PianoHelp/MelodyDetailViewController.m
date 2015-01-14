@@ -652,7 +652,7 @@
             
             
             //调用WebService，获取响应
-            NSString* theResponse = [WebService getSOAP11WebServiceResponse:@"http://www.pcbft.com/"
+            NSString* theResponse = [WebService getSOAP11WebServiceResponse:[NSString stringWithFormat:@"%@/", HTTPSERVERSADDRESS]
                                                              webServiceFile:@"UpdateLandingDaysWebService.asmx"
                                                                xmlNameSpace:@"http://tempuri.org/"
                                                              webServiceName:@"updateLandingDays"
