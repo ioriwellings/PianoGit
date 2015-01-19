@@ -747,7 +747,7 @@
             [[NSFileManager defaultManager] removeItemAtPath:strUpdateDirPath error:nil];
             
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
             NSString *strContent = [formatter stringFromDate:[NSDate date]];
             [strContent writeToFile:strUpdateFile atomically:YES encoding:NSASCIIStringEncoding error:nil];
         }
