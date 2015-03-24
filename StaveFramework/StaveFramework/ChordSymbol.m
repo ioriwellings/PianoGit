@@ -319,7 +319,8 @@ static UIImage* chanyin = nil;
     accidsymbols = [Array new:count];
     for (n = 0; n < notedata_len; n++) {
         NoteData d = notedata[n];
-        if (d.accid != AccidNone) {
+        //modify by sunlie
+        if (d.accid != AccidNone && d.addflag == 0) {
             AccidSymbol *a = [[AccidSymbol alloc] initWithAccid:notedata[n].accid 
                               andNote:(notedata[n].whitenote) andClef:clef ];
             [accidsymbols add:a];
@@ -1648,25 +1649,6 @@ static UIImage* chanyin = nil;
     else {
         [firstStem setPair:lastStem withWidth:spacing];
     }
-    
-    if ([[chords get:0] mergeNotesFlag] > 1 && [[chords get:0] mergeNotesFlag] != 100 ) {
-        BOOL beamIsDurSame = true;
-        for (int i = 0; i < [chords count]-1; i++) {
-            if ([[[chords get:i] stem] duration] != [[[chords get:i+1] stem] duration]) {
-                beamIsDurSame = false;
-                break;
-            }
-        }
-        if (beamIsDurSame == false) {
-            for (int i = 0; i < [chords count]-1; i++) {
-                [[[chords get:i] stem] setAfterPair:[[chords get:i+1] stem]];
-                [[[chords get:i] stem] setBeamBegin:firstStem];
-                [[[chords get:i] stem] setBeamEnd:lastStem];
-                [[[chords get:i] stem] setPair:lastStem withWidth:spacing];
-            }
-        }
-    }
-
     /** add by sunlie end */
     for (int i = 1; i < [chords count]; i++) {
         ChordSymbol *chord = [chords get:i];
