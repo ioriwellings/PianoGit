@@ -673,7 +673,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setResultType:NSManagedObjectResultType];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@ and parentCategory == nil", @"测试"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@ and parentCategory == nil", @"开发测试曲目"];
     [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
@@ -684,7 +684,7 @@
     }
     
     MelodyCategory *cate = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
-    cate.name = @"测试";
+    cate.name = @"开发测试曲目";
     cate.cover = @"jiaocaiqupu.png";
     
     MelodyCategory *cate_sub = (MelodyCategory*)[NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:self.managedObjectContext];
@@ -714,6 +714,8 @@
 
 -(void)checkForUpdate
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateOK" object:nil userInfo:nil];
+    return;
     NSString *strUpdateFile = [[self getCacheDirectoryURL] stringByAppendingPathComponent:@"update.config"];
     NSString *strURL;
     if(![[NSFileManager defaultManager] fileExistsAtPath:strUpdateFile])

@@ -352,6 +352,7 @@
 		89B298EC1A49C2CD009A46E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B298EB1A49C2CD009A46E1 /* InfoPlist.strings */; };
 		89BE8D75192ADAD100686AC7 /* MelodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */; };
 		89BE8D78192AE16900686AC7 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */; };
+		89BFA9A81AADE3C4008F00C2 /* temp in Resources */ = {isa = PBXBuildFile; fileRef = 89BFA9A71AADE3C4008F00C2 /* temp */; };
 		89C58CCC1A39D35B00652BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCB1A39D35B00652BA5 /* SystemConfiguration.framework */; };
 		89C58CCE1A39D37200652BA5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCD1A39D37200652BA5 /* libz.dylib */; };
 		89C58CD01A39D38400652BA5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C58CCF1A39D38400652BA5 /* libsqlite3.0.dylib */; };
@@ -932,6 +933,7 @@
 		89BE8D74192ADAD100686AC7 /* MelodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MelodyTableViewCell.m; sourceTree = "<group>"; };
 		89BE8D76192AE16900686AC7 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		89BE8D77192AE16900686AC7 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		89BFA9A71AADE3C4008F00C2 /* temp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = temp; sourceTree = "<group>"; };
 		89C58CCB1A39D35B00652BA5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		89C58CCD1A39D37200652BA5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		89C58CCF1A39D38400652BA5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -1445,6 +1447,7 @@
 		8964EBB0194535B200DBCED9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89BFA9A71AADE3C4008F00C2 /* temp */,
 				B16604CC1A065853003BC7F8 /* PianoWeb */,
 				89A3D67A19C3EE8000FDC779 /* temp.zip */,
 				89A3D67C19C4133500FDC779 /* dataSource.plist */,
@@ -2234,6 +2237,7 @@
 				897D78111A01278D00AD1896 /* 演示20012.png in Resources */,
 				89AA9ED319ECFD3B0017BADA /* btnClose_1.png in Resources */,
 				19F4B4C81A39F04E00437817 /* gangqin.png in Resources */,
+				89BFA9A81AADE3C4008F00C2 /* temp in Resources */,
 				890EF8DF19C7240900D31980 /* Localizable.strings in Resources */,
 				897D781C1A01278D00AD1896 /* 演示20023.png in Resources */,
 				8964EBED194539CC00DBCED9 /* aqrsy.mid in Resources */,
