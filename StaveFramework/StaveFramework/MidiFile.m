@@ -2161,63 +2161,138 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     
     /** add by sunlie start */
     if (notes_count > 0) {
+        //modify start by sunl 20150331
         if ([[track controlList] count ] > 0) {
-            [top setControlList:[track controlList]];
+            if([track number] == 1){
+                [top setControlList:[track controlList]];
+            }else{
+                [bottom setControlList:[track controlList]];
+            }
         }
         
         if ([[track controlList2] count ] > 0) {
-            [top setControlList2:[track controlList2]];
+            if([track number] == 1){
+                [top setControlList2:[track controlList2]];
+            }else{
+                [bottom setControlList2:[track controlList2]];
+            }
         }
         
         if ([[track controlList3] count ] > 0) {
-            [top setControlList3:[track controlList3]];
+            if([track number] == 1){
+                [top setControlList3:[track controlList3]];
+            }else{
+                [bottom setControlList3:[track controlList3]];
+            }
         }
         
         if ([[track controlList4] count ] > 0) {
-            [top setControlList4:[track controlList4]];
+            if([track number] == 1){
+                [top setControlList4:[track controlList4]];
+            }else{
+                [bottom setControlList4:[track controlList4]];
+            }
         }
         if ([[track controlList5] count ] > 0) {
-            [top setControlList5:[track controlList5]];
+            if([track number] == 1){
+                [top setControlList5:[track controlList5]];
+            }else{
+                [bottom setControlList5:[track controlList5]];
+            }
         }
         if ([[track controlList6] count ] > 0) {
-            [top setControlList6:[track controlList6]];
+            if([track number] == 1){
+                [top setControlList6:[track controlList6]];
+            }else{
+                [bottom setControlList6:[track controlList6]];
+            }
         }
         if ([[track controlList7] count ] > 0) {
-            [top setControlList7:[track controlList7]];
+            if([track number] == 1){
+                [top setControlList7:[track controlList7]];
+            }else{
+                [bottom setControlList7:[track controlList7]];
+            }
         }
         if ([[track controlList8] count ] > 0) {
-            [top setControlList8:[track controlList8]];
+            if([track number] == 1){
+                [top setControlList8:[track controlList8]];
+            }else{
+                [bottom setControlList8:[track controlList8]];
+            }
         }
         if ([[track controlList9] count ] > 0) {
-            [top setControlList9:[track controlList9]];
+            if([track number] == 1){
+                [top setControlList9:[track controlList9]];
+            }else{
+                [bottom setControlList9:[track controlList9]];
+            }
         }
         if ([[track controlList10] count ] > 0) {
-            [top setControlList10:[track controlList10]];
+            if([track number] == 1){
+                [top setControlList10:[track controlList10]];
+            }else{
+                [bottom setControlList10:[track controlList10]];
+            }
         }
         if ([[track controlList11] count ] > 0) {
-            [top setControlList11:[track controlList11]];
+            if([track number] == 1){
+                [top setControlList11:[track controlList11]];
+            }else{
+                [bottom setControlList11:[track controlList11]];
+            }
         }
         if ([[track controlList12] count ] > 0) {
-            [top setControlList12:[track controlList12]];
+            if([track number] == 1){
+                [top setControlList12:[track controlList12]];
+            }else{
+                [bottom setControlList12:[track controlList12]];
+            }
         }
         if ([[track controlList13] count ] > 0) {
-            [top setControlList13:[track controlList13]];
+            if([track number] == 1){
+                [top setControlList13:[track controlList13]];
+            }else{
+                [bottom setControlList13:[track controlList13]];
+            }
         }
         if ([[track controlList14] count ] > 0) {
-            [top setControlList14:[track controlList14]];
+            if([track number] == 1){
+                [top setControlList14:[track controlList14]];
+            }else{
+                [bottom setControlList14:[track controlList14]];
+            }
         }
         if ([[track controlList15] count ] > 0) {
-            [top setControlList15:[track controlList15]];
+            if([track number] == 1){
+                [top setControlList15:[track controlList15]];
+            }else{
+                [bottom setControlList15:[track controlList15]];
+            }
         }
         if ([[track controlList16] count ] > 0) {
-            [top setControlList16:[track controlList16]];
+            if([track number] == 1){
+                [top setControlList16:[track controlList16]];
+            }else{
+                [bottom setControlList16:[track controlList16]];
+            }
         }
         if ([[track controlList17] count ] > 0) {
-            [top setControlList17:[track controlList17]];
+            if([track number] == 1){
+                [top setControlList17:[track controlList17]];
+            }else{
+                [bottom setControlList17:[track controlList17]];
+            }
         }
         if ([[track controlList18] count ] > 0) {
-            [top setControlList18:[track controlList18]];
+            if([track number] == 1){
+                [top setControlList18:[track controlList18]];
+            }else{
+                [bottom setControlList18:[track controlList18]];
+            }
         }
+        //modify end by sunl  20150331
+
     }
     /** add by sunlie end */
 

@@ -316,6 +316,13 @@
 
     
     NSObject<MusicSymbol> *s = [symbols get:0];
+    //add start by sunlie 20150331
+    int i = 1;
+    while (![s isKindOfClass:[ChordSymbol class]]) {
+        s = [symbols get:i];
+        i++;
+    }
+    //add end by sunlie 20150331
     if (tracknum == 0) {
 //        int measure = 1 + [s startTime] / measureLength;
         SheetMusic *sheet = (SheetMusic *)sheetmusic;
