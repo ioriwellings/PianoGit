@@ -319,8 +319,7 @@ static UIImage* chanyin = nil;
     accidsymbols = [Array new:count];
     for (n = 0; n < notedata_len; n++) {
         NoteData d = notedata[n];
-        //modify by sunlie
-        if (d.accid != AccidNone && d.addflag == 0) {
+        if (d.accid != AccidNone) {
             AccidSymbol *a = [[AccidSymbol alloc] initWithAccid:notedata[n].accid 
                               andNote:(notedata[n].whitenote) andClef:clef ];
             [accidsymbols add:a];
@@ -2604,7 +2603,8 @@ static UIImage* chanyin = nil;
             
         }
     } else {
-        int w = width;
+        //modify by sunl  20150402
+        int w = width/2;
         
         if (eightFlag == 200) {
             [self draw8va:context:CGRectMake(-15, 0, 25, -10)];

@@ -649,10 +649,14 @@ static int initmaps = 0;
                 keymap[notenumber-1] = AccidFlat;
             }
         }
-        else if (keymap[notenumber-1] == AccidNone && notescale_is_black_key(prevkey)) {
+        //modify by sunl 20150402
+        //else if (keymap[notenumber-1] == AccidNone && notescale_is_black_key(prevkey)) {
+        else if (keymap[notenumber-1] == AccidNone) {
             keymap[notenumber-1] = AccidFlat;
         }
-        else if (keymap[notenumber+1] == AccidNone && notescale_is_black_key(nextkey)) {
+        //modify by sunl 20150402
+        //else if (keymap[notenumber+1] == AccidNone && notescale_is_black_key(nextkey)) {
+        else if (keymap[notenumber+1] == AccidNone) {
             keymap[notenumber+1] = AccidSharp;
         }
         else {
@@ -870,7 +874,8 @@ static int initmaps = 0;
         
         if (key[notescale] == AccidFlat) {
             key[notescale] = AccidSharp;
-            for (i = (notescale+12-3)%12; i < 128; i=i+12) {
+            
+            for (i = notescale; i < 128; i=i+12) {
                 keymap[i] = AccidSharp;
             }
         }
@@ -883,6 +888,10 @@ static int initmaps = 0;
         
         if (key[notescale] == AccidSharp) {
             key[notescale] = AccidFlat;
+            
+//            for (i = notescale; i < 128; i=i+12) {
+//                keymap[i] = AccidFlat;
+//            }
             for (i = (notescale+12-3)%12; i < 128; i=i+12) {
                 keymap[i] = AccidFlat;
             }
