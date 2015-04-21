@@ -398,6 +398,36 @@ static int initmaps = 0;
     map[ NoteScale_G ]      = AccidNatural;
     map[ NoteScale_Gsharp ] = AccidNone;
     
+    //add start by sunl 20150407
+    map = &sharpkeys[6][0];
+    map[ NoteScale_A ]      = AccidNatural;
+    map[ NoteScale_Asharp ] = AccidNone;
+    map[ NoteScale_B ]      = AccidNone;
+    map[ NoteScale_C ]      = AccidNatural;
+    map[ NoteScale_Csharp ] = AccidNone;
+    map[ NoteScale_D ]      = AccidNatural;
+    map[ NoteScale_Dsharp ] = AccidNone;
+    map[ NoteScale_E ]      = AccidNatural;
+    map[ NoteScale_F ]      = AccidNone;
+    map[ NoteScale_Fsharp ] = AccidNone;
+    map[ NoteScale_G ]      = AccidNatural;
+    map[ NoteScale_Gsharp ] = AccidNone;
+    
+    map = &sharpkeys[7][0];
+    map[ NoteScale_A ]      = AccidNatural;
+    map[ NoteScale_Asharp ] = AccidNone;
+    map[ NoteScale_B ]      = AccidNatural;
+    map[ NoteScale_C ]      = AccidNone;
+    map[ NoteScale_Csharp ] = AccidNone;
+    map[ NoteScale_D ]      = AccidNatural;
+    map[ NoteScale_Dsharp ] = AccidNone;
+    map[ NoteScale_E ]      = AccidNatural;
+    map[ NoteScale_F ]      = AccidNone;
+    map[ NoteScale_Fsharp ] = AccidNone;
+    map[ NoteScale_G ]      = AccidNatural;
+    map[ NoteScale_Gsharp ] = AccidNone;
+    //add end by sunl 20150407
+    
     /* Flat keys */
     
     map = &flatkeys[C][0];
@@ -497,6 +527,22 @@ static int initmaps = 0;
     map[ NoteScale_Gflat ]  = AccidNone;
     map[ NoteScale_G ]      = AccidNatural;
     map[ NoteScale_Aflat ]  = AccidNone;
+    
+    //add start by sunl 20150407
+    map = &flatkeys[7][0];
+    map[ NoteScale_A ]      = AccidNatural;
+    map[ NoteScale_Bflat ]  = AccidNone;
+    map[ NoteScale_B ]      = AccidNone;
+    map[ NoteScale_C ]      = AccidNatural;
+    map[ NoteScale_Dflat ]  = AccidNone;
+    map[ NoteScale_D ]      = AccidNatural;
+    map[ NoteScale_Eflat ]  = AccidNone;
+    map[ NoteScale_E ]      = AccidNone;
+    map[ NoteScale_F ]      = AccidNatural;
+    map[ NoteScale_Gflat ]  = AccidNone;
+    map[ NoteScale_G ]      = AccidNatural;
+    map[ NoteScale_Aflat ]  = AccidNone;
+    //add end by sunl 20150407
 }
 
 /** The keymap tells what accidental symbol is needed for each
@@ -533,8 +579,11 @@ static int initmaps = 0;
         return;
     }
 
-    WhiteNote* treblenotes[6];
-    WhiteNote* bassnotes[6];
+    //modify by sunl 20150407
+    //    WhiteNote* treblenotes[6];
+    //    WhiteNote* bassnotes[6];
+    WhiteNote* treblenotes[7];
+    WhiteNote* bassnotes[7];
 
     if (num_sharps > 0)  {
         treblenotes[0] = [WhiteNote allocWithLetter:WhiteNote_F andOctave:5];
@@ -543,6 +592,8 @@ static int initmaps = 0;
         treblenotes[3] = [WhiteNote allocWithLetter:WhiteNote_D andOctave:5];
         treblenotes[4] = [WhiteNote allocWithLetter:WhiteNote_A andOctave:6];
         treblenotes[5] = [WhiteNote allocWithLetter:WhiteNote_E andOctave:5];
+        //add by sunl 20150407
+        treblenotes[6] = [WhiteNote allocWithLetter:WhiteNote_B andOctave:5];
 
         bassnotes[0] = [WhiteNote allocWithLetter:WhiteNote_F andOctave:3];
         bassnotes[1] = [WhiteNote allocWithLetter:WhiteNote_C andOctave:3];
@@ -550,6 +601,8 @@ static int initmaps = 0;
         bassnotes[3] = [WhiteNote allocWithLetter:WhiteNote_D andOctave:3];
         bassnotes[4] = [WhiteNote allocWithLetter:WhiteNote_A andOctave:4];
         bassnotes[5] = [WhiteNote allocWithLetter:WhiteNote_E andOctave:3];
+        //add by sunl 20150407
+        bassnotes[6] = [WhiteNote allocWithLetter:WhiteNote_B andOctave:3];
 
     }
     else if (num_flats > 0) {
@@ -559,6 +612,8 @@ static int initmaps = 0;
         treblenotes[3] = [WhiteNote allocWithLetter:WhiteNote_D andOctave:5];
         treblenotes[4] = [WhiteNote allocWithLetter:WhiteNote_G andOctave:4];
         treblenotes[5] = [WhiteNote allocWithLetter:WhiteNote_C andOctave:5];
+        //add by sunl 20150407
+        treblenotes[6] = [WhiteNote allocWithLetter:WhiteNote_F andOctave:4];
 
         bassnotes[0] = [WhiteNote allocWithLetter:WhiteNote_B andOctave:3];
         bassnotes[1] = [WhiteNote allocWithLetter:WhiteNote_E andOctave:3];
@@ -566,6 +621,8 @@ static int initmaps = 0;
         bassnotes[3] = [WhiteNote allocWithLetter:WhiteNote_D andOctave:3];
         bassnotes[4] = [WhiteNote allocWithLetter:WhiteNote_G andOctave:2];
         bassnotes[5] = [WhiteNote allocWithLetter:WhiteNote_C andOctave:3];
+        //add by sunl 20150407
+        bassnotes[6] = [WhiteNote allocWithLetter:WhiteNote_F andOctave:2];
 
     }
 
@@ -649,10 +706,14 @@ static int initmaps = 0;
                 keymap[notenumber-1] = AccidFlat;
             }
         }
-        else if (keymap[notenumber-1] == AccidNone && notescale_is_black_key(prevkey)) {
+        //modify by sunl 20150402
+        //else if (keymap[notenumber-1] == AccidNone && notescale_is_black_key(prevkey)) {
+        else if (keymap[notenumber-1] == AccidNone) {
             keymap[notenumber-1] = AccidFlat;
         }
-        else if (keymap[notenumber+1] == AccidNone && notescale_is_black_key(nextkey)) {
+        //modify by sunl 20150402
+        //else if (keymap[notenumber+1] == AccidNone && notescale_is_black_key(nextkey)) {
+        else if (keymap[notenumber+1] == AccidNone) {
             keymap[notenumber+1] = AccidSharp;
         }
         else {
@@ -745,6 +806,39 @@ static int initmaps = 0;
     if (num_flats == Gflat && notescale == NoteScale_Bflat) {
         letter = WhiteNote_B;
     }
+    
+    //add start by sunl 20150408
+    if (num_flats == 7)  {
+        if (notescale == NoteScale_B) {
+            letter = WhiteNote_C;
+        } else if (notescale == NoteScale_E) {
+            letter = WhiteNote_F;
+        } else if (notescale == NoteScale_Bflat) {
+            letter = WhiteNote_B;
+        } else if (notescale == NoteScale_Eflat) {
+            letter = WhiteNote_E;
+        }
+    }
+    if (num_sharps == 6) {
+        if (notescale == NoteScale_F) {
+            letter = WhiteNote_E;
+        } else if (notescale == NoteScale_Fsharp) {
+            letter = WhiteNote_F;
+        }
+    }
+    if (num_sharps == 7) {
+        if (notescale == NoteScale_F) {
+            letter = WhiteNote_E;
+        } else if (notescale == NoteScale_C) {
+            letter = WhiteNote_B;
+        } else if (notescale == NoteScale_Fsharp) {
+            letter = WhiteNote_F;
+        } else if (notescale == NoteScale_Csharp) {
+            letter = WhiteNote_C;
+        }
+    }
+    //add end by sunl 20150408
+    
     if (notescale == NoteScale_Aflat && letter == 0) {
         octave++;
     }
@@ -870,7 +964,8 @@ static int initmaps = 0;
         
         if (key[notescale] == AccidFlat) {
             key[notescale] = AccidSharp;
-            for (i = (notescale+12-3)%12; i < 128; i=i+12) {
+            
+            for (i = notescale; i < 128; i=i+12) {
                 keymap[i] = AccidSharp;
             }
         }
@@ -883,6 +978,10 @@ static int initmaps = 0;
         
         if (key[notescale] == AccidSharp) {
             key[notescale] = AccidFlat;
+            
+//            for (i = notescale; i < 128; i=i+12) {
+//                keymap[i] = AccidFlat;
+//            }
             for (i = (notescale+12-3)%12; i < 128; i=i+12) {
                 keymap[i] = AccidFlat;
             }
