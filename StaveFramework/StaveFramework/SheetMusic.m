@@ -563,7 +563,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         if (cdcount7 < [list7 count]) {
             if ([chord startTime] >= [cd7 starttime] && [chord endTime] < [cd7 endtime]) {
                 [chord setYiFlag:1];
-            } else if ([chord startTime] > [cd7 starttime] && [chord endTime] >= [cd7 endtime]) {
+            } else if ([chord startTime] >= [cd7 starttime] && [chord endTime] >= [cd7 endtime]) {
                 [chord setStartTime:[chord startTime]+5];
                 int k = [chords count]-1;
                 int cc = 1;
@@ -2750,8 +2750,7 @@ static NSDictionary *fontAttr = NULL;
         while (i <[symbols count] - 1) {
             if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
                 ChordSymbol *chord = [symbols get:i];
-                //modify by sunlie
-                if ([chord eightFlag] != 0 && abs([chord eightFlag]) != 200) {
+                if ([chord eightFlag] != 0) {
                     if (([chord eightFlag] > 1 || [chord eightFlag] < -1) && value == 0) {
                         value = [chord eightFlag];
                     } else if (value != 0 && [chord eightFlag] == value) {
