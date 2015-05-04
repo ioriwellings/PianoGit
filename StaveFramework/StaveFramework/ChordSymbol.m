@@ -1648,10 +1648,49 @@ static UIImage* chanyin = nil;
     else {
         [firstStem setPair:lastStem withWidth:spacing];
     }
+    
+//    if ([[chords get:0] mergeNotesFlag] > 1 && [[chords get:0] mergeNotesFlag] != 100 ) {
+//        BOOL beamIsDurSame = true;
+//        int i = 0, tmp = 0;
+//        //modify by sunlie 20150504 start for 音符连接符干中间带装饰音
+//        while (i < [chords count]-1) {
+//            if ([[chords get:i+1] yiFlag] == 1) {
+//                i++;
+//                continue;
+//            }
+//            if ([[[chords get:tmp] stem] duration] != [[[chords get:i+1] stem] duration]) {
+//                beamIsDurSame = false;
+//                break;
+//            }
+//            tmp = i+1;
+//            i++;
+//        }
+//        //        for (int i = 0; i < [chords count]-1; i++) {
+//        //            if ([[[chords get:i] stem] duration] != [[[chords get:i+1] stem] duration]) {
+//        //                beamIsDurSame = false;
+//        //                break;
+//        //            }
+//        //        }
+//        //modify by sunlie 20150504 end
+//        if (beamIsDurSame == false) {
+//            for (int i = 0; i < [chords count]-1; i++) {
+//                [[[chords get:i] stem] setAfterPair:[[chords get:i+1] stem]];
+//                [[[chords get:i] stem] setBeamBegin:firstStem];
+//                [[[chords get:i] stem] setBeamEnd:lastStem];
+//                [[[chords get:i] stem] setPair:lastStem withWidth:spacing];
+//            }
+//        }
+//    }
+    
     /** add by sunlie end */
     for (int i = 1; i < [chords count]; i++) {
         ChordSymbol *chord = [chords get:i];
-        [[chord stem] setReceiver: YES];
+        
+        //modify by sunlie 20150504 start for 音符连接符干中间带装饰音
+        if ([chord yiFlag] == 0 || [[chords get:0] yiFlag] == 1) {
+            [[chord stem] setReceiver: YES];
+        }
+        //modify by sunlie 20150504 end
     }
 }
 
