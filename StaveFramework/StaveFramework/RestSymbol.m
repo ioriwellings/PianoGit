@@ -92,10 +92,10 @@
     else if (duration == Quarter) {
         [self drawQuarter:context atY:ytop];
     }
-    else if (duration == Eighth) {
+    else if (duration == Eighth || duration == Triplet) {     //modify by sunlie 20150509
         [self drawEighth:context atY:ytop];
     }
-    else if (duration == Sixteenth) {
+    else if (duration == Sixteenth || duration == SixteenTriplet) {    //modify by sunlie 20150509
         [self drawSixteen:context atY:ytop];
     }
     else if (duration == ThirtySecond) {

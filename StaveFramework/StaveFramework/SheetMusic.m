@@ -160,6 +160,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             [track createControlNotes];
             [track createSplitednotes:time andBeatarray:beatarray];
         }
+        
+
         ClefMeasures *clefs = [[ClefMeasures alloc] initWithNotes:[track notes] andTime:time andBeats:beatarray andControl:[track controlList] andTotal:[track totalpulses] andTracknum:tracknum];
         /* chords = Array of ChordSymbol */
         /* add by sunlie start */
@@ -677,7 +679,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 if (cdcount17 < [list17 count]) {
                     cd17 = [list17 get:cdcount17];
                 }
-            } else if (flag17 >= 1) {
+            } else if (flag17 >= 1 ) {
                 [chord setMergeNotesFlag:1];
                 flag17++;
             }
@@ -1096,7 +1098,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 case Half:
                 case Quarter:
                 case Eighth:
+                case Triplet:                       //modify by sunlie 20150509
                 case Sixteenth:
+                case SixteenTriplet:              //modify by sunlie 20150509
                 case ThirtySecond:
                     r1 = [[RestSymbol alloc] initWithTime:start andDuration:nd];
                     [result add:r1];
@@ -1169,7 +1173,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         case Half:
         case Quarter:
         case Eighth:
+        case Triplet:                       //modify by sunlie 20150509
         case Sixteenth:
+        case SixteenTriplet:              //modify by sunlie 20150509
         case ThirtySecond:
             r1 = [[RestSymbol alloc] initWithTime:start andDuration:dur];
             [result add:r1];
