@@ -400,6 +400,7 @@
         ystem += NoteHeight;
         
         if (duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystem)];
@@ -448,6 +449,7 @@
         ystem -= NoteHeight;
         
         if (duration == Sixteenth ||
+            duration == SixteenTriplet ||
             duration == ThirtySecond) {
             
             [path moveToPoint:CGPointMake(xstart, ystem)];

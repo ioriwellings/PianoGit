@@ -964,8 +964,7 @@ static int initmaps = 0;
         
         if (key[notescale] == AccidFlat) {
             key[notescale] = AccidSharp;
-            
-            for (i = notescale; i < 128; i=i+12) {
+            for (i = (notescale+12-3)%12; i < 128; i=i+12) {
                 keymap[i] = AccidSharp;
             }
         }
@@ -978,10 +977,6 @@ static int initmaps = 0;
         
         if (key[notescale] == AccidSharp) {
             key[notescale] = AccidFlat;
-            
-//            for (i = notescale; i < 128; i=i+12) {
-//                keymap[i] = AccidFlat;
-//            }
             for (i = (notescale+12-3)%12; i < 128; i=i+12) {
                 keymap[i] = AccidFlat;
             }
