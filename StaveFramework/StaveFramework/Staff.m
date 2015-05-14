@@ -16,6 +16,7 @@
 #import "AccidSymbol.h"
 #import "BarSymbol.h"
 #import "LyricSymbol.h"
+#import "BlankSymbol.h"
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 
@@ -318,7 +319,8 @@
     NSObject<MusicSymbol> *s = [symbols get:0];
     //add start by sunlie 20150331
     int i = 1;
-    while (![s isKindOfClass:[ChordSymbol class]]) {
+    while (![s isKindOfClass:[ChordSymbol class]] &&
+           ![s isKindOfClass:[BlankSymbol class]] && i < [symbols count]) {
         s = [symbols get:i];
         i++;
     }

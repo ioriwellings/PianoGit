@@ -407,7 +407,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             for (j=0; j<[notegroup count]; j++) {
                 mn = [notegroup get:j];
                 mn1 = [midinotes get:i];
-                if ([mn endTime] <= [mn1 startTime]+[time quarter]/10 || [mn1 duration] <= [time quarter]/10 || [mn1 duration] >= [time quarter]) {
+                if ([mn duration] >= 2*[time quarter] || [mn endTime] <= [mn1 startTime]+[time quarter]/10 || [mn1 duration] <= [time quarter]/10 || [mn1 duration] >= [time quarter]) {
                     break;
                 }
                 count++;
