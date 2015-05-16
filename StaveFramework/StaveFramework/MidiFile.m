@@ -2712,7 +2712,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                 dur = [note1 duration];
             }
             /** modify by sunlie start */
-            if (abs(dur-[note1 duration]) < quarternote/8) {
+            if (abs(maxduration-[note1 duration]) < quarternote/8) {     //modify by sunlie 20150509
                 [note1 setDuration:dur];
             }
             /** modify by sunlie end */

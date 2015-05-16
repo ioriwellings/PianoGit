@@ -160,6 +160,8 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             [track createControlNotes];
             [track createSplitednotes:time andBeatarray:beatarray];
         }
+        
+
         ClefMeasures *clefs = [[ClefMeasures alloc] initWithNotes:[track notes] andTime:time andBeats:beatarray andControl:[track controlList] andTotal:[track totalpulses] andTracknum:tracknum];
         /* chords = Array of ChordSymbol */
         /* add by sunlie start */
@@ -677,7 +679,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 if (cdcount17 < [list17 count]) {
                     cd17 = [list17 get:cdcount17];
                 }
-            } else if (flag17 >= 1) {
+            } else if (flag17 >= 1 ) {
                 [chord setMergeNotesFlag:1];
                 flag17++;
             }
@@ -1096,7 +1098,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 case Half:
                 case Quarter:
                 case Eighth:
+                case Triplet:                       //modify by sunlie 20150509
                 case Sixteenth:
+                case SixteenTriplet:              //modify by sunlie 20150509
                 case ThirtySecond:
                     r1 = [[RestSymbol alloc] initWithTime:start andDuration:nd];
                     [result add:r1];
@@ -1169,7 +1173,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
         case Half:
         case Quarter:
         case Eighth:
+        case Triplet:                       //modify by sunlie 20150509
         case Sixteenth:
+        case SixteenTriplet:              //modify by sunlie 20150509
         case ThirtySecond:
             r1 = [[RestSymbol alloc] initWithTime:start andDuration:dur];
             [result add:r1];
@@ -1447,9 +1453,9 @@ static BOOL isBlank(id x) {
     int i = startIndex;
     while (true) {
         int horizDistance = 0;
-        
+        int dis = 0;
         /* Find the starting chord */
-        while (i < [symbols count] - numChords) {
+        while (i <= [symbols count] - numChords) {
             if (isChord([symbols get:i])) {
                 ChordSymbol* c = (ChordSymbol*) [symbols get:i];
                 if ([c stem] != nil) {
@@ -1458,16 +1464,18 @@ static BOOL isBlank(id x) {
             }
             i++;
         }
-        if (i >= [symbols count] - numChords) {
+        if (i > [symbols count] - numChords) {
             return NO;
         }
         chordIndexes[0] = i;
         BOOL foundChords = YES;
         for (int chordIndex = 1; chordIndex < numChords; chordIndex++) {
             i++;
+            dis = 0;
             int remaining = numChords - 1 - chordIndex;
             while ((i < [symbols count] - remaining) && (isBlank([symbols get:i])) ) {
                 horizDistance += [getSymbol(symbols, i) width];
+                dis += [getSymbol(symbols, i) width];
                 i++;
             }
             if (i >= [symbols count] - remaining) {
@@ -1479,6 +1487,9 @@ static BOOL isBlank(id x) {
             }
             chordIndexes[chordIndex] = i;
             horizDistance += [getSymbol(symbols, i) width];
+            dis += [getSymbol(symbols, i) width];
+            ChordSymbol* c1 = (ChordSymbol*) [symbols get:chordIndexes[chordIndex-1]];
+            [[c1 stem] setBeamAfterx:dis];
         }
         if (foundChords) {
             *dist = horizDistance;
@@ -1537,7 +1548,7 @@ static BOOL isBlank(id x) {
 }
 
 -(void)createBeamedChordsAdd:(Array*)allsymbols withTime:(TimeSignature*)time {
-    int chordIndexes[20];
+    int chordIndexes[30];
     int horizDistance = 0;
     Array* chords;
     
@@ -2750,7 +2761,7 @@ static NSDictionary *fontAttr = NULL;
         while (i <[symbols count] - 1) {
             if ([[symbols get:i] isKindOfClass:[ChordSymbol class]]) {
                 ChordSymbol *chord = [symbols get:i];
-                if ([chord eightFlag] != 0) {
+                if ([chord eightFlag] != 0 && abs([chord eightFlag]) != 200) {      //modify by sunl 2015
                     if (([chord eightFlag] > 1 || [chord eightFlag] < -1) && value == 0) {
                         value = [chord eightFlag];
                     } else if (value != 0 && [chord eightFlag] == value) {
