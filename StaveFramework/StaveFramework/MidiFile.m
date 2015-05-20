@@ -357,6 +357,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     controlList16 = [Array new:10];
     controlList17 = [Array new:10];
     controlList18 = [Array new:10];
+    controlList19 = [Array new:10];
     /** add by sunlie end */
     tracks = [Array new:5];
     trackPerChannel = NO;
@@ -454,6 +455,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             }
             if ([controlList18 count] > 0) {
                 [track setControlList18:controlList18];
+            }
+            if ([controlList19 count] > 0) {
+                [track setControlList19:controlList19];
             }
             /** add by sunlie end */
             [tracks add:track];
@@ -602,6 +606,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     [controlList16 release];
     [controlList17 release];
     [controlList18 release];
+    [controlList19 release];
     /** add by sunlie end */
     [super dealloc];
 }
@@ -659,6 +664,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     int ctrecord16 = 0;
     int ctrecord17 = 0;
     int ctrecord18 = 0;
+    int ctrecord19 = 0;
     
     [controlList clear];
     [controlList2 clear];
@@ -678,6 +684,7 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
     [controlList16 clear];
     [controlList17 clear];
     [controlList18 clear];
+    [controlList19 clear];
     /** add by sunlie end */
 
     while ([file offset] < trackend) {
@@ -1299,6 +1306,26 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                         [data release];
                         ctrecord18 = 127;
                     }
+                }
+            }
+            
+            if ([mevent controlNum] == 31) {
+                int value = [mevent controlValue];
+                if (value < 20) {
+                    if (ctrecord19 == 127) {
+                        ControlData *cdata = [controlList19 get:[controlList19 count]-1];
+                        [cdata setEndtime:[mevent startTime]];
+                        ctrecord19 = 0;
+                    }
+                }
+                if (value > 110) {
+                    if (ctrecord19 == 0) {
+                        ControlData *data = [[ControlData alloc] initWithNumber:[mevent controlNum] andValue:value andStarttime:[mevent startTime] andEndtime:0];
+                        [controlList19 add:data];
+                        [data release];
+                        ctrecord19 = 127;
+                    }
+                    
                 }
             }
 
@@ -2291,6 +2318,13 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
                 [bottom setControlList18:[track controlList18]];
             }
         }
+        if ([[track controlList19] count ] > 0) {
+            if([track number] == 1){
+                [top setControlList19:[track controlList19]];
+            }else{
+                [bottom setControlList19:[track controlList19]];
+            }
+        }
         //modify end by sunl  20150331
 
     }
@@ -2472,6 +2506,9 @@ static void dowrite(int fd, u_char *buf, int len, int *error) {
             }
             if ([[track controlList18] count ] > 0) {
                 [result setControlList18:[track controlList18]];
+            }
+            if ([[track controlList19] count ] > 0) {
+                [result setControlList19:[track controlList19]];
             }
         }
         /** add by sunlie end */

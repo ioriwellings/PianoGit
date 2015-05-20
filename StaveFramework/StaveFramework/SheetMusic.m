@@ -186,7 +186,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
 
         [mainkey resetKey];
         Array *chords = [self createChords:[track splitednotes] withKey:mainkey
-                                   andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14] andCList17:[track controlList17] andCList18:[track controlList18]];
+                                   andTime:time andClefs:clefs andCList2:[track controlList2] andCList3:[track controlList3] andCList4:[track controlList4] andCList5:[track controlList5] andCList7:[track controlList7] andCList8:[track controlList8] andCList9:[track controlList9] andCList10:[track controlList10] andCList11:[track controlList11] andCList14:[track controlList14] andCList17:[track controlList17] andCList18:[track controlList18] andCList19:[track controlList19]];
         Array *sym = [self createSymbols:chords withClefs:clefs andTime:time andLastTime:lastStarttime andBeatarray:beatarray andCList15:[track controlList15]];
         [symbols add:sym];
         /** modify by sunlie end */
@@ -295,14 +295,14 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
  */
 - (Array*) createChords:(Array*)midinotes withKey:(KeySignature*)key
                 andTime:(TimeSignature*)time andClefs:(ClefMeasures*)clefs andCList2:(Array *)list andCList3:(Array *)list3
-                andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14 andCList17:(Array *)list17 andCList18:(Array *)list18{
+                andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14 andCList17:(Array *)list17 andCList18:(Array *)list18 andCList19:(Array *)list19{
     
     int i = 0;
     int len = [midinotes count];
     Array* chords = [Array new:len/4];
     Array* notegroup = [Array new:12];
     /** add by sunlie start */
-    ControlData *cd2, *cd3, *cd4, *cd5, *cd7,*cd8,*cd9,*cd10,*cd14, *cd17,*cd18;
+    ControlData *cd2, *cd3, *cd4, *cd5, *cd7,*cd8,*cd9,*cd10,*cd14, *cd17,*cd18, *cd19;
     int flag = 0;
     int flag4 = 0;
     int flag5 = 0;
@@ -322,6 +322,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     int cdcount14 = 0;
     int cdcount17 = 0;
     int cdcount18 = 0;
+    int cdcount19 = 0;
     
     int tonecount = 0;
     
@@ -357,6 +358,9 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
     }
     if (cdcount18 < [list18 count]) {
         cd18 = [list18 get:cdcount18];
+    }
+    if (cdcount19 < [list19 count]) {
+        cd19 = [list19 get:cdcount19];
     }
     
     /** add by sunlie end */
@@ -407,7 +411,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             for (j=0; j<[notegroup count]; j++) {
                 mn = [notegroup get:j];
                 mn1 = [midinotes get:i];
-                if ([mn duration] >= 2*[time quarter] || [mn endTime] <= [mn1 startTime]+[time quarter]/10 || [mn1 duration] <= [time quarter]/10 || [mn1 duration] >= [time quarter]) {
+                if ([mn duration] >= 2*[time quarter] || [mn endTime] <= [mn1 startTime]+[time quarter]/10 || [mn1 duration] <= [time quarter]/8 || [mn1 duration] >= [time quarter] ) {
                     break;
                 }
                 count++;
@@ -566,7 +570,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
             if ([chord startTime] >= [cd7 starttime] && [chord endTime] < [cd7 endtime]) {
                 [chord setYiFlag:1];
             } else if ([chord startTime] >= [cd7 starttime] && [chord endTime] >= [cd7 endtime]) {
-                [chord setStartTime:[chord startTime]+5];
+                [chord setStartTime:[chord startTime]+6];
                 int k = [chords count]-1;
                 int cc = 1;
                 while (k>=0 && [[chords get:k] yiFlag] == 1) {
@@ -585,6 +589,32 @@ id<MusicSymbol> getSymbol(Array *symbols, int index) {
                 cdcount7++;
                 if (cdcount7 < [list7 count]) {
                     cd7 = [list7 get:cdcount7];
+                }
+            }
+        }
+        
+        if (cdcount19 < [list19 count]) {
+            if ([chord startTime] >= [cd19 starttime] && [chord endTime] < [cd19 endtime]) {
+                [chord setYiFlag:1];
+            } else if ([chord startTime] >= [cd19 starttime] && [chord endTime] >= [cd19 endtime]) {
+                int k = [chords count]-1;
+                int cc = 1;
+                while (k>=0 && [[chords get:k] yiFlag] == 1) {
+                    [[chords get:k] setStartTime:[chord startTime]-cc-3];
+                    k--;
+                    cc++;
+                }
+                if (k>=0 && cc >= 4 && [chord startTime]-[[chords get:k] endTime]<[time quarter]/2+20) {
+                    [[chords get:k] setEndTime:[chord startTime]];
+                    for (cc = 0; cc < [[chords get:k] notedata_len]; cc++) {
+                        int dd = [[chords get:k] endTime]-[[chords get:k] startTime];
+                        [[chords get:k] notedata][cc].dur = dd;
+                        [[chords get:k] notedata][cc].duration = [time getNoteDuration:dd];
+                    }
+                }
+                cdcount19++;
+                if (cdcount19 < [list19 count]) {
+                    cd19 = [list19 get:cdcount19];
                 }
             }
         }

@@ -87,6 +87,7 @@ int sortbynote(void* note1, void* note2) {
     controlList16 = [Array new:10];
     controlList17 = [Array new:10];
     controlList18 = [Array new:10];
+    controlList19 = [Array new:10];
     /** add by sunlie end */
     instrument = 0;
     return self;
@@ -118,6 +119,7 @@ int sortbynote(void* note1, void* note2) {
     controlList16 = [Array new:10];
     controlList17 = [Array new:10];
     controlList18 = [Array new:10];
+    controlList19 = [Array new:10];
     /** add by sunlie end */
     
     for (int i= 0;i < [list count]; i++) {
@@ -180,6 +182,7 @@ int sortbynote(void* note1, void* note2) {
     [controlList16 release];
     [controlList17 release];
     [controlList18 release];
+    [controlList19 release];
     /** add by sunlie end */
     [super dealloc];
 }
@@ -423,6 +426,17 @@ int sortbynote(void* note1, void* note2) {
     }
 }
 
+-(Array*)controlList19 {
+    return controlList19;
+}
+
+-(void)setControlList19:(Array*)cl {
+    for (int i = 0; i < [cl count]; i++) {
+        ControlData *cd = [cl get:i];
+        [controlList19 add:[cd copy]];
+    }
+}
+
 -(int)totalpulses {
     return totalpulses;
 }
@@ -607,6 +621,12 @@ int sortbynote(void* note1, void* note2) {
         for (int i = 0; i < [controlList18 count]; i++) {
             ControlData *cd = [controlList18 get:i];
             [[track controlList18] add:[cd copy]];
+        }
+    }
+    if ([controlList19 count] > 0) {
+        for (int i = 0; i < [controlList19 count]; i++) {
+            ControlData *cd = [controlList19 get:i];
+            [[track controlList19] add:[cd copy]];
         }
     }
     /** add by sunlie end */
