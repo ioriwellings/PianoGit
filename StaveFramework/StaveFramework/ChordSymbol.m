@@ -1361,6 +1361,7 @@ static UIImage* chanyin = nil;
 +(BOOL)canCreateBeams:(Array*)chords withTime:(TimeSignature*)time onBeat:(BOOL)startQuarter {
 
     int numChords = [chords count];
+
     ChordSymbol *chord0 = [chords get:0];
     Stem* firstStem = [chord0 stem];
     Stem* lastStem = [[chords get:(numChords-1)] stem];

@@ -80,7 +80,7 @@ id<MusicSymbol> getSymbol(Array *symbols, int index);
 -(KeySignature*) getKeySignature:(Array*)tracks;
 -(Array*) createChords:(Array*)midinotes withKey:(KeySignature*)key
                andTime:(TimeSignature*)time andClefs:(ClefMeasures*) clefs andCList2:(Array *)list andCList3:(Array *)list3
-             andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14 andCList17:(Array *)list17 andCList18:(Array *)list18;
+             andCList4:(Array *)list4 andCList5:(Array *)list5 andCList7:(Array *)list7 andCList8:(Array *)list8 andCList9:(Array *)list9 andCList10:(Array *)list10 andCList11:(Array *)list11 andCList14:(Array *)list14 andCList17:(Array *)list17 andCList18:(Array *)list18 andCList19:(Array *)list19;
 -(Array*) createSymbols:(Array*)chords withClefs:(ClefMeasures*)clefs
                 andTime:(TimeSignature*)time andLastTime:(int)lastStartTime andBeatarray:(Array *)barray andCList15:(Array *)list15;
 -(Array*) addBars:(Array*)chords withTime:(TimeSignature*)time
